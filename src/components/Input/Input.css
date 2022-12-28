@@ -1,0 +1,32 @@
+.input-outer {
+    background-color: #070B1A;
+    width: 100%;
+    height: 350px;
+    padding: 60px 0px 0px 60px;
+}
+.inner {
+    position: relative;
+    width: 300px;
+    height: auto;
+}
+.input {
+    /* height: 40px;     */
+    position: relative;
+    width: 300px;
+    padding: 12.5px 16px;
+    background-color: #070B1A;
+    border: 1px solid #1F2330;
+    border-radius: 6px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.icon {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+}
