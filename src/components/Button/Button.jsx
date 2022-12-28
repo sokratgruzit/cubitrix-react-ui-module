@@ -1,5 +1,3 @@
-import './Button.css';
-
-export const Button = ({ label, onClick }) => {
-    return <div className={`button`} onClick={onClick}>{label}</div>;
+export const Button = props => {
+    return <div className={`button`} onClick={props.onClick}>{props.label}</div>;
 };
