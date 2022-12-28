@@ -12,6 +12,9 @@ stories.add("Button", () => {
         <div>
             <Button
                 label={toggle ? "good button" : "bad button"}
+                size={'btn-lg'}
+                type={'btn-primary'}
+                arrow={false}
                 onClick={() => setToggle((prevState) => !prevState)}
             />
         </div>

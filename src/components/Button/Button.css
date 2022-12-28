@@ -1,0 +1,25 @@
+.btn {
+    display: flex;
+    align-items: center;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 32px;
+}
+.btn-primary {
+    background: #3D5AFE;
+}
+.btn-primary:hover {
+    opacity: .7;
+}
+.btn-primary span {
+    color: #fff;
+}
+.btn-lg {
+    height: 52px;
+    padding: 0px 25px;
+}
+.btn-sm {
+    height: 44px;
+    padding: 0px 30px;
+}
