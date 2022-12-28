@@ -35,6 +35,35 @@
 .arrow-none svg {
     display: none;
 }
+.btn svg{
+    display: none;
+}
+.btn svg:nth-child(1){
+    margin-right: 15px;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.btn.arrow-left svg:nth-child(3){
+    display: none;
+}
+.btn.arrow-right svg:nth-child(1){
+    display: none;
+}
+.btn.arrow-both svg,.btn.arrow-right svg:nth-child(3),.btn.arrow-left svg:nth-child(1){
+    display: flex;
+}
+.btn:hover svg:nth-child(1) {
+    transform: translateX(-5px);
+}
+.btn svg:nth-child(3){
+    margin-left: 15px;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.btn:hover svg:nth-child(3) {
+    transform: translateX(5px);
+}
+.arrow-none svg {
+    display: none;
+}
 .btn-primary {
   background: #3d5afe;
 }
