@@ -11,10 +11,24 @@ stories.add("Button", () => {
     return (
         <div>
             <Button
-                label={toggle ? "good button" : "bad button"}
+                label={'Button'}
                 size={'btn-lg'}
                 type={'btn-primary'}
-                arrow={false}
+                arrow={'arrow-none'}
+                onClick={() => setToggle((prevState) => !prevState)}
+            />
+            <Button
+                label={'Button'}
+                size={'btn-lg'}
+                type={'btn-secondary'}
+                arrow={'arrow-right'}
+                onClick={() => setToggle((prevState) => !prevState)}
+            />
+            <Button
+                label={'Button'}
+                size={'btn-lg'}
+                type={'btn-tertiary'}
+                arrow={'arrow-both'}
                 onClick={() => setToggle((prevState) => !prevState)}
             />
         </div>
