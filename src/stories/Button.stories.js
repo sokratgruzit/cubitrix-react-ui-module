@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import '../assets/css/main-theme.css';
+import "../assets/css/main-theme.css";
 import { Button } from "../components/Button";
 
 const stories = storiesOf("Button", module);
 
 stories.add("Button", () => {
-    const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
-    return (
-        <div>
-            <Button
-                label={toggle ? "good button" : "bad button"}
-                size={'btn-lg'}
-                type={'btn-primary'}
-                arrow={false}
-                onClick={() => setToggle((prevState) => !prevState)}
-            />
-        </div>
-    );
+  return (
+    <div>
+      <Button
+        label={toggle ? "good button" : "bad button"}
+        size={"btn-lg"}
+        type={"btn-primary"}
+        arrow={false}
+        onClick={() => setToggle((prevState) => !prevState)}
+      />
+    </div>
+  );
 });
