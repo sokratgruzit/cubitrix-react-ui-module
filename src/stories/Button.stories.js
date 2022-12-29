@@ -8,15 +8,29 @@ const stories = storiesOf("Button", module);
 stories.add("Button", () => {
   const [toggle, setToggle] = useState(false);
 
-  return (
-    <div>
-      <Button
-        label={toggle ? "good button" : "bad button"}
-        size={"btn-lg"}
-        type={"btn-primary"}
-        arrow={false}
-        onClick={() => setToggle((prevState) => !prevState)}
-      />
-    </div>
-  );
+    return (
+        <div>
+            <Button
+                label={'Button'}
+                size={'btn-lg'}
+                type={'btn-primary'}
+                arrow={'arrow-none'}
+                onClick={() => setToggle((prevState) => !prevState)}
+            />
+            <Button
+                label={'Button'}
+                size={'btn-lg'}
+                type={'btn-secondary'}
+                arrow={'arrow-right'}
+                onClick={() => setToggle((prevState) => !prevState)}
+            />
+            <Button
+                label={'Button'}
+                size={'btn-lg'}
+                type={'btn-tertiary'}
+                arrow={'arrow-both'}
+                onClick={() => setToggle((prevState) => !prevState)}
+            />
+        </div>
+    );
 });
