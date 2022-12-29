@@ -9,7 +9,9 @@ stories.add("Help Text", (props) => {
 
     return (
         <div>
-           <HelpText />
+            <HelpText
+                type={'success'}
+            />
         </div>
     );
 });

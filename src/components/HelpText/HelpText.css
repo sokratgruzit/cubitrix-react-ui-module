@@ -1,0 +1,15 @@
+.help-text {
+    background-color: #070B1A;
+    height: 100vh;
+    width: 100%;
+    padding: 60px 80px;
+}
+.item {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 10px;
+}
+.item p {
+    color: #9CCC65;
+}
