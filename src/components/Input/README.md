@@ -1,3 +1,4 @@
 Props:
-    icon: true/false,
+    type: default/lable-input,
+    icon: true/false
     

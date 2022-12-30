@@ -9,10 +9,18 @@ stories.add("Input", (props) => {
 
     return (
         <div>
-            <Input icon={true} />
-            <Input icon={false} /> 
-            {/* <Input type={'default'} /> */}
-            {/* <Input type={'icon'} /> */}
+            <Input 
+                type={'default'} 
+                icon={true} 
+            />
+            <Input 
+                type={'default'} 
+                icon={false} 
+            /> 
+            <Input 
+                type={'lable-input'} 
+                icon={false} 
+            />
         </div>
     );
 });

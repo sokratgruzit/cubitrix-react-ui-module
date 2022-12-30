@@ -1,8 +1,6 @@
+/* default input with icon and without icon */
 .input-outer {
-    background-color: #070B1A;
-    width: 100%;
-    height: 350px;
-    padding: 60px 0px 0px 60px;
+    margin-top: 30px;
 }
 .input-inner {
     position: relative;
@@ -15,8 +13,6 @@
     transition: .5s;
 }
 .input {
-    /* height: 40px;     */
-    /* position: relative; */
     width: 300px;
     padding: 12.5px 50px 12.5px 16px;
     background-color: #070B1A;
@@ -39,22 +35,6 @@
     right: 16px;
     transition: .5s;
 }
-/* .icon {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    z-index: 1;
-    top: 8.5px;
-    right: 16px;
-    cursor: pointer;
-    transition: .5s;
-}
-.icon path {
-    transition: .5s;
-}
-.icon:hover path {
-    fill: #3D5AFE;
-} */
 .active {
     border: 1px solid #393C48;
 }
@@ -62,7 +42,13 @@
     opacity: 0.2;
     pointer-events: none;
 }
+/* end of default input */
 
-/* .disabled svg {
-    opacity: 0.2;
-} */
+/* label input */
+.lable-input {
+    margin-top: 30px;
+}
+.item {
+    display: flex;
+    /* flex-direction: column; */
+}
