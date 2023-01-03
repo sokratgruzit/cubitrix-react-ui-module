@@ -14,7 +14,7 @@ stories.add("Button", () => {
                 label={'Button'}
                 size={'btn-lg'}
                 type={'btn-primary'}
-                arrow={'arrow-none'}
+                arrow={'arrow-right'}
                 onClick={() => setToggle((prevState) => !prevState)}
             />
             <Button
