@@ -8,7 +8,7 @@ export const Input = props => {
         element = (
             <div className='input-outer'>
                 <div className='input-inner'>
-                    <input className='input ' type='text' placeholder='default input' />
+                    <input className='input' type='text' placeholder='default input' />
                     {props.icon ? 
                         <svg className='icon' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 16.33C9.61004 16.33 7.67004 14.39 7.67004 12C7.67004 9.61 9.61004 7.67 12 7.67C14.39 7.67 16.33 9.61 16.33 12C16.33 14.39 14.39 16.33 12 16.33ZM12 9.17C10.44 9.17 9.17004 10.44 9.17004 12C9.17004 13.56 10.44 14.83 12 14.83C13.56 14.83 14.83 13.56 14.83 12C14.83 10.44 13.56 9.17 12 9.17Z" fill="#CDCED1"/>
@@ -27,20 +27,22 @@ export const Input = props => {
                     <div className='item'>
                         <div className='item-inner'>
                             <p>Amount <span>Set order size</span></p>
-                            <input type='text' placeHolder='0.0000' />
-                            <div>
+                            <input className='input-area' type='text' placeholder='0.0000' />
+                            <div className='frame'>
                                 ETH
                             </div>
                         </div>
-                        <div className='item-box'>
+                        <div className='sub-item'>
                             USD
                         </div>
                     </div>
                     <div className='item'>
-                        <p>Limit Price <span>USD</span></p>
-                        <input type='text' placeHolder='0.0000' />
+                        <div className='item-inner'>
+                            <p>Limit Price <span className='frame-row'>USD</span></p>
+                            <input className='input-area input-b' type='text' placeholder='0.0000' />
+                        </div>
                     </div>
-                    <div className='item'>
+                    <div className='select-item'>
                         <p>Time in force</p>
                         <div className='select'>
                             <div className='active-select'>
