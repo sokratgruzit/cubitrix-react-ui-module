@@ -1,0 +1,9 @@
+.item {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 10px;
+}
+.item p {
+    color: #9CCC65;
+}
