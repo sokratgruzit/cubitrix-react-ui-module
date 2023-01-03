@@ -7,3 +7,51 @@
 .item p {
     color: #9CCC65;
 }
+.alert-modal {
+    border: 1px solid #202431;
+    background-color: #141726;
+    padding: 12px 12px 16px 16px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: fit-content;
+    border-radius: 8px;
+}
+.row {
+    display: flex;
+    width: 100%;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.title {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.close-btn {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+.close-btn svg {
+    transition: .5s;
+}
+.close-btn svg path {
+    transition: .5s;
+}
+.close-btn:hover svg path {
+    stroke: #3D5AFE;
+}
+.text {
+    margin-top: 8px;
+    padding: 0px 4px;
+}
+/* .btn {
+    color: #3D5AFE;
+    cursor: pointer;
+    transition: .5s;
+}
+.btn:hover {
+    color: #ff6500;
+} */

@@ -63,6 +63,7 @@ export const Input = props => {
                                 </div>
                             </div>
                         </div>
+                        <p className='alert font-12'>Some warning text</p>
                     </div>
                 </div>
             </div>

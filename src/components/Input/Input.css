@@ -123,7 +123,7 @@
     flex-direction: column;
     margin-top: 20px;
 }
-.select-item p {
+.select-item p:first-child {
     color: #fff;
 }
 .select {
@@ -150,6 +150,9 @@
 .options {
     overflow: hidden;
     margin-top: 10px;
-    
+}
+.alert {
+    color: #EF5350;
+    margin-top: 5px;
 }
 /* end of select input */

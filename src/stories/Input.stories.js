@@ -11,14 +11,14 @@ stories.add("Input", (props) => {
         <div>
             <Input 
                 type={'default'} 
-                icon={true} 
+                icon={true}
             />
             <Input 
                 type={'default'} 
                 icon={false} 
             /> 
             <Input 
-                type={'lable-input'} 
+                type={'lable-input'}
                 icon={false} 
             />
         </div>
