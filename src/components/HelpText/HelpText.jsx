@@ -82,4 +82,8 @@ export const HelpText = props => {
     }
 
     return element;
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 1322ac046e2c7aee4c45695aae0b5422d498a4e9
