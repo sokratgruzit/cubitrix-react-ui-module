@@ -15,12 +15,6 @@ stories.add("Help Text", (props) => {
                 mode={'alert'}
             />
             <HelpText
-                type={'success'}
-                title={'Help Text'}
-                color={'#9CCC65'}
-                mode={'default'}
-            />
-            <HelpText
                 type={'warning'}
                 title={'Help Text'}
                 color={'#FFA726'}

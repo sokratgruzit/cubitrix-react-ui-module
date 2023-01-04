@@ -87,6 +87,7 @@
     transition: .5s;
     text-transform: capitalize;
     margin-top: 10px;
+    transition: .5s;
 }
 .input-b {
     width: 300px;
@@ -115,6 +116,14 @@
     text-transform: uppercase;
     text-align: center;
     background-color: #1F2330;
+}
+.input-area:hover {
+    border: 1px solid #3D5AFE99;
+}
+.input-area:focus {
+    border: 1px solid #3D5AFE;
+    transition: .5s;
+    color: #fff;
 }
 /* end of label input */
 /* select input */
@@ -153,6 +162,13 @@
 }
 .alert {
     color: #EF5350;
+    margin-top: 5px;
+}
+.info {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 10px;
     margin-top: 5px;
 }
 /* end of select input */
