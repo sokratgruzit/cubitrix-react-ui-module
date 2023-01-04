@@ -5,31 +5,32 @@
   cursor: pointer;
   width: fit-content;
   border-radius: 32px;
+    justify-content: center;
 }
 .btn svg{
     display: none;
 }
-.btn svg:nth-child(1){
+.btn .arrowL{
     margin-right: 15px;
     transition: .6s cubic-bezier(.79,.01,.15,.99);
 }
-.btn.arrow-left svg:nth-child(3){
+.btn.arrow-left .arrowR{
     display: none;
 }
-.btn.arrow-right svg:nth-child(1){
+.btn.arrow-right .arrowL{
     display: none;
 }
-.btn.arrow-both svg,.btn.arrow-right svg:nth-child(3),.btn.arrow-left svg:nth-child(1){
+.btn.arrow-both svg,.btn.arrow-right .arrowR,.btn.arrow-left .arrowL{
     display: flex;
 }
-.btn:hover svg:nth-child(1) {
+.btn:hover .arrowL {
     transform: translateX(-5px);
 }
-.btn svg:nth-child(3){
+.btn .arrowR{
     margin-left: 15px;
     transition: .6s cubic-bezier(.79,.01,.15,.99);
 }
-.btn:hover svg:nth-child(3) {
+.btn:hover .arrowR {
     transform: translateX(5px);
 }
 .arrow-none svg {
@@ -79,19 +80,43 @@
 .btn-primary span {
   color: #fff;
 }
+.btn-tertiary span{
+    color: #3D5AFE;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.btn.btn-tertiary {
+    padding: 0px;
+    height: fit-content;
+}
+.btn-tertiary:hover span {
+    color: rgba(255,255,255,.7);
+}
+.btn-tertiary path {
+    fill: #3D5AFE;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.btn-tertiary:hover path {
+    fill: rgba(255,255,255,.7);
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.no-label.btn span {
+    display: none;
+}
+.btn.no-label svg {
+    position: absolute;
+    margin: 0px!important;
+}
 .btn-lg {
   height: 52px;
   padding: 0px 25px;
+}
+.no-label.btn.btn-lg {
+    width: 52px;
 }
 .btn-sm {
   height: 44px;
   padding: 0px 30px;
 }
-
-/* <div
-                className={`${"tab"}
-            ${toggle === true ? "tab-primary" : ""}`}
-              >
-                Buy
-              </div>
-              <div className="tab">Sell</div> */
+.no-label.btn.btn-sm {
+    width: 44px;
+}

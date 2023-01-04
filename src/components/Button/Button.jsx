@@ -3,8 +3,9 @@ import "./Button.css";
 export const Button = (props) => {
   return (
     <div
-      className={`btn ${props.size} ${props.type} ${props.arrow}`}
+      className={`btn ${props.size} ${props.type} ${props.arrow} ${props.labelSetting}`}
       onClick={props.onClick}
+      style={props.customStyles}
     >
       <svg
         width="6"
@@ -12,6 +13,7 @@ export const Button = (props) => {
         viewBox="0 0 6 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="arrowL"
       >
         <path
           fillRule="evenodd"
@@ -27,6 +29,7 @@ export const Button = (props) => {
         viewBox="0 0 6 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="arrowR"
       >
         <path
           fillRule="evenodd"
