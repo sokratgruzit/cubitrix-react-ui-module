@@ -46,7 +46,7 @@ export const HelpText = props => {
     }
     if(props.mode === 'alert') {
         element = (
-            <div className='help-text'>
+            <div className={`help-text ${props.active ? 'animate' : ''}`}>
                 <div className='alert-modal'>
                     <div className='row'>
                         <div className='title'>
