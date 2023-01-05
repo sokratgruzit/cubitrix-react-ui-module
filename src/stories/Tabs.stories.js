@@ -26,21 +26,24 @@ stories.add("Tabs", () => {
               className={`${"two-component-tab"}
               ${toggle === 1 ? "active-two-component-tab" : ""}`}
             >
-              Buy
+              Sell
             </div>
             <div
               onClick={() => {
                 tabsHandler(2);
               }}
               className={`${"two-component-tab"}
-              ${toggle === 2 ? "active-two-component-tab" : ""}`}
+              ${toggle === 2 ? "active-two-component-tab bg-color" : ""}`}
             >
-              Sell
+              Buy
             </div>
           </>
         }
       />
-      {/* TABS */}
+
+      <div className="space-between-components"></div>
+
+      {/* Tabs */}
       <Tabs
         type={"tabs"}
         label={
@@ -84,6 +87,45 @@ stories.add("Tabs", () => {
           </>
         }
       />
+
+      <div className="space-between-components"></div>
+
+      {/* Text Tabs */}
+
+      {/* <Tabs
+        type={"text-tabs"}
+        label={
+          <>
+            <div
+              onClick={() => {
+                tabsHandler(1);
+              }}
+              className={`${"text-tab"}
+              ${toggle === 1 ? "active-text-tab" : ""}`}
+            >
+              Limit
+            </div>
+            <div
+              onClick={() => {
+                tabsHandler(2);
+              }}
+              className={`${"text-tab"}
+              ${toggle === 2 ? "active-text-tab" : ""}`}
+            >
+              Market <span>0</span>
+            </div>
+            <div
+              onClick={() => {
+                tabsHandler(3);
+              }}
+              className={`${"text-tab"}
+              ${toggle === 3 ? "active-text-tab" : ""}`}
+            >
+              Stop <span>0</span>
+            </div>
+          </>
+        }
+      /> */}
     </div>
   );
 });
