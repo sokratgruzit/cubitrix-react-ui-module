@@ -171,6 +171,7 @@ stories.add("Tabs", () => {
               ${toggle === 2 ? "active-variant-btn" : ""}`}
             >
               Deposit
+              
             </div>
           </>
         }
