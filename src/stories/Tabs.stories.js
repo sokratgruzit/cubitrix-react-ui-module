@@ -146,6 +146,35 @@ stories.add("Tabs", () => {
           </>
         }
       />
+
+      <div className="space-between-components"></div>
+
+      <Tabs
+        type={"button-variant"}
+        label={
+          <>
+            <p className="variant-title">Account</p>
+            <div
+              onClick={() => {
+                tabsHandler(1);
+              }}
+              className={`${"variants-btn"}
+              ${toggle === 1 ? "active-variant-btn" : ""}`}
+            >
+              Withdraw
+            </div>
+            <div
+              onClick={() => {
+                tabsHandler(2);
+              }}
+              className={`${"variants-btn"}
+              ${toggle === 2 ? "active-variant-btn" : ""}`}
+            >
+              Deposit
+            </div>
+          </>
+        }
+      />
     </div>
   );
 });
