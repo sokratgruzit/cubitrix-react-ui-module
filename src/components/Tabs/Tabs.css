@@ -2,7 +2,7 @@
 .two-component-tabs {
   background: #070b1a;
   border-radius: 32px;
-  width: 322px;
+  width: fit-content;
   height: 42px;
   display: flex;
   align-items: center;
@@ -75,4 +75,81 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+}
+
+/* Text tabs */
+
+.text-tabs {
+  width: fit-content;
+  background: #070b1a;
+  height: 44px;
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.text-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 30px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
+  width: 100%;
+  color: #9c9da3;
+  border-bottom: 1px solid #3d5afe00;
+  height: inherit;
+}
+.active-text-tab {
+  color: #3d5afe;
+  border-bottom: 1px solid #3d5afe;
+}
+.text-tab:hover {
+  opacity: 0.7;
+}
+.expend-i path {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.expend path {
+  stroke: #3d5afe;
+}
+.expend-i {
+  margin-left: 10px;
+}
+
+/* Button Variant */
+
+.button-variant {
+  background-color: #3d5afe;
+  display: flex;
+  height: 60px;
+  width: 324px;
+  border-radius: 18px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  padding-right: 16px;
+}
+.variants-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  color: #fff;
+}
+.variants-btn:hover {
+  background-color: #fff;
+  color: #3d5afe;
+}
+.variant-title {
+  padding-left: 16px;
+  margin-right: auto;
+}
+.active-variant-btn {
+  background-color: #fff;
+  color: #3d5afe;
 }

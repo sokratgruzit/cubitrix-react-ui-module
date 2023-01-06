@@ -7,7 +7,6 @@ const stories = storiesOf("Button", module);
 
 stories.add("Button", () => {
   const [toggle, setToggle] = useState(false);
-
     return (
         <div>
             <Button
