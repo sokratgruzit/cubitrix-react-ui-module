@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import { HelpCard } from "../components/HelpCard";
 import '../assets/css/main-theme.css';
-import { useState } from "react";
 
 const stories = storiesOf("Help Card", module);
 
@@ -27,20 +27,20 @@ stories.add("Help Card", (props) => {
             <HelpCard
                 status={'warning'}
                 color={'#FFA726'}
-                body={true}
-                onClick={closeHandler}
-                active={active}
-                content={'your text your text your text your text your text your text your text'}
                 title={'Help Text'}
+                content={'your text your text your text your text your text your text your text'}
+                body={true}
+                active={active}
+                onClick={closeHandler}
             />
             <HelpCard
                 status={'error'}
-                color={'#EF5350'}
-                body={true}
-                onClick={closeHandler}
-                active={active}
-                content={'your text your text your text your text your text your text your text'}
                 title={'Help Text'}
+                color={'#EF5350'}
+                content={'your text your text your text your text your text your text your text'}
+                body={true}
+                active={active}
+                onClick={closeHandler}
             />
             <HelpCard
                 status={'success'}
@@ -51,7 +51,7 @@ stories.add("Help Card", (props) => {
                 content={'your text your text your text your text your text your text your text'}
                 title={'Help Text'}
             />
-            {/* without text bottom */}
+            {/* without body  */}
             <HelpCard
                 status={'info'}
                 color={'#fff'}
