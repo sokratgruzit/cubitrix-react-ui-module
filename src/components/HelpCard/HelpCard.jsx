@@ -43,7 +43,7 @@ export const HelpCard = props => {
                 <div  className='toast-header'>
                     <div className='toast-title'>
                         {svg}
-                        <p style={{color: props.color}}>Help Text</p>
+                        <p style={{color: props.color}}>{props.title}</p>
                     </div>
                     <div
                         className='close-btn'

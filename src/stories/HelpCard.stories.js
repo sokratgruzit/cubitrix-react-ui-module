@@ -22,6 +22,7 @@ stories.add("Help Card", (props) => {
                 onClick={closeHandler}
                 active={active}
                 content={'your text your text your text your text your text your text your text'}
+                title={'Help Text'}
             />
             <HelpCard
                 status={'warning'}
@@ -30,6 +31,7 @@ stories.add("Help Card", (props) => {
                 onClick={closeHandler}
                 active={active}
                 content={'your text your text your text your text your text your text your text'}
+                title={'Help Text'}
             />
             <HelpCard
                 status={'error'}
@@ -38,6 +40,7 @@ stories.add("Help Card", (props) => {
                 onClick={closeHandler}
                 active={active}
                 content={'your text your text your text your text your text your text your text'}
+                title={'Help Text'}
             />
             <HelpCard
                 status={'success'}
@@ -46,6 +49,7 @@ stories.add("Help Card", (props) => {
                 onClick={closeHandler}
                 active={active}
                 content={'your text your text your text your text your text your text your text'}
+                title={'Help Text'}
             />
             {/* without text bottom */}
             <HelpCard
@@ -54,6 +58,7 @@ stories.add("Help Card", (props) => {
                 body={false}
                 onClick={closeHandler}
                 active={active}
+                title={'Help Text'}
             />
             <HelpCard
                 status={'warning'}
@@ -61,6 +66,7 @@ stories.add("Help Card", (props) => {
                 body={false}
                 onClick={closeHandler}
                 active={active}
+                title={'Help Text'}
             />
             <HelpCard
                 status={'error'}
@@ -68,6 +74,7 @@ stories.add("Help Card", (props) => {
                 body={false}
                 onClick={closeHandler}
                 active={active}
+                title={'Help Text'}
             />
             <HelpCard
                 status={'success'}
@@ -75,6 +82,7 @@ stories.add("Help Card", (props) => {
                 body={false}
                 onClick={closeHandler}
                 active={active}
+                title={'Help Text'}
             />
         </div>
     );
