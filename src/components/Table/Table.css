@@ -1,0 +1,33 @@
+.table-version {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.table-head {
+  width: 100%;
+  display: flex;
+  padding: 30px 15px;
+}
+.table {
+  display: flex;
+  width: 100%;
+  padding: 15px;
+  align-items: center;
+}
+.th {
+  width: 16%;
+  color: #9c9da3;
+}
+.td {
+  width: 16%;
+}
+.table:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
+}
+.btn-adjust {
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+}
