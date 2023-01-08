@@ -2,7 +2,7 @@ import './InfoBox.css'
 
 export const InfoBox = (props) => {
     return (
-        <div className={`card ${props.bg} ${props.center} ${props.height} ${props.padding}`}>
+        <div className={`card ${props.bg} ${props.center} ${props.height} ${props.padding} ${props.revardbox}`}>
             {props.type === "avilable" ? (
                 <div className='card-header'>
                     <h1>{props.header.title}</h1>
@@ -15,21 +15,35 @@ export const InfoBox = (props) => {
                 <h1 className='card-header-detail'>{props.header.title}</h1>
             ) : props.type === "connectWallet" ? (
                 <div>
-                    <img src={props.img} style={{height: "75px", width: "104px"}}/>
+                    <img src={props.img} style={{ height: "75px", width: "104px" }} />
                 </div>
-            ) : (
+            ) : props.type === "complate" ? (
                 <div className={props.center}>
                     <p>Complete the onboarding flow to start trading on COMPLEND</p>
                     <div className='complate-btn'>Complete Account</div>
                 </div>
-            )
+            ) : props.type === "revardBox" ? (
+                props.cardBody.map((item) => {
+                    return (
+                        <div className='card-body'>
+                            <div className='display-flex'>
+                                <div>
+                                    <img src={item.icon} alt='#' />
+                                </div>
+                                <div className='list-group-item font-bigger'>{item.title}</div>
+                            </div>
+                            <p className='list-group-item font-bigger'>{item.amount}</p>
+                        </div>
+                    )
+                })
+            ) : ""
             }
             {props.type === "avilable" ? (
                 props.cardBody.map((item) => {
                     return (
                         <div className='card-body'>
                             <p className='list-group-item'>{item.title}</p>
-                            <p className='list-group-item flex-end'>{item.value}</p>
+                            <p className='list-group-item'>{item.value}</p>
                         </div>
                     )
                 })
@@ -39,9 +53,9 @@ export const InfoBox = (props) => {
                         <div className='card-body-unavilable'>
                             <div className='card-unavilable-status'>
                                 <p className='list-group-item'>{item.title}</p>
-                                <div>{item.taker}</div>
+                                <div style={{padding: item.taker === "" ? "0" : "1px 6px" }}>{item.taker}</div>
                             </div>
-                                <p className='list-group-item'>{item.value}</p>
+                            <p className='list-group-item'>{item.value}</p>
                         </div>
                     )
                 })
@@ -50,9 +64,9 @@ export const InfoBox = (props) => {
                     <p>Connect your Ethereum wallet to deposit funds & start trading.</p>
                     <div>Connect Wallet</div>
                 </div>
-            ) :"" 
+            ) : ""
             }
-           { props.type === "unAvilable" ? (
+            {props.type === "unAvilable" ? (
                 <div className='Unavailable-button'>Unavailable</div>
             ) : ""}
         </div>

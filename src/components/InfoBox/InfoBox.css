@@ -47,7 +47,6 @@
 .card-unavilable-status div {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 13px;
-    padding: 1px 6px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,6 +85,7 @@
     align-items: center;
     justify-content: center;
     border: 2px solid white;
+    transition: .8s;
 }
 .card-header div div:hover {
     cursor: pointer;
@@ -141,15 +141,11 @@
 }
 .item-Taker span {
     color: #6A6D76;
-    border-radius: 13px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.1);
     padding: 2px 6px;
     font-size: 10px;
     text-align: center;
-}
-.flex-end {
-    display: flex;
-    justify-content: flex-end;
 }
 .complete-account {
     display: flex;
@@ -167,4 +163,26 @@
     background-color: #3D5AFE;
     padding: 12px 30px;
     border-radius: 32px;
+    transition: .8s;
+}
+.complate-btn:hover {
+    cursor: pointer;
+    color: #3D5AFE;
+    transition: .8s;
+    background-color: white;
+}
+.revardBox {
+    width: 508px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.display-flex {
+    display: flex;
+    gap: 12px;
+}
+.font-bigger {
+    font-size: 16px;
 }

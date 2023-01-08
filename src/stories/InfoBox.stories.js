@@ -2,6 +2,9 @@ import { storiesOf } from "@storybook/react";
 import { title } from "process";
 import { InfoBox } from '../components/InfoBox/index';
 import img from "../assets/img/icon.png";
+import icon2 from "../assets/img/icon2.png";
+import icon3 from "../assets/img/icon3.png";
+import icon4 from "../assets/img/icon4.png";
 
 
 const stories = storiesOf('InfoBox', module);
@@ -66,6 +69,24 @@ const connectWallet = {
     btn: "Connect Wallet",
 }
 
+const revardBox = [
+    {
+        title: "Current Stake",
+        amount: "1,220.2 CML",
+        icon: icon4
+    },
+    {
+        title: "Earn",
+        amount: "1,020 CML",
+        icon: icon2
+    },
+    {
+        title: "Claimed Reward",
+        amount: "1,132.1 CML",
+        icon: icon3
+    }
+]
+
 stories.add('InfoBox', () => {
     return (
         <div>
@@ -75,7 +96,6 @@ stories.add('InfoBox', () => {
                 header={cardInfoHeader} 
                 cardBody={cardInfoBody} 
             />
-            <br></br>
             <InfoBox 
                 height='height'
                 bg='darck' 
@@ -84,7 +104,6 @@ stories.add('InfoBox', () => {
                 cardBody={unavilableCardBody} 
                 padding='padding-bottom'
             />
-            <br></br>
             <InfoBox 
                 bg='darck' 
                 type='connectWallet' 
@@ -92,8 +111,14 @@ stories.add('InfoBox', () => {
                 img={connectWallet.icon} 
                 center="card-center" 
             />
-            <br></br>
-            <InfoBox center="complete-account"
+            <InfoBox 
+                type='complate'
+                center="complete-account"
+            />
+            <InfoBox 
+                cardBody={revardBox}
+                revardbox="revardBox"
+                type="revardBox"
             />
         </div>
     )
