@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: imported;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+}
+@font-face {
+    font-family: imported;
+    src: url(../../assets/fonts/UberMove/UberMove-Medium.woff);
+}
+.card {
+    height: auto;
+    width: 324px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+    border: 1px solid red;
+}
+.padding-bottom {
+    padding-bottom: 55px;
+}
+.height {
+    min-height: 184px;
+}
+.card-center {
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    padding: 16px 40px;
+}
+.connec-tWallet-Body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card-unavilable-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.card-unavilable-status div {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 13px;
+    padding: 1px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    margin-bottom: 6px;
+    color:  #6A6D76;
+}
+.connec-tWallet-Body div {
+    color: #3D5AFE;
+    font-size: 14px;
+}
+.card-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.card-header-detail {
+    font-size: 16px;
+    margin-bottom: 6px;
+    padding: 5.5px 0;
+}
+.card-header h1 {
+    font-size: 16px;
+}
+.card-header div {
+    display: flex;
+    gap: 6px;
+}
+.card-header div div {
+    padding: 5.5px 12px;
+    height: 32px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+.card-header div div:hover {
+    cursor: pointer;
+    color: #3D5AFE;
+    transition: .8s;
+    background-color: white;
+}
+.darck {
+    background-color: #070B1A;
+}
+.blue {
+    background-color: #3D5AFE;
+}
+.card-body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    font-size: 14px;
+    padding: 1px 0;
+}
+.card-body-unavilable {
+    display: flex;
+    justify-content: space-between;
+}
+.card-body-unavilable .list-group-item {
+    color: #6A6D76;
+}
+.Unavailable-button {
+    background-color: #393C48;
+    border-radius: 18px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6A6D76;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+.font .list-group-item {
+    color: #6A6D76;
+}
+.item-Taker {
+    display: flex;
+    gap: 12px;
+}
+.item-Taker span {
+    color: #6A6D76;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    font-size: 10px;
+    text-align: center;
+}
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+.complete-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+.complete-account p {
+    color: #6A6D76;
+}
+.complate-btn {
+    background-color: #3D5AFE;
+    padding: 12px 30px;
+    border-radius: 32px;
+}
