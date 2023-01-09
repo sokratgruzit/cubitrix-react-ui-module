@@ -4,7 +4,7 @@ export const Dropdown = (props) => {
     let element = '';
     if (props.type === 'country') {
         element =
-            <div>
+            <div className={props.dropdown}>
                 {props.countryData.map((item, index) => {
                     return (
                         <div key={index}>
