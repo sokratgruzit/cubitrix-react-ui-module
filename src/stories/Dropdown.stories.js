@@ -1,7 +1,7 @@
 import { Dropdown } from "../components/Dropdown";
 import { storiesOf } from "@storybook/react";
 import { useState } from "react";
-
+import img from '../assets/img/australia.png'
 const stories = storiesOf("Dropdown", module);
 
 stories.add("Dropdown", () => {
@@ -73,14 +73,75 @@ stories.add("Dropdown", () => {
             ]
         }
     ]
+    let countryData = [ 
+        {   
+            id: 1,
+            title: 'The United Kingdom ',
+            image: 'static/media/src/assets/img/kingdom.png',
+            numbering: '(+78)'
+        },
+        {   
+            id: 2,
+            title: 'Brazil',
+            image: 'static/media/src/assets/img/brazil.png',
+            numbering: '(+76)'
+        },
+        {   
+            id: 3,
+            title: 'Australia',
+            image: 'static/media/src/assets/img/brazil.png',
+            numbering: '(+46)'
+        },
+        {   
+            id: 4,
+            title: 'Canada',
+            image: 'static/media/src/assets/img/Flag_of_Canada.png',
+            numbering: '(+918)'
+        },
+        {   
+            id: 5,
+            title: 'Italy',
+            image: 'static/media/src/assets/img/Flag_of_Australia.png',
+            numbering: '(+178)'
+        },
+        {   
+            id: 6,
+            title: 'Mexico',
+            image: 'static/media/src/assets/img/kingdom.png',
+            numbering: '(+78)'
+        },
+        {   
+            id: 7,
+            title: 'The United Kingdom ',
+            image: 'static/media/src/assets/img/Flag_of_Germany.png',
+            numbering: '(+78)'
+        },
+        {   
+            id: 8,
+            title: 'The United Kingdom ',
+            image: 'static/media/src/assets/img/brazil.png',
+            numbering: '(+78)'
+        },
+        {   
+            id: 9,
+            title: 'The United Kingdom ',
+            image: 'static/media/src/assets/img/Flag_of_Australia.png',
+            numbering: '(+78)'
+        }
+    ]
     return (
         <div>
             <Dropdown
                 data={data}
+                type={'dropdown'}
                 dropdown={'dropdown'}
                 dropdownItem={'dropdown-item'}
                 containerCheck = {'containerCheck'}
                 onClick={(hendlerClick)}
+            />
+            <Dropdown
+                type={'country'}
+                countryData={countryData}
             />
         </div>
     )

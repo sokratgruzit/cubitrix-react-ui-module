@@ -1,8 +1,25 @@
 import "./Dropdown.css";
 
 export const Dropdown = (props) => {
-    return (
-        <>
+    let element = '';
+    if (props.type === 'country') {
+        element =
+            <div>
+                {props.countryData.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <p>
+                                <img src={`${item.image}`} alt="country" />
+                                {item.title}
+                                {item.numbering}
+                            </p>
+                        </div>
+                    )
+                })}
+            </div>
+    }
+    if (props.type === 'dropdown') {
+        element =
             <div className={props.dropdown}>
                 {props.data.map((item, index) => {
                     return (
@@ -37,6 +54,10 @@ export const Dropdown = (props) => {
                     )
                 })}
             </div>
+    }
+    return (
+        <>
+            {element}
         </>
     )
 }
