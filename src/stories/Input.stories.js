@@ -8,7 +8,14 @@ const stories = storiesOf("Input", module);
 stories.add("Input", (props) => {
 
     return (
-        <div>
+        <div style={
+                {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '30px',
+                    marginTop: '30px'
+                }
+            }>
             <Input 
                 type={'default'} 
                 icon={true}
@@ -18,14 +25,14 @@ stories.add("Input", (props) => {
                 type={'default'} 
                 icon={false} 
                 placeholder={'default input'}
-
-            /> 
+            />
             <Input 
                 type={'lable-input'}
                 icon={false} 
                 status={'success'}
-                color={'#9CCC65'}
-                disabled={true}
+                statusTitle={'ching chong'}
+                statusColor={'#9CCC65'}
+                // disabled={true}
             />
             {/* <Input 
                 type={'lable-input'}

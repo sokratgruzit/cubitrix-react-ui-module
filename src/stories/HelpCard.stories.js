@@ -51,7 +51,7 @@ stories.add("Help Card", (props) => {
                 content={'your text your text your text your text your text your text your text'}
                 title={'Help Text'}
             />
-            {/* without body  */}
+            {/* without text  */}
             <HelpCard
                 status={'info'}
                 color={'#fff'}

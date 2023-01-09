@@ -1,4 +1,157 @@
-/* default input with icon and without icon */
+/* default input */
+.input-group {
+    position: relative;
+    width: 100%;
+    max-width: 325px;
+    height: auto;
+}
+.form-control {
+    width: 100%;
+    padding: 11.5px 16px 11.5px 16px;
+    background-color: #070B1A;
+    border: 1px solid #1F2330;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: capitalize;
+}
+.input-group-icon {
+    position: absolute;
+    top: 8px;
+    right: 11.5px;
+    width: 24px;
+    height: 24px;
+}
+.form-control:hover {
+    border: 1px solid rgba(61, 90, 254, 0.6);
+}
+.form-control:focus {
+    border: 1px solid #3D5AFE;
+}
+.success {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.disabled {
+    opacity: 0.2;
+    pointer-events: none;
+}
+/* end of default input */
+
+/* label input */
+.input-group-lable {
+    /* position: relative; */
+    width: 100%;
+    max-width: 325px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.input-group-item, .select-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.input-group-title span {
+    color: #6A6D76;
+    margin-left: 5px;
+}
+.input-form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+    
+}
+.input-form-inner {
+    position: relative;
+    max-width: 268px;
+    width: 100%;
+    height: auto;
+}
+.input-group-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 11.5px;
+    right: 11.5px;
+    width: 29px;
+    height: 17px;
+    background-color: #1F2330;
+    border-radius: 13px;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+.input-form-frame {
+    color: #fff;
+    padding: 11px 7px;
+    background-color: #1F2330;
+    border-radius: 8px;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.05)
+}
+.input-group-frame-secondary {
+    font-size: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 29px;
+    height: 17px;
+    background-color: #1F2330;
+    border-radius: 13px;
+    text-transform: uppercase;
+}
+.input-group-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+/* select input */
+.form-select {
+    width: 100%;
+    padding: 11.5px 16px 11.5px 16px;
+    background-color: #070B1A;
+    border: 1px solid #1F2330;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.selected {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+/* .option {
+    
+} */
+/* .form-select-options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 11.5px 16px 11.5px 16px;
+    background-color: #070B1A;
+    border: 1px solid #1F2330;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: capitalize;
+} */
+.status-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: capitalize;
+}
+/* end of select input */
+
+/* end of label-input */
+/* .secondary {
+    padding-right: 55px;
+} */
+
+/* default input with icon and without icon
 .input-outer {
     margin-top: 30px;
 }
@@ -42,9 +195,9 @@
     opacity: 0.2;
     pointer-events: none;
 }
-/* end of default input */
+end of default input
 
-/* label input */
+label input
 .lable-input {
     margin-top: 20px;
 }
@@ -58,7 +211,7 @@
     width: 100%;
     align-items: center;
     margin-top: 20px;
-    /* flex-direction: column; */
+    flex-direction: column;
 }
 .item-inner {
     display: flex;
@@ -125,8 +278,8 @@
     transition: .5s;
     color: #fff;
 }
-/* end of label input */
-/* select input */
+end of label input
+select input
 .select-item {
     display: flex;
     flex-direction: column;
@@ -138,7 +291,7 @@
 .select {
     display: flex;
     flex-direction: column;
-    /* overflow: hidden; */
+    overflow: hidden;
     max-height: 46px;
     margin-top: 10px;
     width: 300px;
@@ -170,5 +323,4 @@
     align-items: center;
     gap: 10px;
     margin-top: 5px;
-}
-/* end of select input */
+} */
