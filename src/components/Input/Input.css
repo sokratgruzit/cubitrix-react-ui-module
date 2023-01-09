@@ -146,6 +146,60 @@
 }
 /* end of select input */
 
+/* upload box */
+.upload-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+.upload-group-title {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.upload-group-title p:last-child {
+    color: #EF5350;
+}
+.upload-group-inner {
+    display: flex;
+    align-items: center;
+    gap: 55px;
+    width: 100%;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+}
+.upload-group-placeholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.upload-group-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.upload-group-text p:first-child {
+    color: #9C9DA3;
+}
+.upload-group-text p:last-child {
+    color: #3D5AFE;
+    cursor: pointer;
+}
+/* .upload-group {
+    
+} */
+/* end of upload box */
+
 /* end of label-input */
 /* .secondary {
     padding-right: 55px;

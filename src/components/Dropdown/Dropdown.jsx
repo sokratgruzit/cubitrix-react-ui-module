@@ -55,9 +55,5 @@ export const Dropdown = (props) => {
                 })}
             </div>
     }
-    return (
-        <>
-            {element}
-        </>
-    )
+    return element;
 }
