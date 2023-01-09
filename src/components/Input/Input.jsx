@@ -90,8 +90,9 @@ export const Input = props => {
                     </div>
                     {infoBox}
                 </div>
-                <div className='select-group'>
-                        
+                <div className='input-group-item'>
+                    <p>Mobile Number</p>
+                    <input className='form-control' type='text' placeholder='000000000' />
                 </div>
             </div>
         )
