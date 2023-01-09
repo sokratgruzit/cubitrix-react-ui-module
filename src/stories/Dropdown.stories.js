@@ -76,10 +76,11 @@ stories.add("Dropdown", () => {
     return (
         <div>
             <Dropdown
-                dropdown={'dropdown'}
-                contentList={'dropdown-item'}
-                onClick={(hendlerClick)}
                 data={data}
+                dropdown={'dropdown'}
+                dropdownItem={'dropdown-item'}
+                containerCheck = {'containerCheck'}
+                onClick={(hendlerClick)}
             />
         </div>
     )
