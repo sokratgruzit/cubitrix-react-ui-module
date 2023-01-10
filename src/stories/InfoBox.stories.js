@@ -5,10 +5,11 @@ import img from "../assets/img/icon.png";
 import icon2 from "../assets/img/icon2.png";
 import icon3 from "../assets/img/icon3.png";
 import icon4 from "../assets/img/icon4.png";
+import { useState } from "react";
 
 
 const stories = storiesOf('InfoBox', module);
-
+const [show, setSow] = useState(false);
 const cardInfoHeader = {
     title: "Account",
     lables: {
@@ -90,6 +91,7 @@ const revardBox = [
 stories.add('InfoBox', () => {
     return (
         <div>
+            {/* <but onClick={() => {setSow(!show)}}></but> */}
             <InfoBox 
                 bg='blue' 
                 type='avilable' 
