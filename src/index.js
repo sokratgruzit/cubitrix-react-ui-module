@@ -3,3 +3,4 @@ export * from './components/Input';
 export * from './components/HelpText';
 export * from './components/Dropdown';
 export * from './components/MarketCard';
+export * from './components/Switches';

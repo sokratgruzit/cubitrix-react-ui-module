@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 export const MarketCard = (props) => {
     const [search, setSearch] = useState(false);
+    const [markets, setMarkets] = useState(false);
     const searchToggle = () => {
         setSearch(!search)
     }
@@ -12,7 +13,7 @@ export const MarketCard = (props) => {
             className={`market-card`}
             style={props.customStyles}
         >
-            <div className={`market-card-head ${props.active == true ? 'active' : ''}`}>
+            <div className={`market-card-head ${props.active == true && markets == false ? 'active' : ''}`}>
                 <div className={`market-card-currency`}>
                     <div className={`market-card-logo`}>
                         <img src={require(`../../assets/img/currency/tether.png`)} alt="country" />
@@ -27,10 +28,21 @@ export const MarketCard = (props) => {
                         label={'All Markets'}
                         type={'btn-tertiary'}
                         arrow={'arrow-right'}
+                        onClick={() => setMarkets((prevState) => !prevState)}
                     />
                 </div>
+                <div className={`market-card-head-active ${markets == true ? 'active' : ''}`}>
+                    <div> Select Market</div>
+                    <span onClick={() => setMarkets((prevState) => !prevState)}>
+                        Close
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.299 9.16666L6.47141 5.33902C6.01937 4.88698 5.27968 4.88698 4.82764 5.33902L1 9.16666" stroke="#3D5AFE" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M10.299 1L6.47141 4.82764C6.01937 5.27968 5.27968 5.27968 4.82764 4.82764L1 1" stroke="#3D5AFE" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
             </div>
-            <div className={'market-card-content'}>
+            <div className={`market-card-content ${markets == true ? 'active' : ''}`}>
                 <div className={'market-card-tabs'}>
                     <div className={`market-card-tabs-btns ${search ? 'disable' : ''}`}>
                         <div className={'market-card-tab'}>All</div>

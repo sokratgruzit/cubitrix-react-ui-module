@@ -5,7 +5,7 @@
   cursor: pointer;
   width: fit-content;
   border-radius: 32px;
-    justify-content: center;
+  justify-content: center;
 }
 .btn svg{
     display: none;
