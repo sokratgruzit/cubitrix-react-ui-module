@@ -9,7 +9,6 @@ import { useState } from "react";
 
 
 const stories = storiesOf('InfoBox', module);
-const [show, setSow] = useState(false);
 const cardInfoHeader = {
     title: "Account",
     lables: {
@@ -56,11 +55,6 @@ const unavilableCardBody = [
         title: "Total",
         value: "-",
         taker: ""
-    },
-    {
-        title: "Margin Usage",
-        value: "$0.00",
-        taker: ""
     }
 ];
 
@@ -89,26 +83,30 @@ const revardBox = [
 ]
 
 stories.add('InfoBox', () => {
+    const [show, setSow] = useState(false);
     return (
         <div>
-            {/* <but onClick={() => {setSow(!show)}}></but> */}
             <InfoBox 
                 bg='blue' 
                 type='avilable' 
+                anime={show ? "animation-one": ""}
                 header={cardInfoHeader} 
                 cardBody={cardInfoBody} 
-            />
+                />
             <InfoBox 
                 height='height'
                 bg='darck' 
                 type='unAvilable' 
+                anime={show ? "animation-one": ""}
                 header={unavilableHeader} 
                 cardBody={unavilableCardBody} 
                 padding='padding-bottom'
             />
+            <button style={{backgroundColor: "red", height: "50px", width: "100px"}} onClick={() => {setSow(!show)}}>btn</button>
             <InfoBox 
                 bg='darck' 
                 type='connectWallet' 
+                anime={show ? "animation-one": ""}
                 content={connectWallet} 
                 img={connectWallet.icon} 
                 center="card-center" 
@@ -116,10 +114,13 @@ stories.add('InfoBox', () => {
             <InfoBox 
                 type='complate'
                 center="complete-account"
+                anime={show ? "animation-one": ""}
             />
+                <button style={{backgroundColor: "red", height: "50px", width: "100px"}} onClick={() => {setSow(!show)}}>btn</button>
             <InfoBox 
                 cardBody={revardBox}
                 revardbox="revardBox"
+                anime={show ? "animation-one": ""}
                 type="revardBox"
             />
         </div>

@@ -21,6 +21,9 @@
     padding: 20px;
     position: relative;
     border: 1px solid red;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .6s;
 }
 .padding-bottom {
     padding-bottom: 55px;
@@ -37,7 +40,19 @@
 .connec-tWallet-Body {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 4px;
+}
+.connect-wallet-btn {
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 8px 30px;
+    border-radius: 32px;
+    transition: .6s;
+    border: 1px solid #070B1A;
+}
+.connect-wallet-btn:hover {
+    border: 1px solid #3D5AFE; 
 }
 .card-unavilable-status {
     display: flex;
@@ -64,11 +79,21 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 6px;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: .6s;
+    animation-delay: .1s;
+    transition-delay: .1s;
 }
 .card-header-detail {
     font-size: 16px;
     margin-bottom: 6px;
     padding: 5.5px 0;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: .6s;
+    animation-delay: .1s;
+    transition-delay: .1s;
 }
 .card-header h1 {
     font-size: 16px;
@@ -90,7 +115,7 @@
 .card-header div div:hover {
     cursor: pointer;
     color: #3D5AFE;
-    transition: .8s;
+    transition: .6s;
     background-color: white;
 }
 .darck {
@@ -103,6 +128,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    opacity: 0;
+    transition: .6s;
+    transform: translateY(5px);
+    animation-delay: .2s;
+    transition-delay: .2s;
 }
 .list-group-item {
     display: flex;
@@ -186,6 +216,28 @@
 .font-bigger {
     font-size: 16px;
 }
-/* .animation-header {
-    
-} */
+.anime-astaring-pos {
+    opacity: 0;
+    transition: .6s;
+    transform: translateY(5px);
+    animation-delay: .1s;
+    transition-delay: .1s;
+}
+.anime-astaring-pos-two {
+    opacity: 0;
+    transition: .6s;
+    transform: translateY(5px);
+    animation-delay: .2s;
+    transition-delay: .2s;
+}
+.anime-astaring-pos-three {
+    opacity: 0;
+    transition: .6s;
+    transform: translateY(5px);
+    animation-delay: .3s;
+    transition-delay: .3s;
+}
+.animation-one {
+    opacity: 1;
+    transform: translateY(0);
+}
