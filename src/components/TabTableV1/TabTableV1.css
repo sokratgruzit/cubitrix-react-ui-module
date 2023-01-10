@@ -1,0 +1,57 @@
+.tab-table-v1 {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  align-items: center;
+  width: 745px;
+}
+.v1-nav {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 7px 7px 0px 0px;
+  display: flex;
+  padding: 15px;
+  gap: 85px;
+  justify-content: space-between;
+  width: 100%;
+}
+.v1-tab {
+  color: #9c9da3;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.coin-name {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+  font-size: 10px;
+  padding: 1px 6px;
+  margin-left: 5px;
+}
+.disable {
+  display: none;
+}
+.v1-nav svg {
+  margin-left: 5px;
+}
+.v1-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 0 30px 0;
+}
+.v1-container p {
+  padding-top: 10px;
+}
+.v1-tab {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.v1-tab:hover {
+  color: #3d5afe !important;
+}
+.v1-active-tab {
+  color: #3d5afe !important;
+}
