@@ -10,6 +10,7 @@ stories.add("Dropdown", () => {
     const hendlerClick = (e) => {
         setActive(e.target.id)
     }
+    
     let data = [
         {
             id: 1,
@@ -135,13 +136,12 @@ stories.add("Dropdown", () => {
                 data={data}
                 type={'dropdown'}
                 dropdown={'dropdown'}
-                dropdownItem={'dropdown-item'}
-                containerCheck = {'containerCheck'}
                 onClick={(hendlerClick)}
             />
             <Dropdown
                 type={'country'}
                 countryData={countryData}
+                dropdownCountry={'dropdown-country'}
             />
         </div>
     )
