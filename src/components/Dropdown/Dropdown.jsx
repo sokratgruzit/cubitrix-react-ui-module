@@ -39,7 +39,7 @@ export const Dropdown = (props) => {
                                             {item.svg}
                                         </span>
                                         <div>
-                                            <p id={item.id} onClick={props.onClick} className={`${props.active === `${item.id}` ? "rightLine" : ''}`}>
+                                            <p id={item.id} onClick={props.hendlerClick} className={`${props.active === `${item.id}` ? "rightLine" : ''}`}>
                                                 {item.title}
                                             </p>
                                             {item.togle === 'true' &&

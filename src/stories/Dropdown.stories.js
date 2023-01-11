@@ -137,6 +137,7 @@ stories.add("Dropdown", () => {
                 type={'dropdown'}
                 dropdown={'dropdown'}
                 onClick={(hendlerClick)}
+                active={active}
             />
             <Dropdown
                 type={'country'}
