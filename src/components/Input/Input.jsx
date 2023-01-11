@@ -56,8 +56,7 @@ export const Input = props => {
                         </svg> 
                     ) : ''}
                 </span>
-            </div>
-   
+            </div>    
         )
     }
 
@@ -89,12 +88,6 @@ export const Input = props => {
                                 <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </div>
-                        {/* <div className='form-select-options'>
-                            <div className='option'>patara yle</div>
-                            <div className='option'>sashualo yle</div>
-                            <div className='option'>didi yle</div>
-                            <div className='option'>ushvelebeli yle</div>
-                        </div> */}
                     </div>
                     {infoBox}
                 </div>
