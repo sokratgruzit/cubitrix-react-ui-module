@@ -94,3 +94,18 @@ button {
 .font-medium {
     font-family: "UberMove-Medium";
 }
+.plus-market {
+    color: #9CCC65;
+}
+.plus-market path {
+    fill: #9CCC65;
+}
+.minus-market {
+    color: #EF5350;
+}
+.minus-market path{
+    fill: #EF5350;
+}
+.minus-market svg {
+    transform: rotate(180deg);
+}

@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
-import {MarketCardHead} from "../components/MarketCardHead";
+import {MarketCard} from "../components/MarketCard";
 
-const stories = storiesOf("MarketCardHead", module);
+const stories = storiesOf("MarketCard", module);
 
-stories.add("MarketCardHead", () => {
+stories.add("MarketCard", () => {
     const [toggle, setToggle] = useState(false);
     return (
         <div>
-            <MarketCardHead/>
+            <MarketCard
+                active={true}
+            />
         </div>
     );
 });
