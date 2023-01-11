@@ -59,15 +59,34 @@
 .toast-body {
     padding: 0px 3px 8px 3px;
 }
-.toast-body p span {
-    margin-left: 10px;
-    color: #3D5AFE;
-    cursor: pointer;
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-}
-.toast-body p span:hover {
-    color: #EF5350;
-}
 .close {
     display: none;
+}
+.toast-text {
+    color: #6A6D76;
+    margin-top: 6px;
+}
+.toast-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #3D5AFE;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+    cursor: pointer;
+    width: fit-content;
+}
+.toast-btn svg {
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.toast-btn svg path {
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.toast-btn:hover  {
+    color: #EF5350;
+}
+.toast-btn:hover svg path {
+    fill: #EF5350;
+}
+.toast-btn:hover svg {
+    transform: translateX(5px);
 }
