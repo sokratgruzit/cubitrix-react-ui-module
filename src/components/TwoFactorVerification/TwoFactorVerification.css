@@ -71,6 +71,7 @@
 }
 .wtf {
     display: none;
+        transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .mainContainer .header svg path{
     cursor: pointer;
@@ -80,4 +81,10 @@
     cursor: pointer;
     stroke: #3D5AFE;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.mainContainer .butons:nth-of-type(1) {
+    margin-bottom: 10px;
+}
+.btn-lg {
+    margin:10px;
 }
