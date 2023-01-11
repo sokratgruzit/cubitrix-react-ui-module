@@ -54,24 +54,18 @@
     font-size: 14px;
     text-transform: uppercase;
 }
-.mainContainer .qrcode {
-    display: inline-flex;
-    padding: 17px;
-    border-radius: 8px;
-    border: 1px solid #202431;
-}
-.mainContainer .qrcode svg {
-    max-width: 94px;
-    max-height: 94px;
-    overflow: hidden;
-}
 .mainContainer .verification {
     display: flex;
     gap: 20px;
 }
+ .qrcode  {
+    border-radius: 8px;
+    border: 1px solid #202431;
+    padding: 17px;
+}
 .wtf {
     display: none;
-        transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .mainContainer .header svg path{
     cursor: pointer;
