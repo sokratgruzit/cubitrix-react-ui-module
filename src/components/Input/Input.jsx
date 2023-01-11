@@ -46,7 +46,7 @@ export const Input = props => {
 
     if(props.type === 'default') {
         element = (
-            <div className='input-group'>
+            <div style={props.customStyles} className='input-group'>
                 <input className='form-control' type='text' placeholder={props.placeholder} />
                 <span className=''>
                     {props.icon ? (
@@ -57,6 +57,7 @@ export const Input = props => {
                     ) : ''}
                 </span>
             </div>
+   
         )
     }
 

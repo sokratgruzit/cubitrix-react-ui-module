@@ -17,9 +17,12 @@ stories.add("Input", (props) => {
                 }
             }>
             <Input 
-                type={'default'} 
+                parent={'parent'}
+                type={'default'}
                 icon={true}
                 placeholder={'default input'}
+                customStyles={{ width: '500px' }}
+
             />
             <Input 
                 type={'default'} 

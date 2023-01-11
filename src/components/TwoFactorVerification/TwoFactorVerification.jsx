@@ -1,5 +1,5 @@
-import { Button } from '../Button/Button';
-import { Input } from '../Input/Input';
+import { Button } from '../Button/Button.jsx'
+import { Input } from '../Input/Input.jsx';
 import './TwoFactorVerification.css';
 
 export const TwoFactorVerification = (props) => {
@@ -225,7 +225,7 @@ export const TwoFactorVerification = (props) => {
                             </defs>
                         </svg>
                     </div>
-                    <div className='butons'>
+                    <div>
                         <p>Enter Google Verification Code</p>
                         <Input
                             type={'default'}
@@ -237,6 +237,7 @@ export const TwoFactorVerification = (props) => {
                             size={'btn-lg'}
                             type={'btn-primary'}
                             arrow={'arrow-right'}
+
                         />
                     </div>
                 </div>
