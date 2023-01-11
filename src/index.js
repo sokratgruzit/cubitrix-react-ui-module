@@ -4,3 +4,4 @@ export * from './components/HelpText';
 export * from './components/Dropdown';
 export * from './components/MarketCard';
 export * from './components/Switches';
+export * from './components/TwoFactorVerification';
