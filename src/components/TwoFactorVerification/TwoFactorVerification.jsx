@@ -1,5 +1,5 @@
 import { Button } from '../Button/Button.jsx'
-
+import { Input } from '../Input/Input.jsx';
 import './TwoFactorVerification.css';
 
 export const TwoFactorVerification = (props) => {
@@ -226,12 +226,20 @@ export const TwoFactorVerification = (props) => {
                         </svg>
                     </div>
                     <div>
+                        <Input
+                            icon={false}
+                            type={'default'}
+                            placeholder={'Enter Code'}
+                            customStyles={{ width: '500px' }}
+
+                         />
                         <p>Enter Google Verification Code</p>
                         <Button
                             label={'Button'}
                             size={'btn-lg'}
                             type={'btn-primary'}
                             arrow={'arrow-right'}
+
                         />
                     </div>
                 </div>
