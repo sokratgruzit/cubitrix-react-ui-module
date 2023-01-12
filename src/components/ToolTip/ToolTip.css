@@ -1,0 +1,18 @@
+.toolTip {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    max-width: 320px;
+    background-color: #141726;
+    border-radius: 8px;
+    padding: 16px;
+    gap: 3px;
+    text-transform: capitalize;
+    box-shadow: 0px 35px 51px 8px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 35px 51px 8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 35px 51px 8px rgba(0,0,0,0.75);
+}
+.toolTip p:last-child {
+    color: #6A6D76;
+}

@@ -1,7 +1,14 @@
 import './Input.css';
-
+import { useState } from 'react';
 export const Input = props => {
+    const [file, setFile] = useState();
+    const [update, setUpdate] = useState(false);
 
+    function handleChange(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    };
+    
     let element = null;
 
     let infoBox = (
@@ -39,7 +46,7 @@ export const Input = props => {
 
     if(props.type === 'default') {
         element = (
-            <div className='input-group'>
+            <div style={props.customStyles} className='input-group'>
                 <input className='form-control' type='text' placeholder={props.placeholder} />
                 <span className=''>
                     {props.icon ? (
@@ -49,7 +56,7 @@ export const Input = props => {
                         </svg> 
                     ) : ''}
                 </span>
-            </div>
+            </div>    
         )
     }
 
@@ -81,12 +88,6 @@ export const Input = props => {
                                 <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </div>
-                        {/* <div className='form-select-options'>
-                            <div className='option'>patara yle</div>
-                            <div className='option'>sashualo yle</div>
-                            <div className='option'>didi yle</div>
-                            <div className='option'>ushvelebeli yle</div>
-                        </div> */}
                     </div>
                     {infoBox}
                 </div>
@@ -104,7 +105,7 @@ export const Input = props => {
                 <div className='upload-group'>
                     <div className='upload-group-title'>
                         <p className='font-12'>Upload Image</p>
-                        <p className='font-12'>Delete avatar</p>
+                        <p  className='font-12'>Delete avatar</p>
                     </div>
                     <div className='upload-group-inner'>
                         <div className='upload-group-placeholder'>
@@ -121,7 +122,9 @@ export const Input = props => {
                         </div>
                         <div className='upload-group-text'>
                             <p>Upload a profile picture</p>
-                            <p>Browse</p>
+                            <p className='upload-btn'>Browse</p>
+                            <input className='upload-control' type="file" onChange={handleChange} onClick={() => setUpdate(true)} />
+                            <img className='avatar-sm' src={file} />
                         </div>
                     </div>
                 </div>

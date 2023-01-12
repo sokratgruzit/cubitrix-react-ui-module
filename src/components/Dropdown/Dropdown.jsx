@@ -1,6 +1,6 @@
 import { Switches } from "../Switches/Switches";
 import "./Dropdown.css";
-
+import { Input } from "../Input";
 export const Dropdown = (props) => {
     let element = '';
     if (props.type === 'country') {
@@ -39,7 +39,7 @@ export const Dropdown = (props) => {
                                             {item.svg}
                                         </span>
                                         <div>
-                                            <p id={item.id} onClick={props.onClick} className={`${props.active === `${item.id}` ? "rightLine" : ''}`}>
+                                            <p id={item.id} onClick={props.hendlerClick} className={`${props.active === `${item.id}` ? "rightLine" : ''}`}>
                                                 {item.title}
                                             </p>
                                             {item.togle === 'true' &&
@@ -49,6 +49,11 @@ export const Dropdown = (props) => {
                                     </div>
                                 )
                             })}
+                             <Input 
+                                type={'default'} 
+                                icon={false}
+                                placeholder={'your text'}
+                            />
                         </div>
                     )
                 })}
