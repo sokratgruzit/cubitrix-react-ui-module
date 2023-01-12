@@ -119,7 +119,7 @@ button {
     display: flex;
     width: 100%;
     padding-top: 70px;
-    height: 85vh;
+    height: 100vh;
 }
 .main-sidebar {
     width: 365px;
@@ -133,5 +133,18 @@ button {
 }
 .main-content {
     width: calc(100% - 356px);
-    background: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.staking-main-sidebar {
+    width: 365px;
+    background: #0C1121;
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 1.429rem 1.429rem 0 1.429rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

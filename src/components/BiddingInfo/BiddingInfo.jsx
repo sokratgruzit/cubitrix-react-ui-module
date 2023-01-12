@@ -1,0 +1,13 @@
+import './BiddingInfo.css';
+
+export const BiddingInfo = props => {
+    return (
+        <div className="bidding-info-container">
+            <div className="bidding-info">
+                <h2 className="font-16">Staked</h2>
+                <p className="font-14">Bidding Balance <span>0</span></p>
+                <p className="font-14">Bidding Stakers <span>0</span></p>
+            </div>
+        </div>
+    )
+}

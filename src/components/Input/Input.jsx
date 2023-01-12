@@ -60,6 +60,21 @@ export const Input = props => {
         )
     }
 
+    if(props.type === 'stake-input') {
+        element = (
+            <div className='stake-input-container'>
+                <span className='input-group-title font-12'>Amount</span>
+                <input type='text' placeholder='0.0000' />
+                <button 
+                    className="font-12 stake-input-icon"
+                    onClick={props.onClick}
+                >
+                    MAX
+                </button>
+            </div>
+        )
+    }
+
     if(props.type === 'lable-input') {
         element = (
             <div className='input-group-lable'>

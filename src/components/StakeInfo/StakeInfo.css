@@ -1,0 +1,61 @@
+.stake-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px 0 0 0;
+
+}
+
+.stake-info__header {
+    font-family: 'Uber Move';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 130%;
+    color: #FFFFFF;
+}
+
+.stake-info {
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.stake-info__item {
+    width: 508px;
+    height: 158px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(42.5px);
+    border-radius: 8px;
+    display: flex;
+    padding: 29px 16px 29px 16px; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stake-info__item:first-child {
+    margin-right: 20px;
+}
+
+.stake-info__item-element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stake-info__item-element p:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.stake-info__item-element p:last-child {
+    letter-spacing: 1px;
+}
+
+.stake-info__item-element svg{
+    padding-right: 10px;
+}

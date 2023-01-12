@@ -1,0 +1,12 @@
+.staking-calculator__header{
+    font-weight: 500;
+    padding: 1.429rem 0 0.857rem 0;
+}
+
+.staking-calculator__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 0.786rem 0 0.964rem 0;
+}
