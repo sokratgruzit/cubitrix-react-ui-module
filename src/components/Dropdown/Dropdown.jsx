@@ -1,5 +1,6 @@
+import { Switches } from "../Switches/Switches";
 import "./Dropdown.css";
-
+import { Input } from "../Input";
 export const Dropdown = (props) => {
   let element = "";
   if (props.type === "country") {

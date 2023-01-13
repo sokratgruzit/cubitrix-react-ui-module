@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
 import { TabTableV1 } from "../components/TabTableV1";

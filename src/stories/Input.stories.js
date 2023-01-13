@@ -15,8 +15,18 @@ stories.add("Input", (props) => {
         marginTop: "30px",
       }}
     >
-      <Input type={"default"} icon={true} placeholder={"default input"} />
-      <Input type={"default"} icon={false} placeholder={"default input"} />
+      <Input
+        parent={"parent"}
+        type={"default"}
+        icon={true}
+        placeholder={"default input"}
+        customStyles={{ width: "500px" }}
+      />
+      <Input
+        type={"default"}
+        icon={false}
+        placeholder={"default input-label"}
+      />
       <Input
         type={"lable-input"}
         icon={false}
