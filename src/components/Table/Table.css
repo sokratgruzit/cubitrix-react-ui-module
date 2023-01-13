@@ -4,21 +4,17 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  overflow-x: auto;
-  white-space: nowrap;
 }
 .table-head {
   width: 100%;
   display: flex;
   padding: 30px 15px;
-  min-width: 1150px;
 }
 .table {
   display: flex;
   width: 100%;
   padding: 15px;
   align-items: center;
-  min-width: 1150px;
 }
 .th {
   width: 16%;
@@ -34,4 +30,14 @@
   margin-left: auto;
   display: flex;
   gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .btn {
+    width: 80px;
+    height: 43px;
+  }
+  .th {
+    width: 15.3%;
+  }
 }

@@ -5,17 +5,15 @@ export const Table = (props) => {
   return (
     <>
       <div className={`${props.type}`}>
-        {props.tableHead.map((item) => {
-          return (
-            <div className="table-head">
-              <div className="th">{item.stakedAmountTitle}</div>
-              <div className="th">{item.stakedDateTitle}</div>
-              <div className="th">{item.unstakedDateTitle}</div>
-              <div className="th">{item.earnRewardTitle}</div>
-              <div className="th">{item.harvestTitle}</div>
-            </div>
-          );
-        })}
+        <div className="table-head">
+          {props.tableHead.map((item) => {
+            return (
+              <div key={item.id} className="th">
+                {item.name}
+              </div>
+            );
+          })}
+        </div>
         {props.tableData.map((item) => {
           return (
             <div key={item.id} className="table">
