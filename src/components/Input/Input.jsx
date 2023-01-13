@@ -1,7 +1,14 @@
 import './Input.css';
-
+import { useState } from 'react';
 export const Input = props => {
+    const [file, setFile] = useState();
+    const [update, setUpdate] = useState(false);
 
+    function handleChange(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    };
+    
     let element = null;
 
     let infoBox = (
@@ -39,7 +46,7 @@ export const Input = props => {
 
     if(props.type === 'default') {
         element = (
-            <div className='input-group'>
+            <div style={props.customStyles} className='input-group'>
                 <input className='form-control' type='text' placeholder={props.placeholder} />
                 <span className=''>
                     {props.icon ? (
@@ -50,6 +57,7 @@ export const Input = props => {
                     ) : ''}
                 </span>
             </div>
+   
         )
     }
 
@@ -104,7 +112,7 @@ export const Input = props => {
                 <div className='upload-group'>
                     <div className='upload-group-title'>
                         <p className='font-12'>Upload Image</p>
-                        <p className='font-12'>Delete avatar</p>
+                        <p  className='font-12'>Delete avatar</p>
                     </div>
                     <div className='upload-group-inner'>
                         <div className='upload-group-placeholder'>
@@ -121,7 +129,9 @@ export const Input = props => {
                         </div>
                         <div className='upload-group-text'>
                             <p>Upload a profile picture</p>
-                            <p>Browse</p>
+                            <p className='upload-btn'>Browse</p>
+                            <input className='upload-control' type="file" onChange={handleChange} onClick={() => setUpdate(true)} />
+                            <img className='avatar-sm' src={file} />
                         </div>
                     </div>
                 </div>

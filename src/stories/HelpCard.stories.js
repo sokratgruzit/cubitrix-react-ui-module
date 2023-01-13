@@ -3,9 +3,9 @@ import { storiesOf } from "@storybook/react";
 import { HelpCard } from "../components/HelpCard";
 import '../assets/css/main-theme.css';
 
-const stories = storiesOf("Help Card", module);
+const stories = storiesOf("HelpCard", module);
 
-stories.add("Help Card", (props) => {
+stories.add("HelpCard", (props) => {
     
     const [active, setActive] = useState(true);
 
@@ -18,7 +18,7 @@ stories.add("Help Card", (props) => {
             <HelpCard
                 status={'info'}
                 color={'#fff'}
-                body={true}
+                body={'normal'}
                 onClick={closeHandler}
                 active={active}
                 content={'your text your text your text your text your text your text your text'}
@@ -29,7 +29,7 @@ stories.add("Help Card", (props) => {
                 color={'#FFA726'}
                 title={'Help Text'}
                 content={'your text your text your text your text your text your text your text'}
-                body={true}
+                body={'normal'}
                 active={active}
                 onClick={closeHandler}
             />
@@ -38,14 +38,14 @@ stories.add("Help Card", (props) => {
                 title={'Help Text'}
                 color={'#EF5350'}
                 content={'your text your text your text your text your text your text your text'}
-                body={true}
+                body={'normal'}
                 active={active}
                 onClick={closeHandler}
             />
             <HelpCard
                 status={'success'}
                 color={'#9CCC65'}
-                body={true}
+                body={'normal'}
                 onClick={closeHandler}
                 active={active}
                 content={'your text your text your text your text your text your text your text'}
@@ -80,6 +80,39 @@ stories.add("Help Card", (props) => {
                 status={'success'}
                 color={'#9CCC65'}
                 body={false}
+                onClick={closeHandler}
+                active={active}
+                title={'Help Text'}
+            />
+            {/* verificaton variant */}
+            <HelpCard
+                status={'info'}
+                color={'#fff'}
+                body={'long'}
+                onClick={closeHandler}
+                active={active}
+                title={'Help Text'}
+            />
+            <HelpCard
+                status={'warning'}
+                color={'#FFA726'}
+                body={'long'}
+                onClick={closeHandler}
+                active={active}
+                title={'Help Text'}
+            />
+            <HelpCard
+                status={'error'}
+                color={'#EF5350'}
+                body={'long'}
+                onClick={closeHandler}
+                active={active}
+                title={'Help Text'}
+            />
+            <HelpCard
+                status={'success'}
+                color={'#9CCC65'}
+                body={'long'}
                 onClick={closeHandler}
                 active={active}
                 title={'Help Text'}
