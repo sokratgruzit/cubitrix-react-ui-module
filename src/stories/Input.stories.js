@@ -27,7 +27,7 @@ stories.add("Input", (props) => {
             <Input 
                 type={'default'} 
                 icon={false} 
-                placeholder={'default input-label'}
+                placeholder={'default input'}
             />
             <Input 
                 type={'lable-input'}
