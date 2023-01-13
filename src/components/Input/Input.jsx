@@ -60,7 +60,7 @@ export const Input = props => {
         )
     }
 
-    if(props.type === 'label-input-')
+    // if(props.type === 'label-input-')
 
     if(props.type === 'lable-input') {
         element = (
