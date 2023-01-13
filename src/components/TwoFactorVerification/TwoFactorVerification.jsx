@@ -103,6 +103,7 @@ export const TwoFactorVerification = (props) => {
                             Step 2:
                         </span>
                         Scan the below QR code by Google Verification app or you can add account manually
+
                     </p>
                 </div>
                 <div className='acountInfo'>
