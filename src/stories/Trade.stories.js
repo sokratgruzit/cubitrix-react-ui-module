@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import {MarketCard} from "../components/MarketCard";
+import "../components/TestCss/Trade.css";
 
 const stories = storiesOf("Trade", module);
 
@@ -12,6 +13,9 @@ stories.add("Trade", () => {
                     <MarketCard
                         active={true}
                     />
+                    <div className={`trade-sidebar-components`}>
+
+                    </div>
                 </div>
             </div>
             <div className={`main-content`}>
