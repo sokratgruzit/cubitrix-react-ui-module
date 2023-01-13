@@ -60,21 +60,12 @@ export const Input = props => {
         )
     }
 
+    if(props.type === 'label-input-')
+
     if(props.type === 'lable-input') {
         element = (
             <div className='input-group-lable'>
-                <div className='input-group-item'>
-                    <p className='input-group-title font-12'>Amount <span className='font-12'>Set order size</span></p>
-                    <div className='input-form'>
-                        <div className='input-form-inner'>
-                            <input className='form-control secondary' type='text' placeholder={'0.000'} />
-                            <p className='input-group-frame'>eth</p>
-                        </div>
-                        <p style={{width: '41px', height: '41px'}} className='input-form-frame'>
-                            usd
-                        </p> 
-                    </div>
-                </div>
+                
                 <div className='input-group-item'>
                     <p className='font-12 input-group-text'>Limit Price <span className='input-group-frame-secondary'>Usd</span></p>
                     <input className='form-control' type='text' placeholder='0.000' />
