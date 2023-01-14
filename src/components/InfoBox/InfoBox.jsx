@@ -1,4 +1,5 @@
-import './InfoBox.css'
+import './InfoBox.css';
+import { Table } from "../../components/Table"; 
 
 export const InfoBox = (props) => {
     return (
