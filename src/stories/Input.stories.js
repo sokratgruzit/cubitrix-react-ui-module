@@ -5,6 +5,21 @@ import { Input } from "../components/Input";
 
 const stories = storiesOf("Input", module);
 
+let btnArr = [
+    {
+        id: 0,
+        value: '2x'
+    },
+    {
+        id: 1,
+        value: '5x'
+    },
+    {
+        id: 2,
+        value: '10x'
+    }
+];
+
 stories.add("Input", (props) => {
   return (
     <div
@@ -37,6 +52,7 @@ stories.add("Input", (props) => {
       />
       <Input
         type={"lable-input-type2"}
+        btns={btnArr}
         icon={false}
         status={"error"}
         color={"#EF5350"}

@@ -5,6 +5,7 @@ export const Input = props => {
     const [file, setFile] = useState();
     const [update, setUpdate] = useState(false);
 
+    console.log(props.btns)
     function handleChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
