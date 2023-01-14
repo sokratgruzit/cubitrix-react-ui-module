@@ -72,7 +72,7 @@ export const Input = props => {
                     </div>
                     <div className='input-form-frame'>USD</div>
                 </div>
-            </div>   
+            </div>
         )
     }
     if(props.type === 'lable-input-type2') {
