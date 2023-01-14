@@ -16,7 +16,7 @@ export const StakeInfo = props => {
           <h2 className="stake-info__header">Your Stake</h2>
           <div className="stake-info">
             <div className="stake-info__item">
-                <div className="stake-info__item-element font-16">
+                <div className="stake-info__item-element">
                     <p>
                       <CurrentStakeIcon />
                       Current Stake
@@ -26,7 +26,7 @@ export const StakeInfo = props => {
                     </p>
                 </div>
                 <div className="stake-info__item-element">
-                    <p className="font-16">
+                    <p>
                       <EarnIcon />
                       Earn
                     </p>
@@ -45,7 +45,7 @@ export const StakeInfo = props => {
                 </div>
             </div>
             <div className="stake-info__item">
-                <div className="stake-info__item-element font-16">
+                <div className="stake-info__item-element">
                     <p>
                       <WalletMoneyIcon />
                       Your Wallet Balance
@@ -53,7 +53,7 @@ export const StakeInfo = props => {
                     <p>000000 CMCX</p>
                 </div>
                 <div className="stake-info__item-element">
-                    <p className="font-16">
+                    <p>
                       <TotalStakedIcon />
                       Total Staked
                     </p>

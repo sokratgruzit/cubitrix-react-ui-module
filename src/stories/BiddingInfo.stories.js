@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
 import { BiddingInfo } from "../components/BiddingInfo";

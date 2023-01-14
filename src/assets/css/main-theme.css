@@ -41,6 +41,7 @@ body {
     -ms-text-size-adjust:100%;
     text-size-adjust: 100%;
     background: #070B1A;
+    padding: 0;
     /*padding-bottom: 200vh;*/
     /*dont use overflow hidden to body*/
 }
@@ -132,19 +133,8 @@ button {
     width: 100%;
 }
 .main-content {
-    width: calc(100% - 356px);
+    width: calc(100% - 365px);
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.staking-main-sidebar {
-    width: 365px;
-    background: #0C1121;
-    overflow-y: auto;
-    max-height: 100%;
-    padding: 1.429rem 1.429rem 0 1.429rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }

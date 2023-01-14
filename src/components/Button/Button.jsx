@@ -1,3 +1,4 @@
+import { CalculatorIcon } from "../../assets/svgs";
 import "./Button.css";
 
 export const Button = (props) => {

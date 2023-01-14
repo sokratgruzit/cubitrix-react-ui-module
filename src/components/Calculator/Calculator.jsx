@@ -6,7 +6,7 @@ import { Input } from '../Input';
 
 export const Calculator = props => {
     return (
-        <div>
+        <div className={`staking-calculator-container ${props.type}`}>
           <h2 className="font-14 staking-calculator__header">Staking Calculator</h2>
           <Input type='stake-input' />
           <div className="staking-calculator__buttons">
@@ -43,6 +43,14 @@ export const Calculator = props => {
             color="#6A6D76"
             icon={true}
           />
+          <div style={{ marginTop: '23.5px'}}> 
+            <Button
+              label="Stake"
+              size='btn-xl'
+              type='btn-primary'
+              arrow='arrow-none'
+            />
+          </div>
         </div>
     )
 }
