@@ -17,38 +17,43 @@ stories.add("Input", (props) => {
                 }
             }>
             <Input 
-                parent={'parent'}
                 type={'default'}
                 icon={true}
                 placeholder={'default input'}
                 customStyles={{ width: '500px' }}
-
             />
+            {/* done */}
             <Input 
                 type={'default'} 
                 icon={false} 
                 placeholder={'default input'}
+                customStyles={{ width: '500px' }}
             />
+            {/* done */}
             <Input 
-                type={'lable-input'}
+                type={'lable-input-type1'}
                 icon={false} 
                 status={'success'}
                 statusTitle={'ching chong'}
                 statusColor={'#9CCC65'}
-                // disabled={true}
+                customStyles={{width: '320px'}}
             />
-            {/* <Input 
-                type={'lable-input'}
+            {/* done */}
+            
+            <Input 
+                type={'lable-input-type2'}
                 icon={false} 
                 status={'error'}
                 color={'#EF5350'}
-            /> */}
-            {/* <Input 
-                type={'lable-input'}
+                customStyles={{width: '320px'}}
+            />
+            <Input 
+                type={'lable-input-type3'}
                 icon={false} 
                 status={'warning'}
                 color={'#FFA726'}
-            /> */}
+                customStyles={{width: '320px'}}
+            />
             {/* <Input 
                 type={'lable-input'}
                 icon={false} 

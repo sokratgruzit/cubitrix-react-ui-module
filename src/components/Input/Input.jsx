@@ -1,5 +1,6 @@
-import './Input.css';
 import { useState } from 'react';
+import { HelpText } from '../HelpText/HelpText';
+import './Input.css';
 export const Input = props => {
     const [file, setFile] = useState();
     const [update, setUpdate] = useState(false);
@@ -60,16 +61,56 @@ export const Input = props => {
         )
     }
 
-    // if(props.type === 'label-input-')
-
+    if(props.type === 'lable-input-type1') {
+        element = (
+            <div style={props.customStyles} className='input-group-item'>
+                <p className='font-12 input-group-title'>Amount <span>Set order size</span></p>
+                <div className='input-form '>
+                    <div className='input-form-inner'>
+                        <input className='form-control' type='text' placeholder='0.000' />
+                        <div className='input-group-frame'>ETH</div>
+                    </div>
+                    <div className='input-form-frame'>USD</div>
+                </div>
+            </div>   
+        )
+    }
+    if(props.type === 'lable-input-type2') {
+        element = (
+            <div style={props.customStyles} className='input-group-item'>
+                <p className='font-12 input-group-text'>Limit Price <span className='input-group-frame-secondary'>Usd</span></p>
+                <input className='form-control' type='text' placeholder='0.000' />
+            </div>
+        )
+    }
+    if(props.type === 'lable-input-type3') {
+        element = (
+            <div style={props.customStyles} className='select-group'>
+                <p className='input-group-title font-12'>Time In Force</p>
+                <div className='form-select'>
+                    <div className='selected option'>
+                        <div>rcheuli yle</div>
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <HelpText
+                    status={'warning'}
+                    title={'your text your text'}
+                    color={'#FFA726'}
+                    icon={true}
+                    customStyles={{width: 'fit-content'}}
+                />
+            </div>
+        )
+    }
+ 
     if(props.type === 'lable-input') {
         element = (
             <div className='input-group-lable'>
+               
                 
-                <div className='input-group-item'>
-                    <p className='font-12 input-group-text'>Limit Price <span className='input-group-frame-secondary'>Usd</span></p>
-                    <input className='form-control' type='text' placeholder='0.000' />
-                </div>
                 <div className='select-group'>
                     <p className='input-group-title font-12'>Time In Force</p>
                     <div className='form-select'>

@@ -4,6 +4,7 @@
     width: 100%;
     /* max-width: 325px; */
     height: auto;
+    display: flex;
 }
 .form-control {
     width: 100%;
@@ -64,7 +65,6 @@
 }
 .input-form-inner {
     position: relative;
-    max-width: 268px;
     width: 100%;
     height: auto;
 }
@@ -76,15 +76,21 @@
     top: 11.5px;
     right: 11.5px;
     width: 29px;
-    height: 17px;
+    height: 18px;
     background-color: #1F2330;
     border-radius: 13px;
     text-transform: uppercase;
     font-size: 10px;
+    padding-bottom: 1px;
 }
 .input-form-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
-    padding: 11px 7px;
+    width: 42px;
+    height: 42px;
+    padding: 12px 8px;
     background-color: #1F2330;
     border-radius: 8px;
     text-transform: uppercase;
@@ -107,6 +113,7 @@
     align-items: center;
     gap: 5px;
 }
+
 /* select input */
 .form-select {
     width: 100%;
