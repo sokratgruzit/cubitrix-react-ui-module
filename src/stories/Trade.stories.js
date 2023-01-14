@@ -46,8 +46,7 @@ stories.add("Trade", () => {
                                         onClick={() => {
                                             tabsHandler(1);
                                         }}
-                                        className={`${"text-tab"}
-              ${toggle === 1 ? "active-text-tab" : ""}`}
+                                        className={`${"text-tab"} ${toggle === 1 ? "active-text-tab" : ""}`}
                                     >
                                         Limit
                                     </div>
@@ -55,8 +54,7 @@ stories.add("Trade", () => {
                                         onClick={() => {
                                             tabsHandler(2);
                                         }}
-                                        className={`${"text-tab"}
-              ${toggle === 2 ? "active-text-tab" : ""}`}
+                                        className={`${"text-tab"} ${toggle === 2 ? "active-text-tab" : ""}`}
                                     >
                                         Market
                                     </div>
@@ -64,8 +62,7 @@ stories.add("Trade", () => {
                                         onClick={() => {
                                             tabsHandler(3);
                                         }}
-                                        className={`${"text-tab"}
-              ${toggle === 3 ? "active-text-tab" : ""}`}
+                                        className={`${"text-tab"} ${toggle === 3 ? "active-text-tab" : ""}`}
                                     >
                                         Stop
                                         <svg
@@ -94,14 +91,16 @@ stories.add("Trade", () => {
                         />
                         <Tabs
                             type={"two-component-tabs"}
+                            customStyles={{
+                                marginTop: '30px'
+                            }}
                             label={
                                 <>
                                     <div
                                         onClick={() => {
                                             tabsHandler(1);
                                         }}
-                                        className={`${"two-component-tab"}
-              ${toggle === 1 ? "active-two-component-tab" : ""}`}
+                                        className={`${"two-component-tab"} ${toggle === 1 ? "active-two-component-tab" : ""}`}
                                     >
                                         Sell
                                     </div>
@@ -109,8 +108,7 @@ stories.add("Trade", () => {
                                         onClick={() => {
                                             tabsHandler(2);
                                         }}
-                                        className={`${"two-component-tab"}
-              ${toggle === 2 ? "active-two-component-tab bg-color" : ""}`}
+                                        className={`${"two-component-tab"} ${toggle === 2 ? "active-two-component-tab bg-color" : ""}`}
                                     >
                                         Buy
                                     </div>
