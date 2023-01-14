@@ -31,9 +31,9 @@ stories.add("Input", (props) => {
             <Input 
                 type={'lable-input-type1'}
                 icon={false} 
-                status={'success'}
-                statusTitle={'ching chong'}
-                statusColor={'#9CCC65'}
+                // status={'success'}
+                // statusTitle={'ching chong'}
+                // statusColor={'#9CCC65'}
                 customStyles={{width: '320px'}}
             />
             <Input 
