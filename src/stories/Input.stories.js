@@ -22,14 +22,12 @@ stories.add("Input", (props) => {
                 placeholder={'default input'}
                 customStyles={{ width: '500px' }}
             />
-            {/* done */}
             <Input 
                 type={'default'} 
                 icon={false} 
                 placeholder={'default input'}
                 customStyles={{ width: '500px' }}
             />
-            {/* done */}
             <Input 
                 type={'lable-input-type1'}
                 icon={false} 
@@ -38,8 +36,6 @@ stories.add("Input", (props) => {
                 statusColor={'#9CCC65'}
                 customStyles={{width: '320px'}}
             />
-            {/* done */}
-            
             <Input 
                 type={'lable-input-type2'}
                 icon={false} 
@@ -56,7 +52,7 @@ stories.add("Input", (props) => {
             />
             {/* <Input 
                 type={'lable-input'}
-                icon={false} 
+                icon={false}
                 status={'info'}
                 color={'#6A6D76'}
             /> */}
