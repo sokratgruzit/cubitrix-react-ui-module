@@ -63,7 +63,7 @@ const connectWallet = {
   btn: "Connect Wallet",
 };
 
-const revardBox = [
+const rewardBox = [
   {
     title: "Current Stake",
     amount: "1,220.2 CML",
@@ -118,7 +118,7 @@ stories.add("InfoBox", () => {
         center="card-center"
       />
       <InfoBox
-        type="complate"
+        type="complete"
         center="complete-account"
         anime={show ? "animation-one" : ""}
       />
@@ -131,10 +131,10 @@ stories.add("InfoBox", () => {
         btn
       </button>
       <InfoBox
-        cardBody={revardBox}
-        revardbox="revardBox"
+        cardBody={rewardBox}
+        rewardbox="rewardBox"
         anime={show ? "animation-one" : ""}
-        type="revardBox"
+        type="rewardBox"
       />
     </div>
   );

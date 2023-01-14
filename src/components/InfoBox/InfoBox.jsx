@@ -3,7 +3,7 @@ import "./InfoBox.css";
 export const InfoBox = (props) => {
   return (
     <div
-      className={`card ${props.bg} ${props.center} ${props.height} ${props.padding} ${props.revardbox} ${props.anime}`}
+      className={`card ${props.bg} ${props.center} ${props.height} ${props.padding} ${props.rewardbox} ${props.anime}`}
     >
       {props.type === "avilable" ? (
         <div className={`card-header anime-astaring-pos ${props.anime}`}>
@@ -21,7 +21,7 @@ export const InfoBox = (props) => {
         <div className={`anime-astaring-pos ${props.anime}`}>
           <img src={props.img} style={{ height: "75px", width: "104px" }} />
         </div>
-      ) : props.type === "complate" ? (
+      ) : props.type === "complete" ? (
         <div className={`${props.center}`}>
           <p className={`anime-astaring-pos ${props.anime}`}>
             Complete the onboarding flow to start trading on COMPLEND
@@ -30,7 +30,7 @@ export const InfoBox = (props) => {
             <div className={`complate-btn`}>Complete Account</div>
           </div>
         </div>
-      ) : props.type === "revardBox" ? (
+      ) : props.type === "rewardBox" ? (
         props.cardBody.map((item) => {
           return (
             <div
