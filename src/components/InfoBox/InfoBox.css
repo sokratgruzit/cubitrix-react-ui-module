@@ -1,20 +1,7 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: imported;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 140%;
-}
-@font-face {
-    font-family: imported;
-    src: url(../../assets/fonts/UberMove/UberMove-Medium.woff);
-}
+
 .card {
     height: auto;
-    width: 324px;
+    width: 100%;
     border-radius: 18px;
     display: flex;
     flex-direction: column;
@@ -52,7 +39,7 @@
     border: 1px solid #070B1A;
 }
 .connect-wallet-btn:hover {
-    border: 1px solid #3D5AFE; 
+    border: 1px solid #3D5AFE;
 }
 .card-unavilable-status {
     display: flex;
@@ -201,7 +188,7 @@
     transition: .8s;
     background-color: white;
 }
-.revardBox {
+.rewardBox {
     width: 508px;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);

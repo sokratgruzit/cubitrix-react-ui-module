@@ -64,7 +64,7 @@ const connectWallet = {
     btn: "Connect Wallet",
 }
 
-const revardBox = [
+const rewardBox = [
     {
         title: "Current Stake",
         amount: "1,220.2 CML",
@@ -86,42 +86,42 @@ stories.add('InfoBox', () => {
     const [show, setSow] = useState(false);
     return (
         <div>
-            <InfoBox 
-                bg='blue' 
-                type='avilable' 
+            <InfoBox
+                bg='blue'
+                type='avilable'
                 anime={show ? "animation-one": ""}
-                header={cardInfoHeader} 
-                cardBody={cardInfoBody} 
+                header={cardInfoHeader}
+                cardBody={cardInfoBody}
                 />
-            <InfoBox 
+            <InfoBox
                 height='height'
-                bg='darck' 
-                type='unAvilable' 
+                bg='darck'
+                type='unAvilable'
                 anime={show ? "animation-one": ""}
-                header={unavilableHeader} 
-                cardBody={unavilableCardBody} 
+                header={unavilableHeader}
+                cardBody={unavilableCardBody}
                 padding='padding-bottom'
             />
             <button style={{backgroundColor: "red", height: "50px", width: "100px"}} onClick={() => {setSow(!show)}}>btn</button>
-            <InfoBox 
-                bg='darck' 
-                type='connectWallet' 
+            <InfoBox
+                bg='darck'
+                type='connectWallet'
                 anime={show ? "animation-one": ""}
-                content={connectWallet} 
-                img={connectWallet.icon} 
-                center="card-center" 
+                content={connectWallet}
+                img={connectWallet.icon}
+                center="card-center"
             />
-            <InfoBox 
-                type='complate'
+            <InfoBox
+                type='complete'
                 center="complete-account"
                 anime={show ? "animation-one": ""}
             />
                 <button style={{backgroundColor: "red", height: "50px", width: "100px"}} onClick={() => {setSow(!show)}}>btn</button>
-            <InfoBox 
-                cardBody={revardBox}
-                revardbox="revardBox"
+            <InfoBox
+                cardBody={rewardBox}
+                rewardbox="rewardBox"
                 anime={show ? "animation-one": ""}
-                type="revardBox"
+                type="rewardBox"
             />
         </div>
     )

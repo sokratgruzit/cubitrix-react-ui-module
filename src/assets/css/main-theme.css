@@ -94,3 +94,44 @@ button {
 .font-medium {
     font-family: "UberMove-Medium";
 }
+.plus-market {
+    color: #9CCC65;
+}
+.plus-market path {
+    fill: #9CCC65;
+}
+.minus-market {
+    color: #EF5350;
+}
+.minus-market path{
+    fill: #EF5350;
+}
+.minus-market svg {
+    transform: rotate(180deg);
+}
+.test {
+    display: flex;
+    height: 1000px;
+    width: 100px;
+    background: red;
+}
+.main {
+    display: flex;
+    width: 100%;
+    padding-top: 70px;
+    height: 85vh;
+}
+.main-sidebar {
+    width: 365px;
+    background: #070B1A;
+    display: flex;
+    overflow-y: auto;
+    max-height: 100%;
+}
+.main-sidebar-content {
+    width: 100%;
+}
+.main-content {
+    width: calc(100% - 356px);
+    background: green;
+}
