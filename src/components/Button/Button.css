@@ -165,14 +165,63 @@
 .side-btn {
     display: flex;
     height: 32px;
-    background: red;
     align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.side-btn:after {
+    content: '';
+    position: absolute;
+    width: calc(100% + 24px);
+    height: 100%;
+    left: -12px;
+    top: 0px;
+    border-radius: 6px;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    background: rgba(255, 255, 255, 0);
+}
+.side-btn:hover:after {
+    background: rgba(255, 255, 255, 0.05);
+}
+.side-btn:before {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    width: 2px;
+    height: 100%;
+    content: '';
+    background: #3D5AFE;
+    border-radius: 2px;
+    position: absolute;
+    left: -22px;
+    top: 0px;
+    transform: scaleY(.2);
+    opacity: 0;
+}
+.side-btn:hover:before {
+    transform: scaleY(1);
+    opacity: 1;
 }
 .side-btn-icon {
     display: flex;
     margin-right: 10px;
+    position: relative;
+    z-index: 2;
 }
 .side-btn-icon svg {
     height: 16px;
     width: 16px;
+}
+.side-btn-note {
+    display: flex;
+    margin-left: auto;
+    position: relative;
+    z-index: 2;
+}
+.side-btn span {
+    position: relative;
+    z-index: 2;
+    color: #9C9DA3;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.side-btn:hover span {
+    color: #fff;
 }
