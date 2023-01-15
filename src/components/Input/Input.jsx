@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HelpText } from '../HelpText/HelpText';
+import { HelpText } from '../HelpText';
 import './Input.css';
 export const Input = props => {
     const [file, setFile] = useState();
@@ -72,7 +72,7 @@ export const Input = props => {
                     </div>
                     <div className='input-form-frame'>USD</div>
                 </div>
-            </div>   
+            </div>
         )
     }
     if(props.type === 'lable-input-type2') {
@@ -105,12 +105,12 @@ export const Input = props => {
             </div>
         )
     }
- 
+
     if(props.type === 'lable-input') {
         element = (
             <div className='input-group-lable'>
-               
-                
+
+
                 <div className='select-group'>
                     <p className='input-group-title font-12'>Time In Force</p>
                     <div className='form-select'>

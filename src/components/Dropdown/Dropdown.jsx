@@ -1,4 +1,4 @@
-import { Switches } from "../Switches/Switches";
+import { Switches } from "../Switches";
 import "./Dropdown.css";
 import { Input } from "../Input";
 export const Dropdown = (props) => {
