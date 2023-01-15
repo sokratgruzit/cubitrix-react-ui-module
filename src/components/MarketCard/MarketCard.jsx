@@ -28,6 +28,7 @@ export const MarketCard = (props) => {
                         label={'All Markets'}
                         type={'btn-tertiary'}
                         arrow={'arrow-right'}
+                        element={'button'}
                         onClick={() => setMarkets((prevState) => !prevState)}
                     />
                 </div>
