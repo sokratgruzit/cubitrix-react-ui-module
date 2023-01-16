@@ -32,9 +32,7 @@ stories.add("HelpText", () => {
                 title={'your text'}
                 color={'#6A6D76'}
                 icon={true}
-
             />
-            
         </div>
     );
 });

@@ -49,11 +49,6 @@ export const Dropdown = (props) => {
                                     </div>
                                 )
                             })}
-                             <Input 
-                                type={'default'} 
-                                icon={false}
-                                placeholder={'your text'}
-                            />
                         </div>
                     )
                 })}

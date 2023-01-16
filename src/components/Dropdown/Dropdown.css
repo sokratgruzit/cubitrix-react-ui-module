@@ -17,18 +17,31 @@
   line-height: 18px;
   color: white;
 }
+
 .dropdown::-webkit-scrollbar {
-  display: none;
+  height: 25px; 
 }
-.dropdown {
-  -ms-overflow-style: none;   
-  scrollbar-width: none;   
+
+.dropdown::-webkit-scrollbar-button {
+  height: 25px;  
+}
+.dropdown::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 50%;
+}
+.dropdown::-webkit-scrollbar-track {
+  background: rgba(255, 0, 0, 0); 
+}
+.dropdown::-webkit-scrollbar-thumb {
+  background: #3D5AFE; 
+  border-radius: 22%;
 }
 .dropdown-item {
   display: flex;
   gap: 9px;
   background:transparent;
   padding: 6.6px 13px;
+  transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .dropdown-item:hover {
   background: rgba(255, 255, 255, 0.05);
@@ -37,9 +50,10 @@
   color: #fff;
   transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.dropdown-item p{
+ .dropdown-item p{
   text-transform: capitalize;
   font-size: 14px;
+  transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   color:#9C9DA3;
 }
 .dropdown-item div:hover p{
@@ -96,6 +110,7 @@
   background:transparent;
   padding: 6.6px 13px;   
   margin-bottom: 12px;
+    transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .dropdown-country .dropdown-menu-country:last-child {
   margin-bottom: 0px;
@@ -111,6 +126,7 @@
   text-transform: capitalize;
   font-size: 14px;
   color:#9C9DA3;
+  transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .dropdown-country .dropdown-item-country:hover p {
   color: #fff;
