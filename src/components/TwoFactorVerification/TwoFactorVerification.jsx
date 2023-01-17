@@ -1,5 +1,4 @@
 import { Button } from '../Button/Button.jsx'
-import img from '../../assets/img/twoFactorVerification/qrcode.png'
 import { Input } from '../Input/Input.jsx';
 import './TwoFactorVerification.css';
 
@@ -116,7 +115,7 @@ export const TwoFactorVerification = (props) => {
                 </div>
                 <div className='verification'>
                     <div >
-                        <img className='qrcode' src={"static/media/src/assets/img/twoFactorVerification/qrcode.png"} alt="" />
+                        {/*<img className='qrcode' src={"static/media/src/assets/img/twoFactorVerification/qrcode.png"} alt="" />*/}
                     </div>
                     <div>
                         <p>Enter Google Verification Code</p>

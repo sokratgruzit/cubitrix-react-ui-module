@@ -7,13 +7,6 @@ const stories = storiesOf("Dropdown", module);
 stories.add("Dropdown", () => {
   const [active, setActive] = useState("0");
 
-<<<<<<< HEAD
-    const hendlerClick = (e) => {
-        setActive(e.target.id)
-    }
-    
-    let data = [
-=======
   const hendlerClick = (e) => {
     setActive(e.target.id);
   };
@@ -22,7 +15,6 @@ stories.add("Dropdown", () => {
       id: 1,
       title: "Sort by",
       list: [
->>>>>>> 3e2e0cb007a39747854ed39381fe0e39fe22fe84
         {
           id: 1,
           title: "Favorites",
@@ -186,32 +178,6 @@ stories.add("Dropdown", () => {
           ),
           togle: "true",
         },
-<<<<<<< HEAD
-        {   
-            id: 9,
-            title: 'The United Kingdom ',
-            image: 'static/media/src/assets/img/country/canada.png',
-            numbering: '(+78)'
-        }
-    ]
-    return (
-        <div>
-            <Dropdown
-                data={data}
-                type={'dropdown'}
-                dropdown={'dropdown'}
-                onClick={(hendlerClick)}
-                active={active}
-            />
-            <Dropdown
-                type={'country'}
-                countryData={countryData}
-                dropdownCountry={'dropdown-country'}
-            />
-        </div>
-    )
-})
-=======
       ],
     },
   ];
@@ -285,4 +251,3 @@ stories.add("Dropdown", () => {
     </div>
   );
 });
->>>>>>> 3e2e0cb007a39747854ed39381fe0e39fe22fe84

@@ -16,7 +16,7 @@ export const MarketCard = (props) => {
             <div className={`market-card-head ${props.active == true && markets == false ? 'active' : ''}`}>
                 <div className={`market-card-currency`}>
                     <div className={`market-card-logo`}>
-                        <img src={require(`../../assets/img/currency/tether.png`)} alt="country" />
+                        <img src={`https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`} alt="country" />
                     </div>
                     <div className="market-card-currency-price">
                         <div>ETH-USD</div>
@@ -28,6 +28,7 @@ export const MarketCard = (props) => {
                         label={'All Markets'}
                         type={'btn-tertiary'}
                         arrow={'arrow-right'}
+                        element={'button'}
                         onClick={() => setMarkets((prevState) => !prevState)}
                     />
                 </div>
@@ -77,7 +78,7 @@ export const MarketCard = (props) => {
                             </div>
                             <div className={`market-card-currency`}>
                                 <div className={`market-card-logo`}>
-                                    <img src={require(`../../assets/img/currency/tether.png`)} alt="country" />
+                                    <img src={`https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`} alt="country" />
                                 </div>
                                 <div className="market-card-currency-name">
                                     <div>Ethereum</div>
@@ -104,7 +105,7 @@ export const MarketCard = (props) => {
                             </div>
                             <div className={`market-card-currency`}>
                                 <div className={`market-card-logo`}>
-                                    <img src={require(`../../assets/img/currency/tether.png`)} alt="country" />
+                                    <img src={`https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`} alt="country" />
                                 </div>
                                 <div className="market-card-currency-name">
                                     <div>Ethereum</div>
