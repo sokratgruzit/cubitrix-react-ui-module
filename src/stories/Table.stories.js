@@ -7,11 +7,24 @@ const stories = storiesOf("Table", module);
 
 let th = [
   {
-    stakedAmountTitle: "Staked Amount",
-    stakedDateTitle: "Stake Date",
-    unstakedDateTitle: "Unstake Date",
-    earnRewardTitle: "Earn Reward",
-    harvestTitle: "Harvest",
+    name: "Staked Amount",
+    id: 0,
+  },
+  {
+    name: "Stake Date",
+    id: 1,
+  },
+  {
+    name: "Unstake Date",
+    id: 2,
+  },
+  {
+    name: "Earn Reward",
+    id: 3,
+  },
+  {
+    name: "Harvest",
+    id: 4,
   },
 ];
 

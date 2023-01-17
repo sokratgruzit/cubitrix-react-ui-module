@@ -17,6 +17,33 @@ stories.add("HelpText", () => {
                 status={'warning'}
                 title={'your text'}
                 color={'#FFA726'}
+                icon={true}
+
+            />
+            <HelpText
+                status={'error'}
+                title={'your text'}
+                color={'#EF5350'}
+                icon={true}
+
+            />
+            <HelpText
+                status={'info'}
+                title={'your text'}
+                color={'#6A6D76'}
+                icon={true}
+
+            />
+             <HelpText
+                status={'success'}
+                title={'your text'}
+                color={'#9CCC65'}
+                icon={false}
+            />
+            <HelpText
+                status={'warning'}
+                title={'your text'}
+                color={'#FFA726'}
                 icon={false}
 
             />
@@ -31,7 +58,7 @@ stories.add("HelpText", () => {
                 status={'info'}
                 title={'your text'}
                 color={'#6A6D76'}
-                icon={true}
+                icon={false}
 
             />
             
