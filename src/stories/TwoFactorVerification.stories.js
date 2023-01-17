@@ -15,7 +15,6 @@ stories.add("TwoFactorVerification", (props) => {
     return (
         <div>
             <TwoFactorVerification
-                mainContainer={'mainContainer'}
                 onClick={closeHandler}       
                 active={active}
             />            

@@ -1,11 +1,10 @@
-import { Switches } from "../Switches/Switches";
+import { Switches } from "../Switches";
 import "./Dropdown.css";
-import { Input } from "../Input";
 export const Dropdown = (props) => {
     let element = '';
     if (props.type === 'country') {
         element =
-            <div className={props.dropdownCountry}>
+            <div className="dropdown-country">
                 <h1 className="dropdown-toggle">
                     Select Country
                 </h1>
@@ -13,7 +12,7 @@ export const Dropdown = (props) => {
                     return (
                         <div key={index} className="dropdown-menu-country">
                             <div className="dropdown-item-country">
-                                <img src={`${item.image}`} alt="country" />
+                                <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
                                 <p>{item.title}</p>
                                 <p>{item.numbering}</p>
                             </div>
@@ -39,7 +38,7 @@ export const Dropdown = (props) => {
                                             {item.svg}
                                         </span>
                                         <div>
-                                            <p id={item.id} onClick={props.hendlerClick} className={`${props.active === `${item.id}` ? "rightLine" : ''}`}>
+                                            <p id={item.id} onClick={props.hendlerClick} className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
                                                 {item.title}
                                             </p>
                                             {item.togle === 'true' &&

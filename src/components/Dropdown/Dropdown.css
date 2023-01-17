@@ -56,11 +56,11 @@
   transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   color:#9C9DA3;
 }
-.dropdown-item div:hover p{
+.dropdown-item:hover p{
   color:#ffffff;
   transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.rightLine {
+.left-line {
   color: #3D5AFE;  transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .border {
