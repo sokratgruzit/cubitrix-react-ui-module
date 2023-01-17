@@ -57,11 +57,17 @@ const unavilableCardBody = [
         taker: ""
     }
 ];
-
+const unavilableBtn = {
+    btn: "Unavailable"
+}
 const connectWallet = {
     icon: img,
     p: "Connect your Ethereum wallet to deposit funds & start trading.",
     btn: "Connect Wallet",
+}
+const complete = {
+    p: "Complete the onboarding flow to start trading on COMPLEND",
+    btn: "Complete Account"
 }
 
 const rewardBox = [
@@ -97,39 +103,41 @@ stories.add('InfoBox', () => {
         <div>
             <InfoBox
                 type='available'
-                active="animation"
+                active={true}
                 header={cardInfoHeader}
                 cardBody={cardInfoBody}
                 />
             <InfoBox
                 type='unavailable'
-                active="animation"
+                active={true}
                 header={unavilableHeader}
                 cardBody={unavilableCardBody}
+                cardBtn={unavilableBtn}
             />
             <InfoBox
                 type='connect-wallet'
-                active="animation"
-                content={connectWallet}
+                active={true}
+                cardBody={connectWallet}
                 img={connectWallet.icon}
             />
             <InfoBox
                 type='complete'
-                active="animation"
+                active={true}
+                cardBody={complete}
             />
             <InfoBox
                 type="reward-box"
-                active="animation"
+                active={true}
                 cardBody={rewardBox}
             />
              <InfoBox
                 type='verification'
-                active="animation"
+                active={true}
                 cardBody={verification}
             />
             <InfoBox
                 type='question'
-                active="animation"
+                active={true}
                 cardBody={question}
             />
         </div>
