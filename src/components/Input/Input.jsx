@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { HelpText } from '../HelpText/HelpText';
+import { HelpText } from '../HelpText';
+import { Dropdown } from '../Dropdown';
+import { Switches } from '../Switches';
 import './Input.css';
+
 export const Input = props => {
     const [file, setFile] = useState();
     const [update, setUpdate] = useState(false);
@@ -48,7 +51,8 @@ export const Input = props => {
 
     if(props.type === 'default') {
         element = (
-            <div style={props.customStyles} className='input-group'>
+            <div onChange={props.onChange} style={props.customStyles} className='input-group'>
+                {props.label ? ( <p className='input-group-title font-12'>{props.label}<span className='font-12'>{props.subLabel}</span></p> ) : ''}
                 <input className='form-control' type='text' placeholder={props.placeholder} />
                 <span className=''>
                     {props.icon ? (
@@ -64,27 +68,52 @@ export const Input = props => {
 
     if(props.type === 'lable-input-type1') {
         element = (
-            <div style={props.customStyles} className='input-group-item'>
-                <p className='font-12 input-group-title'>Amount <span>Set order size</span></p>
-                <div className='input-form '>
+            <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>
+                <div className='input-group-text-sc'>
+                    <p className='font-12 input-group-title'>
+                        {props.label}
+                        <span>
+                            {props.subLabel}
+                        </span>
+                    </p>
+                    {props.toggle ? (
+                        <div className='input-toggle'>
+                            <p className='font-12'>{props.toggleTitle}</p>
+                            <div>
+                                <Switches type={"sm-switches"} />
+                            </div>
+                        </div>
+                    ) : ''}
+                </div>
+                <div className='input-form'>
                     <div className='input-form-inner'>
-                        <input className='form-control' type='text' placeholder='0.000' />
-                        <div className='input-group-frame'>ETH</div>
+                        <input  className='form-control' type='text' placeholder={props.placeholder} />
+                        <div className='input-group-frame'>{props.inputFrame}</div>
                     </div>
-                    <div className='input-form-frame'>USD</div>
+                    {!props.btns  ? (
+                        <div className='input-form-frame'>USD</div>
+                    ) : (
+                        <div className='input-form-frame-outer'>
+                            {props.btns && props.btns.map((item) => {
+                                return (
+                                    <div onClick={props.onClick} className='input-form-frame' key={item.id}>{item.value}</div>
+                                )
+                            })}
+                        </div>
+                    )}
                 </div>
             </div>
         )
     }
     if(props.type === 'lable-input-type2') {
         element = (
-            <div style={props.customStyles} className='input-group-item'>
-                <p className='font-12 input-group-text'>Limit Price <span className='input-group-frame-secondary'>Usd</span></p>
-                <input className='form-control' type='text' placeholder='0.000' />
+            <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>
+                <p className='font-12 input-group-text'>{props.subLabel}<span className='input-group-frame-secondary'>{props.subLabel}</span></p>
+                <input className='form-control' type='text' placeholder={props.placeholder} />
             </div>
-        )
+        );
     }
-    if(props.type === 'lable-input-type3') {
+    if(props.type === 'lable-input-select') {
         element = (
             <div style={props.customStyles} className='select-group'>
                 <p className='input-group-title font-12'>Time In Force</p>
@@ -95,47 +124,55 @@ export const Input = props => {
                             <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
+                  
+                </div>
+                <div>
+                    <div className='option'>option 1</div>
+                    <div className='option'>option 1</div>
+                    <div className='option'>option 1</div>
                 </div>
                 <HelpText
-                    status={'warning'}
-                    title={'your text your text'}
-                    color={'#FFA726'}
                     icon={true}
-                    customStyles={{width: 'fit-content'}}
+                    status={'error'}
+                    title={'error'}
+                    color={'#EF5350'}
                 />
             </div>
         )
     }
- 
-    if(props.type === 'lable-input') {
+    if(props.type === 'label-input-phone-number') {
         element = (
-            <div className='input-group-lable'>
-               
+            <div style={props.customStyles} className='input-group-item'>
+                <p className='font-12'>Mobile Number</p>
+                <div className='input-group-flag'>
+                </div>
+                    {/* <img src='../italy.png' alt='flag' /> 
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 9.5L10.5303 11.9697C10.2386 12.2614 9.76136 12.2614 9.4697 11.9697L7 9.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </div>
+                <p><span>+42</span>933 093 093</p>
+                <input className='form-control' type='text' placeholder='000000000' /> */}
+                {/* <input className='form-control' type='tel' />
+                 */}
+                {/* <input className='form-control' type="text" name="country code"  value="+91" size="2"/>   
+                <input className='form-control' type="text" name="phone" size="10"/>
+                <input className='form-control' type='country' /> */}
+                <form>
+                <label>   
+                    Phone :  
+                </label> 
+                <input type="text" name="country code"  value="+91" size="2"/>   
+                {/* <input type="text" name="phone" size="10"/>  */}
+                </form>
                 
-                <div className='select-group'>
-                    <p className='input-group-title font-12'>Time In Force</p>
-                    <div className='form-select'>
-                        <div className='selected option'>
-                            <div>rcheuli yle</div>
-                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                    {infoBox}
-                </div>
-                <div className='input-group-item'>
-                    <p className='font-12'>Mobile Number</p>
-                    <div className='input-group-flag'>
-                        {/* <img src='../italy.png' alt='flag' />  */}
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 9.5L10.5303 11.9697C10.2386 12.2614 9.76136 12.2614 9.4697 11.9697L7 9.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                    </div>
-                    <p><span>+42</span>933 093 093</p>
-                    <input className='form-control' type='text' placeholder='000000000' />
-                </div>
-                <div className='upload-group'>
+
+            </div>
+        )
+    }
+    if(props.type === 'label-input-upload') {
+        element = (
+            <div style={props.customStyles} className='upload-group'>
                     <div className='upload-group-title'>
                         <p className='font-12'>Upload Image</p>
                         <p  className='font-12'>Delete avatar</p>
@@ -161,9 +198,8 @@ export const Input = props => {
                         </div>
                     </div>
                 </div>
-            </div>
         )
     }
-
+    
     return element;
 };

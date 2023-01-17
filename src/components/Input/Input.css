@@ -2,9 +2,11 @@
 .input-group {
     position: relative;
     width: 100%;
+    gap: 5px;
     /* max-width: 325px; */
     height: auto;
     display: flex;
+    flex-direction: column;
 }
 .form-control {
     width: 100%;
@@ -52,6 +54,9 @@
     flex-direction: column;
     gap: 5px;
 }
+.input-group-title {
+    text-transform: capitalize;
+}
 .input-group-title span {
     color: #6A6D76;
     margin-left: 5px;
@@ -68,6 +73,26 @@
     width: 100%;
     height: auto;
 }
+.input-form-frame-outer {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.input-group-text-sc {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.input-toggle {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.input-toggle p {
+    color: #9C9DA3;
+    text-transform: capitalize;
+}
 .input-group-frame {
     display: flex;
     align-items: center;
@@ -75,7 +100,8 @@
     position: absolute;
     top: 11.5px;
     right: 11.5px;
-    width: 29px;
+    /* width: 29px; */
+    padding: 1px 6px;
     height: 18px;
     background-color: #1F2330;
     border-radius: 13px;
@@ -88,13 +114,17 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    width: 42px;
-    height: 42px;
-    padding: 12px 8px;
+    width: 44px;
+    height: 44px;
+    padding: 12px 14px;
+    /* width: 42px!important;
+    height: 42px!important; */
+    /* padding: 12px 8px; */
     background-color: #1F2330;
     border-radius: 8px;
     text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.05)
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
 }
 .input-group-frame-secondary {
     font-size: 10px;
@@ -102,7 +132,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 29px;
+    /* width: 29px; */
+    padding: 1px 6px;
     height: 17px;
     background-color: #1F2330;
     border-radius: 13px;

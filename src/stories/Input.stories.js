@@ -21,6 +21,18 @@ let btnArr = [
 ];
 
 stories.add("Input", (props) => {
+
+  const changeHandler = (e) => {
+    console.log(e.target.value, 'change handler')
+  }
+  const btnHandler = (e) => {
+    console.log('click me, click me mf')
+    let value = e.target.value
+    console.log(value, 'hi')
+    // console.log(item.value)
+
+  }
+
   return (
     <div
       style={{
@@ -31,6 +43,59 @@ stories.add("Input", (props) => {
       }}
     >
       <Input
+        type={"default"}
+        icon={true}
+        placeholder={"default input"}
+        label={''}
+        subLabel={''}
+        onChange={changeHandler}
+        customStyles={{ width: "500px" }}
+      />
+      <Input
+        type={"default"}
+        icon={false}
+        label={'your label'}
+        subLabel={'subLab'}
+        placeholder={"default input"}
+        onChange={changeHandler}
+        customStyles={{ width: "500px" }}
+      />
+      <Input
+        type={"lable-input-type1"}
+        label={'Label'}
+        subLabel={'sub label'}
+        toggleTitle={'slider'}
+        toggle={true}
+        placeholder={'0.0000'}
+        btns={btnArr}
+        onChange={changeHandler}
+        onClick={btnHandler}
+        // toggle={true}
+        // value={'921301923'}
+        // toggleTitle={'Slider'}
+        inputFrame={'none'}
+        customStyles={{ width: '420px'}}
+      /> 
+      <Input
+        type={"lable-input-type1"}
+        label={'Label'}
+        subLabel={'sub label'}
+        placeholder={'0.0000'}
+        onChange={changeHandler}
+        btns={false}
+        onClick={btnHandler}
+        inputFrame={'eth'}
+        customStyles={{ width: '420px'}}
+      /> 
+      {/* <Input
+        type={"lable-input-type2"}
+        label={'Label'}
+        subLabel={'sub label'}
+        placeholder={'0.0000'}
+        customStyles={{ width: '320px'}}
+        onChange={changeHandler}
+      />  */}
+      {/* <Input
         type={"default"}
         icon={true}
         placeholder={"default input"}
@@ -45,32 +110,39 @@ stories.add("Input", (props) => {
       <Input
         type={"lable-input-type1"}
         icon={false}
-        // status={'success'}
-        // statusTitle={'ching chong'}
-        // statusColor={'#9CCC65'}
         customStyles={{ width: "320px" }}
-      />
-      <Input
+      /> */}
+      {/* <Input
+        onChange={changeHandler}
         type={"lable-input-type2"}
+        version={'v1'}
         btns={btnArr}
         icon={false}
         status={"error"}
         color={"#EF5350"}
         customStyles={{ width: "320px" }}
-      />
-      <Input
-        type={"lable-input-type3"}
+      /> */}
+      {/* <Input
+        type={"lable-input-select"}
         icon={false}
         status={"warning"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />
-      {/* <Input 
-                type={'lable-input'}
-                icon={false}
-                status={'info'}
-                color={'#6A6D76'}
-            /> */}
+      <Input
+        type={'label-input-phone-number'}
+        customStyles={{width: '550px'}}
+        select={'phone-number'}
+       />
+       <Input
+        type={'label-input-phone-number'}
+        customStyles={{width: '520px'}}
+        select={'nationality'}
+       />
+       <Input
+        type={'label-input-upload'}
+        customStyles={{width: 'fit-content'}}
+       /> */}
     </div>
   );
 });
