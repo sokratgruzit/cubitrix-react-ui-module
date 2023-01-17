@@ -5,7 +5,7 @@ import img from "../assets/img/icon.png";
 import icon2 from "../assets/img/icon2.png";
 import icon3 from "../assets/img/icon3.png";
 import icon4 from "../assets/img/icon4.png";
-import { useState } from "react";
+import icon5 from "../assets/img/icon5.png";
 
 
 const stories = storiesOf('InfoBox', module);
@@ -81,47 +81,56 @@ const rewardBox = [
         icon: icon3
     }
 ]
+const verification = {
+    img: icon5,
+    p: "Please verification your Mail"
+}
+
+const question = {
+    quiestion: "Do you really want to perform this operation?",
+    yes: "Yes",
+    no: "Cancel"
+}
 
 stories.add('InfoBox', () => {
-    const [show, setSow] = useState(false);
     return (
         <div>
             <InfoBox
-                bg='blue'
-                type='avilable'
-                anime={show ? "animation-one": ""}
+                type='available'
+                active="animation"
                 header={cardInfoHeader}
                 cardBody={cardInfoBody}
                 />
             <InfoBox
-                height='height'
-                bg='darck'
-                type='unAvilable'
-                anime={show ? "animation-one": ""}
+                type='unavailable'
+                active="animation"
                 header={unavilableHeader}
                 cardBody={unavilableCardBody}
-                padding='padding-bottom'
             />
-            <button style={{backgroundColor: "red", height: "50px", width: "100px"}} onClick={() => {setSow(!show)}}>btn</button>
             <InfoBox
-                bg='darck'
-                type='connectWallet'
-                anime={show ? "animation-one": ""}
+                type='connect-wallet'
+                active="animation"
                 content={connectWallet}
                 img={connectWallet.icon}
-                center="card-center"
             />
             <InfoBox
                 type='complete'
-                center="complete-account"
-                anime={show ? "animation-one": ""}
+                active="animation"
             />
-                <button style={{backgroundColor: "red", height: "50px", width: "100px"}} onClick={() => {setSow(!show)}}>btn</button>
             <InfoBox
+                type="reward-box"
+                active="animation"
                 cardBody={rewardBox}
-                rewardbox="rewardBox"
-                anime={show ? "animation-one": ""}
-                type="rewardBox"
+            />
+             <InfoBox
+                type='verification'
+                active="animation"
+                cardBody={verification}
+            />
+            <InfoBox
+                type='question'
+                active="animation"
+                cardBody={question}
             />
         </div>
     )
