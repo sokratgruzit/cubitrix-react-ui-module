@@ -1,4 +1,4 @@
-import { Switches } from "../Switches/Switches";
+import { Switches } from "../Switches";
 import "./Dropdown.css";
 import { Input } from "../Input";
 export const Dropdown = (props) => {
@@ -49,8 +49,8 @@ export const Dropdown = (props) => {
                                     </div>
                                 )
                             })}
-                             <Input 
-                                type={'default'} 
+                            <Input
+                                type={'default'}
                                 icon={false}
                                 placeholder={'your text'}
                             />

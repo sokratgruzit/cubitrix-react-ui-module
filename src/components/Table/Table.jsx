@@ -36,12 +36,14 @@ export const Table = (props) => {
                       <td className={showMoreIndex === index ? 'show-more-td td' : "td"}>{item.harvest}</td>
                       <div className="btn-adjust">
                         <Button
+                          element="button"
                           label={"Unstake"}
                           size={"btn-lg"}
                           type={"btn-secondary"}
                           onClick={() => setToggle((prevState) => !prevState)}
                         />
                         <Button
+                          element="button"
                           label={"Harvest"}
                           size={"btn-lg"}
                           type={"btn-primary"}
@@ -68,14 +70,16 @@ export const Table = (props) => {
                         </colgroup>
                         <div className="show-more-buttons">
                           <Button
+                            element="button"
                             label={"Unstake"}
                             size={"btn-lg"}
                             type={"btn-secondary"}
                             onClick={() => setToggle((prevState) => !prevState)}
                           />
                           <Button
+                            element="button"
                             label={"Harvest"}
-                            size={"btn-lg"}
+                            size={"btn-sm"}
                             type={"btn-primary"}
                             onClick={() => setToggle((prevState) => !prevState)}
                           />
