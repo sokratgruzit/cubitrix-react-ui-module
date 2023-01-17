@@ -66,6 +66,20 @@ export const Table = (props) => {
                           <th>Earn Rewaard</th>
                           <td>{item.earnReward}</td>
                         </colgroup>
+                        <div className="show-more-buttons">
+                          <Button
+                            label={"Unstake"}
+                            size={"btn-lg"}
+                            type={"btn-secondary"}
+                            onClick={() => setToggle((prevState) => !prevState)}
+                          />
+                          <Button
+                            label={"Harvest"}
+                            size={"btn-lg"}
+                            type={"btn-primary"}
+                            onClick={() => setToggle((prevState) => !prevState)}
+                          />
+                      </div>
                       </tr>
                     )}
                   </>

@@ -61,7 +61,7 @@ export const Staking = (props) => {
             <HeaderIcon />
             Staking
           </h2>
-          <BiddingInfo type="bidding-none" />
+          <BiddingInfo type="bidding-none" className={showCalculator && 'show-calc'} />
           <StakeInfo />      
           <Table type='table-version' tableHead={th} tableData={td} />
         </div>
@@ -70,7 +70,7 @@ export const Staking = (props) => {
             <Calculator type='show-calculator' />
           )}
           <Button 
-            customStyles={{ position: 'absolute', top: '942px', left: '38%', zIndex: '3'}}
+            // customStyles={{ position: 'absolute', top: '942px', left: '35%', zIndex: '3'}}
             label={showCalculator ? 'Close' : 'Staking Calculator'}
             size='btn-m-lg'
             type={showCalculator ? 'btn-secondary show-calculator-btn' : 'btn-primary show-calculator-btn'}

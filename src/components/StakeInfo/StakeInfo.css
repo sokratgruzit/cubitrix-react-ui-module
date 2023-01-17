@@ -66,7 +66,7 @@
     padding-right: 10px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1075px) {
     .stake-info{
         display: flex;
         flex-direction: column;
@@ -97,4 +97,27 @@
         margin-right: 20px;
         margin-bottom: 0;
     }   
+  }
+
+  @media only screen and (max-width: 740px) {
+    .stake-info{
+        flex-direction: column;
+    }
+    .stake-info__item:first-child {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }   
+  }
+
+  @media only screen and (max-width: 360px) {
+    .stake-info__item {
+        height: 230px;
+    }
+    .stake-info__item-element {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .stake-info__item-element p:last-child {
+        padding-left: 24px;
+    }
   }

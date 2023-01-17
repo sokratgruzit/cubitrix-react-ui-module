@@ -38,6 +38,9 @@
     .bidding-info {
         background: #0C1121;
     }
+    .show-calc {
+        background: #000000;
+    }
     
     .bidding-info p {
         font-weight: 500;
