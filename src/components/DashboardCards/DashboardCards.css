@@ -1,4 +1,4 @@
-.dashboard-minicard {
+.dashbord-minicard {
     width: 224px;
     padding: 16px 20px 16px 16px;
 }
@@ -10,22 +10,22 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(239, 83, 80, 0.1) 100%);
     border-radius: 8px;
 }
-.dashboard-minicard .dashboard-minicard-container {
+.dashbord-minicard .dashbord-minicard-container {
     display: flex;
     justify-content: space-between;
 }
-.dashboard-minicard .dashboard-minicard-coin {
+.dashbord-minicard .dashbord-minicard-coin {
     display: flex;
     align-items: center;
     gap: 6px;
 }
-.dashboard-minicard .dashboard-minicard-coin h5 {
+.dashbord-minicard .dashbord-minicard-coin h5 {
     font-weight: 500;
     font-size: 14px;
     line-height: 140%;
     text-transform: capitalize;
 }
-.dashboard-minicard .dashboard-minicard-coin p {
+.dashbord-minicard .dashbord-minicard-coin p {
     font-weight: 400;
     font-size: 12px;
     line-height: 140%;
