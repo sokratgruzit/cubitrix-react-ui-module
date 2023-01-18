@@ -45,7 +45,6 @@ export const Button = (props) => {
     );
   }
   if (props.element === "image-button") {
-    console.log(props.name);
     element = (
       <div className={`img-btn`} onClick={props.onClick} style={props.customStyles}>
         {props.image ? (
