@@ -8,3 +8,5 @@ export { default as WalletMoneyIcon } from './wallet-money-icon';
 export { default as Arrow } from './arrow';
 export { default as HeaderIcon } from './header-icon';
 export { default as CalculatorIcon } from './calculator-icon';
+export { default as AddSquareIcon } from './add-square';
+export { default as DragIcon } from './drag-icon';
