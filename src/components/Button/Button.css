@@ -125,3 +125,108 @@
 .no-label.btn.btn-sm {
   width: 44px;
 }
+.img-btn {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    display: flex;
+    height: 60px;
+    align-items: center;
+    border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+.img-btn:hover {
+    background: rgba(255,255,255,0.05);
+}
+.img-btn span {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.img-btn:hover span {
+    color: #3D5AFE;
+}
+.img-btn svg {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.img-btn:hover svg {
+   transform: translateX(5px);
+}
+.img-btn path {}
+.img-btn img {
+    width: 24px;
+}
+.img-btn svg {
+    margin-left: auto;
+}
+.img-btn .img {
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.side-btn {
+    display: flex;
+    height: 32px;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.side-btn:after {
+    content: '';
+    position: absolute;
+    width: calc(100% + 24px);
+    height: 100%;
+    left: -12px;
+    top: 0px;
+    border-radius: 6px;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    background: rgba(255, 255, 255, 0);
+}
+.side-btn:hover:after {
+    background: rgba(255, 255, 255, 0.05);
+}
+.side-btn:before {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    width: 2px;
+    height: 100%;
+    content: '';
+    background: #3D5AFE;
+    border-radius: 2px;
+    position: absolute;
+    left: -22px;
+    top: 0px;
+    transform: scaleY(.2);
+    opacity: 0;
+}
+.side-btn:hover:before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+.side-btn-icon {
+    display: flex;
+    margin-right: 10px;
+    position: relative;
+    z-index: 2;
+}
+.side-btn-icon svg {
+    height: 16px;
+    width: 16px;
+}
+.side-btn-note {
+    display: flex;
+    margin-left: auto;
+    position: relative;
+    z-index: 2;
+}
+.side-btn span {
+    position: relative;
+    z-index: 2;
+    color: #9C9DA3;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.side-btn:hover span {
+    color: #fff;
+}

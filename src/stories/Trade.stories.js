@@ -5,6 +5,7 @@ import "../components/TestCss/Trade.css";
 import { InfoBox } from "../components/InfoBox";
 import img from "../assets/img/icon.png";
 import { Tabs } from "../components/Tabs";
+import { Input } from "../components/Input";
 
 const stories = storiesOf("Trade", module);
 const connectWallet = {
@@ -124,6 +125,21 @@ stories.add("Trade", () => {
                   </div>
                 </>
               }
+            />
+            <Input
+              type={"lable-input-type1"}
+              icon={false}
+              // status={'success'}
+              // statusTitle={'ching chong'}
+              // statusColor={'#9CCC65'}
+              customStyles={{ width: "100%", marginTop: "20px" }}
+            />
+            <Input
+              type={"lable-input-type2"}
+              icon={false}
+              status={"error"}
+              color={"#EF5350"}
+              customStyles={{ width: "100%", marginTop: "20px" }}
             />
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HelpText } from "../HelpText/HelpText";
+import { HelpText } from "../HelpText";
 import "./Input.css";
 export const Input = (props) => {
   const [file, setFile] = useState();
