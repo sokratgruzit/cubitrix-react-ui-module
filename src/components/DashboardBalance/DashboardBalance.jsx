@@ -1,9 +1,9 @@
-import './DashbordBalance.css';
+import './DashboardBalance.css';
 
-export const DashbordBalance = (props) => {
+export const DashboardBalance = (props) => {
     return (
-        <div className='dashbord-balance'>
-            <div className='dashbord-balance-border'>
+        <div className='dashboard-balance'>
+            <div className='dashboard-balance-border'>
                 <p>Earning</p>
                 <p>{props.earning}</p>
                 <p>{props.usdc}</p>

@@ -1,4 +1,4 @@
-.dashbord-balance .dashbord-balance-border {
+.dashboard-balance .dashboard-balance-border {
     margin-left: 9%;
     position: relative;
     display: flex;
@@ -10,43 +10,43 @@
     border: 3px solid #3D5AFE;
     border-radius: 50%;
 }
-.dashbord-balance .dashbord-balance-border p:nth-child(1) {
+.dashboard-balance .dashboard-balance-border p:nth-child(1) {
     color: #3D5AFE;
     font-size: 14px;
 }
-.dashbord-balance .dashbord-balance-border p:nth-child(2) {
+.dashboard-balance .dashboard-balance-border p:nth-child(2) {
     margin: 6px 0 2px 0;
     font-size: 24px;
 }
-.dashbord-balance .dashbord-balance-border p:nth-child(3) {
+.dashboard-balance .dashboard-balance-border p:nth-child(3) {
     color: #9C9DA3;
     font-size: 12px;
 }
-.dashbord-balance .dashbord-balance-border .svg-image {
+.dashboard-balance .dashboard-balance-border .svg-image {
     position: absolute;
     top: -138px;
     left: -171px;
     z-index: -1;
 }
-.dashbord-balance .balance {
+.dashboard-balance .balance {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
-.dashbord-balance .balance div {
+.dashboard-balance .balance div {
     text-align: center;
     background: rgba(255, 255, 255, 5%);
     padding: 9px 31px;
     border-radius: 8px;
 }
-.dashbord-balance .supply p {
+.dashboard-balance .supply p {
     color:#57D29E;
     text-transform: capitalize;
     font-weight: 500;
     font-size: 14px;
     line-height: 19.6px;
 }
-.dashbord-balance .borrow p {
+.dashboard-balance .borrow p {
     margin-bottom: 2px;
     color:#6E62FC;
     text-transform: capitalize;
@@ -54,7 +54,7 @@
     font-size: 14px;
     line-height: 19.6px;    
 }
-.dashbord-balance .balance span {
+.dashboard-balance .balance span {
     font-weight: 500;
     font-size: 14px;
     line-height: 140%;

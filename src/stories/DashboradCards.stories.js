@@ -1,4 +1,4 @@
-import { DashbordCards } from "../components/DashbordCards";
+import { DashboardCards } from "../components/DashboardCards";
 import { storiesOf } from "@storybook/react";
 import imgs from '../assets/img/DashbordCards/ethereum.png'
 import img from '../assets/img/DashbordCards/bitcoin.png'
@@ -7,7 +7,7 @@ const stories = storiesOf("DashbordCards", module);
 stories.add("DashbordCards", () => { 
     return (
         <div>
-            <DashbordCards
+            <DashboardCards
                 type={'minicard'}
                 img={img}
                 bg={'bgRed'}
@@ -19,7 +19,7 @@ stories.add("DashbordCards", () => {
                 percent={'0.18%'}
                 color={'#EF5350'}
             />           
-            <DashbordCards
+            <DashboardCards
                 type={'minicard'}
                 img={imgs}
                 bg={'bgGreen'}
@@ -31,14 +31,14 @@ stories.add("DashbordCards", () => {
                 percent={'0.18%'}   
                 color={'#9CCC65'}
             />    
-            <DashbordCards
+            <DashboardCards
                 type={'card'}
                 title={'Value'}
                 bgColor={'gray'}
                 price={'$3.00301'}
                 valueCard={'true'}
             />
-            <DashbordCards
+            <DashboardCards
                 type={'card'}
                 title={'Trading Volume'}
                 bgColor={'none'}

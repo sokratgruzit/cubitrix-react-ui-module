@@ -1,11 +1,11 @@
 import { storiesOf } from "@storybook/react";
-import { DashbordBalance } from "../components/DashbordBalance";
+import { DashboardBalance } from "../components/DashboardBalance";
 
-const stories = storiesOf("DashbordBalance", module);
+const stories = storiesOf("DashboardBalance", module);
 
-stories.add("DashbordBalance", () => { 
+stories.add("DashboardBalance", () => { 
     return (
-        <DashbordBalance
+        <DashboardBalance
             earning={'$8.193010001'}
             usdc={'2.22004 USDC'}
             supply={'$19.1704001'}

@@ -1,12 +1,12 @@
-import './DashbordCards.css';
+import './DashboardCards.css';
 
-export const DashbordCards = (props) => {
+export const DashboardCards = (props) => {
     let element = '';
     if (props.type === 'minicard') {
         element =
-            <div className={`dashbord-minicard  ${props.bg}`}>
-                <div className='dashbord-minicard-container'>
-                    <div className='dashbord-minicard-coin'>
+            <div className={`dashboard-minicard  ${props.bg}`}>
+                <div className='dashboard-minicard-container'>
+                    <div className='dashboard-minicard-coin'>
                         <img src={props.img} alt="coin" />
                         <div>
                             <h5>{props.coin}</h5>

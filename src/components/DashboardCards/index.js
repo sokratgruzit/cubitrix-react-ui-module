@@ -1,1 +1,1 @@
-export * from './DashbordCards.jsx'
+export * from './DashboardCards.jsx'
