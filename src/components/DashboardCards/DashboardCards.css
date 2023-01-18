@@ -1,0 +1,108 @@
+.dashboard-minicard {
+    width: 224px;
+    padding: 16px 20px 16px 16px;
+}
+.bgGreen {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(156, 204, 101, 0.1) 100%);
+    border-radius: 8px;
+}
+.bgRed {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(239, 83, 80, 0.1) 100%);
+    border-radius: 8px;
+}
+.dashboard-minicard .dashboard-minicard-container {
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard-minicard .dashboard-minicard-coin {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.dashboard-minicard .dashboard-minicard-coin h5 {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    text-transform: capitalize;
+}
+.dashboard-minicard .dashboard-minicard-coin p {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: #6A6D76;
+    text-transform: uppercase;
+}
+.dashboard-minicard .prices-box {
+    margin-top: 10px;
+}
+.dashboard-minicard .prices-box div {
+    display: flex;
+    justify-content: space-between;
+}
+.dashboard-minicard .prices-box div p:nth-child(2) { 
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.dashboard-minicard .prices-box span {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 1px;
+}
+.prices {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 150%;
+}
+/* cards */
+.dashboard-card {
+    width: 332px;    
+}
+.gray {
+    background: linear-gradient(262.18deg, #0B1023 0%, #1D2136 100%);
+    border-radius: 8px;
+    padding: 20px 12px 20px 16px;
+}
+.none {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+}
+.dashboard-card .prices-card {
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: 0.01em;
+} 
+.dashboard-card .prices-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+.dashboard-card .prices-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.dashboard-card .prices-box span {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 1px;
+    color: #9CCC65;
+}
+.dashboard-card .prices-card-container p:nth-child(2){
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 140%;
+    align-items: center;
+    color: #9C9DA3;
+}
+.dashboard-card .price-exchange {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: #6A6D76;
+}

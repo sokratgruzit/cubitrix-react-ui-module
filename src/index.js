@@ -7,3 +7,5 @@ export * from './components/MarketCard';
 export * from './components/Switches';
 export * from './components/TwoFactorVerification';
 export * from './components/Visual';
+export * from './components/DashbordBalance';
+export * from './components/DashboardCards'

@@ -121,7 +121,7 @@ export const TwoFactorVerification = (props) => {
                 <div className='verification'>
                     <div className='qrcode'>
                         <Canvas
-                            text={'rcoder'}
+                            text={props.qrcode}
                             options={{
                                 width: '100px',
                                 color: {
