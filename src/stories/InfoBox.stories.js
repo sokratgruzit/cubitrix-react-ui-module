@@ -1,5 +1,4 @@
 import { storiesOf } from "@storybook/react";
-import { title } from "process";
 import { InfoBox } from '../components/InfoBox/index';
 import img from "../assets/img/icon.png";
 import icon2 from "../assets/img/icon2.png";
@@ -9,6 +8,7 @@ import icon5 from "../assets/img/icon5.png";
 
 
 const stories = storiesOf('InfoBox', module);
+
 const cardInfoHeader = {
     title: "Account",
     lables: {
@@ -100,7 +100,7 @@ const question = {
 
 stories.add('InfoBox', () => {
     return (
-        <div>
+        <>
             <InfoBox
                 type='available'
                 active={true}
@@ -140,6 +140,6 @@ stories.add('InfoBox', () => {
                 active={true}
                 cardBody={question}
             />
-        </div>
+        </>
     )
 })

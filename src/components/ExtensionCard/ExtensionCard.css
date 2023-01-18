@@ -1,0 +1,77 @@
+.extension-card {
+    width: 508px;
+    background-color: rgba(255, 255, 255, 0.05);;
+    padding: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    backdrop-filter: blur(42.5px);
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+.trade .card-header, .loan .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.trade .extension-card-body, .loan .extension-card-body {
+    flex-direction: column;
+    display: flex;
+    gap: 6px;
+}
+.trade .extension-card-body-header, .loan .extension-card-body-header {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 25px;
+}
+.trade .extension-card-body-header h1 {
+    color: #3D5AFE;
+    font-size: 20px;
+}
+.loan .extension-card-body-header h1 {
+    font-size: 20px;
+}
+.loan .extension-card-body p {
+    color: #9C9DA3;
+}
+.extension-card .staking-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.staking-card-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.staking-card-header h1 {
+    font-size: 20px;
+}
+.extension-card .active {
+    opacity: 0;
+    transform: translateY(5px);
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+}
+.animation {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    opacity: 1;
+    transform: translateY(0);
+}
+.animation .card-header, .animation .staking-card-header {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    opacity: 1;
+    transform: translateY(0);
+    animation-delay: .1s;
+    transition-delay: .1s;
+}
+.animation .extension-card-body {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .2s;
+    animation-delay: .2s;
+}
