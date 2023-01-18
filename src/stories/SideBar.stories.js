@@ -248,6 +248,7 @@ stories.add("SideBar", () => {
           signIn={() => {
             console.log("sign in");
           }}
+          sideBarClose={() => setToggle((prev) => !prev)}
         />
       </SideBar>
     </div>

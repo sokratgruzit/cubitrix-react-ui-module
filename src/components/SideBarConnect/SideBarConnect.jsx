@@ -3,15 +3,16 @@ import React from "react";
 import { Visual } from "../Visual";
 import { Button } from "../Button";
 
-export const SideBarConnect = ({ ConnectOptions, address, signIn }) => {
+export const SideBarConnect = ({ ConnectOptions, signIn, sideBarClose }) => {
   let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
-
+  console.log(ConnectOptions[0].connect, "shit");
   return (
     <>
       <Visual
         label={"User Account"}
         element={"popup-header"}
         customStyles={{ width: "100%", maxWidth: "100%" }}
+        onClick={sideBarClose}
       />
       <div className="sidebar-body">
         {ConnectOptions.map((opt, index) => {
@@ -23,15 +24,10 @@ export const SideBarConnect = ({ ConnectOptions, address, signIn }) => {
               image={opt.image}
               svg={opt.svg}
               customStyles={{ width: "340px", maxWidth: "100%" }}
-              onClick={() => opt.connect}
+              onClick={opt.connect}
             />
           );
         })}
-        {/* <Visual
-          label={address}
-          element={"copy-address"}
-          customStyles={{ width: "340px", maxWidth: "100%" }}
-        /> */}
         <Visual
           label={"or"}
           element={"delimiter"}
