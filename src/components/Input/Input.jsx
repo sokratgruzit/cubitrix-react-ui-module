@@ -53,7 +53,7 @@ export const Input = props => {
         element = (
             <div onChange={props.onChange} style={props.customStyles} className='input-group'>
                 {props.label ? ( <p className='input-group-title font-12'>{props.label}<span className='font-12'>{props.subLabel}</span></p> ) : ''}
-                <input className='form-control' type='text' placeholder={props.placeholder} />
+                <input value={props.value} className='form-control' type='text' placeholder={props.placeholder} />
                 <span className=''>
                     {props.icon ? (
                         <svg className='input-group-icon' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
