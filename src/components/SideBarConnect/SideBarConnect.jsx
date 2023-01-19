@@ -4,8 +4,6 @@ import { Visual } from "../Visual";
 import { Button } from "../Button";
 
 export const SideBarConnect = ({ ConnectOptions, signIn, sideBarClose }) => {
-  let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
-  console.log(ConnectOptions[0].connect, "shit");
   return (
     <>
       <Visual

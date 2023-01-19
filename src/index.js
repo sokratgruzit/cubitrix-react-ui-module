@@ -9,3 +9,4 @@ export * from "./components/TwoFactorVerification";
 export * from "./components/Visual";
 export * from "./components/SideBar";
 export * from "./components/SideBarConnect";
+export * from "./components/SideBarWelcome";
