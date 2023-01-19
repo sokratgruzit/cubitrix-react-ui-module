@@ -150,6 +150,10 @@
 .img-btn:hover .arrow-svg {
   transform: translateX(5px);
 }
+.img-btn:hover .arrow-svg path {
+  stroke: #3d5afe;
+}
+
 .img-btn path {
 }
 .img-btn img {

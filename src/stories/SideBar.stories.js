@@ -4,8 +4,10 @@ import "../assets/css/main-theme.css";
 import { SideBar } from "../components/SideBar";
 import { Visual } from "../components/Visual";
 import { Button } from "../components/Button";
-// import { SideBarConnect } from "../components/SideBarConnect";
+import { SideBarConnect } from "../components/SideBarConnect";
 import { SideBarWelcome } from "../components/SideBarWelcome/SideBarWelcome";
+import { MetaMask } from "../assets/svg";
+import { SideBarAccount } from "../components/SideBarAccount";
 const stories = storiesOf("SideBar", module);
 
 stories.add("SideBar", () => {
@@ -20,7 +22,7 @@ stories.add("SideBar", () => {
           ConnectOptions={[
             {
               label: "Metamask",
-              image,
+              svg: <MetaMask />,
               connect: () => {
                 console.log("connect");
               },
@@ -47,6 +49,13 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         />
+        {/* <SideBarAccount
+          sideBarClose={() => setToggle((prev) => !prev)}
+          goBack={() => console.log("go back")}
+          response={"response"}
+          handlePersonalData={(formData) => console.log(formData)}
+          handleSecurityData={(formData) => console.log(formData)}
+        /> */}
       </SideBar>
     </div>
   );
