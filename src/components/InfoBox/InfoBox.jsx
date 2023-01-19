@@ -1,108 +1,99 @@
-import "./InfoBox.css";
+import './InfoBox.css';
+import { Table } from "../../components/Table";
+import { useState } from "react";
 
 export const InfoBox = (props) => {
-  return (
-    <div
-      className={`card ${props.bg} ${props.center} ${props.height} ${props.padding} ${props.rewardbox} ${props.anime}`}
-    >
-      {props.type === "avilable" ? (
-        <div className={`card-header anime-astaring-pos ${props.anime}`}>
-          <h1>{props.header.title}</h1>
-          <div>
-            <div>{props.header.lables.l1}</div>
-            <div>{props.header.lables.l2}</div>
-          </div>
-        </div>
-      ) : props.type === "unAvilable" ? (
-        <h1 className={`card-header-detail anime-astaring-pos ${props.anime}`}>
-          {props.header.title}
-        </h1>
-      ) : props.type === "connectWallet" ? (
-        <div className={`anime-astaring-pos ${props.anime}`}>
-          <img src={props.img} style={{ height: "75px", width: "104px" }} />
-        </div>
-      ) : props.type === "complete" ? (
-        <div className={`${props.center}`}>
-          <p className={`anime-astaring-pos ${props.anime}`}>
-            Complete the onboarding flow to start trading on COMPLEND
-          </p>
-          <div className={`anime-astaring-pos-three ${props.anime}`}>
-            <div className={`complate-btn`}>Complete Account</div>
-          </div>
-        </div>
-      ) : props.type === "rewardBox" ? (
-        props.cardBody.map((item) => {
-          return (
-            <div
-              className={`card-body display-flex anime-astaring-pos ${props.anime}`}
-            >
-              <div className="display-flex">
-                <div className={`anime-astaring-pos ${props.anime}`}>
-                  <img src={item.icon} alt="#" />
-                </div>
-                <div
-                  className={`list-group-item font-bigger anime-astaring-two ${props.anime}`}
-                >
-                  {item.title}
-                </div>
-              </div>
-              <p
-                className={`list-group-item font-bigger anime-astaring-pos-three ${props.anime}`}
-              >
-                {item.amount}
-              </p>
+
+    const [show, setSow] = useState(true);
+
+    return (
+        <>
+            <div style={props.customStyle} className={`card ${props.type} ${show ? props.active : ""}`}>
+                {props.type === "available" ? (
+                    <div className={`card-header card-header-active active`}>
+                        <h1>{props.header.title}</h1>
+                        <div>
+                            <div>{props.header.lables.l1}</div>
+                            <div>{props.header.lables.l2}</div>
+                        </div>
+                    </div>
+                ) : props.type === "unavailable" ? (
+                    <h1 className={`card-header card-header-active active`}>{props.header.title}</h1>
+                ) : props.type === "connect-wallet" ? (
+                    <div className={`card-header-active active`}>
+                        <img src={props.img} style={{ height: "75px", width: "104px" }} />
+                    </div>
+                ) : props.type === "complete" ? (
+                    <div className={`card-body`}>
+                        <p className={`card-header-active pharagrap-color active`}>Complete the onboarding flow to start trading on COMPLEND</p>
+                        <div className={`card-body-active active`}>
+                            <div className={`complate-btn`}>Complete Account</div>
+                        </div>
+                    </div>
+                ) : props.type === "verification" ? (
+                    <div className='card-body'>
+                        <img className='card-header-active active' src={props.cardBody.img} />
+                        <p className='card-body-active active'>{props.cardBody.p}</p>
+                    </div>
+                ) : props.type === "question" ? (
+                    <div className='card-body'>
+                        <p className='active card-header-active pharagrap-color'>{props.cardBody.quiestion}</p>
+                        <div className='display-flex card-body-active active'>
+                            <div className='complate-btn'>{props.cardBody.no}</div>
+                            <div className='complate-btn'>{props.cardBody.yes}</div>
+                        </div>
+                    </div>
+                ) : props.type === "reward-box" ? (
+                    props.cardBody.map((item) => {
+                        return (
+                            <div className={`card-body card-body-active active`}>
+                                <div className='display-flex'>
+                                    <div className={`card-header-active active`}>
+                                        <img src={item.icon} alt='#' />
+                                    </div>
+                                    <div className={`list-group-item font-16 card-body-active active`}>{item.title}</div>
+                                </div>
+                                <p className={`list-group-item font-16 card-footer-active active`}>{item.amount}</p>
+                            </div>
+                        )
+                    })
+                ) : ""
+                }
+                {props.type === "available" ? (
+                    props.cardBody.map((item) => {
+                        return (
+                            <div className={`card-body card-body-active active`}>
+                                <p className='list-group-item'>{item.title}</p>
+                                <p className='list-group-item'>{item.value}</p>
+                            </div>
+                        )
+                    })
+                ) : props.type === "unavailable" ? (
+                    props.cardBody.map((item) => {
+                        return (
+                            <div className={`card-body card-body-active active`}>
+                                <div className='card-unavilable-status'>
+                                    <p className='list-group-item'>{item.title}</p>
+                                    <div style={{ padding: item.taker === "" ? "0" : "1px 6px" }}>{item.taker}</div>
+                                </div>
+                                <p className='list-group-item'>{item.value}</p>
+                            </div>
+                        )
+                    })
+                ) : props.type === "connect-wallet" ? (
+                    <div className={`connec-tWallet-Body`}>
+                        <p className={`card-body-active active`}>Connect your Ethereum wallet to deposit funds & start trading.</p>
+                        <div className={`card-footer-active active`}>
+                            <div className={`connect-wallet-btn`}>Connect Wallet</div>
+                        </div>
+                    </div>
+                ) : ""
+                }
+                {props.type === "unavailable" ? (
+                    <div className={`unavailable-button card-footer-active active`}>Unavailable</div>
+                ) : ""}
             </div>
-          );
-        })
-      ) : (
-        ""
-      )}
-      {props.type === "avilable" ? (
-        props.cardBody.map((item) => {
-          return (
-            <div className={`card-body anime-astaring-pos-two ${props.anime}`}>
-              <p className="list-group-item">{item.title}</p>
-              <p className="list-group-item">{item.value}</p>
-            </div>
-          );
-        })
-      ) : props.type === "unAvilable" ? (
-        props.cardBody.map((item) => {
-          return (
-            <div
-              className={`card-body-unavilable anime-astaring-pos-two ${props.anime}`}
-            >
-              <div className="card-unavilable-status">
-                <p className="list-group-item">{item.title}</p>
-                <div style={{ padding: item.taker === "" ? "0" : "1px 6px" }}>
-                  {item.taker}
-                </div>
-              </div>
-              <p className="list-group-item">{item.value}</p>
-            </div>
-          );
-        })
-      ) : props.type === "connectWallet" ? (
-        <div className={`connec-tWallet-Body`}>
-          <p className={`anime-astaring-pos-two ${props.anime}`}>
-            Connect your Ethereum wallet to deposit funds & start trading.
-          </p>
-          <div className={`anime-astaring-pos-three ${props.anime}`}>
-            <div className={`connect-wallet-btn`}>Connect Wallet</div>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-      {props.type === "unAvilable" ? (
-        <div
-          className={`Unavailable-button anime-astaring-pos-three ${props.anime}`}
-        >
-          Unavailable
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
-  );
-};
+            <button style={{ backgroundColor: "red", height: "50px", width: "100px" }} onClick={() => { setSow(!show) }}>btn</button>
+        </>
+    )
+}

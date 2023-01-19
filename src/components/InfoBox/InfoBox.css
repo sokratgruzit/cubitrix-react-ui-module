@@ -1,50 +1,66 @@
-
 .card {
     height: auto;
-    width: 100%;
+    width: 325px;
     border-radius: 18px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: 20px;
     position: relative;
     border: 1px solid red;
     opacity: 0;
     transform: translateY(20px);
     transition: .6s;
+    background-color: #070B1A;
 }
-.padding-bottom {
+.available {
+    background-color: #3D5AFE;
+}
+.available .card-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+.available .card-header h1 {
+    font-size: 16px;
+}
+.available .card-header div {
+    display: flex;
+    gap: 6px;
+}
+.available .card-header div div {
+    padding: 5.5px 12px;
+    height: 32px;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    transition: .6s;
+}
+.available .card-header div div:hover {
+    cursor: pointer;
+    color: #3D5AFE;
+    transition: .6s;
+    background-color: white;
+}
+.unavailable {
     padding-bottom: 55px;
 }
-.height {
-    min-height: 184px;
+.unavailable .card-header {
+    font-size: 16px;
+    margin-bottom: 6px;
+    padding: 5.5px 0;
 }
-.card-center {
-    align-items: center;
-    text-align: center;
-    gap: 5px;
-    padding: 16px 40px;
-}
-.connec-tWallet-Body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-.connect-wallet-btn {
-    cursor: pointer;
-    border-radius: 12px;
-    padding: 8px 30px;
-    border-radius: 32px;
-    transition: .6s;
-    border: 1px solid #070B1A;
-}
-.connect-wallet-btn:hover {
-    border: 1px solid #3D5AFE;
-}
-.card-unavilable-status {
+.unavailable .card-unavilable-status {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+.unavailable .list-group-item {
+    color: #6A6D76;
 }
 .card-unavilable-status div {
     background-color: rgba(255, 255, 255, 0.1);
@@ -56,87 +72,7 @@
     margin-bottom: 6px;
     color:  #6A6D76;
 }
-.connec-tWallet-Body div {
-    color: #3D5AFE;
-    font-size: 14px;
-}
-.card-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6px;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: .6s;
-    animation-delay: .1s;
-    transition-delay: .1s;
-}
-.card-header-detail {
-    font-size: 16px;
-    margin-bottom: 6px;
-    padding: 5.5px 0;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: .6s;
-    animation-delay: .1s;
-    transition-delay: .1s;
-}
-.card-header h1 {
-    font-size: 16px;
-}
-.card-header div {
-    display: flex;
-    gap: 6px;
-}
-.card-header div div {
-    padding: 5.5px 12px;
-    height: 32px;
-    border-radius: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid white;
-    transition: .8s;
-}
-.card-header div div:hover {
-    cursor: pointer;
-    color: #3D5AFE;
-    transition: .6s;
-    background-color: white;
-}
-.darck {
-    background-color: #070B1A;
-}
-.blue {
-    background-color: #3D5AFE;
-}
-.card-body {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    opacity: 0;
-    transition: .6s;
-    transform: translateY(5px);
-    animation-delay: .2s;
-    transition-delay: .2s;
-}
-.list-group-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 6px;
-    font-size: 14px;
-    padding: 1px 0;
-}
-.card-body-unavilable {
-    display: flex;
-    justify-content: space-between;
-}
-.card-body-unavilable .list-group-item {
-    color: #6A6D76;
-}
-.Unavailable-button {
+.unavailable .unavailable-button {
     background-color: #393C48;
     border-radius: 18px;
     height: 44px;
@@ -149,46 +85,55 @@
     bottom: 0;
     left: 0;
 }
-.font .list-group-item {
-    color: #6A6D76;
-}
-.item-Taker {
-    display: flex;
-    gap: 12px;
-}
-.item-Taker span {
-    color: #6A6D76;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2px 6px;
-    font-size: 10px;
-    text-align: center;
-}
-.complete-account {
-    display: flex;
-    justify-content: center;
+.connect-wallet {
     align-items: center;
-    flex-direction: column;
     text-align: center;
-    gap: 12px;
-    margin: 20px 0;
+    gap: 5px;
+    padding: 16px 40px;
 }
-.complete-account p {
-    color: #6A6D76;
+.connect-wallet .connec-tWallet-Body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
 }
-.complate-btn {
+.connect-wallet .connect-wallet-btn {
+    cursor: pointer;
+    border-radius: 12px;
+    padding: 8px 30px;
+    border-radius: 32px;
+    transition: .6s;
+    border: 1px solid #070B1A;
+}
+.connect-wallet .connect-wallet-btn:hover {
+    border: 1px solid #3D5AFE;
+}
+.connect-wallet .connec-tWallet-Body div {
+    color: #3D5AFE;
+    font-size: 14px;
+}
+.complete .complate-btn, .question .complate-btn {
     background-color: #3D5AFE;
     padding: 12px 30px;
     border-radius: 32px;
-    transition: .8s;
+    transition: .6s;
 }
-.complate-btn:hover {
+.question {
+    padding: 20px 47.5px;
+}
+.question .complate-btn:hover {
     cursor: pointer;
     color: #3D5AFE;
-    transition: .8s;
+    transition: .6s;
     background-color: white;
 }
-.rewardBox {
+.complete .complate-btn:hover {
+    cursor: pointer;
+    color: #3D5AFE;
+    transition: .6s;
+    background-color: white;
+}
+.reward-box {
     width: 508px;
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -196,35 +141,75 @@
     display: flex;
     justify-content: space-between;
 }
-.display-flex {
+.card .card-body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.card .display-flex {
     display: flex;
     gap: 12px;
 }
-.font-bigger {
-    font-size: 16px;
+.card .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    font-size: 14px;
+    padding: 1px 0;
 }
-.anime-astaring-pos {
+.card .item-Taker {
+    display: flex;
+    gap: 12px;
+}
+.card .item-Taker span {
+    color: #6A6D76;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    font-size: 10px;
+    text-align: center;
+}
+.complete .card-body, .verification .card-body, .question .card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+}
+.card .pharagrap-color {
+    color: #6A6D76;
+}
+.card .active {
     opacity: 0;
-    transition: .6s;
     transform: translateY(5px);
-    animation-delay: .1s;
-    transition-delay: .1s;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
 }
-.anime-astaring-pos-two {
-    opacity: 0;
-    transition: .6s;
-    transform: translateY(5px);
-    animation-delay: .2s;
-    transition-delay: .2s;
-}
-.anime-astaring-pos-three {
-    opacity: 0;
-    transition: .6s;
-    transform: translateY(5px);
-    animation-delay: .3s;
-    transition-delay: .3s;
-}
-.animation-one {
+.animation {
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
     opacity: 1;
     transform: translateY(0);
 }
+.animation .card-header-active {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    transform: translateY(0);
+    animation-delay: .1s;
+    transition-delay: .1s;
+}
+.animation .card-body-active {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    transform: translateY(0);
+    animation-delay: .2s;
+    transition-delay: .2s;
+}
+.animation .card-footer-active {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    transform: translateY(0);
+    animation-delay: .3s;
+    transition-delay: .3s;
+}
+

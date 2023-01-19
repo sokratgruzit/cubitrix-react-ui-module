@@ -15,21 +15,14 @@
   width: 100%;
   padding: 15px;
   align-items: center;
+  gap: 3;
 }
 .th {
-  width: 15.5%;
   color: #9c9da3;
 }
-.td {
-  width: 16%;
-}
-.table:nth-child(even) {
-  background: rgba(255, 255, 255, 0.05);
-}
-.btn-adjust {
-  margin-left: auto;
+.td,.th {
+  height: 80px;
   display: flex;
-  gap: 20px;
 }
 
 @media (max-width: 1023px) {

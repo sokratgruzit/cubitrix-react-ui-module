@@ -1,0 +1,12 @@
+.admin-container {
+    display: flex;
+    height: calc(100vh - 70px);
+    /*background: red;*/
+    width: 100%;
+}
+.admin-sidebar {
+    width: 240px;
+}
+.admin-content {
+    width: calc(100% - 240px);
+}
