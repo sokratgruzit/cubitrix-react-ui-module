@@ -62,8 +62,8 @@ export const Visual = (props) => {
           <path
             d="M13.3334 10.7498V14.2498C13.3334 17.1665 12.1667 18.3332 9.25008 18.3332H5.75008C2.83341 18.3332 1.66675 17.1665 1.66675 14.2498V10.7498C1.66675 7.83317 2.83341 6.6665 5.75008 6.6665H9.25008C12.1667 6.6665 13.3334 7.83317 13.3334 10.7498Z"
             stroke="white"
-            stroke-Width="1.5"
-            stroke-Linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
