@@ -11,12 +11,12 @@ export const AdminPanel = props => {
         },
         {
             name: "From",
-            width: 20,
+            width: 15,
             id: 1,
         },
         {
             name: "To",
-            width: 20,
+            width: 15,
             id: 2,
         },
         {
@@ -26,7 +26,7 @@ export const AdminPanel = props => {
         },
         {
             name: "Domination",
-            width: 15,
+            width: 10,
             id: 4,
         },
         {
@@ -45,9 +45,9 @@ export const AdminPanel = props => {
     let td = [
         {
             id:12123,
-            hash: "0xae0cf2498c2342234",
-            from: "0xae0cf2498c0xae0cf2498c",
-            to: "0xae0cf2498c0xae0cf2498c",
+            hash: "0xae0cf2498c23422340xae0cf2498c2342234",
+            from: "0xae0cf2498c0xae0cf2498c0xae0cf2498c2342234",
+            to: "0xae0cf2498c0xae0cf2498c0xae0cf2498c2342234",
             amount: "$123, 241, 241, 423.8",
             domination: "1,132,000.1",
             date: "01.02.2023",
