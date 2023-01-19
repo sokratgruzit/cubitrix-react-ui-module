@@ -24,7 +24,7 @@ stories.add("Input", (props) => {
   const [value, setValue] = useState('')
 
   const changeHandler = (e) => {
-    console.log(e.target.value, 'change handler')
+    // console.log(e.target.value, 'change handler')
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -43,12 +43,13 @@ stories.add("Input", (props) => {
     >
       <Input
         type={"default"}
+        value={value}
         icon={true}
         placeholder={"default input"}
         label={''}
         subLabel={''}
         onChange={changeHandler}
-        value={value}
+        // value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -71,6 +72,7 @@ stories.add("Input", (props) => {
         onChange={changeHandler}
         onClick={btnHandler}
         inputFrame={'none'}
+        icon={true}
         customStyles={{ width: '420px'}}
       /> 
       <Input
@@ -80,18 +82,34 @@ stories.add("Input", (props) => {
         placeholder={'0.0000'}
         onChange={changeHandler}
         btns={false}
+        icon={true}
         onClick={btnHandler}
         inputFrame={'eth'}
         customStyles={{ width: '420px'}}
       /> 
-      {/* <Input
+      <Input
         type={"lable-input-type2"}
         label={'Label'}
         subLabel={'sub label'}
         placeholder={'0.0000'}
+        icon={false}
         customStyles={{ width: '320px'}}
         onChange={changeHandler}
-      />  */}
+      />
+      <Input 
+        type={'label-input-phone-number'}
+        label={'your text'}
+        onChange={changeHandler}
+        customStyles={{width: '400px'}}
+      />
+      
+      {/* <Input
+        type={"lable-input-select"}
+        icon={false}
+        status={"warning"}
+        color={"#FFA726"}
+        customStyles={{ width: "320px" }}
+      /> */}
       {/* <Input
         type={"default"}
         icon={true}
@@ -140,6 +158,10 @@ stories.add("Input", (props) => {
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
+       <Input
+        type={'label-input-upload'}
+        customStyles={{width: 'fit-content'}}
+       />
     </div>
   );
 });

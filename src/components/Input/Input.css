@@ -7,6 +7,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .form-control {
     width: 100%;
@@ -16,6 +17,7 @@
     border-radius: 6px;
     color: #fff;
     text-transform: capitalize;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .input-group-icon {
     position: absolute;
@@ -26,16 +28,20 @@
 }
 .form-control:hover {
     border: 1px solid rgba(61, 90, 254, 0.6);
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .form-control:focus {
     border: 1px solid #3D5AFE;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .success {
     border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .disabled {
     opacity: 0.2;
     pointer-events: none;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 /* end of default input */
 
@@ -146,28 +152,40 @@
 }
 
 /* select input */
-.form-select {
+.select-control {
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 11.5px 16px 11.5px 16px;
-    background-color: #070B1A;
-    border: 1px solid #1F2330;
-    border-radius: 6px;
-    color: #fff;
-    text-transform: capitalize;
+    gap: 13px;
     cursor: pointer;
 }
-.selected {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-}
-.status-group {
+.select-prefix {
     display: flex;
     align-items: center;
-    gap: 5px;
-    text-transform: capitalize;
+    gap: 7px;
+    width: calc(13% - 3.5px);
 }
+.select-body {
+    width: calc(10% - 3.5px);
+}
+.select-sufix {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.number-control {
+    background-color: transparent;
+    border: none;
+    width: auto;
+    /* width: 100%; */
+}
+.number-control[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+/* .select-sufix p span {
+    color: #6A6D76;
+    margin-right: 7px;
+} */
 /* end of select input */
 
 /* upload box */

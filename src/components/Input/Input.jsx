@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { HelpText } from '../HelpText';
 import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
+import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 
 export const Input = props => {
     const [file, setFile] = useState();
     const [update, setUpdate] = useState(false);
 
-    console.log(props.btns)
     function handleChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -18,9 +18,9 @@ export const Input = props => {
 
     if(props.type === 'default') {
         element = (
-            <div onChange={props.onChange} style={props.customStyles} className='input-group'>
+            <div  style={props.customStyles} className='input-group'>
                 {props.label ? ( <p className='input-group-title font-12'>{props.label}<span className='font-12'>{props.subLabel}</span></p> ) : ''}
-                <input value={props.value} className='form-control' type='text' placeholder={props.placeholder} />
+                <input onChange={props.onChange} value={props.value} style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}} className='form-control' type='text' placeholder={props.placeholder} />
                 <span className=''>
                     {props.icon ? (
                         <svg className='input-group-icon' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,6 +29,7 @@ export const Input = props => {
                         </svg>
                     ) : ''}
                 </span>
+                <input  type='password' placeholder='password' className='form-control' />
             </div>
         )
     }
@@ -53,7 +54,7 @@ export const Input = props => {
                 </div>
                 <div className='input-form'>
                     <div className='input-form-inner'>
-                        <input  className='form-control' type='text' placeholder={props.placeholder} />
+                        <input style={props.icon ? {paddingRight: '55px'} : {paddingRight: '16px'}} className='form-control' type='text' placeholder={props.placeholder} />
                         <div className='input-group-frame'>{props.inputFrame}</div>
                     </div>
                     {!props.btns  ? (
@@ -75,13 +76,13 @@ export const Input = props => {
         element = (
             <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>
                 <p className='font-12 input-group-text'>{props.subLabel}<span className='input-group-frame-secondary'>{props.subLabel}</span></p>
-                <input className='form-control' type='text' placeholder={props.placeholder} />
+                <input style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}}  className='form-control' type='text' placeholder={props.placeholder} />
             </div>
         );
     }
     if(props.type === 'lable-input-select') {
         element = (
-            <div style={props.customStyles} className='select-group'>
+            <div onChange={props.onChange} style={props.customStyles} className='select-group'>
                 <p className='input-group-title font-12'>Time In Force</p>
                 <div className='form-select'>
                     <div className='selected option'>
@@ -90,12 +91,15 @@ export const Input = props => {
                             <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                  
                 </div>
                 <div>
-                    <div className='option'>option 1</div>
-                    <div className='option'>option 1</div>
-                    <div className='option'>option 1</div>
+                    {/* <Dropdown
+                        data={data}
+                        type={"dropdown"}
+                        dropdown={"dropdown"}
+                        onClick={hendlerClick}
+                        active={active}
+                    /> */}
                 </div>
                 <HelpText
                     icon={true}
@@ -105,17 +109,31 @@ export const Input = props => {
                 />
             </div>
         )
+        // im waiting for guram here
     }
     if(props.type === 'label-input-phone-number') {
         element = (
-            <div style={props.customStyles} className='input-group-item'>
-                <p className='font-12'>Mobile Number</p>
-                <div className='input-group-flag'>
+            <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>
+                <p className='font-12'>{props.label}</p>
+                <div className='form-control select-control'>
+                    <div className='select-prefix'>
+                        <div>  
+                            <img src={testImg} alt="country" />                      
+                        </div>
+                        <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </div>
+                    <span className='select-body'>+88</span>
+                    <div className='select-sufix'>
+                        {/* <p><span>+88</span>333 333 333</p> */}
+                        <input className='number-control' type='number' />
+                    </div>
                 </div>
-                    {/* <img src='../italy.png' alt='flag' /> 
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13 9.5L10.5303 11.9697C10.2386 12.2614 9.76136 12.2614 9.4697 11.9697L7 9.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                {/* <img src='../italy.png' alt='flag' /> 
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 9.5L10.5303 11.9697C10.2386 12.2614 9.76136 12.2614 9.4697 11.9697L7 9.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
                 </div>
                 <p><span>+42</span>933 093 093</p>
                 <input className='form-control' type='text' placeholder='000000000' /> */}
@@ -124,15 +142,13 @@ export const Input = props => {
                 {/* <input className='form-control' type="text" name="country code"  value="+91" size="2"/>   
                 <input className='form-control' type="text" name="phone" size="10"/>
                 <input className='form-control' type='country' /> */}
-                <form>
+                {/* <form>
                 <label>   
                     Phone :  
                 </label> 
                 <input type="text" name="country code"  value="+91" size="2"/>   
-                {/* <input type="text" name="phone" size="10"/>  */}
-                </form>
-                
-
+                <input type="text" name="phone" size="10"/> 
+                </form> */}
             </div>
         )
     }
