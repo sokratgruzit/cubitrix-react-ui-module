@@ -5,9 +5,75 @@ import { Switches } from '../Switches';
 import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 
+let countryData = [
+    {
+      id: 1,
+      title: "The United Kingdom ",
+      image: "static/media/src/assets/img/country/kingdom.png",
+      numbering: "(+78)",
+    },
+    {
+      id: 2,
+      title: "Brazil",
+      image: "static/media/src/assets/img/country/brazil.png",
+      numbering: "(+76)",
+    },
+    {
+      id: 3,
+      title: "Australia",
+      image: "static/media/src/assets/img/country/australia.png",
+      numbering: "(+46)",
+    },
+    {
+      id: 4,
+      title: "Canada",
+      image: "static/media/src/assets/img/country/canada.png",
+      numbering: "(+918)",
+    },
+    {
+      id: 5,
+      title: "Italy",
+      image: "static/media/src/assets/img/country/italy.png",
+      numbering: "(+178)",
+    },
+    {
+      id: 6,
+      title: "Mexico",
+      image: "static/media/src/assets/img/country/kingdom.png",
+      numbering: "(+78)",
+    },
+    {
+      id: 7,
+      title: "The United Kingdom ",
+      image: "static/media/src/assets/img/country/germany.png",
+      numbering: "(+78)",
+    },
+    {
+      id: 8,
+      title: "The United Kingdom ",
+      image: "static/media/src/assets/img/country/brazil.png",
+      numbering: "(+78)",
+    },
+    {
+      id: 9,
+      title: "The United Kingdom ",
+      image: "static/media/src/assets/img/country/canada.png",
+      numbering: "(+78)",
+    },
+  ];
+
 export const Input = props => {
     const [file, setFile] = useState();
     const [update, setUpdate] = useState(false);
+    const [active, setActive] = useState(false);
+
+    const activeHandler = () => {
+        if(!active) {
+            setActive(true)
+        } else {
+            setActive(false)
+        }
+    }
 
     function handleChange(e) {
         console.log(e.target.files);
@@ -18,7 +84,7 @@ export const Input = props => {
 
     if(props.type === 'default') {
         element = (
-            <div  style={props.customStyles} className='input-group'>
+            <div  style={props.customStyles} className={`${props.className} input-group`}>
                 {props.label ? ( <p className='input-group-title font-12'>{props.label}<span className='font-12'>{props.subLabel}</span></p> ) : ''}
                 <input onChange={props.onChange} value={props.value} style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}} className='form-control' type='text' placeholder={props.placeholder} />
                 <span className=''>
@@ -29,13 +95,12 @@ export const Input = props => {
                         </svg>
                     ) : ''}
                 </span>
-                <input  type='password' placeholder='password' className='form-control' />
             </div>
         )
     }
     if(props.type === 'lable-input-type1') {
         element = (
-            <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>
+            <div style={props.customStyles} className='input-group-item'>
                 <div className='input-group-text-sc'>
                     <p className='font-12 input-group-title'>
                         {props.label}
@@ -54,7 +119,7 @@ export const Input = props => {
                 </div>
                 <div className='input-form'>
                     <div className='input-form-inner'>
-                        <input style={props.icon ? {paddingRight: '55px'} : {paddingRight: '16px'}} className='form-control' type='text' placeholder={props.placeholder} />
+                        <input onChange={props.onChange} style={props.icon ? {paddingRight: '55px'} : {paddingRight: '16px'}} className='form-control' type='text' placeholder={props.placeholder} />
                         <div className='input-group-frame'>{props.inputFrame}</div>
                     </div>
                     {!props.btns  ? (
@@ -74,9 +139,9 @@ export const Input = props => {
     }
     if(props.type === 'lable-input-type2') {
         element = (
-            <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>
+            <div style={props.customStyles} className='input-group-item'>
                 <p className='font-12 input-group-text'>{props.subLabel}<span className='input-group-frame-secondary'>{props.subLabel}</span></p>
-                <input style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}}  className='form-control' type='text' placeholder={props.placeholder} />
+                <input onChange={props.onChange} style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}}  className='form-control' type='text' placeholder={props.placeholder} />
             </div>
         );
     }
@@ -113,73 +178,63 @@ export const Input = props => {
     }
     if(props.type === 'label-input-phone-number') {
         element = (
-            <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>
+            <div style={props.customStyles} className='input-group-item'>
                 <p className='font-12'>{props.label}</p>
                 <div className='form-control select-control'>
-                    <div className='select-prefix'>
+                    <div onClick={() => {
+                        activeHandler()
+                    }} className='select-prefix'>
                         <div>  
                             <img src={testImg} alt="country" />                      
                         </div>
-                        <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg className={`${active ? 'rotate' : ''} ${'arrow'}`} width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
                     <span className='select-body'>+88</span>
                     <div className='select-sufix'>
-                        {/* <p><span>+88</span>333 333 333</p> */}
-                        <input className='number-control' type='number' />
+                        <input  onChange={props.onChange} className='number-control' type='number' />
                     </div>
                 </div>
-                {/* <img src='../italy.png' alt='flag' /> 
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 9.5L10.5303 11.9697C10.2386 12.2614 9.76136 12.2614 9.4697 11.9697L7 9.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <div className={`${'hidden'} ${active ? 'visible' : ''}`}>
+                    <Dropdown
+                        type={"country"}
+                        countryData={countryData}
+                        dropdownCountry={"dropdown-country"}
+                        active={props.active}
+                    />
                 </div>
-                <p><span>+42</span>933 093 093</p>
-                <input className='form-control' type='text' placeholder='000000000' /> */}
-                {/* <input className='form-control' type='tel' />
-                 */}
-                {/* <input className='form-control' type="text" name="country code"  value="+91" size="2"/>   
-                <input className='form-control' type="text" name="phone" size="10"/>
-                <input className='form-control' type='country' /> */}
-                {/* <form>
-                <label>   
-                    Phone :  
-                </label> 
-                <input type="text" name="country code"  value="+91" size="2"/>   
-                <input type="text" name="phone" size="10"/> 
-                </form> */}
             </div>
         )
     }
     if(props.type === 'label-input-upload') {
         element = (
             <div style={props.customStyles} className='upload-group'>
-                    <div className='upload-group-title'>
-                        <p className='font-12'>Upload Image</p>
-                        <p  className='font-12'>Delete avatar</p>
+                <div className='upload-group-title'>
+                    <p className='font-12'>Upload Image</p>
+                    <p  className='font-12'>Delete avatar</p>
+                </div>
+                <div className='upload-group-inner'>
+                    <div className='upload-group-placeholder'>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clipPath="url(#clip0_329_8860)">
+                                <path d="M18.148 7.18801C17.707 7.08901 17.341 6.80901 17.147 6.42101C15.533 3.19801 12.046 1.47301 8.472 2.14301C5.337 2.72401 2.803 5.22201 2.166 8.36001C1.976 9.29301 1.948 10.233 2.083 11.156C2.166 11.723 2.025 12.229 1.697 12.544C0.604 13.587 0.001 14.99 0 16.495C0 19.631 2.364 21.995 5.5 21.995H16.236C20.367 21.995 23.847 18.761 23.995 14.784C24.129 11.172 21.67 7.97701 18.148 7.18701V7.18801ZM16.236 20.996H5.5C2.893 20.996 1 19.103 1 16.497C1.001 15.268 1.494 14.121 2.389 13.267C2.954 12.726 3.204 11.905 3.074 11.012C2.956 10.204 2.981 9.37901 3.148 8.56001C3.704 5.81801 5.918 3.63401 8.656 3.12601C9.104 3.04301 9.551 3.00301 9.991 3.00301C12.628 3.00301 15.044 4.45301 16.254 6.86901C16.584 7.52701 17.194 7.99901 17.931 8.16501C20.983 8.84901 23.113 11.617 22.996 14.748C22.869 18.193 19.837 20.996 16.237 20.996H16.236ZM15.267 12.147C15.462 12.342 15.462 12.659 15.267 12.854C15.169 12.952 15.041 13 14.913 13C14.785 13 14.657 12.951 14.559 12.854L11.998 10.293V17.5C11.998 17.776 11.774 18 11.498 18C11.222 18 10.998 17.776 10.998 17.5V10.293L8.437 12.854C8.242 13.049 7.925 13.049 7.73 12.854C7.535 12.659 7.535 12.342 7.73 12.147L10.437 9.44001C10.68 9.19801 10.989 9.08101 11.305 9.03901C11.364 9.01401 11.429 9.00001 11.497 9.00001C11.565 9.00001 11.63 9.01401 11.689 9.03901C12.006 9.08001 12.315 9.19701 12.558 9.44001L15.265 12.147H15.267Z" fill="#9C9DA3"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_329_8860">
+                                    <rect width="24" height="24" fill="white"/>
+                                </clipPath>
+                            </defs>
+                        </svg>
                     </div>
-                    <div className='upload-group-inner'>
-                        <div className='upload-group-placeholder'>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clipPath="url(#clip0_329_8860)">
-                                    <path d="M18.148 7.18801C17.707 7.08901 17.341 6.80901 17.147 6.42101C15.533 3.19801 12.046 1.47301 8.472 2.14301C5.337 2.72401 2.803 5.22201 2.166 8.36001C1.976 9.29301 1.948 10.233 2.083 11.156C2.166 11.723 2.025 12.229 1.697 12.544C0.604 13.587 0.001 14.99 0 16.495C0 19.631 2.364 21.995 5.5 21.995H16.236C20.367 21.995 23.847 18.761 23.995 14.784C24.129 11.172 21.67 7.97701 18.148 7.18701V7.18801ZM16.236 20.996H5.5C2.893 20.996 1 19.103 1 16.497C1.001 15.268 1.494 14.121 2.389 13.267C2.954 12.726 3.204 11.905 3.074 11.012C2.956 10.204 2.981 9.37901 3.148 8.56001C3.704 5.81801 5.918 3.63401 8.656 3.12601C9.104 3.04301 9.551 3.00301 9.991 3.00301C12.628 3.00301 15.044 4.45301 16.254 6.86901C16.584 7.52701 17.194 7.99901 17.931 8.16501C20.983 8.84901 23.113 11.617 22.996 14.748C22.869 18.193 19.837 20.996 16.237 20.996H16.236ZM15.267 12.147C15.462 12.342 15.462 12.659 15.267 12.854C15.169 12.952 15.041 13 14.913 13C14.785 13 14.657 12.951 14.559 12.854L11.998 10.293V17.5C11.998 17.776 11.774 18 11.498 18C11.222 18 10.998 17.776 10.998 17.5V10.293L8.437 12.854C8.242 13.049 7.925 13.049 7.73 12.854C7.535 12.659 7.535 12.342 7.73 12.147L10.437 9.44001C10.68 9.19801 10.989 9.08101 11.305 9.03901C11.364 9.01401 11.429 9.00001 11.497 9.00001C11.565 9.00001 11.63 9.01401 11.689 9.03901C12.006 9.08001 12.315 9.19701 12.558 9.44001L15.265 12.147H15.267Z" fill="#9C9DA3"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_329_8860">
-                                        <rect width="24" height="24" fill="white"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </div>
-                        <div className='upload-group-text'>
-                            <p>Upload a profile picture</p>
-                            <p className='upload-btn'>Browse</p>
-                            <input className='upload-control' type="file" onChange={handleChange} onClick={() => setUpdate(true)} />
-                            <img className='avatar-sm' src={file} />
-                        </div>
+                    <div  onChange={props.onChange} className='upload-group-text'>
+                        <p>Upload a profile picture</p>
+                        <p className='upload-btn'>Browse</p>
+                        <input className='upload-control' type="file" onChange={handleChange} onClick={() => setUpdate(true)} />
+                        <img className='avatar-sm' src={file} />
                     </div>
                 </div>
+            </div>
         )
     }
     

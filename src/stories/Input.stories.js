@@ -52,6 +52,7 @@ stories.add("Input", (props) => {
         // value={value}
         customStyles={{ width: "500px" }}
       />
+      
       <Input
         type={"default"}
         icon={false}
@@ -158,10 +159,10 @@ stories.add("Input", (props) => {
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
-       <Input
+       {/* <Input
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
-       />
+       /> */}
     </div>
   );
 });
