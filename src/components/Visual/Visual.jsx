@@ -44,7 +44,7 @@ export const Visual = (props) => {
     element = (
       <div className={`delimiter`} style={props.customStyles}>
         <div className={`line line1`}></div>
-        <span className={`font-14`}>{props.label}</span>
+        <span className={`font-16`}>{props.label}</span>
         <div className={`line line2`}></div>
       </div>
     );
