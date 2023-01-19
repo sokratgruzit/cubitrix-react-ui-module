@@ -55,8 +55,8 @@ stories.add("Input", (props) => {
       <Input
         type={"default"}
         icon={false}
-        label={'your label'}
-        subLabel={'subLab'}
+        label={'label'}
+        subLabel={'sub lab'}
         placeholder={"default input"}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
