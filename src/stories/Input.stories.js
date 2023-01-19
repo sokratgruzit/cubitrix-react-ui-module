@@ -21,6 +21,7 @@ let btnArr = [
 ];
 
 stories.add("Input", (props) => {
+  const [value, setValue] = useState('')
 
   const changeHandler = (e) => {
     console.log(e.target.value, 'change handler')
@@ -29,8 +30,6 @@ stories.add("Input", (props) => {
     console.log('click me, click me mf')
     let value = e.target.value
     console.log(value, 'hi')
-    // console.log(item.value)
-
   }
 
   return (
@@ -71,9 +70,6 @@ stories.add("Input", (props) => {
         btns={btnArr}
         onChange={changeHandler}
         onClick={btnHandler}
-        // toggle={true}
-        // value={'921301923'}
-        // toggleTitle={'Slider'}
         inputFrame={'none'}
         customStyles={{ width: '420px'}}
       /> 
