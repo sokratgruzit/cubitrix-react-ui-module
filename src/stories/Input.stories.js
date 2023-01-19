@@ -48,7 +48,7 @@ stories.add("Input", (props) => {
         label={''}
         subLabel={''}
         onChange={changeHandler}
-        value={'123'}
+        value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
