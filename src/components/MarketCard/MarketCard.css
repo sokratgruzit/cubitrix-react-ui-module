@@ -32,6 +32,9 @@
     transform: scale(.9);
     opacity: 0;
 }
+.market-card-logo img {
+    height: 25px;
+}
 .market-card-head.active .market-card-logo,.market-card-item .market-card-logo{
     transform: scale(1);
     opacity: 1;

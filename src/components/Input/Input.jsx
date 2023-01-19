@@ -32,7 +32,6 @@ export const Input = props => {
             </div>
         )
     }
-
     if(props.type === 'lable-input-type1') {
         element = (
             <div onChange={props.onChange} style={props.customStyles} className='input-group-item'>

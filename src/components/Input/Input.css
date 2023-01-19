@@ -413,3 +413,36 @@ select input
     gap: 10px;
     margin-top: 5px;
 } */
+
+.stake-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.stake-input-container input {
+    width: 100%;
+    padding: 11.5px 16px 11.5px 16px;
+    background-color: #070B1A;
+    border: 1px solid #1F2330;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: capitalize;   
+}
+
+.stake-input-container input:hover {
+    border: 1px solid rgba(61, 90, 254, 0.6);
+}
+.stake-input-container input:focus {
+    border: 1px solid #3D5AFE;
+}
+
+.stake-input-icon {
+    position: absolute;
+    top: 32px;
+    right: 11.5px;
+    width: 24px;
+    height: 24px;
+    text-decoration: underline;
+}

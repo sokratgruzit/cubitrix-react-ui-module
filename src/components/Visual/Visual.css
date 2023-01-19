@@ -1,0 +1,47 @@
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0px 20px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.popup-header svg {
+  cursor: pointer;
+}
+.popup-header path {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.popup-header svg:hover path {
+  stroke: #fff;
+}
+.delimiter {
+  display: flex;
+  align-items: center;
+}
+.delimiter .line {
+  height: 1px;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+.copy-address {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.copy-address-text {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  max-width: calc(100% - 30px);
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  color: #9c9da3;
+}
+.copy-address path {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.copy-address:hover path {
+  stroke: #3d5afe;
+}
+.copy-address:hover .copy-address-text {
+  color: #fff;
+}
