@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CoinInfoBar.css";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { AddSquareIcon, DragIcon } from '../../assets/svgs'
+import { AddSquareIcon, DragIcon, EthIcon } from '../../assets/svgs'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css'
@@ -86,7 +86,20 @@ export const CoinInfoBar = (props) => {
               <div className="coin-info-list__item font-12" key={item.name}>
                 <p>{item.name}</p>
                 <p>
-                  {item.value}
+                  {/* {item.value} */}
+                  {item.name === 'Index Price' && `$${item.value}`}
+                  {item.name === 'Oracle Price' && `$${item.value}`}
+                  {item.name === '24h Change' && `$${item.value}`}
+                  {item.name === '24h Volume' && `$${item.value}`}
+                  {item.name === 'Open Interest' && (
+                    <span>
+                      {item.value}
+                      <EthIcon />
+                    </span>
+                  )}
+                  {item.name === '1h Funding' && `${item.value}`}
+                  {item.name === '24h Trade' && `${item.value}`}
+                  {item.name === 'Next Funding' && `${item.value}`}
                 </p>
               </div>
             </SwiperSlide>
