@@ -11,7 +11,7 @@ export const Dropdown = (props) => {
                 </h1>
                 {props.countryData.map((item, index) => {
                     return (
-                        <div key={index} className="dropdown-menu-country">
+                        <div onClick={props.onClick} key={index} className="dropdown-menu-country">
                             <div className="dropdown-item-country">
                                 <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
                                 <p>{item.title}</p>
@@ -34,12 +34,11 @@ export const Dropdown = (props) => {
                             {item.list.map((item, index) => {
                                 return (
                                     <div key={index} className="dropdown-item" onClick={props.onClick}>
-                                        {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                                         <span className={item.id < 3 ? "filter" : ''}>
                                             {item.svg}
                                         </span>
                                         <div>
-                                            <p id={item.id} onClick={props.hendlerClick} className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
+                                            <p>
                                                 {item.title}
                                             </p>
                                             {item.togle === 'true' &&

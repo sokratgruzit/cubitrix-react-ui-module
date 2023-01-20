@@ -5,7 +5,7 @@ import { useState } from "react";
 const stories = storiesOf("Dropdown", module);
 
 stories.add("Dropdown", () => {
-  const [active, setActive] = useState(false);
+  const [active, setToggle] = useState(false);
 
  
   let data = [
@@ -241,11 +241,13 @@ stories.add("Dropdown", () => {
         data={data}
         type={"dropdown"}
         dropdown={"dropdown"}
-        dropdownItem={"dropdown-item"}
-        containerCheck={"containerCheck"}
-        onClick={() => setActive((prevState) => !prevState)}
+        onClick={() => setToggle((prevState) => !prevState)}
       />
-      <Dropdown type={"country"} countryData={countryData} />
+      <Dropdown
+        type={"country"}
+        countryData={countryData}
+        onClick={() => setToggle((prevState) => !prevState)}
+      />
     </div>
   );
 });
