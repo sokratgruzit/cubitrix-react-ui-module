@@ -8,11 +8,20 @@
 .table-head {
   width: 100%;
   display: flex;
+  background: rgba(255,255,255,.03);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  padding: 0px 16px;
+  justify-content: space-between;
 }
 .table {
   display: flex;
   width: 100%;
   align-items: center;
+  padding: 0px 16px;
+  justify-content: space-between;
+}
+.table:nth-child(odd) {
+  background: rgba(255,255,255,.03);
 }
 .th {
   color: #9c9da3;
