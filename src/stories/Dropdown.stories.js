@@ -5,11 +5,9 @@ import { useState } from "react";
 const stories = storiesOf("Dropdown", module);
 
 stories.add("Dropdown", () => {
-  const [active, setActive] = useState("0");
+  const [active, setActive] = useState(false);
 
-  const hendlerClick = (e) => {
-    setActive(e.target.id);
-  };
+ 
   let data = [
     {
       id: 1,
@@ -245,7 +243,7 @@ stories.add("Dropdown", () => {
         dropdown={"dropdown"}
         dropdownItem={"dropdown-item"}
         containerCheck={"containerCheck"}
-        onClick={hendlerClick}
+        onClick={() => setActive((prevState) => !prevState)}
       />
       <Dropdown type={"country"} countryData={countryData} />
     </div>

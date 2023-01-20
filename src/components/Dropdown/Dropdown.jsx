@@ -24,7 +24,7 @@ export const Dropdown = (props) => {
     }
     if (props.type === 'dropdown') {
         element =
-            <div className={props.dropdown}>
+            <div className={` active ${props.dropdown}`}>
                 {props.data.map((item, index) => {
                     return (
                         <div key={index}>
@@ -33,7 +33,7 @@ export const Dropdown = (props) => {
                             </h1>
                             {item.list.map((item, index) => {
                                 return (
-                                    <div key={index} className="dropdown-item">
+                                    <div key={index} className="dropdown-item" onClick={props.onClick}>
                                         {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                                         <span className={item.id < 3 ? "filter" : ''}>
                                             {item.svg}
