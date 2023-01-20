@@ -7,282 +7,246 @@
   border-radius: 32px;
   justify-content: center;
 }
-.btn svg{
-    display: none;
+.btn svg {
+  display: none;
 }
-.btn .arrowL{
-    margin-right: 15px;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+.btn .arrowL {
+  margin-right: 15px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.btn.arrow-left .arrowR{
-    display: none;
+.btn.arrow-left .arrowR {
+  display: none;
 }
-.btn.arrow-right .arrowL{
-    display: none;
+.btn.arrow-right .arrowL {
+  display: none;
 }
-.btn.arrow-both svg,.btn.arrow-right .arrowR,.btn.arrow-left .arrowL{
-    display: flex;
+.btn.arrow-both svg,
+.btn.arrow-right .arrowR,
+.btn.arrow-left .arrowL {
+  display: flex;
 }
 .btn:hover .arrowL {
-    transform: translateX(-5px);
+  transform: translateX(-5px);
 }
-.btn .arrowR{
-    margin-left: 15px;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+.btn .arrowR {
+  margin-left: 15px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .btn:hover .arrowR {
-    transform: translateX(5px);
+  transform: translateX(5px);
 }
 .arrow-none svg {
-    display: none;
+  display: none;
 }
-.btn svg{
-    display: none;
+.btn svg {
+  display: none;
 }
-.btn svg:nth-child(1){
-    margin-right: 15px;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+.btn svg:nth-child(1) {
+  margin-right: 15px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.btn.arrow-left svg:nth-child(3){
-    display: none;
+.btn.arrow-left svg:nth-child(3) {
+  display: none;
 }
-.btn.arrow-right svg:nth-child(1){
-    display: none;
+.btn.arrow-right svg:nth-child(1) {
+  display: none;
 }
-.btn.arrow-both svg,.btn.arrow-right svg:nth-child(3),.btn.arrow-left svg:nth-child(1){
-    display: flex;
+.btn.arrow-both svg,
+.btn.arrow-right svg:nth-child(3),
+.btn.arrow-left svg:nth-child(1) {
+  display: flex;
 }
 .btn:hover svg:nth-child(1) {
-    transform: translateX(-5px);
+  transform: translateX(-5px);
 }
-.btn svg:nth-child(3){
-    margin-left: 15px;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+.btn svg:nth-child(3) {
+  margin-left: 15px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .btn:hover svg:nth-child(3) {
-    transform: translateX(5px);
+  transform: translateX(5px);
 }
 .arrow-none svg {
-    display: none;
+  display: none;
 }
 .btn-primary {
   background: #3d5afe;
 }
 .btn-secondary {
-    border: 1px solid #3D5AFE;
+  border: 1px solid #3d5afe;
 }
-.btn-primary span{
-    color: #3D5AFE;
+.btn-primary span {
+  color: #3d5afe;
 }
-.btn-primary:hover,.btn-secondary:hover {
-    opacity: .7;
+.btn-primary:hover,
+.btn-secondary:hover {
+  opacity: 0.7;
 }
 .btn-primary span {
   color: #fff;
 }
-.btn-tertiary span{
-    color: #3D5AFE;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+.btn-tertiary span {
+  color: #3d5afe;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .btn.btn-tertiary {
-    padding: 0px;
-    height: fit-content;
+  padding: 0px;
+  height: fit-content;
 }
 .btn-tertiary:hover span {
-    color: rgba(255,255,255,.7);
+  color: rgba(255, 255, 255, 0.7);
 }
 .btn-tertiary path {
-    fill: #3D5AFE;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+  fill: #3d5afe;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .btn-tertiary:hover path {
-    fill: rgba(255,255,255,.7);
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+  fill: rgba(255, 255, 255, 0.7);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .no-label.btn span {
-    display: none;
+  display: none;
 }
 .btn.no-label svg {
-    position: absolute;
-    margin: 0px!important;
+  position: absolute;
+  margin: 0px !important;
 }
 .btn-lg {
   height: 52px;
   padding: 0px 25px;
 }
 .no-label.btn.btn-lg {
-    width: 52px;
+  width: 52px;
 }
 .btn-sm {
   height: 44px;
   padding: 0px 30px;
 }
 .no-label.btn.btn-sm {
-    width: 44px;
+  width: 44px;
 }
 .img-btn {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
-    display: flex;
-    height: 60px;
-    align-items: center;
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-right: 15px;
-    cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  display: flex;
+  height: 60px;
+  align-items: center;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 15px;
+  cursor: pointer;
 }
 .img-btn:hover {
-    background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 .img-btn span {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .img-btn:hover span {
-    color: #3D5AFE;
+  color: #3d5afe;
 }
-.img-btn svg {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+.img-btn .arrow-svg {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.img-btn:hover svg {
-   transform: translateX(5px);
+.img-btn:hover .arrow-svg {
+  transform: translateX(5px);
 }
-.img-btn path {}
+.img-btn:hover .arrow-svg path {
+  stroke: #3d5afe;
+}
+
+.img-btn path {
+}
 .img-btn img {
-    width: 24px;
+  width: 24px;
 }
 .img-btn svg {
-    margin-left: auto;
+  margin-left: auto;
 }
 .img-btn .img {
-    height: 50px;
-    width: 50px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
+  height: 50px;
+  width: 50px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
 }
 .side-btn {
-    display: flex;
-    height: 32px;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
+  display: flex;
+  height: 32px;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
 }
 .side-btn:after {
-    content: '';
-    position: absolute;
-    width: calc(100% + 24px);
-    height: 100%;
-    left: -12px;
-    top: 0px;
-    border-radius: 6px;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
-    background: rgba(255, 255, 255, 0);
+  content: "";
+  position: absolute;
+  width: calc(100% + 24px);
+  height: 100%;
+  left: -12px;
+  top: 0px;
+  border-radius: 6px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  background: rgba(255, 255, 255, 0);
 }
 .side-btn:hover:after {
-    background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 .side-btn:before {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
-    width: 2px;
-    height: 100%;
-    content: '';
-    background: #3D5AFE;
-    border-radius: 2px;
-    position: absolute;
-    left: -22px;
-    top: 0px;
-    transform: scaleY(.2);
-    opacity: 0;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  width: 2px;
+  height: 100%;
+  content: "";
+  background: #3d5afe;
+  border-radius: 2px;
+  position: absolute;
+  left: -22px;
+  top: 0px;
+  transform: scaleY(0.2);
+  opacity: 0;
 }
 .side-btn:hover:before {
-    transform: scaleY(1);
-    opacity: 1;
+  transform: scaleY(1);
+  opacity: 1;
 }
 .side-btn-icon {
-    display: flex;
-    margin-right: 10px;
-    position: relative;
-    z-index: 2;
+  display: flex;
+  margin-right: 10px;
+  position: relative;
+  z-index: 2;
 }
 .side-btn-icon svg {
-    height: 16px;
-    width: 16px;
+  height: 16px;
+  width: 16px;
 }
 .side-btn-note {
-    display: flex;
-    margin-left: auto;
-    position: relative;
-    z-index: 2;
+  display: flex;
+  margin-left: auto;
+  position: relative;
+  z-index: 2;
 }
 .side-btn span {
-    position: relative;
-    z-index: 2;
-    color: #9C9DA3;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+  position: relative;
+  z-index: 2;
+  color: #9c9da3;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .side-btn:hover span {
-    color: #fff;
+  color: #fff;
 }
 
-.btn-medium {
-    width: 60px;
-    height: 44px;
+.connect-svg {
+  height: 50px;
+  width: 50px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
 }
 
-.btn-m-lg {
-    width: 190px;
-    height: 52px;
+.connect-svg svg {
+  margin-left: 0;
 }
-
-.btn-xl {
-    width: 324px;
-    height: 51px;
-}
-
-.btn-staking-calculator {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-}
-
-.show-calculator-btn {
-    display: none;
-}
-
-@media only screen and (max-width: 1280px) {
-    .btn-lg {
-        width: 80px;
-        height: 43px;
-    }
-  }
-
-  @media only screen and (max-width: 769px) {
-    .btn-staking-calculator {
-        width: 137px;
-        height: 44px;    
-    } 
-    .btn-xl {
-        width: 100%;
-    }
-    .btn-lg {
-        width: 87px;
-    }
-    .show-calculator-btn {
-        display: flex;
-        position: absolute;
-        left: 40%;
-        z-index: 3;
-        bottom: 30px;
-    }
-  }
-
-  @media only screen and (max-width: 620px) {
-    .btn-lg {
-        width: 129px;
-    }
-  }
-
-
-

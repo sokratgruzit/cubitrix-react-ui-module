@@ -1,14 +1,19 @@
-import { Button } from '../Button/Button.jsx'
-import { Input } from '../Input/Input.jsx';
+import { Button } from '../Button'
+import { Input } from '../Input';
+import { HelpText } from '../HelpText';
+import { useQRCode } from 'next-qrcode';
 import './TwoFactorVerification.css';
 
 export const TwoFactorVerification = (props) => {
+
+    const { Canvas } = useQRCode();
+
     return (
-        <div className={`${props.mainContainer} ${props.active ? 'wtf' : ''}`}>
-            <div className='header'>
+        <div className={`two-factor-container ${props.active ? 'close' : ''}`}>
+            <div className='header '>
                 <h1>Enable Two-Factor Verification</h1>
                 <div>
-                    <svg className='why' onClick={props.onClick} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg onClick={props.onClick} width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.0002 29.1667C22.7918 29.1667 29.1668 22.7917 29.1668 15C29.1668 7.20834 22.7918 0.833336 15.0002 0.833336C7.2085 0.833336 0.833496 7.20834 0.833496 15C0.833496 22.7917 7.2085 29.1667 15.0002 29.1667Z" stroke="#6A6D76" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M10.9912 19.0092L19.0095 10.9908" stroke="#6A6D76" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M19.0095 19.0092L10.9912 10.9908" stroke="#6A6D76" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -16,7 +21,7 @@ export const TwoFactorVerification = (props) => {
                 </div>
             </div>
             <div className='line'></div>
-            <div className='container'>
+            <div className='two-factor-steps'>
                 <p className='steps'>
                     <span>
                         Step 1:
@@ -105,7 +110,7 @@ export const TwoFactorVerification = (props) => {
 
                     </p>
                 </div>
-                <div className='acountInfo'>
+                <div className='acount-info'>
                     <p>
                         Account Name: <span>Complend</span>
                     </p>
@@ -114,8 +119,17 @@ export const TwoFactorVerification = (props) => {
                     </p>
                 </div>
                 <div className='verification'>
-                    <div >
-                        {/*<img className='qrcode' src={"static/media/src/assets/img/twoFactorVerification/qrcode.png"} alt="" />*/}
+                    <div className='qrcode'>
+                        <Canvas
+                            text={props.qrcode}
+                            options={{
+                                width: '100px',
+                                color: {
+                                    dark: '#010599FF',
+                                    light: '#FFF',
+                                },
+                            }}
+                        />
                     </div>
                     <div>
                         <p>Enter Google Verification Code</p>
@@ -129,13 +143,21 @@ export const TwoFactorVerification = (props) => {
                             }}
                         />
                         <Button
-                            label={'Button'}
+                            element={'button'}
+                            label={'Confirm'}
                             size={'btn-lg'}
                             type={'btn-primary'}
                             arrow={'arrow-right'}
-
                         />
                     </div>
+                </div>
+                <div>
+                    <HelpText
+                        status={'info'}
+                        title={'If you lost your phone or uninstall the Google Authenticator app, then you will lost access of your account'}
+                        color={'#6A6D76'}
+                        icon={true}
+                    />
                 </div>
             </div>
         </div>
