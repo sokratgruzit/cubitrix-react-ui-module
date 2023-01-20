@@ -20,6 +20,15 @@ let btnArr = [
     }
 ];
 
+let img = [
+  {
+    id: 1,
+    title: "The United Kingdom ",
+    image: "static/media/src/assets/img/country/kingdom.png",
+    numbering: "(+78)",
+  }
+];
+
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
   const [cover, setCover] = useState(false)
@@ -66,7 +75,7 @@ stories.add("Input", (props) => {
         coverHandler={coverhandler}
         placeholder={"default input"}
         label={''}
-        subLabel={''}
+        subLabel={'dasd'}
         onChange={changeHandler}
         // value={value}
         customStyles={{ width: "500px" }}
@@ -118,9 +127,14 @@ stories.add("Input", (props) => {
       <Input 
         type={'label-input-phone-number'}
         label={'your text'}
+        img={img}
         onChange={changeHandler}
         customStyles={{width: '400px'}}
       />
+      <Input
+        type={'label-input-upload'}
+        customStyles={{width: 'fit-content'}}
+       /> 
       
       {/* <Input
         type={"lable-input-select"}
