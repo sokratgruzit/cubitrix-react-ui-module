@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { HelpText } from '../HelpText';
 import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
-import testImg from '../../assets/img/country/australia.png';
+// import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 
 export const Input = props => {
@@ -117,8 +117,8 @@ export const Input = props => {
                 <p className='font-12'>{props.label}</p>
                 <div className='form-control select-control'>
                     <div className='select-prefix'>
-                        <div>  
-                            <img src={testImg} alt="country" />                      
+                        <div>
+                            {/*<img src={testImg} alt="country" />                      */}
                         </div>
                         <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
@@ -130,7 +130,7 @@ export const Input = props => {
                         <input className='number-control' type='number' />
                     </div>
                 </div>
-                {/* <img src='../italy.png' alt='flag' /> 
+                {/* <img src='../italy.png' alt='flag' />
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13 9.5L10.5303 11.9697C10.2386 12.2614 9.76136 12.2614 9.4697 11.9697L7 9.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -139,15 +139,15 @@ export const Input = props => {
                 <input className='form-control' type='text' placeholder='000000000' /> */}
                 {/* <input className='form-control' type='tel' />
                  */}
-                {/* <input className='form-control' type="text" name="country code"  value="+91" size="2"/>   
+                {/* <input className='form-control' type="text" name="country code"  value="+91" size="2"/>
                 <input className='form-control' type="text" name="phone" size="10"/>
                 <input className='form-control' type='country' /> */}
                 {/* <form>
-                <label>   
-                    Phone :  
-                </label> 
-                <input type="text" name="country code"  value="+91" size="2"/>   
-                <input type="text" name="phone" size="10"/> 
+                <label>
+                    Phone :
+                </label>
+                <input type="text" name="country code"  value="+91" size="2"/>
+                <input type="text" name="phone" size="10"/>
                 </form> */}
             </div>
         )
@@ -182,6 +182,6 @@ export const Input = props => {
                 </div>
         )
     }
-    
+
     return element;
 };
