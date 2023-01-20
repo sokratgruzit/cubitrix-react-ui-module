@@ -53,16 +53,25 @@
 .notification-dropdown div {
   display: flex;
   color: #9c9da3;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .notification-dropdown svg {
   margin-right: 6px;
 }
 .notification-toggle {
   position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.notification-options {
+  position: absolute;
+  right: 20px;
+  top: 50px;
 }
 
-/* removing styles */
+/* transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99); */
+
+/* removable styles */
 
 .readed {
   color: #fff !important;

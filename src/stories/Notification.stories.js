@@ -6,7 +6,7 @@ import { useState } from "react";
 const stories = storiesOf("Notification", module);
 
 stories.add("Notification", () => {
-  let [readed, setReaded] = useState(false);
+  // let [readed, setReaded] = useState(false);
 
   let NotificationData = [
     {
@@ -32,10 +32,7 @@ stories.add("Notification", () => {
 
   return (
     <div>
-      <Notification
-        data={NotificationData}
-        onClick={() => setReaded((prevState) => !prevState)}
-      />
+      <Notification data={NotificationData} />
     </div>
   );
 });
