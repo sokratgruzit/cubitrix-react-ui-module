@@ -12,3 +12,5 @@ export * from "./components/SideBar";
 export * from "./components/SideBarConnect";
 export * from "./components/SideBarWelcome";
 export * from "./components/SideBarAccount";
+export * from './components/DashboardBalance';
+export * from './components/DashboardCards';
