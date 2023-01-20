@@ -7,21 +7,19 @@
   overflow-y: auto;
   height: 400px;
 }
-.notification-options {
-  cursor: pointer;
-}
 .notification-head {
   display: flex;
   width: 100%;
   justify-content: space-between;
   margin-bottom: 20px;
+  padding: 0 10px;
 }
 .notification-inner {
   display: flex;
   padding: 15px 10px 10px 10px;
 }
 .notification-item {
-  padding: 10px;
+  padding: 10px 0;
 }
 .separator {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -44,6 +42,24 @@
 .notification-time {
   color: #6a6d76;
   margin-top: 6px;
+}
+.notification-dropdown {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+.notification-dropdown div {
+  display: flex;
+  color: #9c9da3;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.notification-dropdown svg {
+  margin-right: 6px;
+}
+.notification-toggle {
+  position: absolute;
 }
 
 /* removing styles */
