@@ -18,14 +18,12 @@ stories.add("HelpText", () => {
                 title={'your text'}
                 color={'#FFA726'}
                 icon={true}
-
             />
             <HelpText
                 status={'error'}
                 title={'your text'}
                 color={'#EF5350'}
                 icon={true}
-
             />
             <HelpText
                 status={'info'}
@@ -59,9 +57,7 @@ stories.add("HelpText", () => {
                 title={'your text'}
                 color={'#6A6D76'}
                 icon={false}
-
             />
-            
         </div>
     );
 });

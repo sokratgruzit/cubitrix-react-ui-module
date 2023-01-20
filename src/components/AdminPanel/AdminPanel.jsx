@@ -7,37 +7,44 @@ export const AdminPanel = props => {
         {
             name: "Tranx ID",
             width: 15,
+            mobileSlide: false,
             id: 0,
         },
         {
             name: "From",
-            width: 20,
+            width: 15,
+            mobileSlide: false,
             id: 1,
         },
         {
             name: "To",
-            width: 20,
+            width: 15,
+            mobileSlide: false,
             id: 2,
         },
         {
             name: "Amount",
             width: 15,
+            mobileSlide: true,
             id: 3,
         },
         {
             name: "Domination",
-            width: 15,
+            width: 10,
+            mobileSlide: true,
             id: 4,
         },
         {
             name: "Time",
             width: 10,
+            mobileSlide: true,
             id: 5,
         },
         {
             name: "Tranx Type",
             width: 10,
             position: 'right',
+            mobileSlide: true,
             id: 6,
         },
     ];
@@ -45,9 +52,9 @@ export const AdminPanel = props => {
     let td = [
         {
             id:12123,
-            hash: "0xae0cf2498c2342234",
-            from: "0xae0cf2498c0xae0cf2498c",
-            to: "0xae0cf2498c0xae0cf2498c",
+            hash: "0xae0cf2498c23422340xae0cf2498c2342234",
+            from: "0xae0cf2498c0xae0cf2498c0xae0cf2498c2342234",
+            to: "0xae0cf2498c0xae0cf2498c0xae0cf2498c2342234",
             amount: "$123, 241, 241, 423.8",
             domination: "1,132,000.1",
             date: "01.02.2023",
@@ -93,15 +100,35 @@ export const AdminPanel = props => {
                                return(
                                    <div className="table" key={item.id}>
                                        <div className="td col" style={{width: `${th[0].width}%`}}>
+                                           <div className="mobile-ttl">{th[0].name}</div>
                                            <span>{item.id}</span>
                                            <span>{item.hash}</span>
                                        </div>
-                                       <div className="td" style={{width: `${th[1].width}%`}}><span>{item.from}</span></div>
-                                       <div className="td" style={{width: `${th[2].width}%`}}><span>{item.to}</span></div>
-                                       <div className="td" style={{width: `${th[3].width}%`}}><span>{item.amount}</span></div>
-                                       <div className="td" style={{width: `${th[4].width}%`}}><span>{item.domination}</span></div>
-                                       <div className="td col" style={{width: `${th[5].width}%`}}><span>{item.date}</span><span>{item.time}</span></div>
-                                       <div className="td" style={{width: `${th[6].width}%`}}>{item.type}</div>
+                                       <div className="td" style={{width: `${th[1].width}%`}}>
+                                           <div className="mobile-ttl">{th[1].name}</div>
+                                           <span>{item.from}</span>
+                                       </div>
+                                       <div className="td" style={{width: `${th[2].width}%`}}>
+                                           <div className="mobile-ttl">{th[2].name}</div>
+                                           <span>{item.to}</span>
+                                       </div>
+                                       <div className="td" style={{width: `${th[3].width}%`}}>
+                                           <div className="mobile-ttl">{th[3].name}</div>
+                                           <span>{item.amount}</span>
+                                       </div>
+                                       <div className="td" style={{width: `${th[4].width}%`}}>
+                                           <div className="mobile-ttl">{th[4].name}</div>
+                                           <span>{item.domination}</span>
+                                       </div>
+                                       <div className="td col" style={{width: `${th[5].width}%`}}>
+                                           <div className="mobile-ttl">{th[5].name}</div>
+                                           <span>{item.date}</span>
+                                           <span>{item.time}</span>
+                                       </div>
+                                       <div className="td" style={{width: `${th[6].width}%`}}>
+                                           <div className="mobile-ttl">{th[6].name}</div>
+                                           <span>{item.type}</span>
+                                       </div>
                                    </div>
                                )
                            })
