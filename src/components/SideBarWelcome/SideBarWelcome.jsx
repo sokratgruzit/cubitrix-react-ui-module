@@ -15,21 +15,22 @@ export const SideBarWelcome = ({
 }) => {
   return (
     <>
+      <Visual
+        label={"Welcome!"}
+        element={"popup-header"}
+        customStyles={{ width: "100%" }}
+        onClick={sideBarClose}
+      />
       <div className="sidebar-body">
-        <Visual
-          label={"Welcome!"}
-          element={"popup-header"}
-          customStyles={{ width: "100%" }}
-          onClick={sideBarClose}
-        />
         <div className="complete">
           <p>Complete the onboarding flow to start trading on COMPLEND</p>
           <Button
             element="button"
             label="Complete Account"
             type="btn-primary"
-            size="btn-sm"
+            size="btn-lg"
             onClick={completeAccount}
+            customStyles={{ width: "179px" }}
           />
         </div>
         <span className="border-full"></span>

@@ -8,12 +8,13 @@ export const Table = (props) => {
                 <div className="table-head">
                     {props.tableHead.map((item) => {
                         return (
-                            <div key={item.id} className="th" style={{width: `${item.width}%`}}>
+                            <div key={item.id} className={`th ${item.mobileSlide}`} style={{width: `${item.width}%`}}>
                                 {item.name}
                             </div>
                         );
                     })}
                 </div>
+                <div className="icon-place"></div>
                 {props.tableData}
             </div>
         </>
