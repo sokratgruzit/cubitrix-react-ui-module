@@ -21,8 +21,13 @@ let btnArr = [
 ];
 
 let img = [
-  "static/media/src/assets/img/country/kingdom.png"
-]
+  {
+    id: 1,
+    title: "The United Kingdom ",
+    image: "static/media/src/assets/img/country/kingdom.png",
+    numbering: "(+78)",
+  }
+];
 
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
@@ -70,7 +75,7 @@ stories.add("Input", (props) => {
         coverHandler={coverhandler}
         placeholder={"default input"}
         label={''}
-        subLabel={''}
+        subLabel={'dasd'}
         onChange={changeHandler}
         // value={value}
         customStyles={{ width: "500px" }}

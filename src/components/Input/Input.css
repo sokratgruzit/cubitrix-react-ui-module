@@ -198,6 +198,11 @@
     display: none;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
+.flag {
+    width: 24px;
+    height: 12px;
+    background-color: #9C9DA3;
+}
 /* .select-sufix p span {
     color: #6A6D76;
     margin-right: 7px;
