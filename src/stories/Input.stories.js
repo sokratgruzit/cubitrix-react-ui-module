@@ -22,6 +22,7 @@ let btnArr = [
 
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
+  const [cover, setCover] = useState(false)
 
   const changeHandler = (e) => {
     // console.log(e.target.value, 'change handler')
@@ -30,6 +31,10 @@ stories.add("Input", (props) => {
     console.log('click me, click me mf')
     let value = e.target.value
     console.log(value, 'hi')
+  }
+  const coverhandler = () => {
+    console.log('coverHandler')
+    setCover(true);
   }
 
   return (
@@ -43,8 +48,9 @@ stories.add("Input", (props) => {
     >
       <Input
         type={"default"}
-        value={value}
+        // value={value}
         icon={true}
+        inputType={'text'}
         placeholder={"default input"}
         label={''}
         subLabel={''}
@@ -52,7 +58,19 @@ stories.add("Input", (props) => {
         // value={value}
         customStyles={{ width: "500px" }}
       />
-      
+      <Input
+        type={"default"}
+        // value={value}
+        icon={true}
+        inputType={'password'}
+        coverHandler={coverhandler}
+        placeholder={"default input"}
+        label={''}
+        subLabel={''}
+        onChange={changeHandler}
+        // value={value}
+        customStyles={{ width: "500px" }}
+      />
       <Input
         type={"default"}
         icon={false}
