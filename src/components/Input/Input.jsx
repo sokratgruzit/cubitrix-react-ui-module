@@ -5,62 +5,7 @@ import { Switches } from '../Switches';
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 
-let countryData = [
-    {
-        id: 1,
-        title: "The United Kingdom ",
-        image: "static/media/src/assets/img/country/kingdom.png",
-        numbering: "(+78)",
-    },
-    {
-        id: 2,
-        title: "Brazil",
-        image: "static/media/src/assets/img/country/brazil.png",
-        numbering: "(+76)",
-    },
-    {
-        id: 3,
-        title: "Australia",
-        image: "static/media/src/assets/img/country/australia.png",
-        numbering: "(+46)",
-    },
-    {
-        id: 4,
-        title: "Canada",
-        image: "static/media/src/assets/img/country/canada.png",
-        numbering: "(+918)",
-    },
-    {
-        id: 5,
-        title: "Italy",
-        image: "static/media/src/assets/img/country/italy.png",
-        numbering: "(+178)",
-    },
-    {
-        id: 6,
-        title: "Mexico",
-        image: "static/media/src/assets/img/country/kingdom.png",
-        numbering: "(+78)",
-    },
-    {
-        id: 7,
-        title: "The United Kingdom ",
-        image: "static/media/src/assets/img/country/germany.png",
-        numbering: "(+78)",
-    },
-    {
-        id: 8,
-        title: "The United Kingdom ",
-        image: "static/media/src/assets/img/country/brazil.png",
-        numbering: "(+78)",
-    },
-    {
-        id: 9,
-        title: "The United Kingdom ",
-        image: "static/media/src/assets/img/country/canada.png",
-        numbering: "(+78)",
-    },
-];
+
 
 export const Input = props => {
     const [file, setFile] = useState(null);
@@ -225,7 +170,7 @@ export const Input = props => {
                 <div className={`${'hidden'} ${active ? 'visible' : ''}`}>
                     <Dropdown
                         type={"country"}
-                        countryData={countryData}
+                        countryData={props.countryData}
                         dropdownCountry={"dropdown-country"}
                         active={props.active}
                     />
