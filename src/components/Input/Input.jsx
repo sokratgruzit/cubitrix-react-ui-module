@@ -240,7 +240,7 @@ export const Input = props => {
                     <input onChange={props.onChange} className='search-control' type='search' placeholder={props.placeholder} />
                     <div className='form-select search-input-item'>
                         <div onClick={activeHandler} className='select-form'>
-                            <p>Transaction</p>
+                            <p className='font-10'>{value}</p>
                             <svg className={`${active ? 'rotate' : ''} ${'arrow'}`}  width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 1.5L4.5303 3.9697C4.23864 4.26136 3.76136 4.26136 3.4697 3.9697L1 1.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
