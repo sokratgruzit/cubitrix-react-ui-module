@@ -31,7 +31,7 @@ export const Dropdown = (props) => {
                   <h1 onClick={() => props.handlerClick(item.title)} className="dropdown-toggle">
                     {item.title}
                   </h1>
-                  {item.list.map((item, index) => {
+                  {item.list?.map((item, index) => {
                     return (
                         <div key={index} className="dropdown-item" onClick={props.onClick}>
                           {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}

@@ -125,10 +125,10 @@ export const Input = props => {
         element = (
             <div style={props.customStyles} className='select-group'>
                 <p className='input-group-title font-12'>Time In Force</p>
-                <div onChange={props.onChange} className='form-select'>
-                    <div onClick={activeHandler} className='selected option'>
+                <div onChange={props.onChange} className='form-select-sc'>
+                    <div onClick={activeHandler} className='form-select-item selected'>
                         <div>rcheuli yle</div>
-                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg className={`${active ? 'rotate' : ''} ${'arrow'}`} width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
@@ -252,7 +252,7 @@ export const Input = props => {
                                 onClick={selectClick}
                                 handlerClick={handlerClick}
                                 active={true}
-                                customStyles={{height: 'fit-content'}}
+                                customStyles={{height: 'fit-content!important'}}
                             />
                         </div>
                     </div>

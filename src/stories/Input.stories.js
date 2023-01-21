@@ -83,8 +83,13 @@ let selectData = [
     list: []
   },
   {
-    id: 1,
+    id: 2,
     title: "option 2",
+    list: []
+  },
+  {
+    id: 3,
+    title: "option 3",
     list: []
   },
 ];
@@ -197,6 +202,7 @@ stories.add("Input", (props) => {
       <Input
         type={"lable-input-select"}
         icon={false}
+        selectData={selectData}
         status={"warning"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
