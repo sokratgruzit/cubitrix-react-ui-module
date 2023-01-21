@@ -4,6 +4,7 @@ import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
+import { func } from 'prop-types';
 
 
 export const Input = props => {
@@ -39,6 +40,9 @@ export const Input = props => {
         setFile(URL.createObjectURL(e.target.files[0]));
         setClose(false)
     };
+    function selectClick(e) {
+        console.log(e.target.value)
+    }
 
     let element = null;
 
@@ -230,18 +234,21 @@ export const Input = props => {
                     </div>
                     <input onChange={props.onChange} className='search-control' type='search' placeholder={props.placeholder} />
                     <div className='form-select search-input-item'>
-                        <div className='select-form'>
+                        <div onClick={activeHandler} className='select-form'>
                             <p>Transaction</p>
-                            <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg className={`${active ? 'rotate' : ''} ${'arrow'}`}  width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 1.5L4.5303 3.9697C4.23864 4.26136 3.76136 4.26136 3.4697 3.9697L1 1.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
                         </div>
-                        <div>
+                        <div className={`${'hidden'} ${active ? 'select-modal' : ''}`}>
                             <Dropdown
-                            
+                                data={props.selectData}
+                                type={"dropdown"}
+                                dropdown={"dropdown"}
+                                onClick={selectClick}
+                                active={true}
                             />
                         </div>
-                        
                     </div>
                 </div>
             </div>

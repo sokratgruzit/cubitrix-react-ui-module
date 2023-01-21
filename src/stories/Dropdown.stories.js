@@ -222,7 +222,7 @@ stories.add("Dropdown", () => {
         type={"dropdown"}
         dropdown={"dropdown"}
         onClick={hendlerClick}
-        active={active}m
+        active={active}
       />
       <Dropdown
         type={"country"}
