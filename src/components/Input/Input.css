@@ -293,6 +293,66 @@
 /* end of upload box */
 
 /* end of label-input */
+
+
+/* search input */
+.search-input {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.search-control {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-transform: capitalize;
+}
+.search-input-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 16px;
+}
+.search-control::-webkit-search-cancel-button{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* .secondary {
     padding-right: 55px;
 } */

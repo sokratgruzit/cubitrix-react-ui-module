@@ -241,6 +241,12 @@ stories.add("Input", (props) => {
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
+      <Input
+        type={'search-input'}
+        onChange={changeHandler}
+        placeholder={'search'}
+        customStyles={{width: '100%'}}
+      />
     </div>
   );
 });
