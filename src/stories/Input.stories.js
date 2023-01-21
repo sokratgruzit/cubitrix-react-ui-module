@@ -182,13 +182,13 @@ stories.add("Input", (props) => {
         customStyles={{width: 'fit-content'}}
        /> 
       
-      {/* <Input
+      <Input
         type={"lable-input-select"}
         icon={false}
         status={"warning"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
-      /> */}
+      />
       {/* <Input
         type={"default"}
         icon={true}
