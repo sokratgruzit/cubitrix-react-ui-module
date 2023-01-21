@@ -93,19 +93,19 @@ export const AdminPanel = props => {
         },
     ];
 
-    const SearchBoxDefaultData = [
+    const FilterBoxDefaultData = [
         {
-            label: 'All',
+            title: 'All',
         }, {
-            label: 'Pending',
+            title: 'Pending',
         }, {
-            label: 'Cenceled',
+            title: 'Cenceled',
         }, {
-            label: 'Approved',
+            title: 'Approved',
         }, {
-            label: 'Bonuses',
+            title: 'Bonuses',
         }, {
-            label: 'Claimed',
+            title: 'Claimed',
         },
     ]
     // console.log(filterTitle)
@@ -116,7 +116,7 @@ export const AdminPanel = props => {
             </div>
             <div className={`admin-content`}>
                 <FilterBox  
-                    searchData={SearchBoxDefaultData}
+                    filterData={FilterBoxDefaultData}
                     setFilterTitle={setFilterTitle}
                     filterTitle={filterTitle}
                 />

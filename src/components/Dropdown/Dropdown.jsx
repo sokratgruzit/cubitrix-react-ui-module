@@ -25,10 +25,10 @@ export const Dropdown = (props) => {
   if (props.type === 'dropdown') {
     element =
         <div className={` active ${props.dropdown}`}>
-          {props.data.map((item, index) => {
+          {props.data?.map((item, index) => {
             return (
                 <div key={index}>
-                  <h1 className="dropdown-toggle" onClick={() => props.changeHandler(item.title)}>
+                  <h1 onClick={() => props.handlerClick(item.title)} className="dropdown-toggle">
                     {item.title}
                   </h1>
                   {item.list.map((item, index) => {
@@ -36,10 +36,10 @@ export const Dropdown = (props) => {
                         <div key={index} className="dropdown-item">
                           {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                           <span className={item.id < 3 ? "filter" : ''}>
-                                            {item.svg}
-                                        </span>
-                          <div> 
-                            <p id={item.id} className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
+                            {item.svg}
+                          </span>
+                          <div>
+                            <p id={item.id}  className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
                               {item.title}
                             </p>
                             {item.togle === 'true' &&

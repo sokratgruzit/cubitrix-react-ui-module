@@ -257,7 +257,7 @@ stories.add("Input", (props) => {
         type={'search-input'}
         changeHandler={changeHandler}
         selectData={selectData}
-        placeholder={'search'}
+        placeholder={'search'}  
         customStyles={{width: '100%'}}
       />
     </div>

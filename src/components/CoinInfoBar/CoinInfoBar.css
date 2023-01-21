@@ -18,7 +18,7 @@
 .coin-info-list__item span{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
 }
 
 .add-square-container {

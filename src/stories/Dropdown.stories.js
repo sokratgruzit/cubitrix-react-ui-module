@@ -221,7 +221,7 @@ stories.add("Dropdown", () => {
         data={data}
         type={"dropdown"}
         dropdown={"dropdown"}
-        onClick={hendlerClick}
+        handlerClick={props.handlerClick}
         active={active}
       />
       <Dropdown

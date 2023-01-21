@@ -12,7 +12,6 @@
 
 .show-filters {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* border-radius: 8px 8px 0 0; */
 }
 
 .filter-box-list {
@@ -71,53 +70,7 @@
 }
 
 .filter-box-selects {
-    display: flex;
-    width: 100%;
-    padding-bottom: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
 }
-
-/* .filter-box-buttons {
-    display: flex;
-}
-
-.result-data-container {
-    display: flex;
-    align-items: center;
-    padding: 20px 0 20px 20px;
-    gap: 6px;
-}
-
-.result-data__header {
-    color: #6A6D76;
-}
-
-.result-data {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 53px;
-    padding: 6px 8px 6px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.result-data span:first-child {
-    color: #9C9DA3;
-    padding-right: 8px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.result-data svg {
-    cursor: pointer;
-}
-
-.result-clear-all {
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    cursor: pointer;
-}
-
-.result-clear-all span {
-    color: #EF5350;
-} */

@@ -152,6 +152,11 @@
 }
 
 /* select input */
+.select-group {
+    position: relative;
+    /* width: 100%;
+    height: auto; */
+}
 .select-control {
     display: flex;
     align-items: center;
@@ -159,6 +164,7 @@
     gap: 13px;
     cursor: pointer;
 }
+
 .select-prefix {
     display: flex;
     align-items: center;
@@ -325,14 +331,28 @@
     gap: 37px;
     cursor: pointer;
 }
+
+.form-select {
+    position: relative;
+}
+
 .select-modal {
     display: block!important;
     position: absolute;
     top: 50px;
     right: 0;
-
+    z-index: 1;
+    /* width: 150px; */
+    /* background-color: red; */
 }
-
+.select-modal-sc {
+    display: block!important;
+    position: absolute;
+    /* top: 70px; */
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}
 
 
 
@@ -541,7 +561,7 @@ select input
     margin-top: 5px;
 } */
 
-.stake-input-container {
+/* .stake-input-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -572,4 +592,4 @@ select input
     width: 24px;
     height: 24px;
     text-decoration: underline;
-}
+} */

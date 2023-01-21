@@ -31,7 +31,7 @@ const defaultList = [
   },
   {
     name: "1h Funding", 
-    value: "-0.00178%",
+    value: "0.00178%",
     active: true,
   },
   {
@@ -89,7 +89,14 @@ export const CoinInfoBar = (props) => {
                   {/* {item.value} */}
                   {item.name === 'Index Price' && `$${item.value}`}
                   {item.name === 'Oracle Price' && `$${item.value}`}
-                  {item.name === '24h Change' && `$${item.value}`}
+                  {item.name === '24h Change' && (
+                    <span className={'plus-market'}>
+                      <svg width="6" height="4" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5.86334 2.4877L4.48717 1.11153L3.6469 0.26697C3.47569 0.0960182 3.24363 0 3.00169 0C2.75974 0 2.52769 0.0960182 2.35648 0.26697L0.135753 2.4877C-0.155771 2.77922 0.0542977 3.27652 0.461574 3.27652H5.53752C5.94908 3.27652 6.15486 2.77922 5.86334 2.4877Z" fill="#9CCC65"/>
+                      </svg>
+                      {item.value}
+                    </span>
+                  )}
                   {item.name === '24h Volume' && `$${item.value}`}
                   {item.name === 'Open Interest' && (
                     <span>
@@ -97,7 +104,14 @@ export const CoinInfoBar = (props) => {
                       <EthIcon />
                     </span>
                   )}
-                  {item.name === '1h Funding' && `${item.value}`}
+                  {item.name === '1h Funding' && (
+                    <span className={'minus-market'}>
+                      <svg width="6" height="4" viewBox="0 0 6 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5.86334 2.4877L4.48717 1.11153L3.6469 0.26697C3.47569 0.0960182 3.24363 0 3.00169 0C2.75974 0 2.52769 0.0960182 2.35648 0.26697L0.135753 2.4877C-0.155771 2.77922 0.0542977 3.27652 0.461574 3.27652H5.53752C5.94908 3.27652 6.15486 2.77922 5.86334 2.4877Z" fill="#9CCC65"/>
+                      </svg>
+                      {item.value}
+                    </span>
+                  )}
                   {item.name === '24h Trade' && `${item.value}`}
                   {item.name === 'Next Funding' && `${item.value}`}
                 </p>

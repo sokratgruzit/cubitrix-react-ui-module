@@ -34,7 +34,9 @@ export const Input = props => {
         setClose(true)
 
     }
-
+    function handlerClick (i) {
+        console.log(i);
+    }
     function handleChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -124,22 +126,24 @@ export const Input = props => {
             <div onChange={props.onChange} style={props.customStyles} className='select-group'>
                 <p className='input-group-title font-12'>Time In Force</p>
                 <div onChange={props.onChange} className='form-select'>
-                    <div className='selected option'>
+                    <div onClick={activeHandler} className='selected option'>
                         <div>rcheuli yle</div>
                         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
+                    <div className={`${'hidden'} ${active ? 'select-modal-sc' : ''}`}>
+                        <Dropdown
+                            data={props.selectData}
+                            type={"dropdown"}
+                            dropdown={"dropdown"}
+                            onClick={selectClick}
+                            active={true}
+                            customStyles={{width: '100%'}}
+                        />
+                    </div>
                 </div>
-                <div>
-                    {/* <Dropdown
-                        data={data}
-                        type={"dropdown"}
-                        dropdown={"dropdown"}
-                        onClick={hendlerClick}
-                        active={active}
-                    /> */}
-                </div>
+                
                 <HelpText
                     icon={true}
                     status={'error'}
@@ -245,7 +249,8 @@ export const Input = props => {
                                 data={props.selectData}
                                 type={"dropdown"}
                                 dropdown={"dropdown"}
-                                changeHandler={props.changeHandler}
+                                onClick={selectClick}
+                                handlerClick={handlerClick}
                                 active={true}
                                 customStyles={{height: 'fit-content'}}
                             />
