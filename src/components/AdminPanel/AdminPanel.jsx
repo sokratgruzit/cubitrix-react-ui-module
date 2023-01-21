@@ -1,7 +1,7 @@
 import './AdminPanel.css';
 import { Table } from "../Table";
 import {Button} from "../Button";
-import { Search } from '../Search';
+import { FilterBox } from '../FilterBox';
 
 export const AdminPanel = props => {
     let th = [
@@ -89,7 +89,7 @@ export const AdminPanel = props => {
         },
     ];
 
-    const searchDefaultData = [
+    const SearchBoxDefaultData = [
         {
             label: 'All',
             active: false,
@@ -116,8 +116,8 @@ export const AdminPanel = props => {
                 shmai
             </div>
             <div className={`admin-content`}>
-                <Search  
-                    searchData={searchDefaultData}
+                <FilterBox  
+                    searchData={SearchBoxDefaultData}
                 />
                 <Table type={"table-version"}
                        tableHead={th}

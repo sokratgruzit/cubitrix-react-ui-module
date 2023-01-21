@@ -1,8 +1,8 @@
-.transactions-search-container {
+.filter-box-container {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.search-box-container {
+.filter-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,17 +10,17 @@
     border-radius: 8px; 
 }
 
-.show-search {
+.show-filters {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     /* border-radius: 8px 8px 0 0; */
 }
 
-.search-box-list {
+.filter-box-list {
     display: flex;
     justify-content: space-between;
 }
 
-.search-box-list__item {
+.filter-box-list__item {
     padding: 6px 30px;
     color: #9C9DA3;
     cursor: pointer;
@@ -50,18 +50,18 @@
     margin-right: 6px;
 }
 
-.transactions-search {
+.filter-box-search {
     padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.transactions-search-input {
+.filter-box-input {
     position: relative;
     padding-bottom: 20px;
 }
 
-.transactions-input-btn {
+.filter-box-input-btn {
     position: absolute;
     padding-left: 16px;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -70,12 +70,54 @@
     cursor: pointer;
 }
 
-.transactions-selects-container {
+.filter-box-selects {
     display: flex;
     width: 100%;
     padding-bottom: 10px;
 }
 
-.transactions-buttons {
+.filter-box-buttons {
     display: flex;
+}
+
+.result-data-container {
+    display: flex;
+    align-items: center;
+    padding: 20px 0 20px 20px;
+    gap: 6px;
+}
+
+.result-data__header {
+    color: #6A6D76;
+}
+
+.result-data {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 53px;
+    padding: 6px 8px 6px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.result-data span:first-child {
+    color: #9C9DA3;
+    padding-right: 8px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-data svg {
+    cursor: pointer;
+}
+
+.result-clear-all {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
+.result-clear-all span {
+    color: #EF5350;
 }
