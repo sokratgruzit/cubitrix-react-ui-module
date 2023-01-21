@@ -152,6 +152,11 @@
 }
 
 /* select input */
+.select-group {
+    position: relative;
+    /* width: 100%;
+    height: auto; */
+}
 .select-control {
     display: flex;
     align-items: center;
@@ -159,6 +164,7 @@
     gap: 13px;
     cursor: pointer;
 }
+
 .select-prefix {
     display: flex;
     align-items: center;
@@ -330,9 +336,18 @@
     position: absolute;
     top: 50px;
     right: 0;
-
+    z-index: 1;
+    /* width: 150px; */
+    /* background-color: red; */
 }
-
+.select-modal-sc {
+    display: block!important;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}
 
 
 
