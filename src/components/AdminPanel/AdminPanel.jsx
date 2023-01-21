@@ -48,6 +48,8 @@ export const AdminPanel = props => {
             id: 6,
         },
     ];
+    // let countBy = (arr, prop) => arr.reduce((prev, curr) => (prev[curr[prop]] = ++prev[curr[prop]] || 1, prev), {});
+    // console.log(countBy(th, 'mobileSlide'))
 
     let td = [
         {
