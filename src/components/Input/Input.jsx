@@ -6,7 +6,6 @@ import { Switches } from '../Switches';
 import './Input.css';
 
 
-
 export const Input = props => {
     const [file, setFile] = useState(null);
     const [active, setActive] = useState(false);
@@ -118,9 +117,9 @@ export const Input = props => {
     }
     if(props.type === 'lable-input-select') {
         element = (
-            <div onChange={props.onChange} style={props.customStyles} className='select-group'>
+            <div style={props.customStyles} className='select-group'>
                 <p className='input-group-title font-12'>Time In Force</p>
-                <div className='form-select'>
+                <div onChange={props.onChange} className='form-select'>
                     <div className='selected option'>
                         <div>rcheuli yle</div>
                         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
