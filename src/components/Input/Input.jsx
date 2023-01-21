@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { HelpText } from '../HelpText';
 import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
-import testImg from '../../assets/img/country/australia.png';
+// import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 
 export const Input = props => {
@@ -118,7 +118,8 @@ export const Input = props => {
                 <div className='form-control select-control'>
                     <div className='select-prefix'>
                         <div>  
-                            <img src={testImg} alt="country" />                      
+                            {/* <img src={testImg} alt="country" />       */}
+                            italyImg                
                         </div>
                         <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
