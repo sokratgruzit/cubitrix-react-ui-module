@@ -247,6 +247,7 @@ export const Input = props => {
                                 dropdown={"dropdown"}
                                 onClick={selectClick}
                                 active={true}
+                                customStyles={{height: 'fit-content'}}
                             />
                         </div>
                     </div>
