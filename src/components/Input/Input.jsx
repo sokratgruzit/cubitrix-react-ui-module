@@ -207,18 +207,11 @@ export const Input = props => {
             <div style={props.customStyles} className='input-group-item'>
                 <p className='font-12'>{props.label}</p>
                 <div className='form-control select-control'>
-<<<<<<< HEAD
-                    <div className='select-prefix'>
-                        <div>  
-                            {/* <img src={testImg} alt="country" />       */}
-                            italyImg                
-=======
                     <div onClick={() => {
                         activeHandler()
                     }} className='select-prefix'>
                         <div className='flag'>
 
->>>>>>> 0d3754ddae34c3aa15dd61a40f1d0875cf900be0
                         </div>
                         <svg className={`${active ? 'rotate' : ''} ${'arrow'}`} width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
