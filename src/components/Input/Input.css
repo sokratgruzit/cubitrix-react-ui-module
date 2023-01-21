@@ -340,10 +340,10 @@
 .select-modal-sc {
     display: flex;
     position: absolute;
-    top: 45px;
+    top: 50px;
     left: 0;
     z-index: 1;
-    /* width: 100%; */
+    width: 100%;
 }
 .form-select-sc {
     position: relative;

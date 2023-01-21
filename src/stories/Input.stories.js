@@ -197,7 +197,7 @@ stories.add("Input", (props) => {
       <Input
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
-       /> 
+      /> 
       
       <Input
         type={"lable-input-select"}

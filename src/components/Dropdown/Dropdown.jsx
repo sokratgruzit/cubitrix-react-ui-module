@@ -24,7 +24,7 @@ export const Dropdown = (props) => {
   }
   if (props.type === 'dropdown') {
     element =
-        <div className={` active ${props.dropdown}`}>
+        <div style={props.customStyles} className={` active ${props.dropdown}`}>
           {props.data?.map((item, index) => {
             return (
                 <div key={index}>

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const stories = storiesOf("Dropdown", module);
 
-stories.add("Dropdown", () => {
+stories.add("Dropdown", (props) => {
   const [active, setActive] = useState(false);
 
   const hendlerClick = (e) => {
