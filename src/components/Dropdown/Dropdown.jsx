@@ -11,13 +11,13 @@ export const Dropdown = (props) => {
           </h1>
           {props.countryData.map((item, index) => {
             return (
-                <div key={index} className="dropdown-menu-country">
-                  <div className="dropdown-item-country">
-                    <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
-                    <p>{item.title}</p>
-                    <p>{item.numbering}</p>
-                  </div>
+              <div key={index} className="dropdown-menu-country">
+                <div className="dropdown-item-country">
+                  <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
+                  <p>{item.title}</p>
+                  <p>{item.numbering}</p>
                 </div>
+              </div>
             )
           })}
         </div>
@@ -28,18 +28,18 @@ export const Dropdown = (props) => {
           {props.data.map((item, index) => {
             return (
                 <div key={index}>
-                  <h1 className="dropdown-toggle">
+                  <h1 className="dropdown-toggle" onClick={() => props.changeHandler(item.title)}>
                     {item.title}
                   </h1>
                   {item.list.map((item, index) => {
                     return (
-                        <div key={index} className="dropdown-item" onClick={props.onClick}>
+                        <div key={index} className="dropdown-item">
                           {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                           <span className={item.id < 3 ? "filter" : ''}>
                                             {item.svg}
                                         </span>
-                          <div>
-                            <p id={item.id} onClick={props.hendlerClick} className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
+                          <div> 
+                            <p id={item.id} className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
                               {item.title}
                             </p>
                             {item.togle === 'true' &&

@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import './AdminPanel.css';
 import { Table } from "../Table";
 import {Button} from "../Button";
 import { FilterBox } from '../FilterBox';
 
 export const AdminPanel = props => {
+    const [filterTitle, setFilterTitle] = useState('All');
     let th = [
         {
             name: "Tranx ID",
@@ -49,6 +51,8 @@ export const AdminPanel = props => {
             id: 6,
         },
     ];
+    // let countBy = (arr, prop) => arr.reduce((prev, curr) => (prev[curr[prop]] = ++prev[curr[prop]] || 1, prev), {});
+    // console.log(countBy(th, 'mobileSlide'))
 
     let td = [
         {
@@ -92,24 +96,19 @@ export const AdminPanel = props => {
     const SearchBoxDefaultData = [
         {
             label: 'All',
-            active: false,
         }, {
             label: 'Pending',
-            active: true,
         }, {
             label: 'Cenceled',
-            active: false,
         }, {
             label: 'Approved',
-            active: false,
         }, {
             label: 'Bonuses',
-            active: false,
         }, {
             label: 'Claimed',
-            active: false,
         },
     ]
+    // console.log(filterTitle)
     return (
         <div className={`admin-container`}>
             <div className={`admin-sidebar`}>
@@ -118,6 +117,8 @@ export const AdminPanel = props => {
             <div className={`admin-content`}>
                 <FilterBox  
                     searchData={SearchBoxDefaultData}
+                    setFilterTitle={setFilterTitle}
+                    filterTitle={filterTitle}
                 />
                 <Table type={"table-version"}
                        tableHead={th}
@@ -125,60 +126,60 @@ export const AdminPanel = props => {
                            td.map((item) => {
                                return(
                                   <>
-                                      <div className="table" key={item.id}>
-                                          <div className="td col" style={{width: `${th[0].width}%`}}>
-                                              <div className="mobile-ttl">{th[0].name}</div>
-                                              <span>{item.id}</span>
-                                              <span>{item.hash}</span>
-                                          </div>
-                                          <div className="td" style={{width: `${th[1].width}%`}}>
-                                              <div className="mobile-ttl">{th[1].name}</div>
-                                              <span>{item.from}</span>
-                                          </div>
-                                          <div className="td" style={{width: `${th[2].width}%`}}>
-                                              <div className="mobile-ttl">{th[2].name}</div>
-                                              <span>{item.to}</span>
-                                          </div>
-                                          <div className="td" style={{width: `${th[3].width}%`}}>
-                                              <div className="mobile-ttl">{th[3].name}</div>
-                                              <span>{item.amount}</span>
-                                          </div>
-                                          <div className="td" style={{width: `${th[4].width}%`}}>
-                                              <span>{item.domination}</span>
-                                          </div>
-                                          <div className="td col" style={{width: `${th[5].width}%`}}>
-                                              <span>{item.date}</span>
-                                              <span>{item.time}</span>
-                                          </div>
-                                          <div className="td" style={{width: `${th[6].width}%`}}>
-                                              <span>{item.type}</span>
-                                          </div>
-                                      </div>
-                                      <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-                                      </svg>
-                                      <div className="table-mobile">
-                                          <div className="table-mobile-content">
-                                              <div className="td">
-                                                  <div className="mobile-ttl">{th[2].name}</div>
+                                      <div className="table-parent">
+                                          <div className="table" key={item.id}>
+                                              <div className={`td col ${th[0].mobileSlide}`} style={{width: `${th[0].width}%`}}>
+                                                  <span>{item.id}</span>
+                                                  <span>{item.hash}</span>
+                                              </div>
+                                              <div className={`td ${th[1].mobileSlide}`} style={{width: `${th[1].width}%`}}>
+                                                  <span>{item.from}</span>
+                                              </div>
+                                              <div className={`td ${th[2].mobileSlide}`} style={{width: `${th[2].width}%`}}>
                                                   <span>{item.to}</span>
                                               </div>
-                                              <div className="td">
-                                                  <div className="mobile-ttl">{th[3].name}</div>
+                                              <div className={`td ${th[3].mobileSlide}`} style={{width: `${th[3].width}%`}}>
                                                   <span>{item.amount}</span>
                                               </div>
-                                              <div className="td">
-                                                  <div className="mobile-ttl">{th[4].name}</div>
+                                              <div className={`td ${th[4].mobileSlide}`} style={{width: `${th[4].width}%`}}>
                                                   <span>{item.domination}</span>
                                               </div>
-                                              <div className="td col">
-                                                  <div className="mobile-ttl">{th[5].name}</div>
+                                              <div className={`td ${th[5].mobileSlide}`} style={{width: `${th[5].width}%`}}>
                                                   <span>{item.date}</span>
                                                   <span>{item.time}</span>
                                               </div>
-                                              <div className="td">
-                                                  <div className="mobile-ttl">{th[6].name}</div>
+                                              <div className={`td ${th[6].mobileSlide}`} style={{width: `${th[6].width}%`}}>
                                                   <span>{item.type}</span>
+                                              </div>
+                                          </div>
+                                          <div className="icon-place">
+                                              <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                                              </svg>
+                                          </div>
+                                          <div className="table-mobile">
+                                              <div className="table-mobile-content">
+                                                  <div className="td">
+                                                      <div className="mobile-ttl">{th[2].name}</div>
+                                                      <span>{item.to}</span>
+                                                  </div>
+                                                  <div className="td">
+                                                      <div className="mobile-ttl">{th[3].name}</div>
+                                                      <span>{item.amount}</span>
+                                                  </div>
+                                                  <div className="td">
+                                                      <div className="mobile-ttl">{th[4].name}</div>
+                                                      <span>{item.domination}</span>
+                                                  </div>
+                                                  <div className="td col">
+                                                      <div className="mobile-ttl">{th[5].name}</div>
+                                                      <span>{item.date}</span>
+                                                      <span>{item.time}</span>
+                                                  </div>
+                                                  <div className="td">
+                                                      <div className="mobile-ttl">{th[6].name}</div>
+                                                      <span>{item.type}</span>
+                                                  </div>
                                               </div>
                                           </div>
                                       </div>

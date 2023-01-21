@@ -20,12 +20,81 @@ let btnArr = [
     }
 ];
 
+let countryData = [
+  {
+    id: 1,
+    title: "The United Kingdom ",
+    image: "kingdom.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 2,
+    title: "Brazil",
+    image: "brazil.png",
+    numbering: "(+76)",
+  },
+  {
+    id: 3,
+    title: "Australia",
+    image: "australia.png",
+    numbering: "(+46)",
+  },
+  {
+    id: 4,
+    title: "Canada",
+    image: "canada.png",
+    numbering: "(+918)",
+  },
+  {
+    id: 5,
+    title: "Italy",
+    image: "italy.png",
+    numbering: "(+178)",
+  },
+  {
+    id: 6,
+    title: "Mexico",
+    image: "kingdom.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 7,
+    title: "The United Kingdom ",
+    image: "germany.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 8,
+    title: "The United Kingdom ",
+    image: "brazil.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 9,
+    title: "The United Kingdom ",
+    image: "canada.png",
+    numbering: "(+78)",
+  },
+];
+let selectData = [
+  {
+    id: 1,
+    title: "option 1",
+    list: []
+  },
+  {
+    id: 1,
+    title: "option 2",
+    list: []
+  },
+];
+
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
   const [cover, setCover] = useState(false)
 
-  const changeHandler = (e) => {
-    // console.log(e.target.value, 'change handler')
+  const changeHandler = (i) => {
+    console.log(i)
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -55,20 +124,17 @@ stories.add("Input", (props) => {
         label={''}
         subLabel={''}
         onChange={changeHandler}
-        // value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
         type={"default"}
-        // value={value}
         icon={true}
         inputType={'password'}
         coverHandler={coverhandler}
         placeholder={"default input"}
         label={''}
-        subLabel={''}
+        subLabel={'dasd'}
         onChange={changeHandler}
-        // value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -118,17 +184,23 @@ stories.add("Input", (props) => {
       <Input 
         type={'label-input-phone-number'}
         label={'your text'}
+        countryData={countryData}
+        // img={img}
         onChange={changeHandler}
         customStyles={{width: '400px'}}
       />
+      <Input
+        type={'label-input-upload'}
+        customStyles={{width: 'fit-content'}}
+       /> 
       
-      {/* <Input
+      <Input
         type={"lable-input-select"}
         icon={false}
         status={"warning"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
-      /> */}
+      />
       {/* <Input
         type={"default"}
         icon={true}
@@ -181,6 +253,13 @@ stories.add("Input", (props) => {
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
+      <Input
+        type={'search-input'}
+        changeHandler={changeHandler}
+        selectData={selectData}
+        placeholder={'search'}
+        customStyles={{width: '100%'}}
+      />
     </div>
   );
 });

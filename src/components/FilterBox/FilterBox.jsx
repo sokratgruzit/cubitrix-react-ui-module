@@ -6,23 +6,23 @@ import { Button } from '../Button';
 
 export const FilterBox = (props) => {
   const [showSearchBox, setShowSearchBox] = useState(false);  
-  const [showResultBox, setShowResultBox] = useState(false);  
+//   const [showResultBox, setShowResultBox] = useState(false);  
 
-  const ResultDummyData = {
-    resultNum: 10,
-    search: 'TNX00432',
-    type: 'Withdraw'
-  }
+//   const ResultDummyData = {
+//     resultNum: 10,
+//     search: 'TNX00432',
+//     type: 'Withdraw'
+//   }
 
   return (
     <div className={'filter-box-container'}>
-        <div className={showSearchBox || showResultBox ? 'filter-box show-filters' : 'filter-box'}>
+        <div className={showSearchBox ? 'filter-box show-filters' : 'filter-box'}>
             <div className={'filter-box-list font-14'}>
                 {props.searchData.map(item => (
                     <div 
-                        key={item}
-                        className={item.active ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
-                        onClick={() => console.log('list item log')}
+                        key={item.label}
+                        className={props.filterTitle === item.label ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
+                        onClick={() => props.setFilterTitle(item.label)}
                     >
                         {item.label}
                     </div>
@@ -81,7 +81,7 @@ export const FilterBox = (props) => {
                         customStyles={{ width: "50%" }}
                     />
                 </div>
-                <div className={'filter-box-buttons'}>
+                {/* <div className={'filter-box-buttons'}>
                     <Button 
                         element={'button'}
                         type={'btn-primary'}
@@ -103,10 +103,10 @@ export const FilterBox = (props) => {
                             setShowResultBox(true)
                         }}
                     />
-                </div>
+                </div> */}
             </div>
         )}
-        {showResultBox && !showSearchBox && (
+        {/* {showResultBox && !showSearchBox && (
             <div className={'result-data-container'}>
                 <p className={'result-data__header font-12'}>Found {ResultDummyData.resultNum} Result:</p>
                 <div className={'result-data'}>
@@ -156,7 +156,7 @@ export const FilterBox = (props) => {
                     <span className={'font-12'}>Clear All</span>
                 </div>
             </div>
-        )}
+        )} */}
     </div>
   )
 }

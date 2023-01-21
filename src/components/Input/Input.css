@@ -198,6 +198,11 @@
     display: none;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
+.flag {
+    width: 24px;
+    height: 12px;
+    background-color: #9C9DA3;
+}
 /* .select-sufix p span {
     color: #6A6D76;
     margin-right: 7px;
@@ -230,6 +235,7 @@
     padding: 10px;
 }
 .upload-group-placeholder {
+    position: relative;
     width: 60px;
     height: 60px;
     border-radius: 30px;
@@ -266,10 +272,97 @@
     height: 16px;
     opacity: 0;
 }
+.avatar-sm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58px;
+    height: 58px;
+    background-color: red;
+    border-radius: 40px;
+    object-fit: cover;
+}
+.delete-btn {
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+    cursor: pointer;
+}
+.delete-btn:hover {
+    color: #3D5AFE!important;
+}
 
 /* end of upload box */
 
 /* end of label-input */
+
+
+/* search input */
+.search-input {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.search-control {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-transform: capitalize;
+}
+.search-input-item {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 16px;
+}
+.search-control::-webkit-search-cancel-button{
+    display: none;
+}
+.select-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 37px;
+    cursor: pointer;
+}
+.select-modal {
+    display: block!important;
+    position: absolute;
+    top: 50px;
+    right: 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* .secondary {
     padding-right: 55px;
 } */
