@@ -63,7 +63,7 @@ stories.add("Input", (props) => {
   const [active, setActive] = useState('')
 
   const changeHandler = (i) => {
-    console.log(i)
+    console.log(i.target.value)
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -239,7 +239,7 @@ stories.add("Input", (props) => {
        /> */}
       <Input
         type={'search-input'}
-        changeHandler={changeHandler}
+        onChange={changeHandler}
         defaultData={defaultData}
         selectHandler={selectHandler}
         selectLabel={'select'}

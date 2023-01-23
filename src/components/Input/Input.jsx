@@ -281,7 +281,7 @@ export const Input = props => {
     if(props.type === 'date-picker-input') {
         element = (
             <div className='input-group'>
-                <DatePicker selected={startdate} onChange={(date) => setStartDate(date)} />
+                {/* <DatePicker selected={startdate} onChange={(date) => setStartDate(date)} /> */}
             </div>
         )
     }
