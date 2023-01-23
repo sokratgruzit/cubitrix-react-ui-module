@@ -8,3 +8,6 @@
     height: auto;
     gap: 8px;
 }
+.status-group-inner {
+    display: flex;
+}

@@ -237,8 +237,10 @@ export const Input = props => {
                     </div>
                     <div  onChange={props.onChange} className='upload-group-text'>
                         <p>Upload a profile picture</p>
-                        <p className='upload-btn'>Browse</p>
+                        <label className='upload-btn' for={'upload_img'}>Broswe</label>
+                        {/* <p className='upload-btn'>Browse</p> */}
                         <input
+                            id='upload_img'
                             className='upload-control'
                             type="file"
                             onChange={handleChange}

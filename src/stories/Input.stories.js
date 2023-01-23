@@ -163,6 +163,7 @@ stories.add("Input", (props) => {
       <Input
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
+        onChange={changeHandler}
       /> 
       
       <Input
