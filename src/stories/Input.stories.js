@@ -76,13 +76,30 @@ let countryData = [
     numbering: "(+78)",
   },
 ];
+let selectData = [
+  {
+    id: 1,
+    title: "option 1",
+    list: []
+  },
+  {
+    id: 2,
+    title: "option 2",
+    list: []
+  },
+  {
+    id: 3,
+    title: "option 3",
+    list: []
+  },
+];
 
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
   const [cover, setCover] = useState(false)
 
-  const changeHandler = (e) => {
-    // console.log(e.target.value, 'change handler')
+  const changeHandler = (i) => {
+    console.log(i)
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -180,11 +197,12 @@ stories.add("Input", (props) => {
       <Input
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
-       /> 
+      /> 
       
       <Input
         type={"lable-input-select"}
         icon={false}
+        selectData={selectData}
         status={"warning"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
@@ -241,6 +259,13 @@ stories.add("Input", (props) => {
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
+      <Input
+        type={'search-input'}
+        changeHandler={changeHandler}
+        selectData={selectData}
+        placeholder={'search'}  
+        customStyles={{width: '100%'}}
+      />
     </div>
   );
 });
