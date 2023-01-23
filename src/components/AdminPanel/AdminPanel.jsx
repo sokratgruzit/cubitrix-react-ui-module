@@ -7,19 +7,19 @@ export const AdminPanel = props => {
         {
             name: "Tranx ID",
             width: 15,
-            mobileSlide: false,
+            mobileWidth: 25,
             id: 0,
         },
         {
             name: "From",
             width: 15,
-            mobileSlide: false,
+            mobileWidth: 25,
             id: 1,
         },
         {
             name: "To",
             width: 15,
-            mobileSlide: false,
+            mobileWidth: 25,
             id: 2,
         },
         {
@@ -48,8 +48,12 @@ export const AdminPanel = props => {
             id: 6,
         },
     ];
-    // let countBy = (arr, prop) => arr.reduce((prev, curr) => (prev[curr[prop]] = ++prev[curr[prop]] || 1, prev), {});
-    // console.log(countBy(th, 'mobileSlide'))
+    const countBy = (arr, prop) => arr.reduce((prev, curr) => (prev[curr[prop]] = ++prev[curr[prop]] || 1, prev), {});
+    let mobile = false;
+    if(window.innerWidth <= 1300) {
+        mobile = true;
+    }
+    console.log(mobile)
 
     let td = [
         {
@@ -97,33 +101,34 @@ export const AdminPanel = props => {
             <div className={`admin-content`}>
                 <Table type={"table-version"}
                        tableHead={th}
+                       mobile={mobile}
                        tableData={
                            td.map((item) => {
                                return(
                                   <>
                                       <div className="table-parent">
                                           <div className="table" key={item.id}>
-                                              <div className={`td col ${th[0].mobileSlide}`} style={{width: `${th[0].width}%`}}>
+                                              <div className={`td col ${th[0].mobileWidth ? true : false }`} style={{width: `${mobile ? th[0].mobileWidth : th[0].width}%`}}>
                                                   <span>{item.id}</span>
                                                   <span>{item.hash}</span>
                                               </div>
-                                              <div className={`td ${th[1].mobileSlide}`} style={{width: `${th[1].width}%`}}>
+                                              <div className={`td ${th[1].mobileWidth ? true : false }`} style={{width: `${mobile ? th[1].mobileWidth : th[1].width}%`}}>
                                                   <span>{item.from}</span>
                                               </div>
-                                              <div className={`td ${th[2].mobileSlide}`} style={{width: `${th[2].width}%`}}>
+                                              <div className={`td ${th[2].mobileWidth ? true : false }`} style={{width: `${mobile ? th[2].mobileWidth : th[3].width}%`}}>
                                                   <span>{item.to}</span>
                                               </div>
-                                              <div className={`td ${th[3].mobileSlide}`} style={{width: `${th[3].width}%`}}>
+                                              <div className={`td ${th[3].mobileWidth ? true : false }`} style={{width: `${mobile ? th[3].mobileWidth : th[3].width}%`}}>
                                                   <span>{item.amount}</span>
                                               </div>
-                                              <div className={`td ${th[4].mobileSlide}`} style={{width: `${th[4].width}%`}}>
+                                              <div className={`td ${th[4].mobileWidth ? true : false }`} style={{width: `${mobile ? th[4].mobileWidth : th[4].width}%`}}>
                                                   <span>{item.domination}</span>
                                               </div>
-                                              <div className={`td ${th[5].mobileSlide}`} style={{width: `${th[5].width}%`}}>
+                                              <div className={`td ${th[5].mobileWidth ? true : false }`} style={{width: `${mobile ? th[5].mobileWidth : th[5].width}%`}}>
                                                   <span>{item.date}</span>
                                                   <span>{item.time}</span>
                                               </div>
-                                              <div className={`td ${th[6].mobileSlide}`} style={{width: `${th[6].width}%`}}>
+                                              <div className={`td ${th[6].mobileWidth ? true : false }`} style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}>
                                                   <span>{item.type}</span>
                                               </div>
                                           </div>
