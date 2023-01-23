@@ -1,12 +1,10 @@
 import { storiesOf } from "@storybook/react";
 import { VerifySaccess } from "../components/verifySuccess/VerifySuccess";
-import { useState } from "react";
 
 const stories = storiesOf("VerifySaccess", module);
 
 stories.add("VerifySaccess", () => {
     
-    const [show, setShow] = useState(true);
 
 
     const verifyLogo = <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
@@ -111,17 +109,16 @@ stories.add("VerifySaccess", () => {
 
     return (
         <>
-            <buttton onClick={() => setShow(!show)} style={{backgroundColor: "red"}}>click</buttton>
             <VerifySaccess 
                 type="verify-saccess"
                 cardBody={verifySaccess}
-                active={show}
+                active={true}
                 customStyle={{width: "100%"}}
             />
              <VerifySaccess 
                 type="verify-failed"
                 cardBody={verifyFailed}
-                active={show}
+                active={true}
                 customStyle={{width: "100%"}}
             />
         </>

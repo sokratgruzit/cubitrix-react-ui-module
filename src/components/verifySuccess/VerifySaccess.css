@@ -16,8 +16,11 @@
 
 .verify-card .verify-card-header {
     padding: 40px;
-    text-align: center;
     letter-spacing: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .verify-card .verify-card-content {
