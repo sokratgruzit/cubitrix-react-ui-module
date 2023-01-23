@@ -13,7 +13,7 @@ export const Dropdown = (props) => {
             return (
               <div key={index} className="dropdown-menu-country">
                 <div className="dropdown-item-country">
-                  <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
+                  <img src={item.image} alt="country" />
                   <p>{item.title}</p>
                   <p>{item.numbering}</p>
                 </div>

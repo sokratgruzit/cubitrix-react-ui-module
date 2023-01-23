@@ -135,7 +135,18 @@ export const Input = props => {
                         </svg>
                     </div>
                     <div className={`${'hidden'} ${active ? 'select-modal-sc' : ''}`}>
-                        <Dropdown
+                        {props.selectType === 'country' ? (
+                            <Dropdown
+                            data={props.countryData}
+                            type={"dropdown"}
+                            dropdown={"dropdown"}
+                            onClick={selectClick}
+                            handlerClick={handlerClick}
+                            active={true}
+                            customStyles={{height: 'fit-content', width: 'inherit'}}
+                        />
+                        ) : (
+                            <Dropdown
                             data={props.selectData}
                             type={"dropdown"}
                             dropdown={"dropdown"}
@@ -144,6 +155,7 @@ export const Input = props => {
                             active={true}
                             customStyles={{height: 'fit-content', width: 'inherit'}}
                         />
+                        )}
                     </div>
                 </div>
                 <HelpText
