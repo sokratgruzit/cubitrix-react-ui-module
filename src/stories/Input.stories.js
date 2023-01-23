@@ -157,7 +157,6 @@ stories.add("Input", (props) => {
         type={'label-input-phone-number'}
         label={'your text'}
         countryData={countryData}
-        // img={img}
         onChange={changeHandler}
         customStyles={{width: '400px'}}
       />
@@ -182,8 +181,9 @@ stories.add("Input", (props) => {
       <Input 
         type={'date-picker-input'}
         onChange={changeHandler}
+        label={'your text'}
         active={active}
-        customStyles={{}}
+        customStyles={{width: '320px'}}
       />
       {/* <Input
         type={"default"}
