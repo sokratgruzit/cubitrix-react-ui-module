@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import './AdminPanel.css';
 import { Table } from "../Table";
-import {Button} from "../Button";
 import { FilterBox } from '../FilterBox';
 
 export const AdminPanel = props => {
