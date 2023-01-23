@@ -152,11 +152,7 @@
 }
 
 /* select input */
-.select-group {
-    position: relative;
-    /* width: 100%;
-    height: auto; */
-}
+
 .select-control {
     display: flex;
     align-items: center;
@@ -330,6 +326,7 @@
     align-items: center;
     gap: 37px;
     cursor: pointer;
+    width: 100%;
 }
 
 .form-select {
@@ -346,15 +343,23 @@
     /* background-color: red; */
 }
 .select-modal-sc {
-    display: block!important;
+    display: flex;
     position: absolute;
-    /* top: 70px; */
+    top: 50px;
     left: 0;
     z-index: 1;
     width: 100%;
 }
-
-
+.form-select-sc {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.form-select-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
 
 
 

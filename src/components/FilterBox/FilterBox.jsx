@@ -4,7 +4,24 @@ import './FilterBox.css'
 import { Input } from '../Input';
 
 export const FilterBox = (props) => {
-  const [showSearchBox, setShowSearchBox] = useState(false);  
+  const [showSearchBox, setShowSearchBox] = useState(false); 
+  let selectData = [
+    {
+      id: 1,
+      title: "option 1",
+      list: []
+    },
+    {
+      id: 2,
+      title: "option 2",
+      list: []
+    },
+    {
+      id: 3,
+      title: "option 3",
+      list: []
+    },
+  ]; 
 
   return (
     <div className={'filter-box-container'}>
@@ -39,36 +56,29 @@ export const FilterBox = (props) => {
             <div className={'filter-box-search'}>
                 <div className={'filter-box-input'}>
                     <Input
-                        type={"default"}
-                        icon={false}
-                        label={'Search'}
-                        subLabel={false}
-                        placeholder={"Search"}
-                        onChange={() => console.log('log')}
+                        type={'search-input'}
+                        onChange={(e) => console.log(e.target.value)}
+                        selectData={selectData}
+                        placeholder={'search'}  
+                        customStyles={{width: '100%'}}
                     />
-                    <div 
-                        className={'filter-box-input-btn font-14'}
-                        onClick={() => console.log('transaction')}
-                    >
-                        Transaction
-                    </div>
                 </div>  
                 <div className={'filter-box-selects'}>
                     <Input
-                        type={"default"}
+                        type={"lable-input-select"}
                         icon={false}
                         label={'Tranx Type'}
-                        subLabel={false}
-                        placeholder={"Any Type"}
-                        onChange={() => console.log('log')}
+                        selectData={selectData}
+                        status={"warning"}
+                        color={"#FFA726"}
                     />
                     <Input
-                        type={"default"}
+                        type={"lable-input-select"}
                         icon={false}
-                        label={'Date Within'}
-                        subLabel={false}
-                        placeholder={"All Time"}
-                        onChange={() => console.log('log')}
+                        label={'Tranx Type'}
+                        selectData={selectData}
+                        status={"warning"}
+                        color={"#FFA726"}
                     />
                 </div>
             </div>

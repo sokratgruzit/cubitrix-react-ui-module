@@ -24,14 +24,14 @@ export const Dropdown = (props) => {
   }
   if (props.type === 'dropdown') {
     element =
-        <div className={` active ${props.dropdown}`}>
+        <div style={props.customStyles} className={` active ${props.dropdown}`}>
           {props.data?.map((item, index) => {
             return (
                 <div key={index}>
                   <h1 onClick={() => props.handlerClick(item.title)} className="dropdown-toggle">
                     {item.title}
                   </h1>
-                  {item.list.map((item, index) => {
+                  {item.list?.map((item, index) => {
                     return (
                         <div key={index} className="dropdown-item">
                           {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}

@@ -107,7 +107,52 @@ export const AdminPanel = props => {
         }, {
             title: 'Claimed',
         },
+        
     ]
+
+    const filterData = {
+        head: [
+            {
+                title: 'All',
+            }, {
+                title: 'Pending',
+            }, {
+                title: 'Cenceled',
+            }, {
+                title: 'Approved',
+            }, {
+                title: 'Bonuses',
+            }, {
+                title: 'Claimed',
+            },
+            
+        ],
+        search: {
+            options: [{
+                name: 'Transaction'   
+            }, {
+                name: 'Hash'
+            }]
+        },
+        selects: [
+            {
+                name: 'Tranx Type',
+                options: [{
+                    name: 'Transaction'   
+                }, {
+                    name: 'Hash'
+                }]
+            },
+            {
+                name: 'Date Within',
+                options: [{
+                    name: 'Transaction'   
+                }, {
+                    name: 'Hash'
+                }]
+            },    
+        ] 
+    }
     // console.log(filterTitle)
     return (
         <div className={`admin-container`}>

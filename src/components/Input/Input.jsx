@@ -11,7 +11,8 @@ export const Input = props => {
     const [file, setFile] = useState(null);
     const [active, setActive] = useState(false);
     const [cover, setCover] = useState(false);
-    const [close, setClose] = useState(true)
+    const [close, setClose] = useState(true);
+    const [value, setValue] = useState('Select')
 
     const activeHandler = () => {
         if(!active) {
@@ -36,6 +37,7 @@ export const Input = props => {
     }
     function handlerClick (i) {
         console.log(i);
+        setValue(i)
     }
     function handleChange(e) {
         console.log(e.target.files);
@@ -43,7 +45,7 @@ export const Input = props => {
         setClose(false)
     };
     function selectClick(e) {
-        console.log(e.target.value)
+        console.log(e.target.value);
     }
 
     let element = null;
@@ -125,10 +127,10 @@ export const Input = props => {
         element = (
             <div onChange={props.onChange} style={props.customStyles} className='select-group'>
                 <p className='input-group-title font-12'>Time In Force</p>
-                <div onChange={props.onChange} className='form-select'>
-                    <div onClick={activeHandler} className='selected option'>
-                        <div>rcheuli yle</div>
-                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div onChange={props.onChange} className='form-select-sc'>
+                    <div onClick={activeHandler} className='form-select-item form-control'>
+                        <div>{value}</div>
+                        <svg className={`${active ? 'rotate' : ''} ${'arrow'}`} width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
@@ -138,16 +140,16 @@ export const Input = props => {
                             type={"dropdown"}
                             dropdown={"dropdown"}
                             onClick={selectClick}
+                            handlerClick={handlerClick}
                             active={true}
-                            customStyles={{width: '100%'}}
+                            customStyles={{height: 'fit-content', width: 'inherit'}}
                         />
                     </div>
                 </div>
-                
                 <HelpText
                     icon={true}
-                    status={'error'}
-                    title={'error'}
+                    status={'success'}
+                    title={'success'}
                     color={'#EF5350'}
                 />
             </div>
@@ -194,7 +196,6 @@ export const Input = props => {
                 </div>
                 <div className='upload-group-inner'>
                     <div className='upload-group-placeholder'>
-                        {console.log(file, close)}
                         {
                             close ? (
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +240,7 @@ export const Input = props => {
                     <input onChange={props.onChange} className='search-control' type='search' placeholder={props.placeholder} />
                     <div className='form-select search-input-item'>
                         <div onClick={activeHandler} className='select-form'>
-                            <p>Transaction</p>
+                            <p className='font-10'>{value}</p>
                             <svg className={`${active ? 'rotate' : ''} ${'arrow'}`}  width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 1.5L4.5303 3.9697C4.23864 4.26136 3.76136 4.26136 3.4697 3.9697L1 1.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                             </svg>
@@ -252,7 +253,7 @@ export const Input = props => {
                                 onClick={selectClick}
                                 handlerClick={handlerClick}
                                 active={true}
-                                customStyles={{height: 'fit-content'}}
+                                customStyles={{height: '200px'}}
                             />
                         </div>
                     </div>
