@@ -38,7 +38,7 @@ export const Input = props => {
 
     }
     function handlerClick (i) {
-        console.log(i, 'item');
+        console.log(i, 'item    ');
         setValue(i)
         // setNumb(i.item.numbering)
     }
@@ -264,13 +264,12 @@ export const Input = props => {
                         </div>
                         <div className={`${'hidden'} ${active ? 'select-modal' : ''}`}>
                             <Dropdown
-                                data={props.selectData}
-                                type={"dropdown"}
-                                dropdown={"dropdown"}
-                                onClick={selectClick}
+                                type={'default-dropdown'}
+                                data={props.defaultData}
+                                active={props.active}
                                 handlerClick={handlerClick}
-                                active={true}
-                                customStyles={{height: '200px'}}
+                                selectHandler={props.selectHandler}
+                                customStyles={{}}
                             />
                         </div>
                     </div>

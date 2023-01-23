@@ -69,7 +69,7 @@ export const Dropdown = (props) => {
   if(props.type === 'default-dropdown') {
     element = (
       <div style={props.customStyles} className={` active ${props.dropdown}`}>
-        {props.data.map((item, index) => {
+        {props.data?.map((item, index) => {
           console.log(item)
           return (
             <div onClick={() => {
