@@ -63,8 +63,8 @@ export const Input = props => {
         element = (
             <div  style={props.customStyles} className={`${props.className} input-group`}>
                 {props.label ? ( <p className='input-group-title font-12'>{props.label}<span className='font-12'>{props.subLabel}</span></p> ) : ''}
-                <input onChange={props.onChange} value={props.value} style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}} className='form-control' type={cover ? 'text' : 'password'} placeholder={props.placeholder} />
-                <span className=''>
+                <input onChange={props.onChange} value={props.value} style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}} className='form-control' type={cover ? 'password' : 'text'} placeholder={props.placeholder} />
+                <span>
                     {props.inputType === 'password' ? (
                         <div onClick={coverHandler}>
                             {cover ? (

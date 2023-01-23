@@ -12,7 +12,7 @@
 .form-control {
     width: 100%;
     padding: 11.5px 16px 11.5px 16px;
-    background-color: #070B1A;
+    background-color: transparent;
     border: 1px solid #1F2330;
     border-radius: 6px;
     color: #fff;
