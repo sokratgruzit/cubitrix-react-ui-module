@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { HelpText } from '../HelpText';
 import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
+
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 import { func } from 'prop-types';
@@ -38,18 +39,15 @@ export const Input = props => {
 
     }
     function handlerClick (i) {
-        console.log(i, 'item    ');
+        // console.log(i, 'item');
         setValue(i)
-        // setNumb(i.item.numbering)
     }
     function handleChange(e) {
-        console.log(e.target.files);
+        // console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
         setClose(false)
     };
-    function selectClick(e) {
-        console.log(e.target.value);
-    }
+    
 
     let element = null;
 
@@ -143,7 +141,6 @@ export const Input = props => {
                                 data={props.countryData}
                                 type={"dropdown"}
                                 dropdown={"dropdown"}
-                                onClick={selectClick}
                                 handlerClick={handlerClick}
                                 active={true}
                                 customStyles={{height: 'fit-content', width: 'inherit'}}
@@ -274,6 +271,13 @@ export const Input = props => {
                         </div>
                     </div>
                 </div>
+            </div>
+        )
+    }
+    if(props.type === 'date-picker-input') {
+        element = (
+            <div className='input-group'>
+                    {/* <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} /> */}
             </div>
         )
     }

@@ -38,11 +38,12 @@
     "react-dom": "^17.0.1"
   },
   "dependencies": {
-    "react-beautiful-dnd": "^13.1.1",
-    "swiper": "^8.0.0",
     "next-qrcode": "^2.4.0",
     "qrcode.react": "^3.1.0",
-    "react-qr-code": "^2.0.11"
+    "react-beautiful-dnd": "^13.1.1",
+    "react-datepicker": "^4.8.0",
+    "react-qr-code": "^2.0.11",
+    "swiper": "^8.0.0"
   },
   "repository": {
     "type": "git",

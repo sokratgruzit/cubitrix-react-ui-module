@@ -179,6 +179,12 @@ stories.add("Input", (props) => {
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />
+      <Input 
+        type={'date-picker-input'}
+        onChange={changeHandler}
+        active={active}
+        customStyles={{}}
+      />
       {/* <Input
         type={"default"}
         icon={true}
@@ -234,7 +240,9 @@ stories.add("Input", (props) => {
       <Input
         type={'search-input'}
         changeHandler={changeHandler}
-        selectData={selectData}
+        defaultData={defaultData}
+        selectLabel={'select'}
+        selectHandler={selectHandler}
         placeholder={'search'}  
         label={'your text'}
         customStyles={{width: '100%'}}

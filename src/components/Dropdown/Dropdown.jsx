@@ -70,7 +70,6 @@ export const Dropdown = (props) => {
     element = (
       <div style={props.customStyles} className={`${'active'} ${'dropdown'}`}>
         {props.data?.map((item, index) => {
-          console.log(item)
           return (
             <div className="dropdown-item" onClick={() => {
               props.handlerClick(item.name)
