@@ -21,18 +21,22 @@ export const UserOptions = ({
         onClick={sideBarClose}
       />
       <div className="sidebar-body">
-        <div className="complete">
-          <p>Complete the onboarding flow to start trading on COMPLEND</p>
-          <Button
-            element="button"
-            label="Complete Account"
-            type="btn-primary"
-            size="btn-lg"
-            onClick={completeAccount}
-            customStyles={{ width: "179px" }}
-          />
-        </div>
-        <span className="border-full"></span>
+        {warning && (
+          <>
+            <div className="complete">
+              <p>Complete the onboarding flow to start trading on COMPLEND</p>
+              <Button
+                element="button"
+                label="Complete Account"
+                type="btn-primary"
+                size="btn-lg"
+                onClick={completeAccount}
+                customStyles={{ width: "179px" }}
+              />
+            </div>
+            <span className="border-full"></span>
+          </>
+        )}
         <div className="address-wrap">
           <p>Your Address</p>
           <p>

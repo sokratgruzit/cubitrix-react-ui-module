@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../../Button";
 import { Visual } from "../../Visual";
 import "./UserAccount.css";
@@ -9,6 +9,8 @@ export const UserAccount = ({
   handlePersonalData,
   handleSecurityData,
   response,
+  emailVerified,
+  personalData,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -33,6 +35,12 @@ export const UserAccount = ({
   const handleUserUpdate = (value, field) => {
     setUserData((prevState) => ({ ...prevState, [field]: value }));
   };
+  useEffect(() => {
+    if (personalData) {
+      setUserData(personalData);
+    }
+  }, [personalData]);
+
   return (
     <>
       <Visual
