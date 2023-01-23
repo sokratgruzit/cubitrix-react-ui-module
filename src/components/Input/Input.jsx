@@ -155,7 +155,7 @@ export const Input = props => {
                                 active={props.active}
                                 handlerClick={handlerClick}
                                 selectHandler={props.selectHandler}
-                                customStyles={{}}
+                                customStyles={{width: 'inherit'}}
                             />
                         )}
                     </div>

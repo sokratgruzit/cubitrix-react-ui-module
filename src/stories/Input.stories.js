@@ -60,6 +60,7 @@ let defaultData = [{
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
   const [cover, setCover] = useState(false)
+  const [active, setActive] = useState('')
 
   const changeHandler = (i) => {
     console.log(i)
@@ -172,6 +173,7 @@ stories.add("Input", (props) => {
         defaultData={defaultData}
         selectHandler={selectHandler}
         selectLabel={'your text ttt'}
+        active={active}
         status={"warning"}
         title={'your text'}
         color={"#FFA726"}
