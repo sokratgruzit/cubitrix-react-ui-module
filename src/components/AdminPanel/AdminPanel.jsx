@@ -1,14 +1,32 @@
-import { useState } from 'react';
+import { React, useState } from 'react';
 import './AdminPanel.css';
 import { Table } from "../Table";
 import { FilterBox } from '../FilterBox';
+import { Button } from '../Button';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 export const AdminPanel = props => {
 
     return (
         <div className={`admin-container`}>
             <div className={`admin-sidebar`}>
-                shmai
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/*" element={
+                            props.sideBarData.map((item) => {
+                                    return (
+                                        <Button
+                                            label={item.name}
+                                            route={item.route}
+                                            element={'side-admin-button'}
+                                            svg={item.svg}
+                                            customStyles={{width: '100%'}}
+                                        />
+                                    )
+                                })
+                        } />
+                    </Routes>
+                </BrowserRouter>
             </div>
             <div className={`admin-content`}>
                 <FilterBox

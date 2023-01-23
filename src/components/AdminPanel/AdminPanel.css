@@ -6,7 +6,10 @@
 }
 .admin-sidebar {
     width: 240px;
+    background: #0C1121;
+    padding: 15px 10px;
 }
 .admin-content {
     width: calc(100% - 240px);
+    padding: 0px 20px;
 }
