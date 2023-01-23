@@ -1,10 +1,57 @@
 import { storiesOf } from "@storybook/react";
+import { useState } from "react";
 import "../assets/css/main-theme.css";
 import { AdminPanel } from "../components/AdminPanel";
 
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
+    const defaultData = {
+        head: 'All'
+    }
+    const [data, setData] = useState(defaultData)
+    const tableFilterData = {
+        head: [
+            {
+                title: 'All',
+            }, {
+                title: 'Pending',
+            }, {
+                title: 'Cenceled',
+            }, {
+                title: 'Approved',
+            }, {
+                title: 'Bonuses',
+            }, {
+                title: 'Claimed',
+            },
+        ],
+        search: {
+            options: [{
+                name: 'Transaction'
+            }, {
+                name: 'Hash'
+            }]
+        },
+        selects: [
+            {
+                name: 'Tranx Type',
+                options: [{
+                    name: 'Transaction'
+                }, {
+                    name: 'Hash'
+                }]
+            },
+            {
+                name: 'Date Within',
+                options: [{
+                    name: 'Transaction'
+                }, {
+                    name: 'Hash'
+                }]
+            },
+        ]
+    }
     let th = [
         {
             name: "Tranx ID",
@@ -164,6 +211,9 @@ stories.add("AdminPanel", () => {
                 tableData={tableData}
                 tableHead={th}
                 mobile={mobile}
+                tableFilterData={tableFilterData}
+                data={data}
+                setData={setData}
             />
         </div>
     );

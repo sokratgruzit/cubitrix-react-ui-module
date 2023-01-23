@@ -5,33 +5,16 @@ import { Input } from '../Input';
 
 export const FilterBox = (props) => {
   const [showSearchBox, setShowSearchBox] = useState(false); 
-  let selectData = [
-    {
-      id: 1,
-      title: "option 1",
-      list: []
-    },
-    {
-      id: 2,
-      title: "option 2",
-      list: []
-    },
-    {
-      id: 3,
-      title: "option 3",
-      list: []
-    },
-  ]; 
-
+  console.log(props.data.search)
   return (
     <div className={'filter-box-container'}>
         <div className={showSearchBox ? 'filter-box show-filters' : 'filter-box'}>
             <div className={'filter-box-list font-14'}>
-                {props.filterData.map(item => (
+                {props.tableFilterData.head.map(item => (
                     <div 
                         key={item.title}
-                        className={props.filterTitle === item.title ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
-                        onClick={() => props.setFilterTitle(item.title)}
+                        className={props.data.head === item.title ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
+                        onClick={() => props.setData({...props.data, head: item.title})}
                     >
                         {item.title}
                     </div>
@@ -57,29 +40,22 @@ export const FilterBox = (props) => {
                 <div className={'filter-box-input'}>
                     <Input
                         type={'search-input'}
-                        onChange={(e) => console.log(e.target.value)}
-                        selectData={selectData}
+                        label={'Search'}
+                        onChange={(e) => props.setData({...props.data, search: e.target.value})}
+                        selectData={props.tableFilterData.search.options}
                         placeholder={'search'}  
                         customStyles={{width: '100%'}}
                     />
                 </div>  
                 <div className={'filter-box-selects'}>
-                    <Input
-                        type={"lable-input-select"}
-                        icon={false}
-                        label={'Tranx Type'}
-                        selectData={selectData}
-                        status={"warning"}
-                        color={"#FFA726"}
-                    />
-                    <Input
-                        type={"lable-input-select"}
-                        icon={false}
-                        label={'Tranx Type'}
-                        selectData={selectData}
-                        status={"warning"}
-                        color={"#FFA726"}
-                    />
+                    {props.tableFilterData.selects.map(select => (
+                        <Input
+                            type={"lable-input-select"}
+                            icon={false}
+                            label={select.name}
+                            data={select.options}
+                        />
+                    ))}
                 </div>
             </div>
         )}
