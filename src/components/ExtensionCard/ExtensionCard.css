@@ -1,6 +1,6 @@
 .extension-card {
-    width: 508px;
-    background-color: rgba(255, 255, 255, 0.05);;
+    background-color: rgba(255, 255, 255, 0.05);
+    ;
     padding: 42px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.4);
@@ -12,66 +12,221 @@
     opacity: 0;
     transform: translateY(20px);
 }
-.trade .card-header, .loan .card-header {
+
+.extension-card svg {
+    cursor: pointer;
+    transition: .6s;
+}
+
+.trade .card-header,
+.loan .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.trade .extension-card-body, .loan .extension-card-body {
+
+.trade .extension-card-body,
+.loan .extension-card-body {
     flex-direction: column;
     display: flex;
     gap: 6px;
 }
-.trade .extension-card-body-header, .loan .extension-card-body-header {
+
+.trade .extension-card-body-header,
+.loan .extension-card-body-header {
     display: flex;
     text-align: center;
     align-items: center;
-    gap: 25px;
+    gap: 15px;
+    cursor: pointer;
 }
-.trade .extension-card-body-header h1 {
+
+.extension-card .staking-card:hover .arrowSvg path {
+    stroke: #3D5AFE;
+}
+
+.extension-card .staking-card:hover .arrowSvg {
+    transform: translateX(5px);
+}
+.extension-card .staking-card:hover .staking-card-header h1 {
     color: #3D5AFE;
+}
+
+.extension-card .extension-card-body-header:hover .arrowSvg path {
+    stroke: #3D5AFE;
+}
+
+.extension-card .extension-card-body-header:hover .arrowSvg {
+    transform: translateX(5px);
+}
+
+.extension-card .extension-card-body-header:hover h1 {
+    color: #3D5AFE;
+}
+
+.extension-card .extension-card-body-header h1 {
+    transition: .6s;
     font-size: 20px;
 }
+
 .loan .extension-card-body-header h1 {
     font-size: 20px;
 }
+
 .loan .extension-card-body p {
     color: #9C9DA3;
 }
+
 .extension-card .staking-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 }
-.staking-card-header {
+
+.extension-card .staking-card-header {
     display: flex;
     align-items: center;
     gap: 30px;
 }
-.staking-card-header h1 {
+
+.extension-card .staking-card-header h1 {
+    font-size: 20px;
+    transition: .6s;
+}
+
+.extension-component {
+    background-color: #070B1A;
+    border-radius: 0px;
+}
+
+.extension-component .hushCode {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.extension-component .hushCode p,
+.arrowSvg2 path {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 2px;
+    transition: .6s;
+}
+
+.extension-component .hushCode:hover p {
+    color: #3D5AFE;
+}
+
+.extension-component .hushCode:hover .arrowSvg2 path {
+    stroke: blue;
+}
+
+.extension-component .extension-component-wrapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.extension-component .extension-component-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.extension-component .extension-component-header h1 {
     font-size: 20px;
 }
+
+.extension-component .extension-component-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 13px;
+    padding: 0 20px;
+}
+
+.extension-component .extension-component-body {
+    display: flex;
+    gap: 60px;
+    /* justify-content: space-between; */
+}
+
+.extension-component .component-body-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.extension-component .component-body-section-body:hover .arrowSvg path {
+    stroke: blue;
+}
+.extension-component .component-body-section-body p, .dotSvg circle {
+    transition: .6s;
+    cursor: pointer;
+}
+.extension-component .component-body-section-body:hover p {
+    color: blue;
+}
+.extension-component .component-body-section-body:hover .arrowSvg {
+    transform: translateX(5px);
+}
+
+.extension-component .component-body-section-body:hover .dotSvg circle {
+    fill: blue;
+}
+
+.extension-component .component-body-section h4 {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 140%;
+    color: #9C9DA3;
+}
+
+.extension-component .component-body-section div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.extension-component .line {
+    height: 40px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .extension-card .active {
     opacity: 0;
     transform: translateY(5px);
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
 }
+
 .animation {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
     opacity: 1;
     transform: translateY(0);
 }
-.animation .card-header, .animation .staking-card-header {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+
+.animation .card-header,
+.animation .staking-card-header {
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
     opacity: 1;
     transform: translateY(0);
     animation-delay: .1s;
     transition-delay: .1s;
 }
+
 .animation .extension-card-body {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
     opacity: 1;
     transform: translateY(0);
     transition-delay: .2s;
     animation-delay: .2s;
+}
+
+.animation .extension-card-footer {
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .3s;
+    animation-delay: .3s;
 }
