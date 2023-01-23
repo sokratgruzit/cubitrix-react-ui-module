@@ -12,7 +12,7 @@ export const Input = props => {
     const [active, setActive] = useState(false);
     const [cover, setCover] = useState(false);
     const [close, setClose] = useState(true);
-    const [value, setValue] = useState('Select');
+    const [value, setValue] = useState(props.selectLabel);
     const [numb, setNumb] = useState('+00');
     const [flag, setFlag] = useState('');
 

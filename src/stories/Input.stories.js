@@ -171,6 +171,7 @@ stories.add("Input", (props) => {
         selectData={selectData}
         defaultData={defaultData}
         selectHandler={selectHandler}
+        selectLabel={'your text ttt'}
         status={"warning"}
         title={'your text'}
         color={"#FFA726"}

@@ -72,7 +72,7 @@ export const Dropdown = (props) => {
         {props.data?.map((item, index) => {
           console.log(item)
           return (
-            <div onClick={() => {
+            <div className="dropdown-item" onClick={() => {
               props.handlerClick(item.name)
               props.selectHandler(item.name)
             } 
