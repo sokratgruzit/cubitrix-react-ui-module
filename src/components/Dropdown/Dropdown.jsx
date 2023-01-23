@@ -1,18 +1,30 @@
+import { useState } from "react";
 import { Switches } from "../Switches";
 import "./Dropdown.css";
 
 export const Dropdown = (props) => {
+  const [inputData, setInputData] = useState(
+    {
+    title: '',
+    img: null,
+    numbering: ''
+  });
+
+  function updateData(data,field) {
+    setInputData(prev => ({...prev, [field] : data }))
+  }
+
   let element = '';
   if (props.type === 'country') {
     element =
-        <div className="dropdown-country">
+        <div style={props.customStyles} className="dropdown-country">
           <h1 className="dropdown-toggle">
             Select Country
           </h1>
           {props.countryData.map((item, index) => {
             return (
               <div key={index} className="dropdown-menu-country">
-                <div className="dropdown-item-country">
+                <div onClick={() => props.handlerClick({image: item.image, title: item.title, numbering: item.numbering})} className="dropdown-item-country">
                   <img src={item.image} alt="country" />
                   <p>{item.title}</p>
                   <p>{item.numbering}</p>

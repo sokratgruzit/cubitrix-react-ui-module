@@ -24,13 +24,13 @@ let countryData = [
   {
     id: 1,
     title: "The United Kingdom ",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
     numbering: "(+78)",
   },
   {
     id: 2,
     title: "Brazil",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
     numbering: "(+76)",
   }
 ];
