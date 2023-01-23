@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "name": "@brilliant_emporium/ui",
   "version": "0.0.14",
+=======
+  "name": "@cubitrix/cubitrix-react-ui-module",
+  "version": "0.1.8",
+>>>>>>> 7f3941fcd8dae1746bdbfd9d014576d33167cc16
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
