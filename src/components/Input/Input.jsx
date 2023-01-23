@@ -38,7 +38,7 @@ export const Input = props => {
 
     }
     function handlerClick (i) {
-        console.log(i);
+        console.log(i, 'item');
         setValue(i)
         // setNumb(i.item.numbering)
     }
@@ -150,13 +150,12 @@ export const Input = props => {
                             />
                         ) : (
                             <Dropdown
-                                data={props.selectData}
-                                type={"dropdown"}
-                                dropdown={"dropdown"}
-                                onClick={selectClick}
+                                type={'default-dropdown'}
+                                data={props.defaultData}
+                                active={props.active}
                                 handlerClick={handlerClick}
-                                active={true}
-                                customStyles={{height: 'fit-content', width: 'inherit'}}
+                                selectHandler={props.selectHandler}
+                                customStyles={{}}
                             />
                         )}
                     </div>
@@ -247,6 +246,7 @@ export const Input = props => {
     if(props.type === 'search-input') {
         element = (
             <div style={props.customStyles} className='input-group'>
+                <p className='font-12'>{props.label && props.label}</p>
                 <div className='search-input form-control'>
                     <div className='search-input-item-fr'>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

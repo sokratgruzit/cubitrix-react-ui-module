@@ -51,6 +51,11 @@ let selectData = [
     list: []
   },
 ];
+let defaultData = [{
+  name: 'Transaction'
+}, {
+  name: 'Hash'
+}]
 
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
@@ -67,6 +72,9 @@ stories.add("Input", (props) => {
   const coverhandler = () => {
     console.log('coverHandler')
     setCover(true);
+  }
+  const selectHandler = () => {
+    console.log('selecthandler')
   }
 
   return (
@@ -161,6 +169,8 @@ stories.add("Input", (props) => {
         type={"lable-input-select"}
         icon={false}
         selectData={selectData}
+        defaultData={defaultData}
+        selectHandler={selectHandler}
         status={"warning"}
         title={'your text'}
         color={"#FFA726"}
@@ -223,6 +233,7 @@ stories.add("Input", (props) => {
         changeHandler={changeHandler}
         selectData={selectData}
         placeholder={'search'}  
+        label={'your text'}
         customStyles={{width: '100%'}}
       />
     </div>

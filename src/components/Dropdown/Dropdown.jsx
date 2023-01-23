@@ -66,5 +66,24 @@ export const Dropdown = (props) => {
           })}
         </div>
   }
+  if(props.type === 'default-dropdown') {
+    element = (
+      <div style={props.customStyles} className={` active ${props.dropdown}`}>
+        {props.data.map((item, index) => {
+          console.log(item)
+          return (
+            <div onClick={() => {
+              props.handlerClick(item.name)
+              props.selectHandler(item.name)
+            } 
+            } key={index}>
+              {item.name} 
+            </div>
+          )
+        })
+        }
+      </div>
+    )
+  }
   return element;
 }

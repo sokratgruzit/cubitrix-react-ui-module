@@ -215,13 +215,24 @@ stories.add("Dropdown", (props) => {
       numbering: "(+78)",
     },
   ];
+  let defaultData = [{
+      name: 'Transaction'
+    }, {
+      name: 'Hash'
+  }]
+
   return (
     <div>
+      <Dropdown
+        type={'default-dropdown'}
+        data={defaultData}
+        active={active}
+        customStyles={{}}
+      />
       <Dropdown
         data={data}
         type={"dropdown"}
         dropdown={"dropdown"}
-        handlerClick={props.handlerClick}
         active={active}
       />
       <Dropdown
