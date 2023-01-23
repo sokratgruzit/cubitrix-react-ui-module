@@ -204,6 +204,7 @@ stories.add("Input", (props) => {
         icon={false}
         selectData={selectData}
         status={"warning"}
+        title={'your text'}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />

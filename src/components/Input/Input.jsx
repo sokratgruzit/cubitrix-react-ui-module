@@ -126,12 +126,12 @@ export const Input = props => {
     if(props.type === 'lable-input-select') {
         element = (
             <div style={props.customStyles} className='select-group'>
-                <p className='input-group-title font-12'>Time In Force</p>
+                <p className='input-group-title font-12'>{props.value}</p>
                 <div onChange={props.onChange} className='form-select-sc'>
                     <div onClick={activeHandler} className='form-select-item form-control'>
                         <div>{value}</div>
                         <svg className={`${active ? 'rotate' : ''} ${'arrow'}`} width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                               <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
                     <div className={`${'hidden'} ${active ? 'select-modal-sc' : ''}`}>
@@ -147,10 +147,10 @@ export const Input = props => {
                     </div>
                 </div>
                 <HelpText
-                    icon={true}
-                    status={'success'}
-                    title={'success'}
-                    color={'#EF5350'}
+                    icon={props.icon}
+                    status={props.status}
+                    title={props.title}
+                    color={props.color}
                 />
             </div>
         )
