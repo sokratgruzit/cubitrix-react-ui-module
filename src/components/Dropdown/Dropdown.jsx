@@ -45,7 +45,7 @@ export const Dropdown = (props) => {
                   </h1>
                   {item.list?.map((item, index) => {
                     return (
-                        <div key={index} className="dropdown-item" onClick={props.onClick}>
+                        <div key={index} className="dropdown-item">
                           {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                           <span className={item.id < 3 ? "filter" : ''}>
                             {item.svg}

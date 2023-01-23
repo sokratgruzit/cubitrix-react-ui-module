@@ -1,4 +1,3 @@
-import { CalculatorIcon } from "../../assets/svgs";
 import "./Button.css";
 import React from "react";
 

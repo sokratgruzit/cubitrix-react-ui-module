@@ -70,7 +70,8 @@ export const Staking = (props) => {
             <Calculator type='show-calculator' />
           )}
           <Button 
-            // customStyles={{ position: 'absolute', top: '942px', left: '35%', zIndex: '3'}}
+            element="button"
+            customStyles={{ textAlign: 'center'}}
             label={showCalculator ? 'Close' : 'Staking Calculator'}
             size='btn-m-lg'
             type={showCalculator ? 'btn-secondary show-calculator-btn' : 'btn-primary show-calculator-btn'}
