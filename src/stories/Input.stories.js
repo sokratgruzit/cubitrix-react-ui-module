@@ -24,57 +24,15 @@ let countryData = [
   {
     id: 1,
     title: "The United Kingdom ",
-    image: "kingdom.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
     numbering: "(+78)",
   },
   {
     id: 2,
     title: "Brazil",
-    image: "brazil.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
     numbering: "(+76)",
-  },
-  {
-    id: 3,
-    title: "Australia",
-    image: "australia.png",
-    numbering: "(+46)",
-  },
-  {
-    id: 4,
-    title: "Canada",
-    image: "canada.png",
-    numbering: "(+918)",
-  },
-  {
-    id: 5,
-    title: "Italy",
-    image: "italy.png",
-    numbering: "(+178)",
-  },
-  {
-    id: 6,
-    title: "Mexico",
-    image: "kingdom.png",
-    numbering: "(+78)",
-  },
-  {
-    id: 7,
-    title: "The United Kingdom ",
-    image: "germany.png",
-    numbering: "(+78)",
-  },
-  {
-    id: 8,
-    title: "The United Kingdom ",
-    image: "brazil.png",
-    numbering: "(+78)",
-  },
-  {
-    id: 9,
-    title: "The United Kingdom ",
-    image: "canada.png",
-    numbering: "(+78)",
-  },
+  }
 ];
 let selectData = [
   {
@@ -98,8 +56,8 @@ stories.add("Input", (props) => {
   const [value, setValue] = useState('')
   const [cover, setCover] = useState(false)
 
-  const changeHandler = (e) => {
-    // console.log(e.target.value, 'change handler')
+  const changeHandler = (i) => {
+    console.log(i)
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -262,7 +220,7 @@ stories.add("Input", (props) => {
        /> */}
       <Input
         type={'search-input'}
-        onChange={changeHandler}
+        changeHandler={changeHandler}
         selectData={selectData}
         placeholder={'search'}  
         customStyles={{width: '100%'}}

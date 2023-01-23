@@ -66,6 +66,7 @@
   width: 55px;
   justify-content: center;
   align-items: center;
+  padding-right: 40px;
 }
 .table-parent {
   width: 100%;
@@ -81,10 +82,13 @@
 }
 .table-mobile {
   width: 100%;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  overflow: hidden;
+  max-height: 0px;
 }
 /*Ipad Pro 1024*/
 @media (max-width: 1300px) {
-  .td.true,.th.true {
+  .td.false,.th.false {
     display: none;
   }
   .icon-place {

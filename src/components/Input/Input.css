@@ -328,6 +328,11 @@
     cursor: pointer;
     width: 100%;
 }
+
+.form-select {
+    position: relative;
+}
+
 .select-modal {
     display: block!important;
     position: absolute;
@@ -561,7 +566,7 @@ select input
     margin-top: 5px;
 } */
 
-.stake-input-container {
+/* .stake-input-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -592,4 +597,4 @@ select input
     width: 24px;
     height: 24px;
     text-decoration: underline;
-}
+} */

@@ -15,3 +15,6 @@ export { default as Extensions } from "./Extensions";
 export { default as Trade } from "./Trade";
 export { default as Loan } from "./Loan";
 export { default as Staking } from "./Staking";
+export { default as AddSquareIcon } from "./add-square";
+export { default as DragIcon } from "./drag-icon";
+export { default as EthIcon } from "./etherium-icon";
