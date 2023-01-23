@@ -125,8 +125,8 @@ export const Input = props => {
     }
     if(props.type === 'lable-input-select') {
         element = (
-            <div onChange={props.onChange} style={props.customStyles} className='select-group'>
-                <p className='input-group-title font-12'>Time In Force</p>
+            <div style={props.customStyles} className='select-group'>
+                <p className='input-group-title font-12'>{props.value}</p>
                 <div onChange={props.onChange} className='form-select-sc'>
                     <div onClick={activeHandler} className='form-select-item form-control'>
                         <div>{value}</div>
@@ -135,22 +135,34 @@ export const Input = props => {
                         </svg>
                     </div>
                     <div className={`${'hidden'} ${active ? 'select-modal-sc' : ''}`}>
-                        <Dropdown
-                            data={props.selectData}
-                            type={"dropdown"}
-                            dropdown={"dropdown"}
-                            onClick={selectClick}
-                            handlerClick={handlerClick}
-                            active={true}
-                            customStyles={{height: 'fit-content', width: 'inherit'}}
-                        />
+                        {props.selectType === 'country' ? (
+                            <Dropdown
+                                data={props.countryData}
+                                type={"dropdown"}
+                                dropdown={"dropdown"}
+                                onClick={selectClick}
+                                handlerClick={handlerClick}
+                                active={true}
+                                customStyles={{height: 'fit-content', width: 'inherit'}}
+                            />
+                        ) : (
+                            <Dropdown
+                                data={props.selectData}
+                                type={"dropdown"}
+                                dropdown={"dropdown"}
+                                onClick={selectClick}
+                                handlerClick={handlerClick}
+                                active={true}
+                                customStyles={{height: 'fit-content', width: 'inherit'}}
+                            />
+                        )}
                     </div>
                 </div>
                 <HelpText
-                    icon={true}
-                    status={'success'}
-                    title={'success'}
-                    color={'#EF5350'}
+                    icon={props.icon}
+                    status={props.status}
+                    title={props.title}
+                    color={props.color}
                 />
             </div>
         )
