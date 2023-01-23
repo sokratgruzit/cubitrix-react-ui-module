@@ -11,35 +11,35 @@ export const Dropdown = (props) => {
           </h1>
           {props.countryData.map((item, index) => {
             return (
-                <div key={index} className="dropdown-menu-country">
-                  <div className="dropdown-item-country">
-                    <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
-                    <p>{item.title}</p>
-                    <p>{item.numbering}</p>
-                  </div>
+              <div key={index} className="dropdown-menu-country">
+                <div className="dropdown-item-country">
+                  <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
+                  <p>{item.title}</p>
+                  <p>{item.numbering}</p>
                 </div>
+              </div>
             )
           })}
         </div>
   }
   if (props.type === 'dropdown') {
     element =
-        <div className={` active ${props.dropdown}`}>
-          {props.data.map((item, index) => {
+        <div style={props.customStyles} className={` active ${props.dropdown}`}>
+          {props.data?.map((item, index) => {
             return (
                 <div key={index}>
-                  <h1 className="dropdown-toggle">
+                  <h1 onClick={() => props.handlerClick(item.title)} className="dropdown-toggle">
                     {item.title}
                   </h1>
-                  {item.list.map((item, index) => {
+                  {item.list?.map((item, index) => {
                     return (
                         <div key={index} className="dropdown-item" onClick={props.onClick}>
                           {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                           <span className={item.id < 3 ? "filter" : ''}>
-                                            {item.svg}
-                                        </span>
+                            {item.svg}
+                          </span>
                           <div>
-                            <p id={item.id} onClick={props.hendlerClick} className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
+                            <p id={item.id}  className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
                               {item.title}
                             </p>
                             {item.togle === 'true' &&

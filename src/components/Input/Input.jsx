@@ -4,13 +4,15 @@ import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
+import { func } from 'prop-types';
 
 
 export const Input = props => {
     const [file, setFile] = useState(null);
     const [active, setActive] = useState(false);
     const [cover, setCover] = useState(false);
-    const [close, setClose] = useState(true)
+    const [close, setClose] = useState(true);
+    const [value, setValue] = useState('Select')
 
     const activeHandler = () => {
         if(!active) {
@@ -33,12 +35,18 @@ export const Input = props => {
         setClose(true)
 
     }
-
+    function handlerClick (i) {
+        console.log(i);
+        setValue(i)
+    }
     function handleChange(e) {
         console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
         setClose(false)
     };
+    function selectClick(e) {
+        console.log(e.target.value);
+    }
 
     let element = null;
 
@@ -118,29 +126,31 @@ export const Input = props => {
     if(props.type === 'lable-input-select') {
         element = (
             <div style={props.customStyles} className='select-group'>
-                <p className='input-group-title font-12'>Time In Force</p>
-                <div onChange={props.onChange} className='form-select'>
-                    <div className='selected option'>
-                        <div>rcheuli yle</div>
-                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                <p className='input-group-title font-12'>{props.value}</p>
+                <div onChange={props.onChange} className='form-select-sc'>
+                    <div onClick={activeHandler} className='form-select-item form-control'>
+                        <div>{value}</div>
+                        <svg className={`${active ? 'rotate' : ''} ${'arrow'}`} width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                               <path d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                </div>
-                <div>
-                    {/* <Dropdown
-                        data={data}
-                        type={"dropdown"}
-                        dropdown={"dropdown"}
-                        onClick={hendlerClick}
-                        active={active}
-                    /> */}
+                    <div className={`${'hidden'} ${active ? 'select-modal-sc' : ''}`}>
+                        <Dropdown
+                            data={props.selectData}
+                            type={"dropdown"}
+                            dropdown={"dropdown"}
+                            onClick={selectClick}
+                            handlerClick={handlerClick}
+                            active={true}
+                            customStyles={{height: 'fit-content', width: 'inherit'}}
+                        />
+                    </div>
                 </div>
                 <HelpText
-                    icon={true}
-                    status={'error'}
-                    title={'error'}
-                    color={'#EF5350'}
+                    icon={props.icon}
+                    status={props.status}
+                    title={props.title}
+                    color={props.color}
                 />
             </div>
         )
@@ -186,7 +196,6 @@ export const Input = props => {
                 </div>
                 <div className='upload-group-inner'>
                     <div className='upload-group-placeholder'>
-                        {console.log(file, close)}
                         {
                             close ? (
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -217,6 +226,40 @@ export const Input = props => {
                 </div>
             </div>
         );
+    }
+    if(props.type === 'search-input') {
+        element = (
+            <div style={props.customStyles} className='input-group'>
+                <div className='search-input form-control'>
+                    <div className='search-input-item-fr'>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.65 14.3C8.52329 14.3 9.38803 14.128 10.1948 13.7938C11.0017 13.4596 11.7348 12.9698 12.3523 12.3523C12.9698 11.7348 13.4596 11.0017 13.7938 10.1948C14.128 9.38803 14.3 8.52329 14.3 7.65C14.3 6.77671 14.128 5.91197 13.7938 5.10515C13.4596 4.29834 12.9698 3.56525 12.3523 2.94774C11.7348 2.33023 11.0017 1.84039 10.1948 1.5062C9.38803 1.17201 8.52329 1 7.65 1C5.88631 1 4.19486 1.70062 2.94774 2.94774C1.70062 4.19486 1 5.88631 1 7.65C1 9.41369 1.70062 11.1051 2.94774 12.3523C4.19486 13.5994 5.88631 14.3 7.65 14.3V14.3Z" stroke="#6A6D76" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M15 15.0001L13.6 13.6001" stroke="#6A6D76" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </div>
+                    <input onChange={props.onChange} className='search-control' type='search' placeholder={props.placeholder} />
+                    <div className='form-select search-input-item'>
+                        <div onClick={activeHandler} className='select-form'>
+                            <p className='font-10'>{value}</p>
+                            <svg className={`${active ? 'rotate' : ''} ${'arrow'}`}  width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1.5L4.5303 3.9697C4.23864 4.26136 3.76136 4.26136 3.4697 3.9697L1 1.5" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                        <div className={`${'hidden'} ${active ? 'select-modal' : ''}`}>
+                            <Dropdown
+                                data={props.selectData}
+                                type={"dropdown"}
+                                dropdown={"dropdown"}
+                                onClick={selectClick}
+                                handlerClick={handlerClick}
+                                active={true}
+                                customStyles={{height: '200px'}}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
     }
 
     return element;

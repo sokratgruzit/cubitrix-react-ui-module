@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const stories = storiesOf("Dropdown", module);
 
-stories.add("Dropdown", () => {
+stories.add("Dropdown", (props) => {
   const [active, setActive] = useState(false);
 
   const hendlerClick = (e) => {
@@ -221,8 +221,8 @@ stories.add("Dropdown", () => {
         data={data}
         type={"dropdown"}
         dropdown={"dropdown"}
-        onClick={hendlerClick}
-        active={active}m
+        handlerClick={props.handlerClick}
+        active={active}
       />
       <Dropdown
         type={"country"}
