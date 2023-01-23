@@ -20,13 +20,61 @@ let btnArr = [
     }
 ];
 
-let img = [
+let countryData = [
   {
     id: 1,
     title: "The United Kingdom ",
-    image: "static/media/src/assets/img/country/kingdom.png",
+    image: "kingdom.png",
     numbering: "(+78)",
-  }
+  },
+  {
+    id: 2,
+    title: "Brazil",
+    image: "brazil.png",
+    numbering: "(+76)",
+  },
+  {
+    id: 3,
+    title: "Australia",
+    image: "australia.png",
+    numbering: "(+46)",
+  },
+  {
+    id: 4,
+    title: "Canada",
+    image: "canada.png",
+    numbering: "(+918)",
+  },
+  {
+    id: 5,
+    title: "Italy",
+    image: "italy.png",
+    numbering: "(+178)",
+  },
+  {
+    id: 6,
+    title: "Mexico",
+    image: "kingdom.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 7,
+    title: "The United Kingdom ",
+    image: "germany.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 8,
+    title: "The United Kingdom ",
+    image: "brazil.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 9,
+    title: "The United Kingdom ",
+    image: "canada.png",
+    numbering: "(+78)",
+  },
 ];
 
 stories.add("Input", (props) => {
@@ -64,12 +112,10 @@ stories.add("Input", (props) => {
         label={''}
         subLabel={''}
         onChange={changeHandler}
-        // value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
         type={"default"}
-        // value={value}
         icon={true}
         inputType={'password'}
         coverHandler={coverhandler}
@@ -77,7 +123,6 @@ stories.add("Input", (props) => {
         label={''}
         subLabel={'dasd'}
         onChange={changeHandler}
-        // value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -127,7 +172,8 @@ stories.add("Input", (props) => {
       <Input 
         type={'label-input-phone-number'}
         label={'your text'}
-        img={img}
+        countryData={countryData}
+        // img={img}
         onChange={changeHandler}
         customStyles={{width: '400px'}}
       />
@@ -136,13 +182,13 @@ stories.add("Input", (props) => {
         customStyles={{width: 'fit-content'}}
        /> 
       
-      {/* <Input
+      <Input
         type={"lable-input-select"}
         icon={false}
         status={"warning"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
-      /> */}
+      />
       {/* <Input
         type={"default"}
         icon={true}
