@@ -63,7 +63,7 @@ stories.add("Input", (props) => {
   const [active, setActive] = useState('')
 
   const changeHandler = (i) => {
-    console.log(i)
+    console.log(i.target.value)
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -157,7 +157,6 @@ stories.add("Input", (props) => {
         type={'label-input-phone-number'}
         label={'your text'}
         countryData={countryData}
-        // img={img}
         onChange={changeHandler}
         customStyles={{width: '400px'}}
       />
@@ -182,8 +181,9 @@ stories.add("Input", (props) => {
       <Input 
         type={'date-picker-input'}
         onChange={changeHandler}
+        label={'your text'}
         active={active}
-        customStyles={{}}
+        customStyles={{width: '320px'}}
       />
       {/* <Input
         type={"default"}
@@ -239,10 +239,10 @@ stories.add("Input", (props) => {
        /> */}
       <Input
         type={'search-input'}
-        changeHandler={changeHandler}
+        onChange={changeHandler}
         defaultData={defaultData}
-        selectLabel={'select'}
         selectHandler={selectHandler}
+        selectLabel={'select'}
         placeholder={'search'}  
         label={'your text'}
         customStyles={{width: '100%'}}

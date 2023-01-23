@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { HelpText } from '../HelpText';
 import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
@@ -16,6 +19,8 @@ export const Input = props => {
     const [value, setValue] = useState(props.selectLabel);
     const [numb, setNumb] = useState('+00');
     const [flag, setFlag] = useState('');
+    const [title, setTitle] = useState('')
+    const [startDate, setStartDate] = useState(new Date());
 
     const activeHandler = () => {
         if(!active) {
@@ -39,8 +44,11 @@ export const Input = props => {
 
     }
     function handlerClick (i) {
-        // console.log(i, 'item');
+        console.log(i, 'item');
         setValue(i)
+        setNumb(i.numbering)
+        setFlag(i.image)
+        setTitle(i.title)
     }
     function handleChange(e) {
         // console.log(e.target.files);
@@ -55,8 +63,8 @@ export const Input = props => {
         element = (
             <div  style={props.customStyles} className={`${props.className} input-group`}>
                 {props.label ? ( <p className='input-group-title font-12'>{props.label}<span className='font-12'>{props.subLabel}</span></p> ) : ''}
-                <input onChange={props.onChange} value={props.value} style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}} className='form-control' type={cover ? 'text' : 'password'} placeholder={props.placeholder} />
-                <span className=''>
+                <input onChange={props.onChange} value={props.value} style={props.icon ? {paddingRight: '43px'} : {paddingRight: '16px'}} className='form-control' type={cover ? 'password' : 'text'} placeholder={props.placeholder} />
+                <span>
                     {props.inputType === 'password' ? (
                         <div onClick={coverHandler}>
                             {cover ? (
@@ -171,7 +179,7 @@ export const Input = props => {
         element = (
             <div style={props.customStyles} className='input-group-item'>
                 <p className='font-12'>{props.label}</p>
-                <div className='form-control select-control'>
+                <div className='form-control select-control'> 
                     <div onClick={() => {
                         activeHandler()
                     }} className='select-prefix'>
@@ -276,8 +284,9 @@ export const Input = props => {
     }
     if(props.type === 'date-picker-input') {
         element = (
-            <div className='input-group'>
-                    {/* <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} /> */}
+            <div style={props.customStyles} onChange={props.changeHandler} className='input-group'>
+                <p className='font-12'>{props.label}</p>
+                <DatePicker  className='form-control' selected={startDate} onChange={(date) => setStartDate(date)} />
             </div>
         )
     }
