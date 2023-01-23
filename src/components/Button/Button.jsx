@@ -1,5 +1,6 @@
 import "./Button.css";
 import React from "react";
+import {Link} from "react-router-dom";
 
 export const Button = (props) => {
   let element = null;
@@ -117,10 +118,10 @@ export const Button = (props) => {
   }
     if (props.element === "side-admin-button") {
         element = (
-            <div className={`side-admin-button`} onClick={props.onClick} style={props.customStyles}>
+            <Link to={props.route} className={`side-admin-button`} style={props.customStyles}>
                 <div className={`side-btn-icon`}>{props.svg}</div>
                 <span className="font-16">{props.label}</span>
-            </div>
+            </Link>
         );
     }
   return element;

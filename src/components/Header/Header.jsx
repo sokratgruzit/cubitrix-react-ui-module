@@ -11,10 +11,11 @@ import {
 import { Button } from "../Button";
 import "./Header.css";
 
+import { NavLink } from "react-router-dom";
+
 export const Header = ({
   modules,
   account,
-  NavLink,
   location,
   sideBar,
   sideBarOpen,
@@ -27,17 +28,6 @@ export const Header = ({
         <NavLink className={`${location.pathname === "/" && "active"} link`} to="/">
           <Dashboard className="svg" /> Dashboard
         </NavLink>
-        {/* {Object.entries(modules).map((pair, index) => {
-          return (
-            <NavLink
-              className={`${location.pathname === `/${pair[0]}` && "active"} link`}
-              to={`/${pair[0]}`}
-              key={index}
-            >
-              {pair[0]}
-            </NavLink>
-          );
-        })} */}
         {modules.trade === "true" && (
           <NavLink
             className={`${location.pathname === "/trade" && "active"} link

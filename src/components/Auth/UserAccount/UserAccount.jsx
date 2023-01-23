@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../../Button";
+import { Input } from "../../Input";
 import { Visual } from "../../Visual";
 import "./UserAccount.css";
 
@@ -58,12 +59,14 @@ export const UserAccount = ({
           >
             Personal data
           </div>
-          <div
-            className={selectedTab === "security" ? "selected" : ""}
-            onClick={() => setSelectedTab("security")}
-          >
-            Security
-          </div>
+          {emailVerified && (
+            <div
+              className={selectedTab === "security" ? "selected" : ""}
+              onClick={() => setSelectedTab("security")}
+            >
+              Security
+            </div>
+          )}
         </div>
       </div>
       {selectedTab === "data" && (
@@ -77,6 +80,16 @@ export const UserAccount = ({
               placeholder="Enter Full Name"
             />
           </div>
+          <Input
+            type={"default"}
+            // value={value}
+            // icon={true}
+            inputType={"text"}
+            placeholder="Enter Full Name"
+            label={"Full Name"}
+            // onChange={changeHandler}
+            customStyles={{ width: "100%" }}
+          />
           <div className="inputWrapper">
             <p>Email Addresse</p>
             <input

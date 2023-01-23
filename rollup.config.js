@@ -35,6 +35,9 @@ export default [
             external(),
             resolve(),
             terser(),
+        ],
+        external: [
+            "react-router-dom"
         ]
     }
 ];
