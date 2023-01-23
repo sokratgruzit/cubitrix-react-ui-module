@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { HelpText } from '../HelpText';
 import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
@@ -16,6 +19,7 @@ export const Input = props => {
     const [value, setValue] = useState(props.selectLabel);
     const [numb, setNumb] = useState('+00');
     const [flag, setFlag] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
 
     const activeHandler = () => {
         if(!active) {
@@ -277,7 +281,7 @@ export const Input = props => {
     if(props.type === 'date-picker-input') {
         element = (
             <div className='input-group'>
-                    {/* <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} /> */}
+                <DatePicker selected={startdate} onChange={(date) => setStartDate(date)} />
             </div>
         )
     }
