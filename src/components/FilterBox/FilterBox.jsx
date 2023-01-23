@@ -5,7 +5,7 @@ import { Input } from '../Input';
 
 export const FilterBox = (props) => {
   const [showSearchBox, setShowSearchBox] = useState(false); 
-  console.log(props.data.search)
+  console.log(props.tableFilterOutcomingData?.search)
   return (
     <div className={'filter-box-container'}>
         <div className={showSearchBox ? 'filter-box show-filters' : 'filter-box'}>
@@ -13,8 +13,8 @@ export const FilterBox = (props) => {
                 {props.tableFilterData.head.map(item => (
                     <div 
                         key={item.title}
-                        className={props.data.head === item.title ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
-                        onClick={() => props.setData({...props.data, head: item.title})}
+                        className={props.tableFilterOutcomingData.head === item.title ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
+                        onClick={() => props.setTableFilterOutcomingData({...props.tableFilterOutcomingData, head: item.title})}
                     >
                         {item.title}
                     </div>
@@ -41,7 +41,7 @@ export const FilterBox = (props) => {
                     <Input
                         type={'search-input'}
                         label={'Search'}
-                        onChange={(e) => props.setData({...props.data, search: e.target.value})}
+                        onChange={(e) => props.setTableFilterOutcomingData({...props.tableFilterOutcomingData, search: e.target.value})}
                         selectData={props.tableFilterData.search.options}
                         placeholder={'search'}  
                         customStyles={{width: '100%'}}
