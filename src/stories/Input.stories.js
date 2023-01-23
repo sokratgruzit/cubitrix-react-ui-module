@@ -24,57 +24,15 @@ let countryData = [
   {
     id: 1,
     title: "The United Kingdom ",
-    image: "kingdom.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
     numbering: "(+78)",
   },
   {
     id: 2,
     title: "Brazil",
-    image: "brazil.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
     numbering: "(+76)",
-  },
-  {
-    id: 3,
-    title: "Australia",
-    image: "australia.png",
-    numbering: "(+46)",
-  },
-  {
-    id: 4,
-    title: "Canada",
-    image: "canada.png",
-    numbering: "(+918)",
-  },
-  {
-    id: 5,
-    title: "Italy",
-    image: "italy.png",
-    numbering: "(+178)",
-  },
-  {
-    id: 6,
-    title: "Mexico",
-    image: "kingdom.png",
-    numbering: "(+78)",
-  },
-  {
-    id: 7,
-    title: "The United Kingdom ",
-    image: "germany.png",
-    numbering: "(+78)",
-  },
-  {
-    id: 8,
-    title: "The United Kingdom ",
-    image: "brazil.png",
-    numbering: "(+78)",
-  },
-  {
-    id: 9,
-    title: "The United Kingdom ",
-    image: "canada.png",
-    numbering: "(+78)",
-  },
+  }
 ];
 let selectData = [
   {
@@ -204,6 +162,7 @@ stories.add("Input", (props) => {
         icon={false}
         selectData={selectData}
         status={"warning"}
+        title={'your text'}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />
