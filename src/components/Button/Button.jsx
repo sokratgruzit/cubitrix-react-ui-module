@@ -115,5 +115,13 @@ export const Button = (props) => {
       </div>
     );
   }
+    if (props.element === "side-admin-button") {
+        element = (
+            <div className={`side-admin-button`} onClick={props.onClick} style={props.customStyles}>
+                <div className={`side-btn-icon`}>{props.svg}</div>
+                <span className="font-16">{props.label}</span>
+            </div>
+        );
+    }
   return element;
 };

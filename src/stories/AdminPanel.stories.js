@@ -50,7 +50,6 @@ stories.add("AdminPanel", () => {
             id: 6,
         },
     ];
-    const countBy = (arr, prop) => arr.reduce((prev, curr) => (prev[curr[prop]] = ++prev[curr[prop]] || 1, prev), {});
     let mobile = false;
     if(window.innerWidth <= 1300) {
         mobile = true;

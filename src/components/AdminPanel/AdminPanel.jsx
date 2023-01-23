@@ -80,10 +80,12 @@ export const AdminPanel = props => {
                     setFilterTitle={setFilterTitle}
                     filterTitle={filterTitle}
                 />
-                <Table type={"table-version"}
-                       tableHead={props.tableHead}
-                       mobile={props.mobile}
-                       tableData={props.tableData} />
+                <Table
+                    type={"table-version"}
+                    tableHead={props.tableHead}
+                    mobile={props.mobile}
+                    tableData={props.tableData}
+                />
             </div>
         </div>
     )
