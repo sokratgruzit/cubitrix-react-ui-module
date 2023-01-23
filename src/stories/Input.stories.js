@@ -24,13 +24,13 @@ let countryData = [
   {
     id: 1,
     title: "The United Kingdom ",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
     numbering: "(+78)",
   },
   {
     id: 2,
     title: "Brazil",
-    image: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg",
+    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
     numbering: "(+76)",
   }
 ];
@@ -51,10 +51,16 @@ let selectData = [
     list: []
   },
 ];
+let defaultData = [{
+  name: 'Transaction'
+}, {
+  name: 'Hash'
+}]
 
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
   const [cover, setCover] = useState(false)
+  const [active, setActive] = useState('')
 
   const changeHandler = (i) => {
     console.log(i)
@@ -67,6 +73,9 @@ stories.add("Input", (props) => {
   const coverhandler = () => {
     console.log('coverHandler')
     setCover(true);
+  }
+  const selectHandler = () => {
+    console.log('selecthandler')
   }
 
   return (
@@ -161,10 +170,20 @@ stories.add("Input", (props) => {
         type={"lable-input-select"}
         icon={false}
         selectData={selectData}
+        defaultData={defaultData}
+        selectHandler={selectHandler}
+        selectLabel={'your text ttt'}
+        active={active}
         status={"warning"}
         title={'your text'}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
+      />
+      <Input 
+        type={'date-picker-input'}
+        onChange={changeHandler}
+        active={active}
+        customStyles={{}}
       />
       {/* <Input
         type={"default"}
@@ -221,8 +240,11 @@ stories.add("Input", (props) => {
       <Input
         type={'search-input'}
         changeHandler={changeHandler}
-        selectData={selectData}
+        defaultData={defaultData}
+        selectLabel={'select'}
+        selectHandler={selectHandler}
         placeholder={'search'}  
+        label={'your text'}
         customStyles={{width: '100%'}}
       />
     </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { HelpText } from '../HelpText';
 import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
+
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 import { func } from 'prop-types';
@@ -12,7 +13,9 @@ export const Input = props => {
     const [active, setActive] = useState(false);
     const [cover, setCover] = useState(false);
     const [close, setClose] = useState(true);
-    const [value, setValue] = useState('Select')
+    const [value, setValue] = useState(props.selectLabel);
+    const [numb, setNumb] = useState('+00');
+    const [flag, setFlag] = useState('');
 
     const activeHandler = () => {
         if(!active) {
@@ -36,17 +39,15 @@ export const Input = props => {
 
     }
     function handlerClick (i) {
-        console.log(i);
+        // console.log(i, 'item');
         setValue(i)
     }
     function handleChange(e) {
-        console.log(e.target.files);
+        // console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
         setClose(false)
     };
-    function selectClick(e) {
-        console.log(e.target.value);
-    }
+    
 
     let element = null;
 
@@ -140,20 +141,18 @@ export const Input = props => {
                                 data={props.countryData}
                                 type={"dropdown"}
                                 dropdown={"dropdown"}
-                                onClick={selectClick}
                                 handlerClick={handlerClick}
                                 active={true}
                                 customStyles={{height: 'fit-content', width: 'inherit'}}
                             />
                         ) : (
                             <Dropdown
-                                data={props.selectData}
-                                type={"dropdown"}
-                                dropdown={"dropdown"}
-                                onClick={selectClick}
+                                type={'default-dropdown'}
+                                data={props.defaultData}
+                                active={props.active}
                                 handlerClick={handlerClick}
-                                active={true}
-                                customStyles={{height: 'fit-content', width: 'inherit'}}
+                                selectHandler={props.selectHandler}
+                                customStyles={{width: 'inherit'}}
                             />
                         )}
                     </div>
@@ -177,13 +176,13 @@ export const Input = props => {
                         activeHandler()
                     }} className='select-prefix'>
                         <div className='flag'>
-
+                            <img src={flag} />
                         </div>
                         <svg className={`${active ? 'rotate' : ''} ${'arrow'}`} width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                    <span className='select-body'>+88</span>
+                    <span className='select-body'>{numb}</span>
                     <div className='select-sufix'>
                         <input  onChange={props.onChange} className='number-control' type='number' />
                     </div>
@@ -191,9 +190,11 @@ export const Input = props => {
                 <div className={`${'hidden'} ${active ? 'visible' : ''}`}>
                     <Dropdown
                         type={"country"}
+                        handlerClick={handlerClick}
                         countryData={props.countryData}
                         dropdownCountry={"dropdown-country"}
                         active={props.active}
+                        customStyles={{width: 'inherit'}}
                     />
                 </div>
             </div>
@@ -242,6 +243,7 @@ export const Input = props => {
     if(props.type === 'search-input') {
         element = (
             <div style={props.customStyles} className='input-group'>
+                <p className='font-12'>{props.label && props.label}</p>
                 <div className='search-input form-control'>
                     <div className='search-input-item-fr'>
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -259,17 +261,23 @@ export const Input = props => {
                         </div>
                         <div className={`${'hidden'} ${active ? 'select-modal' : ''}`}>
                             <Dropdown
-                                data={props.selectData}
-                                type={"dropdown"}
-                                dropdown={"dropdown"}
-                                onClick={selectClick}
+                                type={'default-dropdown'}
+                                data={props.defaultData}
+                                active={props.active}
                                 handlerClick={handlerClick}
-                                active={true}
-                                customStyles={{height: '200px'}}
+                                selectHandler={props.selectHandler}
+                                customStyles={{}}
                             />
                         </div>
                     </div>
                 </div>
+            </div>
+        )
+    }
+    if(props.type === 'date-picker-input') {
+        element = (
+            <div className='input-group'>
+                    {/* <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} /> */}
             </div>
         )
     }
