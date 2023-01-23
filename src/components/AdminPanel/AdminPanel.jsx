@@ -13,8 +13,8 @@ export const AdminPanel = props => {
             <div className={`admin-content`}>
                 <FilterBox
                     tableFilterData={props.tableFilterData}
-                    data={props.data}
-                    setData={props.setData}
+                    tableFilterOutcomingData={props.tableFilterOutcomingData}
+                    setTableFilterOutcomingData={props.setTableFilterOutcomingData}
                 />
                 <Table
                     type={"table-version"}

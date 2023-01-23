@@ -6,10 +6,10 @@ import { AdminPanel } from "../components/AdminPanel";
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
-    const defaultData = {
+    const defaultOutcomingData = {
         head: 'All'
     }
-    const [data, setData] = useState(defaultData)
+    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState(defaultOutcomingData)
     const tableFilterData = {
         head: [
             {
@@ -212,8 +212,8 @@ stories.add("AdminPanel", () => {
                 tableHead={th}
                 mobile={mobile}
                 tableFilterData={tableFilterData}
-                data={data}
-                setData={setData}
+                tableFilterOutcomingData={tableFilterOutcomingData}
+                setTableFilterOutcomingData={setTableFilterOutcomingData}
             />
         </div>
     );
