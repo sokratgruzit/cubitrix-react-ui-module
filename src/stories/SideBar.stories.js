@@ -48,6 +48,7 @@ stories.add("SideBar", () => {
           sideBarClose={() => setToggle((prev) => !prev)}
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
+          handlePersonalData={(e) => console.log(e)}
         />
         {/* <UserOptions
           type={"Metamask"}

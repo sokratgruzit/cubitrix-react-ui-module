@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../../Button";
+import { HelpCard } from "../../HelpCard";
 import { Input } from "../../Input";
 import { Visual } from "../../Visual";
 import "./UserAccount.css";
@@ -12,6 +13,8 @@ export const UserAccount = ({
   response,
   emailVerified,
   personalData,
+  emailSent,
+  resendEmail,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -71,62 +74,54 @@ export const UserAccount = ({
       </div>
       {selectedTab === "data" && (
         <div className="bodyWrapper">
-          <div className="inputWrapper">
-            <p>Full Name</p>
-            <input
-              className="input"
-              value={userData.name}
-              onChange={(e) => handleUserUpdate(e.target.value, "name")}
-              placeholder="Enter Full Name"
+          <div className={`email_sent ${emailSent && "email_active"}`}>
+            <HelpCard
+              status={"warning"}
+              color={"#FFA726"}
+              body={"long"}
+              active={emailSent}
+              title={"Help Text"}
+              onClick={resendEmail}
             />
           </div>
           <Input
             type={"default"}
-            // value={value}
-            // icon={true}
+            value={userData.name}
             inputType={"text"}
             placeholder="Enter Full Name"
             label={"Full Name"}
-            // onChange={changeHandler}
+            onChange={(e) => handleUserUpdate(e.target.value, "name")}
             customStyles={{ width: "100%" }}
           />
-          <div className="inputWrapper">
-            <p>Email Addresse</p>
-            <input
-              className="input"
-              value={userData.email}
-              onChange={(e) => handleUserUpdate(e.target.value, "email")}
-              placeholder="Enter email"
-            />
-          </div>
-          <div className="inputWrapper">
-            <p>Mobile Number</p>
-            <input
-              className="input"
-              value={userData.mobile}
-              onChange={(e) => handleUserUpdate(Number(e.target.value), "mobile")}
-              placeholder="mobile number"
-            />
-          </div>
-          <div className="inputWrapper">
-            <p>Date of Birth</p>
-            <input
-              className="input"
-              // value={userData.date_of_birth}
-              // onChange={(e) => handleUserUpdate(e.target.value, "date_of_birth")}
-              placeholder="MM/DD/YYYY"
-            />
-          </div>
+          <Input
+            type={"default"}
+            value={userData.email}
+            inputType={"text"}
+            placeholder="Enter Email"
+            label={"Email Address"}
+            onChange={(e) => handleUserUpdate(e.target.value, "email")}
+            customStyles={{ width: "100%" }}
+          />
+          <Input
+            type={"label-input-phone-number"}
+            value={userData.mobile}
+            placeholder="Enter Mobile"
+            label={"Mobile Number"}
+            countryData={[]}
+            onChange={(e) => handleUserUpdate(e.target.value, "mobile")}
+            customStyles={{ width: "100%" }}
+          />
+          <Input
+            type={"date-picker-input"}
+            onChange={(e) => handleUserUpdate(e.target.value, "date_of_birth")}
+            label={"Date of Birth"}
+            customStyles={{ width: "100$" }}
+          />
           <div className="inputWrapper">
             <p>Nationality</p>
-            <input
-              className="input"
-              // value={userData.date_of_birth}
-              // onChange={(e) => handleUserUpdate(e.target.value, "date_of_birth")}
-              placeholder="nationality"
-            />
+            <input className="input" placeholder="nationality" />
           </div>
-          <div>upload image</div>
+          <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />
           <Button
             element="button"
             label="Save"
