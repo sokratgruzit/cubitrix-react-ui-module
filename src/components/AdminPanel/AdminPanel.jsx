@@ -97,23 +97,6 @@ export const AdminPanel = props => {
         },
     ];
 
-    const FilterBoxDefaultData = [
-        {
-            title: 'All',
-        }, {
-            title: 'Pending',
-        }, {
-            title: 'Cenceled',
-        }, {
-            title: 'Approved',
-        }, {
-            title: 'Bonuses',
-        }, {
-            title: 'Claimed',
-        },
-        
-    ]
-
     const filterData = {
         head: [
             {
@@ -129,7 +112,6 @@ export const AdminPanel = props => {
             }, {
                 title: 'Claimed',
             },
-            
         ],
         search: {
             options: [{
@@ -165,9 +147,9 @@ export const AdminPanel = props => {
             </div>
             <div className={`admin-content`}>
                 <FilterBox  
-                    filterData={FilterBoxDefaultData}
-                    setFilterTitle={setFilterTitle}
-                    filterTitle={filterTitle}
+                    filterData={filterData}
+                    // setFilterTitle={setFilterTitle}
+                    // filterTitle={filterTitle}
                 />
                 <Table type={"table-version"}
                        tableHead={th}
