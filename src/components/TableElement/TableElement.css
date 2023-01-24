@@ -45,7 +45,7 @@ svg path {
 .next:hover svg path {
   stroke: #fff;
 }
-.active {
+.active-element {
   background-color: #0500ff !important;
   color: #fff !important;
   border-radius: 32px;
