@@ -1,9 +1,9 @@
-import "./SideBarConnect.css";
+import "./Connect.css";
 import React from "react";
-import { Visual } from "../Visual";
-import { Button } from "../Button";
+import { Visual } from "../../Visual";
+import { Button } from "../../Button";
 
-export const SideBarConnect = ({ ConnectOptions, signIn, sideBarClose }) => {
+export const Connect = ({ ConnectOptions, signIn, sideBarClose }) => {
   return (
     <>
       <Visual

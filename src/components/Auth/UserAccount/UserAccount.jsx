@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Button } from "../Button";
-import { Visual } from "../Visual";
-import "./SideBarAccount.css";
+import { Button } from "../../Button";
+import { Visual } from "../../Visual";
+import "./UserAccount.css";
 
-export const SideBarAccount = ({
+export const UserAccount = ({
   sideBarClose,
   goBack,
   handlePersonalData,

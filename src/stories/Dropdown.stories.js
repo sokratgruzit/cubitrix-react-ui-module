@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const stories = storiesOf("Dropdown", module);
 
-stories.add("Dropdown", () => {
+stories.add("Dropdown", (props) => {
   const [active, setActive] = useState(false);
 
   const hendlerClick = (e) => {
@@ -215,13 +215,24 @@ stories.add("Dropdown", () => {
       numbering: "(+78)",
     },
   ];
+  let defaultData = [{
+      name: 'Transaction'
+    }, {
+      name: 'Hash'
+  }]
+
   return (
     <div>
+      <Dropdown
+        type={'default-dropdown'}
+        data={defaultData}
+        active={active}
+        customStyles={{}}
+      />
       <Dropdown
         data={data}
         type={"dropdown"}
         dropdown={"dropdown"}
-        onClick={hendlerClick}
         active={active}
       />
       <Dropdown

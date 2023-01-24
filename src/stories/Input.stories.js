@@ -20,16 +20,51 @@ let btnArr = [
     }
 ];
 
-let img = [
-  "static/media/src/assets/img/country/kingdom.png"
-]
+let countryData = [
+  {
+    id: 1,
+    title: "The United Kingdom ",
+    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
+    numbering: "(+78)",
+  },
+  {
+    id: 2,
+    title: "Brazil",
+    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
+    numbering: "(+76)",
+  }
+];
+let selectData = [
+  {
+    id: 1,
+    title: "option 1",
+    list: []
+  },
+  {
+    id: 2,
+    title: "option 2",
+    list: []
+  },
+  {
+    id: 3,
+    title: "option 3",
+    list: []
+  },
+];
+
+let defaultData = [{
+  name: 'Transaction'
+}, {
+  name: 'Hash'
+}]
 
 stories.add("Input", (props) => {
   const [value, setValue] = useState('')
   const [cover, setCover] = useState(false)
+  const [active, setActive] = useState('')
 
-  const changeHandler = (e) => {
-    // console.log(e.target.value, 'change handler')
+  const changeHandler = (i) => {
+    console.log(i.target.value)
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -39,6 +74,9 @@ stories.add("Input", (props) => {
   const coverhandler = () => {
     console.log('coverHandler')
     setCover(true);
+  }
+  const selectHandler = () => {
+    console.log('selecthandler')
   }
 
   return (
@@ -56,23 +94,20 @@ stories.add("Input", (props) => {
         icon={true}
         inputType={'text'}
         placeholder={"default input"}
-        label={''}
+        label={'23123sads'}
         subLabel={''}
         onChange={changeHandler}
-        // value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
         type={"default"}
-        // value={value}
         icon={true}
         inputType={'password'}
         coverHandler={coverhandler}
-        placeholder={"default input"}
-        label={''}
+        placeholder={"password input"}
+        label={'Enter Password'}
         subLabel={''}
         onChange={changeHandler}
-        // value={value}
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -122,22 +157,50 @@ stories.add("Input", (props) => {
       <Input 
         type={'label-input-phone-number'}
         label={'your text'}
-        img={img}
+        countryData={countryData}
         onChange={changeHandler}
         customStyles={{width: '400px'}}
       />
       <Input
         type={'label-input-upload'}
+        onChange={changeHandler}
         customStyles={{width: 'fit-content'}}
-       /> 
+      /> 
       
-      {/* <Input
+      <Input
         type={"lable-input-select"}
         icon={false}
+        selectData={selectData}
+        defaultData={defaultData}
+        selectHandler={selectHandler}
+        selectLabel={'your text ttt'}
+        active={active}
         status={"warning"}
+        title={'your text'}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
-      /> */}
+      />
+       <Input
+        type={"lable-input-select"}
+        icon={false}
+        selectType={'country'}
+        selectData={selectData}
+        defaultData={defaultData}
+        selectHandler={selectHandler}
+        selectLabel={'your text ttt'}
+        active={active}
+        status={"warning"}
+        title={'your text'}
+        color={"#FFA726"}
+        customStyles={{ width: "320px" }}
+      />
+      <Input 
+        type={'date-picker-input'}
+        onChange={changeHandler}
+        label={'your text'}
+        active={active}
+        customStyles={{width: '320px'}}
+      />
       {/* <Input
         type={"default"}
         icon={true}
@@ -190,6 +253,16 @@ stories.add("Input", (props) => {
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
+      <Input
+        type={'search-input'}
+        onChange={changeHandler}
+        defaultData={defaultData}
+        selectHandler={selectHandler}
+        selectLabel={'select'}
+        placeholder={'search'}  
+        label={'your text'}
+        customStyles={{width: '100%'}}
+      />
     </div>
   );
 });

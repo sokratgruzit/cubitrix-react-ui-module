@@ -4,10 +4,10 @@ import "../assets/css/main-theme.css";
 import { SideBar } from "../components/SideBar";
 import { Visual } from "../components/Visual";
 import { Button } from "../components/Button";
-import { SideBarConnect } from "../components/SideBarConnect";
-import { SideBarWelcome } from "../components/SideBarWelcome/SideBarWelcome";
-import { MetaMask } from "../assets/svg";
-import { SideBarAccount } from "../components/SideBarAccount";
+
+import { Connect } from "../components/Auth/Connect";
+import { UserAccount } from "../components/Auth/UserAccount";
+import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
 const stories = storiesOf("SideBar", module);
 
 stories.add("SideBar", () => {
@@ -18,7 +18,7 @@ stories.add("SideBar", () => {
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
       <SideBar open={toggle}>
-        {/* <SideBarConnect
+        {/* <Connect
           ConnectOptions={[
             {
               label: "Metamask",
@@ -41,7 +41,15 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        <SideBarWelcome
+        {/* <UserAccount
+          type={"Metamask"}
+          warning={true}
+          completeAccount={() => console.log("complete")}
+          sideBarClose={() => setToggle((prev) => !prev)}
+          disconnect={() => console.log("disconnect")}
+          userAccount={() => console.log("userAccount")}
+        /> */}
+        <UserOptions
           type={"Metamask"}
           warning={true}
           completeAccount={() => console.log("complete")}
@@ -49,13 +57,6 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         />
-        {/* <SideBarAccount
-          sideBarClose={() => setToggle((prev) => !prev)}
-          goBack={() => console.log("go back")}
-          response={"response"}
-          handlePersonalData={(formData) => console.log(formData)}
-          handleSecurityData={(formData) => console.log(formData)}
-        /> */}
       </SideBar>
     </div>
   );

@@ -1,25 +1,7 @@
-.quick-search {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.quick-search input {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 30px;
-  padding: 0 46px;
-}
-.quick-search svg {
-  position: absolute;
-  top: 18px;
-  left: 15px;
-}
-
-/* pagination */
-
 .pagination-inner {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .pagination-inner div {
   color: #9c9da3;
@@ -49,4 +31,16 @@ svg path {
   background-color: #0500ff !important;
   color: #fff !important;
   border-radius: 32px;
+}
+
+@media (max-width: 767px) {
+  .pagination-inner div {
+    color: #9c9da3;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+  .active-element {
+    border-radius: 50%;
+  }
 }
