@@ -51,6 +51,7 @@ let selectData = [
     list: []
   },
 ];
+
 let defaultData = [{
   name: 'Transaction'
 }, {
@@ -63,7 +64,7 @@ stories.add("Input", (props) => {
   const [active, setActive] = useState('')
 
   const changeHandler = (i) => {
-    console.log(i)
+    console.log(i.target.value)
   }
   const btnHandler = (e) => {
     console.log('click me, click me mf')
@@ -93,7 +94,7 @@ stories.add("Input", (props) => {
         icon={true}
         inputType={'text'}
         placeholder={"default input"}
-        label={''}
+        label={'23123sads'}
         subLabel={''}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
@@ -103,9 +104,9 @@ stories.add("Input", (props) => {
         icon={true}
         inputType={'password'}
         coverHandler={coverhandler}
-        placeholder={"default input"}
-        label={''}
-        subLabel={'dasd'}
+        placeholder={"password input"}
+        label={'Enter Password'}
+        subLabel={''}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
       />
@@ -157,12 +158,12 @@ stories.add("Input", (props) => {
         type={'label-input-phone-number'}
         label={'your text'}
         countryData={countryData}
-        // img={img}
         onChange={changeHandler}
         customStyles={{width: '400px'}}
       />
       <Input
         type={'label-input-upload'}
+        onChange={changeHandler}
         customStyles={{width: 'fit-content'}}
       /> 
       
@@ -179,11 +180,26 @@ stories.add("Input", (props) => {
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />
+       <Input
+        type={"lable-input-select"}
+        icon={false}
+        selectType={'country'}
+        selectData={selectData}
+        defaultData={defaultData}
+        selectHandler={selectHandler}
+        selectLabel={'your text ttt'}
+        active={active}
+        status={"warning"}
+        title={'your text'}
+        color={"#FFA726"}
+        customStyles={{ width: "320px" }}
+      />
       <Input 
         type={'date-picker-input'}
         onChange={changeHandler}
+        label={'your text'}
         active={active}
-        customStyles={{}}
+        customStyles={{width: '320px'}}
       />
       {/* <Input
         type={"default"}
@@ -239,10 +255,10 @@ stories.add("Input", (props) => {
        /> */}
       <Input
         type={'search-input'}
-        changeHandler={changeHandler}
+        onChange={changeHandler}
         defaultData={defaultData}
-        selectLabel={'select'}
         selectHandler={selectHandler}
+        selectLabel={'select'}
         placeholder={'search'}  
         label={'your text'}
         customStyles={{width: '100%'}}

@@ -179,7 +179,7 @@ export const Input = props => {
         element = (
             <div style={props.customStyles} className='input-group-item'>
                 <p className='font-12'>{props.label}</p>
-                <div className='form-control select-control'>
+                <div className='form-control select-control'> 
                     <div onClick={() => {
                         activeHandler()
                     }} className='select-prefix'>

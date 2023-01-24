@@ -21,7 +21,7 @@ export const Dropdown = (props) => {
           <h1 className="dropdown-toggle">
             Select Country
           </h1>
-          {props.countryData.map((item, index) => {
+          {props.countryData?.map((item, index) => {
             return (
               <div key={index} className="dropdown-menu-country">
                 <div onClick={() => props.handlerClick({image: item.image, title: item.title, numbering: item.numbering})} className="dropdown-item-country">
