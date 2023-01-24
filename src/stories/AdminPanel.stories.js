@@ -2,6 +2,7 @@ import { storiesOf } from "@storybook/react";
 import { useState } from "react";
 import "../assets/css/main-theme.css";
 import { AdminPanel } from "../components/AdminPanel";
+import { AdminHeader } from "../components/AdminHeader";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Button} from "../components/Button";
 
@@ -91,7 +92,7 @@ stories.add("AdminPanel", () => {
         },
         selects: {}
     };
-    
+
     const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState(defaultOutcomingData);
 
     const tableFilterData = {
@@ -293,34 +294,40 @@ stories.add("AdminPanel", () => {
         )
     })
     return (
-        <div>
-            <AdminPanel
-                sideBarData={
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/*" element={
-                                sideBar.map((item) => {
-                                    return (
-                                        <Button
-                                            label={item.name}
-                                            route={item.route}
-                                            element={'side-admin-button'}
-                                            svg={item.svg}
-                                            customStyles={{width: '100%'}}
-                                        />
-                                    )
-                                })
-                            } />
-                        </Routes>
-                    </BrowserRouter>
-                }
-                tableData={tableData}
-                tableHead={th}
-                mobile={mobile}
-                tableFilterData={tableFilterData}
-                tableFilterOutcomingData={tableFilterOutcomingData}
-                setTableFilterOutcomingData={setTableFilterOutcomingData}
-            />
-        </div>
+       <>
+           <AdminHeader/>
+           <div className={`admin-container`}>
+               <div className={`admin-sidebar`}>
+
+               </div>
+               <AdminPanel
+                   sideBarData={
+                       <BrowserRouter>
+                           <Routes>
+                               <Route path="/*" element={
+                                   sideBar.map((item) => {
+                                       return (
+                                           <Button
+                                               label={item.name}
+                                               route={item.route}
+                                               element={'side-admin-button'}
+                                               svg={item.svg}
+                                               customStyles={{width: '100%'}}
+                                           />
+                                       )
+                                   })
+                               } />
+                           </Routes>
+                       </BrowserRouter>
+                   }
+                   tableData={tableData}
+                   tableHead={th}
+                   mobile={mobile}
+                   tableFilterData={tableFilterData}
+                   tableFilterOutcomingData={tableFilterOutcomingData}
+                   setTableFilterOutcomingData={setTableFilterOutcomingData}
+               />
+           </div>
+       </>
     );
 });
