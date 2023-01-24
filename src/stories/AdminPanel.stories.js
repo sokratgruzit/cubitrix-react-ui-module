@@ -85,7 +85,10 @@ stories.add("AdminPanel", () => {
         }
     ]
     const defaultOutcomingData = {
-        head: 'All'
+        head: 'All',
+        search: {
+            option: 'Transaction'
+        }
     }
     const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState(defaultOutcomingData)
     const tableFilterData = {
@@ -114,6 +117,7 @@ stories.add("AdminPanel", () => {
         selects: [
             {
                 name: 'Tranx Type',
+                defaultOption: 'Any Type',
                 options: [{
                     name: 'Transaction'
                 }, {
@@ -122,6 +126,7 @@ stories.add("AdminPanel", () => {
             },
             {
                 name: 'Date Within',
+                defaultOption: 'All Time',
                 options: [{
                     name: 'Transaction'
                 }, {
