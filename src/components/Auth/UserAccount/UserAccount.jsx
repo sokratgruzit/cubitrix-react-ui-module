@@ -177,7 +177,6 @@ export const UserAccount = ({
             customStyles={{ width: "100%" }}
             onClick={() => handleSecurityData(formData)}
           />
-          {response}
         </div>
       )}
     </>

@@ -24,6 +24,7 @@ export const Header = ({
 }) => {
   return (
     <div className="header">
+      <div>logo</div>
       <div className="modulesWrapper">
         <NavLink className={`${location.pathname === "/" && "active"} link`} to="/">
           <Dashboard className="svg" /> Dashboard
