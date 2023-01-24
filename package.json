@@ -1,6 +1,6 @@
 {
   "name": "@brilliant_emporium/ui",
-  "version": "0.0.14",
+  "version": "0.0.17",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",

@@ -10,10 +10,9 @@ export const UserAccount = ({
   goBack,
   handlePersonalData,
   handleSecurityData,
-  response,
   emailVerified,
   personalData,
-  emailSent,
+  personalDataState,
   resendEmail,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
@@ -76,12 +75,12 @@ export const UserAccount = ({
       </div>
       {selectedTab === "data" && (
         <div className="bodyWrapper">
-          <div className={`email_sent ${emailSent && "email_active"}`}>
+          <div className={`email_sent ${personalDataState.emailSent && "email_active"}`}>
             <HelpCard
               status={"warning"}
               color={"#FFA726"}
               body={"long"}
-              active={emailSent}
+              active={personalDataState.emailSent}
               title={"Help Text"}
               onClick={resendEmail}
             />
@@ -124,15 +123,18 @@ export const UserAccount = ({
             <input className="input" placeholder="nationality" />
           </div>
           <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />
-          <Button
-            element="button"
-            label="Save"
-            type="btn-primary"
-            size="btn-sm"
-            customStyles={{ width: "100%" }}
-            onClick={() => handlePersonalData(userData)}
-          />
-          {response}
+          {personalDataState.saved ? (
+            <div>saved</div>
+          ) : (
+            <Button
+              element="button"
+              label={personalDataState.loading ? "Loading .." : "Save"}
+              type="btn-primary"
+              size="btn-sm"
+              customStyles={{ width: "100%" }}
+              onClick={() => handlePersonalData(userData)}
+            />
+          )}
         </div>
       )}
       {selectedTab === "security" && (
