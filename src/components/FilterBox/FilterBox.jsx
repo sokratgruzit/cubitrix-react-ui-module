@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import './FilterBox.css'
+import React, { useState } from 'react';
 
 import { Input } from '../Input';
+
+import './FilterBox.css';
 
 export const FilterBox = ({
     tableFilterData,
     tableFilterOutcomingData,
-    setTableFilterOutcomingData,
+    setTableFilterOutcomingData
 }) => {
   const [showSearchBox, setShowSearchBox] = useState(false); 
 
@@ -17,31 +18,30 @@ export const FilterBox = ({
             ...prev.selects,
             [name]: option
         }
-    }))
+    }));
   }
 
   const handleSearchChange = (e) => {
     setTableFilterOutcomingData(prev => ({ ...prev, search: {
         value: e.target.value,
-    }}))
-  }
+    }}));
+  };
 
   const handleSearchSelect = (option) => {
     setTableFilterOutcomingData(prev => ({ ...prev, search: {
         ...prev.search,
         option
-    }}))
-  }
+    }}));
+  };
 
-  console.log(tableFilterOutcomingData)
   return (
     <div className={'filter-box-container'}>
-        <div className={showSearchBox ? 'filter-box show-filters' : 'filter-box'}>
+        <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
             <div className={'filter-box-list font-14'}>
                 {tableFilterData.head.map(item => (
                     <div 
                         key={item.title}
-                        className={tableFilterOutcomingData.head === item.title ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
+                        className={`filter-box-list__item ${tableFilterOutcomingData.head === item.title && 'list-item__active'}`}
                         onClick={() => setTableFilterOutcomingData({...tableFilterOutcomingData, head: item.title})}
                     >
                         {item.title}
@@ -49,7 +49,7 @@ export const FilterBox = ({
                 ))}
             </div>
             <button 
-                className={showSearchBox ? 'advanced-search-btn search-btn-active font-14' : 'advanced-search-btn font-14'} 
+                className={`advanced-search-btn ${showSearchBox && 'search-btn-active'} font-14`} 
                 onClick={() => setShowSearchBox(!showSearchBox)}
             >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@ export const FilterBox = ({
             </button>
         </div>
         <div className={`filter-box-search-container ${showSearchBox && 'filter-box-container-active'}`}>
-            <div className={`filter-box-search`}>
+            <div className={'filter-box-search'}>
                 <div className={'filter-box-input'}>
                     <Input
                         type={'search-input'}
@@ -74,7 +74,6 @@ export const FilterBox = ({
                         selectHandler={handleSearchSelect}
                         placeholder={'search'}  
                         selectLabel={tableFilterOutcomingData.search.option}
-                        customStyles={{width: '100%'}}
                     />
                 </div>  
                 <div className={'filter-box-selects'}>
@@ -87,7 +86,6 @@ export const FilterBox = ({
                             defaultData={select.options}
                             selectHandler={(opt) => handleSelectChange(opt, select.name)}
                             selectLabel={select.defaultOption}
-                            customStyles={{width: '50%'}}
                         />
                     ))}
                 </div>
