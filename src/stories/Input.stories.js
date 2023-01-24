@@ -51,6 +51,7 @@ let selectData = [
     list: []
   },
 ];
+
 let defaultData = [{
   name: 'Transaction'
 }, {
@@ -103,8 +104,8 @@ stories.add("Input", (props) => {
         icon={true}
         inputType={'password'}
         coverHandler={coverhandler}
-        placeholder={"default input"}
-        label={''}
+        placeholder={"password input"}
+        label={'Enter Password'}
         subLabel={''}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
@@ -162,13 +163,27 @@ stories.add("Input", (props) => {
       />
       <Input
         type={'label-input-upload'}
-        customStyles={{width: 'fit-content'}}
         onChange={changeHandler}
+        customStyles={{width: 'fit-content'}}
       /> 
       
       <Input
         type={"lable-input-select"}
         icon={false}
+        selectData={selectData}
+        defaultData={defaultData}
+        selectHandler={selectHandler}
+        selectLabel={'your text ttt'}
+        active={active}
+        status={"warning"}
+        title={'your text'}
+        color={"#FFA726"}
+        customStyles={{ width: "320px" }}
+      />
+       <Input
+        type={"lable-input-select"}
+        icon={false}
+        selectType={'country'}
         selectData={selectData}
         defaultData={defaultData}
         selectHandler={selectHandler}

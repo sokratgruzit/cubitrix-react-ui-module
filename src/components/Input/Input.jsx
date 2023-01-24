@@ -146,12 +146,12 @@ export const Input = props => {
                     <div className={`${'hidden'} ${active ? 'select-modal-sc' : ''}`}>
                         {props.selectType === 'country' ? (
                             <Dropdown
-                                data={props.countryData}
-                                type={"dropdown"}
-                                dropdown={"dropdown"}
+                                type={"country"}
                                 handlerClick={handlerClick}
-                                active={true}
-                                customStyles={{height: 'fit-content', width: 'inherit'}}
+                                countryData={props.countryData}
+                                dropdownCountry={"dropdown-country"}
+                                active={props.active}
+                                customStyles={{width: 'inherit'}}
                             />
                         ) : (
                             <Dropdown
@@ -237,7 +237,7 @@ export const Input = props => {
                     </div>
                     <div  onChange={props.onChange} className='upload-group-text'>
                         <p>Upload a profile picture</p>
-                        <label className='upload-btn' for={'upload_img'}>Broswe</label>
+                        <label className='upload-btn' htmlFor={'upload_img'}>Broswe</label>
                         {/* <p className='upload-btn'>Browse</p> */}
                         <input
                             id='upload_img'
