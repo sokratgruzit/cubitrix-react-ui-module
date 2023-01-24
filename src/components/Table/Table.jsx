@@ -1,7 +1,9 @@
 import { Button } from "../Button";
 import "./Table.css";
+import {useState} from "react";
 
 export const Table = (props) => {
+    const [mobileExpand, setMobileExpand] = useState(null);
     return (
         <>
             <div className={`${props.type}`}>
