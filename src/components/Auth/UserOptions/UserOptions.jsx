@@ -1,11 +1,10 @@
-import "./SideBarWelcome.css";
+import "./UserOptions.css";
 import React from "react";
-import { Visual } from "../Visual";
-import { Button } from "../Button";
-import { InfoBox } from "../InfoBox";
-import { MetaMask } from "../../assets/svg";
+import { Visual } from "../../Visual";
+import { Button } from "../../Button";
+import { MetaMask } from "../../../assets/svgs";
 
-export const SideBarWelcome = ({
+export const UserOptions = ({
   completeAccount,
   sideBarClose,
   userAccount,
