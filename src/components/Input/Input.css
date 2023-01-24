@@ -16,12 +16,11 @@
     border: 1px solid #1F2330;
     border-radius: 6px;
     color: #fff;
-    text-transform: capitalize;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .input-group-icon {
     position: absolute;
-    top: 8px;
+    /* top: 8px; */
     right: 11.5px;
     width: 24px;
     height: 24px;
@@ -262,7 +261,8 @@
 }
 .upload-btn {
     color: #3D5AFE;
-    /* cursor: pointer; */
+    cursor: pointer;
+    z-index: 1;
     /* z-index: 1; */
     /* pointer-events: none; */
 }

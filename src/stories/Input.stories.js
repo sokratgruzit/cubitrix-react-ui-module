@@ -93,7 +93,7 @@ stories.add("Input", (props) => {
         icon={true}
         inputType={'text'}
         placeholder={"default input"}
-        label={''}
+        label={'23123sads'}
         subLabel={''}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
@@ -105,7 +105,7 @@ stories.add("Input", (props) => {
         coverHandler={coverhandler}
         placeholder={"default input"}
         label={''}
-        subLabel={'dasd'}
+        subLabel={''}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
       />
@@ -163,6 +163,7 @@ stories.add("Input", (props) => {
       <Input
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
+        onChange={changeHandler}
       /> 
       
       <Input
