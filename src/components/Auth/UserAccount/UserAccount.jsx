@@ -57,7 +57,9 @@ export const UserAccount = ({
       <div className="tabsWrapper">
         <div className="tabsWrap">
           <div
-            className={selectedTab === "data" ? "selected" : ""}
+            className={`${selectedTab === "data" ? "selected" : ""} ${
+              !emailVerified ? "fullWidth" : ""
+            }`}
             onClick={() => setSelectedTab("data")}
           >
             Personal data
@@ -135,33 +137,36 @@ export const UserAccount = ({
       )}
       {selectedTab === "security" && (
         <div className="bodyWrapper">
-          <div className="inputWrapper">
-            <p>Current Password</p>
-            <input
-              className="input"
-              value={formData.currentPassword}
-              onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
-              placeholder="current password"
-            />
-          </div>
-          <div className="inputWrapper">
-            <p>New Password</p>
-            <input
-              className="input"
-              value={formData.newPassword}
-              onChange={(e) => handleFormUpdate(e.target.value, "newPassword")}
-              placeholder="new password"
-            />
-          </div>
-          <div className="inputWrapper">
-            <p>Confirm New Password</p>
-            <input
-              className="input"
-              value={formData.confirmPassword}
-              onChange={(e) => handleFormUpdate(e.target.value, "confirmPassword")}
-              placeholder="confirm new password"
-            />
-          </div>
+          <Input
+            type={"default"}
+            icon={true}
+            inputType={"password"}
+            placeholder={"current password"}
+            label={"Current Password"}
+            value={formData.currentPassword}
+            onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
+            customStyles={{ width: "100%" }}
+          />
+          <Input
+            type={"default"}
+            icon={true}
+            inputType={"password"}
+            placeholder={"new password"}
+            label={"New Password"}
+            value={formData.newPassword}
+            onChange={(e) => handleFormUpdate(e.target.value, "newPassword")}
+            customStyles={{ width: "100%" }}
+          />
+          <Input
+            type={"default"}
+            icon={true}
+            inputType={"password"}
+            placeholder={"confirm new password"}
+            label={"Confirm New Password"}
+            value={formData.confirmPassword}
+            onChange={(e) => handleFormUpdate(e.target.value, "confirmPassword")}
+            customStyles={{ width: "100%" }}
+          />
           <Button
             element="button"
             label="Update"

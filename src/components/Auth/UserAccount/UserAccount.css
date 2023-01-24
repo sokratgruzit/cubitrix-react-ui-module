@@ -21,6 +21,10 @@
   border-radius: 32px;
   cursor: pointer;
 }
+
+.fullWidth {
+  width: 100% !important;
+}
 .selected {
   background: rgba(255, 255, 255, 0.05);
   color: #3d5afe;

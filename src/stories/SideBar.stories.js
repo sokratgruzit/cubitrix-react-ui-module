@@ -49,6 +49,7 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
           handlePersonalData={(e) => console.log(e)}
+          handleSecurityData={(e) => console.log(e)}
         />
         {/* <UserOptions
           type={"Metamask"}
