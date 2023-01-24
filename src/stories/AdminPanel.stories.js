@@ -88,9 +88,12 @@ stories.add("AdminPanel", () => {
         head: 'All',
         search: {
             option: 'Transaction'
-        }
-    }
-    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState(defaultOutcomingData)
+        },
+        selects: {}
+    };
+    
+    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState(defaultOutcomingData);
+
     const tableFilterData = {
         head: [
             {
@@ -132,9 +135,10 @@ stories.add("AdminPanel", () => {
                 }, {
                     name: 'Hash'
                 }]
-            },
+            }
         ]
-    }
+    };
+
     let th = [
         {
             name: "Tranx ID",
