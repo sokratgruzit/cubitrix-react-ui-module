@@ -3,12 +3,22 @@ import { useState } from "react";
 import "../assets/css/main-theme.css";
 import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Button} from "../components/Button";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Button } from "../components/Button";
+import { useCurrentWidth } from '../hooks/useCurrentWidth';
+import { Logo, userImage } from "../assets/svgs";
 
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
+    const { mobile } = useCurrentWidth();
+    console.log(mobile)
+
+    const adminHeaderData = {
+        username: 'Michael',
+        svg: <Logo />,
+        userImageUrl: '../../assets/DashboardCards/bitcoin.png',
+    }
     const sideBar = [
         {
             id: 1,
@@ -185,11 +195,6 @@ stories.add("AdminPanel", () => {
             id: 6,
         },
     ];
-    let mobile = false;
-    if(window.innerWidth <= 1300) {
-        mobile = true;
-    }
-    console.log(mobile)
 
     let td = [
         {
@@ -295,7 +300,11 @@ stories.add("AdminPanel", () => {
     })
     return (
        <>
-           <AdminHeader/>
+           <AdminHeader
+                username={adminHeaderData.username}
+                headSvg={adminHeaderData.svg}
+                userImageUrl={adminHeaderData.userImageUrl}
+           />
            <div className={`admin-container`}>
                <div className={`admin-sidebar`}>
 
@@ -320,6 +329,7 @@ stories.add("AdminPanel", () => {
                            </Routes>
                        </BrowserRouter>
                    }
+                   headerList={true}
                    tableData={tableData}
                    tableHead={th}
                    mobile={mobile}
