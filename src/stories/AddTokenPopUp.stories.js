@@ -1,18 +1,12 @@
-import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import "../assets/css/main-theme.css";
-import AddTokenPopUp from '../components/AddTokenPopUp';
+import { AddTokenPopUp } from "../components/AddTokenPopUp/AddTokenPopUp";
+const stories = storiesOf('AddTokenPopUp', module);
 
 
-const stories = storiesOf("AddTokenPopUp", module);
-
-stories.add("AddTokenPopUp", (props) => {
-
-  return (
-    <div>
-        <AddTokenPopUp
-            customStyles={{}}
-        />
-    </div>
-  );
-});
+stories.add('AddTokenPopUp', () => {
+    return (
+      <AddTokenPopUp
+        headLabel={'Manually Add Tokens'}
+      />
+    )
+})

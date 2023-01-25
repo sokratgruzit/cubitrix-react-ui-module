@@ -1,4 +1,6 @@
 .pop-up {
-    background-color: red;
-    width: 100%;
+    width: 600px;
+    height: auto;
+    border: 2px solid #202431;
+    padding: 0px 20px 20px 20px;
 }

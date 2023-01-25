@@ -25,6 +25,7 @@
   right: 11.5px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 .form-control:hover {
   border: 1px solid rgba(61, 90, 254, 0.6);
