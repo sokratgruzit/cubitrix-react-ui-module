@@ -1,45 +1,45 @@
 import './InfoBox.css';
 
-export const InfoBox = (props) => {
+export const InfoBox = ({ type, cardBody, active, customStyle, header,cardBtn, img }) => {
 
     return (
-        <div style={props.customStyle} className={`card ${props.type} ${props.active === true ? "animation" : ""}`}>
-            {props.type === "available" ? (
+        <div style={customStyle} className={`card ${type} ${active === true ? "animation" : ""}`}>
+            {type === "available" ? (
                 <div className={`card-header card-header-active active`}>
-                    <h1>{props.header.title}</h1>
+                    <h1>{header.title}</h1>
                     <div>
-                        <div>{props.header.lables.l1}</div>
-                        <div>{props.header.lables.l2}</div>
+                        <div>{header.lables.l1}</div>
+                        <div>{header.lables.l2}</div>
                     </div>
                 </div>
-            ) : props.type === "unavailable" ? (
-                <h1 className={`card-header card-header-active active`}>{props.header.title}</h1>
-            ) : props.type === "connect-wallet" ? (
+            ) : type === "unavailable" ? (
+                <h1 className={`card-header card-header-active active`}>{header.title}</h1>
+            ) : type === "connect-wallet" ? (
                 <div className={`card-header-active active`}>
-                    <img src={props.img} style={{ height: "75px", width: "104px" }} />
+                    <img src={img} style={{ height: "75px", width: "104px" }} />
                 </div>
-            ) : props.type === "complete" ? (
+            ) : type === "complete" ? (
                 <div className={`card-body`}>
-                    <p className={`card-header-active pharagrap-color active`}>{props.cardBody.p}</p>
+                    <p className={`card-header-active pharagrap-color active`}>{cardBody.p}</p>
                     <div className={`card-body-active active`}>
-                        <div className={`complete-btn`}>{props.cardBody.btn}</div>
+                        <div className={`complete-btn`}>{cardBody.btn}</div>
                     </div>
                 </div>
-            ) : props.type === "verification" ? (
+            ) : type === "verification" ? (
                 <div className='card-body'>
-                    <img className='card-header-active active' src={props.cardBody.img} />
-                    <p className='card-body-active active'>{props.cardBody.p}</p>
+                    <img className='card-header-active active' src={cardBody.img} />
+                    <p className='card-body-active active'>{cardBody.p}</p>
                 </div>
-            ) : props.type === "question" ? (
+            ) : type === "question" ? (
                 <div className='card-body'>
-                    <p className='active card-header-active pharagrap-color'>{props.cardBody.quiestion}</p>
+                    <p className='active card-header-active pharagrap-color'>{cardBody.quiestion}</p>
                     <div className='display-flex card-body-active active'>
-                        <div className='complete-btn'>{props.cardBody.no}</div>
-                        <div className='complete-btn'>{props.cardBody.yes}</div>
+                        <div className='complete-btn'>{cardBody.no}</div>
+                        <div className='complete-btn'>{cardBody.yes}</div>
                     </div>
                 </div>
-            ) : props.type === "reward-box" ? (
-                props.cardBody.map((item) => {
+            ) : type === "reward-box" ? (
+                cardBody.map((item) => {
                     return (
                         <div className={`card-body card-body-active active`}>
                             <div className='display-flex'>
@@ -54,8 +54,8 @@ export const InfoBox = (props) => {
                 })
             ) : ""
             }
-            {props.type === "available" ? (
-                props.cardBody.map((item) => {
+            {type === "available" ? (
+                cardBody.map((item) => {
                     return (
                         <div className={`card-body card-body-active active`}>
                             <p className='list-group-item'>{item.title}</p>
@@ -63,8 +63,8 @@ export const InfoBox = (props) => {
                         </div>
                     )
                 })
-            ) : props.type === "unavailable" ? (
-                props.cardBody.map((item) => {
+            ) : type === "unavailable" ? (
+                cardBody.map((item) => {
                     return (
                         <div className={`card-body card-body-active active`}>
                             <div className='card-unavilable-status'>
@@ -75,17 +75,17 @@ export const InfoBox = (props) => {
                         </div>
                     )
                 })
-            ) : props.type === "connect-wallet" ? (
+            ) : type === "connect-wallet" ? (
                 <div className={`connect-wallet-body`}>
-                    <p className={`card-body-active active`}>{props.cardBody.p}</p>
+                    <p className={`card-body-active active`}>{cardBody.p}</p>
                     <div className={`card-footer-active active`}>
-                        <div className={`connect-wallet-btn`}>{props.cardBody.btn}</div>
+                        <div className={`connect-wallet-btn`}>{cardBody.btn}</div>
                     </div>
                 </div>
             ) : ""
             }
-            {props.type === "unavailable" ? (
-                <div className={`unavailable-button card-footer-active active`}>{props.cardBtn.btn}</div>
+            {type === "unavailable" ? (
+                <div className={`unavailable-button card-footer-active active`}>{cardBtn.btn}</div>
             ) : ""}
         </div>
     )
