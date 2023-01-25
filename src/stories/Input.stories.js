@@ -180,7 +180,7 @@ stories.add("Input", (props) => {
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />
-       <Input
+      <Input
         type={"lable-input-select"}
         icon={false}
         selectType={'country'}
