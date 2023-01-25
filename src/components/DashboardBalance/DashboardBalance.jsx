@@ -1,4 +1,4 @@
-import './DashboardBalance.css';
+import "./DashboardBalance.css";
 
 export const DashboardBalance = (props) => {
     return (
@@ -7,7 +7,7 @@ export const DashboardBalance = (props) => {
                 <p>Earning</p>
                 <p>{props.earning}</p>
                 <p>{props.usdc}</p>
-                <img className='svg-image' src={require(`../../assets/img/dashbordBalance/gradien.png`)} alt="gradien" />
+                {/*<img className='svg-image' src={require(`../../assets/img/dashbordBalance/gradien.png`)} alt="gradien" />*/}
             </div>
             <div className='balance'>
                 <div className='supply'>

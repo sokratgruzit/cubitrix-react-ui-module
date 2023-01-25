@@ -250,3 +250,21 @@
 .connect-svg svg {
   margin-left: 0;
 }
+.side-admin-button {
+  display: flex;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  height: 40px;
+  border-radius: 8px;
+  padding: 0px 10px;
+  cursor: pointer;
+  align-items: center;
+}
+.side-admin-button:hover {
+  background: rgba(255,255,255,.05);
+}
+.side-admin-button span {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.side-admin-button:hover span {
+  color: #3d5afe;
+}

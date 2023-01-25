@@ -1,11 +1,10 @@
-import "./SideBarWelcome.css";
+import "./UserOptions.css";
 import React from "react";
-import { Visual } from "../Visual";
-import { Button } from "../Button";
-import { InfoBox } from "../InfoBox";
-import { MetaMask } from "../../assets/svg";
+import { Visual } from "../../Visual";
+import { Button } from "../../Button";
+import { MetaMask } from "../../../assets/svgs";
 
-export const SideBarWelcome = ({
+export const UserOptions = ({
   completeAccount,
   sideBarClose,
   userAccount,
@@ -22,18 +21,22 @@ export const SideBarWelcome = ({
         onClick={sideBarClose}
       />
       <div className="sidebar-body">
-        <div className="complete">
-          <p>Complete the onboarding flow to start trading on COMPLEND</p>
-          <Button
-            element="button"
-            label="Complete Account"
-            type="btn-primary"
-            size="btn-lg"
-            onClick={completeAccount}
-            customStyles={{ width: "179px" }}
-          />
-        </div>
-        <span className="border-full"></span>
+        {warning && (
+          <>
+            <div className="complete">
+              <p>Complete the onboarding flow to start trading on COMPLEND</p>
+              <Button
+                element="button"
+                label="Complete Account"
+                type="btn-primary"
+                size="btn-lg"
+                onClick={completeAccount}
+                customStyles={{ width: "179px" }}
+              />
+            </div>
+            <span className="border-full"></span>
+          </>
+        )}
         <div className="address-wrap">
           <p>Your Address</p>
           <p>

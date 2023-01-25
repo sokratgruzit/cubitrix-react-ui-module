@@ -21,6 +21,10 @@
   border-radius: 32px;
   cursor: pointer;
 }
+
+.fullWidth {
+  width: 100% !important;
+}
 .selected {
   background: rgba(255, 255, 255, 0.05);
   color: #3d5afe;
@@ -51,7 +55,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.email_sent {
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.email_active {
+  max-height: fit-content;
 }

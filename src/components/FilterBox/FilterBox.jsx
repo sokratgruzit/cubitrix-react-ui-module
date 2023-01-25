@@ -1,27 +1,55 @@
-import React, { useState } from 'react'
-import './FilterBox.css'
+import React, { useState } from 'react';
 
 import { Input } from '../Input';
 
-export const FilterBox = (props) => {
+import './FilterBox.css';
+
+export const FilterBox = ({
+    tableFilterData,
+    tableFilterOutcomingData,
+    setTableFilterOutcomingData
+}) => {
   const [showSearchBox, setShowSearchBox] = useState(false); 
-  console.log(props.tableFilterOutcomingData?.search)
+
+  const handleSelectChange = (option, name) => {
+    setTableFilterOutcomingData((prev) => ({
+        ...prev,
+        selects: {
+            ...prev.selects,
+            [name]: option
+        }
+    }));
+  }
+
+  const handleSearchChange = (e) => {
+    setTableFilterOutcomingData(prev => ({ ...prev, search: {
+        value: e.target.value,
+    }}));
+  };
+
+  const handleSearchSelect = (option) => {
+    setTableFilterOutcomingData(prev => ({ ...prev, search: {
+        ...prev.search,
+        option
+    }}));
+  };
+
   return (
     <div className={'filter-box-container'}>
-        <div className={showSearchBox ? 'filter-box show-filters' : 'filter-box'}>
+        <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
             <div className={'filter-box-list font-14'}>
-                {props.tableFilterData.head.map(item => (
+                {tableFilterData.head.map(item => (
                     <div 
                         key={item.title}
-                        className={props.tableFilterOutcomingData.head === item.title ? 'filter-box-list__item list-item__active' : 'filter-box-list__item'}
-                        onClick={() => props.setTableFilterOutcomingData({...props.tableFilterOutcomingData, head: item.title})}
+                        className={`filter-box-list__item ${tableFilterOutcomingData.head === item.title && 'list-item__active'}`}
+                        onClick={() => setTableFilterOutcomingData({...tableFilterOutcomingData, head: item.title})}
                     >
                         {item.title}
                     </div>
                 ))}
             </div>
             <button 
-                className={showSearchBox ? 'advanced-search-btn search-btn-active font-14' : 'advanced-search-btn font-14'} 
+                className={`advanced-search-btn ${showSearchBox && 'search-btn-active'} font-14`} 
                 onClick={() => setShowSearchBox(!showSearchBox)}
             >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,30 +63,34 @@ export const FilterBox = (props) => {
                 Advanced Search
             </button>
         </div>
-        {showSearchBox && (
+        <div className={`filter-box-search-container ${showSearchBox && 'filter-box-container-active'}`}>
             <div className={'filter-box-search'}>
                 <div className={'filter-box-input'}>
                     <Input
                         type={'search-input'}
                         label={'Search'}
-                        onChange={(e) => props.setTableFilterOutcomingData({...props.tableFilterOutcomingData, search: e.target.value})}
-                        selectData={props.tableFilterData.search.options}
+                        onChange={handleSearchChange}
+                        defaultData={tableFilterData.search.options}
+                        selectHandler={handleSearchSelect}
                         placeholder={'search'}  
-                        customStyles={{width: '100%'}}
+                        selectLabel={tableFilterOutcomingData.search.option}
                     />
                 </div>  
                 <div className={'filter-box-selects'}>
-                    {props.tableFilterData.selects.map(select => (
+                    {tableFilterData.selects.map(select => (
                         <Input
+                            key={select.name}
                             type={"lable-input-select"}
                             icon={false}
-                            label={select.name}
-                            data={select.options}
+                            value={select.name}
+                            defaultData={select.options}
+                            selectHandler={(opt) => handleSelectChange(opt, select.name)}
+                            selectLabel={select.defaultOption}
                         />
                     ))}
                 </div>
             </div>
-        )}
+        </div>
     </div>
   )
 }
