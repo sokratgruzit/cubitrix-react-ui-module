@@ -1,33 +1,23 @@
+import { usePagination, DOTS } from '../../hooks/usePagination';
+
 import "./TableElement.css";
-import { useState } from "react";
 
-export const TableElement = (props) => {
-  // const [active, setActive] = useState(1);
-  // const numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-
-  // let pageHandler = (num) => {
-  //   setActive(num);
-  // };
-
-  const {
-    onPageChange,
-    totalCount,
-    siblingCount = 1,
-    currentPage,
-    pageSize,
-    className
-  } = props;
-
+export const TableElement = ({
+  onPageChange,
+  totalCount,
+  siblingCount = 1,
+  currentPage,
+  type
+}) => {
   const paginationRange = usePagination({
     currentPage,
     totalCount,
-    siblingCount,
-    pageSize
+    siblingCount
   });
 
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
-  }
+  };
 
   const onNext = () => {
     onPageChange(currentPage + 1);
@@ -41,12 +31,12 @@ export const TableElement = (props) => {
 
   let element = null;
 
-  if (props.type === "pagination") {
+  if (type === "pagination") {
     element = (
       <div>
         <div className="pagination">
           <div className="pagination-inner">
-            <div className="prev" onClick={onPrevious}>
+            <div className={`prev ${currentPage === 1 && 'disabled'}`} onClick={onPrevious}>
               <svg
                 width="7"
                 height="12"
@@ -64,16 +54,6 @@ export const TableElement = (props) => {
                 />
               </svg>
             </div>
-            {numbers.map(num => (
-              <div
-                onClick={() => {
-                  pageHandler(num);
-                }}
-                className={`${active === num ? "active-element" : ""}`}
-              >
-                {num}
-              </div>
-            ))}
             {paginationRange.map(pageNumber => {
               if (pageNumber === DOTS) {
                 return <div>...</div>;
@@ -88,7 +68,7 @@ export const TableElement = (props) => {
                 </div>
               );
             })}
-            <div className="next" onClick={onNext}>
+            <div className={`next ${currentPage === lastPage && 'disabled'}`} onClick={onNext} >
               <svg
                 width="7"
                 height="12"
@@ -110,7 +90,7 @@ export const TableElement = (props) => {
         </div>
       </div>
     );
-  }
+  };
 
   return element;
 };
