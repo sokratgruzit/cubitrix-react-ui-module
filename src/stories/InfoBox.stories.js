@@ -106,7 +106,7 @@ stories.add('InfoBox', () => {
                 active={true}
                 header={cardInfoHeader}
                 cardBody={cardInfoBody}
-                />
+            />
             <InfoBox
                 type='unavailable'
                 active={true}
@@ -130,7 +130,7 @@ stories.add('InfoBox', () => {
                 active={true}
                 cardBody={rewardBox}
             />
-             <InfoBox
+            <InfoBox
                 type='verification'
                 active={true}
                 cardBody={verification}
