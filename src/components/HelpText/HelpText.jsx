@@ -3,7 +3,7 @@ import './HelpText.css';
 export const HelpText = props => {
     return (
         <div>
-            <div style={props.customStyles} className='status-group'>
+            <div style={props.customStyles} className={`status-group ${props.className}`}>
                 <div className={!props.icon ? 'hidden' : 'status-group-inner' }>
                     {props.status === 'success' ? (
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

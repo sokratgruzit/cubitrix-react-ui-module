@@ -10,6 +10,7 @@ export const UserOptions = ({
   userAccount,
   disconnect,
   warning,
+  account,
   type,
 }) => {
   return (
@@ -45,7 +46,7 @@ export const UserOptions = ({
           </p>
         </div>
         <Visual
-          label={"0xb81G555828610c156eF3408DE21A3eC9b9B29V81"}
+          label={account}
           element={"copy-address"}
           customStyles={{ width: "100%" }}
         />

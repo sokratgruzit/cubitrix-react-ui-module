@@ -50,6 +50,17 @@ stories.add("SideBar", () => {
           userAccount={() => console.log("userAccount")}
           handlePersonalData={(e) => console.log(e)}
           handleSecurityData={(e) => console.log(e)}
+          personalDataState={{
+            emailSent: false,
+            loading: false,
+            saved: false,
+          }}
+          securityDataState={{
+            emailSent: false,
+            loading: false,
+            saved: false,
+          }}
+          emailVerified={true}
         />
         {/* <UserOptions
           type={"Metamask"}
