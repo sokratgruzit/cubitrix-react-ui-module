@@ -17,6 +17,7 @@ export const UserAccount = ({
   securityDataState,
   resendEmail,
   hasPasswordSet,
+  error,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -273,6 +274,9 @@ export const UserAccount = ({
             }}
             onClick={() => beforeSecurityData(formData)}
           />
+          {error && (
+            <HelpText status={"error"} title={error} color={"#EF5350"} icon={true} />
+          )}
         </div>
       )}
     </>
