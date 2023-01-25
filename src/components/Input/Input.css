@@ -675,3 +675,14 @@ select input
     height: 24px;
     text-decoration: underline;
 } */
+
+.phone-numbers input[type="number"]::-webkit-outer-spin-button,
+.phone-numbers input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  background-color: red;
+}
+
+.phone-numbers input[type="number"] {
+  -moz-appearance: textfield;
+}

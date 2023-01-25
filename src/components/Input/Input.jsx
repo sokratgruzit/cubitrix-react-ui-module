@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 // import testImg from '../../assets/img/country/australia.png';
 import "./Input.css";
-import { func } from "prop-types";
+import { countriesData } from "./helper";
 
 export const Input = (props) => {
   const [file, setFile] = useState(null);
@@ -15,9 +15,7 @@ export const Input = (props) => {
   const [cover, setCover] = useState(false);
   const [close, setClose] = useState(true);
   const [value, setValue] = useState(props.selectLabel);
-  const [numb, setNumb] = useState("+00");
-  const [flag, setFlag] = useState("");
-  const [title, setTitle] = useState("");
+  const [countryData, setcountryData] = useState({ code: "+00", flag: "", coutnry: "" });
   const [startDate, setStartDate] = useState(new Date());
 
   const activeHandler = () => {
@@ -41,12 +39,13 @@ export const Input = (props) => {
     setClose(true);
   };
   function handlerClick(i) {
-    console.log(i, "item");
     setValue(i);
-    setNumb(i.numbering);
-    setFlag(i.image);
-    setTitle(i.title);
   }
+
+  function handleCountrySelect(countryData) {
+    setcountryData(countryData);
+  }
+
   function handleChange(e) {
     // console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
@@ -260,9 +259,7 @@ export const Input = (props) => {
             }}
             className="select-prefix"
           >
-            <div className="flag">
-              <img src={flag} />
-            </div>
+            <div className="flag">{countryData.flag}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="8"
@@ -281,7 +278,7 @@ export const Input = (props) => {
               />
             </svg>
           </div>
-          <span className="select-body">{numb}</span>
+          <span className="select-body">{countryData.code}</span>
           <div className="select-sufix">
             <input onChange={props.onChange} className="number-control" type="number" />
           </div>
@@ -289,8 +286,8 @@ export const Input = (props) => {
         <div className={`${"hidden"} ${active ? "visible" : ""}`}>
           <Dropdown
             type={"country"}
-            handlerClick={handlerClick}
-            countryData={props.countryData}
+            handlerClick={handleCountrySelect}
+            countryData={countriesData}
             dropdownCountry={"dropdown-country"}
             active={props.active}
             customStyles={{ width: "inherit" }}

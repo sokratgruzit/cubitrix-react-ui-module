@@ -16,6 +16,7 @@ export const UserAccount = ({
   personalDataState,
   securityDataState,
   resendEmail,
+  hasPasswordSet,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -208,16 +209,18 @@ export const UserAccount = ({
       )}
       {selectedTab === "security" && (
         <div className="body-wrapper">
-          <Input
-            type={"default"}
-            icon={true}
-            inputType={"password"}
-            placeholder={"current password"}
-            label={"Current Password"}
-            value={formData.currentPassword}
-            onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
-            customStyles={{ width: "100%" }}
-          />
+          {hasPasswordSet && (
+            <Input
+              type={"default"}
+              icon={true}
+              inputType={"password"}
+              placeholder={"current password"}
+              label={"Current Password"}
+              value={formData.currentPassword}
+              onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
+              customStyles={{ width: "100%" }}
+            />
+          )}
           <Input
             type={"default"}
             icon={true}
