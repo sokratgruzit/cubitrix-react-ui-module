@@ -3,12 +3,16 @@ import { useState } from "react";
 import "../assets/css/main-theme.css";
 import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Button} from "../components/Button";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Button } from "../components/Button";
+import { Functions } from '../hooks/Functions';
+import { Logo } from "../assets/svgs";
 
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
+    const { mobile } = Functions();
+    console.log(mobile)
 
     const [mobileExpand, setMobileExpand] = useState(null);
 
@@ -21,7 +25,28 @@ stories.add("AdminPanel", () => {
             }
         }
     }
-
+    const typeColors = [
+        {
+            id: 1,
+            name: 'All Deposit',
+            color: '#3D5AFE'
+        },
+        {
+            id: 2,
+            name: 'Withdraw',
+            color: '#FFA726'
+        },
+        {
+            id: 3,
+            name: 'Transfer',
+            color: '#57D29E'
+        }
+    ];
+    const adminHeaderData = {
+        username: 'Michael',
+        svg: <Logo />,
+        userImageUrl: '../../assets/DashboardCards/bitcoin.png',
+    }
     const sideBar = [
         {
             id: 1,
@@ -198,11 +223,6 @@ stories.add("AdminPanel", () => {
             id: 6,
         },
     ];
-    let mobile = false;
-    if(window.innerWidth <= 1300) {
-        mobile = true;
-    }
-    console.log(mobile)
 
     let td = [
         {
@@ -245,13 +265,13 @@ stories.add("AdminPanel", () => {
 
 
     let tableData;
-    tableData = td.map((item) => {
+    tableData = td.map((item, index) => {
         return(
             <>
-                <div className="table-parent"  key={item.id} onClick={() => {
+                <div className={`table-parent ${mobileExpand == item.id ? 'active' : ''}`} onClick={() => {
                     mobileExpandFunc(item.id)
                 }}>
-                    <div className="table">
+                    <div className="table" key={index}>
                         <div className={`td col ${th[0].mobileWidth ? true : false }`} style={{width: `${mobile ? th[0].mobileWidth : th[0].width}%`}}>
                             <span>{item.id}</span>
                             <span>{item.hash}</span>
@@ -281,7 +301,7 @@ stories.add("AdminPanel", () => {
                             <path d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                    <div className={`table-mobile ${mobileExpand == item.id ? 'active' : ''}`}>
+                    <div className={`table-mobile`}>
                         <div className="table-mobile-content">
                             <div className="td">
                                 <div className="mobile-ttl">{th[2].name}</div>
@@ -300,7 +320,7 @@ stories.add("AdminPanel", () => {
                                 <span>{item.date}</span>
                                 <span>{item.time}</span>
                             </div>
-                            <div className="td">
+                            <div className="td type">
                                 <div className="mobile-ttl">{th[6].name}</div>
                                 <span>{item.type}</span>
                             </div>
@@ -312,7 +332,11 @@ stories.add("AdminPanel", () => {
     })
     return (
        <>
-           <AdminHeader/>
+           <AdminHeader
+                username={adminHeaderData.username}
+                headSvg={adminHeaderData.svg}
+                userImageUrl={adminHeaderData.userImageUrl}
+           />
            <div className={`admin-container`}>
                <div className={`admin-sidebar`}>
 
@@ -322,9 +346,10 @@ stories.add("AdminPanel", () => {
                        <BrowserRouter>
                            <Routes>
                                <Route path="/*" element={
-                                   sideBar.map((item) => {
+                                   sideBar.map((item,index) => {
                                        return (
                                            <Button
+                                               key={index}
                                                label={item.name}
                                                route={item.route}
                                                element={'side-admin-button'}
@@ -337,6 +362,7 @@ stories.add("AdminPanel", () => {
                            </Routes>
                        </BrowserRouter>
                    }
+                   headerList={true}
                    tableData={tableData}
                    tableHead={th}
                    mobile={mobile}

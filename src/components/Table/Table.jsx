@@ -1,15 +1,18 @@
 import { Button } from "../Button";
 import "./Table.css";
 import {useState} from "react";
+import { Functions } from '../../hooks/Functions';
 
 export const Table = (props) => {
+    const { mobile } = Functions();
+    console.log(mobile)
     return (
         <>
             <div className={`${props.type}`}>
                 <div className="table-head">
-                    {props.tableHead.map((item) => {
+                    {props.tableHead.map((item, index) => {
                         return (
-                            <div key={item.id} className={`th  ${item.mobileWidth ? true : false }`} style={{width: `${props.mobile ? item.mobileWidth : item.width}%`}}>
+                            <div key={index} className={`th  ${item.mobileWidth ? true : false }`} style={{width: `${mobile ? item.mobileWidth : item.width}%`}}>
                                 {item.name}
                             </div>
                         );

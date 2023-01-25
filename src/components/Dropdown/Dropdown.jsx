@@ -3,16 +3,6 @@ import { Switches } from "../Switches";
 import "./Dropdown.css";
 
 export const Dropdown = (props) => {
-  const [inputData, setInputData] = useState({
-    title: "",
-    img: null,
-    numbering: "",
-  });
-
-  function updateData(data, field) {
-    setInputData((prev) => ({ ...prev, [field]: data }));
-  }
-
   let element = "";
   if (props.type === "country") {
     element = (

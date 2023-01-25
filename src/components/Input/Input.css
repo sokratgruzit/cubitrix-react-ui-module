@@ -263,9 +263,6 @@
 .upload-btn {
   color: #3d5afe;
   cursor: pointer;
-  z-index: 1;
-  /* z-index: 1; */
-  /* pointer-events: none; */
 }
 .upload-control {
   position: absolute;
@@ -685,4 +682,14 @@ select input
 
 .phone-numbers input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.phone-numbers .select-control {
+  gap: initial;
+}
+
+.flag-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 9px;
 }

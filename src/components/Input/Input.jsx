@@ -4,8 +4,8 @@ import { Dropdown } from "../Dropdown";
 import { Switches } from "../Switches";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./Input.css";
 
-// import testImg from '../../assets/img/country/australia.png';
 import "./Input.css";
 import { countriesData } from "./helper";
 
@@ -15,7 +15,12 @@ export const Input = (props) => {
   const [cover, setCover] = useState(false);
   const [close, setClose] = useState(true);
   const [value, setValue] = useState(props.selectLabel);
-  const [countryData, setcountryData] = useState({ code: "+00", flag: "", coutnry: "" });
+  const [countryData, setCountryData] = useState({
+    code: "+1",
+    flag: "🇺🇸",
+    coutnry: "United States",
+    number: "",
+  });
   const [startDate, setStartDate] = useState(new Date());
 
   const activeHandler = () => {
@@ -41,15 +46,15 @@ export const Input = (props) => {
   function handlerClick(i) {
     setValue(i);
   }
-
-  function handleCountrySelect(countryData) {
-    setcountryData(countryData);
-  }
-
   function handleChange(e) {
     // console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
     setClose(false);
+  }
+
+  function handleCountrySelect(countryData) {
+    setActive(false);
+    setCountryData((prev) => ({ ...prev, ...countryData }));
   }
 
   let element = null;
@@ -194,10 +199,13 @@ export const Input = (props) => {
   if (props.type === "lable-input-select") {
     element = (
       <div style={props.customStyles} className="select-group">
-        <p className="input-group-title font-12">{props.value}</p>
+        <p className="input-group-title font-12">{props.label}</p>
         <div onChange={props.onChange} className="form-select-sc">
           <div onClick={activeHandler} className="form-select-item form-control">
-            <div>{value}</div>
+            <div className="flag-wrapper">
+              <div>{props.value.flag}</div>
+              <div>{props.value?.country}</div>
+            </div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="20"
@@ -220,8 +228,10 @@ export const Input = (props) => {
             {props.selectType === "country" ? (
               <Dropdown
                 type={"country"}
-                handlerClick={handlerClick}
-                countryData={props.countryData}
+                handlerClick={(data) => {
+                  props.onClick(data);
+                }}
+                countryData={countriesData}
                 dropdownCountry={"dropdown-country"}
                 active={props.active}
                 customStyles={{ width: "inherit" }}
@@ -280,7 +290,16 @@ export const Input = (props) => {
           </div>
           <span className="select-body">{countryData.code}</span>
           <div className="select-sufix">
-            <input onChange={props.onChange} className="number-control" type="number" />
+            <input
+              onChange={(e) => {
+                const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
+                setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
+                props.onChange({ code: countryData.code, number: onlyNumbers });
+              }}
+              value={countryData.number}
+              className="number-control"
+              type="text"
+            />
           </div>
         </div>
         <div className={`${"hidden"} ${active ? "visible" : ""}`}>
@@ -293,6 +312,7 @@ export const Input = (props) => {
             customStyles={{ width: "inherit" }}
           />
         </div>
+        <HelpText />
       </div>
     );
   }

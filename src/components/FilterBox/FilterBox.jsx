@@ -5,6 +5,7 @@ import { Input } from '../Input';
 import './FilterBox.css';
 
 export const FilterBox = ({
+    headerList,
     tableFilterData,
     tableFilterOutcomingData,
     setTableFilterOutcomingData
@@ -37,17 +38,19 @@ export const FilterBox = ({
   return (
     <div className={'filter-box-container'}>
         <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
-            <div className={'filter-box-list font-14'}>
-                {tableFilterData.head.map(item => (
-                    <div 
-                        key={item.title}
-                        className={`filter-box-list__item ${tableFilterOutcomingData.head === item.title && 'list-item__active'}`}
-                        onClick={() => setTableFilterOutcomingData({...tableFilterOutcomingData, head: item.title})}
-                    >
-                        {item.title}
-                    </div>
-                ))}
-            </div>
+            {headerList && (
+                <div className={'filter-box-list font-14'}>
+                    {tableFilterData.head.map(item => (
+                        <div 
+                            key={item.title}
+                            className={`filter-box-list__item ${tableFilterOutcomingData.head === item.title && 'list-item__active'}`}
+                            onClick={() => setTableFilterOutcomingData({...tableFilterOutcomingData, head: item.title})}
+                        >
+                            {item.title}
+                        </div>
+                    ))}
+                </div>
+            )}
             <button 
                 className={`advanced-search-btn ${showSearchBox && 'search-btn-active'} font-14`} 
                 onClick={() => setShowSearchBox(!showSearchBox)}

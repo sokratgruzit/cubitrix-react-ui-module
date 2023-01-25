@@ -31,7 +31,7 @@ export const UserAccount = ({
     email: "",
     mobile: "",
     date_of_birth: Date.now(),
-    nationality: "UK",
+    nationality: { flag: "", country: "Select Country" },
     avatar: "string",
   });
 
@@ -161,20 +161,20 @@ export const UserAccount = ({
             label={"Date of Birth"}
             customStyles={{ width: "100$" }}
           />
-          <div className="inputWrapper">
-            <p>Nationality</p>
-            <input className="input" placeholder="nationality" />
-          </div>
           <Input
             type={"lable-input-select"}
             icon={false}
             selectType={"country"}
-            selectData={[]}
-            defaultData={"machusets"}
-            selectHandler={(e) => console.log(e)}
+            value={userData.nationality}
+            placeholder={"select your nationality"}
+            onClick={(e) => {
+              console.log(userData);
+              setUserData((prev) => ({ ...prev, nationality: e }));
+            }}
             customStyles={{ width: "100%" }}
           />
           <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />
+
           <Button
             element="button"
             label={

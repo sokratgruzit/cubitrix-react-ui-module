@@ -98,7 +98,9 @@
   overflow-y: auto;
 }
 .dropdown-country .dropdown-toggle {
-  margin: 0px 0 8px 13px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
   font-size: 12px;
   line-height: 18px;
   color: white;
