@@ -35,10 +35,7 @@ export const UserAccount = ({
     avatar: "string",
   });
 
-  console.log(userData);
-
   const [securityFormErrors, setSecurityFormErrors] = useState({});
-
   const handleFormUpdate = (value, field) => {
     setFormData((prevState) => ({ ...prevState, [field]: value }));
   };
@@ -48,7 +45,9 @@ export const UserAccount = ({
   };
 
   const beforePersonalData = (userData) => {
-    handlePersonalData(userData);
+    const mutated_userData = userData;
+    mutated_userData.nationality = userData.nationality.country;
+    handlePersonalData(mutated_userData);
   };
   const beforeSecurityData = (userData) => {
     handleSecurityData(userData);
@@ -153,7 +152,7 @@ export const UserAccount = ({
             value={userData.nationality}
             label={"Nationality"}
             placeholder={"select your nationality"}
-            onClick={(e) => setUserData((prev) => ({ ...prev, nationality: e }))}
+            onClick={(e) => handleUserUpdate(e, "nationality")}
             customStyles={{ width: "100%" }}
           />
           <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />

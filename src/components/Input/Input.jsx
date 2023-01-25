@@ -202,7 +202,7 @@ export const Input = (props) => {
         <div onChange={props.onChange} className="form-select-sc">
           <div onClick={activeHandler} className="form-select-item form-control">
             <div className="flag-wrapper">
-              <div>{props.value.flag}</div>
+              <div>{props.value?.flag}</div>
               <div>{props.value?.country}</div>
             </div>
             <svg
