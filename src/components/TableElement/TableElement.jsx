@@ -2,11 +2,42 @@ import "./TableElement.css";
 import { useState } from "react";
 
 export const TableElement = (props) => {
-  const [active, setActive] = useState(1);
+  // const [active, setActive] = useState(1);
+  // const numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
-  let pageHandler = (num) => {
-    setActive(num);
+  // let pageHandler = (num) => {
+  //   setActive(num);
+  // };
+
+  const {
+    onPageChange,
+    totalCount,
+    siblingCount = 1,
+    currentPage,
+    pageSize,
+    className
+  } = props;
+
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize
+  });
+
+  if (currentPage === 0 || paginationRange.length < 2) {
+    return null;
+  }
+
+  const onNext = () => {
+    onPageChange(currentPage + 1);
   };
+
+  const onPrevious = () => {
+    onPageChange(currentPage - 1);
+  };
+
+  let lastPage = paginationRange[paginationRange.length - 1];
 
   let element = null;
 
@@ -15,7 +46,7 @@ export const TableElement = (props) => {
       <div>
         <div className="pagination">
           <div className="pagination-inner">
-            <div className="prev">
+            <div className="prev" onClick={onPrevious}>
               <svg
                 width="7"
                 height="12"
@@ -33,72 +64,31 @@ export const TableElement = (props) => {
                 />
               </svg>
             </div>
-            <div
-              onClick={() => {
-                pageHandler(1);
-              }}
-              className={`${active === 1 ? "active-element" : ""}`}
-            >
-              1
-            </div>
-            <div
-              onClick={() => {
-                pageHandler(2);
-              }}
-              className={`${active === 2 ? "active-element" : ""}`}
-            >
-              2
-            </div>
-            <div
-              onClick={() => {
-                pageHandler(3);
-              }}
-              className={`${active === 3 ? "active-element" : ""}`}
-            >
-              3
-            </div>
-            <div
-              onClick={() => {
-                pageHandler(4);
-              }}
-              className={`${active === 4 ? "active-element" : ""}`}
-            >
-              4
-            </div>
-            <div>...</div>
-            <div
-              onClick={() => {
-                pageHandler(5);
-              }}
-              className={`${active === 5 ? "active-element" : ""}`}
-            >
-              97
-            </div>
-            <div
-              onClick={() => {
-                pageHandler(6);
-              }}
-              className={`${active === 6 ? "active-element" : ""}`}
-            >
-              98
-            </div>
-            <div
-              onClick={() => {
-                pageHandler(7);
-              }}
-              className={`${active === 7 ? "active-element" : ""}`}
-            >
-              99
-            </div>
-            <div
-              onClick={() => {
-                pageHandler(8);
-              }}
-              className={`${active === 8 ? "active-element" : ""}`}
-            >
-              100
-            </div>
-            <div className="next">
+            {numbers.map(num => (
+              <div
+                onClick={() => {
+                  pageHandler(num);
+                }}
+                className={`${active === num ? "active-element" : ""}`}
+              >
+                {num}
+              </div>
+            ))}
+            {paginationRange.map(pageNumber => {
+              if (pageNumber === DOTS) {
+                return <div>...</div>;
+              }
+
+              return (
+                <div
+                  className={`${pageNumber === currentPage ? "active-element" : ""}`}
+                  onClick={() => onPageChange(pageNumber)}
+                >
+                  {pageNumber}
+                </div>
+              );
+            })}
+            <div className="next" onClick={onNext}>
               <svg
                 width="7"
                 height="12"
