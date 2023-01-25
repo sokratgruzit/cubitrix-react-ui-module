@@ -16,6 +16,7 @@
   align-items: center;
   gap: 10px;
   padding-left: 20px;
+  height: 100%;
 }
 .right {
   height: 100%;
@@ -58,7 +59,6 @@
   transform: scaleY(0.2);
   opacity: 0;
   bottom: 0;
-  margin-bottom: -25px;
 }
 
 .active::before {
@@ -129,5 +129,5 @@
   gap: 16px;
   width: 344px;
   height: 100%;
-  border-radius: 2px solid #070b1a;
+  border-right: 2px solid #070b1a;
 }

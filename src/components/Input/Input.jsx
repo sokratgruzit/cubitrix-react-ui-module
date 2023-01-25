@@ -251,7 +251,7 @@ export const Input = (props) => {
   }
   if (props.type === "label-input-phone-number") {
     element = (
-      <div style={props.customStyles} className="input-group-item">
+      <div style={props.customStyles} className="input-group-item phone-numbers">
         <p className="font-12">{props.label}</p>
         <div className="form-control select-control">
           <div

@@ -9,10 +9,10 @@ import "./UserAccount.css";
 export const UserAccount = ({
   sideBarClose,
   goBack,
+  personalData,
   handlePersonalData,
   handleSecurityData,
   emailVerified,
-  personalData,
   personalDataState,
   securityDataState,
   resendEmail,
