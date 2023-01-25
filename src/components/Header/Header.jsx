@@ -21,11 +21,16 @@ export const Header = ({
   sideBarOpen,
   handleConnect,
   handleNotifications,
+  title,
+  logoSvg,
 }) => {
   return (
     <div className="header">
-      <div>logo</div>
       <div className="modulesWrapper">
+        <div className="logoWrapper">
+          {logoSvg}
+          <h3>{title}</h3>
+        </div>
         <NavLink className={`${location.pathname === "/" && "active"} link`} to="/">
           <Dashboard className="svg" /> Dashboard
         </NavLink>

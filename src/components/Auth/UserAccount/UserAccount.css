@@ -1,4 +1,4 @@
-.tabsWrapper {
+.tabs-wrapper {
   display: flex;
   justify-content: center;
   padding-top: 20px;
@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   width: 50%;
-  transition: 0.5s;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   height: 100%;
   border-radius: 32px;
   cursor: pointer;
@@ -51,7 +51,7 @@
   border: 1px solid #0050ff !important;
 }
 
-.bodyWrapper {
+.body-wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -67,4 +67,23 @@
 
 .email_active {
   max-height: fit-content;
+}
+
+.activeSvg {
+  display: flex !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+.activeSvg:hover {
+  margin: 0 !important;
+}
+
+.save-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.margin-top-negative {
+  margin-top: -10px;
 }
