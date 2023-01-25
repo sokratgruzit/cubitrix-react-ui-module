@@ -8,6 +8,7 @@ export * from "./components/Switches";
 export * from "./components/TwoFactorVerification";
 export * from "./components/Visual";
 export * from "./components/AdminPanel";
+export * from "./components/AdminHeader";
 export * from "./components/SideBar";
 export * from "./components/Auth/Connect";
 export * from "./components/Auth/UserAccount";

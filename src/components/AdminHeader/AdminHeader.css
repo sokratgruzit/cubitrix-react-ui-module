@@ -38,6 +38,9 @@
 
 .user-input img {
     border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
 }
 
 .admin-arrow {

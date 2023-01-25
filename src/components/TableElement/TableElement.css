@@ -23,7 +23,8 @@ svg path {
 }
 .prev:hover svg path {
   stroke: #fff;
-}
+} 
+
 .next:hover svg path {
   stroke: #fff;
 }

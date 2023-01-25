@@ -45,7 +45,7 @@ stories.add("AdminPanel", () => {
     const adminHeaderData = {
         username: 'Michael',
         svg: <Logo />,
-        userImageUrl: '../../assets/DashboardCards/bitcoin.png',
+        userImageUrl: 'https://uybor.uz/borless/avtobor/img/user-images/user_no_photo_512x512.png',
     }
     const sideBar = [
         {
@@ -123,15 +123,8 @@ stories.add("AdminPanel", () => {
                 </svg>
         }
     ]
-    const defaultOutcomingData = {
-        head: 'All',
-        search: {
-            option: 'Transaction'
-        },
-        selects: {}
-    };
 
-    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState(defaultOutcomingData);
+    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState([]);
 
     const tableFilterData = {
         head: [
@@ -362,7 +355,6 @@ stories.add("AdminPanel", () => {
                            </Routes>
                        </BrowserRouter>
                    }
-                   headerList={true}
                    tableData={tableData}
                    tableHead={th}
                    mobile={mobile}
