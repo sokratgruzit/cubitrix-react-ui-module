@@ -326,6 +326,8 @@
   gap: 37px;
   cursor: pointer;
   width: 100%;
+  white-space: nowrap;
+
 }
 
 .form-select {

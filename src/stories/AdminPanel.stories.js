@@ -126,49 +126,70 @@ stories.add("AdminPanel", () => {
 
     const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState([]);
 
+    // const tableFilterData = {
+    //     head: [
+    //         {
+    //             title: 'All',
+    //         }, {
+    //             title: 'Pending',
+    //         }, {
+    //             title: 'Cenceled',
+    //         }, {
+    //             title: 'Approved',
+    //         }, {
+    //             title: 'Bonuses',
+    //         }, {
+    //             title: 'Claimed',
+    //         },
+    //     ],
+    //     search: {
+    //         options: [{
+    //             name: 'Transaction'
+    //         }, {
+    //             name: 'Hash'
+    //         }]
+    //     },
+    //     selects: [
+    //         {
+    //             name: 'Tranx Type',
+    //             defaultOption: 'Any Type',
+    //             options: [{
+    //                 name: 'Transaction'
+    //             }, {
+    //                 name: 'Hash'
+    //             }]
+    //         },
+    //         {
+    //             name: 'Date Within',
+    //             defaultOption: 'All Time',
+    //             options: [{
+    //                 name: 'Transaction'
+    //             }, {
+    //                 name: 'Hash'
+    //             }]
+    //         }
+    //     ]
+    // };
+
     const tableFilterData = {
-        head: [
-            {
-                title: 'All',
-            }, {
-                title: 'Pending',
-            }, {
-                title: 'Cenceled',
-            }, {
-                title: 'Approved',
-            }, {
-                title: 'Bonuses',
-            }, {
-                title: 'Claimed',
-            },
-        ],
+        head: false,
         search: {
-            options: [{
-                name: 'Transaction'
-            }, {
-                name: 'Hash'
-            }]
-        },
-        selects: [
-            {
-                name: 'Tranx Type',
-                defaultOption: 'Any Type',
-                options: [{
-                    name: 'Transaction'
-                }, {
-                    name: 'Hash'
-                }]
-            },
-            {
-                name: 'Date Within',
-                defaultOption: 'All Time',
-                options: [{
-                    name: 'Transaction'
-                }, {
-                    name: 'Hash'
-                }]
-            }
+            options: [
+                {
+                    name: 'Account Owner',
+                    value: 'account_owner'
+                }, 
+                {
+                    name: 'Account Type Id',
+                    value: 'account_type_id'
+                },
+                {
+                    name: 'Address',
+                    value: 'address'
+                }
         ]
+        },
+        selects: false
     };
 
     let th = [

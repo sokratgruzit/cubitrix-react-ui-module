@@ -31,7 +31,7 @@
 .dropdown::-webkit-scrollbar-track {
   background: rgba(255, 0, 0, 0);
 }
-.dropdown::-webkit-scrollbar-thumb {
+.dropdown::-webkit-scrollbar-thumb {  
   background: #3D5AFE;
   border-radius: 22%;
 }
@@ -41,6 +41,7 @@
   background:transparent;
   padding: 6.6px 13px;
   transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  white-space: nowrap;
 }
 .dropdown-item:hover {
   background: rgba(255, 255, 255, 0.05);
