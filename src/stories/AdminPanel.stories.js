@@ -123,15 +123,8 @@ stories.add("AdminPanel", () => {
                 </svg>
         }
     ]
-    const defaultOutcomingData = {
-        head: 'All',
-        search: {
-            option: 'Transaction'
-        },
-        selects: {}
-    };
 
-    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState(defaultOutcomingData);
+    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState([]);
 
     const tableFilterData = {
         head: [
@@ -362,7 +355,6 @@ stories.add("AdminPanel", () => {
                            </Routes>
                        </BrowserRouter>
                    }
-                   headerList={true}
                    tableData={tableData}
                    tableHead={th}
                    mobile={mobile}

@@ -235,6 +235,7 @@ export const Input = (props) => {
                 handlerClick={handlerClick}
                 selectHandler={props.selectHandler}
                 customStyles={{ width: "inherit" }}
+                defaultOption={props.selectLabel}
               />
             )}
           </div>
@@ -415,6 +416,7 @@ export const Input = (props) => {
                 handlerClick={handlerClick}
                 selectHandler={props.selectHandler}
                 customStyles={{}}
+                defaultOption={props.selectLabel}
               />
             </div>
           </div>
