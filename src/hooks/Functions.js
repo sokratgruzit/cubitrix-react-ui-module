@@ -4,7 +4,7 @@ const getWidth = () => window.innerWidth
   || document.documentElement.clientWidth 
   || document.body.clientWidth;
 
-export const useCurrentWidth = () => {
+export const Functions = () => {
   // save current window width in the state object
   let [width, setWidth] = useState(getWidth());
 

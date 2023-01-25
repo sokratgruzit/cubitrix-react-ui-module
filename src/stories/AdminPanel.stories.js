@@ -5,14 +5,26 @@ import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Button } from "../components/Button";
-import { useCurrentWidth } from '../hooks/useCurrentWidth';
-import { Logo, userImage } from "../assets/svgs";
+import { Functions } from '../hooks/Functions';
+import { Logo } from "../assets/svgs";
 
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
-    const { mobile } = useCurrentWidth();
+    const { mobile } = Functions();
     console.log(mobile)
+
+    const [mobileExpand, setMobileExpand] = useState(null);
+
+    let mobileExpandFunc = (id) => {
+        if(window.innerWidth <= 1300) {
+            if(id !== mobileExpand) {
+                setMobileExpand(id);
+            } else {
+                setMobileExpand(null);
+            }
+        }
+    }
 
     const adminHeaderData = {
         username: 'Michael',
@@ -234,12 +246,16 @@ stories.add("AdminPanel", () => {
 
         },
     ];
+
+
     let tableData;
     tableData = td.map((item) => {
         return(
             <>
-                <div className="table-parent">
-                    <div className="table" key={item.id}>
+                <div className="table-parent"  key={item.id} onClick={() => {
+                    mobileExpandFunc(item.id)
+                }}>
+                    <div className="table">
                         <div className={`td col ${th[0].mobileWidth ? true : false }`} style={{width: `${mobile ? th[0].mobileWidth : th[0].width}%`}}>
                             <span>{item.id}</span>
                             <span>{item.hash}</span>
@@ -269,7 +285,7 @@ stories.add("AdminPanel", () => {
                             <path d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                     </div>
-                    <div className="table-mobile">
+                    <div className={`table-mobile ${mobileExpand == item.id ? 'active' : ''}`}>
                         <div className="table-mobile-content">
                             <div className="td">
                                 <div className="mobile-ttl">{th[2].name}</div>

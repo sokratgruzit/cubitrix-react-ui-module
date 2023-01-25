@@ -15,9 +15,9 @@ export const AdminHeader = props => {
         }
     };
 
-    function handleDropdownClick () {
+    const handleDropdownClick = () => {
         console.log('logout');
-    }
+    };
 
     return (
         <div className={`admin-header`}>

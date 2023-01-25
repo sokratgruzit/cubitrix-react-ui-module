@@ -17,3 +17,6 @@ export { default as Trade } from "./Trade";
 export { default as Loan } from "./Loan";
 export { default as Staking } from "./Staking";
 export { default as Logo } from "./Logo";
+export { default as EthIcon } from "./etherium-icon";
+export { default as DragIcon } from "./drag-icon";
+export { default as AddSquareIcon } from "./add-square";

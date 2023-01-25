@@ -86,6 +86,9 @@
   overflow: hidden;
   max-height: 0px;
 }
+.table-mobile.active {
+  max-height: 600px;
+}
 /*Ipad Pro 1024*/
 @media (max-width: 1300px) {
   .td.false,.th.false {
