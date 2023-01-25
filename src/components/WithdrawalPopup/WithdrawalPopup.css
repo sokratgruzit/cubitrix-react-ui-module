@@ -39,6 +39,6 @@
   height: 400px;
   overflow-y: scroll;
 }
-.withdraw-bg {
+.withdrawal-wraper > div:nth-child(odd) {
   background-color: #070b1a !important;
 }
