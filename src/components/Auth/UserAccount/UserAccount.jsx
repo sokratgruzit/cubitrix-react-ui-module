@@ -135,7 +135,22 @@ export const UserAccount = ({
             value={userData.mobile}
             placeholder="Enter Mobile"
             label={"Mobile Number"}
-            countryData={[]}
+            countryData={[
+              {
+                id: 1,
+                title: "The United Kingdom ",
+                image:
+                  "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
+                numbering: "(+78)",
+              },
+              {
+                id: 2,
+                title: "Brazil",
+                image:
+                  "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
+                numbering: "(+76)",
+              },
+            ]}
             onChange={(e) => handleUserUpdate(e.target.value, "mobile")}
             customStyles={{ width: "100%" }}
           />
