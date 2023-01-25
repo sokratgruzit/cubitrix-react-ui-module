@@ -1,4 +1,3 @@
-
 export { default as CurrentStakeIcon } from "./current-stake";
 export { default as EarnIcon } from "./earn-icon";
 export { default as InfoCircleIcon } from "./info-circle-icon";
@@ -20,3 +19,6 @@ export { default as Logo } from "./Logo";
 export { default as EthIcon } from "./etherium-icon";
 export { default as DragIcon } from "./drag-icon";
 export { default as AddSquareIcon } from "./add-square";
+export { default as AddSquareIcon } from "./add-square";
+export { default as DragIcon } from "./drag-icon";
+export { default as EthIcon } from "./etherium-icon";

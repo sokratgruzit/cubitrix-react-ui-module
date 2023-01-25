@@ -41,7 +41,17 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        {/* <UserAccount
+        <UserAccount
+          type={"Metamask"}
+          warning={true}
+          completeAccount={() => console.log("complete")}
+          sideBarClose={() => setToggle((prev) => !prev)}
+          disconnect={() => console.log("disconnect")}
+          userAccount={() => console.log("userAccount")}
+          handlePersonalData={(e) => console.log(e)}
+          handleSecurityData={(e) => console.log(e)}
+        />
+        {/* <UserOptions
           type={"Metamask"}
           warning={true}
           completeAccount={() => console.log("complete")}
@@ -49,14 +59,6 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         /> */}
-        <UserOptions
-          type={"Metamask"}
-          warning={true}
-          completeAccount={() => console.log("complete")}
-          sideBarClose={() => setToggle((prev) => !prev)}
-          disconnect={() => console.log("disconnect")}
-          userAccount={() => console.log("userAccount")}
-        />
       </SideBar>
     </div>
   );

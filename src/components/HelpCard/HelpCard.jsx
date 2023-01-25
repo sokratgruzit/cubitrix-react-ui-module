@@ -208,7 +208,7 @@ export const HelpCard = (props) => {
             <p className="toast-text font-12">
               If you did not receive the verification code in the mail
             </p>
-            <span className="toast-btn font-12">
+            <span className="toast-btn font-12" onClick={props.onClick}>
               Send it Again
               <svg
                 width="20"
