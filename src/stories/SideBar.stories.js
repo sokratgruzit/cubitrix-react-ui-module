@@ -8,10 +8,17 @@ import { Button } from "../components/Button";
 import { Connect } from "../components/Auth/Connect";
 import { UserAccount } from "../components/Auth/UserAccount";
 import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
+import { SingIn } from "../components/Auth/SignIn";
+
 const stories = storiesOf("SideBar", module);
 
 stories.add("SideBar", () => {
   const [toggle, setToggle] = useState(false);
+
+  const changeHandler = (i) => {
+    console.log(i.target.value)
+  }
+
   let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
 
   return (
@@ -41,7 +48,7 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        <UserAccount
+        {/* <UserAccount
           type={"Metamask"}
           warning={true}
           completeAccount={() => console.log("complete")}
@@ -50,7 +57,7 @@ stories.add("SideBar", () => {
           userAccount={() => console.log("userAccount")}
           handlePersonalData={(e) => console.log(e)}
           handleSecurityData={(e) => console.log(e)}
-        />
+        /> */}
         {/* <UserOptions
           type={"Metamask"}
           warning={true}
@@ -59,6 +66,12 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         /> */}
+        <SingIn
+          onChange={changeHandler}
+          sideBarClose={() => setToggle((prev) => !prev)}
+          completeAccount={() => console.log("complete")}
+
+        />
       </SideBar>
     </div>
   );

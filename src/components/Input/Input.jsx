@@ -5,9 +5,7 @@ import { Switches } from '../Switches';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { countryData2 } from './Helper.js';
-// import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
-import { func } from 'prop-types';
 
 let countryData = [
     {
