@@ -77,20 +77,22 @@ export const FilterBox = ({
                         placeholder={'search'}  
                         selectLabel={'All'}
                     />
-                </div>  
-                <div className={'filter-box-selects'}>
-                    {tableFilterData.selects.map(select => (
-                        <Input
-                            key={select.name}
-                            type={"lable-input-select"}
-                            icon={false}
-                            value={select.name}
-                            defaultData={select.options}
-                            selectHandler={(opt) => handleSelectChange(opt, select.name)}
-                            selectLabel={`All ${select.name}`}
-                        />
-                    ))}
                 </div>
+                {tableFilterData.selects && (
+                    <div className={'filter-box-selects'}>
+                        {tableFilterData.selects.map(select => (
+                            <Input
+                                key={select.name}
+                                type={"lable-input-select"}
+                                icon={false}
+                                value={select.name}
+                                defaultData={select.options}
+                                selectHandler={(opt) => handleSelectChange(opt, select.name)}
+                                selectLabel={`All ${select.name}`}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     </div>

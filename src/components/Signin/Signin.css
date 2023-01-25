@@ -1,0 +1,12 @@
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: #070B1A;
+    text-align: center;
+}
+
+.signin-logo {
+    margin-bottom: auto;
+    margin-top: 40px;
+}

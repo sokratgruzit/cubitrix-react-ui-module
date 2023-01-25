@@ -41,7 +41,7 @@ export const Input = (props) => {
     setClose(true);
   };
   function handlerClick(i) {
-    console.log(i, "item");
+    // console.log(i, "item");
     setValue(i);
     setNumb(i.numbering);
     setFlag(i.image);
