@@ -39,9 +39,9 @@ export const InfoBox = ({ type, cardBody, active, customStyle, header,cardBtn, i
                     </div>
                 </div>
             ) : type === "reward-box" ? (
-                cardBody.map((item) => {
+                cardBody.map((item, index) => {
                     return (
-                        <div className={`card-body card-body-active active`}>
+                        <div className={`card-body card-body-active active`} key={index}>
                             <div className='display-flex'>
                                 <div className={`card-header-active active`}>
                                     <img src={item.icon} alt='#' />
@@ -55,18 +55,18 @@ export const InfoBox = ({ type, cardBody, active, customStyle, header,cardBtn, i
             ) : ""
             }
             {type === "available" ? (
-                cardBody.map((item) => {
+                cardBody.map((item, index) => {
                     return (
-                        <div className={`card-body card-body-active active`}>
+                        <div className={`card-body card-body-active active`} key={index}>
                             <p className='list-group-item'>{item.title}</p>
                             <p className='list-group-item'>{item.value}</p>
                         </div>
                     )
                 })
             ) : type === "unavailable" ? (
-                cardBody.map((item) => {
+                cardBody.map((item, index) => {
                     return (
-                        <div className={`card-body card-body-active active`}>
+                        <div className={`card-body card-body-active active`} key={index}>
                             <div className='card-unavilable-status'>
                                 <p className='list-group-item'>{item.title}</p>
                                 <div style={{ padding: item.taker === "" ? "0" : "1px 6px" }}>{item.taker}</div>
