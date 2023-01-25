@@ -76,7 +76,7 @@ stories.add("Input", (props) => {
     setCover(true);
   }
   const selectHandler = () => {
-    console.log('selecthandler')
+    // console.log('selecthandler')
   }
 
   return (
@@ -172,8 +172,9 @@ stories.add("Input", (props) => {
         icon={false}
         selectData={selectData}
         defaultData={defaultData}
+        label={'yourText'}
         selectHandler={selectHandler}
-        selectLabel={'your text ttt'}
+        selectLabel={'select'}
         active={active}
         status={"warning"}
         title={'your text'}

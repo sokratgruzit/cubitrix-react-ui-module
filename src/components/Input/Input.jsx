@@ -4,12 +4,25 @@ import { Dropdown } from '../Dropdown';
 import { Switches } from '../Switches';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-
+import { countryData2 } from './Helper.js';
 // import testImg from '../../assets/img/country/australia.png';
 import './Input.css';
 import { func } from 'prop-types';
 
+let countryData = [
+    {
+      id: 1,
+      title: "The United Kingdom ",
+      image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
+      numbering: "(+78)",
+    },
+    {
+      id: 2,
+      title: "Brazil",
+      image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
+      numbering: "(+76)",
+    }
+  ];
 
 export const Input = props => {
     const [file, setFile] = useState(null);
@@ -135,7 +148,7 @@ export const Input = props => {
     if(props.type === 'lable-input-select') {
         element = (
             <div style={props.customStyles} className='select-group'>
-                <p className='input-group-title font-12'>{props.value}</p>
+                <p className='input-group-title font-12'>{props.label}</p>
                 <div onChange={props.onChange} className='form-select-sc'>
                     <div onClick={activeHandler} className='form-select-item form-control'>
                         <div>{value}</div>
@@ -148,7 +161,7 @@ export const Input = props => {
                             <Dropdown
                                 type={"country"}
                                 handlerClick={handlerClick}
-                                countryData={props.countryData}
+                                countryData={countryData2}
                                 dropdownCountry={"dropdown-country"}
                                 active={props.active}
                                 customStyles={{width: 'inherit'}}
@@ -199,7 +212,7 @@ export const Input = props => {
                     <Dropdown
                         type={"country"}
                         handlerClick={handlerClick}
-                        countryData={props.countryData}
+                        countryData={countryData2}
                         dropdownCountry={"dropdown-country"}
                         active={props.active}
                         customStyles={{width: 'inherit'}}
