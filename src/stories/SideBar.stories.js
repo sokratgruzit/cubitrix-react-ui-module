@@ -15,8 +15,8 @@ const stories = storiesOf("SideBar", module);
 stories.add("SideBar", () => {
   const [toggle, setToggle] = useState(false);
 
-  const changeHandler = (i) => {
-    console.log(i.target.value)
+  const completeHandler = (i) => {
+    console.log(i)
   }
 
   let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
@@ -67,10 +67,9 @@ stories.add("SideBar", () => {
           userAccount={() => console.log("userAccount")}
         /> */}
         <SingIn
-          onChange={changeHandler}
+          onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           completeAccount={() => console.log("complete")}
-
         />
       </SideBar>
     </div>

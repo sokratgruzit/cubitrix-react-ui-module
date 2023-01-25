@@ -5,11 +5,17 @@ import { Visual } from "../../Visual";
 import { Button } from '../../Button';
 
 export const SingIn = ({
-  onChange,
+  onClick,
   sideBarClose,
   goBack
 }) => {
+
   const [toggle, setToggle] = useState('')
+  const [data, setData] = useState({email: '', password: ''});
+
+  const handlerDataUpdate = (value, field) => {
+    setData((prevState) => ({ ...prevState, [field]: value }));
+  };
   return (
     <div className='sing-in-module'>
       <Visual
@@ -27,7 +33,7 @@ export const SingIn = ({
           placeholder={"@email.com"}
           label={'Enter Your E-mail'}
           subLabel={''}
-          onChange={onChange}
+          onChange={(e) => handlerDataUpdate(e.target.value, 'email')}
           customStyles={{ width: "auto" }}
         />
         <Input
@@ -38,7 +44,7 @@ export const SingIn = ({
           placeholder={"password input"}
           label={'Enter Password'}
           subLabel={''}
-          onChange={onChange}
+          onChange={(e) => handlerDataUpdate(e.target.value, 'password')}
           customStyles={{ width: "auto" }}
         />
       </div>
@@ -50,7 +56,7 @@ export const SingIn = ({
           arrow={''}
           element={'button'}
           customStyles={{width: '100%'}}
-          onClick={() => setToggle((prevState) => !prevState)}
+          onClick={() => onClick(data)}
         />
       </div>
 
