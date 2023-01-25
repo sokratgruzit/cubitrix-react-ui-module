@@ -320,7 +320,7 @@ stories.add("AdminPanel", () => {
                             </div>
                             <div className="td type">
                                 <div className="mobile-ttl">{th[6].name}</div>
-                                <span style={{background: `${typeColors.filter( vendor => vendor['name'] === item.type).color}`}}>{item.type} {typeColors.filter( vendor => vendor['name'] === item.type)}</span>
+                                <span>{item.type}</span>
                             </div>
                         </div>
                     </div>
