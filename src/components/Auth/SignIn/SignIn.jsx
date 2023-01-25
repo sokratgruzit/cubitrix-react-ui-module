@@ -19,7 +19,7 @@ export const SingIn = ({
   return (
     <div className='sing-in-module'>
       <Visual
-        label={"User Account"}
+        label={"Sign In"}
         element={"popup-header"}
         customStyles={{ width: "100%" }}
         onClick={sideBarClose}
