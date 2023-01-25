@@ -45,7 +45,7 @@ stories.add("AdminPanel", () => {
     const adminHeaderData = {
         username: 'Michael',
         svg: <Logo />,
-        userImageUrl: '../../assets/DashboardCards/bitcoin.png',
+        userImageUrl: 'https://uybor.uz/borless/avtobor/img/user-images/user_no_photo_512x512.png',
     }
     const sideBar = [
         {
