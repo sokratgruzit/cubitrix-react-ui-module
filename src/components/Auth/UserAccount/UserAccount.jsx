@@ -30,10 +30,12 @@ export const UserAccount = ({
     name: "",
     email: "",
     mobile: "",
-    date_of_birth: Date.now(),
+    date_of_birth: new Date(),
     nationality: { flag: "", country: "Select Country" },
     avatar: "string",
   });
+
+  console.log(userData);
 
   const [securityFormErrors, setSecurityFormErrors] = useState({});
 
@@ -133,31 +135,14 @@ export const UserAccount = ({
           />
           <Input
             type={"label-input-phone-number"}
-            value={userData.mobile}
-            placeholder="Enter Mobile"
-            label={"Mobile Number"}
-            countryData={[
-              {
-                id: 1,
-                title: "The United Kingdom ",
-                image:
-                  "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
-                numbering: "(+78)",
-              },
-              {
-                id: 2,
-                title: "Brazil",
-                image:
-                  "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
-                numbering: "(+76)",
-              },
-            ]}
-            onChange={(e) => handleUserUpdate(e.target.value, "mobile")}
+            label={"your text"}
+            onChange={(e) => handleUserUpdate(e, "mobile")}
             customStyles={{ width: "100%" }}
           />
           <Input
             type={"date-picker-input"}
-            onChange={(e) => handleUserUpdate(e.target.value, "date_of_birth")}
+            onChange={(e) => handleUserUpdate(e, "date_of_birth")}
+            value={userData.date_of_birth}
             label={"Date of Birth"}
             customStyles={{ width: "100$" }}
           />
@@ -166,15 +151,12 @@ export const UserAccount = ({
             icon={false}
             selectType={"country"}
             value={userData.nationality}
+            label={"Nationality"}
             placeholder={"select your nationality"}
-            onClick={(e) => {
-              console.log(userData);
-              setUserData((prev) => ({ ...prev, nationality: e }));
-            }}
+            onClick={(e) => setUserData((prev) => ({ ...prev, nationality: e }))}
             customStyles={{ width: "100%" }}
           />
           <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />
-
           <Button
             element="button"
             label={

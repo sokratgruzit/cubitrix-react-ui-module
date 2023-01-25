@@ -21,7 +21,6 @@ export const Input = (props) => {
     coutnry: "United States",
     number: "",
   });
-  const [startDate, setStartDate] = useState(new Date());
 
   const activeHandler = () => {
     if (!active) {
@@ -229,6 +228,7 @@ export const Input = (props) => {
               <Dropdown
                 type={"country"}
                 handlerClick={(data) => {
+                  setActive(false);
                   props.onClick(data);
                 }}
                 countryData={countriesData}
@@ -451,8 +451,8 @@ export const Input = (props) => {
         <p className="font-12">{props.label}</p>
         <DatePicker
           className="form-control"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          selected={props.value}
+          onChange={(date) => props.onChange(date)}
         />
       </div>
     );
