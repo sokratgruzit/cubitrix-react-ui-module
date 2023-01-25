@@ -8,53 +8,10 @@ import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 
 
-const defaultList = [
-  {
-    name: "Index Price", 
-    value: "1,220.2",
-    active: true,
-  },
-  {
-    name: "Oracle Price", 
-    value: "1,220.2",
-    active: true,
-  },
-  {
-    name: "24h Change", 
-    value: "1,6 (0.18%)",
-    active: true,
-  },
-  {
-    name: "Open Interest", 
-    value: "104,683.72",
-    active: true,
-  },
-  {
-    name: "1h Funding", 
-    value: "0.00178%",
-    active: true,
-  },
-  {
-    name: "24h Volume", 
-    value: "330,220,228",
-    active: true,
-  },
-  {
-    name: "24h Trade", 
-    value: "45,452",
-    active: true,
-  },
-  {
-    name: "Next Funding", 
-    value: "01:28",
-    active: true,
-  },
-];
-
 export const CoinInfoBar = (props) => {
   const [showDragableList, setShowDraggableList] = useState(false)
 
-  const [itemList, setItemList] = useState(defaultList);
+  const [itemList, setItemList] = useState(props.itemList);
 
   const handleDrop = (droppedItem) => {
     // Ignore drop outside droppable container
@@ -86,7 +43,6 @@ export const CoinInfoBar = (props) => {
               <div className="coin-info-list__item font-12" key={item.name}>
                 <p>{item.name}</p>
                 <p>
-                  {/* {item.value} */}
                   {item.name === 'Index Price' && `$${item.value}`}
                   {item.name === 'Oracle Price' && `$${item.value}`}
                   {item.name === '24h Change' && (
