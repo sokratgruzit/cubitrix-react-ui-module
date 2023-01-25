@@ -31,7 +31,7 @@ export const UserAccount = ({
     email: "",
     mobile: "",
     date_of_birth: new Date(),
-    nationality: { flag: "", country: "Select Country" },
+    nationality: "Select Country",
     avatar: "string",
   });
 
@@ -46,7 +46,9 @@ export const UserAccount = ({
 
   const beforePersonalData = (userData) => {
     const mutated_userData = userData;
-    mutated_userData.nationality = userData.nationality.country;
+    if (userData.nationality?.country) {
+      mutated_userData.nationality = userData.nationality.country;
+    }
     handlePersonalData(mutated_userData);
   };
   const beforeSecurityData = (userData) => {

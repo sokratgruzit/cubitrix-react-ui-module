@@ -46,14 +46,13 @@ export const Input = (props) => {
     setValue(i);
   }
   function handleChange(e) {
-    // console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
     setClose(false);
   }
-
-  function handleCountrySelect(countryData) {
+  function handleCountrySelect(data) {
     setActive(false);
-    setCountryData((prev) => ({ ...prev, ...countryData }));
+    props.onChange(data.code + countryData.number);
+    setCountryData((prev) => ({ ...prev, ...data }));
   }
 
   let element = null;
@@ -294,8 +293,8 @@ export const Input = (props) => {
             <input
               onChange={(e) => {
                 const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
+                props.onChange(countryData.code + onlyNumbers);
                 setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
-                props.onChange({ code: countryData.code, number: onlyNumbers });
               }}
               value={countryData.number}
               className="number-control"
