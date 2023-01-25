@@ -46,11 +46,6 @@
   color: #fff;
 }
 
-.font-16 {
-  font-size: 16px;
-  line-height: 150%;
-}
-
 .goBackWrapper {
   display: flex;
   align-items: center;

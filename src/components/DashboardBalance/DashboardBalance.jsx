@@ -1,4 +1,4 @@
-import './DashboardBalance.css';
+import "./DashboardBalance.css";
 
 export const DashboardBalance = (props) => {
     return (

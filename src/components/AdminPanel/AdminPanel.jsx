@@ -6,10 +6,10 @@ import { Button } from '../Button';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 export const AdminPanel = props => {
-
     return (
         <div className={`admin-content`}>
             <FilterBox
+                headerList={props.headerList}
                 tableFilterData={props.tableFilterData}
                 tableFilterOutcomingData={props.tableFilterOutcomingData}
                 setTableFilterOutcomingData={props.setTableFilterOutcomingData}

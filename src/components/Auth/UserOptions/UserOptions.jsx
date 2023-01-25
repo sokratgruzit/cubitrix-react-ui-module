@@ -10,6 +10,7 @@ export const UserOptions = ({
   userAccount,
   disconnect,
   warning,
+  account,
   type,
 }) => {
   return (
@@ -21,18 +22,22 @@ export const UserOptions = ({
         onClick={sideBarClose}
       />
       <div className="sidebar-body">
-        <div className="complete">
-          <p>Complete the onboarding flow to start trading on COMPLEND</p>
-          <Button
-            element="button"
-            label="Complete Account"
-            type="btn-primary"
-            size="btn-lg"
-            onClick={completeAccount}
-            customStyles={{ width: "179px" }}
-          />
-        </div>
-        <span className="border-full"></span>
+        {warning && (
+          <>
+            <div className="complete">
+              <p>Complete the onboarding flow to start trading on COMPLEND</p>
+              <Button
+                element="button"
+                label="Complete Account"
+                type="btn-primary"
+                size="btn-lg"
+                onClick={completeAccount}
+                customStyles={{ width: "179px" }}
+              />
+            </div>
+            <span className="border-full"></span>
+          </>
+        )}
         <div className="address-wrap">
           <p>Your Address</p>
           <p>
@@ -41,7 +46,7 @@ export const UserOptions = ({
           </p>
         </div>
         <Visual
-          label={"0xb81G555828610c156eF3408DE21A3eC9b9B29V81"}
+          label={account}
           element={"copy-address"}
           customStyles={{ width: "100%" }}
         />
