@@ -130,6 +130,8 @@ stories.add("AdminPanel", () => {
         }
     });
 
+    console.log(tableFilterOutcomingData)
+
     const tableFilterData = {
         search: {
             options: [
