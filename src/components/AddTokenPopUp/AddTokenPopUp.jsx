@@ -7,6 +7,9 @@ import { HelpText } from '../HelpText';
  
 export const AddTokenPopUp = ({
     headLabel,
+    headStyles,
+    selectData,
+    inputLabel
 }) => {
 
     const [data, setData] = useState({
@@ -31,11 +34,27 @@ export const AddTokenPopUp = ({
             <Visual
                 label={headLabel}
                 element={"popup-header"}
-                customStyles={{ width: "100%" }}
+                customStyles={{headStyles}}
             />
             <div className='pop-body'>
                 <div className='body-row sc'>
                     <Input
+                        type={"lable-input-select"}
+                        // icon={false}
+                        selectData={selectData}
+                        // defaultData={defaultData}
+                        label={inputLabel}
+                        // selectHandler={selectHandler}
+                        // selectLabel={"select"}
+                        // active={active}
+                        // status={"warning"}
+                        // title={"your text"}
+                        // color={"#FFA726"}
+                        customStyles={{width: 'calc(50% - 10px)'}}
+                        onChange={(e) => handlerDataUpdate(e.target.value, "tranxType")}
+
+                    />
+                    {/* <Input
                         type={"default"}
                         // value={value}
                         icon={true}
@@ -45,7 +64,7 @@ export const AddTokenPopUp = ({
                         subLabel={''}
                         onChange={(e) => handlerDataUpdate(e.target.value, "tranxType")}
                         customStyles={{width: 'calc(50% - 10px)'}}
-                    />
+                    /> */}
                     <Input
                         type={"date-picker-input"}
                         onChange={(e) => handlerDataUpdate(e.target.value, "tranxDate")}
