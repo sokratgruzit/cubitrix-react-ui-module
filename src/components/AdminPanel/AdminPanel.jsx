@@ -13,6 +13,7 @@ export const AdminPanel = props => {
                 tableFilterOutcomingData={props.tableFilterOutcomingData}
                 setTableFilterOutcomingData={props.setTableFilterOutcomingData}
                 header={props.header}
+                customStyles={{margin:'20px 0px'}}
             />
             <Table
                 type={"table-version"}
