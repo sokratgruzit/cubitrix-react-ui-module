@@ -194,6 +194,7 @@ export const Input = (props) => {
       </div>
     );
   }
+
   if (props.type === "lable-input-select") {
     element = (
       <div style={props.customStyles} className="select-group">

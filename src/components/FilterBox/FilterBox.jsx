@@ -92,7 +92,7 @@ export const FilterBox = ({
                                     icon={false}
                                     value={select.name}
                                     defaultData={select.options}
-                                    selectHandler={(opt) => handleSelectChange(opt, select.name)}
+                                    selectHandler={(opt) => handleSelectChange(opt, select.value)}
                                     selectLabel={`All ${select.name}`}
                                 />
                             ))
