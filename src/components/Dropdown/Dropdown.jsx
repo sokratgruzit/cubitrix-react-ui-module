@@ -4,11 +4,11 @@ import "./Dropdown.css";
 
 export const Dropdown = (props) => {
   const [inputData, setInputData] = useState(
-    {
-    title: '',
-    img: null,
-    numbering: ''
-  });
+      {
+        title: '',
+        img: null,
+        numbering: ''
+      });
 
   function updateData(data,field) {
     setInputData(prev => ({...prev, [field] : data }))
@@ -23,13 +23,13 @@ export const Dropdown = (props) => {
           </h1>
           {props.countryData?.map((item, index) => {
             return (
-              <div key={index} className="dropdown-menu-country">
-                <div onClick={() => props.handlerClick({image: item.image, title: item.title, numbering: item.numbering})} className="dropdown-item-country">
-                  <img src={item.image} alt="country" />
-                  <p>{item.title}</p>
-                  <p>{item.numbering}</p>
+                <div key={index} className="dropdown-menu-country">
+                  <div onClick={() => props.handlerClick({image: item.image, title: item.title, numbering: item.numbering})} className="dropdown-item-country">
+                    <img src={item.image} alt="country" />
+                    <p>{item.title}</p>
+                    <p>{item.numbering}</p>
+                  </div>
                 </div>
-              </div>
             )
           })}
         </div>
@@ -68,30 +68,30 @@ export const Dropdown = (props) => {
   }
   if(props.type === 'default-dropdown') {
     element = (
-      <div style={props.customStyles} className={`${'active'} ${'dropdown'}`}>
-        <div 
-          className="dropdown-item" 
-          onClick={() => {
-            props.handlerClick(props.defaultOption)
-            props.selectHandler(props.defaultOption.toLowerCase())
-          }} 
-          key={props.defaultOption}
-        >
-          {props.defaultOption}
+        <div style={props.customStyles} className={`${'active'} ${'dropdown'}`}>
+          <div
+              className="dropdown-item"
+              onClick={() => {
+                props.handlerClick(props.defaultOption)
+                props.selectHandler(props.defaultOption.toLowerCase())
+              }}
+              key={props.defaultOption}
+          >
+            {props.defaultOption}
+          </div>
+          {props.data?.map((item, index) => {
+            return (
+                <div className="dropdown-item" onClick={() => {
+                  props.handlerClick(item.name)
+                  props.selectHandler(item.value)
+                }
+                } key={index}>
+                  {item.name}
+                </div>
+            )
+          })
+          }
         </div>
-        {props.data?.map((item, index) => {
-          return (
-            <div className="dropdown-item" onClick={() => {
-              props.handlerClick(item.name)
-              props.selectHandler(item.value)
-            } 
-            } key={index}>
-              {item.name} 
-            </div>
-          )
-        })
-        }
-      </div>
     )
   }
   return element;

@@ -31,7 +31,7 @@
 .dropdown::-webkit-scrollbar-track {
   background: rgba(255, 0, 0, 0);
 }
-.dropdown::-webkit-scrollbar-thumb {  
+.dropdown::-webkit-scrollbar-thumb {
   background: #3D5AFE;
   border-radius: 22%;
 }
