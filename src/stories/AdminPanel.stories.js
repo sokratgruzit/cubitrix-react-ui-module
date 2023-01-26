@@ -124,55 +124,13 @@ stories.add("AdminPanel", () => {
         }
     ]
 
-    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState([]);
-
-    // const tableFilterData = {
-    //     head: [
-    //         {
-    //             title: 'All',
-    //         }, {
-    //             title: 'Pending',
-    //         }, {
-    //             title: 'Cenceled',
-    //         }, {
-    //             title: 'Approved',
-    //         }, {
-    //             title: 'Bonuses',
-    //         }, {
-    //             title: 'Claimed',
-    //         },
-    //     ],
-    //     search: {
-    //         options: [{
-    //             name: 'Transaction'
-    //         }, {
-    //             name: 'Hash'
-    //         }]
-    //     },
-    //     selects: [
-    //         {
-    //             name: 'Tranx Type',
-    //             defaultOption: 'Any Type',
-    //             options: [{
-    //                 name: 'Transaction'
-    //             }, {
-    //                 name: 'Hash'
-    //             }]
-    //         },
-    //         {
-    //             name: 'Date Within',
-    //             defaultOption: 'All Time',
-    //             options: [{
-    //                 name: 'Transaction'
-    //             }, {
-    //                 name: 'Hash'
-    //             }]
-    //         }
-    //     ]
-    // };
+    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({
+        selects: {
+            ts_status: 'all'
+        }
+    });
 
     const tableFilterData = {
-        head: false,
         search: {
             options: [
                 {
@@ -187,9 +145,68 @@ stories.add("AdminPanel", () => {
                     name: 'Address',
                     value: 'address'
                 }
-        ]
+            ]
         },
-        selects: false
+        selects: [
+            {
+                name: 'Tranx Type',
+                value: 'tx_type',
+                options: [
+                    {
+                        name: 'Transaction',
+                        value: 'transaction'
+                    }, 
+                    {
+                        name: 'Hash',
+                        value: 'hash'
+                    }
+                ]
+            },
+            {
+                name: 'Date Within',
+                value: 'createdAt',
+                options: [
+                    {
+                        name: 'Transaction',
+                        value: 'transaction'
+                    }, 
+                    {
+                        name: 'Hash',
+                        value: 'hash'
+                    }
+                ]
+            },
+            {
+                name: 'Transaction Status',
+                value: 'ts_status',
+                options: [
+                    {
+                        name: 'All',
+                        value: 'all'
+                    }, 
+                    {
+                        name: 'Pending',
+                        value: 'pending'
+                    }, 
+                    {
+                        name: 'Cenceled',
+                        value: 'canceled'
+                    }, 
+                    {
+                        name: 'Approved',
+                        value: 'approved'
+                    }, 
+                    {
+                        name: 'Bonuses',
+                        value: 'bonuses'
+                    }, 
+                    {
+                        name: 'Claimed',
+                        value: 'claimed'
+                    }
+                ]
+            }
+        ]
     };
 
     let th = [
@@ -379,6 +396,7 @@ stories.add("AdminPanel", () => {
                    tableData={tableData}
                    tableHead={th}
                    mobile={mobile}
+                   showHeaderList={true}
                    tableFilterData={tableFilterData}
                    tableFilterOutcomingData={tableFilterOutcomingData}
                    setTableFilterOutcomingData={setTableFilterOutcomingData}
