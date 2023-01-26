@@ -3,9 +3,11 @@
   border: 2px solid #202431;
   border-radius: 8px;
   padding: 20px;
-  border-top: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  height: 500px;
+  overflow-y: scroll;
+  width: 596px;
 }
 .mt-22 {
   margin-top: 22px;
@@ -34,10 +36,6 @@
 }
 .withdraw-title {
   padding: 20px;
-}
-.withdrawal-details-inner {
-  height: 400px;
-  overflow-y: scroll;
 }
 .withdrawal-wraper > div:nth-child(odd) {
   background-color: #070b1a !important;
