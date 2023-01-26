@@ -17,3 +17,4 @@ export * from "./components/Auth/SignIn";
 export * from "./components/Header";
 export * from "./components/DashboardBalance";
 export * from "./components/DashboardCards";
+export * from './components/Signin';

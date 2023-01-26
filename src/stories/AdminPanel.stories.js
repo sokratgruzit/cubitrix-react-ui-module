@@ -124,49 +124,87 @@ stories.add("AdminPanel", () => {
         }
     ]
 
-    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState([]);
+    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({
+        selects: {
+            ts_status: 'all'
+        }
+    });
 
     const tableFilterData = {
-        head: [
-            {
-                title: 'All',
-            }, {
-                title: 'Pending',
-            }, {
-                title: 'Cenceled',
-            }, {
-                title: 'Approved',
-            }, {
-                title: 'Bonuses',
-            }, {
-                title: 'Claimed',
-            },
-        ],
         search: {
-            options: [{
-                name: 'Transaction'
-            }, {
-                name: 'Hash'
-            }]
+            options: [
+                {
+                    name: 'Account Owner',
+                    value: 'account_owner'
+                }, 
+                {
+                    name: 'Account Type Id',
+                    value: 'account_type_id'
+                },
+                {
+                    name: 'Address',
+                    value: 'address'
+                }
+            ]
         },
         selects: [
             {
                 name: 'Tranx Type',
-                defaultOption: 'Any Type',
-                options: [{
-                    name: 'Transaction'
-                }, {
-                    name: 'Hash'
-                }]
+                value: 'tx_type',
+                options: [
+                    {
+                        name: 'Transaction',
+                        value: 'transaction'
+                    }, 
+                    {
+                        name: 'Hash',
+                        value: 'hash'
+                    }
+                ]
             },
             {
                 name: 'Date Within',
-                defaultOption: 'All Time',
-                options: [{
-                    name: 'Transaction'
-                }, {
-                    name: 'Hash'
-                }]
+                value: 'createdAt',
+                options: [
+                    {
+                        name: 'Transaction',
+                        value: 'transaction'
+                    }, 
+                    {
+                        name: 'Hash',
+                        value: 'hash'
+                    }
+                ]
+            },
+            {
+                name: 'Transaction Status',
+                value: 'ts_status',
+                options: [
+                    {
+                        name: 'All',
+                        value: 'all'
+                    }, 
+                    {
+                        name: 'Pending',
+                        value: 'pending'
+                    }, 
+                    {
+                        name: 'Cenceled',
+                        value: 'canceled'
+                    }, 
+                    {
+                        name: 'Approved',
+                        value: 'approved'
+                    }, 
+                    {
+                        name: 'Bonuses',
+                        value: 'bonuses'
+                    }, 
+                    {
+                        name: 'Claimed',
+                        value: 'claimed'
+                    }
+                ]
             }
         ]
     };
@@ -358,6 +396,7 @@ stories.add("AdminPanel", () => {
                    tableData={tableData}
                    tableHead={th}
                    mobile={mobile}
+                   showHeaderList={true}
                    tableFilterData={tableFilterData}
                    tableFilterOutcomingData={tableFilterOutcomingData}
                    setTableFilterOutcomingData={setTableFilterOutcomingData}

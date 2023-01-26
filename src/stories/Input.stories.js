@@ -47,6 +47,7 @@ let defaultData = [
   },
 ];
 
+
 stories.add("Input", (props) => {
   const [value, setValue] = useState("");
   const [cover, setCover] = useState(false);

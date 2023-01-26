@@ -19,6 +19,7 @@ let selectData = [
     list: [],
   },
 ];
+
 stories.add('AddTokenPopUp', ({
   headLabel,
   headStyles,
