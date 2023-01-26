@@ -8,7 +8,7 @@ export const FilterBox = ({
     tableFilterData,
     tableFilterOutcomingData,
     setTableFilterOutcomingData,
-    showHeaderList 
+    header 
 }) => {
   const [showSearchBox, setShowSearchBox] = useState(false); 
 
@@ -35,12 +35,12 @@ export const FilterBox = ({
     }}));
   };
 
-  const headerList = tableFilterData.selects[tableFilterData.selects.length - 1];
+  const headerList = header && tableFilterData.selects[header];
 
   return (
     <div className={'filter-box-container'}>
         <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
-            {showHeaderList && (
+            {header && (
                 <div className={'filter-box-list font-14'}>
                     {headerList.options.map(item => (
                         <div 
@@ -84,7 +84,7 @@ export const FilterBox = ({
                 {tableFilterData.selects && (
                     <div className={'filter-box-selects'}>
                         {tableFilterData.selects
-                            .filter(select => select.name !== headerList.name)
+                            .filter(select => select.name !== headerList?.name)
                             .map(select => (
                                 <Input
                                     key={select.name}
@@ -92,7 +92,7 @@ export const FilterBox = ({
                                     icon={false}
                                     value={select.name}
                                     defaultData={select.options}
-                                    selectHandler={(opt) => handleSelectChange(opt, select.name)}
+                                    selectHandler={(opt) => handleSelectChange(opt, select.value)}
                                     selectLabel={`All ${select.name}`}
                                 />
                             ))

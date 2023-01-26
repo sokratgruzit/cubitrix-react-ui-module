@@ -12,7 +12,7 @@ export const AdminPanel = props => {
                 tableFilterData={props.tableFilterData}
                 tableFilterOutcomingData={props.tableFilterOutcomingData}
                 setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-                showHeaderList={props.showHeaderList}
+                header={props.header}
             />
             <Table
                 type={"table-version"}
