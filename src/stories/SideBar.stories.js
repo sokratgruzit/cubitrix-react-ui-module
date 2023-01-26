@@ -8,7 +8,7 @@ import { Button } from "../components/Button";
 import { Connect } from "../components/Auth/Connect";
 import { UserAccount } from "../components/Auth/UserAccount";
 import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
-import { SingIn } from "../components/Auth/SignIn";
+import { SignIn } from "../components/Auth/SignIn";
 
 const stories = storiesOf("SideBar", module);
 
@@ -60,6 +60,9 @@ stories.add("SideBar", () => {
           personalDataState={{ loading: false, saved: false }}
           securityDataState={{ loading: false, saved: false }}
           emailVerified={true}
+          userDataError={"error while saving"}
+          securityError={"password is incorrect"}
+          hasPasswordSet={true}
         />
         {/* <UserOptions
           type={"Metamask"}
@@ -69,10 +72,11 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         /> */}
-        {/* <SingIn
+        {/* <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
-          completeAccount={() => console.log("complete")}
+          goBack={() => console.log("go back")}
+          signInState={{ loading: true, error: false }}
         /> */}
       </SideBar>
     </div>

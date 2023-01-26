@@ -23,7 +23,7 @@ export const Dropdown = (props) => {
               >
                 <p>{item.flag}</p>
                 <p>{item.country}</p>
-                <p>{item.code}</p>
+                {props.countryCode && <p>{item.code}</p>}
               </div>
             </div>
           );

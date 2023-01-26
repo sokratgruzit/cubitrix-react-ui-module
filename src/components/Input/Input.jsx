@@ -316,6 +316,7 @@ export const Input = (props) => {
             dropdownCountry={"dropdown-country"}
             active={props.active}
             customStyles={{ width: "inherit" }}
+            countryCode={true}
           />
         </div>
         <HelpText />
