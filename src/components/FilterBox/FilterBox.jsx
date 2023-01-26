@@ -7,7 +7,8 @@ import './FilterBox.css';
 export const FilterBox = ({
     tableFilterData,
     tableFilterOutcomingData,
-    setTableFilterOutcomingData
+    setTableFilterOutcomingData,
+    showHeaderList 
 }) => {
   const [showSearchBox, setShowSearchBox] = useState(false); 
 
@@ -34,18 +35,20 @@ export const FilterBox = ({
     }}));
   };
 
+  const headerList = tableFilterData.selects[tableFilterData.selects.length - 1];
+
   return (
     <div className={'filter-box-container'}>
         <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
-            {tableFilterData.head && (
+            {showHeaderList && (
                 <div className={'filter-box-list font-14'}>
-                    {tableFilterData.head.map(item => (
+                    {headerList.options.map(item => (
                         <div 
-                            key={item.title}
-                            className={`filter-box-list__item ${tableFilterOutcomingData.head === item.title && 'list-item__active'}`}
-                            onClick={() => setTableFilterOutcomingData({...tableFilterOutcomingData, head: item.title})}
+                            key={item.name}
+                            className={`filter-box-list__item ${tableFilterOutcomingData?.selects?.[headerList.value] === item.value && 'list-item__active'}`}
+                            onClick={() => handleSelectChange(item.value, headerList.value)}
                         >
-                            {item.title}
+                            {item.name}
                         </div>
                     ))}
                 </div>
@@ -77,20 +80,25 @@ export const FilterBox = ({
                         placeholder={'search'}  
                         selectLabel={'All'}
                     />
-                </div>  
-                <div className={'filter-box-selects'}>
-                    {tableFilterData.selects.map(select => (
-                        <Input
-                            key={select.name}
-                            type={"lable-input-select"}
-                            icon={false}
-                            value={select.name}
-                            defaultData={select.options}
-                            selectHandler={(opt) => handleSelectChange(opt, select.name)}
-                            selectLabel={`All ${select.name}`}
-                        />
-                    ))}
                 </div>
+                {tableFilterData.selects && (
+                    <div className={'filter-box-selects'}>
+                        {tableFilterData.selects
+                            .filter(select => select.name !== headerList.name)
+                            .map(select => (
+                                <Input
+                                    key={select.name}
+                                    type={"lable-input-select"}
+                                    icon={false}
+                                    value={select.name}
+                                    defaultData={select.options}
+                                    selectHandler={(opt) => handleSelectChange(opt, select.name)}
+                                    selectLabel={`All ${select.name}`}
+                                />
+                            ))
+                        }
+                    </div>
+                )}
             </div>
         </div>
     </div>

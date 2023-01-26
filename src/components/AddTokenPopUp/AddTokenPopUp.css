@@ -1,4 +1,27 @@
 .pop-up {
-    background-color: red;
+    width: 600px;
+    height: auto;
+    border: 2px solid #202431;
+    border-radius: 8px;
+}
+.pop-body {
+    display: flex;
     width: 100%;
+    flex-direction: column;
+    padding: 23px 20px 20px 20px;
+
+}
+.body-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+.body-row:last-child, .body-row:first-child  {
+    margin-top: 0px;
+}
+
+.sc {
+    gap: 20px;
 }

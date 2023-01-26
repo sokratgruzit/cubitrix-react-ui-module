@@ -3,7 +3,19 @@ import { Switches } from "../Switches";
 import "./Dropdown.css";
 
 export const Dropdown = (props) => {
-  let element = "";
+
+  const [inputData, setInputData] = useState(
+      {
+        title: '',
+        img: null,
+        numbering: ''
+      });
+
+  function updateData(data,field) {
+    setInputData(prev => ({...prev, [field] : data }))
+  }
+
+  let element = '';
   if (props.type === "country") {
     element = (
       <div style={props.customStyles} className="dropdown-country">
@@ -30,61 +42,65 @@ export const Dropdown = (props) => {
         })}
       </div>
     );
+  if (props.type === 'dropdown') {
+    element =
+        <div style={props.customStyles} className={` active ${props.dropdown}`}>
+          {props.data?.map((item, index) => {
+            return (
+                <div key={index}>
+                  <h1 onClick={() => props.handlerClick(item.title)} className="dropdown-toggle">
+                    {item.title}
+                  </h1>
+                  {item.list?.map((item, index) => {
+                    return (
+                        <div key={index} className="dropdown-item">
+                          {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
+                          <span className={item.id < 3 ? "filter" : ''}>
+                            {item.svg}
+                          </span>
+                          <div>
+                            <p id={item.id}  className={`${props.active === `${item.id}` ? "left-line" : ''}`}>
+                              {item.title}
+                            </p>
+                            {item.togle === 'true' &&
+                                <Switches />
+                            }
+                          </div>
+                        </div>
+                    )
+                  })}
+                </div>
+            )
+          })}
+        </div>
   }
-  if (props.type === "dropdown") {
+  if(props.type === 'default-dropdown') {
     element = (
-      <div style={props.customStyles} className={` active ${props.dropdown}`}>
-        {props.data?.map((item, index) => {
-          return (
-            <div key={index}>
-              <h1
-                onClick={() => props.handlerClick(item.title)}
-                className="dropdown-toggle"
-              >
-                {item.title}
-              </h1>
-              {item.list?.map((item, index) => {
-                return (
-                  <div key={index} className="dropdown-item">
-                    {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
-                    <span className={item.id < 3 ? "filter" : ""}>{item.svg}</span>
-                    <div>
-                      <p
-                        id={item.id}
-                        className={`${props.active === `${item.id}` ? "left-line" : ""}`}
-                      >
-                        {item.title}
-                      </p>
-                      {item.togle === "true" && <Switches />}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
-  if (props.type === "default-dropdown") {
-    element = (
-      <div style={props.customStyles} className={`${"active"} ${"dropdown"}`}>
-        {props.data?.map((item, index) => {
-          return (
-            <div
+        <div style={props.customStyles} className={`${'active'} ${'dropdown'}`}>
+          <div
               className="dropdown-item"
               onClick={() => {
-                props.handlerClick(item.name);
-                props.selectHandler(item.name);
+                props.handlerClick(props.defaultOption)
+                props.selectHandler(props.defaultOption.toLowerCase())
               }}
-              key={index}
-            >
-              {item.name}
-            </div>
-          );
-        })}
-      </div>
-    );
+              key={props.defaultOption}
+          >
+            {props.defaultOption}
+          </div>
+          {props.data?.map((item, index) => {
+            return (
+                <div className="dropdown-item" onClick={() => {
+                  props.handlerClick(item.name)
+                  props.selectHandler(item.value)
+                }
+                } key={index}>
+                  {item.name}
+                </div>
+            )
+          })
+          }
+        </div>
+    )
   }
   return element;
-};
+}

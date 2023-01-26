@@ -19,3 +19,4 @@ export { default as Logo } from "./Logo";
 export { default as EthIcon } from "./etherium-icon";
 export { default as DragIcon } from "./drag-icon";
 export { default as AddSquareIcon } from "./add-square";
+export { default as SigninLogo } from "./SigninLogo";
