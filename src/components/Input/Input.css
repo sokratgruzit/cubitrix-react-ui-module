@@ -264,9 +264,6 @@
 .upload-btn {
   color: #3d5afe;
   cursor: pointer;
-  z-index: 1;
-  /* z-index: 1; */
-  /* pointer-events: none; */
 }
 .upload-control {
   position: absolute;
@@ -676,3 +673,24 @@ select input
     height: 24px;
     text-decoration: underline;
 } */
+
+.phone-numbers input[type="number"]::-webkit-outer-spin-button,
+.phone-numbers input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  background-color: red;
+}
+
+.phone-numbers input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.phone-numbers .select-control {
+  gap: initial;
+}
+
+.flag-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}

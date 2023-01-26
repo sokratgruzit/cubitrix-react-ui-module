@@ -16,6 +16,7 @@ export const UserAccount = ({
   personalDataState,
   securityDataState,
   resendEmail,
+  hasPasswordSet,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -29,13 +30,12 @@ export const UserAccount = ({
     name: "",
     email: "",
     mobile: "",
-    date_of_birth: Date.now(),
-    nationality: "UK",
+    date_of_birth: new Date(),
+    nationality: "Select Country",
     avatar: "string",
   });
 
   const [securityFormErrors, setSecurityFormErrors] = useState({});
-
   const handleFormUpdate = (value, field) => {
     setFormData((prevState) => ({ ...prevState, [field]: value }));
   };
@@ -45,7 +45,11 @@ export const UserAccount = ({
   };
 
   const beforePersonalData = (userData) => {
-    handlePersonalData(userData);
+    const mutated_userData = userData;
+    if (userData.nationality?.country) {
+      mutated_userData.nationality = userData.nationality.country;
+    }
+    handlePersonalData(mutated_userData);
   };
   const beforeSecurityData = (userData) => {
     handleSecurityData(userData);
@@ -132,45 +136,25 @@ export const UserAccount = ({
           />
           <Input
             type={"label-input-phone-number"}
-            value={userData.mobile}
-            placeholder="Enter Mobile"
-            label={"Mobile Number"}
-            countryData={[
-              {
-                id: 1,
-                title: "The United Kingdom ",
-                image:
-                  "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
-                numbering: "(+78)",
-              },
-              {
-                id: 2,
-                title: "Brazil",
-                image:
-                  "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
-                numbering: "(+76)",
-              },
-            ]}
-            onChange={(e) => handleUserUpdate(e.target.value, "mobile")}
+            label={"your text"}
+            onChange={(e) => handleUserUpdate(e, "mobile")}
             customStyles={{ width: "100%" }}
           />
           <Input
             type={"date-picker-input"}
-            onChange={(e) => handleUserUpdate(e.target.value, "date_of_birth")}
+            onChange={(e) => handleUserUpdate(e, "date_of_birth")}
+            value={userData.date_of_birth}
             label={"Date of Birth"}
             customStyles={{ width: "100$" }}
           />
-          <div className="inputWrapper">
-            <p>Nationality</p>
-            <input className="input" placeholder="nationality" />
-          </div>
           <Input
             type={"lable-input-select"}
             icon={false}
             selectType={"country"}
-            selectData={[]}
-            defaultData={"machusets"}
-            selectHandler={(e) => console.log(e)}
+            value={userData.nationality}
+            label={"Nationality"}
+            placeholder={"select your nationality"}
+            onClick={(e) => handleUserUpdate(e, "nationality")}
             customStyles={{ width: "100%" }}
           />
           <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />
@@ -208,16 +192,18 @@ export const UserAccount = ({
       )}
       {selectedTab === "security" && (
         <div className="body-wrapper">
-          <Input
-            type={"default"}
-            icon={true}
-            inputType={"password"}
-            placeholder={"current password"}
-            label={"Current Password"}
-            value={formData.currentPassword}
-            onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
-            customStyles={{ width: "100%" }}
-          />
+          {hasPasswordSet && (
+            <Input
+              type={"default"}
+              icon={true}
+              inputType={"password"}
+              placeholder={"current password"}
+              label={"Current Password"}
+              value={formData.currentPassword}
+              onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
+              customStyles={{ width: "100%" }}
+            />
+          )}
           <Input
             type={"default"}
             icon={true}

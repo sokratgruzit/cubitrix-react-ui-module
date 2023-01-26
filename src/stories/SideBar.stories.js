@@ -16,8 +16,8 @@ stories.add("SideBar", () => {
   const [toggle, setToggle] = useState(false);
 
   const completeHandler = (i) => {
-    console.log(i)
-  }
+    console.log(i);
+  };
 
   let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
 
@@ -48,7 +48,7 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        {/* <UserAccount
+        <UserAccount
           type={"Metamask"}
           warning={true}
           completeAccount={() => console.log("complete")}
@@ -57,7 +57,8 @@ stories.add("SideBar", () => {
           userAccount={() => console.log("userAccount")}
           handlePersonalData={(e) => console.log(e)}
           handleSecurityData={(e) => console.log(e)}
-        /> */}
+          personalDataState={{ loading: false, saved: false }}
+        />
         {/* <UserOptions
           type={"Metamask"}
           warning={true}
@@ -66,11 +67,11 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         /> */}
-        <SingIn
+        {/* <SingIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           completeAccount={() => console.log("complete")}
-        />
+        /> */}
       </SideBar>
     </div>
   );

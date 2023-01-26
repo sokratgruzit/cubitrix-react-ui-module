@@ -5,7 +5,6 @@ import { Input } from '../Input';
 import './FilterBox.css';
 
 export const FilterBox = ({
-    headerList,
     tableFilterData,
     tableFilterOutcomingData,
     setTableFilterOutcomingData
@@ -38,7 +37,7 @@ export const FilterBox = ({
   return (
     <div className={'filter-box-container'}>
         <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
-            {headerList && (
+            {tableFilterData.head && (
                 <div className={'filter-box-list font-14'}>
                     {tableFilterData.head.map(item => (
                         <div 
@@ -76,7 +75,7 @@ export const FilterBox = ({
                         defaultData={tableFilterData.search.options}
                         selectHandler={handleSearchSelect}
                         placeholder={'search'}  
-                        selectLabel={tableFilterOutcomingData.search.option}
+                        selectLabel={'All'}
                     />
                 </div>  
                 <div className={'filter-box-selects'}>
@@ -88,7 +87,7 @@ export const FilterBox = ({
                             value={select.name}
                             defaultData={select.options}
                             selectHandler={(opt) => handleSelectChange(opt, select.name)}
-                            selectLabel={select.defaultOption}
+                            selectLabel={`All ${select.name}`}
                         />
                     ))}
                 </div>
