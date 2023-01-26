@@ -15,3 +15,4 @@ export * from "./components/Auth/UserOptions";
 export * from "./components/Header";
 export * from './components/DashboardBalance';
 export * from './components/DashboardCards';
+export * from './components/Signin';
