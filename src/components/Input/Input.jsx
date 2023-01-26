@@ -40,6 +40,7 @@ export const Input = (props) => {
 
   const deleteHandler = () => {
     setFile(null);
+    props.onChange("");
     setClose(true);
   };
   function handlerClick(i) {
@@ -47,6 +48,7 @@ export const Input = (props) => {
   }
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
+    props.onChange(e.target.files[0]);
     setClose(false);
   }
   function handleCountrySelect(data) {
@@ -226,6 +228,7 @@ export const Input = (props) => {
                 type={"country"}
                 handlerClick={(data) => {
                   setActive(false);
+                  setValue(data.country);
                   props.onClick(data);
                 }}
                 countryData={countriesData}
@@ -350,7 +353,7 @@ export const Input = (props) => {
               <img className={"avatar-sm"} src={file} />
             )}
           </div>
-          <div onChange={props.onChange} className="upload-group-text">
+          <div className="upload-group-text">
             <p>Upload a profile picture</p>
             <label className="upload-btn" htmlFor={"upload_img"}>
               Broswe
