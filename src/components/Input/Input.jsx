@@ -2,12 +2,10 @@ import { useState } from "react";
 import { HelpText } from "../HelpText";
 import { Dropdown } from "../Dropdown";
 import { Switches } from "../Switches";
+import { countriesData } from "./helper";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Input.css";
-
-import "./Input.css";
-import { countriesData } from "./helper";
 
 export const Input = (props) => {
   const [file, setFile] = useState(null);
