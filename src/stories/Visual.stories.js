@@ -36,8 +36,8 @@ stories.add("Visual", () => {
         customStyles={{ width: "340px" }}
       />
       <Visual
-        label={'Transactions'}
         element={'table-header'}
+        label={'Transactions'}
         fontSize={'font-20'}
         customStyles={{}}
         // button props 

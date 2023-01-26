@@ -3,4 +3,25 @@
     height: auto;
     border: 2px solid #202431;
     padding: 0px 20px 20px 20px;
+    border-radius: 8px;
+}
+.pop-body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding-top: 23px;
+}
+.body-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+.body-row:last-child, .body-row:first-child  {
+    margin-top: 0px;
+}
+
+.sc {
+    gap: 20px;
 }
