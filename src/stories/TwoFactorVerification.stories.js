@@ -17,7 +17,9 @@ stories.add("TwoFactorVerification", () => {
             <TwoFactorVerification
                 onClick={closeHandler}       
                 active={active}
-                qrcode = {'blblbl'}
+                qrcode={'blblbl'}
+                acountName={'Complend'}
+                acountKey={'zzzzzzzz'}
             />            
         </div>
 

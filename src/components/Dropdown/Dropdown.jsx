@@ -5,13 +5,13 @@ export const Dropdown = (props) => {
     let element = '';
     if (props.type === 'country') {
         element =
-            <div className="dropdown-country">
+            <div className={`dropdown-country ${props.animate == true ? 'animate' : ''}`}>
                 <h1 className="dropdown-toggle">
-                    Select Country
+                    {props.dropdownTitle}
                 </h1>
                 {props.countryData.map((item, index) => {
                     return (
-                        <div onClick={props.onClick} key={index} className="dropdown-menu-country">
+                        <div onClick={props.onClick} key={index} className={`dropdown-menu-country ${props.animate == true ? 'animate-list' : ''}`}>
                             <div className="dropdown-item-country">
                                 <img src={require(`../../assets/img/country/${item.image}`)} alt="country" />
                                 <p>{item.title}</p>
@@ -24,7 +24,7 @@ export const Dropdown = (props) => {
     }
     if (props.type === 'dropdown') {
         element =
-            <div className={` active ${props.dropdown}`}>
+            <div className={`${props.animate == true ? 'animate' : ''} ${props.dropdown}`}>
                 {props.data.map((item, index) => {
                     return (
                         <div key={index}>
@@ -33,10 +33,8 @@ export const Dropdown = (props) => {
                             </h1>
                             {item.list.map((item, index) => {
                                 return (
-                                    <div key={index} className="dropdown-item" onClick={props.onClick}>
-                                        <span className={item.id < 3 ? "filter" : ''}>
-                                            {item.svg}
-                                        </span>
+                                    <div key={index} className={`dropdown-item ${props.animate == true ? 'animate-list' : ''}`} onClick={props.onClick}>
+                                        {item.svg}
                                         <div>
                                             <p>
                                                 {item.title}

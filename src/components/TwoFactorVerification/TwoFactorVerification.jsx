@@ -112,10 +112,10 @@ export const TwoFactorVerification = (props) => {
                 </div>
                 <div className='acount-info'>
                     <p>
-                        Account Name: <span>Complend</span>
+                        Account Name: <span>{props.acountName}</span>
                     </p>
                     <p>
-                        Key:  <span>2INU5M0UXZ</span>
+                        Key:  <span>{props.acountKey}</span>
                     </p>
                 </div>
                 <div className='verification'>
