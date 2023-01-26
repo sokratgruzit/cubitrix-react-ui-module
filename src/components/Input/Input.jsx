@@ -4,8 +4,8 @@ import { Dropdown } from "../Dropdown";
 import { Switches } from "../Switches";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./Input.css";
 
+// import testImg from '../../assets/img/country/australia.png';
 import "./Input.css";
 import { countriesData } from "./helper";
 
@@ -21,6 +21,7 @@ export const Input = (props) => {
         coutnry: "United States",
         number: "",
     });
+
 
     const activeHandler = () => {
         if (!active) {
@@ -195,134 +196,113 @@ export const Input = (props) => {
         );
     }
     if (props.type === "lable-input-select") {
-      element = (
-        <div style={props.customStyles} className="select-group">
-          <p className="input-group-title font-12">{props.label}</p>
-          <div onChange={props.onChange} className="form-select-sc">
-            <div onClick={activeHandler} className="form-select-item form-control">
-              <div className="flag-wrapper">
-                {typeof props.value === "string" ? (
-                  <>{props.value}</>
-                ) : (
-                  <>
-                    <div>{props.value?.flag}</div>
-                    <div>{props.value?.country}</div>
-                  </>
-                )}
-              </div>
-              <svg
-                className={`${active ? "rotate" : ""} ${"arrow"}`}
-                width="20"
-                height="21"
-                viewBox="0 0 20 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+        element = (
+            <div style={props.customStyles} className="select-group">
+                <p className="input-group-title font-12">{props.value}</p>
+                <div onChange={props.onChange} className="form-select-sc">
+                    <div onClick={activeHandler} className="form-select-item form-control">
+                        <div>{value}</div>
+                        <svg
+                            className={`${active ? "rotate" : ""} ${"arrow"}`}
+                            width="20"
+                            height="21"
+                            viewBox="0 0 20 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10"
+                                stroke="white"
+                                strokeWidth="1.5"
+                                strokeMiterlimit="10"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    </div>
+                    <div className={`${"hidden"} ${active ? "select-modal-sc" : ""}`}>
+                        {props.selectType === "country" ? (
+                            <Dropdown
+                                type={"country"}
+                                handlerClick={handlerClick}
+                                countryData={props.countryData}
+                                dropdownCountry={"dropdown-country"}
+                                active={props.active}
+                                customStyles={{ width: "inherit" }}
+                            />
+                        ) : (
+                            <Dropdown
+                                type={"default-dropdown"}
+                                data={props.defaultData}
+                                active={props.active}
+                                handlerClick={handlerClick}
+                                selectHandler={props.selectHandler}
+                                customStyles={{ width: "inherit" }}
+                                defaultOption={props.selectLabel}
+                            />
+                        )}
+                    </div>
+                </div>
+                <HelpText
+                    icon={props.icon}
+                    status={props.status}
+                    title={props.title}
+                    color={props.color}
                 />
-              </svg>
             </div>
-            <div className={`${"hidden"} ${active ? "select-modal-sc" : ""}`}>
-              {props.selectType === "country" ? (
-                <Dropdown
-                  type={"country"}
-                  handlerClick={(data) => {
-                    setActive(false);
-                    props.onClick(data);
-                  }}
-                  countryData={countriesData}
-                  dropdownCountry={"dropdown-country"}
-                  active={props.active}
-                  customStyles={{ width: "inherit" }}
-                />
-              ) : (
-                <Dropdown
-                  type={"default-dropdown"}
-                  data={props.defaultData}
-                  active={props.active}
-                  handlerClick={handlerClick}
-                  selectHandler={props.selectHandler}
-                  customStyles={{ width: "inherit" }}
-                  defaultOption={props.selectLabel}
-                />
-              )}
-            </div>
-          </div>
-          <HelpText
-            icon={props.icon}
-            status={props.status}
-            title={props.title}
-            color={props.color}
-          />
-        </div>
-      );
-      // im waiting for guram here
+        );
+        // im waiting for guram here
     }
-  if (props.type === "label-input-phone-number") {
-    element = (
-      <div style={props.customStyles} className="input-group-item phone-numbers">
-        <p className="font-12">{props.label}</p>
-        <div className="form-control select-control">
-          <div
-            onClick={() => {
-              activeHandler();
-            }}
-            className="select-prefix"
-          >
-            <div className="flag">{countryData.flag}</div>
-            <svg
-              className={`${active ? "rotate" : ""} ${"arrow"}`}
-              width="8"
-              height="5"
-              viewBox="0 0 8 5"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <span className="select-body">{countryData.code}</span>
-          <div className="select-sufix">
-            <input
-              onChange={(e) => {
-                const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
-                props.onChange(countryData.code + onlyNumbers);
-                setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
-              }}
-              value={countryData.number}
-              className="number-control"
-              type="text"
-            />
-          </div>
-        </div>
-        <div className={`${"hidden"} ${active ? "visible" : ""}`}>
-          <Dropdown
-            type={"country"}
-            handlerClick={handleCountrySelect}
-            countryData={countriesData}
-            dropdownCountry={"dropdown-country"}
-            active={props.active}
-            customStyles={{ width: "inherit" }}
-            countryCode={true}
-          />
-        </div>
-        <HelpText />
-      </div>
-    );
-  }
+    if (props.type === "label-input-phone-number") {
+        element = (
+            <div style={props.customStyles} className="input-group-item phone-numbers">
+                <p className="font-12">{props.label}</p>
+                <div className="form-control select-control">
+                    <div
+                        onClick={() => {
+                            activeHandler();
+                        }}
+                        className="select-prefix"
+                    >
+                        <div className="flag">
+                            <img src={flag} />
+                        </div>
+                        <svg
+                            className={`${active ? "rotate" : ""} ${"arrow"}`}
+                            width="8"
+                            height="5"
+                            viewBox="0 0 8 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1"
+                                stroke="white"
+                                strokeWidth="1.5"
+                                strokeMiterlimit="10"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    </div>
+                    <span className="select-body">{numb}</span>
+                    <div className="select-sufix">
+                        <input onChange={props.onChange} className="number-control" type="number" />
+                    </div>
+                </div>
+                <div className={`${"hidden"} ${active ? "visible" : ""}`}>
+                    <Dropdown
+                        type={"country"}
+                        handlerClick={handlerClick}
+                        countryData={props.countryData}
+                        dropdownCountry={"dropdown-country"}
+                        active={props.active}
+                        customStyles={{ width: "inherit" }}
+                    />
+                </div>
+            </div>
+        );
+    }
     if (props.type === "label-input-upload") {
         element = (
             <div style={props.customStyles} className="upload-group">
@@ -457,8 +437,8 @@ export const Input = (props) => {
                 <p className="font-12">{props.label}</p>
                 <DatePicker
                     className="form-control"
-                    selected={props.value}
-                    onChange={(date) => props.onChange(date)}
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
                 />
             </div>
         );
