@@ -70,8 +70,10 @@ export const UserAccount = ({
       newPassword: false,
       matchPassword: false,
     };
-    if (formData.newPassword.length > 0 && formData.newPassword.length <= 4)
-      formErrors.newPassword = "Password too short";
+    const passwordValidation = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
+    if (!passwordValidation.test(formData.newPassword) && formData.newPassword.length > 0)
+      formErrors.newPassword =
+        "password must contain a minimum of 8 characters, uppercase and special character";
     if (formData.newPassword !== formData.confirmPassword && formData.confirmPassword)
       formErrors.confirmPassword = "Passwords do not match";
     setSecurityFormErrors(formErrors);
