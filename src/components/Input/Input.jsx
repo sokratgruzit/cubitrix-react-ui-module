@@ -4,8 +4,8 @@ import { Dropdown } from "../Dropdown";
 import { Switches } from "../Switches";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./Input.css";
 
-// import testImg from '../../assets/img/country/australia.png';
 import "./Input.css";
 import { countriesData } from "./helper";
 
@@ -21,7 +21,6 @@ export const Input = (props) => {
         coutnry: "United States",
         number: "",
     });
-
 
     const activeHandler = () => {
         if (!active) {
@@ -41,6 +40,7 @@ export const Input = (props) => {
 
     const deleteHandler = () => {
         setFile(null);
+        props.onChange("");
         setClose(true);
     };
     function handlerClick(i) {
@@ -48,6 +48,7 @@ export const Input = (props) => {
     }
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
+        props.onChange(e.target.files[0]);
         setClose(false);
     }
     function handleCountrySelect(data) {
@@ -195,13 +196,14 @@ export const Input = (props) => {
             </div>
         );
     }
+
     if (props.type === "lable-input-select") {
         element = (
             <div style={props.customStyles} className="select-group">
-                <p className="input-group-title font-12">{props.value}</p>
+                <p className="input-group-title font-12">{props.label}</p>
                 <div onChange={props.onChange} className="form-select-sc">
                     <div onClick={activeHandler} className="form-select-item form-control">
-                        <div>{value}</div>
+                        <div className="flag-wrapper">{value}</div>
                         <svg
                             className={`${active ? "rotate" : ""} ${"arrow"}`}
                             width="20"
@@ -224,8 +226,12 @@ export const Input = (props) => {
                         {props.selectType === "country" ? (
                             <Dropdown
                                 type={"country"}
-                                handlerClick={handlerClick}
-                                countryData={props.countryData}
+                                handlerClick={(data) => {
+                                    setActive(false);
+                                    setValue(data.country);
+                                    props.onClick(data);
+                                }}
+                                countryData={countriesData}
                                 dropdownCountry={"dropdown-country"}
                                 active={props.active}
                                 customStyles={{ width: "inherit" }}
@@ -264,9 +270,7 @@ export const Input = (props) => {
                         }}
                         className="select-prefix"
                     >
-                        <div className="flag">
-                            <img src={flag} />
-                        </div>
+                        <div className="flag">{countryData.flag}</div>
                         <svg
                             className={`${active ? "rotate" : ""} ${"arrow"}`}
                             width="8"
@@ -285,21 +289,32 @@ export const Input = (props) => {
                             />
                         </svg>
                     </div>
-                    <span className="select-body">{numb}</span>
+                    <span className="select-body">{countryData.code}</span>
                     <div className="select-sufix">
-                        <input onChange={props.onChange} className="number-control" type="number" />
+                        <input
+                            onChange={(e) => {
+                                const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
+                                props.onChange(countryData.code + onlyNumbers);
+                                setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
+                            }}
+                            value={countryData.number}
+                            className="number-control"
+                            type="text"
+                        />
                     </div>
                 </div>
                 <div className={`${"hidden"} ${active ? "visible" : ""}`}>
                     <Dropdown
                         type={"country"}
-                        handlerClick={handlerClick}
-                        countryData={props.countryData}
+                        handlerClick={handleCountrySelect}
+                        countryData={countriesData}
                         dropdownCountry={"dropdown-country"}
                         active={props.active}
                         customStyles={{ width: "inherit" }}
+                        countryCode={true}
                     />
                 </div>
+                <HelpText />
             </div>
         );
     }
@@ -338,7 +353,7 @@ export const Input = (props) => {
                             <img className={"avatar-sm"} src={file} />
                         )}
                     </div>
-                    <div onChange={props.onChange} className="upload-group-text">
+                    <div className="upload-group-text">
                         <p>Upload a profile picture</p>
                         <label className="upload-btn" htmlFor={"upload_img"}>
                             Broswe
@@ -437,8 +452,8 @@ export const Input = (props) => {
                 <p className="font-12">{props.label}</p>
                 <DatePicker
                     className="form-control"
-                    selected={startDate}
-                    onChange={(date) => setStartDate(date)}
+                    selected={props.value}
+                    onChange={(date) => props.onChange(date)}
                 />
             </div>
         );

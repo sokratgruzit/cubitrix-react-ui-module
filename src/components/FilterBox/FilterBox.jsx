@@ -8,9 +8,10 @@ export const FilterBox = ({
     tableFilterData,
     tableFilterOutcomingData,
     setTableFilterOutcomingData,
-    header 
+    header,
+    customStyles
 }) => {
-  const [showSearchBox, setShowSearchBox] = useState(false); 
+  const [showSearchBox, setShowSearchBox] = useState(false);
 
   const handleSelectChange = (option, name) => {
     setTableFilterOutcomingData((prev) => ({
@@ -38,12 +39,12 @@ export const FilterBox = ({
   const headerList = header && tableFilterData.selects[header];
 
   return (
-    <div className={'filter-box-container'}>
+    <div className={'filter-box-container'} style={customStyles}>
         <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
             {header && (
                 <div className={'filter-box-list font-14'}>
                     {headerList.options.map(item => (
-                        <div 
+                        <div
                             key={item.name}
                             className={`filter-box-list__item ${tableFilterOutcomingData?.selects?.[headerList.value] === item.value && 'list-item__active'}`}
                             onClick={() => handleSelectChange(item.value, headerList.value)}
@@ -53,8 +54,8 @@ export const FilterBox = ({
                     ))}
                 </div>
             )}
-            <button 
-                className={`advanced-search-btn ${showSearchBox && 'search-btn-active'} font-14`} 
+            <button
+                className={`advanced-search-btn ${showSearchBox && 'search-btn-active'} font-14`}
                 onClick={() => setShowSearchBox(!showSearchBox)}
             >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +78,7 @@ export const FilterBox = ({
                         onChange={handleSearchChange}
                         defaultData={tableFilterData.search.options}
                         selectHandler={handleSearchSelect}
-                        placeholder={'search'}  
+                        placeholder={'search'}
                         selectLabel={'All'}
                     />
                 </div>

@@ -34,7 +34,7 @@ export const UserAccount = ({
     mobile: "",
     date_of_birth: new Date(),
     nationality: "Select Country",
-    avatar: "string",
+    avatar: "",
   });
 
   const [securityFormErrors, setSecurityFormErrors] = useState({});
@@ -161,13 +161,17 @@ export const UserAccount = ({
             type={"lable-input-select"}
             icon={false}
             selectType={"country"}
+            selectLabel={userData.nationality}
             value={userData.nationality}
             label={"Nationality"}
-            placeholder={"select your nationality"}
             onClick={(e) => handleUserUpdate(e, "nationality")}
             customStyles={{ width: "100%" }}
           />
-          <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />
+          <Input
+            type={"label-input-upload"}
+            customStyles={{ width: "100%" }}
+            onChange={(e) => handleUserUpdate(e, "avatar")}
+          />
           <Button
             element="button"
             label={
@@ -190,9 +194,11 @@ export const UserAccount = ({
               )
             }
             type="btn-primary"
-            size="btn-sm"
+            size="btn-lg"
             customStyles={{
               width: "100%",
+              margin: "0",
+              marginTop: "20px",
               background: personalDataState.saved ? "#9CCC65" : "#3d5afe",
               transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
             }}
