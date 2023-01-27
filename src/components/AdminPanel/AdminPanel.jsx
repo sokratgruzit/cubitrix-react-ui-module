@@ -18,9 +18,8 @@ export const AdminPanel = props => {
             />
             <FilterBox
                 tableFilterData={props.tableFilterData}
-                tableFilterOutcomingData={props.tableFilterOutcomingData}
                 setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-                header={props.header}
+                tableHeader={props.tableHeader}
                 customStyles={{margin:'20px 0px'}}
             />
             <Table

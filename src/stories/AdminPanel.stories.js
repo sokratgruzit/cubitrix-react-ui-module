@@ -124,11 +124,7 @@ stories.add("AdminPanel", () => {
         }
     ]
 
-    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({
-        selects: {
-            ts_status: 'all'
-        }
-    });
+    const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({});
 
     const tableFilterData = {
         search: {
@@ -180,10 +176,6 @@ stories.add("AdminPanel", () => {
                 name: 'Transaction Status',
                 value: 'ts_status',
                 options: [
-                    {
-                        name: 'All',
-                        value: 'all'
-                    },
                     {
                         name: 'Pending',
                         value: 'pending'
@@ -397,9 +389,8 @@ stories.add("AdminPanel", () => {
                    tableHead={th}
                    pageLabel={'Transactions'}
                    mobile={mobile}
-                   header={2}
+                   tableHeader={2}
                    tableFilterData={tableFilterData}
-                   tableFilterOutcomingData={tableFilterOutcomingData}
                    setTableFilterOutcomingData={setTableFilterOutcomingData}
                    paginationCurrent={1}
                    paginationTotal={20}
