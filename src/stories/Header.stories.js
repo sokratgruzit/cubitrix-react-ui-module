@@ -144,8 +144,8 @@ stories.add("Header", () => {
             </defs>
           </svg>
         }
+        verified={false}
       />
-      shit
     </div>
   );
 });
