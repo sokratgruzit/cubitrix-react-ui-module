@@ -34,13 +34,11 @@ export const AdminHeader = props => {
                     </svg>
                 <div className={`${'admin-hidden'} ${active ? 'admin-select' : ''}`}>
                     <Dropdown
-                        type={"default-dropdown"}
-                        active={props.active}
-                        handlerClick={props.handleLogout}
-                        selectHandler={() => {}}
-                        defaultOption={'Log Out'}
+                        data={props.authsDropdown}
+                        type={"dropdown"}
+                        dropdown={"dropdown"}
+                        active={active}
                         customStyles={{width: '100%'}}
-                        svg={props.logoutSvg}
                     />
                 </div>
                 </div>
