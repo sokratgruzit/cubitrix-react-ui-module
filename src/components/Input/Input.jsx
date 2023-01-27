@@ -13,12 +13,31 @@ export const Input = (props) => {
     const [cover, setCover] = useState(false);
     const [close, setClose] = useState(true);
     const [value, setValue] = useState(props.selectLabel);
+
     const [countryData, setCountryData] = useState({
         code: "+1",
         flag: "🇺🇸",
         coutnry: "United States",
         number: "",
     });
+
+    const useOutsideClick = (callback) => {
+      const ref = React.useRef();
+    
+      React.useEffect(() => {
+        const handleClick = (event) => {
+          callback();
+        };
+    
+        document.addEventListener('click', handleClick);
+    
+        return () => {
+          document.removeEventListener('click', handleClick);
+        };
+      }, []);
+    
+      return ref;
+    };
 
     const activeHandler = () => {
         if (!active) {
@@ -211,12 +230,12 @@ export const Input = (props) => {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                            d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10"
-                            stroke="white"
-                            strokeWidth="1.5"
-                            strokeMiterlimit="10"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
+                          d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10"
+                          stroke="white"
+                          strokeWidth="1.5"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                     </div>
@@ -225,9 +244,9 @@ export const Input = (props) => {
                             <Dropdown
                                 type={"country"}
                                 handlerClick={(data) => {
-                                    setActive(false);
-                                    setValue(data.country);
-                                    props.onClick(data);
+                                  setActive(false);
+                                  setValue(data.country);
+                                  props.onClick(data);
                                 }}
                                 countryData={countriesData}
                                 dropdownCountry={"dropdown-country"}

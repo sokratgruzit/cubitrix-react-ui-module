@@ -1,13 +1,32 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Switches } from "../Switches";
 import "./Dropdown.css";
 
 export const Dropdown = (props) => {
+    const [close, setClose] = useState(false);
     const [inputData, setInputData] = useState({
         title: "",
         img: null,
         numbering: "",
     });
+
+    const useOutsideClick = (callback) => {
+        const ref = React.useRef();
+      
+        React.useEffect(() => {
+          const handleClick = (event) => {
+            callback();
+          };
+      
+          defDrop.addEventListener('click', handleClick);
+      
+          return () => {
+            defDrop.removeEventListener('click', handleClick);
+          };
+        }, []);
+      
+        return ref;
+      };
 
     function updateData(data, field) {
         setInputData((prev) => ({ ...prev, [field]: data }));
@@ -78,7 +97,7 @@ export const Dropdown = (props) => {
     }
     if (props.type === "default-dropdown") {
         element = (
-            <div style={props.customStyles} className={`${"active"} ${"dropdown"}`}>
+            <div id="defDrop" style={props.customStyles} className={`${"active"} ${"dropdown"}`}>
                 <div
                     className="dropdown-item"
                     onClick={() => {
