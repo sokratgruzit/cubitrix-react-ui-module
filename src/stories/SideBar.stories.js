@@ -21,6 +21,8 @@ stories.add("SideBar", () => {
 
   let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
 
+  const [twoFactorAuth, setTwoFactorAuth] = useState(true);
+
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
@@ -66,6 +68,10 @@ stories.add("SideBar", () => {
           imgValue={
             "http://localhost:4000/images/0xecE0E468da93f632F1594F93d05289d465429137.png"
           }
+          twoFactorAuth={twoFactorAuth}
+          handleTwoFactorAuth={(val) => {
+            setTwoFactorAuth(val);
+          }}
         />
         {/* <UserOptions
           type={"Metamask"}

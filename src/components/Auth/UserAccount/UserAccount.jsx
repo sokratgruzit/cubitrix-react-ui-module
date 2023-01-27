@@ -20,6 +20,8 @@ export const UserAccount = ({
   resendEmail,
   hasPasswordSet,
   imgValue,
+  twoFactorAuth,
+  handleTwoFactorAuth,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -321,7 +323,12 @@ export const UserAccount = ({
           <div className="Tfa">
             <div className="Tfa-title">
               <h3>Two-Factor Verification</h3>
-              <Switches type={"lg-switches"} size={"size"} />
+              <Switches
+                type={"lg-switches"}
+                size={"size"}
+                value={twoFactorAuth}
+                onChange={(e) => handleTwoFactorAuth(e.currentTarget.checked)}
+              />
             </div>
             <div className="Tfa-body">
               <HelpText
