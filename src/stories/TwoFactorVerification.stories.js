@@ -11,13 +11,16 @@ stories.add("TwoFactorVerification", (props) => {
     setActive(true);
   };
 
-    return (
-        <div>
-            <TwoFactorVerification
-                onClick={closeHandler}
-                active={active}
-                qrcode = {'blblbl'}
-            />
-        </div>
-    )
-})
+  return (
+    <div>
+      <TwoFactorVerification
+        onClick={closeHandler}
+        confirmAuth={(e) => console.log("next", e)}
+        active={active}
+        qrcode={"ahahahah new qr codess"}
+        accountName={"Complend"}
+        accountKey={"2INU5M0UXZ"}
+      />
+    </div>
+  );
+});
