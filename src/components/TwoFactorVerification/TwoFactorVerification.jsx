@@ -1,7 +1,6 @@
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { HelpText } from "../HelpText";
-import { useQRCode } from "next-qrcode";
 import "./TwoFactorVerification.css";
 import { useState } from "react";
 
@@ -13,7 +12,6 @@ export const TwoFactorVerification = ({
   accountName,
   accountKey,
 }) => {
-  const { Canvas } = useQRCode();
   const [code, setCode] = useState("");
 
   return (
@@ -320,16 +318,9 @@ export const TwoFactorVerification = ({
         </div>
         <div className="verification">
           <div className="qrcode">
-            <Canvas
-              text={qrcode}
-              options={{
-                width: "100px",
-                color: {
-                  dark: "#010599FF",
-                  light: "#FFF",
-                },
-              }}
-            />
+            <div>
+              <img src={qrcode} alt="qrcode url" />
+            </div>
           </div>
           <div>
             <p>Enter Google Verification Code</p>
