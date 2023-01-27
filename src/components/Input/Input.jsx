@@ -347,7 +347,13 @@ export const Input = (props) => {
                 </defs>
               </svg>
             ) : (
-              <img className={"avatar-sm"} src={file} />
+              <img
+                className={"avatar-sm"}
+                src={file}
+                onError={() => {
+                  setFile(null);
+                }}
+              />
             )}
           </div>
           <div className="upload-group-text">
