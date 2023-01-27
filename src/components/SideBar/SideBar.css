@@ -1,0 +1,15 @@
+.wrapper {
+  position: fixed;
+  height: 100vh;
+  left: 100%;
+  top: 0;
+  width: 362px;
+  background: #0c1121;
+  transition: 0.5s;
+  font-size: 12px;
+  line-height: 140%;
+}
+
+.side-open {
+  transform: translateX(-362px);
+}

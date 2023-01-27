@@ -4,24 +4,20 @@ import { storiesOf } from "@storybook/react";
 
 const stories = storiesOf("TwoFactorVerification", module);
 
-stories.add("TwoFactorVerification", () => { 
+stories.add("TwoFactorVerification", () => {
+  const [active, setActive] = useState(false);
 
-    const [active, setActive] = useState(false);
-
-    let closeHandler = () => {
-        setActive(true)
-    }
+  let closeHandler = () => {
+    setActive(true);
+  };
 
     return (
         <div>
             <TwoFactorVerification
-                onClick={closeHandler}       
+                onClick={closeHandler}
                 active={active}
-                qrcode={'blblbl'}
-                acountName={'Complend'}
-                acountKey={'zzzzzzzz'}
-            />            
+                qrcode = {'blblbl'}
+            />
         </div>
-
     )
 })

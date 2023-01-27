@@ -1,48 +1,62 @@
 .popup-header {
-    display: flex;
-    justify-content: space-between;
-    height: 70px;
-    padding: 0px 20px;
-    align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,.05);
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0px 20px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 .popup-header svg {
-    cursor: pointer;
+  cursor: pointer;
 }
 .popup-header path {
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .popup-header svg:hover path {
-    stroke: #fff;
+  stroke: #fff;
 }
 .delimiter {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-.delimiter .line{
-    height: 1px;
-    width: 50%;
-    background: rgba(255,255,255,.1);
+.delimiter .line {
+  height: 1px;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.1);
 }
 .copy-address {
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
 .copy-address-text {
-    width: calc(100% - 35px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #9C9DA3;
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  max-width: calc(100% - 30px);
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  color: #9c9da3;
 }
-.copy-address path{
-    transition: .6s cubic-bezier(.79,.01,.15,.99);
+.copy-address path {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.copy-address:hover path{
-    stroke: #3D5AFE;
+.copy-address:hover path {
+  stroke: #3d5afe;
 }
-.copy-address:hover .copy-address-text{
-    color: #fff;
+.copy-address:hover .copy-address-text {
+  color: #fff;
+}
+
+.font-16 {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.goBackWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.goBackSvg {
+  display: flex;
 }

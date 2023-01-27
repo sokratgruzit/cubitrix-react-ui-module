@@ -1,0 +1,46 @@
+.sidebar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  width: 322px;
+  height: 176px;
+  background: #070b1a;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 140%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.complete p {
+  text-align: center;
+}
+
+.border-full {
+  width: 100%;
+  height: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.address-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.address-wrap p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

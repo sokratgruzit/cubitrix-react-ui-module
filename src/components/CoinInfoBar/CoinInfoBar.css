@@ -1,0 +1,101 @@
+.coin-info-container {
+  position: relative;
+}
+
+.coin-info-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px 14px 30px;
+  background: #070B1A;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.coin-info-list__item p:first-child {
+  color: #CDCED1;
+}
+
+.coin-info-list__item span{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.add-square-container {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 22px;
+  cursor: pointer;
+}
+
+.draggable-list{
+  display: flex;
+  font-size: 18px;
+  background-color: #eee;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  height: 322px;
+  overflow-y: auto;
+  background: #141726;
+  border: 1px solid #202431;
+  border-radius: 8px;
+  top: 64px;
+  right: 20px;
+  padding: 21px 7px 12px 10px;
+}
+
+.draggable-list__item {
+  padding: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.marker {
+  width: 20px;
+  height: 20px;
+  background-color: #070B1A;
+  border: 1px solid #3D5AFE;
+  border-radius: 6px;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.marker svg {
+  opacity: 1;
+  transition: 0.4s;
+}
+.marker-not-checked {
+  background: rgba(7, 11, 26, 0.3);
+  border: 1px solid #202431;
+}
+.marker-not-checked svg {
+  opacity: 0;
+}
+
+.draggable-label {
+  padding-left: 8px;
+  color: #9C9DA3
+}
+
+.draggingListItem {
+  background: #202431;
+}
+
+.draggingListItem .draggable-label {
+  color: #FFFFFF;
+}
+
+.drag-icon {
+  margin-left: auto;
+}
+
+.swiper-slide {
+  width: 100px!important;
+}
+
+.swiper {
+  margin: 0!important;
+}

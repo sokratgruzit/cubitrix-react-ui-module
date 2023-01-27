@@ -1,6 +1,6 @@
 {
   "name": "@cubitrix/cubitrix-react-ui-module",
-  "version": "0.0.9",
+  "version": "0.1.15",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
@@ -27,20 +27,26 @@
     "postcss": "^8.4.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^6.7.0",
     "rollup": "^2.38.4",
     "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2"
   },
   "peerDependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^6.7.0"
   },
   "dependencies": {
     "next-qrcode": "^2.4.0",
     "qrcode.react": "^3.1.0",
-    "react-qr-code": "^2.0.11"
+    "react-beautiful-dnd": "^13.1.1",
+    "react-datepicker": "^4.8.0",
+    "react-qr-code": "^2.0.11",
+    "swiper": "^8.0.0"
   },
   "repository": {
     "type": "git",
