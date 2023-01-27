@@ -26,6 +26,7 @@ export const FilterBox = ({
   const handleSearchChange = (e) => {
     setTableFilterOutcomingData(prev => ({ ...prev, search: {
         value: e.target.value,
+        option: prev?.search?.option
     }}));
   };
 

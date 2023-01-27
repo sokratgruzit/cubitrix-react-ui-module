@@ -359,6 +359,7 @@ stories.add("AdminPanel", () => {
                 username={adminHeaderData.username}
                 headSvg={adminHeaderData.svg}
                 userImageUrl={adminHeaderData.userImageUrl}
+                logoutSvg={sideBar[0].svg}
            />
            <div className={`admin-container`}>
                <div className={`admin-sidebar`}>
