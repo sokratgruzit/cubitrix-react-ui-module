@@ -77,6 +77,9 @@ export const Dropdown = (props) => {
           }} 
           key={props.defaultOption}
         >
+          {props.svg && (
+            <span>{props.svg}</span>
+          )}
           {props.defaultOption}
         </div>
         {props.data?.map((item, index) => {
@@ -84,8 +87,8 @@ export const Dropdown = (props) => {
             <div className="dropdown-item" onClick={() => {
               props.handlerClick(item.name)
               props.selectHandler(item.value)
-            } 
-            } key={index}>
+            }}
+             key={index}>
               {item.name} 
             </div>
           )
