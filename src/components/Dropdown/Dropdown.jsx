@@ -33,7 +33,7 @@ export const Dropdown = (props) => {
   }
   if (props.type === "dropdown") {
     element = (
-      <div style={props.customStyles} className={` active ${props.dropdown}`}>
+      <div style={props.customStyles} className={`active ${props.dropdown}`}>
         {props.data?.map((item, index) => {
           return (
             <div key={index}>
@@ -45,9 +45,9 @@ export const Dropdown = (props) => {
               </h1>
               {item.list?.map((item, index) => {
                 return (
-                  <div key={index} className="dropdown-item">
+                  <div key={index} className="dropdown-item" onClick={() => item.onClick(item.title)}>
                     {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
-                    <span className={item.id < 3 ? "filter" : ""}>{item.svg}</span>
+                    <span>{item.svg}</span>
                     <div>
                       <p
                         id={item.id}
@@ -81,15 +81,12 @@ export const Dropdown = (props) => {
         </div>
         {props.data?.map((item, index) => {
           return (
-            <div
-              className="dropdown-item"
-              onClick={() => {
-                props.handlerClick(item.name);
-                props.selectHandler(item.value);
-              }}
-              key={index}
-            >
-              {item.name}
+            <div className="dropdown-item" onClick={() => {
+              props.handlerClick(item.name)
+              props.selectHandler(item.value)
+            }}
+             key={index}>
+              {item.name} 
             </div>
           );
         })}
