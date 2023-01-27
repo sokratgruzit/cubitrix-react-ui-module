@@ -72,9 +72,15 @@ export const Dropdown = (props) => {
         <div
           className="dropdown-item"
           onClick={() => {
+<<<<<<< HEAD
             props.handlerClick(props.defaultOption);
             props.selectHandler(props.defaultOption.toLowerCase());
           }}
+=======
+            props.handlerClick(props.defaultOption)
+            props.selectHandler('all')
+          }} 
+>>>>>>> 60435be48e5c857542519c83d75dcf1ddf5f6c8e
           key={props.defaultOption}
         >
           {props.defaultOption}
