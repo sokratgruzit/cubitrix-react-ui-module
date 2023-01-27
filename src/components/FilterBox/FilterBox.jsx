@@ -6,12 +6,12 @@ import './FilterBox.css';
 
 export const FilterBox = ({
     tableFilterData,
-    tableFilterOutcomingData,
     setTableFilterOutcomingData,
-    header,
+    tableHeader,
     customStyles
 }) => {
   const [showSearchBox, setShowSearchBox] = useState(false);
+  const [headActive, setHeadActive] = useState('all')
 
   const handleSelectChange = (option, name) => {
     setTableFilterOutcomingData((prev) => ({
@@ -36,18 +36,31 @@ export const FilterBox = ({
     }}));
   };
 
-  const headerList = header && tableFilterData.selects[header];
+  const headerList = tableHeader && tableFilterData.selects[tableHeader];
 
   return (
     <div className={'filter-box-container'} style={customStyles}>
         <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
-            {header && (
+            {tableHeader && (
                 <div className={'filter-box-list font-14'}>
+                    <div
+                        key={'all'}
+                        className={`filter-box-list__item ${headActive === 'all' && 'list-item__active'}`}
+                        onClick={() => {
+                            handleSelectChange('all', headerList.value);
+                            setHeadActive('all')
+                        }}
+                    >
+                        All
+                    </div>
                     {headerList.options.map(item => (
                         <div
                             key={item.name}
-                            className={`filter-box-list__item ${tableFilterOutcomingData?.selects?.[headerList.value] === item.value && 'list-item__active'}`}
-                            onClick={() => handleSelectChange(item.value, headerList.value)}
+                            className={`filter-box-list__item ${headActive === item.value && 'list-item__active'}`}
+                            onClick={() => {
+                                handleSelectChange(item.value, headerList.value);
+                                setHeadActive(item.value)
+                            }}
                         >
                             {item.name}
                         </div>
@@ -91,7 +104,7 @@ export const FilterBox = ({
                                     key={select.name}
                                     type={"lable-input-select"}
                                     icon={false}
-                                    value={select.name}
+                                    label={select.name}
                                     defaultData={select.options}
                                     selectHandler={(opt) => handleSelectChange(opt, select.value)}
                                     selectLabel={`All ${select.name}`}
