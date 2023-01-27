@@ -23,7 +23,7 @@ export const Dropdown = (props) => {
               >
                 <p>{item.flag}</p>
                 <p>{item.country}</p>
-                <p>{item.code}</p>
+                {props.coutnryCode && <p>{item.code}</p>}
               </div>
             </div>
           );
@@ -66,49 +66,47 @@ export const Dropdown = (props) => {
       </div>
     );
   }
-  if(props.type === 'default-dropdown') {
+  if (props.type === "default-dropdown") {
     element = (
-      <div style={props.customStyles} className={`${'active'} ${'dropdown'}`}>
-        <div 
-          className="dropdown-item" 
+      <div style={props.customStyles} className={`${"active"} ${"dropdown"}`}>
+        <div
+          className="dropdown-item"
           onClick={() => {
-            props.handlerClick(props.defaultOption)
-            props.selectHandler(props.defaultOption.toLowerCase())
-          }} 
+            props.handlerClick(props.defaultOption);
+            props.selectHandler(props.defaultOption.toLowerCase());
+          }}
           key={props.defaultOption}
         >
           {props.defaultOption}
         </div>
         {props.data?.map((item, index) => {
           return (
-            <div className="dropdown-item" onClick={() => {
-              props.handlerClick(item.name)
-              props.selectHandler(item.value)
-            } 
-            } key={index}>
-              {item.name} 
+            <div
+              className="dropdown-item"
+              onClick={() => {
+                props.handlerClick(item.name);
+                props.selectHandler(item.value);
+              }}
+              key={index}
+            >
+              {item.name}
             </div>
-          )
-        })
-        }
+          );
+        })}
       </div>
-    )
+    );
   }
-  if(props.type === 'simple-drowpdown') {
+  if (props.type === "simple-drowpdown") {
     element = (
       <div className="dropdown" style={props.customStyles}>
-        <div className="default-option">
-          test
-        </div>
+        <div className="default-option">test</div>
         <div className="options">
-            {props.data?.option.map((item, index) => {
-              return (
-                <div></div>
-              )
-            })}
+          {props.data?.option.map((item, index) => {
+            return <div></div>;
+          })}
         </div>
       </div>
-    )
+    );
   }
   return element;
 };
