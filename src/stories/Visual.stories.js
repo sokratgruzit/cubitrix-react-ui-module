@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
 import { Visual } from "../components/Visual";
+import { Button } from "../components/Button";
 
 const stories = storiesOf("Visual", module);
 
@@ -40,21 +41,26 @@ stories.add("Visual", () => {
         label={'Transactions'}
         fontSize={'font-20'}
         customStyles={{}}
-        // button props 
-        buttonTitle0={'Add Transaction'}
-        buttonSize0={'btn-lg'}
-        buttonType0={'btn-primary'}
-        buttonArrow0={''}
-        buttonElement0={'button'}
-        buttonTitle1={'Batch Transaction'}
-        buttonSize1={'btn-lg'}
-        buttonType1={'btn-primary'}
-        buttonArrow1={''}
-        buttonElement1={'button'}
-        buttonImage0={buttonImage0}
-        buttonImage1={buttonImage1}
-        buttonOnClick={() => setButtonToggle((prevState) => !prevState)}
-        // end of button props
+        leftBtn={
+          <Button
+            label={'Add Transaction'}
+            size={'btn-lg'}
+            type={'btn-primary'}
+            arrow={''}
+            element={'button'}
+            onClick={() => console.log((prevState) => (!prevState))}
+          />
+        }
+        rightBtn={
+          <Button
+            label={'Add Transaction'}
+            size={'btn-lg'}
+            type={'btn-primary'}
+            arrow={''}
+            element={'button'}
+            onClick={() => console.log((prevState) => (!prevState))}
+          />
+        }
       />
     </div>
   );
