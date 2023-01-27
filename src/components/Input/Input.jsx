@@ -10,10 +10,9 @@ import "./Input.css";
 import { countriesData } from "./helper";
 
 export const Input = (props) => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(props.value);
   const [active, setActive] = useState(false);
   const [cover, setCover] = useState(false);
-  const [close, setClose] = useState(true);
   const [value, setValue] = useState(props.selectLabel);
   const [countryData, setCountryData] = useState({
     code: "+1",
@@ -41,7 +40,6 @@ export const Input = (props) => {
   const deleteHandler = () => {
     setFile(null);
     props.onChange("");
-    setClose(true);
   };
   function handlerClick(i) {
     setValue(i);
@@ -49,7 +47,6 @@ export const Input = (props) => {
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
     props.onChange(e.target.files[0]);
-    setClose(false);
   }
   function handleCountrySelect(data) {
     setActive(false);
@@ -329,7 +326,7 @@ export const Input = (props) => {
         </div>
         <div className="upload-group-inner">
           <div className="upload-group-placeholder">
-            {close ? (
+            {!file ? (
               <svg
                 width="24"
                 height="24"

@@ -19,6 +19,7 @@ export const UserAccount = ({
   securityDataState,
   resendEmail,
   hasPasswordSet,
+  imgValue,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -34,7 +35,7 @@ export const UserAccount = ({
     mobile: "",
     date_of_birth: new Date(),
     nationality: "Select Country",
-    avatar: "",
+    avatar: imgValue,
   });
 
   const [securityFormErrors, setSecurityFormErrors] = useState({});
@@ -171,6 +172,7 @@ export const UserAccount = ({
             type={"label-input-upload"}
             customStyles={{ width: "100%" }}
             onChange={(e) => handleUserUpdate(e, "avatar")}
+            value={imgValue}
           />
           <Button
             element="button"

@@ -63,6 +63,9 @@ stories.add("SideBar", () => {
           userDataError={"error while saving"}
           securityError={"password is incorrect"}
           hasPasswordSet={true}
+          imgValue={
+            "http://localhost:4000/images/0xecE0E468da93f632F1594F93d05289d465429137.png"
+          }
         />
         {/* <UserOptions
           type={"Metamask"}
