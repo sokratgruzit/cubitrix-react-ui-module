@@ -32,7 +32,7 @@ export const Header = ({
           {logoSvg}
           <h3>{title}</h3>
         </div>
-        {/* <NavLink className={`${location.pathname === "/" && "active"} link`} to="/">
+        <NavLink className={`${location.pathname === "/" && "active"} link`} to="/">
           <Dashboard className="svg" /> Dashboard
         </NavLink>
         {modules.trade === "true" && (
@@ -76,7 +76,7 @@ export const Header = ({
         >
           <Extensions className="svg" />
           Extensions
-        </NavLink> */}
+        </NavLink>
       </div>
       <div className="right">
         {modules.notify === "true" && (
