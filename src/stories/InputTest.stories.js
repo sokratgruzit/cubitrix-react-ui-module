@@ -21,27 +21,21 @@ stories.add("InputTest", (props) => {
         type={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
+        labelR={false}
         placeholder={'your text'}
         parent={'your-class-name'}
         password={true}
         customStyles={{width: '320px'}}
-        statusCard= {
-          <HelpText
-            status={'success'}
-            title={'your text'}
-            color={'#9CCC65'}
-            fontSize={'font-12'}
-            icon={true}
-          />
-        }
+        statusCard={false}
       />
-       <InputTest 
+      <InputTest 
         type={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
         placeholder={'your text'}
         parent={'your-class-name'}
         password={false}
+        frameLabel={true}
         customStyles={{width: '320px'}}
         statusCard= {
           <HelpText

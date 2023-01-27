@@ -5,19 +5,13 @@ import { Button } from '../Button';
 
 import './Signin.css';
 
-export const Signin = () => {
+export const Signin = ({ handleSubmit }) => {
   const [cover, setCover] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const coverhandler = () => {
     setCover(true);
-  };
-
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
-
-  const handleSignInClick = () => {
-    console.log('sign in');
   };
 
   return (
@@ -39,7 +33,8 @@ export const Signin = () => {
             placeholder={"Enter User Name"}
             label={'User Name'}
             subLabel={''}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Input
             type={"default"}
@@ -49,7 +44,8 @@ export const Signin = () => {
             placeholder={"Enter Password"}
             label={'Password'}
             subLabel={''}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Button
             label={'Sign In'}
@@ -58,7 +54,7 @@ export const Signin = () => {
             arrow={'arrow-none'}
             element={'button'}
             customStyles={{ width: '100%'}}
-            onClick={handleSignInClick}
+            onClick={() => handleSubmit({ email, password })}
           />
         </div>
       </div>

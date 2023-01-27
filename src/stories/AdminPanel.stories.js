@@ -136,7 +136,7 @@ stories.add("AdminPanel", () => {
                 {
                     name: 'Account Owner',
                     value: 'account_owner'
-                }, 
+                },
                 {
                     name: 'Account Type Id',
                     value: 'account_type_id'
@@ -155,7 +155,7 @@ stories.add("AdminPanel", () => {
                     {
                         name: 'Transaction',
                         value: 'transaction'
-                    }, 
+                    },
                     {
                         name: 'Hash',
                         value: 'hash'
@@ -169,7 +169,7 @@ stories.add("AdminPanel", () => {
                     {
                         name: 'Transaction',
                         value: 'transaction'
-                    }, 
+                    },
                     {
                         name: 'Hash',
                         value: 'hash'
@@ -183,23 +183,23 @@ stories.add("AdminPanel", () => {
                     {
                         name: 'All',
                         value: 'all'
-                    }, 
+                    },
                     {
                         name: 'Pending',
                         value: 'pending'
-                    }, 
+                    },
                     {
                         name: 'Cenceled',
                         value: 'canceled'
-                    }, 
+                    },
                     {
                         name: 'Approved',
                         value: 'approved'
-                    }, 
+                    },
                     {
                         name: 'Bonuses',
                         value: 'bonuses'
-                    }, 
+                    },
                     {
                         name: 'Claimed',
                         value: 'claimed'
@@ -395,11 +395,17 @@ stories.add("AdminPanel", () => {
                    }
                    tableData={tableData}
                    tableHead={th}
+                   pageLabel={'Transactions'}
                    mobile={mobile}
                    header={2}
                    tableFilterData={tableFilterData}
                    tableFilterOutcomingData={tableFilterOutcomingData}
                    setTableFilterOutcomingData={setTableFilterOutcomingData}
+                   paginationCurrent={1}
+                   paginationTotal={20}
+                   paginationEvent={() => {
+                       console.log('hi')
+                   }}
                />
            </div>
        </>
