@@ -3,16 +3,16 @@ import "./SignIn.css";
 import { Input } from "../../Input";
 import { Visual } from "../../Visual";
 import { Button } from "../../Button";
+import { HelpText } from "../../HelpText";
 
-export const SignIn = ({ onClick, sideBarClose, goBack }) => {
-  const [toggle, setToggle] = useState("");
+export const SignIn = ({ onClick, sideBarClose, goBack, signInState }) => {
   const [data, setData] = useState({ email: "", password: "" });
 
   const handlerDataUpdate = (value, field) => {
     setData((prevState) => ({ ...prevState, [field]: value }));
   };
   return (
-    <div className="sing-in-module">
+    <div className="sign-in-module">
       <Visual
         label={"Sign In"}
         element={"popup-header"}
@@ -25,9 +25,8 @@ export const SignIn = ({ onClick, sideBarClose, goBack }) => {
           type={"default"}
           icon={true}
           inputType={"text"}
-          placeholder={"@email.com"}
-          label={"Enter Your E-mail"}
-          subLabel={""}
+          placeholder="email"
+          label="Enter Address"
           onChange={(e) => handlerDataUpdate(e.target.value, "email")}
           customStyles={{ width: "auto" }}
         />
@@ -36,7 +35,7 @@ export const SignIn = ({ onClick, sideBarClose, goBack }) => {
           icon={true}
           inputType={"password"}
           // coverHandler={coverhandler}
-          placeholder={"password input"}
+          placeholder={"password"}
           label={"Enter Password"}
           subLabel={""}
           onChange={(e) => handlerDataUpdate(e.target.value, "password")}
@@ -45,14 +44,21 @@ export const SignIn = ({ onClick, sideBarClose, goBack }) => {
       </div>
       <div className="form-group-btn">
         <Button
-          label={"Sing In"}
-          size={"btn-lg"}
-          type={"btn-primary"}
-          arrow={""}
+          label={signInState.loading ? "Signing in ... " : "Sign In"}
+          type="btn-primary"
+          size="btn-sm"
           element={"button"}
           customStyles={{ width: "100%" }}
           onClick={() => onClick(data)}
         />
+        {signInState.error && (
+          <HelpText
+            status={"error"}
+            title={signInState.error}
+            color={"#EF5350"}
+            icon={true}
+          />
+        )}
       </div>
     </div>
   );

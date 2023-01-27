@@ -38,6 +38,7 @@ export const Input = (props) => {
 
   const deleteHandler = () => {
     setFile(null);
+    props.onChange("");
     setClose(true);
   };
   function handlerClick(i) {
@@ -45,6 +46,7 @@ export const Input = (props) => {
   }
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
+    props.onChange(e.target.files[0]);
     setClose(false);
   }
   function handleCountrySelect(data) {
@@ -192,16 +194,14 @@ export const Input = (props) => {
       </div>
     );
   }
+
   if (props.type === "lable-input-select") {
     element = (
       <div style={props.customStyles} className="select-group">
         <p className="input-group-title font-12">{props.label}</p>
         <div onChange={props.onChange} className="form-select-sc">
           <div onClick={activeHandler} className="form-select-item form-control">
-            <div className="flag-wrapper">
-              <div>{props.value?.flag}</div>
-              <div>{props.value?.country}</div>
-            </div>
+            <div className="flag-wrapper">{value}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="20"
@@ -226,6 +226,7 @@ export const Input = (props) => {
                 type={"country"}
                 handlerClick={(data) => {
                   setActive(false);
+                  setValue(data.country);
                   props.onClick(data);
                 }}
                 countryData={countriesData}
@@ -308,6 +309,7 @@ export const Input = (props) => {
             dropdownCountry={"dropdown-country"}
             active={props.active}
             customStyles={{ width: "inherit" }}
+            countryCode={true}
           />
         </div>
         <HelpText />
@@ -349,7 +351,7 @@ export const Input = (props) => {
               <img className={"avatar-sm"} src={file} />
             )}
           </div>
-          <div onChange={props.onChange} className="upload-group-text">
+          <div className="upload-group-text">
             <p>Upload a profile picture</p>
             <label className="upload-btn" htmlFor={"upload_img"}>
               Broswe

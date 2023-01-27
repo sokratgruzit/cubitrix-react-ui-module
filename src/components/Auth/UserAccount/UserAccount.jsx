@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { InfoCircleIcon } from "../../../assets/svgs";
 import { Button } from "../../Button";
 import { HelpCard } from "../../HelpCard";
 import { HelpText } from "../../HelpText";
 import { Input } from "../../Input";
+import { Switches } from "../../Switches";
 import { Visual } from "../../Visual";
 import "./UserAccount.css";
 
@@ -32,7 +34,7 @@ export const UserAccount = ({
     mobile: "",
     date_of_birth: new Date(),
     nationality: "Select Country",
-    avatar: "string",
+    avatar: "",
   });
 
   const [securityFormErrors, setSecurityFormErrors] = useState({});
@@ -134,9 +136,17 @@ export const UserAccount = ({
             onChange={(e) => handleUserUpdate(e.target.value, "email")}
             customStyles={{ width: "100%" }}
           />
+          <HelpText
+            className="margin-top-negative"
+            status={"info"}
+            title={`A verification link will be sent to your email`}
+            color={"#6A6D76"}
+            fontSize={"font-12"}
+            icon={true}
+          />
           <Input
             type={"label-input-phone-number"}
-            label={"your text"}
+            label={"Mobile Number"}
             onChange={(e) => handleUserUpdate(e, "mobile")}
             customStyles={{ width: "100%" }}
           />
@@ -151,13 +161,17 @@ export const UserAccount = ({
             type={"lable-input-select"}
             icon={false}
             selectType={"country"}
+            selectLabel={userData.nationality}
             value={userData.nationality}
             label={"Nationality"}
-            placeholder={"select your nationality"}
             onClick={(e) => handleUserUpdate(e, "nationality")}
             customStyles={{ width: "100%" }}
           />
-          <Input type={"label-input-upload"} customStyles={{ width: "100%" }} />
+          <Input
+            type={"label-input-upload"}
+            customStyles={{ width: "100%" }}
+            onChange={(e) => handleUserUpdate(e, "avatar")}
+          />
           <Button
             element="button"
             label={
@@ -180,100 +194,148 @@ export const UserAccount = ({
               )
             }
             type="btn-primary"
-            size="btn-sm"
+            size="btn-lg"
             customStyles={{
               width: "100%",
+              margin: "0",
+              marginTop: "20px",
               background: personalDataState.saved ? "#9CCC65" : "#3d5afe",
               transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
             }}
             onClick={() => beforePersonalData(userData)}
           />
+          {personalDataState?.error && (
+            <HelpText
+              status={"error"}
+              title={personalDataState?.error}
+              color={"#EF5350"}
+              icon={true}
+            />
+          )}
         </div>
       )}
       {selectedTab === "security" && (
-        <div className="body-wrapper">
-          {hasPasswordSet && (
+        <>
+          <div className="body-wrapper">
+            {hasPasswordSet && (
+              <Input
+                type={"default"}
+                icon={true}
+                inputType={"password"}
+                placeholder={"current password"}
+                label={"Current Password"}
+                value={formData.currentPassword}
+                onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
+                customStyles={{ width: "100%" }}
+              />
+            )}
             <Input
               type={"default"}
               icon={true}
               inputType={"password"}
-              placeholder={"current password"}
-              label={"Current Password"}
-              value={formData.currentPassword}
-              onChange={(e) => handleFormUpdate(e.target.value, "currentPassword")}
+              placeholder={"new password"}
+              label={"New Password"}
+              value={formData.newPassword}
+              onChange={(e) => handleFormUpdate(e.target.value, "newPassword")}
               customStyles={{ width: "100%" }}
             />
-          )}
-          <Input
-            type={"default"}
-            icon={true}
-            inputType={"password"}
-            placeholder={"new password"}
-            label={"New Password"}
-            value={formData.newPassword}
-            onChange={(e) => handleFormUpdate(e.target.value, "newPassword")}
-            customStyles={{ width: "100%" }}
-          />
-          {securityFormErrors.newPassword && (
+            {securityFormErrors.newPassword && (
+              <HelpText
+                className="margin-top-negative"
+                status={"error"}
+                title={securityFormErrors.newPassword}
+                color={"#EF5350"}
+                icon={true}
+              />
+            )}
+            <Input
+              type={"default"}
+              icon={true}
+              inputType={"password"}
+              placeholder={"confirm new password"}
+              label={"Confirm New Password"}
+              value={formData.confirmPassword}
+              onChange={(e) => handleFormUpdate(e.target.value, "confirmPassword")}
+              customStyles={{ width: "100%" }}
+            />
+            {securityFormErrors.confirmPassword && (
+              <HelpText
+                className="margin-top-negative"
+                status={"error"}
+                title={securityFormErrors.confirmPassword}
+                color={"#EF5350"}
+                icon={true}
+              />
+            )}
             <HelpText
-              className="margin-top-negative"
-              status={"error"}
-              title={securityFormErrors.newPassword}
-              color={"#EF5350"}
+              status={"info"}
+              title={`Password should be a minimum of 8 digits and include
+              lower and uppercase letter.`}
+              color={"#6A6D76"}
+              fontSize={"font-12"}
               icon={true}
             />
-          )}
-          <Input
-            type={"default"}
-            icon={true}
-            inputType={"password"}
-            placeholder={"confirm new password"}
-            label={"Confirm New Password"}
-            value={formData.confirmPassword}
-            onChange={(e) => handleFormUpdate(e.target.value, "confirmPassword")}
-            customStyles={{ width: "100%" }}
-          />
-          {securityFormErrors.confirmPassword && (
-            <HelpText
-              className="margin-top-negative"
-              status={"error"}
-              title={securityFormErrors.confirmPassword}
-              color={"#EF5350"}
-              icon={true}
+            <Button
+              element="button"
+              label={
+                securityDataState.loading ? (
+                  "Loading .."
+                ) : (
+                  <span className="save-wrapper">
+                    <svg
+                      className={securityDataState.saved ? "activeSvg" : ""}
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="white"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M15.5832 6C15.2498 5.66667 14.7498 5.66667 14.4165 6L8.1665 12.25L5.58317 9.66667C5.24984 9.33333 4.74984 9.33333 4.4165 9.66667C4.08317 10 4.08317 10.5 4.4165 10.8333L7.58317 14C7.74984 14.1667 7.9165 14.25 8.1665 14.25C8.4165 14.25 8.58317 14.1667 8.74984 14L15.5832 7.16667C15.9165 6.83333 15.9165 6.33333 15.5832 6Z" />
+                    </svg>
+                    Update
+                  </span>
+                )
+              }
+              type="btn-primary"
+              size="btn-lg"
+              customStyles={{
+                width: "100%",
+                margin: 0,
+                background: securityDataState.saved ? "#9CCC65" : "#3d5afe",
+                transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
+              }}
+              onClick={() => beforeSecurityData(formData)}
             />
-          )}
-
-          <Button
-            element="button"
-            label={
-              securityDataState.loading ? (
-                "Loading .."
-              ) : (
-                <span className="save-wrapper">
-                  <svg
-                    className={securityDataState.saved ? "activeSvg" : ""}
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="white"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M15.5832 6C15.2498 5.66667 14.7498 5.66667 14.4165 6L8.1665 12.25L5.58317 9.66667C5.24984 9.33333 4.74984 9.33333 4.4165 9.66667C4.08317 10 4.08317 10.5 4.4165 10.8333L7.58317 14C7.74984 14.1667 7.9165 14.25 8.1665 14.25C8.4165 14.25 8.58317 14.1667 8.74984 14L15.5832 7.16667C15.9165 6.83333 15.9165 6.33333 15.5832 6Z" />
-                  </svg>
-                  Update
-                </span>
-              )
-            }
-            type="btn-primary"
-            size="btn-sm"
-            customStyles={{
-              width: "100%",
-              background: securityDataState.saved ? "#9CCC65" : "#3d5afe",
-              transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
-            }}
-            onClick={() => beforeSecurityData(formData)}
-          />
-        </div>
+            {securityDataState.error && (
+              <HelpText
+                status={"error"}
+                title={securityDataState.error}
+                color={"#EF5350"}
+                icon={true}
+              />
+            )}
+          </div>
+          <span className="border-fulls"></span>
+          <div className="Tfa">
+            <div className="Tfa-title">
+              <h3>Two-Factor Verification</h3>
+              <Switches type={"lg-switches"} size={"size"} />
+            </div>
+            <div className="Tfa-body">
+              <HelpText
+                status={"info"}
+                title={`Two-factor authentication is a method for protection of your account. When
+                it is activated you are required to enter not only your password, but also
+                a special code. You can receive this code in mobile app. Even if third
+                party gets access to your password, they still won't be able to access
+                your account without the 2FA code.`}
+                color={"#6A6D76"}
+                fontSize={"font-12"}
+                icon={true}
+              />
+            </div>
+          </div>
+        </>
       )}
     </>
   );
