@@ -401,6 +401,11 @@ stories.add("AdminPanel", () => {
                    tableFilterData={tableFilterData}
                    tableFilterOutcomingData={tableFilterOutcomingData}
                    setTableFilterOutcomingData={setTableFilterOutcomingData}
+                   paginationCurrent={1}
+                   paginationTotal={20}
+                   paginationEvent={() => {
+                       console.log('hi')
+                   }}
                />
            </div>
        </>

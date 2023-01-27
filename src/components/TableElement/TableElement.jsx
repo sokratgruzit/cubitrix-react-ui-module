@@ -7,7 +7,8 @@ export const TableElement = ({
   totalCount,
   siblingCount = 1,
   currentPage,
-  type
+  type,
+  customStyle
 }) => {
   const paginationRange = usePagination({
     currentPage,
@@ -33,7 +34,7 @@ export const TableElement = ({
 
   if (type === "pagination") {
     element = (
-      <div>
+      <div style={customStyle}>
         <div className="pagination">
           <div className="pagination-inner">
             <div className={`prev ${currentPage === 1 && 'disabled'}`} onClick={onPrevious}>
@@ -54,9 +55,9 @@ export const TableElement = ({
                 />
               </svg>
             </div>
-            {paginationRange.map(pageNumber => {
+            {paginationRange.map((pageNumber, index) => {
               if (pageNumber === DOTS) {
-                return <div>...</div>;
+                return <div key={index}>...</div>;
               }
 
               return (
