@@ -1,10 +1,10 @@
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { HelpText } from "../HelpText";
-import "./TwoFactorVerification.css";
+import "./TwoFactorAuthentication.css";
 import { useState } from "react";
 
-export const TwoFactorVerification = ({
+export const TwoFactorAuthentication = ({
   active,
   onClick,
   qrcode,

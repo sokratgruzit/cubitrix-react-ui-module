@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { TwoFactorVerification } from "../components/TwoFactorVerification";
+import { TwoFactorAuthentication } from "../components/TwoFactorAuthentication";
 import { storiesOf } from "@storybook/react";
 
-const stories = storiesOf("TwoFactorVerification", module);
+const stories = storiesOf("TwoFactorAuthentication", module);
 
-stories.add("TwoFactorVerification", (props) => {
+stories.add("TwoFactorAuthentication", (props) => {
   const [active, setActive] = useState(false);
 
   let closeHandler = () => {
@@ -13,7 +13,7 @@ stories.add("TwoFactorVerification", (props) => {
 
   return (
     <div>
-      <TwoFactorVerification
+      <TwoFactorAuthentication
         onClick={closeHandler}
         confirmAuth={(e) => console.log("next", e)}
         active={active}
