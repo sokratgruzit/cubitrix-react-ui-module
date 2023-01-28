@@ -1,13 +1,13 @@
-import "./WithdrawalPopup.css";
+import "./WithdrawPopup.css";
 import { Popup } from "../Popup";
 
-export const WithdrawalPopup = (props) => {
+export const WithdrawPopup = (props) => {
   let popupElement = null;
 
-  if (props.type === "withdrawalPopup") {
+  if (props.type === "withdrawPopup") {
     popupElement = (
-      <div className="withdrawal-container" style={props.customStyles}>
-        <div className="withdrawal-inner">
+      <div className="withdraw-container" style={props.customStyles}>
+        <div className="withdraw-inner">
           <div>
             <div className="flex jc-sb">
               <div>{props.head}</div>
@@ -18,11 +18,11 @@ export const WithdrawalPopup = (props) => {
               <div>{props.code}</div>
             </div>
           </div>
-          <div className="withdrawal-details">
-            <div className="withdrawal-details-inner">
+          <div className="withdraw-details">
+            <div className="withdraw-details-inner">
               <div className="withdraw-title font-16">{props.title}</div>
-              <div className="withdrawal-wraper">
-                {props.withdrawalData.map((item) => {
+              <div className="withdraw-wraper">
+                {props.withdrawData.map((item) => {
                   return (
                     <div key={item.id} className="popup-item flex jc-sb">
                       <div>{item.name}</div>
