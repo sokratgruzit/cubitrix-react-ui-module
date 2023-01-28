@@ -7,6 +7,7 @@ import {
   Trade,
   Loan,
   Staking,
+  Warning,
 } from "../../assets/svgs";
 import { Button } from "../Button";
 import "./Header.css";
@@ -16,13 +17,13 @@ import { NavLink } from "react-router-dom";
 export const Header = ({
   modules,
   account,
-  location,
   sideBar,
   sideBarOpen,
   handleConnect,
   handleNotifications,
   title,
   logoSvg,
+  verified,
 }) => {
   return (
     <div className="header">
@@ -93,7 +94,11 @@ export const Header = ({
             <Button
               label={
                 <span className="addressWrapper">
-                  <MetaMask className="MetaMask" />
+                  {verified ? (
+                    <MetaMask className="MetaMask" />
+                  ) : (
+                    <Warning className="Warning" />
+                  )}
                   <p className="address">{account}</p>
                 </span>
               }

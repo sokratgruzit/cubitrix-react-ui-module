@@ -45,7 +45,11 @@ export const Dropdown = (props) => {
               </h1>
               {item.list?.map((item, index) => {
                 return (
-                  <div key={index} className="dropdown-item" onClick={() => item.onClick(item.title)}>
+                  <div
+                    key={index}
+                    className="dropdown-item"
+                    onClick={() => item.onClick(item.title)}
+                  >
                     {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                     <span>{item.svg}</span>
                     <div>
@@ -72,8 +76,13 @@ export const Dropdown = (props) => {
         <div
           className="dropdown-item"
           onClick={() => {
+<<<<<<< HEAD
             props.handlerClick(props.defaultOption)
             props.selectHandler('all')
+=======
+            props.handlerClick(props.defaultOption);
+            props.selectHandler("all");
+>>>>>>> ceba4b76a54a45adfdc75f62f325a9971ed16e02
           }}
           key={props.defaultOption}
         >
@@ -81,11 +90,22 @@ export const Dropdown = (props) => {
         </div>
         {props.data?.map((item, index) => {
           return (
+<<<<<<< HEAD
             <div className="dropdown-item" onClick={() => {
               props.handlerClick(item.name)
               props.selectHandler(item.value)
             }}
              key={index}>
+=======
+            <div
+              className="dropdown-item"
+              onClick={() => {
+                props.handlerClick(item.name);
+                props.selectHandler(item.value);
+              }}
+              key={index}
+            >
+>>>>>>> ceba4b76a54a45adfdc75f62f325a9971ed16e02
               {item.name}
             </div>
           );

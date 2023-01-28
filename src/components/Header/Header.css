@@ -89,10 +89,17 @@
   max-width: 130px;
 }
 
+.Warning {
+  display: flex !important;
+  transition: none;
+  margin: 0px !important;
+  transform: none !important;
+}
+
 .MetaMask {
   display: flex !important;
   transition: none;
-  margin: none;
+  margin: 0px !important;
   transform: none !important;
 }
 
