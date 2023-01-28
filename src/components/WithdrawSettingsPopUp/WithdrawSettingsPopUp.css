@@ -9,37 +9,54 @@
     position: fixed;
     overflow-y: scroll;
 }
+
 .withdraw-settings-main-fixed-container .withdraw-settings-main-wrapp {
-    background-color: rgba(255, 255, 255, 0.05);;
+    background-color: rgba(255, 255, 255, 0.05);
+    ;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
     backdrop-filter: blur(42.5px);
-    width: 596px;
+    /* width: 596px; */
 }
+
 .withdraw-settings-main-fixed-container .withdraw-settings-body {
     display: flex;
     flex-direction: column;
     gap: 40px;
     padding: 20px;
 }
+
+.withdraw-settings-main-fixed-container .withdraw-card-body-description {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 .withdraw-settings-main-fixed-container .withdraw-input-wrapp {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
+
 .withdraw-settings-main-fixed-container .input-and-form-definition {
     display: flex;
     gap: 8px;
 }
+
 .withdraw-settings-main-fixed-container .input-and-form-definition p {
     font-size: 12px;
     color: #6A6D76;
 }
+
 .withdraw-settings-main-fixed-container .withdraw-settings-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
+
 .withdraw-settings-main-fixed-container .withdraw-settings-button {
     background-color: #3D5AFE;
     border-radius: 32px;
@@ -49,6 +66,98 @@
     cursor: pointer;
     transition: .6s;
 }
+
+.withdraw-settings-main-fixed-container .withdraw-currencies-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.withdraw-settings-main-fixed-container .withdraw-currencies-list .checkbox-curencies label {
+    color: #6A6D76;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.withdraw-settings-main-fixed-container .withdraw-currencies-list .checkbox-curencies input {
+    background-color: rgba(7, 11, 26, 0.3);
+    border: 1px solid #202431;
+    font-size: 20px;
+    color: red;
+    border-radius: 6px;
+    height: 20px;
+    width: 20px;
+}
+
 .withdraw-settings-main-fixed-container .withdraw-settings-button:hover {
     background-color: #0221d2;
+}
+
+.withdraw-settings-main-fixed-container .not-active {
+    opacity: 0;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(5px);
+}
+
+.withdraw-settings-main-fixed-container .animation {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+}
+
+.animation .withdraw-settings-main-wrapp {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+}
+
+.animation .withdrow-card-header {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+    animation-delay: .1s;
+    transition-delay: .1s;
+}
+
+.animation .withdraw-card-body-description {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+    animation-delay: .2s;
+    transition-delay: .2s;
+}
+
+.animation .withdraw-settings-flex {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+    animation-delay: .3s;
+    transition-delay: .3s;
+}
+
+.animation .withdraw-input-wrapp {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+    animation-delay: .4s;
+    transition-delay: .4s;
+}
+
+.animation .withdraw-currencies-list-container {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+    animation-delay: .5s;
+    transition-delay: .5s;
+}
+
+.animation .withdraw-card-footer,
+.animation .withdraw-settings-button-wrapp {
+    opacity: 1;
+    transition: .6s cubic-bezier(.79, .01, .15, .99);
+    transform: translateY(0);
+    animation-delay: .6s;
+    transition-delay: .6s;
 }

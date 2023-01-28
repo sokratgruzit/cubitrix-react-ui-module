@@ -3,7 +3,7 @@ import { ExtensionCard } from "../components/ExtensionCard/index";
 import coins from "../assets/img/extension-card/coinsImg.png";
 import { useState } from "react";
 
-const stories = storiesOf("ExtensionCard", module);
+const stories = storiesOf("bejosStories", module);
 
 
 stories.add("ExtensionCard", () => {

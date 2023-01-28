@@ -7,7 +7,7 @@ import icon4 from "../assets/img/icon4.png";
 import icon5 from "../assets/img/icon5.png";
 
 
-const stories = storiesOf('InfoBox', module);
+const stories = storiesOf('bejosStories', module);
 
 const cardInfoHeader = {
     title: "Account",

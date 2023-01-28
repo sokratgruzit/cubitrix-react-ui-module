@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import { VerifySaccess } from "../components/verifySuccess/VerifySuccess";
 
-const stories = storiesOf("VerifySaccess", module);
+const stories = storiesOf("bejosStories", module);
 
 stories.add("VerifySaccess", () => {
     

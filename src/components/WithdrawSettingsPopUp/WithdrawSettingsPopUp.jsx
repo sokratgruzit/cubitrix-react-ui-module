@@ -3,25 +3,26 @@ import { Visual } from "../Visual";
 import { Switches } from "../Switches";
 import { Input } from "../Input";
 
-export const WithdrawSettingsPopUp = ({ cardBody }) => {
-
-    const currrencies = ["Binance coin", "Bitcoin", "USDT"]
-
+export const WithdrawSettingsPopUp = ({ cardBody, active, customStyle }) => {
     return (
-        <div className="withdraw-settings-main-fixed-container">
-            <div className={`withdraw-settings-main-wrapp`} >
-                <Visual
-                    label={cardBody.header.h}
-                    element={"popup-header"}
-                    customStyles={{ width: "100%" }}
-                />
+        <div className={`withdraw-settings-main-fixed-container ${active === !true ? "animation" : "not-active"}`}>
+            <div className={`withdraw-settings-main-wrapp not-active`} style={customStyle}>
+                <div className="withdrow-card-header not-active">
+                    <Visual
+                        label={cardBody.header.h}
+                        element={"popup-header"}
+                        customStyles={{ width: "100%" }}
+                    />
+                </div>
                 <div className="withdraw-settings-body">
-                    <p>{cardBody.text}</p>
-                    <div className="withdraw-settings-flex">
-                        <p>{cardBody.switches}</p>
-                        <Switches type={"sm-switches"} size={"size"} />
+                    <div className="withdraw-card-body-description not-active">
+                        <p>{cardBody.text}</p>
+                        <div className="withdraw-settings-flex">
+                            <p>{cardBody.switches}</p>
+                            <Switches type={"sm-switches"} size={"size"} />
+                        </div>
                     </div>
-                    <div className="withdraw-settings-flex">
+                    <div className="withdraw-settings-flex not-active">
                         <div className="withdraw-input-wrapp">
                             <Input
                                 type={"default"}
@@ -57,7 +58,7 @@ export const WithdrawSettingsPopUp = ({ cardBody }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="withdraw-input-wrapp">
+                    <div className="withdraw-input-wrapp not-active">
                         <p>{cardBody.inputs.inputDropDownLabel}</p>
                         <Input
                             type={"lable-input-select"}
@@ -77,12 +78,22 @@ export const WithdrawSettingsPopUp = ({ cardBody }) => {
                             <p>{cardBody.definitions.definition3}</p>
                         </div>
                     </div>
-                    <div>
+                    <div className="not-active withdraw-currencies-list-container">
                         <h2>Withdraw With</h2>
-                        <div>
+                        <div className="withdraw-currencies-list">
+                            {cardBody.currencies.map((item, index) => {
+                                return (
+                                    <div className="checkbox-curencies" key={index}>
+                                        <label for={index}>
+                                            <input type="checkbox" id={index} defaultChecked="checked" />
+                                            {item}
+                                        </label>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
-                    <div className="withdraw-input-wrapp">
+                    <div className="withdraw-input-wrapp not-active">
                         <Input
                             type={"default"}
                             // value={value}
@@ -99,7 +110,7 @@ export const WithdrawSettingsPopUp = ({ cardBody }) => {
                             <p>{cardBody.definitions.definition4}</p>
                         </div>
                     </div>
-                    <div>
+                    <div className="not-active withdraw-card-footer">
                         <div className="withdraw-settings-flex">
                             <p>{cardBody.switches}</p>
                             <Switches type={"sm-switches"} size={"size"} />
@@ -109,7 +120,9 @@ export const WithdrawSettingsPopUp = ({ cardBody }) => {
                             <p>{cardBody.definitions.definition5}</p>
                         </div>
                     </div>
-                    <div className="withdraw-settings-button">{cardBody.button}</div>
+                    <div className="withdraw-settings-button-wrapp not-active">
+                        <div className="withdraw-settings-button">{cardBody.button}</div>
+                    </div>
                 </div>
             </div>
         </div>
