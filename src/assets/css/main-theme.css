@@ -104,6 +104,10 @@ button {
   font-size: 16px;
   line-height: 150%;
 }
+.font-20{
+    font-size: 20px;
+    line-height: 130%;
+}
 .font-regular {
   font-family: "UberMove-Regular";
 }

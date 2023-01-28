@@ -220,6 +220,80 @@ stories.add("Dropdown", (props) => {
     }, {
       name: 'Hash'
   }]
+  let simpleData = [
+    {
+      label: 'Tranx Type',
+      defaultOption: 'Bonus',
+      options: [
+        {
+          option: 'Bonus'
+        },
+        {
+          option: 'Gift'
+        },
+        {
+          option: 'Trade'
+        }
+      ]
+    },
+    {
+      label: 'Tranx Date',
+      defaultData: '',
+      options: []
+    },
+    {
+      label: 'Token Added To',
+      defaultOption: '74:Mariam',
+      options: [
+        {
+          option: 'Luna'
+        },
+        {
+          option: 'Alfa'
+        },
+        {
+          option: 'Beta'
+        },
+        {
+          option: '74:Mariam'
+        }
+      ]
+    },
+    {
+      label: 'Payment Gateway',
+      defaultData: 'Manual',
+      options: [
+        {
+          option: 'Auto'
+        },
+        {
+          option: 'Manual'
+        }
+      ]
+    },
+    {
+      label: 'Payment Amount',
+      defaultData: 'ETH',
+      option: [
+        {
+          option: 'BTC',
+        },
+        {
+          option: 'ETH'
+        }
+      ]
+    },
+    {
+      label: 'Payment Address',
+      defaultData: '',
+      option: []
+    },
+    {
+      label: 'Number of Token',
+      defaultData: '',
+      option: []
+    }
+  ]
 
   return (
     <div>
@@ -239,6 +313,10 @@ stories.add("Dropdown", (props) => {
         type={"country"}
         countryData={countryData}
         dropdownCountry={"dropdown-country"}
+      />
+      <Dropdown
+        type={'simple-drowdown'}
+        data={''}
       />
     </div>
   );

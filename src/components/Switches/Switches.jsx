@@ -1,12 +1,12 @@
 import "./Switches.css";
 
-export const Switches = (props) => {
-    return (
-        <div className={`form-switch ${props.size} ${props.type}`}>
-            <input type="checkbox" value="false" />
-            <div className="check">
-                <i></i>
-            </div>
-        </div>
-    )
+export const Switches = ({ size, type, value, onChange }) => {
+  return (
+    <div className={`form-switch ${size} ${type}`}>
+      <input type="checkbox" checked={value} onChange={onChange} />
+      <div className="check">
+        <i></i>
+      </div>
+    </div>
+  );
 };

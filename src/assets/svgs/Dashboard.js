@@ -1,5 +1,3 @@
-import React from "react";
-
 const Dashboard = ({ className, ...props }) => {
   return (
     <svg

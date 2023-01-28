@@ -1,99 +1,92 @@
 import './InfoBox.css';
-import { Table } from "../../components/Table";
-import { useState } from "react";
 
-export const InfoBox = (props) => {
-
-    const [show, setSow] = useState(true);
+export const InfoBox = ({ type, cardBody, active, customStyle, header,cardBtn, img }) => {
 
     return (
-        <>
-            <div style={props.customStyle} className={`card ${props.type} ${show ? props.active : ""}`}>
-                {props.type === "available" ? (
-                    <div className={`card-header card-header-active active`}>
-                        <h1>{props.header.title}</h1>
-                        <div>
-                            <div>{props.header.lables.l1}</div>
-                            <div>{props.header.lables.l2}</div>
-                        </div>
+        <div style={customStyle} className={`card ${type} ${active === true ? "animation" : ""}`}>
+            {type === "available" ? (
+                <div className={`card-header card-header-active active`}>
+                    <h1>{header.title}</h1>
+                    <div>
+                        <div>{header.lables.l1}</div>
+                        <div>{header.lables.l2}</div>
                     </div>
-                ) : props.type === "unavailable" ? (
-                    <h1 className={`card-header card-header-active active`}>{props.header.title}</h1>
-                ) : props.type === "connect-wallet" ? (
-                    <div className={`card-header-active active`}>
-                        <img src={props.img} style={{ height: "75px", width: "104px" }} />
+                </div>
+            ) : type === "unavailable" ? (
+                <h1 className={`card-header card-header-active active`}>{header.title}</h1>
+            ) : type === "connect-wallet" ? (
+                <div className={`card-header-active active`}>
+                    <img src={img} style={{ height: "75px", width: "104px" }} />
+                </div>
+            ) : type === "complete" ? (
+                <div className={`card-body`}>
+                    <p className={`card-header-active pharagrap-color active`}>{cardBody.p}</p>
+                    <div className={`card-body-active active`}>
+                        <div className={`complete-btn`}>{cardBody.btn}</div>
                     </div>
-                ) : props.type === "complete" ? (
-                    <div className={`card-body`}>
-                        <p className={`card-header-active pharagrap-color active`}>Complete the onboarding flow to start trading on COMPLEND</p>
-                        <div className={`card-body-active active`}>
-                            <div className={`complate-btn`}>Complete Account</div>
-                        </div>
+                </div>
+            ) : type === "verification" ? (
+                <div className='card-body'>
+                    <img className='card-header-active active' src={cardBody.img} />
+                    <p className='card-body-active active'>{cardBody.p}</p>
+                </div>
+            ) : type === "question" ? (
+                <div className='card-body'>
+                    <p className='active card-header-active pharagrap-color'>{cardBody.quiestion}</p>
+                    <div className='display-flex card-body-active active'>
+                        <div className='complete-btn'>{cardBody.no}</div>
+                        <div className='complete-btn'>{cardBody.yes}</div>
                     </div>
-                ) : props.type === "verification" ? (
-                    <div className='card-body'>
-                        <img className='card-header-active active' src={props.cardBody.img} />
-                        <p className='card-body-active active'>{props.cardBody.p}</p>
-                    </div>
-                ) : props.type === "question" ? (
-                    <div className='card-body'>
-                        <p className='active card-header-active pharagrap-color'>{props.cardBody.quiestion}</p>
-                        <div className='display-flex card-body-active active'>
-                            <div className='complate-btn'>{props.cardBody.no}</div>
-                            <div className='complate-btn'>{props.cardBody.yes}</div>
-                        </div>
-                    </div>
-                ) : props.type === "reward-box" ? (
-                    props.cardBody.map((item) => {
-                        return (
-                            <div className={`card-body card-body-active active`}>
-                                <div className='display-flex'>
-                                    <div className={`card-header-active active`}>
-                                        <img src={item.icon} alt='#' />
-                                    </div>
-                                    <div className={`list-group-item font-16 card-body-active active`}>{item.title}</div>
+                </div>
+            ) : type === "reward-box" ? (
+                cardBody.map((item, index) => {
+                    return (
+                        <div className={`card-body card-body-active active`} key={index}>
+                            <div className='display-flex'>
+                                <div className={`card-header-active active`}>
+                                    <img src={item.icon} alt='#' />
                                 </div>
-                                <p className={`list-group-item font-16 card-footer-active active`}>{item.amount}</p>
+                                <div className={`list-group-item font-16 card-body-active active`}>{item.title}</div>
                             </div>
-                        )
-                    })
-                ) : ""
-                }
-                {props.type === "available" ? (
-                    props.cardBody.map((item) => {
-                        return (
-                            <div className={`card-body card-body-active active`}>
+                            <p className={`list-group-item font-16 card-footer-active active`}>{item.amount}</p>
+                        </div>
+                    )
+                })
+            ) : ""
+            }
+            {type === "available" ? (
+                cardBody.map((item, index) => {
+                    return (
+                        <div className={`card-body card-body-active active`} key={index}>
+                            <p className='list-group-item'>{item.title}</p>
+                            <p className='list-group-item'>{item.value}</p>
+                        </div>
+                    )
+                })
+            ) : type === "unavailable" ? (
+                cardBody.map((item, index) => {
+                    return (
+                        <div className={`card-body card-body-active active`} key={index}>
+                            <div className='card-unavilable-status'>
                                 <p className='list-group-item'>{item.title}</p>
-                                <p className='list-group-item'>{item.value}</p>
+                                <div style={{ padding: item.taker === "" ? "0" : "1px 6px" }}>{item.taker}</div>
                             </div>
-                        )
-                    })
-                ) : props.type === "unavailable" ? (
-                    props.cardBody.map((item) => {
-                        return (
-                            <div className={`card-body card-body-active active`}>
-                                <div className='card-unavilable-status'>
-                                    <p className='list-group-item'>{item.title}</p>
-                                    <div style={{ padding: item.taker === "" ? "0" : "1px 6px" }}>{item.taker}</div>
-                                </div>
-                                <p className='list-group-item'>{item.value}</p>
-                            </div>
-                        )
-                    })
-                ) : props.type === "connect-wallet" ? (
-                    <div className={`connec-tWallet-Body`}>
-                        <p className={`card-body-active active`}>Connect your Ethereum wallet to deposit funds & start trading.</p>
-                        <div className={`card-footer-active active`}>
-                            <div className={`connect-wallet-btn`}>Connect Wallet</div>
+                            <p className='list-group-item'>{item.value}</p>
                         </div>
+                    )
+                })
+            ) : type === "connect-wallet" ? (
+                <div className={`connect-wallet-body`}>
+                    <p className={`card-body-active active`}>{cardBody.p}</p>
+                    <div className={`card-footer-active active`}>
+                        <div className={`connect-wallet-btn`}>{cardBody.btn}</div>
                     </div>
-                ) : ""
-                }
-                {props.type === "unavailable" ? (
-                    <div className={`unavailable-button card-footer-active active`}>Unavailable</div>
-                ) : ""}
-            </div>
-            <button style={{ backgroundColor: "red", height: "50px", width: "100px" }} onClick={() => { setSow(!show) }}>btn</button>
-        </>
+                </div>
+            ) : ""
+            }
+            {type === "unavailable" ? (
+                <div className={`unavailable-button card-footer-active active`}>{cardBtn.btn}</div>
+            ) : ""}
+        </div>
     )
 }

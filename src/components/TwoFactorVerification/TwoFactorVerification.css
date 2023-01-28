@@ -6,19 +6,19 @@
     border-radius: 8px;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.two-factor-container .header {
+.two-factor-container .tfa-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 22px 20px;
 }
-.two-factor-container .header svg path{
+.two-factor-container .tfa-header svg path{
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.two-factor-container .header svg {
+.two-factor-container .tfa-header svg {
     cursor: pointer;
 }
-.two-factor-container .header svg:hover path   {
+.two-factor-container .tfa-header svg:hover path   {
     stroke: #3D5AFE;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
@@ -86,11 +86,11 @@
     display: none;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.two-factor-container .header svg path{
+.two-factor-container .tfa-header svg path{
     cursor: pointer;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.two-factor-container .header svg:hover path   {
+.two-factor-container .tfa-header svg:hover path   {
     cursor: pointer;
     stroke: #3D5AFE;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);

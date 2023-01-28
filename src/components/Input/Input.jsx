@@ -4,21 +4,22 @@ import { Dropdown } from "../Dropdown";
 import { Switches } from "../Switches";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-// import testImg from '../../assets/img/country/australia.png';
 import "./Input.css";
-import { func } from "prop-types";
+
+import "./Input.css";
+import { countriesData } from "./helper";
 
 export const Input = (props) => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(props.value);
   const [active, setActive] = useState(false);
   const [cover, setCover] = useState(false);
-  const [close, setClose] = useState(true);
   const [value, setValue] = useState(props.selectLabel);
-  const [numb, setNumb] = useState("+00");
-  const [flag, setFlag] = useState("");
-  const [title, setTitle] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [countryData, setCountryData] = useState({
+    code: "+1",
+    flag: "🇺🇸",
+    coutnry: "United States",
+    number: "",
+  });
 
   const activeHandler = () => {
     if (!active) {
@@ -38,19 +39,19 @@ export const Input = (props) => {
 
   const deleteHandler = () => {
     setFile(null);
-    setClose(true);
+    props.onChange("");
   };
   function handlerClick(i) {
-    console.log(i, "item");
     setValue(i);
-    setNumb(i.numbering);
-    setFlag(i.image);
-    setTitle(i.title);
   }
   function handleChange(e) {
-    // console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
-    setClose(false);
+    props.onChange(e.target.files[0]);
+  }
+  function handleCountrySelect(data) {
+    setActive(false);
+    props.onChange(data.code + countryData.number);
+    setCountryData((prev) => ({ ...prev, ...data }));
   }
 
   let element = null;
@@ -192,13 +193,14 @@ export const Input = (props) => {
       </div>
     );
   }
+
   if (props.type === "lable-input-select") {
     element = (
       <div style={props.customStyles} className="select-group">
-        <p className="input-group-title font-12">{props.value}</p>
+        <p className="input-group-title font-12">{props.label}</p>
         <div onChange={props.onChange} className="form-select-sc">
           <div onClick={activeHandler} className="form-select-item form-control">
-            <div>{value}</div>
+            <div className="flag-wrapper">{value}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="20"
@@ -221,8 +223,12 @@ export const Input = (props) => {
             {props.selectType === "country" ? (
               <Dropdown
                 type={"country"}
-                handlerClick={handlerClick}
-                countryData={props.countryData}
+                handlerClick={(data) => {
+                  setActive(false);
+                  setValue(data.country);
+                  props.onClick(data);
+                }}
+                countryData={countriesData}
                 dropdownCountry={"dropdown-country"}
                 active={props.active}
                 customStyles={{ width: "inherit" }}
@@ -261,9 +267,7 @@ export const Input = (props) => {
             }}
             className="select-prefix"
           >
-            <div className="flag">
-              <img src={flag} />
-            </div>
+            <div className="flag">{countryData.flag}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="8"
@@ -282,21 +286,32 @@ export const Input = (props) => {
               />
             </svg>
           </div>
-          <span className="select-body">{numb}</span>
+          <span className="select-body">{countryData.code}</span>
           <div className="select-sufix">
-            <input onChange={props.onChange} className="number-control" type="number" />
+            <input
+              onChange={(e) => {
+                const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
+                props.onChange(countryData.code + onlyNumbers);
+                setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
+              }}
+              value={countryData.number}
+              className="number-control"
+              type="text"
+            />
           </div>
         </div>
         <div className={`${"hidden"} ${active ? "visible" : ""}`}>
           <Dropdown
             type={"country"}
-            handlerClick={handlerClick}
-            countryData={props.countryData}
+            handlerClick={handleCountrySelect}
+            countryData={countriesData}
             dropdownCountry={"dropdown-country"}
             active={props.active}
             customStyles={{ width: "inherit" }}
+            countryCode={true}
           />
         </div>
+        <HelpText />
       </div>
     );
   }
@@ -311,7 +326,7 @@ export const Input = (props) => {
         </div>
         <div className="upload-group-inner">
           <div className="upload-group-placeholder">
-            {close ? (
+            {!file ? (
               <svg
                 width="24"
                 height="24"
@@ -332,10 +347,16 @@ export const Input = (props) => {
                 </defs>
               </svg>
             ) : (
-              <img className={"avatar-sm"} src={file} />
+              <img
+                className={"avatar-sm"}
+                src={file}
+                onError={() => {
+                  setFile(null);
+                }}
+              />
             )}
           </div>
-          <div onChange={props.onChange} className="upload-group-text">
+          <div className="upload-group-text">
             <p>Upload a profile picture</p>
             <label className="upload-btn" htmlFor={"upload_img"}>
               Broswe
@@ -434,8 +455,8 @@ export const Input = (props) => {
         <p className="font-12">{props.label}</p>
         <DatePicker
           className="form-control"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
+          selected={props.value}
+          onChange={(date) => props.onChange(date)}
         />
       </div>
     );
