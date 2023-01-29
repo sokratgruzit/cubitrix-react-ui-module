@@ -10,17 +10,17 @@ import {TableElement} from "../TableElement";
 export const AdminPanel = props => {
     return (
         <div className={`admin-content`}>
+
             <Visual
                 element={'table-header'}
                 label={props.pageLabel}
                 fontSize={'font-20'}
                 customStyles={{}}
             />
-            <FilterBox
+            <FilterBoxs
                 tableFilterData={props.tableFilterData}
-                tableFilterOutcomingData={props.tableFilterOutcomingData}
                 setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-                header={props.header}
+                tableHeader={props.tableHeader}
                 customStyles={{margin:'20px 0px'}}
             />
             <Table

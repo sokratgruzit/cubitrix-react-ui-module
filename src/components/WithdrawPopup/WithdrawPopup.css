@@ -1,4 +1,4 @@
-.withdrawal-container {
+.withdraw-container {
   background: #141726;
   border: 2px solid #202431;
   border-radius: 8px;
@@ -19,7 +19,7 @@
 .jc-sb {
   justify-content: space-between;
 }
-.withdrawal-details {
+.withdraw-details {
   background: #0e1221;
   border-radius: 18px;
   margin-top: 40px;
@@ -37,6 +37,6 @@
 .withdraw-title {
   padding: 20px;
 }
-.withdrawal-wraper > div:nth-child(odd) {
+.withdraw-wraper > div:nth-child(odd) {
   background-color: #070b1a !important;
 }

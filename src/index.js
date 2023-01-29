@@ -5,7 +5,7 @@ export * from "./components/InfoBox";
 export * from "./components/Dropdown";
 export * from "./components/MarketCard";
 export * from "./components/Switches";
-export * from "./components/TwoFactorVerification";
+export * from "./components/TwoFactorAuthentication";
 export * from "./components/Visual";
 export * from "./components/AdminPanel";
 export * from "./components/AdminHeader";

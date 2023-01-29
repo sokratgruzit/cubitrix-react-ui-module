@@ -7,7 +7,6 @@
     justify-content: center;
     padding: 20px;
     position: relative;
-    border: 1px solid red;
     opacity: 0;
     transform: translateY(20px);
     transition: .6s;
@@ -91,11 +90,11 @@
     gap: 5px;
     padding: 16px 40px;
 }
-.connect-wallet .connec-tWallet-Body {
+.connect-wallet .connect-wallet-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 10px;
 }
 .connect-wallet .connect-wallet-btn {
     cursor: pointer;
@@ -108,26 +107,26 @@
 .connect-wallet .connect-wallet-btn:hover {
     border: 1px solid #3D5AFE;
 }
-.connect-wallet .connec-tWallet-Body div {
+.connect-wallet .connect-wallet-body div {
     color: #3D5AFE;
     font-size: 14px;
 }
-.complete .complate-btn, .question .complate-btn {
+.complete .complete-btn, .question .complete-btn {
     background-color: #3D5AFE;
     padding: 12px 30px;
     border-radius: 32px;
     transition: .6s;
 }
-.question {
+.card.question {
     padding: 20px 47.5px;
 }
-.question .complate-btn:hover {
+.question .complete-btn:hover {
     cursor: pointer;
     color: #3D5AFE;
     transition: .6s;
     background-color: white;
 }
-.complete .complate-btn:hover {
+.complete .complete-btn:hover {
     cursor: pointer;
     color: #3D5AFE;
     transition: .6s;

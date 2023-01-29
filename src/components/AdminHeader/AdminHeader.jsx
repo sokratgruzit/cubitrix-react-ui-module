@@ -15,10 +15,6 @@ export const AdminHeader = props => {
         }
     };
 
-    const handleDropdownClick = () => {
-        console.log('logout');
-    };
-
     return (
         <div className={`admin-header`}>
             <div className={`admin-logo-container`}>
@@ -38,15 +34,10 @@ export const AdminHeader = props => {
                     </svg>
                 <div className={`${'admin-hidden'} ${active ? 'admin-select' : ''}`}>
                     <Dropdown
+                        data={props.authsDropdown}
                         type={"dropdown"}
-                        handlerClick={handleDropdownClick}
-                        data={[
-                            {
-                                id: 1,
-                                title: "logout",
-                            },
-                            ]}
-                        active={props.active}
+                        dropdown={"dropdown"}
+                        active={active}
                         customStyles={{width: '100%'}}
                     />
                 </div>

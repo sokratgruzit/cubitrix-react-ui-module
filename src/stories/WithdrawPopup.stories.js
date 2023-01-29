@@ -1,10 +1,8 @@
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
-import { Popup } from "../components/Popup";
-import { Visual } from "../components/Visual";
-import { WithdrawalPopup } from "../components/WithdrawalPopup";
+import { WithdrawPopup } from "../components/WithdrawPopup";
 
-const stories = storiesOf("WithdrawalPopup", module);
+const stories = storiesOf("WithdrawPopup", module);
 
 let data = [
   {
@@ -31,17 +29,17 @@ let data = [
   },
 ];
 
-stories.add("WithdrawalPopup", () => {
+stories.add("WithdrawPopup", () => {
   return (
     <div className="popup-wraper">
-      <WithdrawalPopup
+      <WithdrawPopup
         head={"#6379325951635a33347837434e334e6b345a6e3052513d3d"}
-        label={"Withdrawal"}
+        label={"Withdraw"}
         wallet={"#Withdraw Wallet (BSC)"}
         code={"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"}
         title={"Withdraw Details"}
-        type={"withdrawalPopup"}
-        withdrawalData={data}
+        type={"withdrawPopup"}
+        withdrawData={data}
       />
     </div>
   );

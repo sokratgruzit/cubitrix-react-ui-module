@@ -1,0 +1,94 @@
+.verify-card {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    background: url("../../assets/img/verify-card/background.png");
+    background-color: #070B1A;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.verify-card .verify-card-header {
+    padding: 40px;
+    letter-spacing: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.verify-card .verify-card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    align-items: center;
+    gap: 50px;
+}
+
+.verify-card .verify-card-content-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.verify-card .verify-card-content-text p {
+    color: #CDCED1;
+    width: 80%;
+    text-align: center;
+}
+
+.verify-card .set-up-button {
+    padding: 16px 30px;
+    background-color: #3D5AFE;
+    border-radius: 32px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    transition: .6s;
+    cursor: pointer;
+}
+
+.verify-card .set-up-button:hover {
+    color: #3D5AFE;
+    background-color: white;
+}
+
+.verify-card.animation {
+    opacity: 1;
+}
+
+.verify-card  .not-active {
+    opacity: 0;
+    transition: .6s cubic-bezier(.79,.01,.15,.99);
+    transform: translateY(5px);
+}
+
+.animation .not-active-one {
+    animation-delay: .1s;
+    transition-delay: .1s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animation .not-active-two {
+    animation-delay: .2s;
+    transition-delay: .2s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animation .not-active-three {
+    opacity: 1;
+    animation-delay: .3s;
+    transition-delay: .3s;
+    transform: translateY(0);
+}

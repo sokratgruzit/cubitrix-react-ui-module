@@ -20,7 +20,7 @@ stories.add("Header", () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_317_1822)">
+            <g clipPath="url(#clip0_317_1822)">
               <path
                 d="M20.0059 8.51846e-05C19.9982 -0.00230704 19.9901 -0.00230704 19.9825 8.51844e-05C13.9025 3.50807 8.8543 8.55624 5.34625 14.6362C1.83821 20.7161 -0.00578025 27.6131 1.36113e-05 34.6325V34.6325C6.07723 38.1412 12.971 39.9883 19.9883 39.9883C27.0057 39.9883 33.8994 38.1412 39.9766 34.6325V34.6325C39.9809 27.6148 38.1375 20.7196 34.6318 14.6403C31.1261 8.56095 26.0818 3.51167 20.0059 8.51844e-05V8.51846e-05ZM27.9988 27.8587C25.5687 29.264 22.8111 30.0039 20.0039 30.0039C17.1967 30.0039 14.4391 29.264 12.009 27.8587V27.8587C12.0081 25.0544 12.7456 22.2994 14.1473 19.8706C15.5491 17.4419 17.5656 15.425 19.9942 14.0229V14.0229C22.4244 15.4237 24.4434 17.4392 25.8485 19.8671C27.2535 22.2949 27.9951 25.0497 27.9988 27.8548V27.8587Z"
                 fill="#3D5AFE"
@@ -62,14 +62,14 @@ stories.add("Header", () => {
                 y2="12.5075"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#47C9F3" />
-                <stop offset="0.05" stop-color="#45B0F5" />
-                <stop offset="0.12" stop-color="#4295F8" />
-                <stop offset="0.2" stop-color="#407FFA" />
-                <stop offset="0.29" stop-color="#3F6EFC" />
-                <stop offset="0.4" stop-color="#3E63FD" />
-                <stop offset="0.56" stop-color="#3D5CFE" />
-                <stop offset="1" stop-color="#3D5AFE" />
+                <stop stopColor="#47C9F3" />
+                <stop offset="0.05" stopColor="#45B0F5" />
+                <stop offset="0.12" stopColor="#4295F8" />
+                <stop offset="0.2" stopColor="#407FFA" />
+                <stop offset="0.29" stopColor="#3F6EFC" />
+                <stop offset="0.4" stopColor="#3E63FD" />
+                <stop offset="0.56" stopColor="#3D5CFE" />
+                <stop offset="1" stopColor="#3D5AFE" />
               </linearGradient>
               <linearGradient
                 id="paint1_linear_317_1822"
@@ -79,8 +79,8 @@ stories.add("Header", () => {
                 y2="27.0951"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#47C9F3" stop-opacity="0" />
-                <stop offset="1" stop-color="#47C9F3" />
+                <stop stopColor="#47C9F3" stopOpacity="0" />
+                <stop offset="1" stopColor="#47C9F3" />
               </linearGradient>
               <linearGradient
                 id="paint2_linear_317_1822"
@@ -90,14 +90,14 @@ stories.add("Header", () => {
                 y2="13.6878"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#47C9F3" />
-                <stop offset="0.05" stop-color="#45B0F5" />
-                <stop offset="0.12" stop-color="#4295F8" />
-                <stop offset="0.2" stop-color="#407FFA" />
-                <stop offset="0.29" stop-color="#3F6EFC" />
-                <stop offset="0.4" stop-color="#3E63FD" />
-                <stop offset="0.56" stop-color="#3D5CFE" />
-                <stop offset="1" stop-color="#3D5AFE" />
+                <stop stopColor="#47C9F3" />
+                <stop offset="0.05" stopColor="#45B0F5" />
+                <stop offset="0.12" stopColor="#4295F8" />
+                <stop offset="0.2" stopColor="#407FFA" />
+                <stop offset="0.29" stopColor="#3F6EFC" />
+                <stop offset="0.4" stopColor="#3E63FD" />
+                <stop offset="0.56" stopColor="#3D5CFE" />
+                <stop offset="1" stopColor="#3D5AFE" />
               </linearGradient>
               <linearGradient
                 id="paint3_linear_317_1822"
@@ -107,8 +107,8 @@ stories.add("Header", () => {
                 y2="26.6471"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#47C9F3" stop-opacity="0" />
-                <stop offset="1" stop-color="#47C9F3" />
+                <stop stopColor="#47C9F3" stopOpacity="0" />
+                <stop offset="1" stopColor="#47C9F3" />
               </linearGradient>
               <linearGradient
                 id="paint4_linear_317_1822"
@@ -118,14 +118,14 @@ stories.add("Header", () => {
                 y2="42.7656"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#47C9F3" />
-                <stop offset="0.05" stop-color="#45B0F5" />
-                <stop offset="0.12" stop-color="#4295F8" />
-                <stop offset="0.2" stop-color="#407FFA" />
-                <stop offset="0.29" stop-color="#3F6EFC" />
-                <stop offset="0.4" stop-color="#3E63FD" />
-                <stop offset="0.56" stop-color="#3D5CFE" />
-                <stop offset="1" stop-color="#3D5AFE" />
+                <stop stopColor="#47C9F3" />
+                <stop offset="0.05" stopColor="#45B0F5" />
+                <stop offset="0.12" stopColor="#4295F8" />
+                <stop offset="0.2" stopColor="#407FFA" />
+                <stop offset="0.29" stopColor="#3F6EFC" />
+                <stop offset="0.4" stopColor="#3E63FD" />
+                <stop offset="0.56" stopColor="#3D5CFE" />
+                <stop offset="1" stopColor="#3D5AFE" />
               </linearGradient>
               <linearGradient
                 id="paint5_linear_317_1822"
@@ -135,8 +135,8 @@ stories.add("Header", () => {
                 y2="16.3483"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stop-color="#47C9F3" stop-opacity="0" />
-                <stop offset="1" stop-color="#47C9F3" />
+                <stop stopColor="#47C9F3" stopOpacity="0" />
+                <stop offset="1" stopColor="#47C9F3" />
               </linearGradient>
               <clipPath id="clip0_317_1822">
                 <rect width="40" height="40" fill="white" />
@@ -144,8 +144,8 @@ stories.add("Header", () => {
             </defs>
           </svg>
         }
+        verified={false}
       />
-      shit
     </div>
   );
 });

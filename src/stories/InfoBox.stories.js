@@ -1,5 +1,4 @@
 import { storiesOf } from "@storybook/react";
-import { title } from "process";
 import { InfoBox } from '../components/InfoBox/index';
 import img from "../assets/img/icon.png";
 import icon2 from "../assets/img/icon2.png";
@@ -9,6 +8,7 @@ import icon5 from "../assets/img/icon5.png";
 
 
 const stories = storiesOf('InfoBox', module);
+
 const cardInfoHeader = {
     title: "Account",
     lables: {
@@ -57,11 +57,17 @@ const unavilableCardBody = [
         taker: ""
     }
 ];
-
+const unavilableBtn = {
+    btn: "Unavailable"
+}
 const connectWallet = {
     icon: img,
     p: "Connect your Ethereum wallet to deposit funds & start trading.",
     btn: "Connect Wallet",
+}
+const complete = {
+    p: "Complete the onboarding flow to start trading on COMPLEND",
+    btn: "Complete Account"
 }
 
 const rewardBox = [
@@ -94,44 +100,46 @@ const question = {
 
 stories.add('InfoBox', () => {
     return (
-        <div>
+        <>
             <InfoBox
                 type='available'
-                active="animation"
+                active={true}
                 header={cardInfoHeader}
                 cardBody={cardInfoBody}
             />
             <InfoBox
                 type='unavailable'
-                active="animation"
+                active={true}
                 header={unavilableHeader}
                 cardBody={unavilableCardBody}
+                cardBtn={unavilableBtn}
             />
             <InfoBox
                 type='connect-wallet'
-                active="animation"
-                content={connectWallet}
+                active={true}
+                cardBody={connectWallet}
                 img={connectWallet.icon}
             />
             <InfoBox
                 type='complete'
-                active="animation"
+                active={true}
+                cardBody={complete}
             />
             <InfoBox
                 type="reward-box"
-                active="animation"
+                active={true}
                 cardBody={rewardBox}
             />
             <InfoBox
                 type='verification'
-                active="animation"
+                active={true}
                 cardBody={verification}
             />
             <InfoBox
                 type='question'
-                active="animation"
+                active={true}
                 cardBody={question}
             />
-        </div>
+        </>
     )
 })

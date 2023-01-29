@@ -19,6 +19,9 @@ export const UserAccount = ({
   securityDataState,
   resendEmail,
   hasPasswordSet,
+  imgValue,
+  twoFactorAuth,
+  handleTwoFactorAuth,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -34,7 +37,7 @@ export const UserAccount = ({
     mobile: "",
     date_of_birth: new Date(),
     nationality: "Select Country",
-    avatar: "",
+    avatar: imgValue,
   });
 
   const [securityFormErrors, setSecurityFormErrors] = useState({});
@@ -67,8 +70,10 @@ export const UserAccount = ({
       newPassword: false,
       matchPassword: false,
     };
-    if (formData.newPassword.length > 0 && formData.newPassword.length <= 4)
-      formErrors.newPassword = "Password too short";
+    const passwordValidation = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
+    if (!passwordValidation.test(formData.newPassword) && formData.newPassword.length > 0)
+      formErrors.newPassword =
+        "password must contain a minimum of 8 characters, uppercase and special character";
     if (formData.newPassword !== formData.confirmPassword && formData.confirmPassword)
       formErrors.confirmPassword = "Passwords do not match";
     setSecurityFormErrors(formErrors);
@@ -171,6 +176,7 @@ export const UserAccount = ({
             type={"label-input-upload"}
             customStyles={{ width: "100%" }}
             onChange={(e) => handleUserUpdate(e, "avatar")}
+            value={imgValue}
           />
           <Button
             element="button"
@@ -319,7 +325,12 @@ export const UserAccount = ({
           <div className="Tfa">
             <div className="Tfa-title">
               <h3>Two-Factor Verification</h3>
-              <Switches type={"lg-switches"} size={"size"} />
+              <Switches
+                type={"lg-switches"}
+                size={"size"}
+                value={twoFactorAuth}
+                onChange={(e) => handleTwoFactorAuth(e.currentTarget.checked)}
+              />
             </div>
             <div className="Tfa-body">
               <HelpText
