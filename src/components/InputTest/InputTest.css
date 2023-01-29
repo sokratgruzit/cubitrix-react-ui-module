@@ -77,3 +77,12 @@
     border: 1px solid #3d5afe;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
+
+/* SELECT STYLES */
+.select-panel {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}

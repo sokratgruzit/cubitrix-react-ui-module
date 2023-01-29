@@ -7,7 +7,9 @@ import { HelpText } from "../components/HelpText";
 const stories = storiesOf("InputTest", module);
 
 stories.add("InputTest", (props) => {
-  
+  const onChangeHandler = (e) => {
+    console.log(e.target.value)
+  }
   return (
     <div
       style={{
@@ -25,6 +27,7 @@ stories.add("InputTest", (props) => {
         placeholder={'your text'}
         parent={'your-class-name'}
         password={true}
+        onChange={onChangeHandler}
         customStyles={{width: '320px'}}
         statusCard={false}
       />
@@ -35,13 +38,32 @@ stories.add("InputTest", (props) => {
         placeholder={'your text'}
         parent={'your-class-name'}
         password={false}
+        onChange={onChangeHandler}
         frameLabel={true}
         customStyles={{width: '320px'}}
         statusCard= {
           <HelpText
             status={'success'}
             title={'your text'}
-            color={'#9CCC65'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
+      />
+      <InputTest 
+        type={'select'}
+        label={'your-label'}
+        subLabel={'sm-label'}
+        placeholder={'your text'}
+        parent={'your-class-name'}
+        password={false}
+        onChange={onChangeHandler}
+        frameLabel={false}
+        customStyles={{width: '320px'}}
+        statusCard= {
+          <HelpText
+            status={'success'}
+            title={'your text'}
             fontSize={'font-12'}
             icon={true}
           />

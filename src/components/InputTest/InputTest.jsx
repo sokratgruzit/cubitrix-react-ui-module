@@ -12,8 +12,10 @@ export const InputTest = ({
     password,
     frameLabel,
     labelR,
+    onChange,
 }) => {
     const [hidden, setHidden] = useState(false);
+    const [act, setAct] = useState(false);
 
     const passHandler = () => {
         if (!hidden) {
@@ -28,7 +30,7 @@ export const InputTest = ({
     if(type === 'default') {
         input = (
             <div className="form-control-outer">
-                <input style={{paddingRight: password ? '43px' : ''}} className="form-control" type={password ? ( hidden ? 'text' : 'password') : 'text' } placeholder={placeholder} />
+                <input onChange={onChange} style={{paddingRight: password ? '43px' : ''}} className="form-control" type={password ? ( hidden ? 'text' : 'password') : 'text' } placeholder={placeholder} />
                 {password ? (
                     <div onClick={passHandler} className="password-icon">
                         {
@@ -55,6 +57,32 @@ export const InputTest = ({
             </div>
         )
     }
+    if(type === 'select') {
+        input = (
+            <div className="select-group">
+                <div className="form-control select-panel">
+                <div>select</div>
+                    <svg
+                        className={`${act ? "rotate" : ""} ${"arrow"}`}
+                        width="8"
+                        height="5"
+                        viewBox="0 0 8 5"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </div>
+            </div>
+        )
+    }
 
     let wrapper = (
         <div style={customStyles} className={`${"input-group"} ${parent}`}>
@@ -72,7 +100,6 @@ export const InputTest = ({
                         )}
                     </div>
                 </div>
-              
                 {input}
             </div>
             {statusCard}
