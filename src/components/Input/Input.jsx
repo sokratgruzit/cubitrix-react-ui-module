@@ -23,7 +23,7 @@ export const Input = (props) => {
 
   const editHandler = () => {
     setEdit(true)
-    setInputValue(undefined)
+    setInputValue('')
   }
 
   const setValueHandler = (e) => {
