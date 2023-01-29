@@ -100,12 +100,9 @@ export const Dropdown = (props) => {
   if (props.type === "simple-drowpdown") {
     element = (
       <div className="dropdown" style={props.customStyles}>
-        <div className="default-option">test</div>
-        <div className="options">
-          {props.data?.option.map((item, index) => {
-            return <div></div>;
-          })}
-        </div>
+        <div className="option">opt 0</div>
+        <div className="option">opt 1</div>
+        <div className="option">opt 2</div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Dropdown } from "../Dropdown";
 import "./InputTest.css";
 
 export const InputTest = ({
@@ -79,6 +80,12 @@ export const InputTest = ({
                             strokeLinejoin="round"
                         />
                     </svg>
+                </div>
+                <div className="select-modal">
+                    <Dropdown
+                        type={'simple-drowdown'}
+                        data={''}
+                    />
                 </div>
             </div>
         )

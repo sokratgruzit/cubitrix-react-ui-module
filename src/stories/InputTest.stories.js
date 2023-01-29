@@ -60,14 +60,7 @@ stories.add("InputTest", (props) => {
         onChange={onChangeHandler}
         frameLabel={false}
         customStyles={{width: '320px'}}
-        statusCard= {
-          <HelpText
-            status={'success'}
-            title={'your text'}
-            fontSize={'font-12'}
-            icon={true}
-          />
-        }
+        statusCard= {false}
       />
 
     </div>
