@@ -1,0 +1,89 @@
+/* DEFAULT STYLES */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: auto;
+}
+.mb-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.input-group-text-outer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.input-group-labels {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.bordered {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1px 6px;
+    height: 17px;
+    width: auto;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.frame-label {
+    font-size: 10px;
+}
+.form-control-outer {
+    position: relative;
+}
+.password-icon {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    width: 24px;
+    height: 20px;
+    cursor: pointer;
+}
+.pass-icon, .pass-icon-f {
+    width: 100%;
+    height: 100%;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.password-icon svg path {
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.password-icon:hover .pass-icon-f path {
+    fill: #3d5afe;
+}
+.password-icon:hover .pass-icon path {
+    stroke: #3d5afe;
+}
+.form-control {
+    width: 100%;
+    padding: 11.5px 16px 11.5px 16px;
+    background-color: transparent;
+    border: 1px solid #1f2330;
+    border-radius: 6px;
+    color: #fff;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+    height: 44px;
+}
+.form-control:hover {
+    border: 1px solid rgba(61, 90, 254, 0.6);
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.form-control:focus {
+    border: 1px solid #3d5afe;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+/* SELECT STYLES */
+.select-panel {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}

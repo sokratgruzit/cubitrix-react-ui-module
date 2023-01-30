@@ -52,6 +52,7 @@ stories.add("Input", (props) => {
   const [value, setValue] = useState("");
   const [cover, setCover] = useState(false);
   const [active, setActive] = useState("");
+  const [inputValue, setInputValue] = useState('')
 
   const changeHandler = (i, e) => {
     console.log(i.target.value);
@@ -106,9 +107,19 @@ stories.add("Input", (props) => {
       <Input
         type={"default"}
         icon={false}
-        label={"label"}
-        subLabel={"sub lab"}
+        label={"Eneter e-mail"}
+        subLabel={""}
         placeholder={"default input"}
+        onChange={changeHandler}
+        customStyles={{ width: "500px" }}
+      />
+      <Input
+        type={"default"}
+        icon={false}
+        label={"Eneter e-mail"}
+        subLabel={""}
+        placeholder={"default input"}
+        value={'xle@gmail.com'} // value 
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
       />

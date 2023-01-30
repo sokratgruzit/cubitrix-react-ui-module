@@ -1,6 +1,25 @@
 import './HelpText.css';
+import { useEffect, useState } from 'react';
 
 export const HelpText = props => {
+    const [color, setColor] = useState('')
+    
+    useEffect(()=> {
+        if(props.status === 'success') {
+            setColor('#9CCC65')
+        }
+        if(props.status === 'warning') {
+            setColor('#FFA726')
+        }
+        if(props.status === 'error') {
+            setColor('#EF5350')
+        }
+        if(props.status === 'info') {
+            setColor('#6A6D76')
+        }
+    },[])
+   
+
     return (
         <div>
             <div style={props.customStyles} className={`status-group ${props.className}`}>
@@ -32,7 +51,7 @@ export const HelpText = props => {
                         </svg>
                     ) : ''}
                 </div>
-                <p style={{color: props.color}} className={props.fontSize}>{props.title}</p>
+                <p style={{color: color}} className={props.fontSize}>{props.title}</p>
             </div>
         </div>
     )
