@@ -4,21 +4,19 @@ import { useEffect, useState } from 'react';
 export const HelpText = props => {
     const [color, setColor] = useState('')
     
+    function colorPicker(key, textColor){
+        let value = props.status;
+        if(value === key){
+            setColor(textColor);
+        }
+    }
+  
     useEffect(()=> {
-        if(props.status === 'success') {
-            setColor('#9CCC65')
-        }
-        if(props.status === 'warning') {
-            setColor('#FFA726')
-        }
-        if(props.status === 'error') {
-            setColor('#EF5350')
-        }
-        if(props.status === 'info') {
-            setColor('#6A6D76')
-        }
-    },[])
-   
+        colorPicker('success', '#9CCC65')
+        colorPicker('error', '#EF5350')
+        colorPicker('warning', '#FFA726')
+        colorPicker('info', '#6A6D76')
+    });
 
     return (
         <div>

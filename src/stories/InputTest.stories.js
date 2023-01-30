@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
-import { InputTest } from "../components/InputTest/InputTest";
+import { InputTest } from "../components/InputTest/";
 import { HelpText } from "../components/HelpText";
 import { useValidation } from "../hooks/useValidation";
 
@@ -16,18 +16,18 @@ stories.add("InputTest", (props) => {
   const [fieldsFilled, setFieldsFilled] = useState({});
 
   const formErrors = useValidation(fields);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formErrors.length > 0) return;
-    
+
     const updatedState = {};
-    
+
     Object.keys(fields).forEach(i => {
       if (fields[i].length > 0) {
-        updatedState[i] = false;   
+        updatedState[i] = false;
       } else {
-        updatedState[i] = true;        
+        updatedState[i] = true;
       }
     })
     setFieldsFilled({...updatedState});
@@ -57,14 +57,14 @@ stories.add("InputTest", (props) => {
       }}
       onSubmit={handleSubmit}
     >
-      <InputTest 
+      <InputTest
         type={'default'}
         label={'email'}
         placeholder={'enter your email'}
         parent={'your-class-name'}
         onChange={(e) => handleChange(e, 'email')}
         customStyles={{width: '320px'}}
-        emptyFieldErr={fieldsFilled.email}
+        emptyFildErr={true}
         statusCard= {
           formErrors.email && fieldsFilled?.email && (
             <HelpText
@@ -76,7 +76,7 @@ stories.add("InputTest", (props) => {
           )
         }
       />
-      <InputTest 
+      <InputTest
         type={'default'}
         label={'password'}
         placeholder={'enter password'}
@@ -94,7 +94,7 @@ stories.add("InputTest", (props) => {
           )
         }
       />
-      <InputTest 
+      <InputTest
         type={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
@@ -113,7 +113,7 @@ stories.add("InputTest", (props) => {
           />
         }
       />
-      <InputTest 
+      <InputTest
         type={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
@@ -126,7 +126,7 @@ stories.add("InputTest", (props) => {
         customStyles={{width: '320px'}}
         statusCard={false}
       />
-      <InputTest 
+      <InputTest
         type={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
@@ -135,15 +135,17 @@ stories.add("InputTest", (props) => {
         password={false}
         onChange={onChangeHandler}
         frameLabel={true}
+        required={false}
         customStyles={{width: '320px'}}
         statusCard= {false}
       />
-      <InputTest 
+      <InputTest
         type={'select'}
         label={'your-label'}
         subLabel={'sm-label'}
         placeholder={'your text'}
         parent={'your-class-name'}
+        required={false}
         password={false}
         onChange={onChangeHandler}
         frameLabel={false}

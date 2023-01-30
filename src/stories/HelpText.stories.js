@@ -22,6 +22,7 @@ stories.add("HelpText", () => {
             <HelpText
                 status={'error'}
                 title={'your text'}
+                fontSize={'font-12'}
                 icon={true}
             />
             <HelpText
