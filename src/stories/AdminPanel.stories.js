@@ -79,7 +79,7 @@ stories.add("AdminPanel", () => {
                         ),
                     },
                 ],
-            } 
+            }
         ]
     }
     const sideBar = [
@@ -422,6 +422,7 @@ stories.add("AdminPanel", () => {
                        </BrowserRouter>
                    }
                    tableData={tableData}
+                   tableFilter={true}
                    tableHead={th}
                    pageLabel={'Transactions'}
                    mobile={mobile}

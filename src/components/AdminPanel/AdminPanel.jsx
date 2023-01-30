@@ -8,6 +8,15 @@ import {Visual} from "../Visual";
 import {TableElement} from "../TableElement";
 
 export const AdminPanel = props => {
+    let filter;
+    if(props.tableFilter === true) {
+        filter =  <FilterBox
+                    tableFilterData={props.tableFilterData}
+                    setTableFilterOutcomingData={props.setTableFilterOutcomingData}
+                    tableHeader={props.tableHeader}
+                    customStyles={{margin:'20px 0px'}}
+                />
+    }
     return (
         <div className={`admin-content`}>
 
@@ -17,12 +26,7 @@ export const AdminPanel = props => {
                 fontSize={'font-20'}
                 customStyles={{}}
             />
-            <FilterBox
-                tableFilterData={props.tableFilterData}
-                setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-                tableHeader={props.tableHeader}
-                customStyles={{margin:'20px 0px'}}
-            />
+            {filter}
             <Table
                 type={"table-version"}
                 tableHead={props.tableHead}

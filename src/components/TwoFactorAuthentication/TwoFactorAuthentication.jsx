@@ -17,7 +17,7 @@ export const TwoFactorAuthentication = ({
   return (
     <div className={`two-factor-container ${active ? "close" : ""}`}>
       <div className="tfa-header ">
-        <h1>Enable Two-Factor Verification</h1>
+        <h1>Enable Two-Factor Authentication</h1>
         <div>
           <svg
             onClick={onClick}
@@ -310,10 +310,10 @@ export const TwoFactorAuthentication = ({
         </div>
         <div className="acount-info">
           <p>
-            Account Name:&nbsp;<span>{accountName}</span>
+            Account Name: &nbsp;<span>{accountName}</span>
           </p>
           <p>
-            Key:&nbsp;<span>{accountKey}</span>
+            Key: &nbsp;<span>{accountKey}</span>
           </p>
         </div>
         <div className="verification">
