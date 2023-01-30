@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
 import { InputTest } from "../components/InputTest/InputTest";
@@ -30,9 +30,10 @@ stories.add("InputTest", (props) => {
         updatedState[i] = true;        
       }
     })
-
     setFieldsFilled({...updatedState});
   };
+
+  console.log(fieldsFilled)
 
   const handleChange = (e, name) => {
     setFieldsFilled(prev => ({ ...prev, [name]: false }));
@@ -63,6 +64,7 @@ stories.add("InputTest", (props) => {
         parent={'your-class-name'}
         onChange={(e) => handleChange(e, 'email')}
         customStyles={{width: '320px'}}
+        emptyFieldErr={fieldsFilled.email}
         statusCard= {
           formErrors.email && fieldsFilled?.email && (
             <HelpText
