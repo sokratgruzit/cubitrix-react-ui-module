@@ -8,9 +8,11 @@ export const Tabs = (props) => {
     setToggle(num);
   };
 
-  return (
-    <>
-      <div className={`${props.type}`} onClick={props.onClick}>
+  let tabs = null;
+
+  if (props.type === "tabs") {
+    tabs = (
+      <div className={`${"tabs"}`} onClick={props.onClick}>
         <div
           onClick={() => {
             tabsHandler(1);
@@ -88,7 +90,11 @@ export const Tabs = (props) => {
           </svg>
         </div>
       </div>
-      {/* <div className={`${props.type}`} onClick={props.onClick}>
+    );
+  }
+  if (props.type === "two-component-tabs") {
+    tabs = (
+      <div className={`${"two-component-tabs"}`} onClick={props.onClick}>
         <div
           onClick={() => {
             tabsHandler(1);
@@ -108,7 +114,11 @@ export const Tabs = (props) => {
           Buy
         </div>
       </div>
-      <div className={`${props.type}`} onClick={props.onClick}>
+    );
+  }
+  if (props.type === "text-tabs") {
+    tabs = (
+      <div className={`${"text-tabs"}`} onClick={props.onClick}>
         <div
           onClick={() => {
             tabsHandler(1);
@@ -157,7 +167,11 @@ export const Tabs = (props) => {
           </svg>
         </div>
       </div>
-      <div className={`${props.type}`} onClick={props.onClick}>
+    );
+  }
+  if (props.type === "button-variant") {
+    tabs = (
+      <div className={`${"button-variant"}`} onClick={props.onClick}>
         <p className="variant-title">Account</p>
         <div
           onClick={() => {
@@ -177,7 +191,9 @@ export const Tabs = (props) => {
         >
           Deposit
         </div>
-      </div> */}
-    </>
-  );
+      </div>
+    );
+  }
+
+  return tabs;
 };
