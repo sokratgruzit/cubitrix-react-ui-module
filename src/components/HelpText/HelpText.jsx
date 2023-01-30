@@ -1,10 +1,10 @@
 import './HelpText.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const HelpText = props => {
     const [color, setColor] = useState('')
     
-    const colorHandler = () => {
+    useEffect(()=> {
         if(props.status === 'success') {
             setColor('#9CCC65')
         }
@@ -17,7 +17,8 @@ export const HelpText = props => {
         if(props.status === 'info') {
             setColor('#6A6D76')
         }
-    }
+    },[])
+   
 
     return (
         <div>

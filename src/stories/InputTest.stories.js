@@ -23,6 +23,7 @@ stories.add("InputTest", (props) => {
         type={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
+        required={true}
         labelR={false}
         placeholder={'your text'}
         parent={'your-class-name'}
@@ -43,12 +44,12 @@ stories.add("InputTest", (props) => {
         customStyles={{width: '320px'}}
         statusCard= {
           <HelpText
-            status={'success'}
-            title={'your text'}
-            fontSize={'font-12'}
-            icon={true}
-          />
-        }
+          status={'error'}
+          title={'your text'}
+          fontSize={'font-12'}
+          icon={true}
+        />
+      }
       />
       <InputTest 
         type={'select'}
