@@ -310,10 +310,10 @@ export const TwoFactorAuthentication = ({
         </div>
         <div className="acount-info">
           <p>
-            Account Name:&nbsp;<span>{accountName}</span>
+            Account Name: &nbsp;<span>{accountName}</span>
           </p>
           <p>
-            Key:&nbsp;<span>{accountKey}</span>
+            Key: &nbsp;<span>{accountKey}</span>
           </p>
         </div>
         <div className="verification">
