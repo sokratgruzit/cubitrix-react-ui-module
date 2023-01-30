@@ -8,12 +8,12 @@ export const WithdrawPopup = (props) => {
     popupElement = (
       <div className="withdraw-container" style={props.customStyles}>
         <div className="withdraw-inner">
-          <div>
-            <div className="flex jc-sb">
+          <div className="w-100">
+            <div className="flex mobile-flex jc-sb">
               <div>{props.head}</div>
               <div>Approved</div>
             </div>
-            <div className="flex jc-sb mt-22">
+            <div className="flex mobile-flex jc-sb mt-22">
               <div>{props.wallet}</div>
               <div>{props.code}</div>
             </div>

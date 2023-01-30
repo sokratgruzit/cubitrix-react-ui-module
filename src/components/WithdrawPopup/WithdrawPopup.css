@@ -7,7 +7,10 @@
   border-top-right-radius: 0;
   height: 500px;
   overflow-y: scroll;
-  width: 596px;
+  width: 100%;
+}
+.w-100 {
+  width: 100%;
 }
 .mt-22 {
   margin-top: 22px;
@@ -39,4 +42,20 @@
 }
 .withdraw-wraper > div:nth-child(odd) {
   background-color: #070b1a !important;
+}
+
+@media (max-width: 767px) {
+  .mobile-flex {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .mobile-flex div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  .mobile-flex div:nth-child(1) {
+    margin-bottom: 10px;
+  }
 }

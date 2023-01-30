@@ -31,16 +31,14 @@ let data = [
 
 stories.add("WithdrawPopup", () => {
   return (
-    <div className="popup-wraper">
-      <WithdrawPopup
-        head={"#6379325951635a33347837434e334e6b345a6e3052513d3d"}
-        label={"Withdraw"}
-        wallet={"#Withdraw Wallet (BSC)"}
-        code={"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"}
-        title={"Withdraw Details"}
-        type={"withdrawPopup"}
-        withdrawData={data}
-      />
-    </div>
+    <WithdrawPopup
+      head={"#6379325951635a33347837434e334e6b345a6e3052513d3d"}
+      label={"Withdraw"}
+      wallet={"#Withdraw Wallet (BSC)"}
+      code={"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"}
+      title={"Withdraw Details"}
+      type={"withdrawPopup"}
+      withdrawData={data}
+    />
   );
 });
