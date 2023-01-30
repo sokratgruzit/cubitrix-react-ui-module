@@ -23,6 +23,7 @@ stories.add("InputTest", (props) => {
         type={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
+        value={'123@gmail.com'}
         required={true}
         labelR={false}
         placeholder={'your text'}
@@ -41,13 +42,14 @@ stories.add("InputTest", (props) => {
         password={false}
         onChange={onChangeHandler}
         frameLabel={true}
+        required={false}
         customStyles={{width: '320px'}}
         statusCard= {
           <HelpText
-          status={'error'}
-          title={'your text'}
-          fontSize={'font-12'}
-          icon={true}
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
         />
       }
       />
@@ -57,6 +59,7 @@ stories.add("InputTest", (props) => {
         subLabel={'sm-label'}
         placeholder={'your text'}
         parent={'your-class-name'}
+        required={false}
         password={false}
         onChange={onChangeHandler}
         frameLabel={false}
