@@ -17,7 +17,7 @@ export const TwoFactorAuthentication = ({
   return (
     <div className={`two-factor-container ${active ? "close" : ""}`}>
       <div className="tfa-header ">
-        <h1>Enable Two-Factor Verification</h1>
+        <h1>Enable Two-Factor Authentication</h1>
         <div>
           <svg
             onClick={onClick}
