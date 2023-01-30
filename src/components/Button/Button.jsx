@@ -1,8 +1,18 @@
 import "./Button.css";
 import React from "react";
 import {Link} from "react-router-dom";
+import {useState} from "react";
 
 export const Button = (props) => {
+  const [expand, setExpand] = useState(null);
+  const openExpand = (id) => {
+    if(id !== expand) {
+        setExpand(id);
+    }
+    else {
+        setExpand(null);
+    }
+  };
   let element = null;
   if (props.element === "button") {
     element = (
@@ -116,9 +126,33 @@ export const Button = (props) => {
       </div>
     );
   }
-    if (props.element === "side-admin-button") {
+  if (props.element === "side-admin-button" && props.subMenu.length > 0) {
         element = (
-            <Link to={props.route} className={`side-admin-button`} style={props.customStyles}>
+            <div className={`side-admin-button-container`}>
+                <div onClick={() => {openExpand(props.id)}} className={`side-admin-button ${props.id === expand ? 'active' : ''}`} style={props.customStyles}>
+                    <div className={`side-btn-icon`}>{props.svg}</div>
+                    <span className="font-16">{props.label}</span>
+                    <svg className={`drop-arrow`} width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M9.83102 5.33102C9.60572 5.55633 9.24043 5.55633 9.01513 5.33102L5.48193 1.79782C5.28996 1.60586 4.97245 1.60586 4.78049 1.79782L1.24729 5.33102C1.02198 5.55633 0.656695 5.55633 0.431394 5.33102C0.206091 5.10572 0.206091 4.74043 0.431394 4.51513L3.9646 0.981926C4.60717 0.339358 5.65525 0.339358 6.29782 0.981926L9.83102 4.51513C10.0563 4.74043 10.0563 5.10572 9.83102 5.33102Z" fill="#FFFFFF"/>
+                    </svg>
+                </div>
+                <div className={`side-admin-expand ${props.id === expand ? 'active' : ''}`}>
+                    {
+                        props.subMenu.map((item,index) => {
+                            return(
+                                <Link to={props.route + item.route} key={index} className={`side-admin-button-expand font-14`}>
+                                    {item.name}
+                                </Link>
+                            )
+                        })
+                    }
+                </div>
+            </div>
+        );
+    }
+  if (props.element === "side-admin-button" && props.subMenu.length === 0) {
+        element = (
+            <Link to={props.route} className={`side-admin-button ${props.active ? 'active' : ''}`} style={props.customStyles}>
                 <div className={`side-btn-icon`}>{props.svg}</div>
                 <span className="font-16">{props.label}</span>
             </Link>
