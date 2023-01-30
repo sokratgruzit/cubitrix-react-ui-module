@@ -7,6 +7,21 @@ import { useValidation } from "../hooks/useValidation";
 
 const stories = storiesOf("InputTest", module);
 
+let dropdownData = [
+  {
+    name: 'option1',
+    img: ''
+  },
+  {
+    name: 'option2',
+    img: ''
+  },
+  {
+    name: 'option3',
+    img: ''
+  }
+]
+
 stories.add("InputTest", (props) => {
   const [fields, setFields] = useState(() => ({
     email: '',
@@ -63,7 +78,7 @@ stories.add("InputTest", (props) => {
         parent={'your-class-name'}
         onChange={(e) => handleChange(e, 'email')}
         customStyles={{width: '320px'}}
-        emptyFildErr={true}
+        emptyFieldErr={true}
         statusCard= {
           formErrors.email && fieldsFilled?.email && (
             <HelpText
@@ -144,6 +159,7 @@ stories.add("InputTest", (props) => {
         subLabel={'sm-label'}
         placeholder={'your text'}
         parent={'your-class-name'}
+        dropdownData={dropdownData}
         required={false}
         password={false}
         onChange={onChangeHandler}

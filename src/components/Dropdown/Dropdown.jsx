@@ -100,9 +100,11 @@ export const Dropdown = (props) => {
   if (props.type === "simple-drowpdown") {
     element = (
       <div className="dropdown" style={props.customStyles}>
-        <div className="option">opt 0</div>
-        <div className="option">opt 1</div>
-        <div className="option">opt 2</div>
+        {props.data?.map((item, index)=> {
+          return (
+            <div onClick={props.onClick} className="dropdown-item" key={index}><span>{item.img}</span>{item.name}</div>
+          )
+        })}
       </div>
     );
   }

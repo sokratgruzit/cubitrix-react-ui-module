@@ -15,7 +15,8 @@ export const InputTest = ({
     labelR,
     onChange,
     required,
-    emptyFildErr,
+    emptyFieldErr,
+    dropdownData
 }) => {
     const [hidden, setHidden] = useState(false);
     const [act, setAct] = useState(false);
@@ -33,7 +34,7 @@ export const InputTest = ({
     if(type === 'default') {
         input = (
             <div className="form-control-outer">
-                <input required={required} onChange={onChange} style={{paddingRight: password ? '43px' : ''}} className={`${"form-control"} ${emptyFildErr ? 'error-border' : ''}`} type={password ? ( hidden ? 'text' : 'password') : 'text' } placeholder={placeholder} />
+                <input required={required} onChange={onChange} style={{paddingRight: password ? '43px' : ''}} className={`${"form-control"} ${emptyFieldErr ? 'error-border' : ''}`} type={password ? ( hidden ? 'text' : 'password') : 'text' } placeholder={placeholder} />
                 {password ? (
                     <div onClick={passHandler} className="password-icon">
                         {
@@ -83,12 +84,14 @@ export const InputTest = ({
                         />
                     </svg>
                 </div>
-                <div className="select-modal">
-                    <Dropdown
-                        type={'simple-drowdown'}
-                        data={''}
-                    />
-                </div>
+                {console.log(dropdownData)}
+
+                <Dropdown
+                    type={'simple-drowpdown'}
+                    data={dropdownData}
+                    onClick={(e)=> console.log(item)}
+                    customStyles={{}}
+                />
             </div>
         )
     }
