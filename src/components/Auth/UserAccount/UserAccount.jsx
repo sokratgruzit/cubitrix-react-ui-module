@@ -137,6 +137,11 @@ export const UserAccount = ({
               Security
             </div>
           )}
+          <span
+            className={`highlight-selected ${
+              selectedTab === "data" ? "selected-data" : "selected-security"
+            } ${!emailVerified ? "fullWidth" : ""}`}
+          ></span>
         </div>
       </div>
       {selectedTab === "data" && (
