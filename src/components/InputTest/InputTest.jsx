@@ -16,6 +16,7 @@ export const InputTest = ({
     onChange,
     required,
     emptyFieldErr,
+    dropdownData
 }) => {
     const [hidden, setHidden] = useState(false);
     const [act, setAct] = useState(false);
@@ -83,12 +84,14 @@ export const InputTest = ({
                         />
                     </svg>
                 </div>
-                <div className="select-modal">
-                    <Dropdown
-                        type={'simple-drowdown'}
-                        data={''}
-                    />
-                </div>
+                {console.log(dropdownData)}
+
+                <Dropdown
+                    type={'simple-drowpdown'}
+                    data={dropdownData}
+                    onClick={(e)=> console.log(item)}
+                    customStyles={{}}
+                />
             </div>
         )
     }
