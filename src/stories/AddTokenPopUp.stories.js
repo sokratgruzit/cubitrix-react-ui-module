@@ -1,8 +1,8 @@
 import { storiesOf } from "@storybook/react";
-import { AddTokenPopUp } from "../components/AddTokenPopUp/AddTokenPopUp";
+import { Popup } from "../components/Popup";
 const stories = storiesOf('AddTokenPopUp', module);
 
-let selectData = [
+let addTokenSelectData = [
   {
     id: 1,
     title: "option 1",
@@ -20,18 +20,15 @@ let selectData = [
   },
 ];
 
-stories.add('AddTokenPopUp', ({
-  headLabel,
-  selectData,
-  inputLabel,
-  customStyles,
-}) => {
+stories.add('AddTokenPopUp', () => {
     return (
-      <AddTokenPopUp 
-        headLabel={'Manually Add Tokens'}
-        selectData={selectData}
-        inputLabel={'hihihi'}
-        customStyles={{width: '596px'}}
+      <Popup 
+        type={'addToken'}
+        label={'Manually Add Tokens'}
+        addTokenSelectData={addTokenSelectData}
+        addTokenInputLabel={'hihihi'}
+        addTokenCustomStyles={{width: '596px'}}
+        // customStyles={{ width: '100px' }}
       />
     )
 })

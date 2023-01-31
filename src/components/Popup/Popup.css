@@ -1,20 +1,29 @@
-.popup-wraper {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 600px;
-}
 .popup-bg {
-  background-color: rgba(000, 000, 000, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 50px;
+  top: 25%;
+  z-index: 10;
   left: 0;
   right: 0;
 }
+
+.popup-wrapper-container {
+  position: relative;
+  background: #070B1A;
+  opacity: 0.8;
+  pointer-events: all;
+  width: 600px;  
+}
+
+.popup-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media (max-width: 767px) {
   .popup-wraper {
     display: flex;
@@ -23,4 +32,161 @@
     align-items: center;
     width: 100%;
   }
+}
+
+/* AddToken styles */
+.pop-body {
+  display: flex;
+  flex-direction: column;
+  padding: 23px 20px 20px 20px;
+  border-top: 2px solid rgb(32, 36, 49);
+  border-right: 2px solid rgb(32, 36, 49);
+  border-bottom: none;
+  border-left: 2px solid rgb(32, 36, 49);
+  border-image: initial;
+  background: rgb(20, 23, 38);
+  border-radius: 0px 0px 8px 8px;
+}
+.body-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+}
+.body-row:last-child, .body-row:first-child  {
+  margin-top: 0px;
+}
+
+.sc {
+  gap: 20px;
+}
+
+/* Withdraw styles */
+.withdraw-container {
+  background: #141726;
+  border: 2px solid #202431;
+  border-radius: 8px;
+  padding: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  height: 500px;
+  overflow-y: scroll;
+  width: 100%;
+}
+.w-100 {
+  width: 100%;
+}
+.mt-22 {
+  margin-top: 22px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.jc-sb {
+  justify-content: space-between;
+}
+.withdraw-details {
+  background: #0e1221;
+  border-radius: 18px;
+  margin-top: 40px;
+}
+.popup-item {
+  padding: 0 20px;
+  height: 88px;
+}
+.mt-8 {
+  margin-top: 8px;
+}
+.align-right {
+  text-align: right;
+}
+.withdraw-title {
+  padding: 20px;
+}
+.withdraw-wraper > div:nth-child(odd) {
+  background-color: #070b1a !important;
+}
+
+@media (max-width: 767px) {
+  .mobile-flex {
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .mobile-flex div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+  .mobile-flex div:nth-child(1) {
+    margin-bottom: 10px;
+  }
+}
+
+/*  WithdrawSettings styles */
+.withdraw-settings-main-fixed-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #070B1A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 150px;
+  position: fixed;
+  overflow-y: scroll;
+}
+.withdraw-settings-main-fixed-container .withdraw-settings-main-wrapp {
+  background-color: rgba(255, 255, 255, 0.05);;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  backdrop-filter: blur(42.5px);
+  width: 596px;
+}
+.withdraw-settings-main-fixed-container .withdraw-settings-body {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+.withdraw-settings-main-fixed-container .withdraw-input-wrapp {
+  width: 100%;
+}
+.withdraw-settings-main-fixed-container .input-and-form-definition {
+  display: flex;
+  gap: 8px;
+}
+.withdraw-settings-main-fixed-container .input-and-form-definition p {
+  font-size: 12px;
+  color: #6A6D76;
+}
+.withdraw-settings-main-fixed-container .withdraw-settings-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.withdraw-settings-main-fixed-container .withdraw-settings-button {
+  background-color: #3D5AFE;
+  border-radius: 32px;
+  width: 100%;
+  padding: 12px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: .6s;
+}
+.withdraw-settings-main-fixed-container .withdraw-settings-button:hover {
+  background-color: #0221d2;
+}
+
+/* addAdmin styles */
+.addAdmin-container {
+  background: #141726;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
