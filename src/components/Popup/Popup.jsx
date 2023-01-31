@@ -67,8 +67,8 @@ export const Popup = ({
   return (
 
     <div className="popup-bg">
-      <div className="popup-wrapper-container">
-        <div className="popup-wrapper" style={customStyles}>
+      <div className="popup-wrapper-container" style={customStyles}>
+        <div className="popup-wrapper">
           <Visual
             label={label}
             element={"popup-header"}
