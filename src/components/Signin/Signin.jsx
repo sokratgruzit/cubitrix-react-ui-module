@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SigninLogo } from '../../assets/svgs';
 import { Input } from '../Input';
 import { Button } from '../Button';
+import { HelpText } from "../HelpText";
 
 import './Signin.css';
 
