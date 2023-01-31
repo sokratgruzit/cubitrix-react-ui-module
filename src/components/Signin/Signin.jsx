@@ -5,7 +5,10 @@ import { Button } from '../Button';
 
 import './Signin.css';
 
-export const Signin = ({ handleSubmit }) => {
+export const Signin = ({ 
+    handleSubmit,
+    loginError
+  }) => {
   const [cover, setCover] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,6 +49,14 @@ export const Signin = ({ handleSubmit }) => {
             subLabel={''}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            statusCard={loginError && (
+              <HelpText
+                status={'error'}
+                title={loginError}
+                fontSize={'font-12'}
+                icon={true}
+              />
+            )}
           />
           <Button
             label={'Sign In'}

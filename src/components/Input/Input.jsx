@@ -82,7 +82,7 @@ export const Input = (props) => {
           onChange={props.onChange}
           value={!edit ? props.value : inputValue}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
-          className="form-control"
+          className={`${"form-control"} ${props.emptyFieldErr ? 'error-border' : ''}`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
         />
@@ -162,7 +162,7 @@ export const Input = (props) => {
             <input
               onChange={props.onChange}
               style={props.icon ? { paddingRight: "55px" } : { paddingRight: "16px" }}
-              className="form-control"
+              className={`${"form-control"} ${props.emptyFieldErr ? 'error-border' : ''}`}
               type="text"
               placeholder={props.placeholder}
             />
@@ -200,7 +200,7 @@ export const Input = (props) => {
         <input
           onChange={props.onChange}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
-          className="form-control"
+          className={`${"form-control"} ${props.emptyFieldErr ? 'error-border' : ''}`}
           type="text"
           placeholder={props.placeholder}
         />
@@ -309,7 +309,7 @@ export const Input = (props) => {
                 setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
               }}
               value={countryData.number}
-              className="number-control"
+              className={`${"number-control"} ${props.emptyFieldErr ? 'error-border' : ''}`}
               type="text"
             />
           </div>
@@ -378,7 +378,7 @@ export const Input = (props) => {
             {/* <p className='upload-btn'>Browse</p> */}
             <input
               id="upload_img"
-              className="upload-control"
+              className={`${"upload-control"} ${props.emptyFieldErr ? 'error-border' : ''}`}
               type="file"
               onChange={handleChange}
             />
@@ -464,7 +464,7 @@ export const Input = (props) => {
       <div
         style={props.customStyles}
         onChange={props.changeHandler}
-        className="input-group"
+        className={`$"input-group"} ${props.emptyFieldErr ? 'error-border' : ''}`}
       >
         <p className="font-12">{props.label}</p>
         <DatePicker
