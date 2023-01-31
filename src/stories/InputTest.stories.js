@@ -167,6 +167,7 @@ stories.add("InputTest", (props) => {
         customStyles={{width: '320px'}}
         statusCard={false}
       />
+
       <input type={'submit'} value={'submit'} style={{ background: 'black', border: 'none', width: '320px', padding: '10px'}} />
     </form>
   );

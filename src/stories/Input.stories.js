@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
 import { Input } from "../components/Input";
+import { HelpText } from "../components/HelpText";
 
 const stories = storiesOf("Input", module);
 
@@ -95,6 +96,14 @@ stories.add("Input", (props) => {
         label={"23123sads"}
         subLabel={""}
         onChange={changeHandler}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -106,6 +115,14 @@ stories.add("Input", (props) => {
         label={"Enter Password"}
         subLabel={""}
         onChange={changeHandler}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -115,6 +132,14 @@ stories.add("Input", (props) => {
         subLabel={""}
         placeholder={"default input"}
         onChange={changeHandler}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -125,6 +150,14 @@ stories.add("Input", (props) => {
         placeholder={"default input"}
         value={'xle@gmail.com'} // value 
         onChange={changeHandler}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{ width: "500px" }}
       />
       <Input
@@ -138,6 +171,14 @@ stories.add("Input", (props) => {
         onChange={changeHandler}
         onClick={btnHandler}
         inputFrame={"none"}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         icon={true}
         customStyles={{ width: "420px" }}
       />
@@ -150,6 +191,14 @@ stories.add("Input", (props) => {
         btns={false}
         icon={true}
         onClick={btnHandler}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         inputFrame={"eth"}
         customStyles={{ width: "420px" }}
       />
@@ -159,6 +208,14 @@ stories.add("Input", (props) => {
         subLabel={"sub label"}
         placeholder={"0.0000"}
         icon={false}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{ width: "320px" }}
         onChange={changeHandler}
       />
@@ -166,11 +223,27 @@ stories.add("Input", (props) => {
         type={"label-input-phone-number"}
         label={"your text"}
         onChange={changeCountry}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{ width: "400px" }}
       />
       <Input
         type={"label-input-upload"}
         onChange={changeHandler}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{ width: "fit-content" }}
       />
 
@@ -184,6 +257,14 @@ stories.add("Input", (props) => {
         selectLabel={"select"}
         active={active}
         status={"warning"}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         title={"your text"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
@@ -197,6 +278,14 @@ stories.add("Input", (props) => {
         selectHandler={selectHandler}
         selectLabel={"your text ttt"}
         active={active}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         status={"warning"}
         title={"your text"}
         color={"#FFA726"}
@@ -206,6 +295,14 @@ stories.add("Input", (props) => {
         type={"date-picker-input"}
         onChange={changeHandler}
         label={"your text"}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         active={active}
         customStyles={{ width: "320px" }}
       />
@@ -268,6 +365,14 @@ stories.add("Input", (props) => {
         selectHandler={selectHandler}
         selectLabel={"select"}
         placeholder={"search"}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         label={"your text"}
         customStyles={{ width: "100%" }}
       />
