@@ -35,6 +35,7 @@ export const Signin = ({
             icon={true}
             inputType={'text'}
             placeholder={"Enter User Name"}
+            editable={false}
             label={'User Name'}
             subLabel={''}
             value={email}
@@ -47,6 +48,7 @@ export const Signin = ({
             coverHandler={coverhandler}
             placeholder={"Enter Password"}
             label={'Password'}
+            editable={false}
             subLabel={''}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
