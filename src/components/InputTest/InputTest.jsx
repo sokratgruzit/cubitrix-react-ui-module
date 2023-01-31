@@ -34,8 +34,9 @@ export const InputTest = ({
         }
     };
     
-    const handlerClick = () => {
-        console.log('sergo xlea')
+    const handlerClick = (i) => {
+        setSelected(i)
+        console.log(i)
     }
 
     let input = '';
@@ -93,8 +94,6 @@ export const InputTest = ({
                         />
                     </svg>
                 </div>
-                {console.log(dropdownData)}
-
                 <Dropdown
                     type={'simple-drowpdown'}
                     data={dropdownData}

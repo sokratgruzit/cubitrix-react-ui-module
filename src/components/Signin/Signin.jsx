@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SigninLogo } from '../../assets/svgs';
 import { Input } from '../Input';
 import { Button } from '../Button';
+import { HelpText } from "../HelpText";
 
 import './Signin.css';
 
@@ -34,6 +35,7 @@ export const Signin = ({
             icon={true}
             inputType={'text'}
             placeholder={"Enter User Name"}
+            editable={false}
             label={'User Name'}
             subLabel={''}
             value={email}
@@ -46,6 +48,7 @@ export const Signin = ({
             coverHandler={coverhandler}
             placeholder={"Enter Password"}
             label={'Password'}
+            editable={false}
             subLabel={''}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
