@@ -57,8 +57,8 @@ stories.add("SideBar", () => {
           sideBarClose={() => setToggle((prev) => !prev)}
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
-          handlePersonalData={(e) => console.log(e)}
-          handleSecurityData={(e) => console.log(e)}
+          handlePersonalData={(e) => console.log()}
+          handleSecurityData={(e) => console.log()}
           personalDataState={{ loading: false, saved: false, emailSent: true }}
           securityDataState={{ loading: false, saved: false }}
           emailVerified={true}
