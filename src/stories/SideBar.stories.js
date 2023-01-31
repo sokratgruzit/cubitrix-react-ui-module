@@ -56,7 +56,7 @@ stories.add("SideBar", () => {
           personalData={{
             name: "",
             email: "",
-            mobile: "",
+            mobile: "+12323",
             date_of_birth: new Date(),
             nationality: "India",
           }}
