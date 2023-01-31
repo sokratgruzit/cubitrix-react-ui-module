@@ -53,13 +53,20 @@ stories.add("SideBar", () => {
         <UserAccount
           type={"Metamask"}
           warning={true}
+          personalData={{
+            name: "",
+            email: "",
+            mobile: "",
+            date_of_birth: new Date(),
+            nationality: "India",
+          }}
           completeAccount={() => console.log("complete")}
           sideBarClose={() => setToggle((prev) => !prev)}
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
-          handlePersonalData={(e) => console.log()}
-          handleSecurityData={(e) => console.log()}
-          personalDataState={{ loading: false, saved: false, emailSent: true }}
+          handlePersonalData={(e) => console.log(e)}
+          handleSecurityData={(e) => console.log(e)}
+          personalDataState={{ loading: false, saved: false, emailSent: false }}
           securityDataState={{ loading: false, saved: false }}
           emailVerified={true}
           userDataError={"error while saving"}
