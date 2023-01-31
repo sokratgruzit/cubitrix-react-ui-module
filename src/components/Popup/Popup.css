@@ -1,19 +1,28 @@
-.popup-wraper {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 600px;
-}
 .popup-bg {
-  background-color: rgba(000, 000, 000, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 50px;
+  top: 25%;
+  z-index: 10;
   left: 0;
   right: 0;
+}
+
+.popup-wrapper-container {
+  position: relative;
+  background: #070B1A;
+  opacity: 0.8;
+  pointer-events: all;
+}
+
+.popup-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;  
+
 }
 @media (max-width: 767px) {
   .popup-wraper {
@@ -170,4 +179,14 @@
 }
 .withdraw-settings-main-fixed-container .withdraw-settings-button:hover {
   background-color: #0221d2;
+}
+
+/* addAdmin styles */
+.addAdmin-container {
+  background: #141726;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
