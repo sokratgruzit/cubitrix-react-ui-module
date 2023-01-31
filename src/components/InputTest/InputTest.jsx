@@ -16,10 +16,15 @@ export const InputTest = ({
     onChange,
     required,
     emptyFieldErr,
-    dropdownData
+    dropdownData,
 }) => {
     const [hidden, setHidden] = useState(false);
     const [act, setAct] = useState(false);
+    const [selected, setSelected] = useState('select');
+    const [data, setData] = useState({
+        name: '',
+        img: ''
+    });
 
     const passHandler = () => {
         if (!hidden) {
@@ -28,6 +33,10 @@ export const InputTest = ({
             setHidden(false);
         }
     };
+    
+    const handlerClick = () => {
+        console.log('sergo xlea')
+    }
 
     let input = '';
 
@@ -65,7 +74,7 @@ export const InputTest = ({
         input = (
             <div className="select-group">
                 <div className="form-control select-panel">
-                <div>select</div>
+                <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
                     <svg
                         className={`${act ? "rotate" : ""} ${"arrow"}`}
                         width="8"
@@ -89,7 +98,8 @@ export const InputTest = ({
                 <Dropdown
                     type={'simple-drowpdown'}
                     data={dropdownData}
-                    onClick={(e)=> console.log(item)}
+                    onClick={handlerClick}
+                    // onClick={(e)=> console.log(e.target.value)}
                     customStyles={{}}
                 />
             </div>

@@ -54,6 +54,9 @@ stories.add("Input", (props) => {
   const [active, setActive] = useState("");
   const [inputValue, setInputValue] = useState('')
 
+  function handlerClick(i) {
+    setInputValue(i);
+  }
   const changeHandler = (i, e) => {
     console.log(i.target.value);
   };
@@ -86,6 +89,7 @@ stories.add("Input", (props) => {
         type={"default"}
         // value={value}
         icon={true}
+        emptyFieldErr={true}
         inputType={"text"}
         placeholder={"default input"}
         label={"23123sads"}
