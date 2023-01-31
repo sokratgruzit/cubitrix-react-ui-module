@@ -66,12 +66,12 @@ export const UserAccount = ({
   const beforePersonalData = (userData) => {
     const mutated_userData = { ...userData };
     if (userData.nationality?.country) {
-      mutated_userData.nationality =
-        userData.nationality.country === "Select Country"
-          ? ""
-          : userData.nationality.country;
+      mutated_userData.nationality = userData.nationality.country;
     }
-
+    mutated_userData.nationality =
+      mutated_userData.nationality === "Select Country"
+        ? ""
+        : mutated_userData.nationality;
     if (emailError) return;
     handlePersonalData(mutated_userData);
   };
