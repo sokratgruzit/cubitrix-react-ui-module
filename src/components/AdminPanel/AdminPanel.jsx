@@ -14,7 +14,7 @@ export const AdminPanel = props => {
                     tableFilterData={props.tableFilterData}
                     setTableFilterOutcomingData={props.setTableFilterOutcomingData}
                     tableHeader={props.tableHeader}
-                    customStyles={{margin:'20px 0px'}}
+                    customStyles={{marginBottom: '20px'}}
                 />
     }
     return (
@@ -24,7 +24,7 @@ export const AdminPanel = props => {
                 element={'table-header'}
                 label={props.pageLabel}
                 fontSize={'font-20'}
-                customStyles={{}}
+                customStyles={{marginBottom: '20px'}}
             />
             {filter}
             <Table

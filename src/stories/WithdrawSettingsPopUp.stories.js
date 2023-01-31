@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import { WithdrawSettingsPopUp } from "../components/WithdrawSettingsPopUp";
+import { Popup } from "../components/Popup";
 
 const stories = storiesOf("WithdrawSettingsPopUp", module);
 
@@ -33,10 +33,7 @@ stories.add("WithdrawSettingsPopUp", () => {
     </svg>
   );
 
-  const data = {
-    header: {
-      h: "Settings",
-    },
+  const withdrawSettingsData = {
     text: "You can manage your withdraw system from here. You can sepecify minimum and maximum token number for each withdraw request and also disable new request.",
     switches: "Withdraw System",
     inputs: {
@@ -61,5 +58,12 @@ stories.add("WithdrawSettingsPopUp", () => {
     button: "Update",
   };
 
-  return <WithdrawSettingsPopUp cardBody={data} />;
+  return (
+    <Popup 
+      type={'withdrawSettings'}
+      label={'Settings'} 
+      withdrawSettingsCardBody={withdrawSettingsData} 
+      // customStyles={{ width: '100px'}}
+    />
+  );
 });
