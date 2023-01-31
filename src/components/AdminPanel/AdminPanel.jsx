@@ -17,7 +17,7 @@ export const AdminPanel = props => {
                 fontSize={'font-20'}
                 customStyles={{}}
             />
-            <FilterBoxs
+            <FilterBox
                 tableFilterData={props.tableFilterData}
                 setTableFilterOutcomingData={props.setTableFilterOutcomingData}
                 tableHeader={props.tableHeader}

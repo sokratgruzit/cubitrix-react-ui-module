@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Switches } from "../Switches";
 import "./Dropdown.css";
 
@@ -100,12 +100,11 @@ export const Dropdown = (props) => {
   if (props.type === "simple-drowpdown") {
     element = (
       <div className="dropdown" style={props.customStyles}>
-        <div className="default-option">test</div>
-        <div className="options">
-          {props.data?.option.map((item, index) => {
-            return <div></div>;
-          })}
-        </div>
+        {props.data?.map((item, index)=> {
+          return (
+            <div onClick={props.onClick} className="dropdown-item" key={index}><span>{item.img}</span>{item.name}</div>
+          )
+        })}
       </div>
     );
   }

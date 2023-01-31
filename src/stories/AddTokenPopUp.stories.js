@@ -22,17 +22,16 @@ let selectData = [
 
 stories.add('AddTokenPopUp', ({
   headLabel,
-  headStyles,
   selectData,
-  inputLabel
+  inputLabel,
+  customStyles,
 }) => {
     return (
       <AddTokenPopUp 
         headLabel={'Manually Add Tokens'}
-        headStyles={{width: '100%'}}
         selectData={selectData}
         inputLabel={'hihihi'}
-
+        customStyles={{width: '596px'}}
       />
     )
 })

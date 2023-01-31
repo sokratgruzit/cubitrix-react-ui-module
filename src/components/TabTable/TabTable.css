@@ -1,13 +1,8 @@
-.tab-table,
-.tab-table-filled {
+.tab-table {
   padding: 10px 0;
   width: 745px;
 }
 .tab-table div {
-  font-size: 12px;
-  color: #cdced1;
-}
-.tab-table-filled div {
   font-size: 12px;
   color: #cdced1;
 }
@@ -64,10 +59,10 @@
 .table-flex {
   display: flex;
 }
-.fs-16 {
+.font-16 {
   font-size: 16px !important;
 }
-.fs-14 {
+.font-14 {
   font-size: 14px !important;
 }
 .num {
@@ -76,4 +71,28 @@
 }
 .mt-5 {
   margin-top: 5px;
+}
+
+@media (max-width: 1023px) {
+  .d-flex > div:nth-child(1) {
+    width: 83%;
+  }
+  .d-flex div:nth-child(1) {
+    width: 100%;
+  }
+  .table-col {
+    flex-direction: column;
+  }
+  .sub-table,
+  .tab-table,
+  .table-manu {
+    width: 100%;
+  }
+  .align-right {
+    text-align: right;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
 }
