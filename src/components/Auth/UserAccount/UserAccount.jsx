@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { InfoCircleIcon } from "../../../assets/svgs";
 import { Button } from "../../Button";
 import { HelpCard } from "../../HelpCard";
 import { HelpText } from "../../HelpText";
@@ -40,7 +39,22 @@ export const UserAccount = ({
     avatar: imgValue,
   });
 
+  const [emailResend, setEmailResend] = useState(false);
+
+  useEffect(() => {
+    setEmailResend(personalDataState.emailSent);
+  }, [personalDataState.emailSent]);
+
   const [securityFormErrors, setSecurityFormErrors] = useState({});
+  const [emailError, setEmailError] = useState(false);
+  useEffect(() => {
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    let errors = false;
+    if (userData.email && !emailRegex.test(userData.email))
+      errors = "please enter a valid email";
+    setEmailError(errors);
+  }, [userData.email]);
+
   const handleFormUpdate = (value, field) => {
     setFormData((prevState) => ({ ...prevState, [field]: value }));
   };
@@ -50,17 +64,33 @@ export const UserAccount = ({
   };
 
   const beforePersonalData = (userData) => {
-    const mutated_userData = userData;
+    const mutated_userData = { ...userData };
     if (userData.nationality?.country) {
       mutated_userData.nationality = userData.nationality.country;
     }
+    mutated_userData.nationality =
+      mutated_userData.nationality === "Select Country"
+        ? ""
+        : mutated_userData.nationality;
+    if (emailError) return;
     handlePersonalData(mutated_userData);
   };
+
   const beforeSecurityData = (userData) => {
+    const errors = {};
+    if (!userData.newPassword) errors.newPassword = "password is required";
+    if (userData.newPassword && !userData.confirmPassword)
+      errors.confirmPassword = "match is not correct";
+    if (JSON.stringify(errors) !== "{}") return setSecurityFormErrors(errors);
+    const atLeastOneError = Object.entries(securityFormErrors).some((obj) => obj[1]);
+    if (atLeastOneError) return null;
+
     handleSecurityData(userData);
   };
   useEffect(() => {
     if (personalData) {
+      const data = { ...personalData };
+      if (personalData.nationality === "") data.nationality = "Select Country";
       setUserData(personalData);
     }
   }, [personalData]);
@@ -107,20 +137,24 @@ export const UserAccount = ({
               Security
             </div>
           )}
+          <span
+            className={`highlight-selected ${
+              selectedTab === "data" ? "selected-data" : "selected-security"
+            } ${!emailVerified ? "fullWidth" : ""}`}
+          ></span>
         </div>
       </div>
       {selectedTab === "data" && (
         <div className="body-wrapper">
-          <div
-            className={`email_sent ${personalDataState.emailSent ? "email_active" : ""}`}
-          >
+          <div className={`email_sent ${emailResend ? "email_active" : ""}`}>
             <HelpCard
               status={"warning"}
               color={"#FFA726"}
               body={"long"}
-              active={personalDataState.emailSent}
+              active={emailResend}
               title={"Help Text"}
               onClick={resendEmail}
+              handleClose={() => setEmailResend(false)}
             />
           </div>
           <Input
@@ -141,6 +175,9 @@ export const UserAccount = ({
             onChange={(e) => handleUserUpdate(e.target.value, "email")}
             customStyles={{ width: "100%" }}
           />
+          {emailError && (
+            <HelpText status={"error"} title={emailError} color={"#EF5350"} icon={true} />
+          )}
           <HelpText
             className="margin-top-negative"
             status={"info"}

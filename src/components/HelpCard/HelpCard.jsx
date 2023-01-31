@@ -141,7 +141,7 @@ export const HelpCard = (props) => {
               {props.body === "long" ? "Mail Verification" : props.title}
             </p>
           </div>
-          <div className="close-btn" onClick={props.onClick}>
+          <div className="close-btn" onClick={props.handleClose}>
             <svg
               width="24"
               height="24"
@@ -202,9 +202,7 @@ export const HelpCard = (props) => {
         )}
         {props.body === "long" ? (
           <div className="toast-body">
-            <p className="font-12">
-              Mail verification is necessary to set up security.
-            </p>
+            <p className="font-12">Mail verification is necessary to set up security.</p>
             <p className="toast-text font-12">
               If you did not receive the verification code in the mail
             </p>
