@@ -11,6 +11,7 @@ export const TwoFactorAuthentication = ({
   confirmAuth,
   accountName,
   accountKey,
+  twoFactorSetUpState,
 }) => {
   const [code, setCode] = useState("");
 
@@ -327,7 +328,7 @@ export const TwoFactorAuthentication = ({
             <Input
               type={"default"}
               icon={false}
-              placeholder={"default input"}
+              placeholder={"Enter Code"}
               customStyles={{
                 width: "100%",
                 margin: "4px 0 20px 0",
@@ -336,25 +337,32 @@ export const TwoFactorAuthentication = ({
               onChange={(e) => setCode(e.target.value)}
             />
             <Button
-              onClick={() => confirmAuth(code)}
+              label={twoFactorSetUpState.loading ? "Loading ... " : "Confirm"}
+              type="btn-primary"
+              size="btn-sm"
               element={"button"}
-              label={"Confirm"}
-              size={"btn-lg"}
-              type={"btn-primary"}
-              arrow={"arrow-right"}
+              customStyles={{ width: "100%" }}
+              onClick={() => confirmAuth(code)}
             />
+            {twoFactorSetUpState.error && (
+              <HelpText
+                status={"error"}
+                title={twoFactorSetUpState.error}
+                color={"#EF5350"}
+                icon={true}
+              />
+            )}
           </div>
         </div>
-        <div>
-          <HelpText
-            status={"info"}
-            title={
-              "If you lost your phone or uninstall the Google Authenticator app, then you will lost access of your account"
-            }
-            color={"#6A6D76"}
-            icon={true}
-          />
-        </div>
+        <HelpText
+          className="margin-top"
+          status={"info"}
+          title={
+            "If you lost your phone or uninstall the Google Authenticator app, then you will lost access of your account"
+          }
+          color={"#6A6D76"}
+          icon={true}
+        />
       </div>
     </div>
   );

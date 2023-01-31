@@ -40,6 +40,12 @@ export const UserAccount = ({
     avatar: imgValue,
   });
 
+  const [emailResend, setEmailResend] = useState(false);
+
+  useEffect(() => {
+    setEmailResend(personalDataState.emailSent);
+  }, [personalDataState.emailSent]);
+
   const [securityFormErrors, setSecurityFormErrors] = useState({});
   const handleFormUpdate = (value, field) => {
     setFormData((prevState) => ({ ...prevState, [field]: value }));
@@ -111,16 +117,15 @@ export const UserAccount = ({
       </div>
       {selectedTab === "data" && (
         <div className="body-wrapper">
-          <div
-            className={`email_sent ${personalDataState.emailSent ? "email_active" : ""}`}
-          >
+          <div className={`email_sent ${emailResend ? "email_active" : ""}`}>
             <HelpCard
               status={"warning"}
               color={"#FFA726"}
               body={"long"}
-              active={personalDataState.emailSent}
+              active={emailResend}
               title={"Help Text"}
               onClick={resendEmail}
+              handleClose={() => setEmailResend(false)}
             />
           </div>
           <Input
