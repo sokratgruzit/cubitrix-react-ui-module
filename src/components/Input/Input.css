@@ -17,7 +17,7 @@
   border-radius: 6px;
   color: #fff;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  height: 42px;
+  height: 44px;
 }
 .input-group-icon {
   position: absolute;
@@ -25,6 +25,7 @@
   right: 11.5px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
 }
 .form-control:hover {
   border: 1px solid rgba(61, 90, 254, 0.6);
@@ -263,9 +264,6 @@
 .upload-btn {
   color: #3d5afe;
   cursor: pointer;
-  z-index: 1;
-  /* z-index: 1; */
-  /* pointer-events: none; */
 }
 .upload-control {
   position: absolute;
@@ -326,6 +324,8 @@
   gap: 37px;
   cursor: pointer;
   width: 100%;
+  white-space: nowrap;
+
 }
 
 .form-select {
@@ -675,3 +675,24 @@ select input
     height: 24px;
     text-decoration: underline;
 } */
+
+.phone-numbers input[type="number"]::-webkit-outer-spin-button,
+.phone-numbers input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  background-color: red;
+}
+
+.phone-numbers input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.phone-numbers .select-control {
+  gap: initial;
+}
+
+.flag-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}

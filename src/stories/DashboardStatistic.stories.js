@@ -136,6 +136,11 @@ stories.add("DashboardStatistic", () => {
             <DashboardStatistic
                 data={data}
                 data2={data2}
+                size={'ETH'}
+                price={'USD'}
+                spread={'Spread'}
+                number={'1'}
+                percent={'0.01%'}
             />
         </div>
     )

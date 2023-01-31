@@ -6,8 +6,8 @@ export const DashboardStatistic = (props) => {
             <div className='dashboard-scroll'>
                 <div>
                     <div className='dashboard-header'>
-                        <li>Size:<span>ETH</span></li>
-                        <li>Price:<span>USD</span></li>
+                        <li>Size:<span>{props.size}</span></li>
+                        <li>Price:<span>{props.price}</span></li>
                         <li>Mine</li>
                     </div>
                 </div>
@@ -28,9 +28,9 @@ export const DashboardStatistic = (props) => {
                     </div>
                 </div>
                 <div className='dashboard-title-midle'>
-                    <p>Spread</p>
-                    <p>1</p>
-                    <p>0.01%</p>
+                    <p>{props.spread}</p>
+                    <p>{props.number}</p>
+                    <p>{props.percent}</p>
                 </div>
                 {props.data2.map((item, index) => {
                     return (

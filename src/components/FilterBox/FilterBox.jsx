@@ -7,9 +7,11 @@ import './FilterBox.css';
 export const FilterBox = ({
     tableFilterData,
     tableFilterOutcomingData,
-    setTableFilterOutcomingData
+    setTableFilterOutcomingData,
+    header,
+    customStyles
 }) => {
-  const [showSearchBox, setShowSearchBox] = useState(false); 
+  const [showSearchBox, setShowSearchBox] = useState(false);
 
   const handleSelectChange = (option, name) => {
     setTableFilterOutcomingData((prev) => ({
@@ -34,24 +36,26 @@ export const FilterBox = ({
     }}));
   };
 
+  const headerList = header && tableFilterData.selects[header];
+
   return (
-    <div className={'filter-box-container'}>
+    <div className={'filter-box-container'} style={customStyles}>
         <div className={`filter-box ${showSearchBox && 'show-filters'}`}>
-            {tableFilterData.head && (
+            {header && (
                 <div className={'filter-box-list font-14'}>
-                    {tableFilterData.head.map(item => (
-                        <div 
-                            key={item.title}
-                            className={`filter-box-list__item ${tableFilterOutcomingData.head === item.title && 'list-item__active'}`}
-                            onClick={() => setTableFilterOutcomingData({...tableFilterOutcomingData, head: item.title})}
+                    {headerList.options.map(item => (
+                        <div
+                            key={item.name}
+                            className={`filter-box-list__item ${tableFilterOutcomingData?.selects?.[headerList.value] === item.value && 'list-item__active'}`}
+                            onClick={() => handleSelectChange(item.value, headerList.value)}
                         >
-                            {item.title}
+                            {item.name}
                         </div>
                     ))}
                 </div>
             )}
-            <button 
-                className={`advanced-search-btn ${showSearchBox && 'search-btn-active'} font-14`} 
+            <button
+                className={`advanced-search-btn ${showSearchBox && 'search-btn-active'} font-14`}
                 onClick={() => setShowSearchBox(!showSearchBox)}
             >
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,23 +78,28 @@ export const FilterBox = ({
                         onChange={handleSearchChange}
                         defaultData={tableFilterData.search.options}
                         selectHandler={handleSearchSelect}
-                        placeholder={'search'}  
+                        placeholder={'search'}
                         selectLabel={'All'}
                     />
-                </div>  
-                <div className={'filter-box-selects'}>
-                    {tableFilterData.selects.map(select => (
-                        <Input
-                            key={select.name}
-                            type={"lable-input-select"}
-                            icon={false}
-                            value={select.name}
-                            defaultData={select.options}
-                            selectHandler={(opt) => handleSelectChange(opt, select.name)}
-                            selectLabel={`All ${select.name}`}
-                        />
-                    ))}
                 </div>
+                {tableFilterData.selects && (
+                    <div className={'filter-box-selects'}>
+                        {tableFilterData.selects
+                            .filter(select => select.name !== headerList?.name)
+                            .map(select => (
+                                <Input
+                                    key={select.name}
+                                    type={"lable-input-select"}
+                                    icon={false}
+                                    value={select.name}
+                                    defaultData={select.options}
+                                    selectHandler={(opt) => handleSelectChange(opt, select.value)}
+                                    selectLabel={`All ${select.name}`}
+                                />
+                            ))
+                        }
+                    </div>
+                )}
             </div>
         </div>
     </div>

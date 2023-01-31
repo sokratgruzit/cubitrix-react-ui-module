@@ -13,7 +13,14 @@ export * from "./components/SideBar";
 export * from "./components/Auth/Connect";
 export * from "./components/Auth/UserAccount";
 export * from "./components/Auth/UserOptions";
+export * from "./components/Auth/SignIn";
 export * from "./components/Header";
+<<<<<<< HEAD
 export * from './components/DashboardBalance';
 export * from './components/DashboardCards';
 export * from './components/DashboardStatistic';
+=======
+export * from "./components/DashboardBalance";
+export * from "./components/DashboardCards";
+export * from './components/Signin';
+>>>>>>> a6a4e465bec85b0a49a365d985e6ad0c1c4c037e

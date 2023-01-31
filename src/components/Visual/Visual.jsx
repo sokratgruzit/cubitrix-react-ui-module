@@ -1,5 +1,6 @@
 import "./Visual.css";
 import React from "react";
+import { Button } from '../Button';
 
 export const Visual = (props) => {
   let element = null;
@@ -107,6 +108,19 @@ export const Visual = (props) => {
         <div className={`copy-address-text`}>{props.label}</div>
       </div>
     );
+  }
+  if (props.element === 'table-header') {
+    element = (
+      <div style={props.customStyles} className="tb-head">
+        <div className="left-panel">
+          <h1 className={props.fontSize}>{props.label}</h1>
+        </div>
+        <div className="right-panel">
+            {props.leftBtn}
+            {props.rightBtn}
+        </div>
+      </div>
+    )
   }
   return element;
 };

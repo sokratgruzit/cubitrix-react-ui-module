@@ -6,78 +6,71 @@ import { Input } from "../components/Input";
 const stories = storiesOf("Input", module);
 
 let btnArr = [
-    {
-        id: 0,
-        value: '2x'
-    },
-    {
-        id: 1,
-        value: '5x'
-    },
-    {
-        id: 2,
-        value: '10x'
-    }
-];
-
-let countryData = [
+  {
+    id: 0,
+    value: "2x",
+  },
   {
     id: 1,
-    title: "The United Kingdom ",
-    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
-    numbering: "(+78)",
+    value: "5x",
   },
   {
     id: 2,
-    title: "Brazil",
-    image: "http://www.flaginstitute.org/wp/wp-content/uploads/flags/UK-Mercia.png",
-    numbering: "(+76)",
-  }
+    value: "10x",
+  },
 ];
+
 let selectData = [
   {
     id: 1,
     title: "option 1",
-    list: []
+    list: [],
   },
   {
     id: 2,
     title: "option 2",
-    list: []
+    list: [],
   },
   {
     id: 3,
     title: "option 3",
-    list: []
+    list: [],
   },
 ];
 
-let defaultData = [{
-  name: 'Transaction'
-}, {
-  name: 'Hash'
-}]
+let defaultData = [
+  {
+    name: "Transaction",
+  },
+  {
+    name: "Hash",
+  },
+];
+
 
 stories.add("Input", (props) => {
-  const [value, setValue] = useState('')
-  const [cover, setCover] = useState(false)
-  const [active, setActive] = useState('')
+  const [value, setValue] = useState("");
+  const [cover, setCover] = useState(false);
+  const [active, setActive] = useState("");
 
-  const changeHandler = (i) => {
-    console.log(i.target.value)
-  }
+  const changeHandler = (i, e) => {
+    console.log(i.target.value);
+  };
+  const changeCountry = (data) => {
+    console.log(data);
+  };
   const btnHandler = (e) => {
-    console.log('click me, click me mf')
-    let value = e.target.value
-    console.log(value, 'hi')
-  }
+    console.log("click me, click me mf");
+    let value = e.target.value;
+    console.log(value, "hi");
+  };
   const coverhandler = () => {
-    console.log('coverHandler')
+    console.log("coverHandler");
     setCover(true);
-  }
+  };
   const selectHandler = () => {
-    console.log('selecthandler')
-  }
+    // console.log('selecthandler')
+  };
 
   return (
     <div
@@ -92,114 +85,114 @@ stories.add("Input", (props) => {
         type={"default"}
         // value={value}
         icon={true}
-        inputType={'text'}
+        inputType={"text"}
         placeholder={"default input"}
-        label={'23123sads'}
-        subLabel={''}
+        label={"23123sads"}
+        subLabel={""}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
       />
       <Input
         type={"default"}
         icon={true}
-        inputType={'password'}
+        inputType={"password"}
         coverHandler={coverhandler}
         placeholder={"password input"}
-        label={'Enter Password'}
-        subLabel={''}
+        label={"Enter Password"}
+        subLabel={""}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
       />
       <Input
         type={"default"}
         icon={false}
-        label={'label'}
-        subLabel={'sub lab'}
+        label={"label"}
+        subLabel={"sub lab"}
         placeholder={"default input"}
         onChange={changeHandler}
         customStyles={{ width: "500px" }}
       />
       <Input
         type={"lable-input-type1"}
-        label={'Label'}
-        subLabel={'sub label'}
-        toggleTitle={'slider'}
+        label={"Label"}
+        subLabel={"sub label"}
+        toggleTitle={"slider"}
         toggle={true}
-        placeholder={'0.0000'}
+        placeholder={"0.0000"}
         btns={btnArr}
         onChange={changeHandler}
         onClick={btnHandler}
-        inputFrame={'none'}
+        inputFrame={"none"}
         icon={true}
-        customStyles={{ width: '420px'}}
-      /> 
+        customStyles={{ width: "420px" }}
+      />
       <Input
         type={"lable-input-type1"}
-        label={'Label'}
-        subLabel={'sub label'}
-        placeholder={'0.0000'}
+        label={"Label"}
+        subLabel={"sub label"}
+        placeholder={"0.0000"}
         onChange={changeHandler}
         btns={false}
         icon={true}
         onClick={btnHandler}
-        inputFrame={'eth'}
-        customStyles={{ width: '420px'}}
-      /> 
+        inputFrame={"eth"}
+        customStyles={{ width: "420px" }}
+      />
       <Input
         type={"lable-input-type2"}
-        label={'Label'}
-        subLabel={'sub label'}
-        placeholder={'0.0000'}
+        label={"Label"}
+        subLabel={"sub label"}
+        placeholder={"0.0000"}
         icon={false}
-        customStyles={{ width: '320px'}}
+        customStyles={{ width: "320px" }}
         onChange={changeHandler}
-      />
-      <Input 
-        type={'label-input-phone-number'}
-        label={'your text'}
-        countryData={countryData}
-        onChange={changeHandler}
-        customStyles={{width: '400px'}}
       />
       <Input
-        type={'label-input-upload'}
+        type={"label-input-phone-number"}
+        label={"your text"}
+        onChange={changeCountry}
+        customStyles={{ width: "400px" }}
+      />
+      <Input
+        type={"label-input-upload"}
         onChange={changeHandler}
-        customStyles={{width: 'fit-content'}}
-      /> 
-      
+        customStyles={{ width: "fit-content" }}
+      />
+
       <Input
         type={"lable-input-select"}
         icon={false}
         selectData={selectData}
         defaultData={defaultData}
+        label={"yourText"}
         selectHandler={selectHandler}
-        selectLabel={'your text ttt'}
+        selectLabel={"select"}
         active={active}
         status={"warning"}
-        title={'your text'}
+        title={"your text"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />
-       <Input
+      <Input
         type={"lable-input-select"}
         icon={false}
-        selectType={'country'}
+        selectType={"country"}
         selectData={selectData}
         defaultData={defaultData}
         selectHandler={selectHandler}
-        selectLabel={'your text ttt'}
+        selectLabel={"your text ttt"}
         active={active}
         status={"warning"}
-        title={'your text'}
+        title={"your text"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
       />
-      <Input 
-        type={'date-picker-input'}
+      <Input
+        type={"date-picker-input"}
         onChange={changeHandler}
-        label={'your text'}
+        label={"your text"}
         active={active}
-        customStyles={{width: '320px'}}
+        customStyles={{ width: "320px" }}
       />
       {/* <Input
         type={"default"}
@@ -249,19 +242,19 @@ stories.add("Input", (props) => {
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
-       {/* <Input
+      {/* <Input
         type={'label-input-upload'}
         customStyles={{width: 'fit-content'}}
        /> */}
       <Input
-        type={'search-input'}
+        type={"search-input"}
         onChange={changeHandler}
         defaultData={defaultData}
         selectHandler={selectHandler}
-        selectLabel={'select'}
-        placeholder={'search'}  
-        label={'your text'}
-        customStyles={{width: '100%'}}
+        selectLabel={"select"}
+        placeholder={"search"}
+        label={"your text"}
+        customStyles={{ width: "100%" }}
       />
     </div>
   );
