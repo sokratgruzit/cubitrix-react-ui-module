@@ -102,7 +102,9 @@ export const Dropdown = (props) => {
       <div className="dropdown" style={props.customStyles}>
         {props.data?.map((item, index)=> {
           return (
-            <div onClick={props.onClick} className="dropdown-item" key={index}><span>{item.img}</span>{item.name}</div>
+            <div onClick={()=> {
+              props.handlerClick(item.name)
+            }} className="dropdown-item" key={index}><span>{item.img}</span>{item.name}</div>
           )
         })}
       </div>
