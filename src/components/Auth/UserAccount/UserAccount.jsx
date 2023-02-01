@@ -33,7 +33,11 @@ export const UserAccount = ({
   const [userData, setUserData] = useState({
     name: "",
     email: "",
-    mobile: "",
+    mobile: {
+      code: "+1",
+      flag: "🇺🇸",
+      number: "090",
+    },
     date_of_birth: new Date(),
     nationality: "Select Country",
     avatar: imgValue,
@@ -192,6 +196,7 @@ export const UserAccount = ({
             type={"label-input-phone-number"}
             label={"Mobile Number"}
             onChange={(e) => handleUserUpdate(e, "mobile")}
+            value={userData.mobile}
             customStyles={{ width: "100%" }}
           />
           <Input

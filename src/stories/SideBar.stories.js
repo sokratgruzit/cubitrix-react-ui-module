@@ -50,15 +50,19 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        <UserAccount
+        {/* <UserAccount
           type={"Metamask"}
           warning={true}
           personalData={{
             name: "",
             email: "",
-            mobile: "+12323",
+            mobile: {
+              code: "+1",
+              flag: "🇺🇸",
+              number: "090",
+            },
             date_of_birth: new Date(),
-            nationality: "India",
+            nationality: "",
           }}
           completeAccount={() => console.log("complete")}
           sideBarClose={() => setToggle((prev) => !prev)}
@@ -80,7 +84,7 @@ stories.add("SideBar", () => {
           handleTwoFactorAuth={(val) => {
             setTwoFactorAuth(val);
           }}
-        />
+        /> */}
         {/* <UserOptions
           type={"Metamask"}
           warning={true}
@@ -89,15 +93,21 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         /> */}
-        {/* <SignIn
+        <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
           signInState={{ loading: true, error: false }}
-          otpEnabled={true}
+          otpEnabled={false}
           otpState={{ loading: false, error: "" }}
           handleTFA={(e) => console.log(e)}
-        /> */}
+          resetPasswordState={{
+            loading: false,
+            error: "wrong ",
+            success: "success",
+          }}
+          handleResetPassword={(e) => console.log(e)}
+        />
       </SideBar>
     </div>
   );

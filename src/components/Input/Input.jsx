@@ -14,10 +14,10 @@ export const Input = (props) => {
   const [value, setValue] = useState(props.selectLabel);
   const [edit, setEdit] = useState(false);
   const [inputValue, setInputValue] = useState();
-  const [countryData, setCountryData] = useState({
+
+  const [mobileData, setMobileData] = useState({
     code: "+1",
     flag: "🇺🇸",
-    coutnry: "United States",
     number: "",
   });
 
@@ -25,11 +25,6 @@ export const Input = (props) => {
     setEdit(true);
     setInputValue(undefined);
     // setValueHandler()
-  };
-
-  const setValueHandler = (e) => {
-    console.log(e.target.value);
-    // props.value={e.target.value}
   };
 
   const activeHandler = () => {
@@ -59,13 +54,22 @@ export const Input = (props) => {
     setFile(URL.createObjectURL(e.target.files[0]));
     props.onChange(e.target.files[0]);
   }
-  function handleCountrySelect(data) {
+  // function handleCountrySelect(data) {
+  //   setActive(false);
+  //   props.onChange(data.code + countryData.number);
+  //   setCountryData((prev) => ({ ...prev, ...data }));
+  // }
+
+  function handleMobileSelect(data) {
     setActive(false);
-    props.onChange(data.code + countryData.number);
-    setCountryData((prev) => ({ ...prev, ...data }));
+    props.onChange({ ...mobileData, flag: data.flag, code: data.code });
+    setMobileData((prev) => ({ ...prev, flag: data.flag, code: data.code }));
   }
 
   useEffect(() => {
+    if (props.type === "label-input-phone-number" && props.value) {
+      setMobileData(props.value);
+    }
     setValue(props.value);
   }, [props.value]);
 
@@ -261,8 +265,8 @@ export const Input = (props) => {
                 type={"country"}
                 handlerClick={(data) => {
                   setActive(false);
-                  setValue(data.country);
-                  props.onClick(data.country);
+                  setValue(`${data.flag} ${data.country}`);
+                  props.onClick(`${data.flag} ${data.country}`);
                 }}
                 countryData={countriesData}
                 dropdownCountry={"dropdown-country"}
@@ -298,7 +302,7 @@ export const Input = (props) => {
             }}
             className="select-prefix"
           >
-            <div className="flag">{countryData.flag}</div>
+            <div className="flag">{mobileData.flag}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="8"
@@ -317,15 +321,15 @@ export const Input = (props) => {
               />
             </svg>
           </div>
-          <span className="select-body">{countryData.code}</span>
+          <span className="select-body">{mobileData.code}</span>
           <div className="select-sufix">
             <input
               onChange={(e) => {
                 const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
-                props.onChange(countryData.code + onlyNumbers);
-                setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
+                props.onChange({ ...mobileData, number: onlyNumbers });
+                setMobileData((prev) => ({ ...prev, number: onlyNumbers }));
               }}
-              value={countryData.number}
+              value={mobileData.number}
               className={`${"number-control"} ${
                 props.emptyFieldErr ? "error-border" : ""
               }`}
@@ -336,7 +340,7 @@ export const Input = (props) => {
         <div className={`${"hidden"} ${active ? "visible" : ""}`}>
           <Dropdown
             type={"country"}
-            handlerClick={handleCountrySelect}
+            handlerClick={handleMobileSelect}
             countryData={countriesData}
             dropdownCountry={"dropdown-country"}
             active={props.active}
