@@ -23,6 +23,7 @@ export const AdminPanel = props => {
             <Visual
                 element={'table-header'}
                 label={props.pageLabel}
+                buttons={props.tableHeaderButtons}
                 fontSize={'font-20'}
                 customStyles={{marginBottom: '20px'}}
             />
