@@ -204,6 +204,51 @@ stories.add("InputTest", (props) => {
                 customStyles={{width: '320px'}}
                 statusCard={false}
             />
+            <InputTest 
+                type={'select'}
+                selectType={'nationality'}
+                label={'Nationality'}
+                subLabel={''}
+                placeholder={'your text'}
+                parent={'your-class-name'}
+                dropdownData={countriesData}
+                required={false}
+                password={false}
+                onChange={onChangeHandler}
+                frameLabel={false}
+                statusCard={
+                <HelpText
+                    status={'info'}
+                    title={'Where are u from u fkin donkey?'}
+                    fontSize={'font-12'}
+                    icon={true}
+                />
+                }
+                customStyles={{width: '320px'}}
+            />
+            <InputTest 
+                type={'select'}
+                selectType={'phoneNumber'}
+                label={'Mobile Number'}
+                parent={'your-class-name'}
+                dropdownData={countriesData}
+                onChange={onChangeHandler}
+                customStyles={{width: '320px'}}
+            />
+            <InputTest 
+                type={'upload'}
+                label={'Upload Image'}
+                parent={'your-class-name'}
+                onChange={onChangeHandler}
+                customStyles={{width: '320px'}}
+            />
+            <InputTest
+                type={'date-picker'}
+                label={'Date of birth'}
+                parent={'your-class-name'}
+                onChange={onChangeHandler}
+                customStyles={{width: '320px'}}
+            />
             <input
                 type={'submit'}
                 value={'submit'}
