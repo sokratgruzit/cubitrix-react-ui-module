@@ -27,7 +27,14 @@ export const Popup = ({
   handlePopUpClose,
   customStyles
 }) => {
-  const [addAdminData, setAddAdminData] = useState({});
+  const [addAdminData, setAddAdminData] = useState({
+    email: '',
+    password: '',
+    [addAdminSelect?.value]: ''
+  });
+
+  const [emptyFields, setEmptyFields] = useState({});
+
 
   const [cover, setCover] = useState(false);
 
@@ -57,17 +64,37 @@ export const Popup = ({
   };
 
   const handleAddAdminInputChange = (e, name) => {
+    setEmptyFields(prev => ({ ...prev, [name]: false }));
     setAddAdminData(prev => ({ ...prev, [name]: e.target.value }));
   };
 
   const handleAddAdminSelectChange = (option, name) => {
+    setEmptyFields(prev => ({ ...prev, [name]: false }));
     setAddAdminData(prev => ({ ...prev, [name]: option }));
+  };
+
+  const handleAdminSaveClick = () => {
+    if (!addAdminData.email || !addAdminData.password) {
+      const updatedState = {};
+
+      Object.keys(addAdminData).forEach(i => {
+          if (addAdminData[i].length < 1) {
+              updatedState[i] = true;
+          } else {
+              updatedState[i] = false;
+          };
+      });
+
+      setEmptyFields({...updatedState});
+   } else {
+      handleAddAdminBtnClick(addAdminData);
+   }
   };
 
   return (
 
     <div className="popup-bg">
-      <div className="popup-wrapper-container" />
+      <div className="popup-wrapper-container" onClick={handlePopUpClose} />
         <div className="popup-wrapper" style={customStyles}>
           <Visual
             label={label}
@@ -115,7 +142,7 @@ export const Popup = ({
             </div>
           )}
           
-          {type === 'addToken' && (
+          {type === 'nikasPopUp' && (
             <div style={addTokenCustomStyles} className='pop-body'>
                 <div className='body-row sc'>
                     <Input
@@ -363,6 +390,7 @@ export const Popup = ({
               icon={false}
               label={addAdminSelect.name}
               defaultData={addAdminSelect.options}
+              emptyFieldErr={emptyFields[addAdminSelect.value]}
               selectHandler={(opt) => handleAddAdminSelectChange(opt, addAdminSelect.value)}
               selectLabel={`All ${addAdminSelect.name}`}
             />
@@ -371,15 +399,17 @@ export const Popup = ({
               label={'email'}
               placeholder={'enter your email'}
               parent={'your-class-name'}
+              emptyFieldErr={emptyFields?.email}
               onChange={(e) => handleAddAdminInputChange(e, 'email')}
             />
             <Input
               type={'default'}
-              label={'password'}
+              label={'password'}e
               placeholder={'enter password'}
               icon={true}
               inputType={"password"}
               coverHandler={coverHandler}
+              emptyFieldErr={emptyFields?.password}
               onChange={(e) => handleAddAdminInputChange(e, 'password')}
               statusCard= {
                 addAdminError && (
@@ -399,7 +429,7 @@ export const Popup = ({
               type={'btn-primary'}
               arrow={'arrow-none'}
               customStyles={{ width: '100%', margin: '0'}}
-              onClick={() => handleAddAdminBtnClick(addAdminData)}
+              onClick={handleAdminSaveClick}
             />
           </div>
         )}

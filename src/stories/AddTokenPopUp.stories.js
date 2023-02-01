@@ -20,10 +20,25 @@ let addTokenSelectData = [
   },
 ];
 
+const addAdminSelect = {
+  name: 'Some Select',
+  value: 'some_select',
+  options: [
+      {
+          name: 'Option1',
+          value: 'option1'
+      },
+      {
+          name: 'Option2',
+          value: 'option2'
+      }
+  ]
+};
+
 stories.add('AddTokenPopUp', () => {
     return (
       <Popup 
-        type={'addToken'}
+        type={'nikasPopUp'}
         label={'Manually Add Tokens'}
         addTokenSelectData={addTokenSelectData}
         addTokenInputLabel={'hihihi'}

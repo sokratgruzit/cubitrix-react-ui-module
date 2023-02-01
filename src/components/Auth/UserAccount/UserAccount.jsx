@@ -33,7 +33,11 @@ export const UserAccount = ({
   const [userData, setUserData] = useState({
     name: "",
     email: "",
-    mobile: "",
+    mobile: {
+      code: "+1",
+      flag: "🇺🇸",
+      number: "",
+    },
     date_of_birth: new Date(),
     nationality: "Select Country",
     avatar: imgValue,
@@ -81,7 +85,9 @@ export const UserAccount = ({
     if (!userData.newPassword) errors.newPassword = "password is required";
     if (userData.newPassword && !userData.confirmPassword)
       errors.confirmPassword = "match is not correct";
-    if (JSON.stringify(errors) !== "{}") return setSecurityFormErrors(errors);
+    if (JSON.stringify(errors) !== "{}")
+      return setSecurityFormErrors((prev) => ({ ...prev, ...errors }));
+
     const atLeastOneError = Object.entries(securityFormErrors).some((obj) => obj[1]);
     if (atLeastOneError) return null;
 
@@ -108,7 +114,7 @@ export const UserAccount = ({
         "password must contain a minimum of 8 characters, uppercase and special character";
     if (formData.newPassword !== formData.confirmPassword && formData.confirmPassword)
       formErrors.confirmPassword = "Passwords do not match";
-    setSecurityFormErrors(formErrors);
+    setSecurityFormErrors((prev) => ({ ...prev, ...formErrors }));
   }, [formData]);
 
   return (
@@ -192,6 +198,7 @@ export const UserAccount = ({
             type={"label-input-phone-number"}
             label={"Mobile Number"}
             onChange={(e) => handleUserUpdate(e, "mobile")}
+            value={userData.mobile}
             customStyles={{ width: "100%" }}
           />
           <Input

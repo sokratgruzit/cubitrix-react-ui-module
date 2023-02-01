@@ -9,6 +9,7 @@ import { Connect } from "../components/Auth/Connect";
 import { UserAccount } from "../components/Auth/UserAccount";
 import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
 import { SignIn } from "../components/Auth/SignIn";
+import { ResetPasswordForm } from "../components/Auth/ResetPasswordForm";
 
 const stories = storiesOf("SideBar", module);
 
@@ -26,6 +27,12 @@ stories.add("SideBar", () => {
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
+      {/* <div style={{ width: "400px" }}>
+        <ResetPasswordForm
+          passwordSetUpState={{ loading: false, error: "shit", success: "haha" }}
+          handleNewPassword={(e) => console.log(e)}
+        />
+      </div> */}
       <SideBar open={toggle}>
         {/* <Connect
           ConnectOptions={[
@@ -56,9 +63,13 @@ stories.add("SideBar", () => {
           personalData={{
             name: "",
             email: "",
-            mobile: "+12323",
+            mobile: {
+              code: "+1",
+              flag: "🇺🇸",
+              number: "",
+            },
             date_of_birth: new Date(),
-            nationality: "India",
+            nationality: "",
           }}
           completeAccount={() => console.log("complete")}
           sideBarClose={() => setToggle((prev) => !prev)}
@@ -94,9 +105,15 @@ stories.add("SideBar", () => {
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
           signInState={{ loading: true, error: false }}
-          otpEnabled={true}
+          otpEnabled={false}
           otpState={{ loading: false, error: "" }}
           handleTFA={(e) => console.log(e)}
+          resetPasswordState={{
+            loading: false,
+            error: "wrong ",
+            success: "success",
+          }}
+          handleResetPassword={(e) => console.log(e)}
         /> */}
       </SideBar>
     </div>
