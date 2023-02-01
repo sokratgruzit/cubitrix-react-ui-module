@@ -357,7 +357,7 @@
   /* background-color: red; */
 }
 .select-modal-sc {
-  display: flex;
+  display: flex!important;
   position: absolute;
   top: 50px;
   left: 0;

@@ -214,6 +214,13 @@ stories.add("InputTest", (props) => {
         onChange={onChangeHandler}
         customStyles={{width: '320px'}}
       />
+      <InputTest
+        type={'date-picker'}
+        label={'Date of birth'}
+        parent={'your-class-name'}
+        onChange={onChangeHandler}
+        customStyles={{width: '320px'}}
+      />
       <input type={'submit'} value={'submit'} style={{ background: 'black', border: 'none', width: '320px', padding: '10px'}} />
     </form>
   );
