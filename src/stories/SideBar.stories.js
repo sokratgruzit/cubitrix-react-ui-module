@@ -9,6 +9,7 @@ import { Connect } from "../components/Auth/Connect";
 import { UserAccount } from "../components/Auth/UserAccount";
 import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
 import { SignIn } from "../components/Auth/SignIn";
+import { ResetPasswordForm } from "../components/Auth/ResetPasswordForm";
 
 const stories = storiesOf("SideBar", module);
 
@@ -26,6 +27,12 @@ stories.add("SideBar", () => {
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
+      <div style={{ width: "400px" }}>
+        <ResetPasswordForm
+          passwordSetUpState={{ loading: false, error: "shit", success: "haha" }}
+          handleNewPassword={(e) => console.log(e)}
+        />
+      </div>
       <SideBar open={toggle}>
         {/* <Connect
           ConnectOptions={[
