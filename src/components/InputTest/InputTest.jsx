@@ -35,7 +35,7 @@ export const InputTest = ({
     });   
     const deleteHandler = () => {
         setFile(null);
-        onChange("");
+        // onChange("");
     };
     function handleChange(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
@@ -273,7 +273,7 @@ export const InputTest = ({
             </div>
             {statusCard}
         </div>
-    )
+    );
 
   return (
     <div>

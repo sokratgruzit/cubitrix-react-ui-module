@@ -216,7 +216,7 @@ export const Input = (props) => {
       <div style={props.customStyles} className="select-group">
         <p className="input-group-title font-12">{props.label}</p>
         <div onChange={props.onChange} className="form-select-sc">
-          <div onClick={activeHandler} className="form-select-item form-control">
+          <div onClick={activeHandler} className={`${'form-select-item'} ${'form-control'} ${props.emptyFieldErr ? 'error-border' : ''}`}>
             <div className="flag-wrapper">{value}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
@@ -272,7 +272,7 @@ export const Input = (props) => {
     element = (
       <div style={props.customStyles} className="input-group-item phone-numbers">
         <p className="font-12">{props.label}</p>
-        <div className="form-control select-control">
+        <div className={`${"form-control"} ${"select-control"} ${props.emptyFieldErr ? 'error-border' : ''}`}>
           <div
             onClick={() => {
               activeHandler();
@@ -336,7 +336,7 @@ export const Input = (props) => {
             Delete avatar
           </p>
         </div>
-        <div className="upload-group-inner">
+        <div className={`${"upload-group-inner"} ${props.emptyFieldErr ? 'error-border' : ''}`}>
           <div className="upload-group-placeholder">
             {!file ? (
               <svg

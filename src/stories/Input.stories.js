@@ -238,6 +238,7 @@ stories.add("Input", (props) => {
       <Input
         type={"label-input-upload"}
         onChange={changeHandler}
+        emptyFieldErr={true}
         statusCard={
           <HelpText
             status={'error'}
@@ -253,6 +254,7 @@ stories.add("Input", (props) => {
         type={"lable-input-select"}
         icon={false}
         selectData={selectData}
+        emptyFieldErr={true}
         defaultData={defaultData}
         label={"yourText"}
         selectHandler={selectHandler}
