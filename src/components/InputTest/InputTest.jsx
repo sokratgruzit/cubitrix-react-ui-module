@@ -17,14 +17,36 @@ export const InputTest = ({
     required,
     emptyFieldErr,
     dropdownData,
+    selectType,
 }) => {
     const [hidden, setHidden] = useState(false);
-    const [act, setAct] = useState(false);
     const [selected, setSelected] = useState('select');
+    const [selectClose, setSelectClose] = useState(false);
+    const [file, setFile] = useState();
     const [data, setData] = useState({
         name: '',
         img: ''
     });
+    const [countryData, setCountryData] = useState({
+        code: "+1",
+        flag: "🇺🇸",
+        coutnry: "United States",
+        number: "",
+    });   
+    const deleteHandler = () => {
+        setFile(null);
+        // onChange("");
+    };
+    function handleChange(e) {
+        setFile(URL.createObjectURL(e.target.files[0]));
+        onChange(e.target.files[0]);
+    }
+
+    function handleCountrySelect(data) {
+        setCountryData((prev) => ({ ...prev, ...data }));
+        setSelectClose(false)
+    }
+    
 
     const passHandler = () => {
         if (!hidden) {
@@ -33,10 +55,18 @@ export const InputTest = ({
             setHidden(false);
         }
     };
+
+    const selectCloseHandler = () => {
+        if (!selectClose) {
+        setSelectClose(true);
+        } else {
+            setSelectClose(false);
+        }
+    }
     
     const handlerClick = (i) => {
         setSelected(i)
-        console.log(i)
+        setSelectClose(false)
     }
 
     let input = '';
@@ -71,13 +101,60 @@ export const InputTest = ({
             </div>
         )
     }
-    if(type === 'select') {
+    if(type === 'upload') {
+        input = (
+            <div className="upload-group-inner">
+                <div className="upload-group-placeholder">
+                    {!file ? (
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g clipPath="url(#clip0_329_8860)">
+                        <path
+                            d="M18.148 7.18801C17.707 7.08901 17.341 6.80901 17.147 6.42101C15.533 3.19801 12.046 1.47301 8.472 2.14301C5.337 2.72401 2.803 5.22201 2.166 8.36001C1.976 9.29301 1.948 10.233 2.083 11.156C2.166 11.723 2.025 12.229 1.697 12.544C0.604 13.587 0.001 14.99 0 16.495C0 19.631 2.364 21.995 5.5 21.995H16.236C20.367 21.995 23.847 18.761 23.995 14.784C24.129 11.172 21.67 7.97701 18.148 7.18701V7.18801ZM16.236 20.996H5.5C2.893 20.996 1 19.103 1 16.497C1.001 15.268 1.494 14.121 2.389 13.267C2.954 12.726 3.204 11.905 3.074 11.012C2.956 10.204 2.981 9.37901 3.148 8.56001C3.704 5.81801 5.918 3.63401 8.656 3.12601C9.104 3.04301 9.551 3.00301 9.991 3.00301C12.628 3.00301 15.044 4.45301 16.254 6.86901C16.584 7.52701 17.194 7.99901 17.931 8.16501C20.983 8.84901 23.113 11.617 22.996 14.748C22.869 18.193 19.837 20.996 16.237 20.996H16.236ZM15.267 12.147C15.462 12.342 15.462 12.659 15.267 12.854C15.169 12.952 15.041 13 14.913 13C14.785 13 14.657 12.951 14.559 12.854L11.998 10.293V17.5C11.998 17.776 11.774 18 11.498 18C11.222 18 10.998 17.776 10.998 17.5V10.293L8.437 12.854C8.242 13.049 7.925 13.049 7.73 12.854C7.535 12.659 7.535 12.342 7.73 12.147L10.437 9.44001C10.68 9.19801 10.989 9.08101 11.305 9.03901C11.364 9.01401 11.429 9.00001 11.497 9.00001C11.565 9.00001 11.63 9.01401 11.689 9.03901C12.006 9.08001 12.315 9.19701 12.558 9.44001L15.265 12.147H15.267Z"
+                            fill="#9C9DA3"
+                        />
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_329_8860">
+                            <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                        </defs>
+                    </svg>
+                    ) : (
+                    <img
+                        className={"avatar-sm"}
+                        src={file}
+                        onError={() => {
+                        setFile(null);
+                        }}
+                    />
+                    )}
+                </div>
+                <div className="upload-group-text">
+                    <p>Upload a profile picture</p>
+                    <label className="upload-btn" htmlFor={"upload_img"}>Broswe</label>
+                    <input
+                    id="upload_img"
+                    className={`${"upload-control"} ${emptyFieldErr ? 'error-border' : ''}`}
+                    type="file"
+                    onChange={handleChange}
+                    />
+                </div>
+            </div>
+        )
+    }
+    if(type === 'select' && selectType === 'default') {
         input = (
             <div className="select-group">
-                <div className="form-control select-panel">
-                <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
+                <div onClick={selectCloseHandler} className="form-control select-panel">
+                    <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
                     <svg
-                        className={`${act ? "rotate" : ""} ${"arrow"}`}
+                        className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
                         width="8"
                         height="5"
                         viewBox="0 0 8 5"
@@ -97,14 +174,85 @@ export const InputTest = ({
                 <Dropdown
                     type={'simple-drowpdown'}
                     data={dropdownData}
-                    onClick={handlerClick}
-                    // onClick={(e)=> console.log(e.target.value)}
-                    customStyles={{}}
+                    handlerClick={handlerClick}
+                    customStyles={{
+                        display: selectClose ? 'block' : 'none'
+                    }}
+                />
+            </div>
+        );
+    }
+    if(type === 'select' && selectType === 'nationality') {
+        input = (
+            <div className="select-group">
+                <div onClick={selectCloseHandler} className="form-control select-panel">
+                    <p>{selected.country ? selected.country : 'Select'}</p>
+                    <svg
+                        className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
+                        width="8"
+                        height="5"
+                        viewBox="0 0 8 5"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </div>
+                <Dropdown
+                    type={"country"}
+                    handlerClick={handlerClick}
+                    countryData={dropdownData}
+                    dropdownCountry={"dropdown-country"}
+                    customStyles={{  display: selectClose ? 'block' : 'none' }}
+                />
+            </div>
+        );
+    }
+    if(type === 'select' && selectType === 'phoneNumber') {
+        input = (
+            <div className="select-group">
+                <div className="form-control select-panel">
+                    <div onClick={selectCloseHandler} className='form-control-inner'>
+                        <div>{countryData.flag ? countryData.flag : ''}</div>
+                        <svg
+                            className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
+                            width="8"
+                            height="5"
+                            viewBox="0 0 8 5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path
+                                d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1"
+                                stroke="white"
+                                strokeWidth="1.5"
+                                strokeMiterlimit="10"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                        <div>{countryData.code ? countryData.code : ''}</div>
+                    </div>
+                    <input className={'number-control'} type={'number'}  />
+                </div>
+                <Dropdown
+                    type={"country"}
+                    handlerClick={handleCountrySelect}
+                    countryData={dropdownData}
+                    dropdownCountry={"dropdown-country"}
+                    customStyles={{  display: selectClose ? 'block' : 'none' }}
                 />
             </div>
         )
     }
-
+  
     let wrapper = (
         <div style={customStyles} className={`${"input-group"} ${parent}`}>
             <div className="mb-3">
@@ -114,8 +262,8 @@ export const InputTest = ({
                         <p className={`{"font-12" ${frameLabel ? 'bordered' : 'frame-label'}`}>{subLabel}</p>
                     </div>
                     <div>
-                        {type === 'input-upload' ? (
-                            <p className="font-12">Delete Avatar</p>
+                        {type === 'upload' ? (
+                            <p onClick={deleteHandler} className="font-12 delete-btn">Delete Avatar</p>
                         ):(
                             <p>{labelR}</p>
                         )}
@@ -125,7 +273,7 @@ export const InputTest = ({
             </div>
             {statusCard}
         </div>
-    )
+    );
 
   return (
     <div>

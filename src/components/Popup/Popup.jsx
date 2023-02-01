@@ -88,7 +88,7 @@ export const Popup = ({
 
       setEmptyFields({...updatedState});
    } else {
-      handleAddAdminBtnClick(addAdminData);
+      // handleAddAdminBtnClick(addAdminData);
    }
   };
 
@@ -391,7 +391,7 @@ export const Popup = ({
               icon={false}
               label={addAdminSelect.name}
               defaultData={addAdminSelect.options}
-              emptyFieldErr={emptyFields[addAdminSelect.name]}
+              emptyFieldErr={emptyFields[addAdminSelect.value]}
               selectHandler={(opt) => handleAddAdminSelectChange(opt, addAdminSelect.value)}
               selectLabel={`All ${addAdminSelect.name}`}
             />
@@ -405,7 +405,7 @@ export const Popup = ({
             />
             <Input
               type={'default'}
-              label={'password'}
+              label={'password'}e
               placeholder={'enter password'}
               icon={true}
               inputType={"password"}
