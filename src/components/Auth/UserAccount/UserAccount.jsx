@@ -87,11 +87,13 @@ export const UserAccount = ({
 
     handleSecurityData(userData);
   };
+
   useEffect(() => {
     if (personalData) {
       const data = { ...personalData };
       if (personalData.nationality === "") data.nationality = "Select Country";
-      setUserData(personalData);
+
+      setUserData(data);
     }
   }, [personalData]);
 
