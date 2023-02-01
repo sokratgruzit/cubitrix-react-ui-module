@@ -30,7 +30,7 @@ export const Popup = ({
   const [addAdminData, setAddAdminData] = useState({
     email: '',
     password: '',
-    [addAdminSelect.value]: ''
+    [addAdminSelect?.value]: ''
   });
 
   const [emptyFields, setEmptyFields] = useState({});
