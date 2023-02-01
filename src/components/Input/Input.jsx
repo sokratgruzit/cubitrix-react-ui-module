@@ -223,7 +223,7 @@ export const Input = (props) =>
     element = (
       <div style={props.customStyles} className="select-group">
         <p className="input-group-title font-12">{props.label}</p>
-        <div onChange={props.onChange} className="form-select-sc" ref={ref}>
+        <div ref={ref} onChange={props.onChange} className="form-select-sc">
           <div onClick={activeHandler} className={`${'form-select-item'} ${'form-control'} ${props.emptyFieldErr ? 'error-border' : ''}`}>
             <div className="flag-wrapper">{value}</div>
             <svg
