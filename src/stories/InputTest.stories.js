@@ -4,7 +4,7 @@ import "../assets/css/main-theme.css";
 import { InputTest } from "../components/InputTest";
 import { HelpText } from "../components/HelpText";
 import { useValidation } from "../hooks/useValidation";
-
+import { countriesData } from "../components/Input/helper";
 const stories = storiesOf("InputTest", module);
 
 let dropdownData = [
@@ -211,7 +211,7 @@ stories.add("InputTest", (props) => {
                 subLabel={''}
                 placeholder={'your text'}
                 parent={'your-class-name'}
-                dropdownData={countriesData}
+                // dropdownData={countriesData}
                 required={false}
                 password={false}
                 onChange={onChangeHandler}
@@ -231,7 +231,7 @@ stories.add("InputTest", (props) => {
                 selectType={'phoneNumber'}
                 label={'Mobile Number'}
                 parent={'your-class-name'}
-                dropdownData={countriesData}
+                // dropdownData={countriesData}
                 onChange={onChangeHandler}
                 customStyles={{width: '320px'}}
             />
