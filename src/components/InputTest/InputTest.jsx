@@ -17,15 +17,29 @@ export const InputTest = ({
     required,
     emptyFieldErr,
     dropdownData,
+    selectType,
+    cellPhone
 }) => {
     const [hidden, setHidden] = useState(false);
-    const [act, setAct] = useState(false);
     const [selected, setSelected] = useState('select');
+    const [selectClose, setSelectClose] = useState(false);
     const [data, setData] = useState({
         name: '',
         img: ''
     });
+    const [countryData, setCountryData] = useState({
+        code: "+1",
+        flag: "🇺🇸",
+        coutnry: "United States",
+        number: "",
+    }); 
 
+    function handleCountrySelect(data) {
+    setActive(false);
+    props.onChange(data.code + countryData.number);
+    setCountryData((prev) => ({ ...prev, ...data }));
+    }
+    
     const passHandler = () => {
         if (!hidden) {
             setHidden(true);
@@ -33,10 +47,20 @@ export const InputTest = ({
             setHidden(false);
         }
     };
+
+    const selectCloseHandler = () => {
+        if (!selectClose) {
+        setSelectClose(true);
+        } else {
+            setSelectClose(false);
+        }
+        console.log(selectClose)
+    }
     
     const handlerClick = (i) => {
         setSelected(i)
         console.log(i)
+        setSelectClose(false)
     }
 
     let input = '';
@@ -71,13 +95,13 @@ export const InputTest = ({
             </div>
         )
     }
-    if(type === 'select') {
+    if(type === 'select' && selectType === 'default') {
         input = (
             <div className="select-group">
-                <div className="form-control select-panel">
-                <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
+                <div onClick={selectCloseHandler} className="form-control select-panel">
+                    <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
                     <svg
-                        className={`${act ? "rotate" : ""} ${"arrow"}`}
+                        className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
                         width="8"
                         height="5"
                         viewBox="0 0 8 5"
@@ -97,12 +121,42 @@ export const InputTest = ({
                 <Dropdown
                     type={'simple-drowpdown'}
                     data={dropdownData}
-                    onClick={handlerClick}
-                    // onClick={(e)=> console.log(e.target.value)}
-                    customStyles={{}}
+                    handlerClick={handlerClick}
+                    customStyles={{
+                        display: selectClose ? 'block' : 'none'
+                    }}
                 />
             </div>
-        )
+        );
+    }
+    if(type === 'select' && selectType === 'nationality') {
+        input = (
+            <div className="select-group">
+                <div className="form-control select-panel">
+                    <div>
+                        ge
+                    </div>
+                    <svg
+                        className={`${"arrow"}`}
+                        width="8"
+                        height="5"
+                        viewBox="0 0 8 5"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        >
+                        <path
+                            d="M7 1L4.5303 3.4697C4.23864 3.76136 3.76136 3.76136 3.4697 3.4697L1 1"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        />
+                    </svg>
+                </div>
+                
+            </div>
+        );
     }
 
     let wrapper = (

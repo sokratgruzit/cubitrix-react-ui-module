@@ -4,6 +4,7 @@ import "../assets/css/main-theme.css";
 import { InputTest } from "../components/InputTest/";
 import { HelpText } from "../components/HelpText";
 import { useValidation } from "../hooks/useValidation";
+import { countriesData } from "../components/Input/helper";
 
 const stories = storiesOf("InputTest", module);
 
@@ -27,7 +28,7 @@ stories.add("InputTest", (props) => {
     email: '',
     password: '',
   }));
-
+  console.log(countriesData)
   const [fieldsFilled, setFieldsFilled] = useState({});
 
   const formErrors = useValidation(fields);
@@ -155,6 +156,7 @@ stories.add("InputTest", (props) => {
       />
       <InputTest 
         type={'select'}
+        selectType={'default'}
         label={'your-label'}
         subLabel={'sm-label'}
         placeholder={'your text'}
@@ -165,9 +167,45 @@ stories.add("InputTest", (props) => {
         onChange={onChangeHandler}
         frameLabel={false}
         customStyles={{width: '320px'}}
-        statusCard={false}
+        statusCard={
+          <HelpText
+            status={'error'}
+            title={'your text'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
       />
-
+      <InputTest 
+        type={'select'}
+        selectType={'nationality'}
+        label={'Nationality'}
+        subLabel={''}
+        placeholder={'your text'}
+        parent={'your-class-name'}
+        dropdownData={dropdownData}
+        required={false}
+        password={false}
+        onChange={onChangeHandler}
+        frameLabel={false}
+        statusCard={false}
+        customStyles={{width: '320px'}}
+      />
+       <InputTest 
+        type={'select'}
+        selectType={'phoneNumber'}
+        label={'Nationality'}
+        subLabel={''}
+        placeholder={'your text'}
+        parent={'your-class-name'}
+        dropdownData={dropdownData}
+        required={false}
+        password={false}
+        onChange={onChangeHandler}
+        frameLabel={false}
+        statusCard={false}
+        customStyles={{width: '320px'}}
+      />
       <input type={'submit'} value={'submit'} style={{ background: 'black', border: 'none', width: '320px', padding: '10px'}} />
     </form>
   );
