@@ -424,6 +424,19 @@ stories.add("AdminPanel", () => {
                    tableData={tableData}
                    tableFilter={true}
                    tableHead={th}
+                   tableHeaderButtons={(
+                    <>
+                        <Button
+                            label={'Hihi'}
+                            size={'btn-lg'}
+                            type={'btn-primary'}
+                            arrow={'arrow-none'}
+                            element={'button'}
+                            onClick={() => console.log('hi')}
+                            customStyles={{ margin:'0'}}
+                        />
+                    </>
+                   )}         
                    pageLabel={'Transactions'}
                    mobile={mobile}
                    tableHeader={2}
