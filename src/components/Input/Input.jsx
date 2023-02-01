@@ -58,6 +58,7 @@ export const Input = (props) =>
   };
   function handlerClick(i) {
     setValue(i);
+    setActive(false)
   }
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
