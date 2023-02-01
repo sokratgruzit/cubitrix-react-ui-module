@@ -251,7 +251,7 @@ export const Input = (props) => {
               props.emptyFieldErr ? "error-border" : ""
             }`}
           >
-            <div className="flag-wrapper">{value}</div>
+            <div className="flag-wrapper">{value ? value : props.selectLabel}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="20"

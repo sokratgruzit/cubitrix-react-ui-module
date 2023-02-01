@@ -27,12 +27,12 @@ stories.add("SideBar", () => {
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
-      <div style={{ width: "400px" }}>
+      {/* <div style={{ width: "400px" }}>
         <ResetPasswordForm
           passwordSetUpState={{ loading: false, error: "shit", success: "haha" }}
           handleNewPassword={(e) => console.log(e)}
         />
-      </div>
+      </div> */}
       <SideBar open={toggle}>
         {/* <Connect
           ConnectOptions={[
@@ -57,7 +57,7 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        {/* <UserAccount
+        <UserAccount
           type={"Metamask"}
           warning={true}
           personalData={{
@@ -66,7 +66,7 @@ stories.add("SideBar", () => {
             mobile: {
               code: "+1",
               flag: "🇺🇸",
-              number: "090",
+              number: "",
             },
             date_of_birth: new Date(),
             nationality: "",
@@ -91,7 +91,7 @@ stories.add("SideBar", () => {
           handleTwoFactorAuth={(val) => {
             setTwoFactorAuth(val);
           }}
-        /> */}
+        />
         {/* <UserOptions
           type={"Metamask"}
           warning={true}
@@ -100,7 +100,7 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         /> */}
-        <SignIn
+        {/* <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
@@ -114,7 +114,7 @@ stories.add("SideBar", () => {
             success: "success",
           }}
           handleResetPassword={(e) => console.log(e)}
-        />
+        /> */}
       </SideBar>
     </div>
   );
