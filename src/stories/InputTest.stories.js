@@ -28,7 +28,7 @@ stories.add("InputTest", (props) => {
     email: '',
     password: '',
   }));
-  console.log(countriesData)
+
   const [fieldsFilled, setFieldsFilled] = useState({});
 
   const formErrors = useValidation(fields);
@@ -50,16 +50,16 @@ stories.add("InputTest", (props) => {
     setFieldsFilled({...updatedState});
   };
 
-  const handleChange = (e, name) => {
-    setFieldsFilled(prev => ({ ...prev, [name]: false }));
-    setFields((prev) => ({
-      ...prev,
-      [name]: e.target.value
-    }));
-  };
+  // const handleChange = (e, name) => {
+  //   setFieldsFilled(prev => ({ ...prev, [name]: false }));
+  //   setFields((prev) => ({
+  //     ...prev,
+  //     [name]: e.target.value
+  //   }));
+  // };
 
   const onChangeHandler = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   return (
@@ -183,27 +183,35 @@ stories.add("InputTest", (props) => {
         subLabel={''}
         placeholder={'your text'}
         parent={'your-class-name'}
-        dropdownData={dropdownData}
+        dropdownData={countriesData}
         required={false}
         password={false}
         onChange={onChangeHandler}
         frameLabel={false}
-        statusCard={false}
+        statusCard={
+          <HelpText
+            status={'info'}
+            title={'Where are u from u fkin donkey?'}
+            fontSize={'font-12'}
+            icon={true}
+          />
+        }
         customStyles={{width: '320px'}}
       />
-       <InputTest 
+      <InputTest 
         type={'select'}
         selectType={'phoneNumber'}
-        label={'Nationality'}
-        subLabel={''}
-        placeholder={'your text'}
+        label={'Mobile Number'}
         parent={'your-class-name'}
-        dropdownData={dropdownData}
-        required={false}
-        password={false}
+        dropdownData={countriesData}
         onChange={onChangeHandler}
-        frameLabel={false}
-        statusCard={false}
+        customStyles={{width: '320px'}}
+      />
+      <InputTest 
+        type={'upload'}
+        label={'Upload Image'}
+        parent={'your-class-name'}
+        onChange={onChangeHandler}
         customStyles={{width: '320px'}}
       />
       <input type={'submit'} value={'submit'} style={{ background: 'black', border: 'none', width: '320px', padding: '10px'}} />
