@@ -211,7 +211,7 @@ stories.add("InputTest", (props) => {
                 subLabel={''}
                 placeholder={'your text'}
                 parent={'your-class-name'}
-                dropdownData={countriesData}
+                // dropdownData={countriesData}
                 required={false}
                 password={false}
                 onChange={onChangeHandler}
@@ -231,7 +231,7 @@ stories.add("InputTest", (props) => {
                 selectType={'phoneNumber'}
                 label={'Mobile Number'}
                 parent={'your-class-name'}
-                dropdownData={countriesData}
+                // dropdownData={countriesData}
                 onChange={onChangeHandler}
                 customStyles={{width: '320px'}}
             />

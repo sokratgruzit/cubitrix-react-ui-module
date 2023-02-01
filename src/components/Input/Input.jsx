@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { HelpText } from "../HelpText";
 import { Dropdown } from "../Dropdown";
 import { Switches } from "../Switches";
@@ -7,7 +7,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Input.css";
 
-export const Input = (props) => {
+// hooks
+import { useOnOutsideClick } from '../../hooks/useOnOutsideClick';
+
+export const Input = (props) => 
+{
   const [file, setFile] = useState(props.value);
   const [active, setActive] = useState(false);
   const [cover, setCover] = useState(false);
@@ -64,6 +68,10 @@ export const Input = (props) => {
     props.onChange(data.code + countryData.number);
     setCountryData((prev) => ({ ...prev, ...data }));
   }
+
+  const ref = useRef();
+
+  useOnOutsideClick(ref, () => setActive(false));
 
   let element = null;
 
@@ -212,7 +220,7 @@ export const Input = (props) => {
   }
   if (props.type === "lable-input-select") {
     element = (
-      <div style={props.customStyles} className="select-group">
+      <div style={props.customStyles} className="select-group" ref={ref}>
         <p className="input-group-title font-12">{props.label}</p>
         <div onChange={props.onChange} className="form-select-sc">
           <div onClick={activeHandler} className={`${'form-select-item'} ${'form-control'} ${props.emptyFieldErr ? 'error-border' : ''}`}>
@@ -387,7 +395,7 @@ export const Input = (props) => {
   }
   if (props.type === "search-input") {
     element = (
-      <div style={props.customStyles} className="input-group">
+      <div style={props.customStyles} className="input-group" ref={ref}>
         <p className="font-12">{props.label && props.label}</p>
         <div className="search-input form-control">
           <div className="search-input-item-fr">

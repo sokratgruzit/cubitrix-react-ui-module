@@ -30,11 +30,10 @@ export const Popup = ({
   const [addAdminData, setAddAdminData] = useState({
     email: '',
     password: '',
-    [addAdminSelect.value]: ''
+    [addAdminSelect?.value]: ''
   });
 
   const [emptyFields, setEmptyFields] = useState({});
-  console.log(emptyFields)
 
 
   const [cover, setCover] = useState(false);
@@ -75,7 +74,7 @@ export const Popup = ({
   };
 
   const handleAdminSaveClick = () => {
-    if (!addAdminData.email || !addAdminData.password || !addAdminData[addAdminSelect.value]) {
+    if (!addAdminData.email || !addAdminData.password) {
       const updatedState = {};
 
       Object.keys(addAdminData).forEach(i => {
@@ -88,7 +87,7 @@ export const Popup = ({
 
       setEmptyFields({...updatedState});
    } else {
-      // handleAddAdminBtnClick(addAdminData);
+      handleAddAdminBtnClick(addAdminData);
    }
   };
 
@@ -143,7 +142,7 @@ export const Popup = ({
             </div>
           )}
           
-          {type === 'addToken' && (
+          {type === 'nikasPopUp' && (
             <div style={addTokenCustomStyles} className='pop-body'>
                 <div className='body-row sc'>
                     <Input
