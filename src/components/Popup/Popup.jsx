@@ -94,7 +94,7 @@ export const Popup = ({
   return (
 
     <div className="popup-bg">
-      <div className="popup-wrapper-container" />
+      <div className="popup-wrapper-container" onClick={handlePopUpClose} />
         <div className="popup-wrapper" style={customStyles}>
           <Visual
             label={label}
