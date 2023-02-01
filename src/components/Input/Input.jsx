@@ -469,7 +469,7 @@ export const Input = (props) => {
           />
           <div className="form-select search-input-item">
             <div onClick={activeHandler} className="select-form">
-              <p className="font-10">{value}</p>
+              <p className="font-10">{value ? value : props.selectLabel}</p>
               <svg
                 className={`${active ? "rotate" : ""} ${"arrow"}`}
                 width="8"
