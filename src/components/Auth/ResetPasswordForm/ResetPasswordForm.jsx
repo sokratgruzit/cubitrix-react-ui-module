@@ -14,6 +14,8 @@ export const ResetPasswordForm = ({ handleNewPassword, passwordSetUpState }) => 
   };
 
   const handlePasswordSetup = () => {
+    const atLeastOneError = Object.entries(passwordErrors).some((obj) => obj[1]);
+    if (atLeastOneError) return null;
     const errors = {};
     if (!data.newPassword) errors.newPassword = "password is required";
 
@@ -22,14 +24,12 @@ export const ResetPasswordForm = ({ handleNewPassword, passwordSetUpState }) => 
 
     if (JSON.stringify(errors) !== "{}")
       return setPasswordErrors((prev) => ({ ...prev, ...errors }));
-    const atLeastOneError = Object.entries(passwordErrors).some((obj) => obj[1]);
-    if (atLeastOneError) return null;
 
     handleNewPassword(data);
   };
 
   useEffect(() => {
-    const errors = {};
+    const errors = { newPassword: false, confirmPassword: false };
     const passwordValidation = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
     if (!passwordValidation.test(data.newPassword) && data.newPassword.length > 0)
       errors.newPassword =
