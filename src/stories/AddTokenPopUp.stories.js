@@ -38,7 +38,7 @@ const addAdminSelect = {
 stories.add('AddTokenPopUp', () => {
     return (
       <Popup 
-        type={'nikasPopUp'}
+        type={'addToken'}
         label={'Manually Add Tokens'}
         addTokenSelectData={addTokenSelectData}
         addTokenInputLabel={'hihihi'}

@@ -74,6 +74,7 @@ stories.add("InputTest", (props) => {
             ...prev,
             [name]: e.target.value
         }));
+        console.log(formData)
     };
 
     const onChangeHandler = (e) => {
@@ -206,26 +207,26 @@ stories.add("InputTest", (props) => {
                 statusCard={false}
             />
             <InputTest 
-                type={'select'}
-                selectType={'nationality'}
-                label={'Nationality'}
-                subLabel={''}
-                placeholder={'your text'}
-                parent={'your-class-name'}
-                dropdownData={countriesData}
-                required={false}
-                password={false}
-                onChange={onChangeHandler}
-                frameLabel={false}
-                statusCard={
-                <HelpText
-                  status={'info'}
-                  title={'Where are u from u fkin donkey?'}
-                  fontSize={'font-12'}
-                  icon={true}
-                />
-                }
-                customStyles={{width: '320px'}}
+              type={'select'}
+              selectType={'nationality'}
+              label={'Nationality'}
+              subLabel={''}
+              placeholder={'your text'}
+              parent={'your-class-name'}
+              dropdownData={countriesData}
+              required={false}
+              password={false}
+              onChange={onChangeHandler}
+              frameLabel={false}
+              statusCard={
+              <HelpText
+                status={'info'}
+                title={'Where are u from u fkin donkey?'}
+                fontSize={'font-12'}
+                icon={true}
+              />
+              }
+              customStyles={{width: '320px'}}
             />
             <InputTest 
                 type={'select'}
@@ -251,9 +252,9 @@ stories.add("InputTest", (props) => {
                 customStyles={{width: '320px'}}
             />
             <input
-                type={'submit'}
-                value={'submit'}
-                style={{ background: 'black', border: 'none', width: '320px', padding: '10px'}}
+              type={'submit'}
+              value={'submit'}
+              style={{ background: 'black', border: 'none', width: '320px', padding: '10px'}}
             />
         </form>
     );

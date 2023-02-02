@@ -142,7 +142,7 @@ export const Popup = ({
             </div>
           )}
           
-          {type === 'nikasPopUp' && (
+          {type === 'addToken' && (
             <div style={addTokenCustomStyles} className='pop-body'>
                 <div className='body-row sc'>
                     <Input
