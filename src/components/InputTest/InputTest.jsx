@@ -21,10 +21,13 @@ export const InputTest = ({
     emptyFieldErr,
     dropdownData,
     selectType,
+    dateLabel
 }) => {
     const [hidden, setHidden] = useState(false);
     const [selected, setSelected] = useState('select');
     const [selectClose, setSelectClose] = useState(false);
+    // const [value, setValue] = useState();
+    const [startDate, setStartDate] = useState(new Date());
     const [file, setFile] = useState();
     const [data, setData] = useState({
         name: '',
@@ -46,7 +49,7 @@ export const InputTest = ({
         setFile(null);
         // onChange("");
     };
-    function handleChange(e) {
+    function avatarChangeHandler(e) {
         setFile(URL.createObjectURL(e.target.files[0]));
         onChange(e.target.files[0]);
     }
@@ -151,10 +154,10 @@ export const InputTest = ({
                     <p>Upload a profile picture</p>
                     <label className="upload-btn" htmlFor={"upload_img"}>Broswe</label>
                     <input
-                    id="upload_img"
-                    className={`${"upload-control"} ${emptyFieldErr ? 'error-border' : ''}`}
-                    type="file"
-                    onChange={handleChange}
+                        id="upload_img"
+                        className={`${"upload-control"} ${emptyFieldErr ? 'error-border' : ''}`}
+                        type="file"
+                        onChange={avatarChangeHandler} 
                     />
                 </div>
             </div>
@@ -165,17 +168,16 @@ export const InputTest = ({
             <div>
                 <DatePicker
                     className="form-control"
-                    // selected={value}
-                    // onChange={(date) => onChange(date)}
+                    selected={startDate} 
+                    onChange={(date) => setStartDate(date)}
                 />
             </div>
         )
     )}
-
     if(type === 'select' && selectType === 'default') {
         input = (
-            <div className="select-group">
-                <div ref={ref} onClick={selectCloseHandler} className="form-control select-panel">
+            <div ref={ref} className="select-group">
+                <div  onClick={selectCloseHandler} className="form-control select-panel">
                     <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
                     <svg
                         className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
@@ -208,8 +210,8 @@ export const InputTest = ({
     }
     if(type === 'select' && selectType === 'nationality') {
         input = (
-            <div className="select-group">
-                <div ref={ref} onClick={selectCloseHandler} className="form-control select-panel">
+            <div  ref={ref} className="select-group">
+                <div onClick={selectCloseHandler} className="form-control select-panel">
                     <p>{selected.country ? selected.country : 'Select'}</p>
                     <svg
                         className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
@@ -241,8 +243,8 @@ export const InputTest = ({
     }
     if(type === 'select' && selectType === 'phoneNumber') {
         input = (
-            <div className="select-group">
-                <div ref={ref} className="form-control select-panel">
+            <div ref={ref} className="select-group">
+                <div className="form-control select-panel">
                     <div onClick={selectCloseHandler} className='form-control-inner'>
                         <div>{countryData.flag ? countryData.flag : ''}</div>
                         <svg
