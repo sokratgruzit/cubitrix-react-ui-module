@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+// components
 import { Visual } from "../Visual";
 import { Switches } from "../Switches";
 import { Input } from '../Input';
@@ -164,103 +166,66 @@ export const Popup = ({
           
           {type === 'addToken' && (
             <div style={addTokenCustomStyles} className='pop-body'>
-                <div className='body-row sc'>
-                    <Input
-                        type={"lable-input-select"}
-                        // icon={false}
-                        selectData={addTokenSelectData}
-                        // defaultData={defaultData}
-                        label={addTokenInputLabel}
-                        // selectHandler={selectHandler}
-                        // selectLabel={"select"}
-                        // active={active}
-                        // status={"warning"}
-                        // title={"your text"}
-                        // color={"#FFA726"}
-                        customStyles={{width: 'calc(50% - 10px)'}}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tranxType")}
+                <div className='addToken-inputs'>
+                  <Input
+                      type={"lable-input-select"}
+                      selectData={addTokenSelectData}
+                      label={addTokenInputLabel}
+                      onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tranxType")}
 
-                    />
-                    {/* <Input
-                        type={"default"}
-                        // value={value}
-                        icon={true}
-                        inputType={'text'}
-                        placeholder={""}
-                        label={'Tranx Type'}
-                        subLabel={''}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tranxType")}
-                        customStyles={{width: 'calc(50% - 10px)'}}
-                    /> */}
-                    <Input
-                        type={"date-picker-input"}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tranxDate")}
-                        label={"Tranx Date"}
-                        customStyles={{width: 'calc(50% - 10px)'}}
-                    />
+                  />  
+                  <Input
+                      type={"date-picker-input"}
+                      onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tranxDate")}
+                      label={"Tranx Date"}
+                  />
+                  <Input
+                      type={"default"}
+                      // value={value}
+                      icon={true}
+                      inputType={'text'}
+                      placeholder={"default input"}
+                      label={'Token Added To'}
+                      onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tokenAddedTo")}
+                  />
+                  <Input
+                      type={"default"}
+                      // value={value}
+                      icon={true}
+                      inputType={'text'}
+                      placeholder={"default input"}
+                      label={'Token for Stage'}
+                      onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tokenForStage")}
+                  />
+                  <Input
+                      type={"default"}
+                      // value={value}
+                      icon={true}
+                      inputType={'text'}
+                      placeholder={"Manual"}
+                      label={'Payment Gateway'}
+                      onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "paymentGateway")}
+                  />
+                  <Input
+                      type={"default"}
+                      // value={value}
+                      icon={true}
+                      inputType={'text'}
+                      placeholder={"0"}
+                      label={'Payment Amount'}
+                      onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "paymentAmount")}
+                  />
                 </div>
-                <div className='body-row sc'>
-                    <Input
-                        type={"default"}
-                        // value={value}
-                        icon={true}
-                        inputType={'text'}
-                        placeholder={"default input"}
-                        label={'Token Added To'}
-                        subLabel={''}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tokenAddedTo")}
-                        customStyles={{width: 'calc(50% - 10px)'}}
-                    />
-                    <Input
-                        type={"default"}
-                        // value={value}
-                        icon={true}
-                        inputType={'text'}
-                        placeholder={"default input"}
-                        label={'Token for Stage'}
-                        subLabel={''}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "tokenForStage")}
-                        customStyles={{width: 'calc(50% - 10px)'}}
-                    />
-                </div>
-                <div className='body-row sc'>
-                    <Input
-                        type={"default"}
-                        // value={value}
-                        icon={true}
-                        inputType={'text'}
-                        placeholder={"Manual"}
-                        label={'Payment Gateway'}
-                        subLabel={''}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "paymentGateway")}
-                        customStyles={{width: 'calc(50% - 10px)'}}
-                    />
-                    <Input
-                        type={"default"}
-                        // value={value}
-                        icon={true}
-                        inputType={'text'}
-                        placeholder={"0"}
-                        label={'Payment Amount'}
-                        subLabel={''}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "paymentAmount")}
-                        customStyles={{width: 'calc(50% - 10px)'}}
-                    />
-                </div>
-                <div className='body-row'>
-                    <Input
-                        type={"default"}
-                        // value={value}
-                        icon={true}
-                        inputType={'text'}
-                        placeholder={"Optional"}
-                        label={'Payment Address'}
-                        subLabel={''}
-                        onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "paymentAddress")}
-                        customStyles={{width: '100%'}}
-                    />
-                </div>
-                <div className='body-row'>
+                <Input
+                    type={"default"}
+                    // value={value}
+                    icon={true}
+                    inputType={'text'}
+                    placeholder={"Optional"}
+                    label={'Payment Address'}
+                    onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "paymentAddress")}
+                />
+                <div className='addToken-body-row'>
                     <Input
                         type={"default"}
                         // value={value}
@@ -268,7 +233,6 @@ export const Popup = ({
                         inputType={'text'}
                         placeholder={"0"}
                         label={'Number of Token'}
-                        subLabel={''}
                         onChange={(e) => addTokenHandlerDataUpdate(e.target.value, "numberToken")}
                         customStyles={{width: 'calc(50% - 10px)'}}
                     />
@@ -276,26 +240,21 @@ export const Popup = ({
                         <input htmlFor={'checkbox'} type={'checkbox'}  />
                     </div>
                 </div>
-                <div className='body-row'>
-                    <Button
-                        label={'Add Token'}
-                        size={'btn-lg'}
-                        type={'btn-primary'}
-                        arrow={''}
-                        element={'button'}
-                        customStyles={{width: '100%'}}
-                        onClick={() => addTokenHandlerDataUpdate(data)}
-                    />
-                </div>
-                <div className='body-row'>
-                    <HelpText
-                        status={'success'}
-                        title={'your text'}
-                        color={'#9CCC65'}
-                        fontSize={'font-12'}
-                        icon={true}
-                    />
-                </div>
+                <Button
+                    label={'Add Token'}
+                    size={'btn-lg'}
+                    type={'btn-primary'}
+                    element={'button'}
+                    customStyles={{ margin: '0', width: '100%' }}
+                    onClick={() => addTokenHandlerDataUpdate(data)}
+                />
+                <HelpText
+                    status={'success'}
+                    title={'Bonus Adjusted'}
+                    color={'#9CCC65'}
+                    fontSize={'font-12'}
+                    icon={true}
+                />
             </div>
           )
         }
