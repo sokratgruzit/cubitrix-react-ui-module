@@ -62,6 +62,7 @@ export const TableElement = ({
 
               return (
                 <div
+                  key={index}
                   className={`${pageNumber === currentPage ? "active-element" : ""}`}
                   onClick={() => onPageChange(pageNumber)}
                 >
@@ -69,7 +70,7 @@ export const TableElement = ({
                 </div>
               );
             })}
-            <div className={`next ${currentPage === lastPage && 'disabled'}`} onClick={onNext} >
+            <div className={`next ${currentPage === lastPage && 'disabled'}`} onClick={onNext}>
               <svg
                 width="7"
                 height="12"
