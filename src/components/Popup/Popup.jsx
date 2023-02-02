@@ -5,6 +5,9 @@ import { Input } from '../Input';
 import { Button } from '../Button';
 import { HelpText } from '../HelpText';
 
+// hooks
+import { useValidation } from "../../hooks/useValidation";
+
 // styles
 import "./Popup.css";
 
@@ -34,7 +37,6 @@ export const Popup = ({
   });
 
   const [emptyFields, setEmptyFields] = useState({});
-
 
   const [cover, setCover] = useState(false);
 
@@ -73,6 +75,19 @@ export const Popup = ({
     setAddAdminData(prev => ({ ...prev, [name]: option }));
   };
 
+  let helpTexts = {
+    email: {
+        validationType: 'email',
+        success: "email is valid",
+        failure: "email must be valid"
+    },
+    password: {
+        validationType: 'password',
+        success: "password is valid",
+        failure: "password must contain a minimum of 8 characters, uppercase and special character"
+    },
+  };
+
   const handleAdminSaveClick = () => {
     if (!addAdminData.email || !addAdminData.password) {
       const updatedState = {};
@@ -90,6 +105,11 @@ export const Popup = ({
       handleAddAdminBtnClick(addAdminData);
    }
   };
+
+  const formErrors = useValidation({
+    email: addAdminData.email,
+    password: addAdminData.password
+  }, helpTexts);
 
   return (
 
@@ -400,6 +420,16 @@ export const Popup = ({
               placeholder={'enter your email'}
               parent={'your-class-name'}
               emptyFieldErr={emptyFields?.email}
+              statusCard= {
+                formErrors.email && (
+                    <HelpText
+                        status={formErrors.email.failure ? 'error' : 'success'}
+                        title={formErrors.email.failure || formErrors.email.success}
+                        fontSize={'font-12'}
+                        icon={true}
+                    />
+                )
+              }
               onChange={(e) => handleAddAdminInputChange(e, 'email')}
             />
             <Input
@@ -412,16 +442,25 @@ export const Popup = ({
               emptyFieldErr={emptyFields?.password}
               onChange={(e) => handleAddAdminInputChange(e, 'password')}
               statusCard= {
-                addAdminError && (
+                formErrors.password && (
                   <HelpText
-                    status={'error'}
-                    title={addAdminError}
-                    fontSize={'font-12'}
-                    icon={true}
+                      status={formErrors.password.failure ? 'error' : 'success'}
+                      title={formErrors.password.failure || formErrors.password.success}
+                      fontSize={'font-12'}
+                      icon={true}
                   />
                 )
-              }
+              }             
             />
+            {addAdminError && (
+              <HelpText
+                status={'warning'}
+                title={addAdminError}
+                fontSize={'font-12'}
+                icon={true}
+              />
+            )}
+            
             <Button 
               element={'button'}
               label={'Save'}
