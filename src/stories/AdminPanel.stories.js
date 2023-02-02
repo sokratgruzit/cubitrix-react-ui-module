@@ -12,7 +12,6 @@ const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
     const { mobile } = Functions();
-    console.log(mobile)
 
     const [mobileExpand, setMobileExpand] = useState(null);
     const [tableExpand, setTableExpand] = useState(null);
@@ -333,9 +332,13 @@ stories.add("AdminPanel", () => {
     let tableData;
     tableData = td.map((item, index) => {
         return(
-            <div key={index} className={`table-parent ${mobileExpand == item.id ? 'active' : ''}`} onClick={() => {
-                mobileExpandFunc(item.id)
-            }}>
+            <div
+                className={`table-parent ${mobileExpand == item.id ? 'active' : ''}`}
+                onClick={() => {
+                    mobileExpandFunc(item.id)
+                }}
+                key={index}
+            >
                 <div className="table">
                     <div className={`td col ${th[0].mobileWidth ? true : false }`} style={{width: `${mobile ? th[0].mobileWidth : th[0].width}%`}}>
                         <span>{item.id}</span>

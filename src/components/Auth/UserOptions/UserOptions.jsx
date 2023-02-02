@@ -49,6 +49,7 @@ export const UserOptions = ({
           label={account}
           element={"copy-address"}
           customStyles={{ width: "100%" }}
+          onClick={async () => await navigator.clipboard.writeText(account)}
         />
         <span className="border-full"></span>
         <Button

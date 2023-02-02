@@ -303,3 +303,7 @@
 .side-admin-button-expand:hover,.side-admin-button-expand.active {
   color: #3d5afe;
 }
+
+.subMenu-active {
+  color: #3d5afe;
+}

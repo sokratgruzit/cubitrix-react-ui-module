@@ -10,6 +10,7 @@ import { UserAccount } from "../components/Auth/UserAccount";
 import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
 import { SignIn } from "../components/Auth/SignIn";
 import { ResetPasswordForm } from "../components/Auth/ResetPasswordForm";
+import ResetPassword from "../components/Auth/ResetPassword/ResetPassword";
 
 const stories = storiesOf("SideBar", module);
 
@@ -27,12 +28,12 @@ stories.add("SideBar", () => {
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
-      {/* <div style={{ width: "400px" }}>
+      <div style={{ width: "400px" }}>
         <ResetPasswordForm
           passwordSetUpState={{ loading: false, error: "shit", success: "haha" }}
           handleNewPassword={(e) => console.log(e)}
         />
-      </div> */}
+      </div>
       <SideBar open={toggle}>
         {/* <Connect
           ConnectOptions={[
@@ -59,7 +60,6 @@ stories.add("SideBar", () => {
         /> */}
         {/* <UserAccount
           type={"Metamask"}
-          warning={true}
           personalData={{
             name: "",
             email: "",
@@ -91,6 +91,17 @@ stories.add("SideBar", () => {
           handleTwoFactorAuth={(val) => {
             setTwoFactorAuth(val);
           }}
+          handleForgetPassword={() => console.log("forget password")}
+        /> */}
+        {/* <ResetPassword
+          sideBarClose={() => setToggle((prev) => !prev)}
+          goBack={() => console.log("go back")}
+          resetPasswordState={{
+            loading: false,
+            error: "wrong ",
+            success: "success",
+          }}
+          handleResetPassword={(e) => console.log(e)}
         /> */}
         {/* <UserOptions
           type={"Metamask"}
@@ -99,6 +110,7 @@ stories.add("SideBar", () => {
           sideBarClose={() => setToggle((prev) => !prev)}
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
+          account={"ahaha"}
         /> */}
         <SignIn
           onClick={completeHandler}

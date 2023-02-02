@@ -21,6 +21,7 @@ export const UserAccount = ({
   imgValue,
   twoFactorAuth,
   handleTwoFactorAuth,
+  handleForgetPassword,
 }) => {
   const [selectedTab, setSelectedTab] = useState("data");
 
@@ -327,6 +328,10 @@ export const UserAccount = ({
               fontSize={"font-12"}
               icon={true}
             />
+            <p className="forgot-password" onClick={handleForgetPassword}>
+              Forgot your password?
+            </p>
+
             <Button
               element="button"
               label={
@@ -367,6 +372,8 @@ export const UserAccount = ({
               />
             )}
           </div>
+          {/* )} */}
+
           <span className="border-fulls"></span>
           <div className="Tfa">
             <div className="Tfa-title">

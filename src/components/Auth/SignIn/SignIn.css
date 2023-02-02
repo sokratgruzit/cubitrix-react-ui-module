@@ -44,11 +44,14 @@
   margin-top: 10px;
 }
 
-.forgot-password {
+.forgot-password-opt {
   cursor: pointer;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  text-decoration-line: underline;
+  color: #3d5afe;
+  margin-bottom: -10px;
 }
 
-.forgot-password:hover {
-  color: #3d5afe;
+.forgot-password-opt:hover {
+  color: #ef5350;
 }
