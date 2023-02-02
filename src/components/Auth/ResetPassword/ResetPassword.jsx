@@ -4,7 +4,7 @@ import { HelpText } from "../../HelpText";
 import { Visual } from "../../Visual";
 import "./ResetPassword.css";
 
-const ResetPassword = ({
+export const ResetPassword = ({
   goBack,
   sideBarClose,
   handleResetPassword,
@@ -84,5 +84,3 @@ const ResetPassword = ({
     </div>
   );
 };
-
-export default ResetPassword;
