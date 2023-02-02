@@ -20,6 +20,7 @@ stories.add("TwoFactorAuthentication", (props) => {
         qrcode={"ahahahah new qr codess"}
         accountName={"Complend"}
         accountKey={"2INU5M0UXZ"}
+        twoFactorSetUpState={{ loading: false, error: "shit" }}
       />
     </div>
   );
