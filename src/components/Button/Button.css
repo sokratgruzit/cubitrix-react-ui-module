@@ -259,12 +259,47 @@
   cursor: pointer;
   align-items: center;
 }
-.side-admin-button:hover {
+.side-admin-button:hover,.side-admin-button.active {
   background: rgba(255,255,255,.05);
 }
 .side-admin-button span {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.side-admin-button:hover span {
+.side-admin-button:hover span,.side-admin-button.active span {
+  color: #3d5afe;
+}
+.side-admin-button .drop-arrow path {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.side-admin-button .drop-arrow{
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  margin-left: auto;
+  transform: rotate(180deg);
+}
+.side-admin-button.active .drop-arrow {
+  transform: rotate(0deg);
+}
+.side-admin-button.active .drop-arrow path {
+  fill: #3d5afe;
+}
+.side-admin-expand{
+  display: flex;
+  flex-direction: column;
+  padding-left: 25px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  overflow: hidden;
+  max-height: 0px;
+}
+.side-admin-expand.active {
+  max-height: 600px;
+}
+.side-admin-button-expand {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  margin-bottom: 20px;
+}
+.side-admin-button-expand:first-child {
+  margin-top: 20px;
+}
+.side-admin-button-expand:hover,.side-admin-button-expand.active {
   color: #3d5afe;
 }

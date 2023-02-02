@@ -18,3 +18,37 @@
   gap: 10px;
   padding: 0px 20px 0px 20px;
 }
+
+.otp-body {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.otp-title {
+  font-size: 20px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.otp-info {
+  font-size: 14px;
+  line-height: 140%;
+  color: #6a6d76;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.forgot-password {
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.forgot-password:hover {
+  color: #3d5afe;
+}

@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { SigninLogo } from '../../assets/svgs';
 import { Input } from '../Input';
 import { Button } from '../Button';
+import { HelpText } from "../HelpText";
 
 import './Signin.css';
 
-export const Signin = ({ handleSubmit }) => {
+export const Signin = ({ 
+    handleSubmit,
+    loginError
+  }) => {
   const [cover, setCover] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,6 +35,7 @@ export const Signin = ({ handleSubmit }) => {
             icon={true}
             inputType={'text'}
             placeholder={"Enter User Name"}
+            editable={false}
             label={'User Name'}
             subLabel={''}
             value={email}
@@ -43,9 +48,18 @@ export const Signin = ({ handleSubmit }) => {
             coverHandler={coverhandler}
             placeholder={"Enter Password"}
             label={'Password'}
+            editable={false}
             subLabel={''}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            statusCard={loginError && (
+              <HelpText
+                status={'error'}
+                title={loginError}
+                fontSize={'font-12'}
+                icon={true}
+              />
+            )}
           />
           <Button
             label={'Sign In'}

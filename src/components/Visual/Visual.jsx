@@ -116,8 +116,7 @@ export const Visual = (props) => {
           <h1 className={props.fontSize}>{props.label}</h1>
         </div>
         <div className="right-panel">
-            {props.leftBtn}
-            {props.rightBtn}
+          {props.buttons}
         </div>
       </div>
     )

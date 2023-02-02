@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { HelpText } from "../HelpText";
 import { Dropdown } from "../Dropdown";
 import { Switches } from "../Switches";
@@ -7,6 +7,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Input.css";
 
+// hooks
+import { useOnOutsideClick } from "../../hooks/useOnOutsideClick";
+
 export const Input = (props) => {
   const [file, setFile] = useState(props.value);
   const [active, setActive] = useState(false);
@@ -14,23 +17,18 @@ export const Input = (props) => {
   const [value, setValue] = useState(props.selectLabel);
   const [edit, setEdit] = useState(false);
   const [inputValue, setInputValue] = useState();
-  const [countryData, setCountryData] = useState({
+
+  const [mobileData, setMobileData] = useState({
     code: "+1",
     flag: "🇺🇸",
-    coutnry: "United States",
     number: "",
   });
 
   const editHandler = () => {
-    setEdit(true)
-    setInputValue(undefined)
+    setEdit(true);
+    setInputValue(undefined);
     // setValueHandler()
-  }
-
-  const setValueHandler = (e) => {
-    console.log(e.target.value)
-    // props.value={e.target.value}  
-}
+  };
 
   const activeHandler = () => {
     if (!active) {
@@ -54,16 +52,33 @@ export const Input = (props) => {
   };
   function handlerClick(i) {
     setValue(i);
+    setActive(false);
   }
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
     props.onChange(e.target.files[0]);
   }
-  function handleCountrySelect(data) {
+  // function handleCountrySelect(data) {
+  //   setActive(false);
+  //   props.onChange(data.code + countryData.number);
+  //   setCountryData((prev) => ({ ...prev, ...data }));
+  // }
+
+  function handleMobileSelect(data) {
     setActive(false);
-    props.onChange(data.code + countryData.number);
-    setCountryData((prev) => ({ ...prev, ...data }));
+    props.onChange({ ...mobileData, flag: data.flag, code: data.code });
+    setMobileData((prev) => ({ ...prev, flag: data.flag, code: data.code }));
   }
+
+  useEffect(() => {
+    if (props.type === "label-input-phone-number" && props.value) {
+      setMobileData(props.value);
+    }
+    setValue(props.value);
+  }, [props.value]);
+
+  const ref = useRef();
+  useOnOutsideClick(ref, () => setActive(false));
 
   let element = null;
 
@@ -82,7 +97,7 @@ export const Input = (props) => {
           onChange={props.onChange}
           value={!edit ? props.value : inputValue}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
-          className="form-control"
+          className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
         />
@@ -131,10 +146,26 @@ export const Input = (props) => {
           ) : (
             ""
           )}
-          {props.value ? (
-            <svg onClick={editHandler} style={{ top: props.label || props.subLabel ? "34.5px" : "8px", opacity: edit ? '0' : '1' }} className="input-group-icon-sc"  width="18" height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M497.9 74.16l-60.09-60.1c-18.75-18.75-49.19-18.75-67.93 0L313.4 70.61l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM31.04 352.1c-2.234 2.234-3.756 5.078-4.377 8.176l-26.34 131.7C-1.703 502.1 6.156 512 15.95 512c1.049 0 2.117-.1035 3.199-.3203l131.7-26.34c3.098-.6191 5.941-2.141 8.176-4.373l259.7-259.7l-128-128L31.04 352.1zM131.9 440.2l-75.14 15.03l15.03-75.15L96 355.9V416h60.12L131.9 440.2z"/></svg>
-            ) : ''}
+          {props.value && props.editable ? (
+            <svg
+              onClick={editHandler}
+              style={{
+                top: props.label || props.subLabel ? "34.5px" : "8px",
+                opacity: edit ? "0" : "1",
+              }}
+              className="input-group-icon-sc"
+              width="18"
+              height="16"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M497.9 74.16l-60.09-60.1c-18.75-18.75-49.19-18.75-67.93 0L313.4 70.61l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM31.04 352.1c-2.234 2.234-3.756 5.078-4.377 8.176l-26.34 131.7C-1.703 502.1 6.156 512 15.95 512c1.049 0 2.117-.1035 3.199-.3203l131.7-26.34c3.098-.6191 5.941-2.141 8.176-4.373l259.7-259.7l-128-128L31.04 352.1zM131.9 440.2l-75.14 15.03l15.03-75.15L96 355.9V416h60.12L131.9 440.2z" />
+            </svg>
+          ) : (
+            ""
+          )}
         </span>
+        {props.statusCard}
       </div>
     );
   }
@@ -162,7 +193,7 @@ export const Input = (props) => {
             <input
               onChange={props.onChange}
               style={props.icon ? { paddingRight: "55px" } : { paddingRight: "16px" }}
-              className="form-control"
+              className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}`}
               type="text"
               placeholder={props.placeholder}
             />
@@ -187,6 +218,7 @@ export const Input = (props) => {
             </div>
           )}
         </div>
+        {props.statusCard}
       </div>
     );
   }
@@ -200,21 +232,26 @@ export const Input = (props) => {
         <input
           onChange={props.onChange}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
-          className="form-control"
+          className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}`}
           type="text"
           placeholder={props.placeholder}
         />
+        {props.statusCard}
       </div>
     );
   }
-
   if (props.type === "lable-input-select") {
     element = (
       <div style={props.customStyles} className="select-group">
         <p className="input-group-title font-12">{props.label}</p>
-        <div onChange={props.onChange} className="form-select-sc">
-          <div onClick={activeHandler} className="form-select-item form-control">
-            <div className="flag-wrapper">{value}</div>
+        <div ref={ref} onChange={props.onChange} className="form-select-sc">
+          <div
+            onClick={activeHandler}
+            className={`${"form-select-item"} ${"form-control"} ${
+              props.emptyFieldErr ? "error-border" : ""
+            }`}
+          >
+            <div className="flag-wrapper">{value ? value : props.selectLabel}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="20"
@@ -239,8 +276,8 @@ export const Input = (props) => {
                 type={"country"}
                 handlerClick={(data) => {
                   setActive(false);
-                  setValue(data.country);
-                  props.onClick(data);
+                  setValue(`${data.flag} ${data.country}`);
+                  props.onClick(`${data.flag} ${data.country}`);
                 }}
                 countryData={countriesData}
                 dropdownCountry={"dropdown-country"}
@@ -260,12 +297,7 @@ export const Input = (props) => {
             )}
           </div>
         </div>
-        <HelpText
-          icon={props.icon}
-          status={props.status}
-          title={props.title}
-          color={props.color}
-        />
+        {props.statusCard}
       </div>
     );
     // im waiting for guram here
@@ -274,14 +306,18 @@ export const Input = (props) => {
     element = (
       <div style={props.customStyles} className="input-group-item phone-numbers">
         <p className="font-12">{props.label}</p>
-        <div className="form-control select-control">
+        <div
+          className={`${"form-control"} ${"select-control"} ${
+            props.emptyFieldErr ? "error-border" : ""
+          }`}
+        >
           <div
             onClick={() => {
               activeHandler();
             }}
             className="select-prefix"
           >
-            <div className="flag">{countryData.flag}</div>
+            <div className="flag">{mobileData.flag}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"}`}
               width="8"
@@ -300,16 +336,18 @@ export const Input = (props) => {
               />
             </svg>
           </div>
-          <span className="select-body">{countryData.code}</span>
+          <span className="select-body">{mobileData.code}</span>
           <div className="select-sufix">
             <input
               onChange={(e) => {
                 const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
-                props.onChange(countryData.code + onlyNumbers);
-                setCountryData((prev) => ({ ...prev, number: onlyNumbers }));
+                props.onChange({ ...mobileData, number: onlyNumbers });
+                setMobileData((prev) => ({ ...prev, number: onlyNumbers }));
               }}
-              value={countryData.number}
-              className="number-control"
+              value={mobileData.number}
+              className={`${"number-control"} ${
+                props.emptyFieldErr ? "error-border" : ""
+              }`}
               type="text"
             />
           </div>
@@ -317,7 +355,7 @@ export const Input = (props) => {
         <div className={`${"hidden"} ${active ? "visible" : ""}`}>
           <Dropdown
             type={"country"}
-            handlerClick={handleCountrySelect}
+            handlerClick={handleMobileSelect}
             countryData={countriesData}
             dropdownCountry={"dropdown-country"}
             active={props.active}
@@ -325,7 +363,7 @@ export const Input = (props) => {
             countryCode={true}
           />
         </div>
-        <HelpText />
+        {props.statusCard}
       </div>
     );
   }
@@ -338,7 +376,11 @@ export const Input = (props) => {
             Delete avatar
           </p>
         </div>
-        <div className="upload-group-inner">
+        <div
+          className={`${"upload-group-inner"} ${
+            props.emptyFieldErr ? "error-border" : ""
+          }`}
+        >
           <div className="upload-group-placeholder">
             {!file ? (
               <svg
@@ -378,18 +420,21 @@ export const Input = (props) => {
             {/* <p className='upload-btn'>Browse</p> */}
             <input
               id="upload_img"
-              className="upload-control"
+              className={`${"upload-control"} ${
+                props.emptyFieldErr ? "error-border" : ""
+              }`}
               type="file"
               onChange={handleChange}
             />
           </div>
         </div>
+        {props.statusCard}
       </div>
     );
   }
   if (props.type === "search-input") {
     element = (
-      <div style={props.customStyles} className="input-group">
+      <div style={props.customStyles} className="input-group" ref={ref}>
         <p className="font-12">{props.label && props.label}</p>
         <div className="search-input form-control">
           <div className="search-input-item-fr">
@@ -424,7 +469,7 @@ export const Input = (props) => {
           />
           <div className="form-select search-input-item">
             <div onClick={activeHandler} className="select-form">
-              <p className="font-10">{value}</p>
+              <p className="font-10">{value ? value : props.selectLabel}</p>
               <svg
                 className={`${active ? "rotate" : ""} ${"arrow"}`}
                 width="8"
@@ -456,6 +501,7 @@ export const Input = (props) => {
             </div>
           </div>
         </div>
+        {props.statusCard}
       </div>
     );
   }
@@ -464,7 +510,7 @@ export const Input = (props) => {
       <div
         style={props.customStyles}
         onChange={props.changeHandler}
-        className="input-group"
+        className={`$"input-group"} ${props.emptyFieldErr ? "error-border" : ""}`}
       >
         <p className="font-12">{props.label}</p>
         <DatePicker
@@ -472,6 +518,7 @@ export const Input = (props) => {
           selected={props.value}
           onChange={(date) => props.onChange(date)}
         />
+        {props.statusCard}
       </div>
     );
   }
