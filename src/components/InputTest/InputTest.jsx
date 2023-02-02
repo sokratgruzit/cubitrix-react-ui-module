@@ -67,15 +67,14 @@ export const InputTest = ({
         setSelectClose(true);
         } else {
             setSelectClose(false);
-        }
-    }
+        };
+    };
     
     const handlerClick = (i) => {
-        setData(i)
-        setSelected(i)
-        setSelectClose(false)
-        console.log(i)
-    }
+        setData(i);
+        setSelected(i);
+        setSelectClose(false);
+    };
 
     const ref = useRef();
 
@@ -174,8 +173,8 @@ export const InputTest = ({
 
     if(type === 'select' && selectType === 'default') {
         input = (
-            <div className="select-group">
-                <div ref={ref} onClick={selectCloseHandler} className="form-control select-panel">
+            <div ref={ref} className="select-group">
+                <div onClick={selectCloseHandler} className="form-control select-panel">
                     <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
                     <svg
                         className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
