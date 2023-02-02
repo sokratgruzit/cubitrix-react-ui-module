@@ -38,9 +38,10 @@ export const InputTest = ({
     });   
     function handleCountrySelect(data) {
         setCountryData((prev) => ({ ...prev, ...data }));
-        console.log(data)
         setSelectClose(false)
+        console.log(data)
     }
+
     const deleteHandler = () => {
         setFile(null);
         // onChange("");
@@ -70,8 +71,10 @@ export const InputTest = ({
     }
     
     const handlerClick = (i) => {
+        setData(i)
         setSelected(i)
         setSelectClose(false)
+        console.log(i)
     }
 
     const ref = useRef();
