@@ -19,6 +19,7 @@ export const Button = (props) => {
         className={`btn ${props.size} ${props.type} ${props.arrow} ${props.labelSetting}`}
         onClick={props.onClick}
         style={props.customStyles}
+        disabled={props.disabled}
       >
         <svg
           width="6"
@@ -159,7 +160,7 @@ export const Button = (props) => {
               <Link
                 to={props.route + item.route}
                 key={index}
-                className={`side-admin-button-expand font-14`}
+                className={`side-admin-button-expand font-14 ${props.subMenuActive ? "subMenu-active" : ""}`}
               >
                 {item.name}
               </Link>

@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Dropdown } from "../Dropdown";
+import { useOnOutsideClick } from '../../hooks/useOnOutsideClick';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "./InputTest.css";
 
 export const InputTest = ({
@@ -33,6 +36,12 @@ export const InputTest = ({
         coutnry: "United States",
         number: "",
     });   
+    function handleCountrySelect(data) {
+        setCountryData((prev) => ({ ...prev, ...data }));
+        setSelectClose(false)
+        console.log(data)
+    }
+
     const deleteHandler = () => {
         setFile(null);
         // onChange("");
@@ -42,10 +51,7 @@ export const InputTest = ({
         onChange(e.target.files[0]);
     }
 
-    function handleCountrySelect(data) {
-        setCountryData((prev) => ({ ...prev, ...data }));
-        setSelectClose(false)
-    }
+   
     
 
     const passHandler = () => {
@@ -61,17 +67,22 @@ export const InputTest = ({
         setSelectClose(true);
         } else {
             setSelectClose(false);
-        }
-    }
+        };
+    };
     
     const handlerClick = (i) => {
-        setSelected(i)
-        setSelectClose(false)
-    }
+        setData(i);
+        setSelected(i);
+        setSelectClose(false);
+    };
+
+    const ref = useRef();
+
+    useOnOutsideClick(ref, () => setSelectClose(false));
 
     let input = '';
 
-    if(type === 'default') {
+    {type === 'default' && (
         input = (
             <div className="form-control-outer">
                 <input required={required} onChange={onChange} style={{paddingRight: password ? '43px' : ''}} className={`${"form-control"} ${emptyFieldErr ? 'error-border' : ''}`} type={password ? ( hidden ? 'text' : 'password') : 'text' } placeholder={placeholder} />
@@ -100,8 +111,8 @@ export const InputTest = ({
                 ) : ''}
             </div>
         )
-    }
-    if(type === 'upload') {
+    )}
+    {type === 'upload' && (
         input = (
             <div className="upload-group-inner">
                 <div className="upload-group-placeholder">
@@ -147,10 +158,22 @@ export const InputTest = ({
                 </div>
             </div>
         )
-    }
+    )} 
+    {type === 'date-picker' && (
+        input = (
+            <div>
+                <DatePicker
+                    className="form-control"
+                    // selected={value}
+                    // onChange={(date) => onChange(date)}
+                />
+            </div>
+        )
+    )}
+
     if(type === 'select' && selectType === 'default') {
         input = (
-            <div className="select-group">
+            <div ref={ref} className="select-group">
                 <div onClick={selectCloseHandler} className="form-control select-panel">
                     <div><span>{data.img ? data.img : ''}</span>{data.name ? data.name : selected }</div>
                     <svg
@@ -185,7 +208,7 @@ export const InputTest = ({
     if(type === 'select' && selectType === 'nationality') {
         input = (
             <div className="select-group">
-                <div onClick={selectCloseHandler} className="form-control select-panel">
+                <div ref={ref} onClick={selectCloseHandler} className="form-control select-panel">
                     <p>{selected.country ? selected.country : 'Select'}</p>
                     <svg
                         className={`${selectClose ? "rotate" : ""} ${"arrow"}`}
@@ -218,7 +241,7 @@ export const InputTest = ({
     if(type === 'select' && selectType === 'phoneNumber') {
         input = (
             <div className="select-group">
-                <div className="form-control select-panel">
+                <div ref={ref} className="form-control select-panel">
                     <div onClick={selectCloseHandler} className='form-control-inner'>
                         <div>{countryData.flag ? countryData.flag : ''}</div>
                         <svg
