@@ -139,7 +139,7 @@ export const SignIn = ({
                   customStyles={{ width: "auto" }}
                 />
                 <p
-                  className="forgot-password margin-top-negative"
+                  className="forgot-password-opt margin-top-negative"
                   onClick={() => setResetPassword(true)}
                 >
                   Forgot your password?

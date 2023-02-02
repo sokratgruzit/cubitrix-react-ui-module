@@ -39,69 +39,75 @@ export const ResetPasswordForm = ({ handleNewPassword, passwordSetUpState }) => 
     setPasswordErrors((prev) => ({ ...prev, ...errors }));
   }, [data]);
   return (
-    <div className="reset-password-body">
-      <Input
-        type={"default"}
-        icon={true}
-        inputType={"password"}
-        placeholder={"new password"}
-        label={"New Password"}
-        value={data.newPassword}
-        onChange={(e) => handleFormUpdate(e.target.value, "newPassword")}
-        customStyles={{ width: "100%" }}
-      />
-      {passwordErrors.newPassword && (
-        <HelpText
-          className="margin-top-negative"
-          status={"error"}
-          title={passwordErrors.newPassword}
-          color={"#EF5350"}
+    <div className="reset-password-wrap">
+      <h1 className="reset-title">Reset Password</h1>
+      <p className="reset-text">
+        Some text accessible day viewless perform, emperor leaf
+      </p>
+      <div className="reset-password-body">
+        <Input
+          type={"default"}
           icon={true}
+          inputType={"password"}
+          placeholder={"new password"}
+          label={"New Password"}
+          value={data.newPassword}
+          onChange={(e) => handleFormUpdate(e.target.value, "newPassword")}
+          customStyles={{ width: "100%" }}
         />
-      )}
-      <Input
-        type={"default"}
-        icon={true}
-        inputType={"password"}
-        placeholder={"confirm new password"}
-        label={"Confirm New Password"}
-        value={data.confirmPassword}
-        onChange={(e) => handleFormUpdate(e.target.value, "confirmPassword")}
-        customStyles={{ width: "100%" }}
-      />
-      {passwordErrors.confirmPassword && (
-        <HelpText
-          className="margin-top-negative"
-          status={"error"}
-          title={passwordErrors.confirmPassword}
-          color={"#EF5350"}
+        {passwordErrors.newPassword && (
+          <HelpText
+            className="margin-top-negative"
+            status={"error"}
+            title={passwordErrors.newPassword}
+            color={"#EF5350"}
+            icon={true}
+          />
+        )}
+        <Input
+          type={"default"}
           icon={true}
+          inputType={"password"}
+          placeholder={"confirm new password"}
+          label={"Confirm New Password"}
+          value={data.confirmPassword}
+          onChange={(e) => handleFormUpdate(e.target.value, "confirmPassword")}
+          customStyles={{ width: "100%" }}
         />
-      )}
-      <Button
-        custom={{ width: "100%" }}
-        element="button"
-        label={passwordSetUpState.loading ? "Set Up Security" : "Resend Verification"}
-        onClick={handlePasswordSetup}
-        type="btn-primary"
-        size="btn-sm"
-      />
-      {passwordSetUpState.error && (
-        <HelpText
-          status={"error"}
-          title={passwordSetUpState.error}
-          color={"#EF5350"}
-          icon={true}
+        {passwordErrors.confirmPassword && (
+          <HelpText
+            className="margin-top-negative"
+            status={"error"}
+            title={passwordErrors.confirmPassword}
+            color={"#EF5350"}
+            icon={true}
+          />
+        )}
+        <Button
+          customStyles={{ width: "100%" }}
+          element="button"
+          label={passwordSetUpState.loading ? "Loading ..." : "Confirm"}
+          onClick={handlePasswordSetup}
+          type="btn-primary"
+          size="btn-sm"
         />
-      )}
-      {passwordSetUpState.success && (
-        <HelpText
-          status={"success"}
-          title={passwordSetUpState.success}
-          fontSize={"font-12"}
-          icon={true}
-        />
-      )}
+        {passwordSetUpState.error && (
+          <HelpText
+            status={"error"}
+            title={passwordSetUpState.error}
+            color={"#EF5350"}
+            icon={true}
+          />
+        )}
+        {passwordSetUpState.success && (
+          <HelpText
+            status={"success"}
+            title={passwordSetUpState.success}
+            fontSize={"font-12"}
+            icon={true}
+          />
+        )}
+      </div>
     </div>
   );
 };
