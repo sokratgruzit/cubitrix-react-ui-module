@@ -19,6 +19,7 @@ export const Button = (props) => {
         className={`btn ${props.size} ${props.type} ${props.arrow} ${props.labelSetting}`}
         onClick={props.onClick}
         style={props.customStyles}
+        disabled={props.disabled}
       >
         <svg
           width="6"

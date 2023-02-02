@@ -48,7 +48,10 @@ export const Dropdown = (props) => {
                   <div
                     key={index}
                     className="dropdown-item"
-                    onClick={() => item.onClick(item.title)}
+                    onClick={() => {
+                      item.onClick(item.title);
+                      props.handleListItemClick()
+                    }}
                   >
                     {/* <p className={props.active === `${item.id}` ? "border" : ""}></p> */}
                     <span>{item.svg}</span>

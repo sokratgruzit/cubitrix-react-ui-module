@@ -70,15 +70,14 @@ export const InputTest = ({
         setSelectClose(true);
         } else {
             setSelectClose(false);
-        }
-    }
+        };
+    };
     
     const handlerClick = (i) => {
-        setData(i)
-        setSelected(i)
-        setSelectClose(false)
-        console.log(i)
-    }
+        setData(i);
+        setSelected(i);
+        setSelectClose(false);
+    };
 
     const ref = useRef();
 
