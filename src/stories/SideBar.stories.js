@@ -57,7 +57,7 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        <UserAccount
+        {/* <UserAccount
           type={"Metamask"}
           warning={true}
           personalData={{
@@ -91,7 +91,7 @@ stories.add("SideBar", () => {
           handleTwoFactorAuth={(val) => {
             setTwoFactorAuth(val);
           }}
-        />
+        /> */}
         {/* <UserOptions
           type={"Metamask"}
           warning={true}
@@ -100,7 +100,7 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
         /> */}
-        {/* <SignIn
+        <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
@@ -114,7 +114,7 @@ stories.add("SideBar", () => {
             success: "success",
           }}
           handleResetPassword={(e) => console.log(e)}
-        /> */}
+        />
       </SideBar>
     </div>
   );

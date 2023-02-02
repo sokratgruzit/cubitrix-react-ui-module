@@ -106,13 +106,13 @@ export const UserAccount = ({
   useEffect(() => {
     const formErrors = {
       newPassword: false,
-      matchPassword: false,
+      confirmPassword: false,
     };
     const passwordValidation = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
     if (!passwordValidation.test(formData.newPassword) && formData.newPassword.length > 0)
       formErrors.newPassword =
         "password must contain a minimum of 8 characters, uppercase and special character";
-    if (formData.newPassword !== formData.confirmPassword && formData.confirmPassword)
+    if (formData.confirmPassword && formData.newPassword !== formData.confirmPassword)
       formErrors.confirmPassword = "Passwords do not match";
     setSecurityFormErrors((prev) => ({ ...prev, ...formErrors }));
   }, [formData]);
