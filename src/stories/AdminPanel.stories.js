@@ -12,7 +12,6 @@ const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
     const { mobile } = Functions();
-    console.log(mobile)
 
     const [mobileExpand, setMobileExpand] = useState(null);
 

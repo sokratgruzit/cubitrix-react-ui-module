@@ -159,7 +159,7 @@ export const Button = (props) => {
               <Link
                 to={props.route + item.route}
                 key={index}
-                className={`side-admin-button-expand font-14`}
+                className={`side-admin-button-expand font-14 ${props.subMenuActive ? "subMenu-active" : ""}`}
               >
                 {item.name}
               </Link>
