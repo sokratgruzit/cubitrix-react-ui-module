@@ -157,3 +157,19 @@ button {
   flex-direction: column;
   align-items: center;
 }
+.jc-sb {
+  justify-content: space-between;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.mt-22 {
+  margin-top: 22px;
+}
+.mt-8 {
+  margin-top: 8px;
+}
+.align-right {
+  text-align: right;
+}
