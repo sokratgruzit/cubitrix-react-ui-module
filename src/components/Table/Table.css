@@ -3,10 +3,11 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 .table-head {
-  width: 100%;
+  width: calc(100% - 50px);
   display: flex;
   background: rgba(255,255,255,.03);
   border-bottom: 1px solid rgba(255,255,255,.1);
@@ -15,7 +16,7 @@
 }
 .table {
   display: flex;
-  width: 100%;
+  width: calc(100% - 50px);
   padding: 0px 16px;
   justify-content: space-between;
 }
@@ -62,10 +63,9 @@
 .icon-place {
   display: none;
   height: 81px;
-  width: 55px;
+  width: 30px;
   justify-content: center;
   align-items: center;
-  padding-right: 40px;
 }
 .table-parent {
   width: 100%;
@@ -75,7 +75,7 @@
 .table-parent:nth-child(even) {
   background: rgba(255,255,255,.03);
 }
-.table-head ~ .icon-place {
+.table-head ~ .icon-place,.table-head ~.table-more {
   background: rgba(255,255,255,.03);
   border-bottom: 1px solid rgba(255,255,255,.1);
 }
@@ -171,6 +171,12 @@
 .td.expand .td-expand span:last-child {
   margin-bottom: 15px;
 }
+.table-more {
+  height: 81px;
+  display: flex;
+  align-items: center;
+  width: 50px;
+}
 /*Ipad Pro 1024*/
 @media (max-width: 1300px) {
   .table-parent {
@@ -182,12 +188,11 @@
   .icon-place {
     display: flex;
   }
-  .table,.table-head {
-    width: calc(100% - 55px);
+  .table, .table-head {
+    width: calc(100% - 75px);
   }
-  .table-version {
-    flex-wrap: wrap;
-    flex-direction: row;
+  .table-more {
+    width: 35px;
   }
 }
 /*Ipad 768*/

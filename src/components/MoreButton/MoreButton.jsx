@@ -20,7 +20,7 @@ export const MoreButton = ({ dropdownData }) => {
     useOnOutsideClick(ref, () => setActive(false));
 
     return (
-        <div ref={ref}>
+        <div ref={ref} className={`more-container  ${active ? "z-more" : ""}`}>
             <div
                 className="notification-toggle"
                 onClick={toggleActive}
@@ -48,10 +48,10 @@ export const MoreButton = ({ dropdownData }) => {
             </div>
             <div className="notification-options">
                 <div className={`${"moreBtn-hidden"} ${active ? "moreBtn-visible" : ""}`}>
-                    <Dropdown 
-                        data={dropdownData} 
-                        type={"dropdown"} 
-                        dropdown={"dropdown"} 
+                    <Dropdown
+                        data={dropdownData}
+                        type={"dropdown"}
+                        dropdown={"dropdown"}
                         handleListItemClick={() => setActive(false)}
                     />
                 </div>
