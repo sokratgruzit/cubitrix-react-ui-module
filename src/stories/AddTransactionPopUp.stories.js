@@ -57,7 +57,6 @@ stories.add('AddTransactionPopUp', () => {
         <Popup 
           type={'addTransaction'}
           label={'Manually Add Transaction'}
-          addTokenCustomStyles={{width: '596px'}}
           handlePopUpClose={() => setActive(false)}
           addTransactionSelects={addTransactionSelects}
           handleAddTransaction={(data) => {

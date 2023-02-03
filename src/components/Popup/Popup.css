@@ -38,7 +38,7 @@
 }
 
 /* AddToken styles */
-.pop-body {
+.addTransaction-body {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -49,9 +49,10 @@
   background: rgb(20, 23, 38);
   border-radius: 0px 0px 8px 8px;
   gap: 20px;
+  width: 100%;
 }
 
-.addToken-inputs {
+.addTransaction-inputs {
   gap: 20px;
   display: grid;
   grid-template-columns: calc(50% - 10px) calc(50% - 10px);
@@ -59,7 +60,7 @@
   align-items: center;
 }
 
-.addToken-inputs-row {
+.addTransaction-inputs-row {
   grid-template-columns: calc(80% - 10px) calc(20% - 10px);
 }
 

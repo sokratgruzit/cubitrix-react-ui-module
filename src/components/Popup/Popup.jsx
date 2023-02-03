@@ -23,10 +23,11 @@ export const Popup = ({
   withdrawCode,
   withdrawData,
   withdrawSettingsCardBody,
-  addTokenCustomStyles,
+  addTransactionCustomStyles,
   addAdminSelect,
   handleAddAdminBtnClick,
   addAdminError,
+  addTransactionError,
   handlePopUpClose,
   handleAddTransaction, 
   addTransactionSelects,
@@ -91,6 +92,21 @@ export const Popup = ({
       success: "amount is valid",
       failure: "must be a number"
     },
+    from: {
+      validationType: 'limitedCharacters',
+      success: "It is valid",
+      failure: "must be exactly 16 characters"
+    },
+    to: {
+      validationType: 'limitedCharacters',
+      success: "It is valid",
+      failure: "must be exactly 16 characters"
+    },
+    tx_hash: {
+      validationType: 'hash',
+      success: "It is valid hash",
+      failure: "must be valid hash"
+    },
   };
 
   const handleAdminSaveClick = () => {
@@ -111,8 +127,8 @@ export const Popup = ({
     if (
       !popUpData.tx_type || !popUpData.from ||
       !popUpData.to || !popUpData.amount || 
-      !popUpData.tx_hash || !popUpData.tx_currency
-      // !popUpData.account_type  
+      !popUpData.tx_hash || !popUpData.tx_currency ||
+      !popUpData.account_type  
     ) {
       handleEmptyFields();
    } else {
@@ -131,14 +147,11 @@ export const Popup = ({
   const formErrors = useValidation({
     email: popUpData.email,
     password: popUpData.password,
-    // from: popUpData.from,
-    // to: popUpData.to,
+    from: popUpData.from,
+    to: popUpData.to,
     amount: popUpData.amount,
-    // tx_hash: popUpData.tx_hash,
+    tx_hash: popUpData.tx_hash,
   }, helpTexts);
-
-  // ^[a-zA-Z0-9]{16}$
-  // ^.{16}$
 
   return (
 
@@ -192,8 +205,8 @@ export const Popup = ({
           )}
           
           {type === 'addTransaction' && (
-            <div style={addTokenCustomStyles} className='pop-body'>
-                <div className='addToken-inputs'>
+            <div style={addTransactionCustomStyles} className='addTransaction-body'>
+                <div className='addTransaction-inputs'>
                   <Input
                       type={"lable-input-select"}
                       defaultData={addTransactionSelects.tx_type.options}
@@ -217,6 +230,23 @@ export const Popup = ({
                       placeholder={"from"}
                       label={'From'}
                       emptyFieldErr={emptyFields['from']}
+                      statusCard= {
+                        formErrors.from ? (
+                            <HelpText
+                                status={formErrors.from.failure ? 'error' : 'success'}
+                                title={formErrors.from.failure || formErrors.from.success}
+                                fontSize={'font-12'}
+                                icon={true}
+                            />
+                        ) : (
+                          <HelpText
+                            status={'info'}
+                            title={'Select account where from add transaction.'}
+                            fontSize={'font-12'}
+                            icon={true}
+                          />
+                        )
+                      }
                       onChange={(e) => handlePopUpInputChange(e, 'from')}
                   />
                   <Input
@@ -226,10 +256,27 @@ export const Popup = ({
                       placeholder={"to"}
                       label={'To'}
                       emptyFieldErr={emptyFields['to']}
+                      statusCard= {
+                        formErrors.to ? (
+                          <HelpText
+                              status={formErrors.to.failure ? 'error' : 'success'}
+                              title={formErrors.to.failure || formErrors.to.success}
+                              fontSize={'font-12'}
+                              icon={true}
+                          />
+                        ) : (
+                          <HelpText
+                            status={'info'}
+                            title={'Select account to add transaction to.'}
+                            fontSize={'font-12'}
+                            icon={true}
+                          />
+                        )
+                      }
                       onChange={(e) => handlePopUpInputChange(e, 'to')}
                   />
                 </div>
-                <div className="addToken-inputs addToken-inputs-row">
+                <div className="addTransaction-inputs addTransaction-inputs-row">
                   <Input
                         type={"default"}
                         icon={true}
@@ -238,13 +285,20 @@ export const Popup = ({
                         label={'Payment Amount'}
                         emptyFieldErr={emptyFields['amount']}
                         statusCard= {
-                          formErrors.amount && (
-                              <HelpText
-                                  status={formErrors.amount.failure ? 'error' : 'success'}
-                                  title={formErrors.amount.failure || formErrors.amount.success}
-                                  fontSize={'font-12'}
-                                  icon={true}
-                              />
+                          formErrors.amount ? (
+                            <HelpText
+                                status={formErrors.amount.failure ? 'error' : 'success'}
+                                title={formErrors.amount.failure || formErrors.amount.success}
+                                fontSize={'font-12'}
+                                icon={true}
+                            />
+                          ) : (
+                            <HelpText
+                              status={'info'}
+                              title={'Amount calculate based on stage if leave blank.'}
+                              fontSize={'font-12'}
+                              icon={true}
+                            />
                           )
                         }
                         onChange={(e) => handlePopUpInputChange(e, 'amount')}
@@ -255,7 +309,7 @@ export const Popup = ({
                     emptyFieldErr={emptyFields[addTransactionSelects.tx_currency.value]}
                     selectHandler={(opt) => handlePopUpSelectChange(opt, addTransactionSelects.tx_currency.value)}
                     selectLabel={`ETH`}
-                    customStyles={{ marginTop: '10px'}}
+                    customStyles={{ marginBottom: '16px'}}
                   />
                 </div>
                 <Input
@@ -265,6 +319,16 @@ export const Popup = ({
                     placeholder={"hash"}
                     label={'Hash'}
                     emptyFieldErr={emptyFields['tx_hash']}
+                    statusCard= {
+                      formErrors.tx_hash && (
+                        <HelpText
+                            status={formErrors.tx_hash.failure ? 'error' : 'success'}
+                            title={formErrors.tx_hash.failure || formErrors.tx_hash.success}
+                            fontSize={'font-12'}
+                            icon={true}
+                        />
+                      )
+                    }
                     onChange={(e) => handlePopUpInputChange(e, 'tx_hash')}
                 />
                 <Button
@@ -277,7 +341,7 @@ export const Popup = ({
                 />
                 <HelpText
                     status={'warning'}
-                    title={'cant add transaction'}
+                    title={addTransactionError}
                     color={'#9CCC65'}
                     fontSize={'font-12'}
                     icon={true}
