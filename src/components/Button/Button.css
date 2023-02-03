@@ -35,7 +35,7 @@
 .btn:hover .arrowR {
   transform: translateX(5px);
 }
-.arrow-none svg {
+.arrow-none > svg {
   display: none;
 }
 .btn svg {

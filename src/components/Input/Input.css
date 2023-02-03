@@ -357,11 +357,11 @@
   white-space: nowrap;
 }
 
-.arrow-none {
+.select-form .arrow-none {
   display: none;
 }
 
-.arrow-show {
+.select-form .arrow-show {
   display: flex;
 }
 
@@ -694,7 +694,7 @@ select input
     border: 1px solid #1F2330;
     border-radius: 6px;
     color: #fff;
-    text-transform: capitalize;   
+    text-transform: capitalize;
 }
 
 .stake-input-container input:hover {
