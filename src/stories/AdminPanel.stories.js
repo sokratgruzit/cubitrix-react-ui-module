@@ -14,6 +14,7 @@ stories.add("AdminPanel", () => {
     const { mobile } = Functions();
 
     const [mobileExpand, setMobileExpand] = useState(null);
+    const [tableExpand, setTableExpand] = useState(null);
 
     let mobileExpandFunc = (id) => {
         if(window.innerWidth <= 1300) {
@@ -22,6 +23,13 @@ stories.add("AdminPanel", () => {
             } else {
                 setMobileExpand(null);
             }
+        }
+    }
+    let tableExpandFunc = (id) => {
+        if(id !== tableExpand) {
+            setTableExpand(id);
+        } else {
+            setTableExpand(null);
         }
     }
     const typeColors = [
@@ -324,8 +332,8 @@ stories.add("AdminPanel", () => {
     let tableData;
     tableData = td.map((item, index) => {
         return(
-            <div 
-                className={`table-parent ${mobileExpand == item.id ? 'active' : ''}`} 
+            <div
+                className={`table-parent ${mobileExpand == item.id ? 'active' : ''}`}
                 onClick={() => {
                     mobileExpandFunc(item.id)
                 }}
@@ -336,8 +344,20 @@ stories.add("AdminPanel", () => {
                         <span>{item.id}</span>
                         <span>{item.hash}</span>
                     </div>
-                    <div className={`td ${th[1].mobileWidth ? true : false }`} style={{width: `${mobile ? th[1].mobileWidth : th[1].width}%`}}>
-                        <span>{item.from}</span>
+                    <div onClick={() => {tableExpandFunc(item.id)}} className={`td expand ${tableExpand == item.id ? 'active' : ''} ${th[1].mobileWidth ? true : false }`} style={{width: `${mobile ? th[1].mobileWidth : th[1].width}%`}}>
+                        <div>
+                            <span>
+                                {item.from}
+                            </span>
+                            <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.70095 5.6665L5.52859 1.83887C5.98063 1.38683 6.72032 1.38683 7.17236 1.83887L11 5.6665" stroke="#9C9DA3" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                        <div className={`td-expand`}>
+                            <span>Name</span>
+                            <span>Name 1</span>
+                            <span>Name 3</span>
+                        </div>
                     </div>
                     <div className={`td ${th[2].mobileWidth ? true : false }`} style={{width: `${mobile ? th[2].mobileWidth : th[3].width}%`}}>
                         <span>{item.to}</span>
@@ -437,7 +457,7 @@ stories.add("AdminPanel", () => {
                             customStyles={{ margin:'0'}}
                         />
                     </>
-                   )}         
+                   )}
                    pageLabel={'Transactions'}
                    mobile={mobile}
                    tableHeader={2}
