@@ -159,7 +159,7 @@ export const Input = (props) => {
               style={{
                 top: props.label || props.subLabel ? "34.5px" : "8px",
               }}
-              className={`input-group-icon-sc ${edit ? "opacity-0" : ""}`}
+              className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
               width="18"
               height="16"
               viewBox="0 0 512 512"
@@ -308,7 +308,7 @@ export const Input = (props) => {
             <svg
               onClick={editHandler}
               style={{ top: "10px" }}
-              className={`input-group-icon-sc ${edit ? "opacity-dis--0" : ""}`}
+              className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
               width="18"
               height="16"
               viewBox="0 0 512 512"
@@ -379,7 +379,7 @@ export const Input = (props) => {
           <svg
             onClick={editHandler}
             style={{ top: "34px" }}
-            className={`input-group-icon-sc ${edit ? "opacity-0" : ""}`}
+            className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
             width="18"
             height="16"
             viewBox="0 0 512 512"
@@ -390,7 +390,7 @@ export const Input = (props) => {
         ) : (
           ""
         )}
-        <div className={`${"hidden"} ${active ? "visible" : ""}`}>
+        <div className={`${"hidden"} ${active ? " phone-number-active" : ""}`}>
           <Dropdown
             type={"country"}
             handlerClick={handleMobileSelect}
@@ -564,7 +564,7 @@ export const Input = (props) => {
           <svg
             onClick={editHandler}
             style={{ top: "30px" }}
-            className={`input-group-icon-sc ${edit ? "opacity-0" : ""}`}
+            className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
             width="18"
             height="16"
             viewBox="0 0 512 512"
