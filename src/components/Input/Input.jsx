@@ -467,39 +467,41 @@ export const Input = (props) => {
             type="search"
             placeholder={props.placeholder}
           />
-          <div className="form-select search-input-item">
-            <div onClick={activeHandler} className="select-form">
-              <p className="font-10">{value ? value : props.selectLabel}</p>
-              <svg
-                className={`${active ? "rotate" : ""} ${"arrow"}`}
-                width="8"
-                height="5"
-                viewBox="0 0 8 5"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7 1.5L4.5303 3.9697C4.23864 4.26136 3.76136 4.26136 3.4697 3.9697L1 1.5"
-                  stroke="white"
-                  strokeWidth="1.5"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+          {props.select && (
+            <div className="form-select search-input-item">
+              <div onClick={activeHandler} className="select-form">
+                <p className="font-10">{value ? value : props.selectLabel}</p>
+                <svg
+                  className={`${active ? "rotate" : ""} ${"arrow"}`}
+                  width="8"
+                  height="5"
+                  viewBox="0 0 8 5"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 1.5L4.5303 3.9697C4.23864 4.26136 3.76136 4.26136 3.4697 3.9697L1 1.5"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <div className={`${"hidden"} ${active ? "select-modal" : ""}`}>
+                <Dropdown
+                  type={"default-dropdown"}
+                  data={props.defaultData}
+                  active={props.active}
+                  handlerClick={handlerClick}
+                  selectHandler={props.selectHandler}
+                  customStyles={{}}
+                  defaultOption={props.selectLabel}
                 />
-              </svg>
+              </div>
             </div>
-            <div className={`${"hidden"} ${active ? "select-modal" : ""}`}>
-              <Dropdown
-                type={"default-dropdown"}
-                data={props.defaultData}
-                active={props.active}
-                handlerClick={handlerClick}
-                selectHandler={props.selectHandler}
-                customStyles={{}}
-                defaultOption={props.selectLabel}
-              />
-            </div>
-          </div>
+          )}
         </div>
         {props.statusCard}
       </div>

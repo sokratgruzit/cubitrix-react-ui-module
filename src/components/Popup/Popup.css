@@ -59,10 +59,8 @@
   align-items: center;
 }
 
-.addToken-body-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.addToken-inputs-row {
+  grid-template-columns: calc(80% - 10px) calc(20% - 10px);
 }
 
 /* Withdraw styles */

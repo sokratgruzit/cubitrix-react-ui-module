@@ -8,6 +8,7 @@ export const FilterBox = ({
     tableFilterData,
     setTableFilterOutcomingData,
     tableHeader,
+    tableSearchSelect,
     customStyles
 }) => {
   const [showSearchBox, setShowSearchBox] = useState(false);
@@ -24,10 +25,17 @@ export const FilterBox = ({
   }
 
   const handleSearchChange = (e) => {
-    setTableFilterOutcomingData(prev => ({ ...prev, search: {
-        value: e.target.value,
-        option: prev?.search?.option
-    }}));
+    if (tableSearchSelect) {
+        setTableFilterOutcomingData(prev => ({ ...prev, search: {
+            value: e.target.value,
+            option: prev?.search?.option
+        }}));
+    };
+    if(!tableSearchSelect) {
+        setTableFilterOutcomingData(prev => ({ ...prev, search: {
+            value: e.target.value,
+        }}));
+    };
   };
 
   const handleSearchSelect = (option) => {
@@ -94,6 +102,7 @@ export const FilterBox = ({
                         selectHandler={handleSearchSelect}
                         placeholder={'search'}
                         selectLabel={'All'}
+                        select={tableSearchSelect}
                     />
                 </div>
                 {tableFilterData.selects && (

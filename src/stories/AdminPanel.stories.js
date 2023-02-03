@@ -159,7 +159,7 @@ stories.add("AdminPanel", () => {
     ]
 
     const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({});
-
+    
     const tableFilterData = {
         search: {
             options: [
@@ -444,6 +444,7 @@ stories.add("AdminPanel", () => {
                    tableFilterData={tableFilterData}
                    setTableFilterOutcomingData={setTableFilterOutcomingData}
                    paginationCurrent={1}
+                   tableSearchSelect={true}
                    paginationTotal={20}
                    paginationEvent={() => {
                        console.log('hi')
