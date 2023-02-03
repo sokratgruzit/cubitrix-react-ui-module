@@ -354,7 +354,7 @@ stories.add("AdminPanel", () => {
                             </svg>
                         </div>
                         <div className={`td-expand`}>
-                            <span>Name</span>
+                            <span><i>Loan</i>Name</span>
                             <span>Name 1</span>
                             <span>Name 3</span>
                         </div>
