@@ -1,11 +1,39 @@
-.sale-card-container {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* global */
+.card-container {
     border-radius: 8px;
     padding: 20px;
     width: 372px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header__buttons {
+    display: flex;
+    align-items: center;
+}
+
+.card-header__btn {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.card-header__btn-active {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    color: #3D5AFE;
+}
+
+/* sale-card styles */
+
+.sale-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
 .sale-card-body {
@@ -27,4 +55,49 @@
     background: rgba(61, 90, 254, 0.1);
     padding: 6px 16px;
     color: #3D5AFE;
+}
+
+.sale-card-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sale-card__lastSaleInfo {
+    font-weight: 700;
+    color: #6A6D76;
+}
+
+.sale-card__view {
+    color: #3D5AFE;
+    cursor: pointer;
+}
+
+.sale-card__view:hover {
+    color: #6A6D76;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+/* amount-card styles */
+.amount-card {
+    background: linear-gradient(262.18deg, #0B1023 0%, #1D2136 100%);
+    gap: 13px;
+    display: flex;
+    flex-direction: column;
+}
+
+.amount-card__usdt {
+    display: flex;
+    align-items: center;
+    color: #6A6D76;
+}
+
+.amount-card__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.amount-card__info p:nth-child(2){
+    color: #6A6D76;
 }
