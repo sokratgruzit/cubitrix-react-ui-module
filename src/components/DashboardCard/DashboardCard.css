@@ -1,0 +1,30 @@
+.sale-card-container {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 372px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sale-card-body {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.sale-card__saleNumber {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 130%;
+}
+
+.sale-card__salePercentage {
+    border: 1px solid rgba(61, 90, 254, 0.2);
+    border-radius: 32px;
+    background: rgba(61, 90, 254, 0.1);
+    padding: 6px 16px;
+    color: #3D5AFE;
+}

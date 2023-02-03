@@ -32,23 +32,7 @@ stories.add("AdminPanel", () => {
             setTableExpand(null);
         }
     }
-    const typeColors = [
-        {
-            id: 1,
-            name: 'All Deposit',
-            color: '#3D5AFE'
-        },
-        {
-            id: 2,
-            name: 'Withdraw',
-            color: '#FFA726'
-        },
-        {
-            id: 3,
-            name: 'Transfer',
-            color: '#57D29E'
-        }
-    ];
+
     const adminHeaderData = {
         username: 'Michael',
         svg: <Logo />,
@@ -167,7 +151,7 @@ stories.add("AdminPanel", () => {
     ]
 
     const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({});
-
+    
     const tableFilterData = {
         search: {
             options: [
@@ -299,7 +283,7 @@ stories.add("AdminPanel", () => {
             domination: "1,132,000.1",
             date: "01.02.2023",
             time: '08:15 PM',
-            type: 'All Deposit',
+            type: 'Transfer',
 
         },
         {
@@ -323,7 +307,7 @@ stories.add("AdminPanel", () => {
             domination: "1,132,000.1",
             date: "01.02.2023",
             time: '08:15 PM',
-            type: 'All Deposit',
+            type: 'Withdraw',
 
         },
     ];
@@ -354,7 +338,7 @@ stories.add("AdminPanel", () => {
                             </svg>
                         </div>
                         <div className={`td-expand`}>
-                            <span>Name</span>
+                            <span><i>Loan</i>Name</span>
                             <span>Name 1</span>
                             <span>Name 3</span>
                         </div>
@@ -373,7 +357,15 @@ stories.add("AdminPanel", () => {
                         <span>{item.time}</span>
                     </div>
                     <div className={`td ${th[6].mobileWidth ? true : false }`} style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}>
-                        <span>{item.type}</span>
+                        <span 
+                            className={`tranx-type 
+                            ${item.type === 'All Deposit' && 'deposit-type'} 
+                            ${item.type === 'Withdraw' && 'withdraw-type'}
+                            ${item.type === 'Transfer' && 'transfer-type'} 
+                            font-14`}
+                        >
+                            {item.type}
+                        </span>
                     </div>
                 </div>
                 <div className="icon-place">
@@ -402,7 +394,15 @@ stories.add("AdminPanel", () => {
                         </div>
                         <div className="td type">
                             <div className="mobile-ttl">{th[6].name}</div>
-                            <span>{item.type}</span>
+                            <span
+                                className={`tranx-type 
+                                ${item.type === 'All Deposit' && 'deposit-type'} 
+                                ${item.type === 'Withdraw' && 'withdraw-type'}
+                                ${item.type === 'Transfer' && 'transfer-type'} 
+                                font-14`}
+                            >
+                                {item.type}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -464,6 +464,7 @@ stories.add("AdminPanel", () => {
                    tableFilterData={tableFilterData}
                    setTableFilterOutcomingData={setTableFilterOutcomingData}
                    paginationCurrent={1}
+                   tableSearchSelect={true}
                    paginationTotal={20}
                    paginationEvent={() => {
                        console.log('hi')

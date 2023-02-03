@@ -78,7 +78,7 @@ stories.add("InputTest", (props) => {
     };
 
     const onChangeHandler = (e) => {
-        console.log(e.target.value);
+      // console.log(e.target.value);
     };
 
     return (
@@ -247,6 +247,7 @@ stories.add("InputTest", (props) => {
             <InputTest
                 type={'date-picker'}
                 label={'Date of birth'}
+                dateLabel={Date}
                 parent={'your-class-name'}
                 onChange={onChangeHandler}
                 customStyles={{width: '320px'}}

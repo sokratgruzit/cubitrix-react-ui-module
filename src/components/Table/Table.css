@@ -157,7 +157,13 @@
 .td.expand .td-expand span {
   margin-bottom: 8px;
   font-size: 12px;
-  opacity: .6;
+  color: rgba(255,255,255,.6);
+}
+.td.expand .td-expand span i {
+  color: #3D5AFE;
+  text-transform: capitalize;
+  margin-right: 5px;
+  font-style: inherit;
 }
 .td.expand .td-expand span:first-child {
   margin-top: 15px;
@@ -165,6 +171,31 @@
 .td.expand .td-expand span:last-child {
   margin-bottom: 15px;
 }
+
+.tranx-type {
+  padding: 6px 16px;
+  border-radius: 32px;
+}
+
+.deposit-type {
+  background: rgba(61, 90, 254, 0.1);
+  border: 1px solid rgba(61, 90, 254, 0.2);
+  color: #3D5AFE;
+}
+
+.withdraw-type {
+  color: #FFA726;
+  background: rgba(255, 167, 38, 0.1);
+  border: 1px solid rgba(255, 167, 38, 0.2);
+}
+
+.transfer-type {
+  color: #57D29E;
+  background: rgba(87, 210, 158, 0.1);
+  border: 1px solid rgba(87, 210, 158, 0.2);
+}
+
+
 /*Ipad Pro 1024*/
 @media (max-width: 1300px) {
   .table-parent {
