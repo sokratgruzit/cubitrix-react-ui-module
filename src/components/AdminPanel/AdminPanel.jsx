@@ -13,6 +13,7 @@ export const AdminPanel = props => {
         filter =  <FilterBox
                     tableFilterData={props.tableFilterData}
                     setTableFilterOutcomingData={props.setTableFilterOutcomingData}
+                    tableSearchSelect={props.tableSearchSelect}
                     tableHeader={props.tableHeader}
                     customStyles={{marginBottom: '20px'}}
                 />
