@@ -172,28 +172,40 @@
   margin-bottom: 15px;
 }
 
-.tranx-type {
+.alert-status-box {
   padding: 6px 16px;
   border-radius: 32px;
 }
 
-.deposit-type {
+.alert-status-blue {
   background: rgba(61, 90, 254, 0.1);
   border: 1px solid rgba(61, 90, 254, 0.2);
   color: #3D5AFE;
 }
 
-.withdraw-type {
+.alert-status-yellow {
   color: #FFA726;
   background: rgba(255, 167, 38, 0.1);
   border: 1px solid rgba(255, 167, 38, 0.2);
 }
 
-.transfer-type {
+.alert-status-green {
   color: #57D29E;
   background: rgba(87, 210, 158, 0.1);
   border: 1px solid rgba(87, 210, 158, 0.2);
 }
+
+.alert-admin-purple {
+  color: #964CF5;
+}
+
+.alert-admin-green {
+  color: #67BA4A;
+}
+
+.alert-admin-blue {
+  color: #4CE2D9;
+} 
 
 
 /*Ipad Pro 1024*/
