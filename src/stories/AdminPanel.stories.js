@@ -377,7 +377,7 @@ stories.add("AdminPanel", () => {
             domination: "1,132,000.1",
             date: "01.02.2023",
             time: '08:15 PM',
-            type: 'All Deposit',
+            type: 'Transfer',
 
         },
         {
@@ -401,7 +401,7 @@ stories.add("AdminPanel", () => {
             domination: "1,132,000.1",
             date: "01.02.2023",
             time: '08:15 PM',
-            type: 'All Deposit',
+            type: 'Withdraw',
 
         },
     ];
@@ -451,7 +451,15 @@ stories.add("AdminPanel", () => {
                         <span>{item.time}</span>
                     </div>
                     <div className={`td ${th[6].mobileWidth ? true : false }`} style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}>
-                        <span>{item.type}</span>
+                        <span
+                            className={`tranx-type 
+                            ${item.type === 'All Deposit' && 'deposit-type'} 
+                            ${item.type === 'Withdraw' && 'withdraw-type'}
+                            ${item.type === 'Transfer' && 'transfer-type'} 
+                            font-14`}
+                        >
+                            {item.type}
+                        </span>
                     </div>
                 </div>
                 <div className="table-more">
@@ -483,7 +491,15 @@ stories.add("AdminPanel", () => {
                         </div>
                         <div className="td type">
                             <div className="mobile-ttl">{th[6].name}</div>
-                            <span>{item.type}</span>
+                            <span
+                                className={`tranx-type 
+                                ${item.type === 'All Deposit' && 'deposit-type'} 
+                                ${item.type === 'Withdraw' && 'withdraw-type'}
+                                ${item.type === 'Transfer' && 'transfer-type'} 
+                                font-14`}
+                            >
+                                {item.type}
+                            </span>
                         </div>
                     </div>
                 </div>
