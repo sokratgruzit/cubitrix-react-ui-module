@@ -2,9 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 15px;
-    right: 15px;
     cursor: pointer;
     border-radius: 50%;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
@@ -15,13 +12,17 @@
 .notification-toggle:hover {
     background: rgba(255, 255, 255, 0.05);
 }
-
+.more-container {
+    position: relative;
+}
+.z-more {
+    z-index: 10;
+}
 .notification-options {
     position: absolute;
-    right: 20px;
-    top: 50px;
+    right: 0px;
+    top: 40px;
 }
-
 .moreBtn-visible {
     display: block !important;
 }

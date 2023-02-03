@@ -18,6 +18,7 @@ export const Table = (props) => {
                         );
                     })}
                 </div>
+                <div className="table-more"></div>
                 <div className="icon-place"></div>
                 {props.tableData}
             </div>
