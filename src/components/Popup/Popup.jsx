@@ -31,6 +31,7 @@ export const Popup = ({
   handlePopUpClose,
   handleAddTransaction, 
   addTransactionSelects,
+  popUpElement,
   customStyles,
 }) => {
   const [popUpData, setPopUpData] = useState({
@@ -158,14 +159,16 @@ export const Popup = ({
     <div className="popup-bg">
       <div className="popup-wrapper-container" onClick={handlePopUpClose} />
         <div className="popup-wrapper" style={customStyles}>
-          <Visual
-            label={label}
-            element={"popup-header"}
-            onClick={handlePopUpClose}
-            customStyles={{
-              width: "100%",
-            }}
-          />
+          {label && (
+            <Visual
+              label={label}
+              element={"popup-header"}
+              onClick={handlePopUpClose}
+              customStyles={{
+                width: "100%",
+              }}
+            />
+          )}
           
           {type === "withdraw" && (
             <div className="withdraw-container" style={withdrawCustomStyles}>
@@ -339,13 +342,15 @@ export const Popup = ({
                     customStyles={{ margin: '0', width: '100%' }}
                     onClick={handleAddTransactionClick}
                 />
-                <HelpText
-                    status={'warning'}
-                    title={addTransactionError}
-                    color={'#9CCC65'}
-                    fontSize={'font-12'}
-                    icon={true}
-                />
+                {addTransactionError && (
+                  <HelpText
+                      status={'warning'}
+                      title={addTransactionError}
+                      color={'#9CCC65'}
+                      fontSize={'font-12'}
+                      icon={true}
+                  />
+                )}
             </div>
           )}
 
@@ -518,6 +523,8 @@ export const Popup = ({
               />
             </div>
           )}
+
+          {popUpElement && popUpElement}
         </div>
     </div>
   );
