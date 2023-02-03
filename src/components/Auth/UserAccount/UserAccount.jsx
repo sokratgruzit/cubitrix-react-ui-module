@@ -174,6 +174,7 @@ export const UserAccount = ({
             label={"Full Name"}
             onChange={(e) => handleUserUpdate(e.target.value, "name")}
             customStyles={{ width: "100%" }}
+            editable={true}
           />
           <Input
             type={"default"}
@@ -183,6 +184,7 @@ export const UserAccount = ({
             label={"Email Address"}
             onChange={(e) => handleUserUpdate(e.target.value, "email")}
             customStyles={{ width: "100%" }}
+            editable={true}
           />
           {emailError && (
             <HelpText status={"error"} title={emailError} color={"#EF5350"} icon={true} />
@@ -201,6 +203,7 @@ export const UserAccount = ({
             onChange={(e) => handleUserUpdate(e, "mobile")}
             value={userData.mobile}
             customStyles={{ width: "100%" }}
+            editable={true}
           />
           <Input
             type={"date-picker-input"}
@@ -208,6 +211,7 @@ export const UserAccount = ({
             value={userData.date_of_birth}
             label={"Date of Birth"}
             customStyles={{ width: "100$" }}
+            editable={true}
           />
           <Input
             type={"lable-input-select"}
@@ -218,6 +222,7 @@ export const UserAccount = ({
             label={"Nationality"}
             onClick={(e) => handleUserUpdate(e, "nationality")}
             customStyles={{ width: "100%" }}
+            editable={true}
           />
           <Input
             type={"label-input-upload"}

@@ -84,7 +84,12 @@ export const Input = (props) => {
 
   if (props.type === "default") {
     element = (
-      <div style={props.customStyles} className={`${props.className} input-group`}>
+      <div
+        style={props.customStyles}
+        className={`${props.className} 
+     
+      input-group`}
+      >
         {props.label || props.subLabel ? (
           <p className="input-group-title font-12">
             {props.label}
@@ -97,7 +102,9 @@ export const Input = (props) => {
           onChange={props.onChange}
           value={!edit ? props.value : inputValue}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
-          className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}`}
+          className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
+            !edit && props.editable ? "disabled-input" : ""
+          }`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
         />
@@ -146,14 +153,13 @@ export const Input = (props) => {
           ) : (
             ""
           )}
-          {props.value && props.editable ? (
+          {props.editable ? (
             <svg
               onClick={editHandler}
               style={{
                 top: props.label || props.subLabel ? "34.5px" : "8px",
-                opacity: edit ? "0" : "1",
               }}
-              className="input-group-icon-sc"
+              className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
               width="18"
               height="16"
               viewBox="0 0 512 512"
@@ -244,16 +250,18 @@ export const Input = (props) => {
     element = (
       <div style={props.customStyles} className="select-group">
         <p className="input-group-title font-12">{props.label}</p>
-        <div ref={ref} onChange={props.onChange} className="form-select-sc">
+        <div ref={ref} onChange={props.onChange} className="form-select-sc relative">
           <div
             onClick={activeHandler}
             className={`${"form-select-item"} ${"form-control"} ${
               props.emptyFieldErr ? "error-border" : ""
-            }`}
+            } ${!edit && props.editable ? "disabled-input" : ""}`}
           >
             <div className="flag-wrapper">{value ? value : props.selectLabel}</div>
             <svg
-              className={`${active ? "rotate" : ""} ${"arrow"}`}
+              className={`${active ? "rotate" : ""} ${"arrow"} ${
+                edit ? "arrow-show" : "arrow-none"
+              } `}
               width="20"
               height="21"
               viewBox="0 0 20 21"
@@ -296,6 +304,21 @@ export const Input = (props) => {
               />
             )}
           </div>
+          {props.editable ? (
+            <svg
+              onClick={editHandler}
+              style={{ top: "10px" }}
+              className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
+              width="18"
+              height="16"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M497.9 74.16l-60.09-60.1c-18.75-18.75-49.19-18.75-67.93 0L313.4 70.61l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM31.04 352.1c-2.234 2.234-3.756 5.078-4.377 8.176l-26.34 131.7C-1.703 502.1 6.156 512 15.95 512c1.049 0 2.117-.1035 3.199-.3203l131.7-26.34c3.098-.6191 5.941-2.141 8.176-4.373l259.7-259.7l-128-128L31.04 352.1zM131.9 440.2l-75.14 15.03l15.03-75.15L96 355.9V416h60.12L131.9 440.2z" />
+            </svg>
+          ) : (
+            ""
+          )}
         </div>
         {props.statusCard}
       </div>
@@ -304,12 +327,12 @@ export const Input = (props) => {
   }
   if (props.type === "label-input-phone-number") {
     element = (
-      <div style={props.customStyles} className="input-group-item phone-numbers">
+      <div style={props.customStyles} className="input-group-item phone-numbers relative">
         <p className="font-12">{props.label}</p>
         <div
           className={`${"form-control"} ${"select-control"} ${
             props.emptyFieldErr ? "error-border" : ""
-          }`}
+          } ${!edit && props.editable ? "disabled-input" : ""}`}
         >
           <div
             onClick={() => {
@@ -352,7 +375,22 @@ export const Input = (props) => {
             />
           </div>
         </div>
-        <div className={`${"hidden"} ${active ? "visible" : ""}`}>
+        {props.editable ? (
+          <svg
+            onClick={editHandler}
+            style={{ top: "34px" }}
+            className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
+            width="18"
+            height="16"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M497.9 74.16l-60.09-60.1c-18.75-18.75-49.19-18.75-67.93 0L313.4 70.61l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM31.04 352.1c-2.234 2.234-3.756 5.078-4.377 8.176l-26.34 131.7C-1.703 502.1 6.156 512 15.95 512c1.049 0 2.117-.1035 3.199-.3203l131.7-26.34c3.098-.6191 5.941-2.141 8.176-4.373l259.7-259.7l-128-128L31.04 352.1zM131.9 440.2l-75.14 15.03l15.03-75.15L96 355.9V416h60.12L131.9 440.2z" />
+          </svg>
+        ) : (
+          ""
+        )}
+        <div className={`${"hidden"} ${active ? " phone-number-active" : ""}`}>
           <Dropdown
             type={"country"}
             handlerClick={handleMobileSelect}
@@ -510,15 +548,33 @@ export const Input = (props) => {
       <div
         style={props.customStyles}
         onChange={props.changeHandler}
-        className={`$"input-group"} ${props.emptyFieldErr ? "error-border" : ""}`}
+        className={`$"input-group"} ${
+          props.emptyFieldErr ? "error-border" : ""
+        } relative`}
       >
         <p className="font-12">{props.label}</p>
+
         <DatePicker
-          className="form-control"
+          className={`form-control ${!edit && props.editable ? "disabled-input" : ""}  `}
           selected={props.value}
           onChange={(date) => props.onChange(date)}
         />
         {props.statusCard}
+        {props.editable ? (
+          <svg
+            onClick={editHandler}
+            style={{ top: "30px" }}
+            className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
+            width="18"
+            height="16"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M497.9 74.16l-60.09-60.1c-18.75-18.75-49.19-18.75-67.93 0L313.4 70.61l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM31.04 352.1c-2.234 2.234-3.756 5.078-4.377 8.176l-26.34 131.7C-1.703 502.1 6.156 512 15.95 512c1.049 0 2.117-.1035 3.199-.3203l131.7-26.34c3.098-.6191 5.941-2.141 8.176-4.373l259.7-259.7l-128-128L31.04 352.1zM131.9 440.2l-75.14 15.03l15.03-75.15L96 355.9V416h60.12L131.9 440.2z" />
+          </svg>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
