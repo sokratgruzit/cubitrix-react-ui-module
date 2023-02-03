@@ -9,6 +9,7 @@ export const ResetPassword = ({
   sideBarClose,
   handleResetPassword,
   resetPasswordState,
+  resetEmail,
 }) => {
   const [selected, setSelected] = useState("email");
   return (
@@ -38,7 +39,7 @@ export const ResetPassword = ({
           </span>
           <div>
             <p className="opt-name">Send Code This Email</p>
-            <p className="opt-email">ikilledvoldemort@gmail.com</p>
+            <p className="opt-email">{resetEmail}</p>
           </div>
         </label>
         {/* <label className="reset-options">

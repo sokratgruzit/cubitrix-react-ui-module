@@ -26,19 +26,31 @@
   height: 24px;
   cursor: pointer;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-
 }
 .input-group-icon-sc {
   position: absolute;
+  z-index: 1;
   right: 11.5px;
   width: 20px;
   height: 20px;
   cursor: pointer;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-
+  pointer-events: initial;
+  opacity: 0.6;
 }
+.opacity-dis-0 {
+  opacity: 0;
+}
+
+.input-group-icon-sc:hover {
+  opacity: 1;
+}
+.relative {
+  position: relative;
+}
+
 .input-group-icon-sc path {
-  fill: #CDCED1;
+  fill: #cdced1;
 }
 .form-control:hover {
   border: 1px solid rgba(61, 90, 254, 0.6);
@@ -165,7 +177,7 @@
   gap: 5px;
 }
 .error-border {
-  border: 1px solid rgb(239, 83, 80)!important;
+  border: 1px solid rgb(239, 83, 80) !important;
 }
 
 /* select input */
@@ -340,7 +352,14 @@
   cursor: pointer;
   width: 100%;
   white-space: nowrap;
+}
 
+.arrow-none {
+  display: none;
+}
+
+.arrow-show {
+  display: flex;
 }
 
 .form-select {
@@ -357,7 +376,7 @@
   /* background-color: red; */
 }
 .select-modal-sc {
-  display: flex!important;
+  display: flex !important;
   position: absolute;
   top: 50px;
   left: 0;
@@ -710,4 +729,9 @@ select input
   display: flex;
   align-items: center;
   gap: 9px;
+}
+
+.disabled-input {
+  pointer-events: none;
+  opacity: 0.6;
 }
