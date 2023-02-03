@@ -260,7 +260,7 @@ export const Input = (props) => {
             <div className="flag-wrapper">{value ? value : props.selectLabel}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"} ${
-                edit ? "arrow-show" : "arrow-none"
+                !edit && props.editable ? "arrow-none" : "arrow-show"
               } `}
               width="20"
               height="21"

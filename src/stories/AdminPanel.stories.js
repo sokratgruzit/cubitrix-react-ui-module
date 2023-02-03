@@ -451,11 +451,11 @@ stories.add("AdminPanel", () => {
                         <span>{item.time}</span>
                     </div>
                     <div className={`td ${th[6].mobileWidth ? true : false }`} style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}>
-                        <span
-                            className={`tranx-type 
-                            ${item.type === 'All Deposit' && 'deposit-type'} 
-                            ${item.type === 'Withdraw' && 'withdraw-type'}
-                            ${item.type === 'Transfer' && 'transfer-type'} 
+                        <span 
+                            className={`alert-status-box 
+                            ${item.type === 'All Deposit' && 'alert-blue'} 
+                            ${item.type === 'Withdraw' && 'alert-yellow'}
+                            ${item.type === 'Transfer' && 'alert-green'} 
                             font-14`}
                         >
                             {item.type}
@@ -492,10 +492,10 @@ stories.add("AdminPanel", () => {
                         <div className="td type">
                             <div className="mobile-ttl">{th[6].name}</div>
                             <span
-                                className={`tranx-type 
-                                ${item.type === 'All Deposit' && 'deposit-type'} 
-                                ${item.type === 'Withdraw' && 'withdraw-type'}
-                                ${item.type === 'Transfer' && 'transfer-type'} 
+                                className={`alert-status-box 
+                                ${item.type === 'All Deposit' && 'alert-status-blue'} 
+                                ${item.type === 'Withdraw' && 'alert-status-yellow'}
+                                ${item.type === 'Transfer' && 'alert-status-green'} 
                                 font-14`}
                             >
                                 {item.type}

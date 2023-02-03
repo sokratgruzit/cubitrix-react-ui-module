@@ -11,6 +11,8 @@ import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
 import { SignIn } from "../components/Auth/SignIn";
 import { ResetPasswordForm } from "../components/Auth/ResetPasswordForm";
 import ResetPassword from "../components/Auth/ResetPassword/ResetPassword";
+import { Popup } from "../components/Popup/Popup";
+import { ChangeNetwork } from "../components/Auth/ChangeNetwork";
 
 const stories = storiesOf("SideBar", module);
 
@@ -34,6 +36,15 @@ stories.add("SideBar", () => {
           handleNewPassword={(e) => console.log(e)}
         />
       </div> */}
+      <Popup
+        popUpElement={
+          <ChangeNetwork
+            disconnect={() => console.log("disconnect")}
+            handleNetworkChange={() => console.log("handle network change")}
+          />
+        }
+        label={"Check Your Network"}
+      />
       <SideBar open={toggle}>
         {/* <Connect
           ConnectOptions={[
