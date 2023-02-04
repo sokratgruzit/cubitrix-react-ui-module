@@ -33,20 +33,9 @@ export const Popup = ({
   addTransactionSelects,
   popUpElement,
   customStyles,
+  popUpData,
+  setPopUpData
 }) => {
-  const [popUpData, setPopUpData] = useState({
-    email: '',
-    password: '',
-    [addAdminSelect?.value]: '',
-    tx_type: '',
-    from: '',
-    to: '',
-    amount: '',
-    tx_hash: '',
-    tx_currency: '',
-    account_type: '',
-  });
-
   const [emptyFields, setEmptyFields] = useState({});
 
   const [cover, setCover] = useState(false);
@@ -146,12 +135,12 @@ export const Popup = ({
   };
 
   const formErrors = useValidation({
-    email: popUpData.email,
-    password: popUpData.password,
-    from: popUpData.from,
-    to: popUpData.to,
-    amount: popUpData.amount,
-    tx_hash: popUpData.tx_hash,
+    email: popUpData?.email || '',
+    password: popUpData?.password || '',
+    from: popUpData?.from || '',
+    to: popUpData?.to || '',
+    amount: popUpData?.amount || '',
+    tx_hash: popUpData?.tx_hash || '',
   }, helpTexts);
 
   return (
@@ -461,7 +450,8 @@ export const Popup = ({
                 icon={false}
                 label={addAdminSelect.name}
                 defaultData={addAdminSelect.options}
-                emptyFieldErr={emptyFields[addAdminSelect.value]}
+                value={popUpData[addAdminSelect?.name]}
+                emptyFieldErr={emptyFields[addAdminSelect?.value]}
                 selectHandler={(opt) => handlePopUpSelectChange(opt, addAdminSelect.value)}
                 selectLabel={`All ${addAdminSelect.name}`}
               />
@@ -471,8 +461,9 @@ export const Popup = ({
                 placeholder={'enter your email'}
                 parent={'your-class-name'}
                 emptyFieldErr={emptyFields?.email}
+                value={popUpData?.email}
                 statusCard= {
-                  formErrors.email && (
+                  formErrors?.email && (
                       <HelpText
                           status={formErrors.email.failure ? 'error' : 'success'}
                           title={formErrors.email.failure || formErrors.email.success}
@@ -490,10 +481,11 @@ export const Popup = ({
                 icon={true}
                 inputType={"password"}
                 coverHandler={toggleCover}
+                value={popUpData?.password}
                 emptyFieldErr={emptyFields?.password}
                 onChange={(e) => handlePopUpInputChange(e, 'password')}
                 statusCard= {
-                  formErrors.password && (
+                  formErrors?.password && (
                     <HelpText
                         status={formErrors.password.failure ? 'error' : 'success'}
                         title={formErrors.password.failure || formErrors.password.success}
