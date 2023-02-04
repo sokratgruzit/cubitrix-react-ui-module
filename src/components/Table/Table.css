@@ -162,21 +162,28 @@
 .td.expand.active .td-expand:after {
   transform: scaleX(1);
 }
-.td.expand .td-expand span {
+.td.expand .td-expand div {
   margin-bottom: 8px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
 }
-.td.expand .td-expand span i {
+.td.expand .td-expand div i {
   color: #3d5afe;
   text-transform: capitalize;
   margin-right: 5px;
   font-style: inherit;
+  font-size: 12px;
 }
-.td.expand .td-expand span:first-child {
+.td-expand span {
+  margin-left: 5px;
+  font-size: 12px;
+}
+.td.expand .td-expand div:first-child {
   margin-top: 15px;
 }
-.td.expand .td-expand span:last-child {
+.td.expand .td-expand div:last-child {
   margin-bottom: 15px;
 }
 
@@ -214,7 +221,15 @@
 .alert-admin-blue {
   color: #4ce2d9;
 }
-
+.table-more {
+  height: 81px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+}
+.td-expand .hide {
+  display: none!important;
+}
 /*Ipad Pro 1024*/
 @media (max-width: 1300px) {
   .table-parent {

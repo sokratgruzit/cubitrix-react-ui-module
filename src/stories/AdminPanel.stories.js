@@ -432,9 +432,9 @@ stories.add("AdminPanel", () => {
                             </svg>
                         </div>
                         <div className={`td-expand`}>
-                            <span><i>Loan</i>Name</span>
-                            <span>Name 1</span>
-                            <span>Name 3</span>
+                            <div><i>Loan</i>Name <span>23 Eth</span></div>
+                            <div>Name 1</div>
+                            <div>Name 3</div>
                         </div>
                     </div>
                     <div className={`td ${th[2].mobileWidth ? true : false }`} style={{width: `${mobile ? th[2].mobileWidth : th[3].width}%`}}>
@@ -451,7 +451,7 @@ stories.add("AdminPanel", () => {
                         <span>{item.time}</span>
                     </div>
                     <div className={`td ${th[6].mobileWidth ? true : false }`} style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}>
-                        <span 
+                        <span
                             className={`alert-status-box 
                             ${item.type === 'All Deposit' && 'alert-blue'} 
                             ${item.type === 'Withdraw' && 'alert-yellow'}

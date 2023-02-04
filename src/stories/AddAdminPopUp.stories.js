@@ -23,6 +23,7 @@ stories.add("AddAdminPopUp", () => {
 
   const handleAddAdminBtnClick = (data) => {
     console.log(data);
+    console.log('hhiii');
   };
 
   return (

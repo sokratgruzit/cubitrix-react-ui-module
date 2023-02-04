@@ -29,7 +29,7 @@ export const Popup = ({
   addAdminError,
   addTransactionError,
   handlePopUpClose,
-  handleAddTransaction, 
+  handleAddTransaction,
   addTransactionSelects,
   popUpElement,
   customStyles,
@@ -122,14 +122,15 @@ export const Popup = ({
         [addAdminSelect.value]: addAdminSelect[addAdminSelect.value]
       });
     }
+    console.log(addAdminSelect.value)
   };
 
   const handleAddTransactionClick = () => {
     if (
       !popUpData.tx_type || !popUpData.from ||
-      !popUpData.to || !popUpData.amount || 
+      !popUpData.to || !popUpData.amount ||
       !popUpData.tx_hash || !popUpData.tx_currency ||
-      !popUpData.account_type  
+      !popUpData.account_type
     ) {
       handleEmptyFields();
    } else {
@@ -142,8 +143,8 @@ export const Popup = ({
         tx_currency: popUpData.tx_currency,
         account_type: popUpData.account_type,
       });
-   }  
-  };  
+   }
+  };
 
   const formErrors = useValidation({
     email: popUpData.email,
@@ -169,7 +170,7 @@ export const Popup = ({
               }}
             />
           )}
-          
+
           {type === "withdraw" && (
             <div className="withdraw-container" style={withdrawCustomStyles}>
               <div className="withdraw-inner">
@@ -206,7 +207,7 @@ export const Popup = ({
               </div>
             </div>
           )}
-          
+
           {type === 'addTransaction' && (
             <div style={addTransactionCustomStyles} className='addTransaction-body'>
                 <div className='addTransaction-inputs'>
@@ -217,7 +218,7 @@ export const Popup = ({
                       emptyFieldErr={emptyFields['tx_type']}
                       selectLabel={'Bonus'}
                       selectHandler={(opt) => handlePopUpSelectChange(opt, addTransactionSelects.tx_type.value)}
-                  />  
+                  />
                   <Input
                     type={"lable-input-select"}
                     defaultData={addTransactionSelects.account_type.options}
@@ -225,7 +226,7 @@ export const Popup = ({
                     emptyFieldErr={emptyFields['account_type']}
                     selectLabel={'Account1'}
                     selectHandler={(opt) => handlePopUpSelectChange(opt, addTransactionSelects.account_type.value)}
-                  />  
+                  />
                   <Input
                       type={"default"}
                       icon={true}
@@ -501,7 +502,7 @@ export const Popup = ({
                         icon={true}
                     />
                   )
-                }             
+                }
               />
               {addAdminError && (
                 <HelpText
@@ -511,8 +512,8 @@ export const Popup = ({
                   icon={true}
                 />
               )}
-              
-              <Button 
+
+              <Button
                 element={'button'}
                 label={'Save'}
                 size={'btn-lg'}

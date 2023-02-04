@@ -22,3 +22,4 @@ export * from "./components/DashboardBalance";
 export * from "./components/DashboardCards";
 export * from "./components/Signin";
 export * from "./components/Popup";
+export * from "./components/MoreButton";
