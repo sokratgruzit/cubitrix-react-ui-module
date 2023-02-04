@@ -112,17 +112,16 @@ export const Popup = ({
 
   const handleAdminSaveClick = () => {
     if (
-      !popUpData.email || !popUpData.password
+      !popUpData.email || !popUpData.password || !popUpData[addAdminSelect?.value]
     ) {
       handleEmptyFields();
     } else {
       handleAddAdminBtnClick({
         email: popUpData.email,
         password: popUpData.password,
-        [addAdminSelect.value]: addAdminSelect[addAdminSelect.value]
+        [addAdminSelect.value]: popUpData[addAdminSelect.value]
       });
     }
-    console.log(addAdminSelect.value)
   };
 
   const handleAddTransactionClick = () => {
