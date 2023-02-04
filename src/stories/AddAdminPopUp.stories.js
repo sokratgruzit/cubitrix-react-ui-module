@@ -6,14 +6,14 @@ const stories = storiesOf("AddAdminPopUp", module);
 stories.add("AddAdminPopUp", () => {
   const [active, setActive] = useState(true);
   const [popUpData, setPopUpData] = useState({
-    role: '',
+    roles: 'option1',
     email: '',
     password: ''
   });
 
   const addAdminSelect = {
-    name: "Role",
-    value: "role",
+    name: "Roles",
+    value: "roles",
     options: [
       {
         name: "Option1",
@@ -25,6 +25,8 @@ stories.add("AddAdminPopUp", () => {
       },
     ],
   };
+
+  console.log(popUpData)
 
   const handleAddAdminBtnClick = (data) => {
     console.log(data);
