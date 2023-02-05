@@ -134,6 +134,14 @@ export const Popup = ({
    }
   };
 
+  const capitalizeWords = (str) => {
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   const formErrors = useValidation({
     email: popUpData?.email || '',
     password: popUpData?.password || '',
@@ -449,8 +457,8 @@ export const Popup = ({
                 type={"lable-input-select"}
                 icon={false}
                 label={addAdminSelect.name}
-                defaultData={addAdminSelect.options}
-                value={popUpData[addAdminSelect?.name]}
+                defaultData={addAdminSelect.options}  
+                value={capitalizeWords(popUpData[addAdminSelect?.value])}
                 emptyFieldErr={emptyFields[addAdminSelect?.value]}
                 selectHandler={(opt) => handlePopUpSelectChange(opt, addAdminSelect.value)}
                 selectLabel={`All ${addAdminSelect.name}`}
