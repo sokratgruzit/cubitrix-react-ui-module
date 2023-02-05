@@ -22,7 +22,6 @@ export const Input = (props) => {
     flag: "🇺🇸",
     number: "",
   });
-  console.log(props.value, value);
 
   const editHandler = () => {
     setEdit(true);
@@ -96,7 +95,7 @@ export const Input = (props) => {
           value={props.value}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
           className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
-            !edit && props.editable && props.value.length > 0 ? "disabled-input" : ""
+            !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
           }`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
@@ -146,7 +145,7 @@ export const Input = (props) => {
           ) : (
             ""
           )}
-          {props.editable && !edit && props.value.length > 0 ? (
+          {props.editable && !edit && props?.value?.length > 0 ? (
             <svg
               onClick={editHandler}
               style={{
@@ -262,13 +261,13 @@ export const Input = (props) => {
             className={`${"form-select-item"} ${"form-control"} ${
               props.emptyFieldErr ? "error-border" : ""
             } ${
-              !edit && props.editable && props.value.length > 0 ? "disabled-input" : ""
+              !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
             }`}
           >
             <div className="flag-wrapper">{value ? value : props.selectLabel}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"} ${
-                props.value.length > 0 && !edit && props.editable
+                props?.value?.length > 0 && !edit && props.editable
                   ? "arrow-none"
                   : "arrow-show"
               } `}
@@ -315,7 +314,7 @@ export const Input = (props) => {
               />
             )}
           </div>
-          {props.editable && !edit && props.value.length > 0 ? (
+          {props.editable && !edit && props?.value?.length > 0 ? (
             <svg
               onClick={editHandler}
               style={{ top: "10px" }}
