@@ -357,11 +357,11 @@
   white-space: nowrap;
 }
 
-.select-form .arrow-none {
+.form-select-item .arrow-none {
   display: none;
 }
 
-.select-form .arrow-show {
+.form-select-item .arrow-show {
   display: flex;
 }
 
