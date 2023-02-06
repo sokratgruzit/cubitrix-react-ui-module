@@ -2,7 +2,7 @@
 .card-container {
     border-radius: 8px;
     padding: 20px;
-    width: 372px;
+    height: 169px;
 }
 
 .card-header {
@@ -28,11 +28,11 @@
 }
 
 /* sale-card styles */
-
 .sale-card {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    gap: 20px;
     display: flex;
+    justify-content: space-between;
+    max-width: 100%;
     flex-direction: column;
 }
 
@@ -81,9 +81,10 @@
 /* amount-card styles */
 .amount-card {
     background: linear-gradient(262.18deg, #0B1023 0%, #1D2136 100%);
-    gap: 13px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
 }
 
 .amount-card__usdt {
