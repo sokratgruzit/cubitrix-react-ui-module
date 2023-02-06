@@ -105,11 +105,7 @@ export const Popup = ({
     ) {
       handleEmptyFields();
     } else {
-      handleAddAdminBtnClick({
-        email: popUpData.email,
-        password: popUpData.password,
-        [addAdminSelect.value]: popUpData[addAdminSelect.value]
-      });
+      handleAddAdminBtnClick();
     }
   };
 
