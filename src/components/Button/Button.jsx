@@ -174,11 +174,13 @@ export const Button = (props) => {
     element = (
       <Link
         to={props.route}
-        className={`side-admin-button ${props.active ? "active" : ""}`}
+        className={`side-admin-button ${props.open ? 'open' : ''} ${props.active ? "active" : ""}`}
         style={props.customStyles}
       >
         <div className={`side-btn-icon`}>{props.svg}</div>
-        <span className="font-16">{props.label}</span>
+        <div className={`side-btn-text`}>
+          <span className="font-16">{props.label}</span>
+        </div>
       </Link>
     );
   }
