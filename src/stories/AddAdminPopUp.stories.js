@@ -44,7 +44,7 @@ stories.add("AddAdminPopUp", () => {
           handlePopUpClose={() => setActive(false)}
           popUpData={popUpData}
           setPopUpData={setPopUpData}
-          edit={false}
+          edit={true}
         />
       )}
     </div>

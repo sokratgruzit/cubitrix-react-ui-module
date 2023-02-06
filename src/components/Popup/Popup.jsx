@@ -84,11 +84,6 @@ export const Popup = ({
         success: "password is valid",
         failure: "password must contain a minimum of 8 characters, uppercase and special character"
     },
-    confirmPassword: {
-      validationType: 'password',
-      success: "password is valid",
-      failure: "password must contain a minimum of 8 characters, uppercase and special character"
-    },
     amount: {
       validationType: 'numbers',
       success: "amount is valid",
@@ -177,7 +172,7 @@ export const Popup = ({
 
   return (
 
-    <div className="popup-bg">
+    <div className='popup-bg'>
       <div className="popup-wrapper-container" onClick={handlePopUpClose} />
         <div className="popup-wrapper" style={customStyles}>
           {label && (
