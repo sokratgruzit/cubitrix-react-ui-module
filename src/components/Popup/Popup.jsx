@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // components
 import { Visual } from "../Visual";
@@ -34,7 +34,8 @@ export const Popup = ({
   popUpElement,
   customStyles,
   popUpData,
-  setPopUpData
+  setPopUpData,
+  edit
 }) => {
   const [emptyFields, setEmptyFields] = useState({});
 
@@ -45,9 +46,15 @@ export const Popup = ({
 
     Object.keys(popUpData).forEach(i => {
         if (popUpData[i].length < 1) {
-            updatedState[i] = true;
-        } else {
+          if(i === 'password' && edit) {
             updatedState[i] = false;
+          } else if (i === 'confirmPassword' && edit) {
+            updatedState[i] = false;
+          } else {
+            updatedState[i] = true;
+          }
+        } else {
+          updatedState[i] = false;
         };
     });
 
@@ -77,6 +84,11 @@ export const Popup = ({
         success: "password is valid",
         failure: "password must contain a minimum of 8 characters, uppercase and special character"
     },
+    confirmPassword: {
+      validationType: 'password',
+      success: "password is valid",
+      failure: "password must contain a minimum of 8 characters, uppercase and special character"
+    },
     amount: {
       validationType: 'numbers',
       success: "amount is valid",
@@ -100,11 +112,27 @@ export const Popup = ({
   };
 
   const handleAdminSaveClick = () => {
+    let notValidatedList = Object.values(formErrors).filter((value) => {
+      return value.failure;
+    });
+
+    let notEmptyList = Object.keys(popUpData).filter((key) => {
+      if (edit) {
+        if (key === 'password') return;
+        if (key === 'confirmPassword') return;
+      }
+      return !popUpData[key]
+    });
+
     if (
-      !popUpData.email || !popUpData.password || !popUpData[addAdminSelect?.value]
-    ) {
+      notEmptyList.length > 0 
+    )  {
       handleEmptyFields();
-    } else {
+    } else if (
+      notValidatedList.length > 0 || popUpData.password !== popUpData.confirmPassword
+    ) {
+      return;
+    }  else {
       handleAddAdminBtnClick();
     }
   };
@@ -480,15 +508,15 @@ export const Popup = ({
               />
               <Input
                 type={'default'}
-                label={'password'}e
-                placeholder={'enter password'}
+                label={`${edit ? 'new password' : 'password'}`}
+                placeholder={`${edit ? 'enter new password' : 'enter password'}`}
                 icon={true}
                 inputType={"password"}
                 coverHandler={toggleCover}
                 value={popUpData?.password}
                 emptyFieldErr={emptyFields?.password}
                 onChange={(e) => handlePopUpInputChange(e, 'password')}
-                statusCard= {
+                statusCard={
                   formErrors?.password && (
                     <HelpText
                         status={formErrors.password.failure ? 'error' : 'success'}
@@ -497,6 +525,27 @@ export const Popup = ({
                         icon={true}
                     />
                   )
+                }
+              />
+              <Input
+                type={'default'}
+                label={'confirm password'}e
+                placeholder={'confirm password'}
+                icon={true}
+                inputType={"password"}
+                coverHandler={toggleCover}
+                value={popUpData?.confirmPassword}
+                emptyFieldErr={emptyFields?.confirmPassword}
+                onChange={(e) => handlePopUpInputChange(e, 'confirmPassword')}
+                statusCard={
+                  popUpData?.confirmPassword &&  popUpData?.password && (
+                    <HelpText
+                      status={popUpData.password === popUpData.confirmPassword ? 'success' : 'error'}
+                      title={popUpData.password === popUpData.confirmPassword ? 'Passwords match' : 'Passwords do not match'}
+                      fontSize={'font-12'}
+                      icon={true}
+                  />  
+                  )       
                 }
               />
               {addAdminError && (
