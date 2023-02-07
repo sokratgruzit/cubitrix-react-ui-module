@@ -82,7 +82,7 @@ export const Popup = ({
     password: {
         validationType: 'password',
         success: "password is valid",
-        failure: "password must contain a minimum of 8 characters, uppercase and special character"
+        failure: "password must contain a minimum of 8 characters, lowercase and uppercase character"
     },
     amount: {
       validationType: 'numbers',
@@ -106,28 +106,34 @@ export const Popup = ({
     },
   };
 
-  const handleAdminSaveClick = () => {
-    let notValidatedList = Object.values(formErrors).filter((value) => {
-      return value.failure;
-    });
+  const formErrors = useValidation({
+    email: popUpData?.email || '',
+    password: popUpData?.password || '',
+    from: popUpData?.from || '',
+    to: popUpData?.to || '',
+    amount: popUpData?.amount || '',
+    tx_hash: popUpData?.tx_hash || '',
+  }, helpTexts);
+  
+  let notValidatedList = Object.values(formErrors).filter((value) => {
+    return value.failure;
+  });
 
-    let notEmptyList = Object.keys(popUpData).filter((key) => {
+  const handleAdminSaveClick = () => {
+  
+    let notEmptyList = Object.keys(popUpData && popUpData).filter((key) => {
       if (edit) {
         if (key === 'password') return;
         if (key === 'confirmPassword') return;
       }
       return !popUpData[key]
     });
-
+    
     if (
       notEmptyList.length > 0 
     )  {
       handleEmptyFields();
-    } else if (
-      notValidatedList.length > 0 || popUpData.password !== popUpData.confirmPassword
-    ) {
-      return;
-    }  else {
+    } else {
       handleAddAdminBtnClick();
     }
   };
@@ -160,15 +166,6 @@ export const Popup = ({
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   };
-
-  const formErrors = useValidation({
-    email: popUpData?.email || '',
-    password: popUpData?.password || '',
-    from: popUpData?.from || '',
-    to: popUpData?.to || '',
-    amount: popUpData?.amount || '',
-    tx_hash: popUpData?.tx_hash || '',
-  }, helpTexts);
 
   return (
 
@@ -560,6 +557,7 @@ export const Popup = ({
                 arrow={'arrow-none'}
                 customStyles={{ width: '100%', margin: '0'}}
                 onClick={handleAdminSaveClick}
+                disabled={notValidatedList?.length > 0 || popUpData?.password !== popUpData?.confirmPassword && true}
               />
             </div>
           )}
