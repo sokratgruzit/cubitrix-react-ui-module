@@ -16,6 +16,7 @@ stories.add("DashboardCard", () => {
                 onViewClick={() => console.log('view')}
                 cardHeaderButtons={[ { name: 'KYC' }, { name: 'Users' }]}
                 handleHeaderBtnClick={(item) => console.log(item)}
+                customStyles={{ width: '372px'}}
             />
             <DashboardCard 
                 type={'amount-card'}
@@ -23,6 +24,7 @@ stories.add("DashboardCard", () => {
                 cardHeaderButtons={[ { name: 'FIAT' }, { name: 'Crypto' }]}
                 usdtNumber={'255'}
                 handleHeaderBtnClick={(item) => console.log(item)}
+                customStyles={{ width: '372px'}}
             />
         </div>
     );
