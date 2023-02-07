@@ -125,7 +125,7 @@ export const Button = (props) => {
             </svg>
           )}
         </div>
-        {props.subMenu.length}
+        {props?.subMenu?.length}
       </div>
     );
   }
@@ -158,7 +158,7 @@ export const Button = (props) => {
           </svg>
         </div>
         <div className={`side-admin-expand ${props.id === expand ? "active" : ""}`}>
-          {props.subMenu.map((item, index) => {
+          {props?.subMenu?.map((item, index) => {
             return (
               <Link
                 to={props.route + item.route}
