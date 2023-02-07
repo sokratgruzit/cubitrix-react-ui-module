@@ -13,23 +13,29 @@ import { ResetPasswordForm } from "../components/Auth/ResetPasswordForm";
 import ResetPassword from "../components/Auth/ResetPassword/ResetPassword";
 import { Popup } from "../components/Popup/Popup";
 import { ChangeNetwork } from "../components/Auth/ChangeNetwork";
+import { NoMetaMask } from "../components/Auth/NoMetaMask";
 
 const stories = storiesOf("SideBar", module);
 
 stories.add("SideBar", () => {
   const [toggle, setToggle] = useState(false);
-
+  let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
   const completeHandler = (i) => {
     console.log(i);
   };
-
-  let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
-
   const [twoFactorAuth, setTwoFactorAuth] = useState(true);
 
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
+      {twoFactorAuth && (
+        <Popup
+          popUpElement={<NoMetaMask />}
+          label={"Check Your Network"}
+          handlePopUpClose={() => setTwoFactorAuth(false)}
+        />
+      )}
+
       {/* <div style={{ width: "400px" }}>
         <ResetPasswordForm
           passwordSetUpState={{ loading: false, error: "shit", success: "haha" }}

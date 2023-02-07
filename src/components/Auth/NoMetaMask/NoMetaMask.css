@@ -1,0 +1,45 @@
+.no-metamask-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgb(32, 36, 49);
+  border-right: 1px solid rgb(32, 36, 49);
+  border-left: 1px solid rgb(32, 36, 49);
+  background: rgb(20, 23, 38);
+  border-radius: 0px 0px 8px 8px;
+  gap: 20px;
+  width: 100%;
+}
+.qr-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 258px;
+  height: 258px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+.no-metamask {
+  font-size: 14px;
+  line-height: 130%;
+  color: #3d5afe;
+}
+.metamask-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(61, 90, 254, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+}
+
+.metamask-logo {
+  width: 34px;
+  height: 34px;
+}
+
+.wallet-uri {
+}
