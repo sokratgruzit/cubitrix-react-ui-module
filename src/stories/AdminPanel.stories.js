@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Functions } from '../hooks/Functions';
 import { Logo } from "../assets/svgs";
-import {MoreButton} from "../components/MoreButton";
+import { MoreButton } from "../components/MoreButton";
 
 const stories = storiesOf("AdminPanel", module);
 
@@ -543,6 +543,7 @@ stories.add("AdminPanel", () => {
                    handleViewAll={() => console.log('view all')}
                    tableFilter={true}
                    tableHead={th}
+                   adminPage={'table'}
                    tableHeaderButtons={(
                     <>
                         <Button
