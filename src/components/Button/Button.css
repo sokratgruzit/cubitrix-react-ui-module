@@ -314,9 +314,9 @@
 }
 .side-btn-text {
   display: flex;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  transform: translateY(5px);
-  opacity: 0;
+  /*transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);*/
+  /*transform: translateY(5px);*/
+  /*opacity: 0;*/
 }
 .side-admin-button.open .side-btn-text {
   transform: translateY(0px);

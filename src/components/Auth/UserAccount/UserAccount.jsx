@@ -40,7 +40,7 @@ export const UserAccount = ({
       number: "",
     },
     date_of_birth: new Date(),
-    nationality: "Select Country",
+    nationality: "",
     avatar: imgValue,
   });
 
@@ -69,16 +69,8 @@ export const UserAccount = ({
   };
 
   const beforePersonalData = (userData) => {
-    const mutated_userData = { ...userData };
-    if (userData.nationality?.country) {
-      mutated_userData.nationality = userData.nationality.country;
-    }
-    mutated_userData.nationality =
-      mutated_userData.nationality === "Select Country"
-        ? ""
-        : mutated_userData.nationality;
     if (emailError) return;
-    handlePersonalData(mutated_userData);
+    handlePersonalData(userData);
   };
 
   const beforeSecurityData = (userData) => {
@@ -97,10 +89,7 @@ export const UserAccount = ({
 
   useEffect(() => {
     if (personalData) {
-      const data = { ...personalData };
-      if (personalData.nationality === "") data.nationality = "Select Country";
-
-      setUserData(data);
+      setUserData(personalData);
     }
   }, [personalData]);
 
@@ -217,12 +206,12 @@ export const UserAccount = ({
             type={"lable-input-select"}
             icon={false}
             selectType={"country"}
-            selectLabel={userData.nationality}
             value={userData.nationality}
             label={"Nationality"}
             onClick={(e) => handleUserUpdate(e, "nationality")}
             customStyles={{ width: "100%" }}
             editable={true}
+            selectLabel={"Select Country"}
           />
           <Input
             type={"label-input-upload"}

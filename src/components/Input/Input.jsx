@@ -11,12 +11,11 @@ import "./Input.css";
 import { useOnOutsideClick } from "../../hooks/useOnOutsideClick";
 
 export const Input = (props) => {
-  const [file, setFile] = useState(props.value);
+  const [file, setFile] = useState(props.value || "");
   const [active, setActive] = useState(false);
   const [cover, setCover] = useState(false);
-  const [value, setValue] = useState(props.selectLabel);
+  const [value, setValue] = useState(props.selectLabel || "");
   const [edit, setEdit] = useState(false);
-  const [inputValue, setInputValue] = useState();
 
   const [mobileData, setMobileData] = useState({
     code: "+1",
@@ -26,24 +25,15 @@ export const Input = (props) => {
 
   const editHandler = () => {
     setEdit(true);
-    setInputValue(undefined);
     // setValueHandler()
   };
 
   const activeHandler = () => {
-    if (!active) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
+    setActive(!active);
   };
 
   const coverHandler = () => {
-    if (!cover) {
-      setCover(true);
-    } else {
-      setCover(false);
-    }
+    setCover(!cover);
   };
 
   const deleteHandler = () => {
@@ -81,7 +71,6 @@ export const Input = (props) => {
   useOnOutsideClick(ref, () => setActive(false));
 
   let element = null;
-
   if (props.type === "default") {
     element = (
       <div
@@ -99,11 +88,14 @@ export const Input = (props) => {
           ""
         )}
         <input
-          onChange={props.onChange}
-          value={!edit ? props.value : inputValue}
+          onChange={(e) => {
+            setEdit(true);
+            props.onChange(e);
+          }}
+          value={props.value}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
           className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
-            !edit && props.editable ? "disabled-input" : ""
+            !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
           }`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
@@ -153,7 +145,7 @@ export const Input = (props) => {
           ) : (
             ""
           )}
-          {props.editable ? (
+          {props.editable && !edit && props?.value?.length > 0 ? (
             <svg
               onClick={editHandler}
               style={{
@@ -197,7 +189,10 @@ export const Input = (props) => {
         <div className="input-form">
           <div className="input-form-inner">
             <input
-              onChange={props.onChange}
+              onChange={(e) => {
+                setEdit(true);
+                props.onChange(e);
+              }}
               style={props.icon ? { paddingRight: "55px" } : { paddingRight: "16px" }}
               className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}`}
               type="text"
@@ -236,7 +231,10 @@ export const Input = (props) => {
           <span className="input-group-frame-secondary">{props.subLabel}</span>
         </p>
         <input
-          onChange={props.onChange}
+          onChange={(e) => {
+            setEdit(true);
+            props.onChange(e);
+          }}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
           className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}`}
           type="text"
@@ -250,17 +248,28 @@ export const Input = (props) => {
     element = (
       <div style={props.customStyles} className="select-group">
         <p className="input-group-title font-12">{props.label}</p>
-        <div ref={ref} onChange={props.onChange} className="form-select-sc relative">
+        <div
+          ref={ref}
+          onChange={(e) => {
+            setEdit(true);
+            props.onChange(e);
+          }}
+          className="form-select-sc relative"
+        >
           <div
             onClick={activeHandler}
             className={`${"form-select-item"} ${"form-control"} ${
               props.emptyFieldErr ? "error-border" : ""
-            } ${!edit && props.editable ? "disabled-input" : ""}`}
+            } ${
+              !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
+            }`}
           >
             <div className="flag-wrapper">{value ? value : props.selectLabel}</div>
             <svg
               className={`${active ? "rotate" : ""} ${"arrow"} ${
-                !edit && props.editable ? "arrow-none" : "arrow-show"
+                props?.value?.length > 0 && !edit && props.editable
+                  ? "arrow-none"
+                  : "arrow-show"
               } `}
               width="20"
               height="21"
@@ -285,6 +294,7 @@ export const Input = (props) => {
                 handlerClick={(data) => {
                   setActive(false);
                   setValue(`${data.flag} ${data.country}`);
+                  setEdit(true);
                   props.onClick(`${data.flag} ${data.country}`);
                 }}
                 countryData={countriesData}
@@ -304,7 +314,7 @@ export const Input = (props) => {
               />
             )}
           </div>
-          {props.editable ? (
+          {props.editable && !edit && props?.value?.length > 0 ? (
             <svg
               onClick={editHandler}
               style={{ top: "10px" }}
@@ -332,7 +342,11 @@ export const Input = (props) => {
         <div
           className={`${"form-control"} ${"select-control"} ${
             props.emptyFieldErr ? "error-border" : ""
-          } ${!edit && props.editable ? "disabled-input" : ""}`}
+          } ${
+            !edit && props.editable && props.value?.number?.length > 0
+              ? "disabled-input"
+              : ""
+          }`}
         >
           <div
             onClick={() => {
@@ -375,7 +389,7 @@ export const Input = (props) => {
             />
           </div>
         </div>
-        {props.editable ? (
+        {props.editable && !edit && props.value?.number?.length > 0 ? (
           <svg
             onClick={editHandler}
             style={{ top: "34px" }}
@@ -500,7 +514,10 @@ export const Input = (props) => {
             </svg>
           </div>
           <input
-            onChange={props.onChange}
+            onChange={(e) => {
+              setEdit(true);
+              props.onChange(e);
+            }}
             className="search-control"
             type="search"
             placeholder={props.placeholder}

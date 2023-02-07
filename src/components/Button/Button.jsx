@@ -123,6 +123,7 @@ export const Button = (props) => {
             </svg>
           )}
         </div>
+        {props.subMenu.length}
       </div>
     );
   }
@@ -133,7 +134,7 @@ export const Button = (props) => {
           onClick={() => {
             openExpand(props.id);
           }}
-          className={`side-admin-button ${props.id === expand ? "active" : ""}`}
+          className={`side-admin-button open ${props.id === expand ? "active" : ""}`}
           style={props.customStyles}
         >
           <div className={`side-btn-icon`}>{props.svg}</div>
@@ -174,7 +175,7 @@ export const Button = (props) => {
     element = (
       <Link
         to={props.route}
-        className={`side-admin-button ${props.open ? 'open' : ''} ${props.active ? "active" : ""}`}
+        className={`side-admin-button open ${props.open ? 'open' : ''} ${props.active ? "active" : ""}`}
         style={props.customStyles}
       >
         <div className={`side-btn-icon`}>{props.svg}</div>
