@@ -10,20 +10,16 @@ export const NoMetaMask = ({ url }) => {
   return (
     <div className="no-metamask-wrap">
       <p className="no-metamask">Metamask is not installed</p>
-      <div className="qr-wrap">
-        <div className="metamask-icon">
-          <img className="wallet-uri" scr={url} alt="no url" />
-          <MetaMask className={"metamask-logo"} />
-        </div>
+      <div className="metamask-icon">
+        <MetaMask className={"metamask-logo"} />
       </div>
-      <Button
-        element="button"
-        label="Install"
-        type="btn-primary"
-        size="btn-lg"
-        customStyles={{ width: "100%" }}
-        onClick={installMetamask}
-      />
+      <a
+        className="install-metamask"
+        href="https://metamask.io/download/"
+        target="_blank"
+      >
+        Install
+      </a>
     </div>
   );
 };

@@ -41,5 +41,13 @@
   height: 34px;
 }
 
-.wallet-uri {
+.install-metamask {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 258px;
+  height: 52px;
+  background: #3d5afe;
+  border-radius: 32px;
 }
