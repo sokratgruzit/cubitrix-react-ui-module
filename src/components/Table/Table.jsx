@@ -5,7 +5,6 @@ import { Functions } from '../../hooks/Functions';
 
 export const Table = (props) => {
     const { mobile } = Functions();
-    console.log(mobile)
     return (
         <>
             <div className={`${props.type}`}>
