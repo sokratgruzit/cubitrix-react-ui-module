@@ -66,6 +66,7 @@ stories.add("Button", () => {
                                         svg={item.svg}
                                         customStyles={{width: '350px'}}
                                         subMenu={item.subMenu}
+                                        open={true}
                                     />
                                 )
                             })
