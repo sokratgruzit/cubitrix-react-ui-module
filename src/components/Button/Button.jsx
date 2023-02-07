@@ -129,7 +129,7 @@ export const Button = (props) => {
       </div>
     );
   }
-  if (props.element === "side-admin-button" && props.subMenu.length > 0) {
+  if (props.element === "side-admin-button" && props?.subMenu?.length > 0) {
     element = (
       <div className={`side-admin-button-container`}>
         <div
