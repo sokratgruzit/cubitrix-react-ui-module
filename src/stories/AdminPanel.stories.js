@@ -539,7 +539,8 @@ stories.add("AdminPanel", () => {
                            </Routes>
                        </BrowserRouter>
                    }
-                   tableData={tableData}
+                //    tableData={tableData}
+                   handleViewAll={() => console.log('view all')}
                    tableFilter={true}
                    tableHead={th}
                    tableHeaderButtons={(

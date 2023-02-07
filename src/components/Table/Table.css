@@ -20,6 +20,23 @@
   padding: 0px 16px;
   justify-content: space-between;
 }
+
+.table-empty {
+  min-height: 342px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center; 
+  gap: 50px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.table-empty__view-all {
+  color: #3D5AFE;
+  cursor: pointer;
+}
+
 .th {
   color: #9c9da3;
 }
