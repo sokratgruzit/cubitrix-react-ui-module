@@ -1,11 +1,9 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import './AdminPanel.css';
 import { Table } from "../Table";
 import { FilterBox } from '../FilterBox';
-import { Button } from '../Button';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Visual} from "../Visual";
-import {TableElement} from "../TableElement";
+import { Visual } from "../Visual";
+import { TableElement } from "../TableElement";
 
 export const AdminPanel = props => {
     let filter;
@@ -33,6 +31,7 @@ export const AdminPanel = props => {
                 tableHead={props.tableHead}
                 mobile={props.mobile}
                 tableData={props.tableData}
+                handleViewAll={props.handleViewAll}
             />
             <TableElement
                 customStyle={{marginTop: '30px', paddingBottom: '100px'}}

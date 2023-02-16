@@ -16,7 +16,9 @@ export const Button = (props) => {
   if (props.element === "button") {
     element = (
       <div
-        className={`btn ${props.size} ${props.type} ${props.arrow} ${props.labelSetting} ${props.disabled === true ? 'disabled' : ''}`}
+        className={`btn ${props.size} ${props.type} ${props.arrow} ${
+          props.labelSetting
+        } ${props.disabled === true ? "disabled" : ""}`}
         onClick={props.onClick}
         style={props.customStyles}
         disabled={props.disabled}
@@ -127,7 +129,7 @@ export const Button = (props) => {
       </div>
     );
   }
-  if (props.element === "side-admin-button" && props.subMenu.length > 0) {
+  if (props.element === "side-admin-button" && props?.subMenu?.length > 0) {
     element = (
       <div className={`side-admin-button-container`}>
         <div
@@ -161,7 +163,9 @@ export const Button = (props) => {
               <Link
                 to={props.route + item.route}
                 key={index}
-                className={`side-admin-button-expand font-14 ${props.subMenuActive ? "subMenu-active" : ""}`}
+                className={`side-admin-button-expand font-14 ${
+                  props.subMenuActive ? "subMenu-active" : ""
+                }`}
               >
                 {item.name}
               </Link>
@@ -171,11 +175,13 @@ export const Button = (props) => {
       </div>
     );
   }
-  if (props.element === "side-admin-button" && props.subMenu.length === 0) {
+  if (props.element === "side-admin-button" && props?.subMenu?.length === 0) {
     element = (
       <Link
         to={props.route}
-        className={`side-admin-button open ${props.open ? 'open' : ''} ${props.active ? "active" : ""}`}
+        className={`side-admin-button open ${props.open ? "open" : ""} ${
+          props.active ? "active" : ""
+        }`}
         style={props.customStyles}
       >
         <div className={`side-btn-icon`}>{props.svg}</div>
