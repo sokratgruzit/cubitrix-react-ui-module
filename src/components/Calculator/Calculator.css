@@ -11,11 +11,11 @@
     padding: 0.786rem 0 0.964rem 0;
 }
 
-.show-calculator {
+/* .show-calculator {
     display: none;
-}
+} */
 
-@media only screen and (max-width: 769px) {
+/* @media only screen and (max-width: 769px) {
     .staking-calculator-container {
         bottom: 0;
         left: 0;
@@ -33,4 +33,4 @@
     .show-calculator {
         display: block;
     }
-  }
+  } */
