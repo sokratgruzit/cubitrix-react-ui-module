@@ -125,7 +125,7 @@ export const Button = (props) => {
             </svg>
           )}
         </div>
-        {props.subMenu.length}
+        {props?.subMenu?.length}
       </div>
     );
   }
@@ -158,7 +158,7 @@ export const Button = (props) => {
           </svg>
         </div>
         <div className={`side-admin-expand ${props.id === expand ? "active" : ""}`}>
-          {props.subMenu.map((item, index) => {
+          {props?.subMenu?.map((item, index) => {
             return (
               <Link
                 to={props.route + item.route}
@@ -189,6 +189,31 @@ export const Button = (props) => {
           <span className="font-16">{props.label}</span>
         </div>
       </Link>
+    );
+  }
+
+  if (props.element === 'calculator-button') {
+    element = (
+      <div
+        className={`calculator-button ${props.active && 'calculator-button-active'}`}
+        style={props.customStyles}
+        onClick={props.onClick}
+      >
+        <span>{props.label}</span>
+      </div>
+    );
+  }
+
+  if (props.element === 'show-calculator-button') {
+    element = (
+      <div
+        className={`show-calculator-button ${props.active && 'show-calculator-button-active'}`}
+        style={props.customStyles}
+        onClick={props.onClick}
+      >
+        {props.icon}
+        <span>{props.label}</span>
+      </div>
     );
   }
   return element;

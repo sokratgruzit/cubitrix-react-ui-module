@@ -1,36 +1,84 @@
-import React from 'react';
+import { useState } from 'react';
+
+// hooks
+import { Functions } from '../../hooks/Functions';
+
+// components
+import { Calculator } from '../Calculator/Calculator';
+import { BiddingInfo } from "../BiddingInfo/BiddingInfo";
+import { AccountSummary } from '../AccountSummary';
+import { Button } from '../Button';
+
+// svgs
+import { 
+  HeaderIcon,
+  CalculatorIcon,
+  Close,
+} from '../../assets/svgs';
 
 // styles
 import '../../assets/css/main-theme.css';
 import './Staking.css';
-
-import { Calculator } from '../Calculator/Calculator';
-import { BiddingInfo } from "../BiddingInfo/BiddingInfo";
 
 export const Staking = ({
   durationOptions,
   biddingInfoData,
   handleStake,
   setStakeData,
-  stakeData
+  stakeData,
+  handleMaxClick,
+  AccountSummaryData,
 }) => {
+  const [showCalculator, setShowCalculator] = useState(false);
+  const { width } = Functions();
   return (
-    <div className={`main`}>
-      <div className={`main-sidebar`}>
+    <div className={`main`} style={{ flexDirection: `${width < 1025 ? 'column' : 'row'}`}}>
+      <div className={`main-sidebar`} style={{ display: `${width > 1025 ? 'flex' : 'none'}`}}>
         <div className={'staking-sidebar'}>
           <BiddingInfo 
             data={biddingInfoData}
+            customStyles={{ display: `${width > 1025 ? 'block' : 'none'}`}}
           />
           <Calculator 
-            durationOptions={durationOptions}
-            handleSubmit={handleStake}
-            setStakeData={setStakeData}
-            stakeData={stakeData}
+            {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
           />
         </div>
       </div>
+      {showCalculator && <div className={'show-calculator-dark-bg'} />}
       <div className={`main-content`}>
-        hihi
+        <h2 
+          className={`font-16 staking-header`}
+        >
+          <HeaderIcon />
+          Staking
+        </h2>
+        <BiddingInfo 
+          data={biddingInfoData}
+          customStyles={{ display: `${width <= 1025 ? 'block' : 'none'}`}}
+        />
+        <h3 className={`${width < 1025 ? 'font-14' : 'font-20'}`}>Your Stake</h3>
+        <div className={'account-summary-container'}>
+          {AccountSummaryData?.map((data, index) => <AccountSummary key={index} data={data} />)}     
+        </div>
+      </div>
+      <div className={'hidden-calculator-wrapper'}>
+        <div className={`hidden-calculator-container`}>
+          {showCalculator && (
+            <Calculator 
+              {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
+            />
+          )}
+          <Button 
+            element={'show-calculator-button'}
+            customStyles={{ position: 'absolute', bottom: '30px', zIndex: '999'}}
+            label={showCalculator ? 'Close' : 'Staking Calculator'}
+            active={showCalculator}
+            onClick={() => setShowCalculator(!showCalculator)}
+            icon={(
+              showCalculator ? <Close /> : <CalculatorIcon />
+            )}
+          />
+        </div>
       </div>
     </div>
   );

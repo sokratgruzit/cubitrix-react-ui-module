@@ -151,9 +151,16 @@ button {
 .main-sidebar-content {
   width: 100%;
 }
+
 .main-content {
   width: calc(100% - 365px);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+}
+
+@media only screen and (max-width: 1025px) {
+  .main-content {
+    width: 100%;
+  }
 }

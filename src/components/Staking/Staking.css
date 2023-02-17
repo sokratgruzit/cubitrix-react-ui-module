@@ -5,6 +5,60 @@
     top: 0;
     background: #0c1121;
     overflow-y: scroll;
-    padding: 20px 20px 0 20px;
     width: 365px;
+    padding: 20px 20px 0 20px;
+}
+
+.account-summary-container {
+    display: flex; 
+    justify-content: space-between;
+    padding-top: 16px;
+    gap: 20px;
+}
+
+.hidden-calculator-container {
+    display: none;
+}
+
+.staking-header {
+    display: none;
+}
+
+.show-calculator-dark-bg {
+    position: fixed;
+    background-color: #000;
+    opacity: .7;
+    width: 100vw;
+    height: 100vh;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+@media only screen and (max-width: 1025px) {
+    .staking-header {
+        display: flex;
+        align-items: center;
+    }
+    .hidden-calculator-container {
+        display: flex;
+        justify-content: center;
+        height: 500px;
+    }
+    .show-calculator-dark-bg {
+        display: block;
+    }
+    .hidden-calculator-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 201;
+    }
+    .account-summary-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }

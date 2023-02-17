@@ -8,12 +8,15 @@ import { Input } from '../Input';
 import { useState } from 'react';
 
 export const Calculator = ({
-  handleSubmit,
+  handleStake,
   durationOptions,
   setStakeData,
-  stakeData
+  stakeData,
+  handleMaxClick,
+  customStyles
 }) => {
   const [emptyField, setEmptyField] = useState(false);
+  const [helpText, setHelpText] = useState('');
 
   const handleChange = (e) => {
     if (e.target.value.length > 0) {
@@ -43,47 +46,57 @@ export const Calculator = ({
       setEmptyField(true);
     } else {
       setEmptyField(false);
-      handleSubmit();
+      handleStake();
     };
   };
 
   return (
-    <div className={`staking-calculator-container`}>
-      <h2 className="font-14 staking-calculator__header">Staking Calculator</h2>
-      <Input
-        type={"default"}
-        inputType={'text'}
-        placeholder={"0000"}
-        label={'Amount'}
-        onChange={handleChange}
-        emptyFieldErr={emptyField}
-        statusCard={
-          validationErrors?.amount && (
-            <HelpText
-                status={validationErrors.amount.failure ? 'error' : 'success'}
-                title={validationErrors.amount.failure || validationErrors.amount.success}
-                fontSize={'font-12'}
-                icon={true}
-            />
-          )
-        }
-      />
-      <div className="staking-calculator__buttons">
+    <div className={`calculator-container`} style={customStyles}>
+      <h2 className={'font-14 calculator__header'}>Staking Calculator</h2>
+      <div className={'calculator-input'}>
+        <Input
+          type={"default"}
+          inputType={'text'}
+          placeholder={"0000"}
+          label={'Amount'}
+          onChange={handleChange}
+          emptyFieldErr={emptyField}
+          value={stakeData?.amount}
+          statusCard={
+            validationErrors?.amount && (
+              <HelpText
+                  status={validationErrors.amount.failure ? 'error' : 'success'}
+                  title={validationErrors.amount.failure || validationErrors.amount.success}
+                  fontSize={'font-12'}
+                  icon={true}
+              />
+            )
+          }
+        />
+        <span 
+          className={'font-12'}
+          onClick={handleMaxClick}
+        >
+          MAX
+        </span>
+      </div>
+      <div className="calculator__buttons">
         {durationOptions.map((item, index) => (
           <Button
             key={index}
             label={`${item.title} D`}
-            size={'btn-sm'}
-            type={'btn-primary'}
-            arrow={'arrow-none'}
-            element={'button'}
-            customStyles={{ width: '60px', borderRadius: '8px' }}
-            onClick={() => handleDurationOptionChange(item.title)}
+            element={'calculator-button'}
+            onClick={() => {
+              handleDurationOptionChange(item.title);
+              setHelpText(item.value);
+            }}
+            customStyles={{ width: '100%'}}
+            active={item.title === stakeData.duration}
         />
         ))}
       </div>
       <HelpText
-        title="15 % APY On 30 Days. Locked Until 02/02/2023 2:33 PM"
+        title={helpText ? helpText : durationOptions[0].value}
         status="info"
         color="#6A6D76"
         icon={true}
