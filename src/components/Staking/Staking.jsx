@@ -13,7 +13,7 @@ import { Button } from '../Button';
 import { 
   HeaderIcon,
   CalculatorIcon,
-  Close,
+  CloseIcon,
 } from '../../assets/svgs';
 
 // styles
@@ -75,7 +75,7 @@ export const Staking = ({
             active={showCalculator}
             onClick={() => setShowCalculator(!showCalculator)}
             icon={(
-              showCalculator ? <Close /> : <CalculatorIcon />
+              showCalculator ? <CloseIcon /> : <CalculatorIcon />
             )}
           />
         </div>

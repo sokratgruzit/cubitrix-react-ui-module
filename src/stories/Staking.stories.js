@@ -4,7 +4,7 @@ import { Staking } from "../components/Staking/Staking";
 
 const stories = storiesOf("Staking", module);
 
-import { EarnIcon } from '../assets/svgs'
+import { EarnIcon } from '../assets/svgs';
 
 stories.add("Staking", () => {
   const [stakeData, setStakeData] = useState({

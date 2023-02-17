@@ -22,4 +22,4 @@ export { default as AddSquareIcon } from "./add-square";
 export { default as SigninLogo } from "./SigninLogo";
 export { default as Warning } from "./Warning";
 export { default as NoApplicationsIcon } from "./NoApplications";
-export { default as Close } from "./Close";
+export { default as CloseIcon } from "./Close";

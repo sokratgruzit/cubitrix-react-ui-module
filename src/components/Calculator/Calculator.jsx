@@ -13,7 +13,7 @@ export const Calculator = ({
   setStakeData,
   stakeData,
   handleMaxClick,
-  customStyles
+  customStyles,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
   const [helpText, setHelpText] = useState('');
