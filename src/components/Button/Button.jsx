@@ -204,14 +204,14 @@ export const Button = (props) => {
     );
   }
 
-  if (props.element === 'show-calculator-button') {
+  if (props.element === 'staking-button') {
     element = (
       <div
-        className={`show-calculator-button ${props.active && 'show-calculator-button-active'}`}
+        className={`staking-button ${props.active && 'staking-button-active'}`}
         style={props.customStyles}
         onClick={props.onClick}
       >
-        {props.icon}
+        {props?.icon}
         <span>{props.label}</span>
       </div>
     );

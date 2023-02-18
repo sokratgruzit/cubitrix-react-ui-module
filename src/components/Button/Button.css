@@ -348,8 +348,8 @@
   color: #FFF;
 }
 
-.show-calculator-button {
-  width: 190px;
+.staking-button {
+  width: 87px;
   height: 52px;
   background: #3D5AFE;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
@@ -362,11 +362,11 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
-.show-calculator-button:hover {
+.staking-button:hover {
   opacity: .7;
 }
 
-.show-calculator-button-active {
+.staking-button-active {
   border: 1px solid #3D5AFE;
   background-color: rgba(0, 0, 0, 0.5);
 }

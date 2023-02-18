@@ -1,11 +1,19 @@
-import './Calculator.css';
 
+// hooks
 import { useValidation } from "../../hooks/useValidation";
+import { Functions } from '../../hooks/Functions';
 
+// components
 import { HelpText } from '../HelpText';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { useState } from 'react';
+
+// svgs 
+import { CalculatorIcon } from "../../assets/svgs";
+
+// styles
+import './Calculator.css';
 
 export const Calculator = ({
   handleStake,
@@ -17,6 +25,8 @@ export const Calculator = ({
 }) => {
   const [emptyField, setEmptyField] = useState(false);
   const [helpText, setHelpText] = useState('');
+  
+  const { width } = Functions();
 
   const handleChange = (e) => {
     if (e.target.value.length > 0) {
@@ -52,7 +62,10 @@ export const Calculator = ({
 
   return (
     <div className={`calculator-container`} style={customStyles}>
-      <h2 className={'font-14 calculator__header'}>Staking Calculator</h2>
+      <h2 className={'font-14 calculator__header'}>
+        {width <= 1025 && <CalculatorIcon />}
+        Staking Calculator
+      </h2>
       <div className={'calculator-input'}>
         <Input
           type={"default"}

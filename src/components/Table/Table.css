@@ -107,6 +107,7 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   overflow: hidden;
   max-height: 0px;
+  display: none;
 }
 .table-parent.active .table-mobile {
   max-height: 600px;
@@ -249,6 +250,20 @@
 .td-expand .hide {
   display: none!important;
 }
+
+.table-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.td.col.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0;
+}
+
 /*Ipad Pro 1024*/
 @media (max-width: 1300px) {
   .table-parent {
@@ -268,10 +283,21 @@
   .table-more {
     width: 35px;
   }
+  .table-mobile {
+    display: block;
+  }
 }
 /*Ipad 768*/
 @media (max-width: 1023px) {
 }
+
+/* 550*/
+@media (max-width: 550px) {
+  .buttons-th {
+    display: none;
+  }
+}
+
 /*Mobile 320*/
 @media (max-width: 767px) {
 }

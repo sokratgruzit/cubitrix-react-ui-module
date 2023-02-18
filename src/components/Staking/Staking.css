@@ -12,7 +12,7 @@
 .account-summary-container {
     display: flex; 
     justify-content: space-between;
-    padding-top: 16px;
+    padding: 20px 0;
     gap: 20px;
 }
 
@@ -44,6 +44,8 @@
     .hidden-calculator-container {
         display: flex;
         justify-content: center;
+    }
+    .hidden-calculator-container.active {
         height: 500px;
     }
     .show-calculator-dark-bg {

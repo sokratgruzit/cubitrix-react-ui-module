@@ -1,6 +1,9 @@
 .calculator__header{
     font-weight: 500;
     padding: 1.429rem 0 0.857rem 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .calculator__buttons {

@@ -8,6 +8,7 @@ import { Calculator } from '../Calculator/Calculator';
 import { BiddingInfo } from "../BiddingInfo/BiddingInfo";
 import { AccountSummary } from '../AccountSummary';
 import { Button } from '../Button';
+import { Table } from "../Table";
 
 // svgs
 import { 
@@ -28,6 +29,9 @@ export const Staking = ({
   stakeData,
   handleMaxClick,
   AccountSummaryData,
+  tableHead,
+  tableData,
+  handleViewAll
 }) => {
   const [showCalculator, setShowCalculator] = useState(false);
   const { width } = Functions();
@@ -60,17 +64,24 @@ export const Staking = ({
         <div className={'account-summary-container'}>
           {AccountSummaryData?.map((data, index) => <AccountSummary key={index} data={data} />)}     
         </div>
+        <Table
+          type={"table-version"}
+          tableHead={tableHead}
+          mobile={width < 1280}
+          tableData={tableData}
+          handleViewAll={handleViewAll}
+        />
       </div>
       <div className={'hidden-calculator-wrapper'}>
-        <div className={`hidden-calculator-container`}>
+        <div className={`hidden-calculator-container ${showCalculator && 'active'}`}>
           {showCalculator && (
             <Calculator 
               {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
             />
           )}
           <Button 
-            element={'show-calculator-button'}
-            customStyles={{ position: 'absolute', bottom: '30px', zIndex: '999'}}
+            element={'staking-button'}
+            customStyles={{ position: 'absolute', bottom: '20px', zIndex: '999', width: '190px'}}
             label={showCalculator ? 'Close' : 'Staking Calculator'}
             active={showCalculator}
             onClick={() => setShowCalculator(!showCalculator)}
