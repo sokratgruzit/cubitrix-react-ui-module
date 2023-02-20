@@ -13,9 +13,25 @@ import { BrowserRouter } from "react-router-dom";
 stories.add("Staking", () => {
   const [stakeData, setStakeData] = useState({
     amount: '',
-    duration: '30'
+    timeperiod: 0,
   });
-  // console.log(stakeData);
+  const [biddingInfo, setBiddingInfo] = useState({
+    balance: 0,
+    stakers: 2,
+  });
+
+  const [stakersInfo, setStakersInfo] = useState({
+    currentStake: 0,
+    earn: 0,
+    claimedReward: 0,
+    walletBalance: 0,
+    totalStaked: 0,
+    totalUnstaked: 0,
+  });
+
+  const [isAllowance, setIsAllowance] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const [mobileExpand, setMobileExpand] = useState(null);
 
   let mobileExpandFunc = (id) => {
@@ -32,24 +48,29 @@ stories.add("Staking", () => {
 
   const durationOptions = [
     {
-      title: "30",
-      value: '15 % APY On 30 Days. Locked Until 02/02/2023 2:33 PM'
+      title: "30 D",
+      time: 0,
+      period: 30,
     },
     {
-      title: "60",
-      value: '20 % APY On 60 Days. Locked Until 02/02/2023 2:33 PM'
+      title: "60 D",
+      time: 1,
+      period: 60,
     },
     {
-      title: "90",
-      value: '25 % APY On 90 Days. Locked Until 02/02/2023 2:33 PM'
+      title: "90 D",
+      time: 2,
+      period: 90,
     },
     {
-      title: "180",
-      value: '30 % APY On 180 Days. Locked Until 02/02/2023 2:33 PM'
+      title: "180 D",
+      time: 3,
+      period: 180,
     },
     {
-      title: "360",
-      value: '40 % APY On 360 Days. Locked Until 02/02/2023 2:33 PM'
+      title: "360 D",
+      time: 4,
+      period: 360,
     },
   ];
 
@@ -58,34 +79,34 @@ stories.add("Staking", () => {
       {
         icon: <EarnIcon />,
         title: 'Current Stake',
-        value: '1,220/2'
+        value: stakersInfo?.currentStake
       },
       {
         icon: <EarnIcon />,
-        title: 'Current Stake',
-        value: '1,220/2'
+        title: 'Earn',
+        value: stakersInfo?.earn
       },
       {
         icon: <EarnIcon />,
-        title: 'Current Stake',
-        value: '1,220/2'
+        title: 'Claimed Reward',
+        value: stakersInfo?.claimedReward
       } 
     ],
     [
       {
         icon: <EarnIcon />,
-        title: 'Current Stake',
-        value: '1,220/2'
+        title: 'Your Wallet Balance',
+        value: stakersInfo?.walletBalance
       },
       {
         icon: <EarnIcon />,
-        title: 'Current Stake',
-        value: '1,220/2'
+        title: 'Total Staked',
+        value: stakersInfo?.totalStaked
       },
       {
         icon: <EarnIcon />,
-        title: 'Current Stake',
-        value: '1,220/2'
+        title: 'Total Unstaked',
+        value: stakersInfo?.totalUnstaked
       } 
     ]
   ];
@@ -241,6 +262,8 @@ stories.add("Staking", () => {
     );
   });
 
+  let isActive = false;
+
   return (
     <BrowserRouter>
       <Header
@@ -383,12 +406,12 @@ stories.add("Staking", () => {
         verified={false}
       />
       <Staking
+        isActive={isActive}
         durationOptions={durationOptions}
-        biddingInfoData={{
-          stakers: '1',
-          balance: '0'
-        }}
-        handleStake={() => console.log(stakeData)}
+        biddingInfoData={biddingInfo}
+        loading={loading}
+        isAllowance={isAllowance}
+        handleCalculatorSubmit={() => console.log(stakeData)}
         stakeData={stakeData}
         setStakeData={setStakeData}
         handleMaxClick={() => console.log('max!!!')}

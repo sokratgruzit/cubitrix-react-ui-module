@@ -24,14 +24,17 @@ import './Staking.css';
 export const Staking = ({
   durationOptions,
   biddingInfoData,
-  handleStake,
+  handleCalculatorSubmit,
   setStakeData,
   stakeData,
   handleMaxClick,
   AccountSummaryData,
   tableHead,
   tableData,
-  handleViewAll
+  handleViewAll,
+  loading, 
+  isAllowance,
+  isActive
 }) => {
   const [showCalculator, setShowCalculator] = useState(false);
   const { width } = Functions();
@@ -44,7 +47,7 @@ export const Staking = ({
             customStyles={{ display: `${width > 1025 ? 'block' : 'none'}`}}
           />
           <Calculator 
-            {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
+            {...{ durationOptions, handleCalculatorSubmit, setStakeData, stakeData, handleMaxClick, loading, isAllowance, isActive}}
           />
         </div>
       </div>
@@ -76,7 +79,7 @@ export const Staking = ({
         <div className={`hidden-calculator-container ${showCalculator && 'active'}`}>
           {showCalculator && (
             <Calculator 
-              {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
+              {...{ durationOptions, handleCalculatorSubmit, setStakeData, stakeData, handleMaxClick, loading, isAllowance, isActive }}
             />
           )}
           <Button 
