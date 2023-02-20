@@ -19,12 +19,12 @@ stories.add("Staking", () => {
   let mobileExpandFunc = (id) => {
     if(width <= 1300) {
       if(id !== mobileExpand) {
-          setMobileExpand(id);
+        setMobileExpand(id);
       } else {
-          setMobileExpand(null);
-      }
-    }
-  }
+        setMobileExpand(null);
+      };
+    };
+  };
 
   const { width } = Functions();
 
@@ -98,19 +98,16 @@ stories.add("Staking", () => {
     {
       name: "Stake Date ",
       width: 15,
-      mobileSlide: true,
       id: 1,
     },
     {
       name: "Unstake Date",
       width: 15,
-      mobileSlide: true,
       id: 2,
     },
     {
       name: "Earn Reward",
       width: 15,
-      mobileSlide: true,
       id: 3,
     },
     { 
@@ -168,7 +165,7 @@ stories.add("Staking", () => {
 
   let mobile = width < 1300;
 
-  let tableData
+  let tableData;
   tableData = td.map((item, index) => {
     return (
       <div
@@ -179,92 +176,68 @@ stories.add("Staking", () => {
         }}
       >
         <div className={'table'}>
-          <div className={`td col ${th[0].mobileWidth ? true : false }`} style={{width: `${mobile ? th[0].mobileWidth : th[0].width}%`}}>
-            <span>{item.staked_amount}</span>
-          </div>
-          <div className={`td col ${th[1].mobileWidth ? true : false }`} style={{width: `${mobile ? th[1].mobileWidth : th[1].width}%`}}>
-            <span>{item.stake_date}</span>
-          </div>
-          <div className={`td col ${th[2].mobileWidth ? true : false }`} style={{width: `${mobile ? th[2].mobileWidth : th[2].width}%`}}>
-            <span>{item.unstake_date}</span>
-          </div>
-          <div className={`td col ${th[3].mobileWidth ? true : false }`} style={{width: `${mobile ? th[3].mobileWidth : th[3].width}%`}}>
-            <span>{item.earn_reward}</span>
-          </div>
-          <div className={`td col ${th[4].mobileWidth ? true : false }`} style={{width: `${mobile ? th[4].mobileWidth : th[4].width}%`}}>
-            <span>{item.harvest}</span>
-          </div>
-          {width > 550 && (
-            <>
-              <div className={`td col ${th[5].position} ${th[5].mobileWidth ? true : false }`} style={{width: `${mobile ? th[5].mobileWidth : th[5].width}%`, marginRight: `${width < 1450 ? '10px' : '0'}`}}>
-                <Button 
-                  element={'staking-button'}
-                  label={'Unstake'}
-                  active={true}
-                  customStyles={{ borderRadius: '32px' }}
-                  onClick={th[5].onClick}
-                />
-              </div>
-              <div className={`td col ${th[6].position} ${th[6].mobileWidth ? true : false }`} style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}>
-                <Button 
-                  element={'staking-button'}
-                  label={'Harvest'}
-                  active={false}
-                  customStyles={{ borderRadius: '32px' }}
-                  onClick={th[6].onClick}
-                />
-              </div>
-            </>
-          )}
+          {th?.slice(0, 5).map((i, index) => (
+            <div
+              key={index}
+              className={`td col ${i.mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+            >
+              <span>{[item.staked_amount, item.stake_date, item.unstake_date, item.earn_reward, item.harvest][index]}</span>
+            </div>
+          ))}
+          {width > 550 && th.slice(5, 7).map((i, index) => (
+            <div
+              key={index}
+              className={`td col ${i.position} ${i.mobileWidth ? true : false}`}
+              style={{
+                width: `${mobile ? i.mobileWidth : i.width}%`,
+                marginRight: `${width < 1450 ? '10px' : '0'}`,
+              }}
+            >
+              <Button
+                element={'staking-button'}
+                label={index === 0 ? 'Unstake' : 'Harvest'}
+                active={index === 0}
+                customStyles={{ borderRadius: '32px' }}
+                onClick={i.onClick}
+              />
+            </div>
+          ))}
         </div>
-        {mobile && <div className="table-more" />}
+        <div className="table-more" />
         <div className="icon-place">
           <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <div className={`${'table-mobile'}`}>
-          <div className="table-mobile-content">
-            <div className="td">
-              <div className="mobile-ttl">{th[1].name}</div>
-              <span>{item.stake_date}</span>
+        <div className="table-mobile">
+        <div className="table-mobile-content">
+          {[1, 2, 3].map(index => (
+            <div className="td" key={index}>
+              <div className="mobile-ttl">{th[index].name}</div>
+              <span>{item[index === 1 ? 'stake_date' : index === 2 ? 'unstake_date' : 'earn_reward']}</span>
             </div>
-            <div className="td">
-              <div className="mobile-ttl">{th[2].name}</div>
-              <span>{item.unstake_date}</span>
-            </div>
-            <div className="td">
-              <div className="mobile-ttl">{th[3].name}</div>
-              <span>{item.earn_reward}</span>
-            </div>
-            {width <= 550 && (
-              <div className="table-buttons">
-                <div className="td">
+          ))}
+          {width <= 550 && (
+            <div className="table-buttons">
+              {[5, 6].map(index => (
+                <div className="td" key={index}>
                   <Button 
-                    element={'staking-button'}
-                    label={'Unstake'}
-                    active={true}
+                    element="staking-button"
+                    label={index === 5 ? 'Unstake' : 'Harvest'}
+                    active={index === 5}
                     customStyles={{ borderRadius: '32px' }}
-                    onClick={th[5].onClick}
+                    onClick={th[index].onClick}
                   />
                 </div>
-                <div className="td">
-                  <Button 
-                    element={'staking-button'}
-                    label={'Harvest'}
-                    active={false}
-                    customStyles={{ borderRadius: '32px' }}
-                    onClick={th[6].onClick}
-                  />
-                </div>
-              </div>
+              ))}
+            </div>
             )}
           </div>
         </div>
       </div>  
     );
   });
-
 
   return (
     <>
