@@ -24,3 +24,4 @@ export * from "./components/DashboardCards";
 export * from "./components/Signin";
 export * from "./components/Popup";
 export * from "./components/MoreButton";
+export * from "./components/Staking";
