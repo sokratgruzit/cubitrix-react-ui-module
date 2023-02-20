@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { Functions } from '../../hooks/Functions';
 
 // components
-import { Calculator } from '../Calculator/Calculator';
-import { BiddingInfo } from "../BiddingInfo/BiddingInfo";
+import { Calculator } from '../Calculator';
+import { BiddingInfo } from "../BiddingInfo";
 import { AccountSummary } from '../AccountSummary';
 import { Button } from '../Button';
 import { Table } from "../Table";
