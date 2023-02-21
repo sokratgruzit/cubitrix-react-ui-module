@@ -74,7 +74,7 @@ stories.add("Staking", () => {
     },
   ];
 
-  const AccountSummaryData = [
+  const accountSummaryData = [
     [
       {
         icon: <EarnIcon />,
@@ -262,7 +262,7 @@ stories.add("Staking", () => {
     );
   });
 
-  let isActive = true;
+  let isActive = false;
 
   const handleCalculatorSubmit = () => {
     if (!isActive) {
@@ -427,7 +427,7 @@ stories.add("Staking", () => {
         stakeData={stakeData}
         setStakeData={setStakeData}
         handleMaxClick={() => console.log('max!!!')}
-        AccountSummaryData={AccountSummaryData}
+        accountSummaryData={accountSummaryData}
         tableData={tableData}
         handleViewAll={() => console.log('view all')}
         tableHead={th}

@@ -28,7 +28,7 @@ export const Staking = ({
   setStakeData,
   stakeData,
   handleMaxClick,
-  AccountSummaryData,
+  accountSummaryData,
   tableHead,
   tableData,
   handleViewAll,
@@ -65,7 +65,7 @@ export const Staking = ({
         />
         <h3 className={`${width < 1025 ? 'font-14' : 'font-20'}`}>Your Stake</h3>
         <div className={'account-summary-container'}>
-          {AccountSummaryData?.map((data, index) => <AccountSummary key={index} data={data} />)}     
+          {accountSummaryData?.map((data, index) => <AccountSummary key={index} data={data} />)}     
         </div>
         <Table
           type={"table-version"}
