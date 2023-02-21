@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // hooks
-import { Functions } from '../../hooks/Functions';
+import { useMobileWidth } from '../../hooks/useMobileWidth';
 
 // components
 import { Calculator } from '../Calculator';
@@ -37,7 +37,7 @@ export const Staking = ({
   isActive
 }) => {
   const [showCalculator, setShowCalculator] = useState(false);
-  const { width } = Functions();
+  const { width } = useMobileWidth();
   return (
     <div className={`main`} style={{ flexDirection: `${width < 1025 ? 'column' : 'row'}`}}>
       <div className={`main-sidebar`} style={{ display: `${width > 1025 ? 'flex' : 'none'}`}}>

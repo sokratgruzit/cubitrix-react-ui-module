@@ -3,7 +3,7 @@ import moment from "moment";
 
 // hooks
 import { useValidation } from "../../hooks/useValidation";
-import { Functions } from '../../hooks/Functions';
+import { useMobileWidth } from '../../hooks/useMobileWidth';
 
 // components
 import { HelpText } from '../HelpText';
@@ -33,7 +33,7 @@ export const Calculator = ({
     moment().add(30, "days").format("DD/MM/YYYY h:mm A"),
   );
   
-  const { width } = Functions();
+  const { width } = useMobileWidth();
 
   const handleChange = (e) => {
     if (e.target.value.length > 0) {

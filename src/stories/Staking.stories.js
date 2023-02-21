@@ -7,7 +7,7 @@ import { Header } from "../components/Header";
 const stories = storiesOf("Staking", module);
 
 import { EarnIcon } from '../assets/svgs';
-import { Functions } from "../hooks/Functions";
+import { useMobileWidth } from "../hooks/useMobileWidth";
 import { BrowserRouter } from "react-router-dom";
 
 stories.add("Staking", () => {
@@ -44,7 +44,7 @@ stories.add("Staking", () => {
     };
   };
 
-  const { width } = Functions();
+  const { width } = useMobileWidth();
 
   const durationOptions = [
     {

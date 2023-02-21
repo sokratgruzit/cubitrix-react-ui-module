@@ -5,14 +5,14 @@ import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Button } from "../components/Button";
-import { Functions } from '../hooks/Functions';
+import { useMobileWidth } from '../hooks/useMobileWidth';
 import { Logo } from "../assets/svgs";
 import { MoreButton } from "../components/MoreButton";
 
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
-    const { mobile } = Functions();
+    const { mobile } = useMobileWidth();
 
     const [mobileExpand, setMobileExpand] = useState(null);
     const [tableExpand, setTableExpand] = useState(null);
@@ -548,7 +548,7 @@ stories.add("AdminPanel", () => {
                            </Routes>
                        </BrowserRouter>
                    }
-                //    tableData={tableData}
+                   tableData={tableData}
                    handleViewAll={() => console.log('view all')}
                    tableFilter={true}
                    tableHead={th}
