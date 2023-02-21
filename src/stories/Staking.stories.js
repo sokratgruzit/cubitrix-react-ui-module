@@ -264,6 +264,18 @@ stories.add("Staking", () => {
 
   let isActive = false;
 
+  const handleCalculatorSubmit = () => {
+    if (!isActive) {
+      console.log('connect');
+    };
+    if (isActive && isAllowance) {
+      console.log('enable');
+    };
+    if (isActive && !isAllowance) {
+      console.log('stake');
+    };
+  }
+
   return (
     <BrowserRouter>
       <Header
@@ -411,7 +423,7 @@ stories.add("Staking", () => {
         biddingInfoData={biddingInfo}
         loading={loading}
         isAllowance={isAllowance}
-        handleCalculatorSubmit={() => console.log(stakeData)}
+        handleCalculatorSubmit={handleCalculatorSubmit}
         stakeData={stakeData}
         setStakeData={setStakeData}
         handleMaxClick={() => console.log('max!!!')}
