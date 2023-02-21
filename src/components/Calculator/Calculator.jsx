@@ -147,7 +147,7 @@ export const Calculator = ({
           type={'btn-primary'}
           arrow={'arrow-none'}
           customStyles={{ width: '100%', margin: '0'}}
-          onClick={isActive ? handleSubmit : handleCalculatorSubmit}
+          onClick={!isActive || isActive && isAllowance ? handleCalculatorSubmit : handleSubmit}
           disabled={validationErrors?.amount?.failure && isActive && true}
         />
       </div>

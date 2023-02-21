@@ -262,7 +262,7 @@ stories.add("Staking", () => {
     );
   });
 
-  let isActive = false;
+  let isActive = true;
 
   const handleCalculatorSubmit = () => {
     if (!isActive) {
@@ -274,7 +274,7 @@ stories.add("Staking", () => {
     if (isActive && !isAllowance) {
       console.log('stake');
     };
-  }
+  };
 
   return (
     <BrowserRouter>
