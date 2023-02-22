@@ -20,16 +20,18 @@ import './Calculator.css';
 export const Calculator = ({
   handleCalculatorSubmit,
   durationOptions,
-  setStakeData,
-  stakeData,
   handleMaxClick,
   customStyles,
   loading,
   isAllowance,
-  isActive
+  isActive,
+  timeperiod,
+  setTimeperiod,
+  depositAmount, 
+  setDepositAmount
 }) => {
   const [emptyField, setEmptyField] = useState(false);
-  const [timeperiodDate, setTimeeriodDate] = useState(
+  const [timeperiodDate, setTimeperiodDate] = useState(
     moment().add(30, "days").format("DD/MM/YYYY h:mm A"),
   );
   
@@ -39,7 +41,7 @@ export const Calculator = ({
     if (e.target.value.length > 0) {
       setEmptyField(false);
     };
-    setStakeData((prev) => ({ ...prev, 'amount': e.target.value}));
+    setDepositAmount(e.target.value);
   };
 
   let helpTexts = {
@@ -51,23 +53,17 @@ export const Calculator = ({
   };
 
   const validationErrors = useValidation({
-    amount: stakeData?.amount || ''
+    amount: depositAmount || ''
   }, helpTexts);
 
   const handleSubmit = () => {
-    if (stakeData?.amount?.length < 1) {
+    if (depositAmount?.length < 1) {
       setEmptyField(true);
     } else {
       setEmptyField(false);
       handleCalculatorSubmit();
     };
   };
-
-  const handleDurationOptionChange = (timeperiod) => {
-    setStakeData(prev => ({ ...prev , timeperiod}))
-  };
-
-  let timeperiod = stakeData?.timeperiod;
 
   return (
     <div className={`calculator-container`} style={customStyles}>
@@ -83,7 +79,7 @@ export const Calculator = ({
           label={'Amount'}
           onChange={handleChange}
           emptyFieldErr={emptyField}
-          value={stakeData?.amount}
+          value={depositAmount}
           statusCard={
             validationErrors?.amount && (
               <HelpText
@@ -109,8 +105,8 @@ export const Calculator = ({
             label={item.title}
             element={'calculator-button'}
             onClick={() => {
-              handleDurationOptionChange(item.time);
-              setTimeeriodDate(
+              setTimeperiod(item.time);
+              setTimeperiodDate(
                 moment()
                 .add(item.period, "days")
                 .format("DD/MM/YYYY h:mm A"),

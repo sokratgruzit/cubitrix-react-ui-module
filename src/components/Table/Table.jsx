@@ -6,7 +6,7 @@ export const Table = ({
     type,
     tableHead,
     tableData,
-    handleViewAll
+    handleViewAll,
 }) => {
     const { mobile } = useMobileWidth();
     return (
@@ -33,9 +33,11 @@ export const Table = ({
                             <NoApplicationsIcon />
                             <p className="font-14">You have no pending KYC applications</p>
                         </div>
-                        <p className="table-empty__view-all font-14" onClick={handleViewAll}>
-                            View All Transactions
-                        </p>
+                        {handleViewAll && (
+                            <p className="table-empty__view-all font-14" onClick={handleViewAll}>
+                                View All Transactions
+                            </p>
+                        )}
                     </div>
                 )}
             </div>
