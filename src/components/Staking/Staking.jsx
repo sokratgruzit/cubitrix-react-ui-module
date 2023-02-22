@@ -29,6 +29,8 @@ export const Staking = ({
   isActive,
   timeperiod,
   setTimeperiod,
+  timeperiodDate,
+  handleTimeperiodDate,
   depositAmount,
   setDepositAmount,
   stackContractInfo,
@@ -63,6 +65,8 @@ export const Staking = ({
               setTimeperiod,
               depositAmount,
               setDepositAmount,
+              timeperiodDate,
+              handleTimeperiodDate
             }}
           />
         </div>
@@ -112,6 +116,8 @@ export const Staking = ({
                 setTimeperiod,
                 depositAmount,
                 setDepositAmount,
+                timeperiodDate,
+                handleTimeperiodDate
               }}
             />
           )}
