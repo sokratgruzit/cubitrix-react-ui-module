@@ -41,7 +41,6 @@
     "react-router-dom": "^6.7.0"
   },
   "dependencies": {
-    "moment": "^2.29.4",
     "next-qrcode": "^2.4.0",
     "qrcode.react": "^3.1.0",
     "react-beautiful-dnd": "^13.1.1",

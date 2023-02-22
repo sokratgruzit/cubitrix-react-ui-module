@@ -1,6 +1,4 @@
 
-import moment from "moment";
-
 // hooks
 import { useValidation } from "../../hooks/useValidation";
 import { useMobileWidth } from '../../hooks/useMobileWidth';
@@ -28,12 +26,11 @@ export const Calculator = ({
   timeperiod,
   setTimeperiod,
   depositAmount, 
-  setDepositAmount
+  setDepositAmount,
+  timeperiodDate,
+  handleTimeperiodDate
 }) => {
   const [emptyField, setEmptyField] = useState(false);
-  const [timeperiodDate, setTimeperiodDate] = useState(
-    moment().add(30, "days").format("DD/MM/YYYY h:mm A"),
-  );
   
   const { width } = useMobileWidth();
 
@@ -106,11 +103,7 @@ export const Calculator = ({
             element={'calculator-button'}
             onClick={() => {
               setTimeperiod(item.time);
-              setTimeperiodDate(
-                moment()
-                .add(item.period, "days")
-                .format("DD/MM/YYYY h:mm A"),
-              );
+              handleTimeperiodDate(item.period)
             }}
             customStyles={{ width: '100%'}}
             active={item.time === timeperiod}

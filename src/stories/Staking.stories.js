@@ -13,6 +13,7 @@ import { BrowserRouter } from "react-router-dom";
 stories.add("Staking", () => {
   const [depositAmount, setDepositAmount] = useState("10");
   const [timeperiod, setTimeperiod] = useState(4);
+  const [timeperiodDate, setTimeperiodDate] = useState(0);
 
   const [stackContractInfo, setStackContractInfo] = useState({
     totalStakers: 0,
@@ -315,6 +316,10 @@ stories.add("Staking", () => {
     }
   };
 
+  const handleTimeperiodDate = (period) => {
+    console.log(period);
+  };
+
   return (
     <BrowserRouter>
       <Header
@@ -468,6 +473,8 @@ stories.add("Staking", () => {
         setTimeperiod={setTimeperiod}
         depositAmount={depositAmount}
         setDepositAmount={setDepositAmount}
+        handleTimeperiodDate={handleTimeperiodDate}
+        timeperiodDate={timeperiodDate}
         handleMaxClick={() => console.log("max!!!")}
         accountSummaryData={accountSummaryData}
         tableData={tableData}
