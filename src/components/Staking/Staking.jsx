@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // hooks
-import { Functions } from '../../hooks/Functions';
+import { useMobileWidth } from '../../hooks/useMobileWidth';
 
 // components
 import { Calculator } from '../Calculator';
@@ -24,17 +24,20 @@ import './Staking.css';
 export const Staking = ({
   durationOptions,
   biddingInfoData,
-  handleStake,
+  handleCalculatorSubmit,
   setStakeData,
   stakeData,
   handleMaxClick,
-  AccountSummaryData,
+  accountSummaryData,
   tableHead,
   tableData,
-  handleViewAll
+  handleViewAll,
+  loading, 
+  isAllowance,
+  isActive
 }) => {
   const [showCalculator, setShowCalculator] = useState(false);
-  const { width } = Functions();
+  const { width } = useMobileWidth();
   return (
     <div className={`main`} style={{ flexDirection: `${width < 1025 ? 'column' : 'row'}`}}>
       <div className={`main-sidebar`} style={{ display: `${width > 1025 ? 'flex' : 'none'}`}}>
@@ -44,7 +47,7 @@ export const Staking = ({
             customStyles={{ display: `${width > 1025 ? 'block' : 'none'}`}}
           />
           <Calculator 
-            {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
+            {...{ durationOptions, handleCalculatorSubmit, setStakeData, stakeData, handleMaxClick, loading, isAllowance, isActive}}
           />
         </div>
       </div>
@@ -62,7 +65,7 @@ export const Staking = ({
         />
         <h3 className={`${width < 1025 ? 'font-14' : 'font-20'}`}>Your Stake</h3>
         <div className={'account-summary-container'}>
-          {AccountSummaryData?.map((data, index) => <AccountSummary key={index} data={data} />)}     
+          {accountSummaryData?.map((data, index) => <AccountSummary key={index} data={data} />)}     
         </div>
         <Table
           type={"table-version"}
@@ -76,7 +79,7 @@ export const Staking = ({
         <div className={`hidden-calculator-container ${showCalculator && 'active'}`}>
           {showCalculator && (
             <Calculator 
-              {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
+              {...{ durationOptions, handleCalculatorSubmit, setStakeData, stakeData, handleMaxClick, loading, isAllowance, isActive }}
             />
           )}
           <Button 

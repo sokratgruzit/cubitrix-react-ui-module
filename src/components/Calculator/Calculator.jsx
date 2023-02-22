@@ -1,7 +1,9 @@
 
+import moment from "moment";
+
 // hooks
 import { useValidation } from "../../hooks/useValidation";
-import { Functions } from '../../hooks/Functions';
+import { useMobileWidth } from '../../hooks/useMobileWidth';
 
 // components
 import { HelpText } from '../HelpText';
@@ -16,27 +18,28 @@ import { CalculatorIcon } from "../../assets/svgs";
 import './Calculator.css';
 
 export const Calculator = ({
-  handleStake,
+  handleCalculatorSubmit,
   durationOptions,
   setStakeData,
   stakeData,
   handleMaxClick,
   customStyles,
+  loading,
+  isAllowance,
+  isActive
 }) => {
   const [emptyField, setEmptyField] = useState(false);
-  const [helpText, setHelpText] = useState('');
+  const [timeperiodDate, setTimeeriodDate] = useState(
+    moment().add(30, "days").format("DD/MM/YYYY h:mm A"),
+  );
   
-  const { width } = Functions();
+  const { width } = useMobileWidth();
 
   const handleChange = (e) => {
     if (e.target.value.length > 0) {
       setEmptyField(false);
     };
     setStakeData((prev) => ({ ...prev, 'amount': e.target.value}));
-  };
-
-  const handleDurationOptionChange = (duration) => {
-    setStakeData((prev) => ({ ...prev, duration}));
   };
 
   let helpTexts = {
@@ -51,14 +54,20 @@ export const Calculator = ({
     amount: stakeData?.amount || ''
   }, helpTexts);
 
-  const handleStakeClick = () => {
+  const handleSubmit = () => {
     if (stakeData?.amount?.length < 1) {
       setEmptyField(true);
     } else {
       setEmptyField(false);
-      handleStake();
+      handleCalculatorSubmit();
     };
   };
+
+  const handleDurationOptionChange = (timeperiod) => {
+    setStakeData(prev => ({ ...prev , timeperiod}))
+  };
+
+  let timeperiod = stakeData?.timeperiod;
 
   return (
     <div className={`calculator-container`} style={customStyles}>
@@ -97,19 +106,31 @@ export const Calculator = ({
         {durationOptions.map((item, index) => (
           <Button
             key={index}
-            label={`${item.title} D`}
+            label={item.title}
             element={'calculator-button'}
             onClick={() => {
-              handleDurationOptionChange(item.title);
-              setHelpText(item.value);
+              handleDurationOptionChange(item.time);
+              setTimeeriodDate(
+                moment()
+                .add(item.period, "days")
+                .format("DD/MM/YYYY h:mm A"),
+              );
             }}
             customStyles={{ width: '100%'}}
-            active={item.title === stakeData.duration}
+            active={item.time === timeperiod}
         />
         ))}
       </div>
       <HelpText
-        title={helpText ? helpText : durationOptions[0].value}
+        title={timeperiod === 0
+          ? "15 % APY On 30 Days. Locked until " + timeperiodDate
+          : timeperiod === 1
+          ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
+          : timeperiod === 2
+          ? "29% APY On 90 Days. Locked until " + timeperiodDate
+          : timeperiod === 3
+          ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
+          : "50.0% APY On 360 Days. Locked until " + timeperiodDate}
         status="info"
         color="#6A6D76"
         icon={true}
@@ -117,13 +138,17 @@ export const Calculator = ({
       <div style={{ marginTop: '23.5px' }}> 
         <Button 
           element={'button'}
-          label={'Stake'}
+          label={
+            isActive ? (
+              loading ? "Please wait, Loading.." : `${isAllowance ? 'Enable' : 'Stake'}`
+            ) : 'Connect Wallet'
+          }
           size={'btn-lg'}
           type={'btn-primary'}
           arrow={'arrow-none'}
           customStyles={{ width: '100%', margin: '0'}}
-          onClick={handleStakeClick}
-          disabled={validationErrors?.amount?.failure && true}
+          onClick={!isActive || isActive && isAllowance ? handleCalculatorSubmit : handleSubmit}
+          disabled={validationErrors?.amount?.failure && isActive && true}
         />
       </div>
     </div>

@@ -10,6 +10,9 @@
   align-items: center;
   overflow: hidden;
   background: #0c1121;
+  position: fixed;
+  z-index: 100;
+  border-bottom: 2px solid #070b1a;
 }
 .modulesWrapper {
   display: flex;

@@ -1,5 +1,5 @@
 import "./Table.css";
-import { Functions } from '../../hooks/Functions';
+import { useMobileWidth } from '../../hooks/useMobileWidth';
 import { NoApplicationsIcon } from "../../assets/svgs";
 
 export const Table = ({
@@ -8,7 +8,7 @@ export const Table = ({
     tableData,
     handleViewAll
 }) => {
-    const { mobile } = Functions();
+    const { mobile } = useMobileWidth();
     return (
         <>
             <div className={`${type}`}>
