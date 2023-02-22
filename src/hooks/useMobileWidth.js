@@ -4,7 +4,7 @@ const getWidth = () => window.innerWidth
   || document.documentElement.clientWidth 
   || document.body.clientWidth;
 
-export const Functions = () => {
+export const useMobileWidth = () => {
   let [width, setWidth] = useState(getWidth());
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const Functions = () => {
   let mobile = false;
   
   if(width <= 1300) {
-      mobile = true;
+    mobile = true;
   }
 
   return { mobile, width };

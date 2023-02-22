@@ -138,7 +138,6 @@ button {
 .main {
   display: flex;
   width: 100%;
-  padding-top: 70px;
   height: 100vh;
 }
 .main-sidebar {
@@ -156,14 +155,12 @@ button {
   width: calc(100% - 365px);
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  padding: 110px 20px 0 20px;
 }
 
 @media only screen and (max-width: 1025px) {
-  .main {
-    padding-top: 20px;
-  }
   .main-content {
     width: 100%;
+    padding-top: 90px;
   }
 }
