@@ -191,5 +191,30 @@ export const Button = (props) => {
       </Link>
     );
   }
+
+  if (props.element === 'calculator-button') {
+    element = (
+      <div
+        className={`calculator-button ${props.active && 'calculator-button-active'}`}
+        style={props.customStyles}
+        onClick={props.onClick}
+      >
+        <span>{props.label}</span>
+      </div>
+    );
+  }
+
+  if (props.element === 'staking-button') {
+    element = (
+      <div
+        className={`staking-button ${props.active && 'staking-button-active'}`}
+        style={props.customStyles}
+        onClick={props.onClick}
+      >
+        {props?.icon}
+        <span>{props.label}</span>
+      </div>
+    );
+  }
   return element;
 };

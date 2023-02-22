@@ -17,7 +17,7 @@ export const Table = ({
                         <div className="table-head">
                             {tableHead.map((item, index) => {
                                 return (
-                                    <div key={index} className={`th  ${item.mobileWidth ? true : false }`} style={{width: `${mobile ? item.mobileWidth : item.width}%`}}>
+                                    <div key={index} className={`th ${item.mobileWidth ? true : false } ${item?.className}`} style={{width: `${mobile ? item.mobileWidth : item.width}%`}}>
                                         {item.name}
                                     </div>
                                 );

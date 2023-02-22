@@ -1,1 +1,1 @@
-export * from './Staking';
+export * from './Staking.jsx';

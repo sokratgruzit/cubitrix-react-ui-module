@@ -119,16 +119,15 @@ export const Popup = ({
     return value.failure;
   });
 
-  const handleAdminSaveClick = () => {
-  
-    let notEmptyList = Object.keys(popUpData && popUpData).filter((key) => {
-      if (edit) {
-        if (key === 'password') return;
-        if (key === 'confirmPassword') return;
-      }
-      return !popUpData[key]
-    });
-    
+  let notEmptyList = Object.keys(popUpData && popUpData).filter((key) => {
+    if (edit) {
+      if (key === 'password') return;
+      if (key === 'confirmPassword') return;
+    }
+    return !popUpData[key]
+  });
+
+  const handleAdminSaveClick = () => {  
     if (
       notEmptyList.length > 0 
     )  {
@@ -557,7 +556,11 @@ export const Popup = ({
                 arrow={'arrow-none'}
                 customStyles={{ width: '100%', margin: '0'}}
                 onClick={handleAdminSaveClick}
-                disabled={notValidatedList?.length > 0 || popUpData?.password !== popUpData?.confirmPassword && true}
+                disabled={
+                  notValidatedList?.length > 0 || 
+                  popUpData?.password !== popUpData?.confirmPassword || 
+                  notEmptyList?.length > 0 || addAdminError && true
+                }
               />
             </div>
           )}

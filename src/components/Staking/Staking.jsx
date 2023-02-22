@@ -1,83 +1,96 @@
-import './Staking.css';
-
-import { BiddingInfo } from "../BiddingInfo";
-import { Calculator } from "../Calculator";
-import { Table } from '../Table';
-import { StakeInfo } from "../StakeInfo";
-import { Button } from '../Button';
-
-import { HeaderIcon } from '../../assets/svgs';
 import { useState } from 'react';
 
-let th = [
-    {
-      stakedAmountTitle: "Staked Amount",
-      stakedDateTitle: "Stake Date",
-      unstakedDateTitle: "Unstake Date",
-      earnRewardTitle: "Earn Reward",
-      harvestTitle: "Harvest",
-    },
-  ];
-  
-  let td = [
-    {
-      stakedAmount: "1,220,000.2",
-      stakedDate: "01.02.2023 10:00AM",
-      unstakedDate: "01.02.2023 08:15PM",
-      earnReward: "CML",
-      harvest: "1,132,000.1",
-      id: 0,
-    },
-    {
-      stakedAmount: "1,220,000.2",
-      stakedDate: "01.02.2023 10:00AM",
-      unstakedDate: "01.02.2023 08:15PM",
-      earnReward: "CML",
-      harvest: "1,132,000.1",
-      id: 1,
-    },
-    {
-      stakedAmount: "1,220,000.2",
-      stakedDate: "01.02.2023 10:00AM",
-      unstakedDate: "01.02.2023 08:15PM",
-      earnReward: "CML",
-      harvest: "1,132,000.1",
-      id: 2,
-    },
-  ];
+// hooks
+import { Functions } from '../../hooks/Functions';
 
-export const Staking = (props) => {
+// components
+import { Calculator } from '../Calculator/Calculator';
+import { BiddingInfo } from "../BiddingInfo/BiddingInfo";
+import { AccountSummary } from '../AccountSummary';
+import { Button } from '../Button';
+import { Table } from "../Table";
+
+// svgs
+import { 
+  HeaderIcon,
+  CalculatorIcon,
+  CloseIcon,
+} from '../../assets/svgs';
+
+// styles
+import '../../assets/css/main-theme.css';
+import './Staking.css';
+
+export const Staking = ({
+  durationOptions,
+  biddingInfoData,
+  handleStake,
+  setStakeData,
+  stakeData,
+  handleMaxClick,
+  AccountSummaryData,
+  tableHead,
+  tableData,
+  handleViewAll
+}) => {
   const [showCalculator, setShowCalculator] = useState(false);
+  const { width } = Functions();
   return (
-    <div className='staking-main'>
-        <div className='staking-main-sidebar'>
-            <div>
-                <BiddingInfo />
-                <Calculator />
-            </div>
-        </div>
-        <div className={showCalculator ? 'staking-main-content show' : 'staking-main-content'}>
-          <h2 className='font-16 staking-header'>
-            <HeaderIcon />
-            Staking
-          </h2>
-          <BiddingInfo type="bidding-none" className={showCalculator && 'show-calc'} />
-          <StakeInfo />      
-          <Table type='table-version' tableHead={th} tableData={td} />
-        </div>
-        <div>
-          {showCalculator && (
-            <Calculator type='show-calculator' />
-          )}
-          <Button 
-            element="button"
-            customStyles={{ textAlign: 'center'}}
-            label={showCalculator ? 'Close' : 'Staking Calculator'}
-            size='btn-m-lg'
-            type={showCalculator ? 'btn-secondary show-calculator-btn' : 'btn-primary show-calculator-btn'}
-            onClick={() => setShowCalculator(!showCalculator)}
+    <div className={`main`} style={{ flexDirection: `${width < 1025 ? 'column' : 'row'}`}}>
+      <div className={`main-sidebar`} style={{ display: `${width > 1025 ? 'flex' : 'none'}`}}>
+        <div className={'staking-sidebar'}>
+          <BiddingInfo 
+            data={biddingInfoData}
+            customStyles={{ display: `${width > 1025 ? 'block' : 'none'}`}}
+          />
+          <Calculator 
+            {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
           />
         </div>
+      </div>
+      {showCalculator && <div className={'show-calculator-dark-bg'} />}
+      <div className={`main-content`}>
+        <h2 
+          className={`font-16 staking-header`}
+        >
+          <HeaderIcon />
+          Staking
+        </h2>
+        <BiddingInfo 
+          data={biddingInfoData}
+          customStyles={{ display: `${width <= 1025 ? 'block' : 'none'}`}}
+        />
+        <h3 className={`${width < 1025 ? 'font-14' : 'font-20'}`}>Your Stake</h3>
+        <div className={'account-summary-container'}>
+          {AccountSummaryData?.map((data, index) => <AccountSummary key={index} data={data} />)}     
+        </div>
+        <Table
+          type={"table-version"}
+          tableHead={tableHead}
+          mobile={width < 1280}
+          tableData={tableData}
+          handleViewAll={handleViewAll}
+        />
+      </div>
+      <div className={'hidden-calculator-wrapper'}>
+        <div className={`hidden-calculator-container ${showCalculator && 'active'}`}>
+          {showCalculator && (
+            <Calculator 
+              {...{ durationOptions, handleStake, setStakeData, stakeData, handleMaxClick }}
+            />
+          )}
+          <Button 
+            element={'staking-button'}
+            customStyles={{ position: 'absolute', bottom: '20px', zIndex: '999', width: '190px'}}
+            label={showCalculator ? 'Close' : 'Staking Calculator'}
+            active={showCalculator}
+            onClick={() => setShowCalculator(!showCalculator)}
+            icon={(
+              showCalculator ? <CloseIcon /> : <CalculatorIcon />
+            )}
+          />
+        </div>
+      </div>
     </div>
   );
 };

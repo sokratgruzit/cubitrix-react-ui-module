@@ -24,26 +24,11 @@
     justify-content: space-between;
 }
 
-.bidding-none {
-    display: none;
-}
-
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 1025px) {
     .bidding-info-container {
         border: none;
     }
-    .bidding-none {
-        display: block;
-    }
     .bidding-info {
         background: #0C1121;
-    }
-    .show-calc {
-        background: #000000;
-    }
-    
-    .bidding-info p {
-        font-weight: 500;
-        font-size: 16px;
     }
 }
