@@ -137,7 +137,7 @@ export const Calculator = ({
           arrow={'arrow-none'}
           customStyles={{ width: '100%', margin: '0'}}
           onClick={!account || account && isAllowance ? handleCalculatorSubmit : handleSubmit}
-          // disabled={validationErrors?.amount?.failure && account && true}
+          disabled={validationErrors?.amount?.failure && account && true}
         />
       </div>
     </div>
