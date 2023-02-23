@@ -22,7 +22,7 @@ export const Calculator = ({
   customStyles,
   loading,
   isAllowance,
-  isActive,
+  account,
   timeperiod,
   setTimeperiod,
   depositAmount, 
@@ -43,7 +43,7 @@ export const Calculator = ({
 
   let helpTexts = {
     amount: {
-      validationType: 'numbers',
+      validationType: 'number',
       success: "amount is valid",
       failure: "must be a number"
     },
@@ -128,7 +128,7 @@ export const Calculator = ({
         <Button 
           element={'button'}
           label={
-            isActive ? (
+            account ? (
               loading ? "Please wait, Loading.." : `${isAllowance ? 'Enable' : 'Stake'}`
             ) : 'Connect Wallet'
           }
@@ -136,8 +136,8 @@ export const Calculator = ({
           type={'btn-primary'}
           arrow={'arrow-none'}
           customStyles={{ width: '100%', margin: '0'}}
-          onClick={!isActive || isActive && isAllowance ? handleCalculatorSubmit : handleSubmit}
-          disabled={validationErrors?.amount?.failure && isActive && true}
+          onClick={!account || account && isAllowance ? handleCalculatorSubmit : handleSubmit}
+          // disabled={validationErrors?.amount?.failure && account && true}
         />
       </div>
     </div>

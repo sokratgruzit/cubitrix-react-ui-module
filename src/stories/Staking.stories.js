@@ -20,8 +20,6 @@ stories.add("Staking", () => {
     totalStakedToken: 0,
   });
 
-  const [balance, setBalance] = useState(0);
-
   const [stakersInfo, setStakersInfo] = useState({
     currentStake: 0,
     earn: 0,
@@ -289,6 +287,7 @@ stories.add("Staking", () => {
                       active={index === 5}
                       customStyles={{ borderRadius: "32px" }}
                       onClick={th[index].onClick}
+                      // disabled={true}
                     />
                   </div>
                 ))}
@@ -300,16 +299,16 @@ stories.add("Staking", () => {
     );
   });
 
-  let isActive = false;
+  let account = false;
 
   const handleSubmit = () => {
-    if (!isActive) {
+    if (!account) {
       console.log("connect");
     }
-    if (isActive && isAllowance) {
+    if (account && isAllowance) {
       console.log("enable");
     }
-    if (isActive && !isAllowance) {
+    if (account && !isAllowance) {
       console.log("hihi");
       console.log(depositAmount);
       console.log(timeperiod);
@@ -462,10 +461,9 @@ stories.add("Staking", () => {
         verified={false}
       />
       <Staking
-        isActive={isActive}
+        account={true}
         durationOptions={durationOptions}
         stackContractInfo={stackContractInfo}
-        balance={balance}
         loading={loading}
         isAllowance={isAllowance}
         handleCalculatorSubmit={handleSubmit}

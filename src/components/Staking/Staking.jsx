@@ -26,7 +26,7 @@ export const Staking = ({
   tableData,
   loading,
   isAllowance,
-  isActive,
+  account,
   timeperiod,
   setTimeperiod,
   timeperiodDate,
@@ -34,7 +34,6 @@ export const Staking = ({
   depositAmount,
   setDepositAmount,
   stackContractInfo,
-  balance,
 }) => {    
   const [showCalculator, setShowCalculator] = useState(false);
   const { width } = useMobileWidth();
@@ -50,7 +49,6 @@ export const Staking = ({
         <div className={"staking-sidebar"}>
           <BiddingInfo
             stackContractInfo={stackContractInfo}
-            balance={balance}
             customStyles={{ display: `${width > 1025 ? "block" : "none"}` }}
           />
           <Calculator
@@ -60,7 +58,7 @@ export const Staking = ({
               handleMaxClick,
               loading,
               isAllowance,
-              isActive,
+              account,
               timeperiod,
               setTimeperiod,
               depositAmount,
@@ -79,7 +77,6 @@ export const Staking = ({
         </h2>
         <BiddingInfo
           stackContractInfo={stackContractInfo}
-          balance={balance}
           customStyles={{ display: `${width <= 1025 ? "block" : "none"}` }}
         />
         <h3 className={`${width < 1025 ? "font-14" : "font-20"}`}>
@@ -111,7 +108,7 @@ export const Staking = ({
                 handleMaxClick,
                 loading,
                 isAllowance,
-                isActive,
+                account,
                 timeperiod,
                 setTimeperiod,
                 depositAmount,
