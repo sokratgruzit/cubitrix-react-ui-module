@@ -12,6 +12,7 @@ import { useValidation } from "../../hooks/useValidation";
 
 // styles
 import "./Popup.css";
+import { useMemo } from "react";
 
 export const Popup = ({
   label,
@@ -44,7 +45,7 @@ export const Popup = ({
   const handleEmptyFields = () => {
     const updatedState = {};
 
-    Object.keys(popUpData).forEach(i => {
+    Object?.keys(popUpData && popUpData)?.forEach(i => {
       if (popUpData[i].length < 1) {
         if(i === 'password' && edit) {
           updatedState[i] = false;
@@ -113,18 +114,26 @@ export const Popup = ({
     to: popUpData?.to || '',
     amount: popUpData?.amount || '',
   }, helpTexts);
-  
-  let notValidatedList = Object.values(formErrors).filter((value) => {
-    return value.failure;
-  });
 
-  let notEmptyList = Object.keys(popUpData && popUpData).filter((key) => {
-    if (edit) {
-      if (key === 'password') return;
-      if (key === 'confirmPassword') return;
+  let notValidatedList = useMemo(() => {
+    if (formErrors) {
+      return Object?.values(formErrors && formErrors)?.filter((value) => {
+        return value.failure;
+      });
     }
-    return !popUpData[key]
-  });
+  }, [formErrors])
+  
+  let notEmptyList = useMemo(() => {
+    if (popUpData) {
+      return Object.keys(popUpData && popUpData).filter((key) => {
+        if (edit) {
+          if (key === "password") return;
+          if (key === "confirmPassword") return;
+        }
+        return !popUpData[key];
+      });
+    }
+  }, [popUpData]);
 
   const handleAdminSaveClick = () => {  
     if (
