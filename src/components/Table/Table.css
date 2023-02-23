@@ -292,7 +292,7 @@
 }
 
 /* 550*/
-@media (max-width: 550px) {
+@media (max-width: 940px) {
   .buttons-th {
     display: none;
   }
