@@ -319,6 +319,14 @@ stories.add("Staking", () => {
     console.log(period);
   };
 
+  const handleDepositAmount = (amount) => {
+    console.log(amount);
+  };
+
+  const handleTimePeriod = (period) => {
+    console.log(period);
+  };
+
   return (
     <BrowserRouter>
       <Header
@@ -468,9 +476,9 @@ stories.add("Staking", () => {
         isAllowance={isAllowance}
         handleCalculatorSubmit={handleSubmit}
         timeperiod={timeperiod}
-        setTimeperiod={setTimeperiod}
+        handleTimePeriod={handleTimePeriod}
         depositAmount={depositAmount}
-        setDepositAmount={setDepositAmount}
+        handleDepositAmount={handleDepositAmount}
         handleTimeperiodDate={handleTimeperiodDate}
         timeperiodDate={timeperiodDate}
         handleMaxClick={() => console.log("max!!!")}
