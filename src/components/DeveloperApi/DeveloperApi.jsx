@@ -94,8 +94,8 @@ export const DeveloperApi = (props) => {
                                                     const helpText = useMemo(() => ({
                                                         [params.name]: {
                                                         validationType: [params.validation],
-                                                        success: `It is valid ${params.title}`,
-                                                        failure: `must be valid ${params.title}`
+                                                        success: `It is valid ${params.validation}`,
+                                                        failure: `must be valid ${params.validation}`
                                                         }
                                                     }), [params.name, params.validation, params.title]);
                                                     

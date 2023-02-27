@@ -383,136 +383,136 @@ stories.add("AdminPanel", () => {
     };
 
     let developerApiArray = [
-        {
-            title: 'Trade',
-            items: [
-                {
-                    id: 0,
-                    description: 'Get trade items from basdla bla bla',
-                    route: 'api/trade/blaasd',
-                    type: 'POST',
-                    inputs: [
-                        {
-                            title: 'Name',
-                            name: 'name',
-                            description: 'Name of trade',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        },
-                        {
-                            title: 'Last Name',
-                            name: 'last_name',
-                            description: 'Name of trade',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        }
-                    ]
+      {
+        title: "Trade",
+        items: [
+          {
+            id: 0,
+            description: "Get trade items from basdla bla bla",
+            route: "api/trade/blaasd",
+            type: "POST",
+            inputs: [
+              {
+                title: "Name",
+                name: "name",
+                description: "Name of trade",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
                 },
-                {
-                    id: 1,
-                    description: 'Get trade items from bla bla bla',
-                    route: 'api/trade/blaaaaa',
-                    type: 'GET',
-                    inputs: [
-                        {
-                            title: 'Name',
-                            name: 'last_nameqqqqqqqq',
-                            description: 'Name of trade',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        },
-                        {
-                            title: 'Last Name',
-                            name: 'last_nameqqqqq',
-                            description: 'Name of trade',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            title: 'Stake',
-            items: [
-                {
-                    id: 2,
-                    description: 'Get trade items from bla bla bla',
-                    route: 'api/trade/baaaaala',
-                    type: 'GET',
-                    inputs: [
-                        {
-                            title: 'Name',
-                            description: 'Name of trade',
-                            name: 'last_nameqwa',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        },
-                        {
-                            title: 'Last Name',
-                            description: 'Name of trade',
-                            name: 'last_namedsssss',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        }
-                    ]
+              },
+              {
+                title: "Last Name",
+                name: "last_name",
+                description: "Name of trade",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
                 },
-                {
-                    id: 3,
-                    description: 'Get trade items from bla bla bla',
-                    route: 'api/trade/bla',
-                    type: 'POST',
-                    inputs: [
-                        {
-                            title: 'Name',
-                            description: 'Name of trade',
-                            name: 'last_nameaaa',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        },
-                        {
-                            title: 'Last Name',
-                            description: 'Name of trade',
-                            name: 'last_nameasd',
-                            value:'',
-                            required: true,
-                            validation: 'number',
-                            onChange: (e) => {
-                                changeDevObject(e.target.name,e.target.value)
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
+              },
+            ],
+          },
+          {
+            id: 1,
+            description: "Get trade items from bla bla bla",
+            route: "api/trade/blaaaaa",
+            type: "GET",
+            inputs: [
+              {
+                title: "Name",
+                name: "last_nameqqqqqqqq",
+                description: "Name of trade",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
+                },
+              },
+              {
+                title: "Last Name",
+                name: "last_nameqqqqq",
+                description: "Name of trade",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Stake",
+        items: [
+          {
+            id: 2,
+            description: "Get trade items from bla bla bla",
+            route: "api/trade/baaaaala",
+            type: "GET",
+            inputs: [
+              {
+                title: "Name",
+                description: "Name of trade",
+                name: "last_nameqwa",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
+                },
+              },
+              {
+                title: "Last Name",
+                description: "Name of trade",
+                name: "last_namedsssss",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
+                },
+              },
+            ],
+          },
+          {
+            id: 3,
+            description: "Get trade items from bla bla bla",
+            route: "api/trade/bla",
+            type: "POST",
+            inputs: [
+              {
+                title: "Name",
+                description: "Name of trade",
+                name: "last_nameaaa",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
+                },
+              },
+              {
+                title: "Last Name",
+                description: "Name of trade",
+                name: "last_nameasd",
+                value: "",
+                required: true,
+                validation: "text",
+                onChange: (e) => {
+                  changeDevObject(e.target.name, e.target.value);
+                },
+              },
+            ],
+          },
+        ],
+      },
     ];
 
     const successResponse = {
