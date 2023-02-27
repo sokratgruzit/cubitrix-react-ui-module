@@ -1,13 +1,50 @@
 import './DeveloperApi.css';
-import {Visual} from "../Visual";
-import {React} from "react";
-import {HelpText} from "../HelpText";
-import {Input} from "../Input";
-import {Button} from "../Button";
+import { Visual } from "../Visual";
+import { React } from "react";
+import { HelpText } from "../HelpText";
+import { Input } from "../Input";
+import { Button } from "../Button";
+import { useState, useMemo, useCallback } from 'react';
+import { useValidation } from '../../hooks/useValidation';
 
 export const DeveloperApi = (props) => {
-    const changeHandler = (e) => {
-        // console.log(e.target.value);
+    const [active, setActive] = useState(false);
+    const [emptyFields, setEmptyFields] = useState({});
+    const [notValidated, setNotValidated] = useState(false); 
+
+    const handleEmptyFields = useCallback(() => {
+        const updatedState = {};
+      
+        Object?.keys(props?.currentArray)?.forEach(i => {
+          if (props?.currentArray[i].length < 1) {
+            updatedState[i] = true;
+          } else {
+            updatedState[i] = false;
+          }
+        });
+        
+        setEmptyFields({...updatedState});
+      }, [props.currentArray]);
+
+    const handleInputChange = (e, onChange) => {
+        if (e.target.value.length > 0) {
+            setEmptyFields(prev => ({ ...prev, [e.target.name]: false }));
+        }   
+        onChange(e);
+    };
+
+    let notEmptyList = useMemo(() => {
+        if (props.currentArray) {
+          return Object.keys(props?.currentArray).filter((key) => !props.currentArray[key]);
+        }
+    }, [props.currentArray]);
+    
+    const handleTryItOut = (route) => {
+        if (notEmptyList.length > 0 ) {
+            handleEmptyFields();
+        } else {
+            props.handleSubmit(route);
+        }
     };
 
     return (
@@ -15,25 +52,28 @@ export const DeveloperApi = (props) => {
             <div className={'api-block'}>
                 {props.array.map((item,index) => {
                     return(
-                        <>
+                        <div key={index}>
                             <Visual
                                 element={'table-header'}
                                 label={item.title}
                                 fontSize={'font-20'}
                                 customStyles={{marginBottom: '20px'}}
                             />
-                            <div className={'api-items'} key={index}>
+                            <div className={'api-items'}>
                                 {item.items.map((apiItem, index) => {
                                     return(
-                                        <div className={'api-item'} key={apiItem.route + index}>
-                                            <div className={'api-item-top'}>
+                                        <div className={'api-item'} key={index}>
+                                            <div className={'api-item-top'} onClick={() => {
+                                                props.setCurrentArray({})
+                                                setActive(prev => prev === apiItem.route ? false : apiItem.route)
+                                            }}>
                                                 <h3>{apiItem.description}</h3>
                                                 <p>{apiItem.route}</p>
                                                 <div className={'api-item-type'}>
                                                     <div className={`${apiItem.type === 'GET' ? 'api-get' : 'api-post'}`}>{apiItem.type}</div>
                                                 </div>
                                             </div>
-                                            <div className={'api-item-params-main active'}>
+                                            <div className={`api-item-params-main ${active === apiItem.route ? 'active' : ''}`}>
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Parameters</div>
                                                     <Button
@@ -42,6 +82,8 @@ export const DeveloperApi = (props) => {
                                                         type={'btn-primary'}
                                                         arrow={'arrow-right'}
                                                         element={'button'}
+                                                        onClick={() => handleTryItOut(apiItem.route, apiItem.id)}
+                                                        disabled={notValidated}
                                                     />
                                                 </div>
                                                 <div className={'api-item-params-subTtls double'}>
@@ -49,22 +91,54 @@ export const DeveloperApi = (props) => {
                                                     <div>Description</div>
                                                 </div>
                                                 {apiItem.inputs.map((params,index) => {
+                                                    const helpText = useMemo(() => ({
+                                                        [params.name]: {
+                                                        validationType: [params.validation],
+                                                        success: `It is valid ${params.title}`,
+                                                        failure: `must be valid ${params.title}`
+                                                        }
+                                                    }), [params.name, params.validation, params.title]);
+                                                    
+                                                    const formError = useMemo(() => useValidation({ 
+                                                        [params?.name]: props.currentArray[params?.name] || ''
+                                                    }, helpText), [props.currentArray[params?.name]]);
+
+
+                                                    
                                                     return (
                                                         <div className={'api-item-params'} key={apiItem.route + params.name + index}>
                                                             <div className={'api-params'}>
-                                                                {props?.currentArray[params?.name]}
                                                                 <Input
                                                                     type={"default"}
                                                                     inputType={"text"}
-                                                                    icon={false}
                                                                     label={params.title}
                                                                     name={params.name}
                                                                     editable={true}
-                                                                    value={props?.currentArray[params?.name]}
-                                                                    subLabel={""}
-                                                                    placeholder={""}
-                                                                    onChange={params.onChange}
+                                                                    value={props?.currentArray[params?.name] || ''}
+                                                                    onChange={(e) => {
+                                                                        if (formError[params?.name]?.failure) {
+                                                                            setNotValidated(true);
+                                                                        } 
+                                                                        if (e.target.value.length < 1 ){
+                                                                            setNotValidated(false);
+                                                                        }
+                                                                        if (formError[params?.name]?.success) {
+                                                                            setNotValidated(false);
+                                                                        }
+                                                                        handleInputChange(e, params.onChange);
+                                                                    }}
+                                                                    emptyFieldErr={params.required && emptyFields[params?.name]}
                                                                     customStyles={{ width: "100%" }}
+                                                                    statusCard= {
+                                                                        formError[params?.name] && (
+                                                                            <HelpText
+                                                                                status={formError[params.name].failure ? 'error' : 'success'}
+                                                                                title={formError[params.name].failure || formError[params.name].success}
+                                                                                fontSize={'font-12'}
+                                                                                icon={true}
+                                                                            />
+                                                                        )
+                                                                    }
                                                                 />
                                                             </div>
                                                             <div className={'api-details'}>
@@ -75,7 +149,7 @@ export const DeveloperApi = (props) => {
                                                 })}
 
                                             </div>
-                                            <div className={'api-item-res-container active'}>
+                                            <div className={`api-item-res-container ${props.responseActive === apiItem.route && active === apiItem.route  ? 'active' : ''}`}>
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Responses</div>
                                                 </div>
@@ -83,70 +157,24 @@ export const DeveloperApi = (props) => {
                                                     Successful operation
                                                 </div>
                                                 <div className={'api-item-res'}>
-                                                    {'{\n' +
-                                                        '                                    "message": "OK",\n' +
-                                                        '                                    "result": [\n' +
-                                                        '                                {\n' +
-                                                        '                                    "blockHash": "0x373d339e45a701447367d7b9c7cef84aab79c2b2714271b908cda0ab3ad0849b",\n' +
-                                                        '                                    "blockNumber": "65204",\n' +
-                                                        '                                    "confirmations": "5994246",\n' +
-                                                        '                                    "contractAddress": "",\n' +
-                                                        '                                    "cumulativeGasUsed": "122207",\n' +
-                                                        '                                    "from": "0x3fb1cd2cd96c6d5c0b5eb3322d807b34482481d4",\n' +
-                                                        '                                    "gas": "122261",\n' +
-                                                        '                                    "gasPrice": "50000000000",\n' +
-                                                        '                                    "gasUsed": "122207",\n' +
-                                                        '                                    "hash": "0x98beb27135aa0a25650557005ad962919d6a278c4b3dde7f4f6a3a1e65aa746c",\n' +
-                                                        '                                    "input": "0xf00d4b5d000000000000000000000000036c8cecce8d8bbf0831d840d7f29c9e3ddefa63000000000000000000000000c5a96db085dda36ffbe390f455315d30d6d3dc52",\n' +
-                                                        '                                    "isError": "0",\n' +
-                                                        '                                    "nonce": "0",\n' +
-                                                        '                                    "timeStamp": "1439232889",\n' +
-                                                        '                                    "to": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",\n' +
-                                                        '                                    "transactionIndex": "0",\n' +
-                                                        '                                    "txreceipt_status": "1",\n' +
-                                                        '                                    "value": "0"\n' +
-                                                        '                                }\n' +
-                                                        '                                    ],\n' +
-                                                        '                                    "status": "1"\n' +
-                                                        '                                }'}
+                                                    <pre className="json-result">
+                                                        {JSON.stringify(props.successResponse, null, 2)}
+                                                    </pre>
                                                 </div>
                                                 <div className={'api-item-params-status red'}>
                                                     Error
                                                 </div>
                                                 <div className={'api-item-res'}>
-                                                    {'{\n' +
-                                                        '                                    "message": "OK",\n' +
-                                                        '                                    "result": [\n' +
-                                                        '                                {\n' +
-                                                        '                                    "blockHash": "0x373d339e45a701447367d7b9c7cef84aab79c2b2714271b908cda0ab3ad0849b",\n' +
-                                                        '                                    "blockNumber": "65204",\n' +
-                                                        '                                    "confirmations": "5994246",\n' +
-                                                        '                                    "contractAddress": "",\n' +
-                                                        '                                    "cumulativeGasUsed": "122207",\n' +
-                                                        '                                    "from": "0x3fb1cd2cd96c6d5c0b5eb3322d807b34482481d4",\n' +
-                                                        '                                    "gas": "122261",\n' +
-                                                        '                                    "gasPrice": "50000000000",\n' +
-                                                        '                                    "gasUsed": "122207",\n' +
-                                                        '                                    "hash": "0x98beb27135aa0a25650557005ad962919d6a278c4b3dde7f4f6a3a1e65aa746c",\n' +
-                                                        '                                    "input": "0xf00d4b5d000000000000000000000000036c8cecce8d8bbf0831d840d7f29c9e3ddefa63000000000000000000000000c5a96db085dda36ffbe390f455315d30d6d3dc52",\n' +
-                                                        '                                    "isError": "0",\n' +
-                                                        '                                    "nonce": "0",\n' +
-                                                        '                                    "timeStamp": "1439232889",\n' +
-                                                        '                                    "to": "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",\n' +
-                                                        '                                    "transactionIndex": "0",\n' +
-                                                        '                                    "txreceipt_status": "1",\n' +
-                                                        '                                    "value": "0"\n' +
-                                                        '                                }\n' +
-                                                        '                                    ],\n' +
-                                                        '                                    "status": "1"\n' +
-                                                        '                                }'}
+                                                    <pre className="json-result">
+                                                        {JSON.stringify(props.failResponse, null, 2)}
+                                                    </pre>
                                                 </div>
                                             </div>
                                         </div>
                                     )
                                 })}
                             </div>
-                        </>
+                        </div>
                     )
                 })}
 

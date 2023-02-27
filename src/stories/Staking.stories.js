@@ -316,15 +316,15 @@ stories.add("Staking", () => {
   };
 
   const handleTimeperiodDate = (period) => {
-    console.log(period);
+    setTimeperiodDate(period);
   };
 
   const handleDepositAmount = (amount) => {
-    console.log(amount);
+    setDepositAmount(amount);
   };
 
   const handleTimePeriod = (period) => {
-    console.log(period);
+    setTimeperiod(period);
   };
 
   return (

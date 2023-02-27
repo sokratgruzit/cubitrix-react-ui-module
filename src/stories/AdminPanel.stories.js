@@ -17,6 +17,7 @@ stories.add("AdminPanel", () => {
     const [mobileExpand, setMobileExpand] = useState(null);
     const [tableExpand, setTableExpand] = useState(null);
     const [devAppObject, setDevAppObject] = useState({});
+    const [responseActive, setResponseActive] = useState(false);
 
     let mobileExpandFunc = (id) => {
         if (window.innerWidth <= 1300) {
@@ -111,23 +112,6 @@ stories.add("AdminPanel", () => {
             ],
         },
     ];
-    const typeColors = [
-        {
-            id: 1,
-            name: 'All Deposit',
-            color: '#3D5AFE'
-        },
-        {
-            id: 2,
-            name: 'Withdraw',
-            color: '#FFA726'
-        },
-        {
-            id: 3,
-            name: 'Transfer',
-            color: '#57D29E'
-        }
-    ];
     const adminHeaderData = {
         username: 'Michael',
         svg: <Logo />,
@@ -216,7 +200,7 @@ stories.add("AdminPanel", () => {
             subMenu: []
         },
         {
-            id: 4,
+            id: 5,
             name: 'Settings',
             route: '/settings',
             svg: <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -394,14 +378,8 @@ stories.add("AdminPanel", () => {
         },
     ];
 
-    let changeDevObject = (key, name, clear) => {
-        if(clear !== true) {
-            let data = devAppObject;
-            data[key] = name;
-            console.log(data);
-            setDevAppObject(data);
-            console.log(devAppObject)
-        }
+    let changeDevObject = (key, name) => {
+        setDevAppObject(prev => ({ ...prev, [key]: name }))
     };
 
     let developerApiArray = [
@@ -409,6 +387,7 @@ stories.add("AdminPanel", () => {
             title: 'Trade',
             items: [
                 {
+                    id: 0,
                     description: 'Get trade items from basdla bla bla',
                     route: 'api/trade/blaasd',
                     type: 'POST',
@@ -418,9 +397,10 @@ stories.add("AdminPanel", () => {
                             name: 'name',
                             description: 'Name of trade',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.name);
-                                changeDevObject(e.target.name,e.target.value,false)
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         },
                         {
@@ -428,15 +408,16 @@ stories.add("AdminPanel", () => {
                             name: 'last_name',
                             description: 'Name of trade',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.value);
-                                console.log(e.target.name);
-                                changeDevObject(e.target.name,e.target.value,false)
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         }
                     ]
                 },
                 {
+                    id: 1,
                     description: 'Get trade items from bla bla bla',
                     route: 'api/trade/blaaaaa',
                     type: 'GET',
@@ -446,8 +427,10 @@ stories.add("AdminPanel", () => {
                             name: 'last_nameqqqqqqqq',
                             description: 'Name of trade',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.value);
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         },
                         {
@@ -455,8 +438,10 @@ stories.add("AdminPanel", () => {
                             name: 'last_nameqqqqq',
                             description: 'Name of trade',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.value);
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         }
                     ]
@@ -467,6 +452,7 @@ stories.add("AdminPanel", () => {
             title: 'Stake',
             items: [
                 {
+                    id: 2,
                     description: 'Get trade items from bla bla bla',
                     route: 'api/trade/baaaaala',
                     type: 'GET',
@@ -476,8 +462,10 @@ stories.add("AdminPanel", () => {
                             description: 'Name of trade',
                             name: 'last_nameqwa',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.value);
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         },
                         {
@@ -485,13 +473,16 @@ stories.add("AdminPanel", () => {
                             description: 'Name of trade',
                             name: 'last_namedsssss',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.value);
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         }
                     ]
                 },
                 {
+                    id: 3,
                     description: 'Get trade items from bla bla bla',
                     route: 'api/trade/bla',
                     type: 'POST',
@@ -501,8 +492,10 @@ stories.add("AdminPanel", () => {
                             description: 'Name of trade',
                             name: 'last_nameaaa',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.value);
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         },
                         {
@@ -510,8 +503,10 @@ stories.add("AdminPanel", () => {
                             description: 'Name of trade',
                             name: 'last_nameasd',
                             value:'',
+                            required: true,
+                            validation: 'number',
                             onChange: (e) => {
-                                console.log(e.target.value);
+                                changeDevObject(e.target.name,e.target.value)
                             }
                         }
                     ]
@@ -519,6 +514,43 @@ stories.add("AdminPanel", () => {
             ]
         }
     ];
+
+    const successResponse = {
+        message: 'OK',
+        result: [{
+            blockHash: '0x373d339e45a701447367d7b9c7cef84aab79c2b2714271b908cda0ab3ad0849b',
+            blockNumber: '65204',
+            confirmations: '',
+            contractAddress: '',
+            cumulativeGasUsed: '122207',
+            from: '0x3fb1cd2cd96c6d5c0b5eb3322d807b34482481d4',
+            gas: '122261',
+            gasPrice: '50000000000',
+            gasUsed: '122207',
+            hash: '0x98beb27135aa0a25650557005ad962919d6a278c4b3dde7f4f6a3a1e65aa746c',
+            input: '0xf00d4b5d000000000000000000000000036c8cecce8d8bbf0831d840d7f29c9e3ddefa63000000000000000000000000c5a96db085dda36ffbe390f455315d30d6d3dc52',
+            isError: '0',
+            nonce: '0',
+            timeStamp: '1439232889',
+            to: '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae',
+            transactionIndex: '0',
+            txreceipt_status: '0',
+            value: '0'
+        }],
+        status: '1'
+    };
+
+    const failResponse = {
+        message: "No data was found",
+        result: [],
+        status: 0
+    };
+
+    const handleTryOutSubmit = (route) => {
+        console.log('hihi');
+        console.log(devAppObject);
+        setResponseActive(route)
+    };
 
     let tableData;
     tableData = td.map((item, index) => {
@@ -705,6 +737,11 @@ stories.add("AdminPanel", () => {
                     }}
                     developersApi={developerApiArray}
                     developersApiValues={devAppObject}
+                    setDeveloperApiValues={setDevAppObject}
+                    successResponse={successResponse}
+                    failResponse={failResponse}
+                    responseActive={responseActive}
+                    handleTryOutSubmit={handleTryOutSubmit}
                 />
             </div>
         </>
