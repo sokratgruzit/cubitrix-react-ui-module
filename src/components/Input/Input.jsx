@@ -93,6 +93,7 @@ export const Input = (props) => {
             props.onChange(e);
           }}
           value={props.value}
+          name={props.name}
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
           className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
             !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
