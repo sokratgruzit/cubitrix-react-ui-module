@@ -6,18 +6,18 @@ import { Header } from "../components/Header";
 
 const stories = storiesOf("Staking", module);
 
-import { EarnIcon } from '../assets/svgs';
+import { EarnIcon } from "../assets/svgs";
 import { useMobileWidth } from "../hooks/useMobileWidth";
 import { BrowserRouter } from "react-router-dom";
 
 stories.add("Staking", () => {
-  const [stakeData, setStakeData] = useState({
-    amount: '',
-    timeperiod: 0,
-  });
-  const [biddingInfo, setBiddingInfo] = useState({
-    balance: 0,
-    stakers: 2,
+  const [depositAmount, setDepositAmount] = useState("10");
+  const [timeperiod, setTimeperiod] = useState(4);
+  const [timeperiodDate, setTimeperiodDate] = useState(0);
+
+  const [stackContractInfo, setStackContractInfo] = useState({
+    totalStakers: 0,
+    totalStakedToken: 0,
   });
 
   const [stakersInfo, setStakersInfo] = useState({
@@ -35,13 +35,13 @@ stories.add("Staking", () => {
   const [mobileExpand, setMobileExpand] = useState(null);
 
   let mobileExpandFunc = (id) => {
-    if(width <= 1300) {
-      if(id !== mobileExpand) {
+    if (width <= 1300) {
+      if (id !== mobileExpand) {
         setMobileExpand(id);
       } else {
         setMobileExpand(null);
-      };
-    };
+      }
+    }
   };
 
   const { width } = useMobileWidth();
@@ -78,37 +78,37 @@ stories.add("Staking", () => {
     [
       {
         icon: <EarnIcon />,
-        title: 'Current Stake',
-        value: stakersInfo?.currentStake
+        title: "Current Stake",
+        value: stakersInfo?.currentStake,
       },
       {
         icon: <EarnIcon />,
-        title: 'Earn',
-        value: stakersInfo?.earn
+        title: "Earn",
+        value: stakersInfo?.earn,
       },
       {
         icon: <EarnIcon />,
-        title: 'Claimed Reward',
-        value: stakersInfo?.claimedReward
-      } 
+        title: "Claimed Reward",
+        value: stakersInfo?.claimedReward,
+      },
     ],
     [
       {
         icon: <EarnIcon />,
-        title: 'Your Wallet Balance',
-        value: stakersInfo?.walletBalance
+        title: "Your Wallet Balance",
+        value: stakersInfo?.walletBalance,
       },
       {
         icon: <EarnIcon />,
-        title: 'Total Staked',
-        value: stakersInfo?.totalStaked
+        title: "Total Staked",
+        value: stakersInfo?.totalStaked,
       },
       {
         icon: <EarnIcon />,
-        title: 'Total Unstaked',
-        value: stakersInfo?.totalUnstaked
-      } 
-    ]
+        title: "Total Unstaked",
+        value: stakersInfo?.totalUnstaked,
+      },
+    ],
   ];
 
   let th = [
@@ -133,7 +133,7 @@ stories.add("Staking", () => {
       width: 15,
       id: 3,
     },
-    { 
+    {
       name: "Harvest",
       width: 15,
       mobileWidth: 45,
@@ -144,46 +144,46 @@ stories.add("Staking", () => {
       width: 10,
       id: 5,
       mobileWidth: 35,
-      position: 'right',
-      className: 'buttons-th',
-      onClick: () => console.log('unstake')
+      position: "right",
+      className: "buttons-th",
+      onClick: () => console.log("unstake"),
     },
     {
       name: "",
       width: 10,
       id: 6,
       mobileWidth: 35,
-      position: 'right',
-      className: 'buttons-th',
-      onClick: () => console.log('harvest')
+      position: "right",
+      className: "buttons-th",
+      onClick: () => console.log("harvest"),
     },
   ];
 
   let td = [
-      {
-        id:12123,
-        staked_amount: "1,220,000.2",
-        stake_date: "01.02.2023 10:00AM",
-        unstake_date: "01.02.2023 08:15PM",
-        earn_reward: "CML",
-        harvest: "1,132,000.1",
-      },
-      {
-        id:121223323,
-        staked_amount: "1,220,000.2",
-        stake_date: "01.02.2023 10:00AM",
-        unstake_date: "01.02.2023 08:15PM",
-        earn_reward: "CML",
-        harvest: "1,132,000.1",
-      },
-      {
-        id:1212323,
-        staked_amount: "1,220,000.2",
-        stake_date: "01.02.2023 10:00AM",
-        unstake_date: "01.02.2023 08:15PM",
-        earn_reward: "CML",
-        harvest: "1,132,000.1",   
-      },
+    {
+      id: 12123,
+      staked_amount: "1,220,000.2",
+      stake_date: "01.02.2023 10:00AM",
+      unstake_date: "01.02.2023 08:15PM",
+      earn_reward: "CML",
+      harvest: "1,132,000.1",
+    },
+    {
+      id: 121223323,
+      staked_amount: "1,220,000.2",
+      stake_date: "01.02.2023 10:00AM",
+      unstake_date: "01.02.2023 08:15PM",
+      earn_reward: "CML",
+      harvest: "1,132,000.1",
+    },
+    {
+      id: 1212323,
+      staked_amount: "1,220,000.2",
+      stake_date: "01.02.2023 10:00AM",
+      unstake_date: "01.02.2023 08:15PM",
+      earn_reward: "CML",
+      harvest: "1,132,000.1",
+    },
   ];
 
   let mobile = width < 1300;
@@ -192,88 +192,131 @@ stories.add("Staking", () => {
   tableData = td.map((item, index) => {
     return (
       <div
-        className={`table-parent ${mobileExpand == item.id ? 'active' : ''}`}
+        className={`table-parent ${mobileExpand == item.id ? "active" : ""}`}
         key={index}
         onClick={() => {
-          mobileExpandFunc(item.id)
+          mobileExpandFunc(item.id);
         }}
       >
-        <div className={'table'}>
+        <div className={"table"}>
           {th?.slice(0, 5).map((i, index) => (
             <div
               key={index}
               className={`td col ${i.mobileWidth ? true : false}`}
               style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
             >
-              <span>{[item.staked_amount, item.stake_date, item.unstake_date, item.earn_reward, item.harvest][index]}</span>
+              <span>
+                {
+                  [
+                    item.staked_amount,
+                    item.stake_date,
+                    item.unstake_date,
+                    item.earn_reward,
+                    item.harvest,
+                  ][index]
+                }
+              </span>
             </div>
           ))}
-          {width > 550 && th.slice(5, 7).map((i, index) => (
-            <div
-              key={index}
-              className={`td col ${i.position} ${i.mobileWidth ? true : false}`}
-              style={{
-                width: `${mobile ? i.mobileWidth : i.width}%`,
-                marginRight: `${width < 1450 ? '10px' : '0'}`,
-              }}
-            >
-              <Button
-                element={'staking-button'}
-                label={index === 0 ? 'Unstake' : 'Harvest'}
-                active={index === 0}
-                customStyles={{ borderRadius: '32px' }}
-                onClick={i.onClick}
-              />
-            </div>
-          ))}
+          {width > 550 &&
+            th.slice(5, 7).map((i, index) => (
+              <div
+                key={index}
+                className={`td col ${i.position} ${
+                  i.mobileWidth ? true : false
+                }`}
+                style={{
+                  width: `${mobile ? i.mobileWidth : i.width}%`,
+                  marginRight: `${width < 1450 ? "10px" : "0"}`,
+                }}
+              >
+                <Button
+                  element={"staking-button"}
+                  label={index === 0 ? "Unstake" : "Harvest"}
+                  active={index === 0}
+                  customStyles={{ borderRadius: "32px" }}
+                  onClick={i.onClick}
+                />
+              </div>
+            ))}
         </div>
         <div className="table-more" />
         <div className="icon-place">
-          <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg
+            width="12"
+            height="7"
+            viewBox="0 0 12 7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
         <div className="table-mobile">
-        <div className="table-mobile-content">
-          {[1, 2, 3].map(index => (
-            <div className="td" key={index}>
-              <div className="mobile-ttl">{th[index].name}</div>
-              <span>{item[index === 1 ? 'stake_date' : index === 2 ? 'unstake_date' : 'earn_reward']}</span>
-            </div>
-          ))}
-          {width <= 550 && (
-            <div className="table-buttons">
-              {[5, 6].map(index => (
-                <div className="td" key={index}>
-                  <Button 
-                    element="staking-button"
-                    label={index === 5 ? 'Unstake' : 'Harvest'}
-                    active={index === 5}
-                    customStyles={{ borderRadius: '32px' }}
-                    onClick={th[index].onClick}
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="table-mobile-content">
+            {[1, 2, 3].map((index) => (
+              <div className="td" key={index}>
+                <div className="mobile-ttl">{th[index].name}</div>
+                <span>
+                  {
+                    item[
+                      index === 1
+                        ? "stake_date"
+                        : index === 2
+                        ? "unstake_date"
+                        : "earn_reward"
+                    ]
+                  }
+                </span>
+              </div>
+            ))}
+            {width <= 550 && (
+              <div className="table-buttons">
+                {[5, 6].map((index) => (
+                  <div className="td" key={index}>
+                    <Button
+                      element="staking-button"
+                      label={index === 5 ? "Unstake" : "Harvest"}
+                      active={index === 5}
+                      customStyles={{ borderRadius: "32px" }}
+                      onClick={th[index].onClick}
+                      // disabled={true}
+                    />
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>
-      </div>  
+      </div>
     );
   });
 
-  let isActive = false;
+  let account = false;
 
-  const handleCalculatorSubmit = () => {
-    if (!isActive) {
-      console.log('connect');
-    };
-    if (isActive && isAllowance) {
-      console.log('enable');
-    };
-    if (isActive && !isAllowance) {
-      console.log('stake');
-    };
+  const handleSubmit = () => {
+    if (!account) {
+      console.log("connect");
+    }
+    if (account && isAllowance) {
+      console.log("enable");
+    }
+    if (account && !isAllowance) {
+      console.log("hihi");
+      console.log(depositAmount);
+      console.log(timeperiod);
+    }
+  };
+
+  const handleTimeperiodDate = (period) => {
+    console.log(period);
   };
 
   return (
@@ -418,18 +461,21 @@ stories.add("Staking", () => {
         verified={false}
       />
       <Staking
-        isActive={isActive}
+        account={true}
         durationOptions={durationOptions}
-        biddingInfoData={biddingInfo}
+        stackContractInfo={stackContractInfo}
         loading={loading}
         isAllowance={isAllowance}
-        handleCalculatorSubmit={handleCalculatorSubmit}
-        stakeData={stakeData}
-        setStakeData={setStakeData}
-        handleMaxClick={() => console.log('max!!!')}
+        handleCalculatorSubmit={handleSubmit}
+        timeperiod={timeperiod}
+        setTimeperiod={setTimeperiod}
+        depositAmount={depositAmount}
+        setDepositAmount={setDepositAmount}
+        handleTimeperiodDate={handleTimeperiodDate}
+        timeperiodDate={timeperiodDate}
+        handleMaxClick={() => console.log("max!!!")}
         accountSummaryData={accountSummaryData}
         tableData={tableData}
-        handleViewAll={() => console.log('view all')}
         tableHead={th}
       />
     </BrowserRouter>

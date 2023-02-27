@@ -207,9 +207,10 @@ export const Button = (props) => {
   if (props.element === 'staking-button') {
     element = (
       <div
-        className={`staking-button ${props.active && 'staking-button-active'}`}
+        className={`staking-button ${props.active && 'staking-button-active'} ${props.disabled === true ? "disabled" : ""}`}
         style={props.customStyles}
         onClick={props.onClick}
+        disabled={props.disabled}
       >
         {props?.icon}
         <span>{props.label}</span>

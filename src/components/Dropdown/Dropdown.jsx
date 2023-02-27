@@ -76,16 +76,18 @@ export const Dropdown = (props) => {
   if (props.type === "default-dropdown") {
     element = (
       <div style={props.customStyles} className={`${"active"} ${"dropdown"}`}>
-        <div
-          className="dropdown-item"
-          onClick={() => {
-            props.handlerClick(props.defaultOption);
-            props.selectHandler("all");
-          }}
-          key={props.defaultOption}
-        >
-          {props.defaultOption}
-        </div>
+        {props.defaultOption && (
+          <div
+            className="dropdown-item"
+            onClick={() => {
+              props.handlerClick(props.defaultOption);
+              props.selectHandler("all");
+            }}
+            key={props.defaultOption}
+          >
+            {props.defaultOption}
+          </div>
+        )}
         {props.data?.map((item, index) => {
           return (
             <div className="dropdown-item" onClick={() => {

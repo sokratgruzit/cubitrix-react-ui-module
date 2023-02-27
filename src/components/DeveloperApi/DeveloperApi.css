@@ -1,0 +1,110 @@
+.api-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.api-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.api-item-top {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 0px;
+}
+.api-item-top p {
+    color: #3D5AFE;
+    margin-top: 15px;
+}
+.api-item-type {
+    display: flex;
+    margin-top: 30px;
+}
+.api-item-type div {
+    border-radius: 10px;
+    padding: 5px;
+}
+.api-get {
+    border: 1px solid #00C27C;
+    color: #00C27C;
+}
+.api-post {
+    border: 1px solid #969BA6;
+    color: #969BA6;
+}
+.api-item-params-main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-height: 0px;
+    overflow: hidden;
+    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.api-item-params-main.active {
+    max-height: 600px;
+}
+.api-item-params-main:after {
+    content: '';
+    top: 0px;
+    left: 0px;
+    background: #3D5AFE;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+}
+.api-item-params-ttl {
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.api-item-params-ttl div {
+    font-size: 16px;
+}
+.api-item-params-subTtls {
+    display: flex;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.api-item-params-subTtls.double div:nth-child(1) {
+    width: 330px;
+}
+.api-item-params {
+    display: flex;
+    margin-bottom: 30px;
+}
+.api-params {
+    width: 300px;
+}
+.api-details {
+    width: calc(100% - 300px);
+    padding-left: 30px;
+    padding-top: 24px;
+    color: #B2B4B7;
+}
+.api-item-res-container {
+    max-height: 0px;
+    overflow: hidden;
+}
+.api-item-res-container.active {
+    max-height: 1000px;
+}
+.api-item-res {
+    background: #0C1121;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #1f2330;
+    margin-bottom: 30px;
+}
+.api-item-params-status {
+    margin-bottom: 15px;
+}
+.api-item-params-status.red {
+    color: #E94A4A;
+}
+.api-item-params-status.green {
+    color: #00C27C;
+}
