@@ -10,11 +10,11 @@ import { useValidation } from '../../hooks/useValidation';
 export const DeveloperApi = (props) => {
     const [active, setActive] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
-    const [notValidated, setNotValidated] = useState(false); 
+    const [notValidated, setNotValidated] = useState(false);
 
     const handleEmptyFields = useCallback(() => {
         const updatedState = {};
-      
+
         Object?.keys(props?.currentArray)?.forEach(i => {
           if (props?.currentArray[i].length < 1) {
             updatedState[i] = true;
@@ -22,14 +22,14 @@ export const DeveloperApi = (props) => {
             updatedState[i] = false;
           }
         });
-        
+
         setEmptyFields({...updatedState});
       }, [props.currentArray]);
 
     const handleInputChange = (e, onChange) => {
         if (e.target.value.length > 0) {
             setEmptyFields(prev => ({ ...prev, [e.target.name]: false }));
-        }   
+        }
         onChange(e);
     };
 
@@ -38,12 +38,12 @@ export const DeveloperApi = (props) => {
           return Object.keys(props?.currentArray).filter((key) => !props.currentArray[key]);
         }
     }, [props.currentArray]);
-    
-    const handleTryItOut = (route) => {
+
+    const handleTryItOut = (route,id, type) => {
         if (notEmptyList.length > 0 ) {
             handleEmptyFields();
         } else {
-            props.handleSubmit(route);
+            props.handleSubmit(route,id, type);
         }
     };
 
@@ -82,7 +82,7 @@ export const DeveloperApi = (props) => {
                                                         type={'btn-primary'}
                                                         arrow={'arrow-right'}
                                                         element={'button'}
-                                                        onClick={() => handleTryItOut(apiItem.route, apiItem.id)}
+                                                        onClick={() => handleTryItOut(apiItem.route, apiItem.id,apiItem.type)}
                                                         disabled={notValidated}
                                                     />
                                                 </div>
@@ -98,13 +98,13 @@ export const DeveloperApi = (props) => {
                                                         failure: `must be valid ${params.validation}`
                                                         }
                                                     }), [params.name, params.validation, params.title]);
-                                                    
-                                                    const formError = useMemo(() => useValidation({ 
+
+                                                    const formError = useMemo(() => useValidation({
                                                         [params?.name]: props.currentArray[params?.name] || ''
                                                     }, helpText), [props.currentArray[params?.name]]);
 
 
-                                                    
+
                                                     return (
                                                         <div className={'api-item-params'} key={apiItem.route + params.name + index}>
                                                             <div className={'api-params'}>
@@ -118,7 +118,7 @@ export const DeveloperApi = (props) => {
                                                                     onChange={(e) => {
                                                                         if (formError[params?.name]?.failure) {
                                                                             setNotValidated(true);
-                                                                        } 
+                                                                        }
                                                                         if (e.target.value.length < 1 ){
                                                                             setNotValidated(false);
                                                                         }
