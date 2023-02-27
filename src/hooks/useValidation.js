@@ -8,6 +8,7 @@ export const useValidation = (formData, helpTexts) => {
       limitedCharacters: /^.{16}$/,
       hash: /^[a-f0-9]{32}/,
       number: /^\d+(?:\.\d+)?$/,
+      text: /^[a-zA-Z]+$/,
     };
 
     Object.keys(formData).map(key => {
