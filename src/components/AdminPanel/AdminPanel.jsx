@@ -16,7 +16,7 @@ export const AdminPanel = props => {
                     tableSearchSelect={props.tableSearchSelect}
                     tableHeader={props.tableHeader}
                     customStyles={{marginBottom: '20px'}}
-                />
+                />  
     }
     return (
         <div className={`admin-content`}>
