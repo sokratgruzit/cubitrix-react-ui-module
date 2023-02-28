@@ -12,7 +12,6 @@ import { useValidation } from "../../hooks/useValidation";
 
 // styles
 import "./Popup.css";
-import { useMemo } from "react";
 
 export const Popup = ({
   label,
