@@ -378,8 +378,9 @@ stories.add("AdminPanel", () => {
         },
     ];
 
-    let changeDevObject = (key, name) => {
-        setDevAppObject(prev => ({ ...prev, [key]: name }))
+    let changeDevObject = (e) => {
+      const { name, value } = e.target;
+      setDevAppObject((prev) => ({ ...prev, [name]: value }));
     };
 
     let developerApiArray = [
@@ -397,11 +398,9 @@ stories.add("AdminPanel", () => {
                 name: "name",
                 description: "Name of trade",
                 value: "",
-                required: true,
+                required: false,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
               {
                 title: "Last Name",
@@ -410,9 +409,7 @@ stories.add("AdminPanel", () => {
                 value: "",
                 required: true,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
             ],
           },
@@ -429,9 +426,7 @@ stories.add("AdminPanel", () => {
                 value: "",
                 required: true,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
               {
                 title: "Last Name",
@@ -440,9 +435,7 @@ stories.add("AdminPanel", () => {
                 value: "",
                 required: true,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
             ],
           },
@@ -464,9 +457,7 @@ stories.add("AdminPanel", () => {
                 value: "",
                 required: true,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
               {
                 title: "Last Name",
@@ -475,9 +466,7 @@ stories.add("AdminPanel", () => {
                 value: "",
                 required: true,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
             ],
           },
@@ -494,9 +483,7 @@ stories.add("AdminPanel", () => {
                 value: "",
                 required: true,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
               {
                 title: "Last Name",
@@ -505,9 +492,7 @@ stories.add("AdminPanel", () => {
                 value: "",
                 required: true,
                 validation: "text",
-                onChange: (e) => {
-                  changeDevObject(e.target.name, e.target.value);
-                },
+                onChange: (e) => changeDevObject(e),
               },
             ],
           },
@@ -516,234 +501,304 @@ stories.add("AdminPanel", () => {
     ];
 
     const successResponse = {
-        message: 'OK',
-        result: [{
-            blockHash: '0x373d339e45a701447367d7b9c7cef84aab79c2b2714271b908cda0ab3ad0849b',
-            blockNumber: '65204',
-            confirmations: '',
-            contractAddress: '',
-            cumulativeGasUsed: '122207',
-            from: '0x3fb1cd2cd96c6d5c0b5eb3322d807b34482481d4',
-            gas: '122261',
-            gasPrice: '50000000000',
-            gasUsed: '122207',
-            hash: '0x98beb27135aa0a25650557005ad962919d6a278c4b3dde7f4f6a3a1e65aa746c',
-            input: '0xf00d4b5d000000000000000000000000036c8cecce8d8bbf0831d840d7f29c9e3ddefa63000000000000000000000000c5a96db085dda36ffbe390f455315d30d6d3dc52',
-            isError: '0',
-            nonce: '0',
-            timeStamp: '1439232889',
-            to: '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae',
-            transactionIndex: '0',
-            txreceipt_status: '0',
-            value: '0'
-        }],
-        status: '1'
+      message: "OK",
+      result: [
+        {
+          blockHash:
+            "0x373d339e45a701447367d7b9c7cef84aab79c2b2714271b908cda0ab3ad0849b",
+          blockNumber: "65204",
+          confirmations: "",
+          contractAddress: "",
+          cumulativeGasUsed: "122207",
+          from: "0x3fb1cd2cd96c6d5c0b5eb3322d807b34482481d4",
+          gas: "122261",
+          gasPrice: "50000000000",
+          gasUsed: "122207",
+          hash: "0x98beb27135aa0a25650557005ad962919d6a278c4b3dde7f4f6a3a1e65aa746c",
+          input:
+            "0xf00d4b5d000000000000000000000000036c8cecce8d8bbf0831d840d7f29c9e3ddefa63000000000000000000000000c5a96db085dda36ffbe390f455315d30d6d3dc52",
+          isError: "0",
+          nonce: "0",
+          timeStamp: "1439232889",
+          to: "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",
+          transactionIndex: "0",
+          txreceipt_status: "0",
+          value: "0",
+        },
+      ],
+      status: "1",
     };
 
     const failResponse = {
-        message: "No data was found",
-        result: [],
-        status: 0
+      message: "No data was found",
+      result: [],
+      status: 0,
     };
 
-    const handleTryOutSubmit = (route) => {
-        console.log('hihi');
-        console.log(devAppObject);
-        setResponseActive(route)
+    const handleTryOutSubmit = (route, type) => {
+      console.log("hihi");
+      console.log(devAppObject);
+      console.log(type);
+      setResponseActive(route);
     };
 
     let tableData;
     tableData = td.map((item, index) => {
-        return (
+      return (
+        <div
+          className={`table-parent ${mobileExpand == item.id ? "active" : ""}`}
+          onClick={() => {
+            mobileExpandFunc(item.id);
+          }}
+          key={index}
+        >
+          <div className="table">
             <div
-                className={`table-parent ${mobileExpand == item.id ? 'active' : ''}`}
-                onClick={() => {
-                    mobileExpandFunc(item.id)
-                }}
-                key={index}
+              className={`td col ${th[0].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[0].mobileWidth : th[0].width}%` }}
             >
-                <div className="table">
-                    <div className={`td col ${th[0].mobileWidth ? true : false}`} style={{ width: `${mobile ? th[0].mobileWidth : th[0].width}%` }}>
-                        <span>{item.id}</span>
-                        <span>{item.hash}</span>
-                    </div>
-                    <div onClick={() => { tableExpandFunc(item.id) }} className={`td expand ${tableExpand == item.id ? 'active' : ''} ${th[1].mobileWidth ? true : false}`} style={{ width: `${mobile ? th[1].mobileWidth : th[1].width}%` }}>
-                        <div>
-                            <span>
-                                {item.from}
-                            </span>
-                            <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.70095 5.6665L5.52859 1.83887C5.98063 1.38683 6.72032 1.38683 7.17236 1.83887L11 5.6665" stroke="#9C9DA3" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
-                        <div className={`td-expand`}>
-                            <div><i>Loan</i>Name <span>23 Eth</span></div>
-                            <div>Name 1</div>
-                            <div>Name 3</div>
-                        </div>
-                    </div>
-                    <div className={`td ${th[2].mobileWidth ? true : false}`} style={{ width: `${mobile ? th[2].mobileWidth : th[3].width}%` }}>
-                        <span>{item.to}</span>
-                    </div>
-                    <div className={`td ${th[3].mobileWidth ? true : false}`} style={{ width: `${mobile ? th[3].mobileWidth : th[3].width}%` }}>
-                        <span>{item.amount}</span>
-                    </div>
-                    <div className={`td ${th[4].mobileWidth ? true : false}`} style={{ width: `${mobile ? th[4].mobileWidth : th[4].width}%` }}>
-                        <span>{item.domination}</span>
-                    </div>
-                    <div className={`td col ${th[5].mobileWidth ? true : false}`} style={{ width: `${mobile ? th[5].mobileWidth : th[5].width}%` }}>
-                        <span>{item.date}</span>
-                        <span>{item.time}</span>
-                    </div>
-                    <div className={`td ${th[6].mobileWidth ? true : false}`} style={{ width: `${mobile ? th[6].mobileWidth : th[6].width}%` }}>
-                        <span
-                            className={`alert-status-box 
-                            ${item.type === 'All Deposit' && 'alert-blue'} 
-                            ${item.type === 'Withdraw' && 'alert-yellow'}
-                            ${item.type === 'Transfer' && 'alert-green'} 
+              <span>{item.id}</span>
+              <span>{item.hash}</span>
+            </div>
+            <div
+              onClick={() => {
+                tableExpandFunc(item.id);
+              }}
+              className={`td expand ${tableExpand == item.id ? "active" : ""} ${
+                th[1].mobileWidth ? true : false
+              }`}
+              style={{ width: `${mobile ? th[1].mobileWidth : th[1].width}%` }}
+            >
+              <div>
+                <span>{item.from}</span>
+                <svg
+                  width="12"
+                  height="7"
+                  viewBox="0 0 12 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.70095 5.6665L5.52859 1.83887C5.98063 1.38683 6.72032 1.38683 7.17236 1.83887L11 5.6665"
+                    stroke="#9C9DA3"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <div className={`td-expand`}>
+                <div>
+                  <i>Loan</i>Name <span>23 Eth</span>
+                </div>
+                <div>Name 1</div>
+                <div>Name 3</div>
+              </div>
+            </div>
+            <div
+              className={`td ${th[2].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[2].mobileWidth : th[3].width}%` }}
+            >
+              <span>{item.to}</span>
+            </div>
+            <div
+              className={`td ${th[3].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[3].mobileWidth : th[3].width}%` }}
+            >
+              <span>{item.amount}</span>
+            </div>
+            <div
+              className={`td ${th[4].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[4].mobileWidth : th[4].width}%` }}
+            >
+              <span>{item.domination}</span>
+            </div>
+            <div
+              className={`td col ${th[5].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[5].mobileWidth : th[5].width}%` }}
+            >
+              <span>{item.date}</span>
+              <span>{item.time}</span>
+            </div>
+            <div
+              className={`td ${th[6].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[6].mobileWidth : th[6].width}%` }}
+            >
+              <span
+                className={`alert-status-box 
+                            ${item.type === "All Deposit" && "alert-blue"} 
+                            ${item.type === "Withdraw" && "alert-yellow"}
+                            ${item.type === "Transfer" && "alert-green"} 
                             font-14`}
-                        >
-                            {item.type}
-                        </span>
-                    </div>
-                </div>
-                <div className="table-more">
-                    <MoreButton dropdownData={dropdownData} />
-                </div>
-                <div className="icon-place">
-                    <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </div>
-                <div className={`table-mobile`}>
-                    <div className="table-mobile-content">
-                        <div className="td">
-                            <div className="mobile-ttl">{th[2].name}</div>
-                            <span>{item.to}</span>
-                        </div>
-                        <div className="td">
-                            <div className="mobile-ttl">{th[3].name}</div>
-                            <span>{item.amount}</span>
-                        </div>
-                        <div className="td">
-                            <div className="mobile-ttl">{th[4].name}</div>
-                            <span>{item.domination}</span>
-                        </div>
-                        <div className="td col">
-                            <div className="mobile-ttl">{th[5].name}</div>
-                            <span>{item.date}</span>
-                            <span>{item.time}</span>
-                        </div>
-                        <div className="td type">
-                            <div className="mobile-ttl">{th[6].name}</div>
-                            <span
-                                className={`alert-status-box 
-                                ${item.type === 'All Deposit' && 'alert-status-blue'} 
-                                ${item.type === 'Withdraw' && 'alert-status-yellow'}
-                                ${item.type === 'Transfer' && 'alert-status-green'} 
+              >
+                {item.type}
+              </span>
+            </div>
+          </div>
+          <div className="table-more">
+            <MoreButton dropdownData={dropdownData} />
+          </div>
+          <div className="icon-place">
+            <svg
+              width="12"
+              height="7"
+              viewBox="0 0 12 7"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+                stroke="white"
+                strokeWidth="1.5"
+                strokeMiterlimit="10"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          <div className={`table-mobile`}>
+            <div className="table-mobile-content">
+              <div className="td">
+                <div className="mobile-ttl">{th[2].name}</div>
+                <span>{item.to}</span>
+              </div>
+              <div className="td">
+                <div className="mobile-ttl">{th[3].name}</div>
+                <span>{item.amount}</span>
+              </div>
+              <div className="td">
+                <div className="mobile-ttl">{th[4].name}</div>
+                <span>{item.domination}</span>
+              </div>
+              <div className="td col">
+                <div className="mobile-ttl">{th[5].name}</div>
+                <span>{item.date}</span>
+                <span>{item.time}</span>
+              </div>
+              <div className="td type">
+                <div className="mobile-ttl">{th[6].name}</div>
+                <span
+                  className={`alert-status-box 
+                                ${
+                                  item.type === "All Deposit" &&
+                                  "alert-status-blue"
+                                } 
+                                ${
+                                  item.type === "Withdraw" &&
+                                  "alert-status-yellow"
+                                }
+                                ${
+                                  item.type === "Transfer" &&
+                                  "alert-status-green"
+                                } 
                                 font-14`}
-                            >
-                                {item.type}
-                            </span>
-                        </div>
-                    </div>
-                </div>
+                >
+                  {item.type}
+                </span>
+              </div>
             </div>
-        )
-    })
+          </div>
+        </div>
+      );
+    });
     return (
-        <>
-            <AdminHeader
-                username={adminHeaderData.username}
-                headSvg={adminHeaderData.svg}
-                userImageUrl={adminHeaderData.userImageUrl}
-                authsDropdown={adminHeaderData.authsDropdown}
-            />
-            <div className={`admin-container`}>
-                <div className={`admin-sidebar`}>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/*" element={
-                                sideBar.map((item) => {
-                                    return (
-                                        <Button
-                                            key={item.id}
-                                            id={item.id}
-                                            label={item.name}
-                                            route={item.route}
-                                            element={'side-admin-button'}
-                                            svg={item.svg}
-                                            customStyles={{ width: '100%' }}
-                                            subMenu={item.subMenu}
-                                            active={location.pathname === item.route}
-                                            subMenuActive={location.pathname.includes(item.subMenu?.route)}
-                                        />
-                                    )
-                                })
-                            } />
-                        </Routes>
-                    </BrowserRouter>
-
-                </div>
-                <AdminPanel
-                    sideBarData={
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path="/*" element={
-                                    sideBar.map((item, index) => {
-                                        return (
-                                            <Button
-                                                key={index}
-                                                label={item.name}
-                                                route={item.route}
-                                                element={'side-admin-button'}
-                                                svg={item.svg}
-                                                customStyles={{ width: '100%' }}
-                                            />
-                                        )
-                                    })
-                                } />
-                            </Routes>
-                        </BrowserRouter>
-                    }
-                    //    tableData={tableData}
-                    handleViewAll={() => console.log('view all')}
-                    tableFilter={true}
-                    tableHead={th}
-                    adminPage={'developerApi'}
-                    tableHeaderButtons={(
-                        <>
-                            <Button
-                                label={'Hihi'}
-                                size={'btn-lg'}
-                                type={'btn-primary'}
-                                arrow={'arrow-none'}
-                                element={'button'}
-                                onClick={() => console.log('hi')}
-                                customStyles={{ margin: '0' }}
-                            />
-                        </>
-                    )}
-                    pageLabel={'Transactions'}
-                    mobile={mobile}
-                    tableHeader={2}
-                    tableFilterData={tableFilterData}
-                    setTableFilterOutcomingData={setTableFilterOutcomingData}
-                    paginationCurrent={1}
-                    tableSearchSelect={true}
-                    paginationTotal={20}
-                    paginationEvent={() => {
-                        console.log('hi')
-                    }}
-                    developersApi={developerApiArray}
-                    developersApiValues={devAppObject}
-                    setDeveloperApiValues={setDevAppObject}
-                    successResponse={successResponse}
-                    failResponse={failResponse}
-                    responseActive={responseActive}
-                    handleTryOutSubmit={handleTryOutSubmit}
+      <>
+        <AdminHeader
+          username={adminHeaderData.username}
+          headSvg={adminHeaderData.svg}
+          userImageUrl={adminHeaderData.userImageUrl}
+          authsDropdown={adminHeaderData.authsDropdown}
+        />
+        <div className={`admin-container`}>
+          <div className={`admin-sidebar`}>
+            <BrowserRouter>
+              <Routes>
+                <Route
+                  path="/*"
+                  element={sideBar.map((item) => {
+                    return (
+                      <Button
+                        key={item.id}
+                        id={item.id}
+                        label={item.name}
+                        route={item.route}
+                        element={"side-admin-button"}
+                        svg={item.svg}
+                        customStyles={{ width: "100%" }}
+                        subMenu={item.subMenu}
+                        active={location.pathname === item.route}
+                        subMenuActive={location.pathname.includes(
+                          item.subMenu?.route
+                        )}
+                      />
+                    );
+                  })}
                 />
-            </div>
-        </>
+              </Routes>
+            </BrowserRouter>
+          </div>
+          <AdminPanel
+            sideBarData={
+              <BrowserRouter>
+                <Routes>
+                  <Route
+                    path="/*"
+                    element={sideBar.map((item, index) => {
+                      return (
+                        <Button
+                          key={index}
+                          label={item.name}
+                          route={item.route}
+                          element={"side-admin-button"}
+                          svg={item.svg}
+                          customStyles={{ width: "100%" }}
+                        />
+                      );
+                    })}
+                  />
+                </Routes>
+              </BrowserRouter>
+            }
+            //    tableData={tableData}
+            handleViewAll={() => console.log("view all")}
+            tableFilter={true}
+            tableHead={th}
+            adminPage={"developerApi"}
+            tableHeaderButtons={
+              <>
+                <Button
+                  label={"Hihi"}
+                  size={"btn-lg"}
+                  type={"btn-primary"}
+                  arrow={"arrow-none"}
+                  element={"button"}
+                  onClick={() => console.log("hi")}
+                  customStyles={{ margin: "0" }}
+                />
+              </>
+            }
+            pageLabel={"Transactions"}
+            mobile={mobile}
+            tableHeader={2}
+            tableFilterData={tableFilterData}
+            setTableFilterOutcomingData={setTableFilterOutcomingData}
+            paginationCurrent={1}
+            tableSearchSelect={true}
+            paginationTotal={20}
+            paginationEvent={() => {
+              console.log("hi");
+            }}
+            developersApi={developerApiArray}
+            developersApiValues={devAppObject}
+            setDeveloperApiValues={setDevAppObject}
+            successResponse={successResponse}
+            failResponse={failResponse}
+            responseActive={responseActive}
+            setResponseActive={setResponseActive}
+            handleTryOutSubmit={handleTryOutSubmit}
+          />
+        </div>
+      </>
     );
 });

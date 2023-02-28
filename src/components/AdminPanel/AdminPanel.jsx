@@ -88,6 +88,7 @@ export const AdminPanel = props => {
                         successResponse={props.successResponse}
                         failResponse={props.failResponse}
                         responseActive={props.responseActive}
+                        setResponseActive={props.setResponseActive}
                     />
                 </>
             )}

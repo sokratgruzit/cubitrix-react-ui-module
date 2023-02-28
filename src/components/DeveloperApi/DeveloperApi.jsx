@@ -7,50 +7,79 @@ import { Button } from "../Button";
 import { useState, useMemo, useCallback } from 'react';
 import { useValidation } from '../../hooks/useValidation';
 
-export const DeveloperApi = (props) => {
+export const DeveloperApi = ({ 
+    array,
+    currentArray,
+    setCurrentArray,
+    handleSubmit,
+    responseActive,
+    setResponseActive,
+    successResponse,
+    failResponse
+}) => {
     const [active, setActive] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
     const [notValidated, setNotValidated] = useState(false);
+    const [formErrors, setFormErrors] = useState({});
 
-    const handleEmptyFields = useCallback(() => {
-        const updatedState = {};
+    const handleEmptyFields = useCallback((inputs) => {
+        inputs.map((input) => {
+            if (input.required === true && currentArray[input.name].length < 1) {
+                setEmptyFields(prev => ({ ...prev, [input.name]: true}))
+            }
+            if (input.required === false) {
+                setEmptyFields(prev => ({ ...prev, [input.name]: false}))
+            }
+        })
+    }, [currentArray]);
 
-        Object?.keys(props?.currentArray)?.forEach(i => {
-          if (props?.currentArray[i].length < 1) {
-            updatedState[i] = true;
-          } else {
-            updatedState[i] = false;
-          }
-        });
-
-        setEmptyFields({...updatedState});
-      }, [props.currentArray]);
-
-    const handleInputChange = (e, onChange) => {
-        if (e.target.value.length > 0) {
-            setEmptyFields(prev => ({ ...prev, [e.target.name]: false }));
+    const handleSetFields = useCallback((item) => {
+        setCurrentArray({});
+        setEmptyFields({});
+        item.inputs.map((input) => {
+            if (input.required) {
+                setCurrentArray((prev) => ({ ...prev, [input.name]: "" }))
+            }
         }
+        );
+    }, []);
+
+    const handleInputChange = (e, params) => {
+        const { name, validation, onChange } = params;
+        const inputValue = e.target.value.trim();
+        let helpText = {
+            [name]: {
+                validationType: [validation],
+                success: `It is valid ${validation}`,
+                failure: `must be valid ${validation}`
+            }
+        };
+
+        let formError = useValidation({ [name]: inputValue || '' }, helpText);
+
+        let error = formError[name];
+
+        inputValue?.length > 0 && setEmptyFields(prev => ({ ...prev, [name]: false }));
+
+        error?.failure && setNotValidated(true);
+
+        if (error?.success || inputValue?.length < 1) {
+            setNotValidated(false);
+        }
+
+        setFormErrors(prev => ({ ...prev, ...formError}));
+
         onChange(e);
     };
 
-    let notEmptyList = useMemo(() => {
-        if (props.currentArray) {
-          return Object.keys(props?.currentArray).filter((key) => !props.currentArray[key]);
-        }
-    }, [props.currentArray]);
+    const notEmptyList = useMemo(() => Object.keys(currentArray)?.filter((key) => !currentArray[key]) ?? [], [currentArray]);
 
-    const handleTryItOut = (route,id, type) => {
-        if (notEmptyList.length > 0 ) {
-            handleEmptyFields();
-        } else {
-            props.handleSubmit(route,id, type);
-        }
-    };
+    const handleTryItOut = (route, type, inputs) => notEmptyList.length > 0 ? handleEmptyFields(inputs) : handleSubmit(route, type);
 
     return (
         <div className={'api-container'}>
             <div className={'api-block'}>
-                {props.array.map((item,index) => {
+                {array?.map((item,index) => {
                     return(
                         <div key={index}>
                             <Visual
@@ -64,7 +93,8 @@ export const DeveloperApi = (props) => {
                                     return(
                                         <div className={'api-item'} key={index}>
                                             <div className={'api-item-top'} onClick={() => {
-                                                props.setCurrentArray({})
+                                                handleSetFields(apiItem);
+                                                setResponseActive(false);
                                                 setActive(prev => prev === apiItem.route ? false : apiItem.route)
                                             }}>
                                                 <h3>{apiItem.description}</h3>
@@ -82,7 +112,7 @@ export const DeveloperApi = (props) => {
                                                         type={'btn-primary'}
                                                         arrow={'arrow-right'}
                                                         element={'button'}
-                                                        onClick={() => handleTryItOut(apiItem.route, apiItem.id,apiItem.type)}
+                                                        onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
                                                         disabled={notValidated}
                                                     />
                                                 </div>
@@ -90,21 +120,7 @@ export const DeveloperApi = (props) => {
                                                     <div>Name</div>
                                                     <div>Description</div>
                                                 </div>
-                                                {apiItem.inputs.map((params,index) => {
-                                                    const helpText = useMemo(() => ({
-                                                        [params.name]: {
-                                                        validationType: [params.validation],
-                                                        success: `It is valid ${params.validation}`,
-                                                        failure: `must be valid ${params.validation}`
-                                                        }
-                                                    }), [params.name, params.validation, params.title]);
-
-                                                    const formError = useMemo(() => useValidation({
-                                                        [params?.name]: props.currentArray[params?.name] || ''
-                                                    }, helpText), [props.currentArray[params?.name]]);
-
-
-
+                                                {apiItem.inputs?.map((params, index) => {
                                                     return (
                                                         <div className={'api-item-params'} key={apiItem.route + params.name + index}>
                                                             <div className={'api-params'}>
@@ -114,26 +130,15 @@ export const DeveloperApi = (props) => {
                                                                     label={params.title}
                                                                     name={params.name}
                                                                     editable={true}
-                                                                    value={props?.currentArray[params?.name] || ''}
-                                                                    onChange={(e) => {
-                                                                        if (formError[params?.name]?.failure) {
-                                                                            setNotValidated(true);
-                                                                        }
-                                                                        if (e.target.value.length < 1 ){
-                                                                            setNotValidated(false);
-                                                                        }
-                                                                        if (formError[params?.name]?.success) {
-                                                                            setNotValidated(false);
-                                                                        }
-                                                                        handleInputChange(e, params.onChange);
-                                                                    }}
+                                                                    value={currentArray[params?.name] || ''}
+                                                                    onChange={(e) => handleInputChange(e, params)}
                                                                     emptyFieldErr={params.required && emptyFields[params?.name]}
                                                                     customStyles={{ width: "100%" }}
                                                                     statusCard= {
-                                                                        formError[params?.name] && (
+                                                                        formErrors[params?.name] && currentArray[params?.name]?.length > 0 && (
                                                                             <HelpText
-                                                                                status={formError[params.name].failure ? 'error' : 'success'}
-                                                                                title={formError[params.name].failure || formError[params.name].success}
+                                                                                status={formErrors[params.name].failure ? 'error' : 'success'}
+                                                                                title={formErrors[params.name].failure || formErrors[params.name].success}
                                                                                 fontSize={'font-12'}
                                                                                 icon={true}
                                                                             />
@@ -149,7 +154,7 @@ export const DeveloperApi = (props) => {
                                                 })}
 
                                             </div>
-                                            <div className={`api-item-res-container ${props.responseActive === apiItem.route && active === apiItem.route  ? 'active' : ''}`}>
+                                            <div className={`api-item-res-container ${responseActive === apiItem.route && active === apiItem.route  ? 'active' : ''}`}>
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Responses</div>
                                                 </div>
@@ -158,7 +163,7 @@ export const DeveloperApi = (props) => {
                                                 </div>
                                                 <div className={'api-item-res'}>
                                                     <pre className="json-result">
-                                                        {JSON.stringify(props.successResponse, null, 2)}
+                                                        {JSON.stringify(successResponse, null, 2)}
                                                     </pre>
                                                 </div>
                                                 <div className={'api-item-params-status red'}>
@@ -166,7 +171,7 @@ export const DeveloperApi = (props) => {
                                                 </div>
                                                 <div className={'api-item-res'}>
                                                     <pre className="json-result">
-                                                        {JSON.stringify(props.failResponse, null, 2)}
+                                                        {JSON.stringify(failResponse, null, 2)}
                                                     </pre>
                                                 </div>
                                             </div>
@@ -177,7 +182,6 @@ export const DeveloperApi = (props) => {
                         </div>
                     )
                 })}
-
             </div>
         </div>
     );
