@@ -1,5 +1,5 @@
 export const useValidation = (formData, helpTexts) => {
-  const errors = {};
+  let errors = {};
 
   const validation = {
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
@@ -8,6 +8,7 @@ export const useValidation = (formData, helpTexts) => {
     limitedCharacters: /^.{16}$/,
     hash: /^[a-fA-F0-9]{32}/i,
     number: /^\d+(?:\.\d+)?$/,
+    text: /^[a-zA-Z]+$/,
   };
 
   Object.keys(formData).map((key) => {

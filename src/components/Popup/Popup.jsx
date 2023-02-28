@@ -12,6 +12,7 @@ import { useValidation } from "../../hooks/useValidation";
 
 // styles
 import "./Popup.css";
+import { useMemo } from "react";
 
 export const Popup = ({
   label,
@@ -44,7 +45,7 @@ export const Popup = ({
   const handleEmptyFields = () => {
     const updatedState = {};
 
-    Object.keys(popUpData).forEach((i) => {
+    Object?.keys(popUpData && popUpData)?.forEach((i) => {
       if (popUpData[i].length < 1) {
         if (i === "password" && edit) {
           updatedState[i] = false;
@@ -118,9 +119,13 @@ export const Popup = ({
     helpTexts,
   );
 
-  let notValidatedList = Object.values(formErrors && formErrors).filter((value) => {
-    return value.failure;
-  });
+  let notValidatedList = useMemo(() => {
+    if (formErrors) {
+      return Object?.values(formErrors && formErrors)?.filter((value) => {
+        return value.failure;
+      });
+    }
+  }, [formErrors]);
 
   let notEmptyList = useMemo(() => {
     if (popUpData) {

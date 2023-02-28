@@ -5,6 +5,7 @@ import { FilterBox } from '../FilterBox';
 import { Visual } from "../Visual";
 import { TableElement } from "../TableElement";
 import { DashboardCard } from "../DashboardCard";
+import { DeveloperApi } from "../DeveloperApi";
 
 export const AdminPanel = props => {
     let filter;
@@ -15,13 +16,13 @@ export const AdminPanel = props => {
                     tableSearchSelect={props.tableSearchSelect}
                     tableHeader={props.tableHeader}
                     customStyles={{marginBottom: '20px'}}
-                />
+                />  
     }
     return (
         <div className={`admin-content`}>
             {props.adminPage === 'dashboard' && (
                 <div style={{ display: 'flex', gap: '20px', paddingTop: '40px'}}>
-                    <DashboardCard 
+                    <DashboardCard
                         type={'sale-card'}
                         cardHeader={'TOKEN SALE - DEMO STAGE 2'}
                         saleNumber={'850,000'}
@@ -30,7 +31,7 @@ export const AdminPanel = props => {
                         onViewClick={() => console.log('view')}
                         customStyles={{ width: '372px'}}
                     />
-                    <DashboardCard 
+                    <DashboardCard
                         type={'sale-card'}
                         cardHeader={'TOKEN SALE - DEMO STAGE 2'}
                         saleNumber={'7'}
@@ -41,7 +42,7 @@ export const AdminPanel = props => {
                         handleHeaderBtnClick={(item) => console.log(item)}
                         customStyles={{ width: '372px'}}
                     />
-                    <DashboardCard 
+                    <DashboardCard
                         type={'amount-card'}
                         cardHeader={'AMOUNT COLLECTED'}
                         cardHeaderButtons={[ { name: 'FIAT' }, { name: 'Crypto' }]}
@@ -74,6 +75,20 @@ export const AdminPanel = props => {
                         currentPage={props.paginationCurrent}
                         totalCount={props.paginationTotal}
                         onPageChange={props.paginationEvent}
+                    />
+                </>
+            )}
+            {props.adminPage === 'developerApi' && (
+                <>
+                    <DeveloperApi
+                        array={props.developersApi}
+                        currentArray={props.developersApiValues}
+                        setCurrentArray={props.setDeveloperApiValues}
+                        handleSubmit={props.handleTryOutSubmit}
+                        successResponse={props.successResponse}
+                        failResponse={props.failResponse}
+                        responseActive={props.responseActive}
+                        setResponseActive={props.setResponseActive}
                     />
                 </>
             )}

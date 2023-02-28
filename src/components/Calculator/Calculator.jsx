@@ -24,9 +24,9 @@ export const Calculator = ({
   isAllowance,
   account,
   timeperiod,
-  setTimeperiod,
+  handleTimePeriod,
   depositAmount, 
-  setDepositAmount,
+  handleDepositAmount,
   timeperiodDate,
   handleTimeperiodDate
 }) => {
@@ -38,7 +38,7 @@ export const Calculator = ({
     if (e.target.value.length > 0) {
       setEmptyField(false);
     };
-    setDepositAmount(e.target.value);
+    handleDepositAmount(e.target.value);
   };
 
   let helpTexts = {
@@ -102,7 +102,7 @@ export const Calculator = ({
             label={item.title}
             element={'calculator-button'}
             onClick={() => {
-              setTimeperiod(item.time);
+              handleTimePeriod(item.time);
               handleTimeperiodDate(item.period)
             }}
             customStyles={{ width: '100%'}}

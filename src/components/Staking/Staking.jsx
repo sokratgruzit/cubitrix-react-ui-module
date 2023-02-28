@@ -28,11 +28,11 @@ export const Staking = ({
   isAllowance,
   account,
   timeperiod,
-  setTimeperiod,
+  handleTimePeriod,
   timeperiodDate,
   handleTimeperiodDate,
   depositAmount,
-  setDepositAmount,
+  handleDepositAmount,
   stackContractInfo,
 }) => {    
   const [showCalculator, setShowCalculator] = useState(false);
@@ -60,9 +60,9 @@ export const Staking = ({
               isAllowance,
               account,
               timeperiod,
-              setTimeperiod,
+              handleTimePeriod,
               depositAmount,
-              setDepositAmount,
+              handleDepositAmount,
               timeperiodDate,
               handleTimeperiodDate
             }}
@@ -110,9 +110,9 @@ export const Staking = ({
                 isAllowance,
                 account,
                 timeperiod,
-                setTimeperiod,
+                handleTimePeriod,
                 depositAmount,
-                setDepositAmount,
+                handleDepositAmount,
                 timeperiodDate,
                 handleTimeperiodDate
               }}
