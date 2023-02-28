@@ -154,27 +154,29 @@ export const DeveloperApi = ({
                                                 })}
 
                                             </div>
-                                            <div className={`api-item-res-container ${responseActive === apiItem.route && active === apiItem.route  ? 'active' : ''}`}>
-                                                <div className={'api-item-params-ttl'}>
-                                                    <div>Responses</div>
+                                            {apiItem.type !== 'METAMASK' && (
+                                                <div className={`api-item-res-container ${responseActive === apiItem.route && active === apiItem.route  ? 'active' : ''}`}>
+                                                    <div className={'api-item-params-ttl'}>
+                                                        <div>Responses</div>
+                                                    </div>
+                                                    <div className={'api-item-params-status green'}>
+                                                        Successful operation
+                                                    </div>
+                                                    <div className={'api-item-res'}>
+                                                        <pre className="json-result">
+                                                            {JSON.stringify(successResponse, null, 2)}
+                                                        </pre>
+                                                    </div>
+                                                    <div className={'api-item-params-status red'}>
+                                                        Error
+                                                    </div>
+                                                    <div className={'api-item-res'}>
+                                                        <pre className="json-result">
+                                                            {JSON.stringify(failResponse, null, 2)}
+                                                        </pre>
+                                                    </div>
                                                 </div>
-                                                <div className={'api-item-params-status green'}>
-                                                    Successful operation
-                                                </div>
-                                                <div className={'api-item-res'}>
-                                                    <pre className="json-result">
-                                                        {JSON.stringify(successResponse, null, 2)}
-                                                    </pre>
-                                                </div>
-                                                <div className={'api-item-params-status red'}>
-                                                    Error
-                                                </div>
-                                                <div className={'api-item-res'}>
-                                                    <pre className="json-result">
-                                                        {JSON.stringify(failResponse, null, 2)}
-                                                    </pre>
-                                                </div>
-                                            </div>
+                                            )}
                                         </div>
                                     )
                                 })}

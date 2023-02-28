@@ -474,7 +474,7 @@ stories.add("AdminPanel", () => {
             id: 3,
             description: "Get trade items from bla bla bla",
             route: "api/trade/bla",
-            type: "POST",
+            type: "METAMASK",
             inputs: [
               {
                 title: "Name",
