@@ -407,7 +407,7 @@ stories.add("AdminPanel", () => {
                 name: "last_name",
                 description: "Name of trade",
                 value: "",
-                required: true,
+                required: false,
                 validation: "text",
                 onChange: (e) => changeDevObject(e),
               },
@@ -474,7 +474,7 @@ stories.add("AdminPanel", () => {
             id: 3,
             description: "Get trade items from bla bla bla",
             route: "api/trade/bla",
-            type: "POST",
+            type: "METAMASK",
             inputs: [
               {
                 title: "Name",
