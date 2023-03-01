@@ -17,8 +17,9 @@ export const DeveloperApi = ({
     successResponse,
     setSuccessResponse,
     failResponse,
+    developerApiActive,
+    setDeveloperApiActive
 }) => {
-    const [active, setActive] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
     const [notValidated, setNotValidated] = useState(false);
     const [formErrors, setFormErrors] = useState({});
@@ -99,13 +100,13 @@ export const DeveloperApi = ({
                                             <div className={'api-item-top'} onClick={() => {
                                                 handleSetFields(apiItem);
                                                 setResponseActive(false);
-                                                setActive(prev => prev === apiItem.route ? false : apiItem.route)
+                                                setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
                                             }}>
                                                 <h3>{apiItem.description}</h3>
                                                 <p>{apiItem.route}</p>
                                                 <div className={'api-item-type'}>
                                                     <div className={`api-item-type-name ${apiItem.type === 'GET' ? 'api-get' : 'api-post'}`}>{apiItem.type}</div>
-                                                    <div className={`get-btn ${apiItem.type !== 'GET' ? 'disable' : ''}`}>
+                                                    <div className={`get-btn ${apiItem.inputs ? 'disable' : ''}`}>
                                                         <Button
                                                             label={'Try it out'}
                                                             size={'btn-sm'}
@@ -118,7 +119,7 @@ export const DeveloperApi = ({
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className={`api-item-params-main ${active === apiItem.route && apiItem.type !== 'GET' ? 'active' : ''}`}>
+                                            <div className={`api-item-params-main ${developerApiActive === apiItem.route && apiItem.inputs ? 'active' : ''}`}>
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Parameters</div>
                                                     <Button
@@ -170,7 +171,7 @@ export const DeveloperApi = ({
 
                                             </div>
                                             {apiItem.type !== 'METAMASK' && (
-                                                <div className={`api-item-res-container ${responseActive === apiItem.route && active === apiItem.route  ? 'active' : ''}`}>
+                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route  ? 'active' : ''}`}>
                                                     <div className={'api-item-params-ttl'}>
                                                         <div>Responses</div>
                                                     </div>

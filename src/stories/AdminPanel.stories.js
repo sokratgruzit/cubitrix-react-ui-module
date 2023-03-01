@@ -19,7 +19,9 @@ stories.add("AdminPanel", () => {
   const [devAppObject, setDevAppObject] = useState({});
   const [successResponse, setSuccessResponse] = useState({});
 
+  const [developerApiActive, setDeveloperApiActive] = useState(false);
   const [responseActive, setResponseActive] = useState(false);
+  console.log(responseActive);
 
   let mobileExpandFunc = (id) => {
     if (window.innerWidth <= 1300) {
@@ -528,26 +530,26 @@ stories.add("AdminPanel", () => {
           description: "Get trade items from basdla bla bla",
           route: "api/trade/blaasd",
           type: "POST",
-          inputs: [
-            {
-              title: "Name",
-              name: "name",
-              description: "Name of trade",
-              value: "",
-              required: false,
-              validation: "text",
-              onChange: (e) => changeDevObject(e),
-            },
-            {
-              title: "Last Name",
-              name: "last_name",
-              description: "Name of trade",
-              value: "",
-              required: false,
-              validation: "text",
-              onChange: (e) => changeDevObject(e),
-            },
-          ],
+          // inputs: [
+          //   {
+          //     title: "Name",
+          //     name: "name",
+          //     description: "Name of trade",
+          //     value: "",
+          //     required: false,
+          //     validation: "text",
+          //     onChange: (e) => changeDevObject(e),
+          //   },
+          //   {
+          //     title: "Last Name",
+          //     name: "last_name",
+          //     description: "Name of trade",
+          //     value: "",
+          //     required: false,
+          //     validation: "text",
+          //     onChange: (e) => changeDevObject(e),
+          //   },
+          // ],
         },
         {
           id: 1,
@@ -676,6 +678,7 @@ stories.add("AdminPanel", () => {
     console.log(devAppObject);
     console.log(type);
     setResponseActive(route);
+    setDeveloperApiActive(route);
   };
 
   let tableData;
@@ -922,6 +925,8 @@ stories.add("AdminPanel", () => {
           successResponse={successResponse}
           setSuccessResponse={setSuccessResponse}
           failResponse={failResponse}
+          developerApiActive={developerApiActive}
+          setDeveloperApiActive={setDeveloperApiActive}
           responseActive={responseActive}
           setResponseActive={setResponseActive}
           handleTryOutSubmit={handleTryOutSubmit}
