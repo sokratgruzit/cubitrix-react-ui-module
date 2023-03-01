@@ -38,7 +38,6 @@ export const DeveloperApi = ({
     const handleSetFields = useCallback((item) => {
         setCurrentArray({});
         setEmptyFields({});
-        setSuccessResponse({});
         item.inputs.map((input) => {
             if (input.required) {
                 setCurrentArray((prev) => ({ ...prev, [input.name]: "" }))
@@ -100,6 +99,7 @@ export const DeveloperApi = ({
                                             <div className={'api-item-top'} onClick={() => {
                                                 handleSetFields(apiItem);
                                                 if (apiItem.inputs.length) {
+                                                    setSuccessResponse({});
                                                     setResponseActive(false);
                                                     setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
                                                 }

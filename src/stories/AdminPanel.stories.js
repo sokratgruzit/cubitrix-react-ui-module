@@ -676,9 +676,10 @@ stories.add("AdminPanel", () => {
     console.log("hihi");
 
     setResponseActive(route);
+    setSuccessResponse({ name: "you bitch" });
   };
 
-  console.log(developerApiActive);
+  console.log(successResponse);
 
   let tableData;
   tableData = td.map((item, index) => {
