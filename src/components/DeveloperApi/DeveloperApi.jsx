@@ -15,7 +15,8 @@ export const DeveloperApi = ({
     responseActive,
     setResponseActive,
     successResponse,
-    failResponse
+    setSuccessResponse,
+    failResponse,
 }) => {
     const [active, setActive] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
@@ -36,6 +37,7 @@ export const DeveloperApi = ({
     const handleSetFields = useCallback((item) => {
         setCurrentArray({});
         setEmptyFields({});
+        setSuccessResponse({});
         item.inputs.map((input) => {
             if (input.required) {
                 setCurrentArray((prev) => ({ ...prev, [input.name]: "" }))
