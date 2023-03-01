@@ -106,17 +106,19 @@ export const DeveloperApi = ({
                                                 <p>{apiItem.route}</p>
                                                 <div className={'api-item-type'}>
                                                     <div className={`api-item-type-name ${apiItem.type === 'GET' ? 'api-get' : 'api-post'}`}>{apiItem.type}</div>
-                                                    <div className={`get-btn ${apiItem.inputs.length ? 'disable' : ''}`}>
-                                                        <Button
-                                                            label={'Try it out'}
-                                                            size={'btn-sm'}
-                                                            type={'btn-primary'}
-                                                            arrow={'arrow-right'}
-                                                            element={'button'}
-                                                            onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
-                                                            disabled={notValidated}
-                                                        />
-                                                    </div>
+                                                    {!apiItem.inputs.length && (
+                                                        <div className={`get-btn`}>
+                                                            <Button
+                                                                label={'Try it out'}
+                                                                size={'btn-sm'}
+                                                                type={'btn-primary'}
+                                                                arrow={'arrow-right'}
+                                                                element={'button'}
+                                                                onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
+                                                                disabled={notValidated}
+                                                            />
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                             <div className={`api-item-params-main ${developerApiActive === apiItem.route && apiItem.inputs.length ? 'active' : ''}`}>
