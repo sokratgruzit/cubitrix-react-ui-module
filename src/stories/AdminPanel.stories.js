@@ -386,6 +386,7 @@ stories.add("AdminPanel", () => {
     let developerApiArray = [
       {
         title: "Trade",
+        connectWallet: true,
         items: [
           {
             id: 0,
@@ -797,6 +798,18 @@ stories.add("AdminPanel", () => {
             responseActive={responseActive}
             setResponseActive={setResponseActive}
             handleTryOutSubmit={handleTryOutSubmit}
+            developersApiConnectButton={
+                <Button
+                    label={"Connect Wallet"}
+                    size={"btn-sm"}
+                    type={"btn-primary"}
+                    arrow={"arrow-none"}
+                    element={"button"}
+                    onClick={() => console.log("hi")}
+                    customStyles={{ margin: "0" }}
+                />
+            }
+            walletConnect={true}
           />
         </div>
       </>

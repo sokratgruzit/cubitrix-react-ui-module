@@ -15,7 +15,9 @@ export const DeveloperApi = ({
     responseActive,
     setResponseActive,
     successResponse,
-    failResponse
+    failResponse,
+    connectButton,
+    walletConnect
 }) => {
     const [active, setActive] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
@@ -55,9 +57,9 @@ export const DeveloperApi = ({
                     failure: `must be valid ${validation}`
                 }
             };
-    
+
             let formError = useValidation({ [name]: inputValue || '' }, helpText);
-    
+
             let error = formError[name];
 
             error?.failure && setNotValidated(true);
@@ -89,8 +91,9 @@ export const DeveloperApi = ({
                                 label={item.title}
                                 fontSize={'font-20'}
                                 customStyles={{marginBottom: '20px'}}
+                                buttons={item?.connectWallet ? connectButton : ''}
                             />
-                            <div className={'api-items'}>
+                            <div className={`api-items ${!walletConnect && item?.connectWallet == true? 'showGrad' : ''}`}>
                                 {item.items.map((apiItem, index) => {
                                     return(
                                         <div className={'api-item'} key={index}>
