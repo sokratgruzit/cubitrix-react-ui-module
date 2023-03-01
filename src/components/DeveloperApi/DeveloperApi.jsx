@@ -47,27 +47,29 @@ export const DeveloperApi = ({
     const handleInputChange = (e, params) => {
         const { name, validation, onChange } = params;
         const inputValue = e.target.value.trim();
-        let helpText = {
-            [name]: {
-                validationType: [validation],
-                success: `It is valid ${validation}`,
-                failure: `must be valid ${validation}`
+        if (params.validation) {
+            let helpText = {
+                [name]: {
+                    validationType: [validation],
+                    success: `It is valid ${validation}`,
+                    failure: `must be valid ${validation}`
+                }
+            };
+    
+            let formError = useValidation({ [name]: inputValue || '' }, helpText);
+    
+            let error = formError[name];
+
+            error?.failure && setNotValidated(true);
+
+            if (error?.success || inputValue?.length < 1) {
+                setNotValidated(false);
             }
-        };
 
-        let formError = useValidation({ [name]: inputValue || '' }, helpText);
-
-        let error = formError[name];
-
-        inputValue?.length > 0 && setEmptyFields(prev => ({ ...prev, [name]: false }));
-
-        error?.failure && setNotValidated(true);
-
-        if (error?.success || inputValue?.length < 1) {
-            setNotValidated(false);
+            setFormErrors(prev => ({ ...prev, ...formError}));
         }
 
-        setFormErrors(prev => ({ ...prev, ...formError}));
+        inputValue?.length > 0 && setEmptyFields(prev => ({ ...prev, [name]: false }));
 
         onChange(e);
     };

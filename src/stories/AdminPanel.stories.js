@@ -407,7 +407,7 @@ stories.add("AdminPanel", () => {
                 name: "last_name",
                 description: "Name of trade",
                 value: "",
-                required: true,
+                required: false,
                 validation: "text",
                 onChange: (e) => changeDevObject(e),
               },
