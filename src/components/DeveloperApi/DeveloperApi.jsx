@@ -106,7 +106,7 @@ export const DeveloperApi = ({
                                                 <p>{apiItem.route}</p>
                                                 <div className={'api-item-type'}>
                                                     <div className={`api-item-type-name ${apiItem.type === 'GET' ? 'api-get' : 'api-post'}`}>{apiItem.type}</div>
-                                                    <div className={`get-btn ${apiItem.inputs ? 'disable' : ''}`}>
+                                                    <div className={`get-btn ${apiItem.inputs.length ? 'disable' : ''}`}>
                                                         <Button
                                                             label={'Try it out'}
                                                             size={'btn-sm'}
@@ -119,7 +119,7 @@ export const DeveloperApi = ({
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className={`api-item-params-main ${developerApiActive === apiItem.route && apiItem.inputs ? 'active' : ''}`}>
+                                            <div className={`api-item-params-main ${developerApiActive === apiItem.route && apiItem.inputs.length ? 'active' : ''}`}>
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Parameters</div>
                                                     <Button
