@@ -7,7 +7,7 @@ import { Button } from "../Button";
 import { useState, useMemo, useCallback } from 'react';
 import { useValidation } from '../../hooks/useValidation';
 
-export const DeveloperApi = ({ 
+export const DeveloperApi = ({
     array,
     currentArray,
     setCurrentArray,
@@ -104,10 +104,21 @@ export const DeveloperApi = ({
                                                 <h3>{apiItem.description}</h3>
                                                 <p>{apiItem.route}</p>
                                                 <div className={'api-item-type'}>
-                                                    <div className={`${apiItem.type === 'GET' ? 'api-get' : 'api-post'}`}>{apiItem.type}</div>
+                                                    <div className={`api-item-type-name ${apiItem.type === 'GET' ? 'api-get' : 'api-post'}`}>{apiItem.type}</div>
+                                                    <div className={`get-btn ${apiItem.type !== 'GET' ? 'disable' : ''}`}>
+                                                        <Button
+                                                            label={'Try it out'}
+                                                            size={'btn-sm'}
+                                                            type={'btn-primary'}
+                                                            arrow={'arrow-right'}
+                                                            element={'button'}
+                                                            onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
+                                                            disabled={notValidated}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className={`api-item-params-main ${active === apiItem.route ? 'active' : ''}`}>
+                                            <div className={`api-item-params-main ${active === apiItem.route && apiItem.type !== 'GET' ? 'active' : ''}`}>
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Parameters</div>
                                                     <Button
