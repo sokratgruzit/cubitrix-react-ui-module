@@ -21,7 +21,6 @@ stories.add("AdminPanel", () => {
 
   const [developerApiActive, setDeveloperApiActive] = useState(false);
   const [responseActive, setResponseActive] = useState(false);
-  console.log(responseActive);
 
   let mobileExpandFunc = (id) => {
     if (window.innerWidth <= 1300) {
@@ -675,11 +674,11 @@ stories.add("AdminPanel", () => {
 
   const handleTryOutSubmit = (route, type) => {
     console.log("hihi");
-    console.log(devAppObject);
-    console.log(type);
+
     setResponseActive(route);
-    setDeveloperApiActive(route);
   };
+
+  console.log(developerApiActive);
 
   let tableData;
   tableData = td.map((item, index) => {

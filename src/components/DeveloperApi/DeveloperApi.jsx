@@ -99,8 +99,10 @@ export const DeveloperApi = ({
                                         <div className={'api-item'} key={index}>
                                             <div className={'api-item-top'} onClick={() => {
                                                 handleSetFields(apiItem);
-                                                setResponseActive(false);
-                                                setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
+                                                if (apiItem.inputs.length) {
+                                                    setResponseActive(false);
+                                                    setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
+                                                }
                                             }}>
                                                 <h3>{apiItem.description}</h3>
                                                 <p>{apiItem.route}</p>
@@ -114,7 +116,11 @@ export const DeveloperApi = ({
                                                                 type={'btn-primary'}
                                                                 arrow={'arrow-right'}
                                                                 element={'button'}
-                                                                onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
+                                                                onClick={() => {
+                                                                    setResponseActive(apiItem.route)
+                                                                    setDeveloperApiActive(apiItem.route)
+                                                                    handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)
+                                                                }}
                                                                 disabled={notValidated}
                                                             />
                                                         </div>
