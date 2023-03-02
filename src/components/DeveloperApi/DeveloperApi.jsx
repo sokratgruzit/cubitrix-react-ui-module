@@ -117,6 +117,7 @@ export const DeveloperApi = ({
                                                                 arrow={'arrow-right'}
                                                                 element={'button'}
                                                                 onClick={() => {
+                                                                    setSuccessResponse({});
                                                                     setResponseActive(apiItem.route)
                                                                     setDeveloperApiActive(apiItem.route)
                                                                     handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)
@@ -179,7 +180,7 @@ export const DeveloperApi = ({
 
                                             </div>
                                             {apiItem.type !== 'METAMASK' && (
-                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route  ? 'active' : ''}`}>
+                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route && Object.keys(successResponse).length  ? 'active' : ''}`}>
                                                     <div className={'api-item-params-ttl'}>
                                                         <div>Responses</div>
                                                     </div>

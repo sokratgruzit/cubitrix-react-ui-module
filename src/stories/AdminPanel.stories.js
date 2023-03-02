@@ -558,24 +558,24 @@ stories.add("AdminPanel", () => {
           route: "api/trade/blaaaaa",
           type: "GET",
           inputs: [
-            {
-              title: "Name",
-              name: "last_nameqqqqqqqq",
-              description: "Name of trade",
-              value: "",
-              required: true,
-              validation: "text",
-              onChange: (e) => changeDevObject(e),
-            },
-            {
-              title: "Last Name",
-              name: "last_nameqqqqq",
-              description: "Name of trade",
-              value: "",
-              required: true,
-              validation: "text",
-              onChange: (e) => changeDevObject(e),
-            },
+            // {
+            //   title: "Name",
+            //   name: "last_nameqqqqqqqq",
+            //   description: "Name of trade",
+            //   value: "",
+            //   required: true,
+            //   validation: "text",
+            //   onChange: (e) => changeDevObject(e),
+            // },
+            // {
+            //   title: "Last Name",
+            //   name: "last_nameqqqqq",
+            //   description: "Name of trade",
+            //   value: "",
+            //   required: true,
+            //   validation: "text",
+            //   onChange: (e) => changeDevObject(e),
+            // },
           ],
         },
       ],
@@ -679,10 +679,13 @@ stories.add("AdminPanel", () => {
 
     // setDeveloperApiResponseActive(route);
     setDeveloperApiResponseActive(route);
-    setDeveloperApiSuccessResponse({ name: "you bitch" });
+    if (type === "GET") {
+      return setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+    }
+    setTimeout(() => {
+      setDeveloperApiSuccessResponse([{ what: "ayyyy" }]);
+    }, 2000);
   };
-
-  console.log(developerApiSuccessResponse);
 
   let tableData;
   tableData = td.map((item, index) => {
