@@ -11,12 +11,12 @@ export const AdminPanel = props => {
     let filter;
     if(props.tableFilter === true) {
         filter =  <FilterBox
-                    tableFilterData={props.tableFilterData}
-                    setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-                    tableSearchSelect={props.tableSearchSelect}
-                    tableHeader={props.tableHeader}
-                    customStyles={{marginBottom: '20px'}}
-                />
+            tableFilterData={props.tableFilterData}
+            setTableFilterOutcomingData={props.setTableFilterOutcomingData}
+            tableSearchSelect={props.tableSearchSelect}
+            tableHeader={props.tableHeader}
+            customStyles={{marginBottom: '20px'}}
+        />
     }
     return (
         <div className={`admin-content`}>
@@ -84,16 +84,16 @@ export const AdminPanel = props => {
                         array={props.developersApi}
                         currentArray={props.developersApiValues}
                         setCurrentArray={props.setDeveloperApiValues}
-                        handleSubmit={props.handleTryOutSubmit}
-                        successResponse={props.successResponse}
-                        setSuccessResponse={props.setSuccessResponse}
-                        failResponse={props.failResponse}
-                        responseActive={props.responseActive}
-                        setResponseActive={props.setResponseActive}
-                        connectButton={props.developersApiConnectButton}
-                        walletConnect={props.walletConnect}
+                        handleSubmit={props.handleDeveloperApiTryOut}
+                        successResponse={props.developerApiSuccessResponse}
+                        setSuccessResponse={props.setDeveloperApiSuccessResponse}
+                        failResponse={props.developerApiFailResponse}
+                        responseActive={props.developerApiResponseActive}
+                        setResponseActive={props.setDeveloperApiResponseActive}
                         developerApiActive={props.developerApiActive}
                         setDeveloperApiActive={props.setDeveloperApiActive}
+                        connectButton={props.developersApiConnectButton}
+                        walletConnect={props.walletConnect}
                     />
                 </>
             )}
