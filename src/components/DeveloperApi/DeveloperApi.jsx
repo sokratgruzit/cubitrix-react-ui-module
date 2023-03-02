@@ -15,8 +15,10 @@ export const DeveloperApi = ({
     responseActive,
     setResponseActive,
     successResponse,
-    setSuccessResponse,
     failResponse,
+    connectButton,
+    walletConnect,
+    setSuccessResponse,
     developerApiActive,
     setDeveloperApiActive
 }) => {
@@ -57,9 +59,9 @@ export const DeveloperApi = ({
                     failure: `must be valid ${validation}`
                 }
             };
-    
+
             let formError = useValidation({ [name]: inputValue || '' }, helpText);
-    
+
             let error = formError[name];
 
             error?.failure && setNotValidated(true);
@@ -91,8 +93,9 @@ export const DeveloperApi = ({
                                 label={item.title}
                                 fontSize={'font-20'}
                                 customStyles={{marginBottom: '20px'}}
+                                buttons={item?.connectWallet ? connectButton : ''}
                             />
-                            <div className={'api-items'}>
+                            <div className={`api-items ${!walletConnect && item?.connectWallet == true? 'showGrad' : ''}`}>
                                 {item.items.map((apiItem, index) => {
                                     return(
                                         <div className={'api-item'} key={index}>
@@ -117,7 +120,7 @@ export const DeveloperApi = ({
                                                                 arrow={'arrow-right'}
                                                                 element={'button'}
                                                                 onClick={() => {
-                                                                    setSuccessResponse({});
+                                                                    setSuccessResponse({})
                                                                     setResponseActive(apiItem.route)
                                                                     setDeveloperApiActive(apiItem.route)
                                                                     handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)
@@ -213,4 +216,3 @@ export const DeveloperApi = ({
         </div>
     );
 }
-

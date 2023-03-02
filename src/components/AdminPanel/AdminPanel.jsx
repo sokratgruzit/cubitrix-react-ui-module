@@ -11,12 +11,12 @@ export const AdminPanel = props => {
     let filter;
     if(props.tableFilter === true) {
         filter =  <FilterBox
-                    tableFilterData={props.tableFilterData}
-                    setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-                    tableSearchSelect={props.tableSearchSelect}
-                    tableHeader={props.tableHeader}
-                    customStyles={{marginBottom: '20px'}}
-                />  
+            tableFilterData={props.tableFilterData}
+            setTableFilterOutcomingData={props.setTableFilterOutcomingData}
+            tableSearchSelect={props.tableSearchSelect}
+            tableHeader={props.tableHeader}
+            customStyles={{marginBottom: '20px'}}
+        />
     }
     return (
         <div className={`admin-content`}>
@@ -92,6 +92,8 @@ export const AdminPanel = props => {
                         setResponseActive={props.setDeveloperApiResponseActive}
                         developerApiActive={props.developerApiActive}
                         setDeveloperApiActive={props.setDeveloperApiActive}
+                        connectButton={props.developersApiConnectButton}
+                        walletConnect={props.walletConnect}
                     />
                 </>
             )}

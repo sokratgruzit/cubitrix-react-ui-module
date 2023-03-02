@@ -936,6 +936,18 @@ stories.add("AdminPanel", () => {
           developerApiResponseActive={developerApiResponseActive}
           setDeveloperApiResponseActive={setDeveloperApiResponseActive}
           handleDeveloperApiTryOut={handleDeveloperApiTryOut}
+          developersApiConnectButton={
+            <Button
+              label={"Connect Wallet"}
+              size={"btn-sm"}
+              type={"btn-primary"}
+              arrow={"arrow-none"}
+              element={"button"}
+              onClick={() => console.log("hi")}
+              customStyles={{ margin: "0" }}
+            />
+          }
+          walletConnect={true}
         />
       </div>
     </>
