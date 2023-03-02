@@ -17,9 +17,11 @@ export const DeveloperApi = ({
     successResponse,
     failResponse,
     connectButton,
-    walletConnect
+    walletConnect,
+    setSuccessResponse,
+    developerApiActive,
+    setDeveloperApiActive
 }) => {
-    const [active, setActive] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
     const [notValidated, setNotValidated] = useState(false);
     const [formErrors, setFormErrors] = useState({});
@@ -38,6 +40,7 @@ export const DeveloperApi = ({
     const handleSetFields = useCallback((item) => {
         setCurrentArray({});
         setEmptyFields({});
+        setSuccessResponse({});
         item.inputs.map((input) => {
             if (input.required) {
                 setCurrentArray((prev) => ({ ...prev, [input.name]: "" }))
@@ -100,26 +103,28 @@ export const DeveloperApi = ({
                                             <div className={'api-item-top'} onClick={() => {
                                                 handleSetFields(apiItem);
                                                 setResponseActive(false);
-                                                setActive(prev => prev === apiItem.route ? false : apiItem.route)
+                                                setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
                                             }}>
                                                 <h3>{apiItem.description}</h3>
                                                 <p>{apiItem.route}</p>
                                                 <div className={'api-item-type'}>
                                                     <div className={`api-item-type-name ${apiItem.type === 'GET' ? 'api-get' : 'api-post'}`}>{apiItem.type}</div>
-                                                    <div className={`get-btn ${apiItem.type !== 'GET' ? 'disable' : ''}`}>
-                                                        <Button
-                                                            label={'Try it out'}
-                                                            size={'btn-sm'}
-                                                            type={'btn-primary'}
-                                                            arrow={'arrow-right'}
-                                                            element={'button'}
-                                                            onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
-                                                            disabled={notValidated}
-                                                        />
-                                                    </div>
+                                                    {!apiItem.inputs.length && (
+                                                        <div className={`get-btn`}>
+                                                            <Button
+                                                                label={'Try it out'}
+                                                                size={'btn-sm'}
+                                                                type={'btn-primary'}
+                                                                arrow={'arrow-right'}
+                                                                element={'button'}
+                                                                onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
+                                                                disabled={notValidated}
+                                                            />
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
-                                            <div className={`api-item-params-main ${active === apiItem.route && apiItem.type !== 'GET' ? 'active' : ''}`}>
+                                            <div className={`api-item-params-main ${developerApiActive === apiItem.route && apiItem.inputs.length ? 'active' : ''}`}>
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Parameters</div>
                                                     <Button
@@ -171,7 +176,7 @@ export const DeveloperApi = ({
 
                                             </div>
                                             {apiItem.type !== 'METAMASK' && (
-                                                <div className={`api-item-res-container ${responseActive === apiItem.route && active === apiItem.route  ? 'active' : ''}`}>
+                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route  ? 'active' : ''}`}>
                                                     <div className={'api-item-params-ttl'}>
                                                         <div>Responses</div>
                                                     </div>
