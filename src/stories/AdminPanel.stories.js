@@ -688,8 +688,6 @@ stories.add("AdminPanel", () => {
     status: 0,
   };
 
-  console.log(devAppObject);
-
   const handleDeveloperApiTryOut = (route, type) => {
     console.log("hihi");
 
