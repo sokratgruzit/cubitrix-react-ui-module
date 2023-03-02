@@ -85,6 +85,19 @@ export const DeveloperApi = ({
         onChange(e);
     };
 
+    const handleSelectChange = (opt, params) => {
+        const { name, onChange } = params;
+        setEmptyFields(prev => ({ ...prev, [name]: false }));
+        let e = {
+            target: {
+                value: opt,
+                name: [name]
+            }
+        };
+
+        onChange(e)
+    }
+ 
     const notEmptyList = useMemo(() => Object.keys(currentArray)?.filter((key) => !currentArray[key]) ?? [], [currentArray]);
 
     const handleTryItOut = (route, type, inputs) => notEmptyList.length > 0 ? handleEmptyFields(inputs) : handleSubmit(route, type);
@@ -159,12 +172,11 @@ export const DeveloperApi = ({
                                                         <div className={'api-item-params'} key={apiItem.route + params.name + index}>
                                                             <div className={'api-params'}>
                                                                 <Input
-                                                                    type={"default"}
+                                                                    type={params.type === "select" ? "lable-input-select" : "default"}
                                                                     inputType={"text"}
                                                                     label={params.title}
                                                                     name={params.name}
-                                                                    editable={true}
-                                                                    value={currentArray[params?.name] || ''}
+                                                                    value={params.type === "select" ? 'Any' : currentArray[params?.name] || ''}
                                                                     onChange={(e) => handleInputChange(e, params)}
                                                                     emptyFieldErr={params.required && emptyFields[params?.name]}
                                                                     customStyles={{ width: "100%" }}
@@ -178,10 +190,12 @@ export const DeveloperApi = ({
                                                                             />
                                                                         )
                                                                     }
+                                                                    selectHandler={(opt) => handleSelectChange(opt, params)}
+                                                                    defaultData={params?.options}
                                                                 />
                                                             </div>
                                                             <div className={'api-details'}>
-                                                                {params.description}
+                                                                {params.description}    
                                                             </div>
                                                         </div>
                                                     )
