@@ -22,6 +22,7 @@ export const DeveloperApi = ({
     developerApiActive,
     setDeveloperApiActive
 }) => {
+    const [loading, setLoading] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
     const [notValidated, setNotValidated] = useState(false);
     const [formErrors, setFormErrors] = useState({});
@@ -40,12 +41,18 @@ export const DeveloperApi = ({
     const handleSetFields = useCallback((item) => {
         setCurrentArray({});
         setEmptyFields({});
-        item.inputs.map((input) => {
+        item.inputs?.map((input) => {
             if (input.required) {
                 setCurrentArray((prev) => ({ ...prev, [input.name]: "" }))
             }
         }
         );
+        if (item.inputs.length) {
+            setDeveloperApiActive(prev => prev === item.route ? false : item.route)
+            setSuccessResponse({});
+            setResponseActive(false);
+            setLoading(false)
+        }
     }, []);
 
     const handleInputChange = (e, params) => {
@@ -101,11 +108,6 @@ export const DeveloperApi = ({
                                         <div className={'api-item'} key={index}>
                                             <div className={'api-item-top'} onClick={() => {
                                                 handleSetFields(apiItem);
-                                                if (apiItem.inputs.length) {
-                                                    setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
-                                                    setSuccessResponse({});
-                                                    setResponseActive(false);
-                                                }
                                             }}>
                                                 <h3>{apiItem.description}</h3>
                                                 <p>{apiItem.route}</p>
@@ -114,13 +116,14 @@ export const DeveloperApi = ({
                                                     {!apiItem.inputs.length && (
                                                         <div className={`get-btn`}>
                                                             <Button
-                                                                label={'Try it out'}
+                                                                label={loading && !Object.keys(successResponse).length && responseActive === apiItem.route && developerApiActive === apiItem.route  ? 'Loading..' : 'Try it out'}
                                                                 size={'btn-sm'}
                                                                 type={'btn-primary'}
                                                                 arrow={'arrow-right'}
                                                                 element={'button'}
                                                                 onClick={() => {
                                                                     setSuccessResponse({})
+                                                                    setLoading(true)
                                                                     setResponseActive(apiItem.route)
                                                                     setDeveloperApiActive(apiItem.route)
                                                                     handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)
@@ -135,12 +138,15 @@ export const DeveloperApi = ({
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Parameters</div>
                                                     <Button
-                                                        label={'Try it out'}
+                                                        label={loading && !Object.keys(successResponse).length && responseActive === apiItem.route && developerApiActive === apiItem.route  ? 'Loading..' : 'Try it out'}
                                                         size={'btn-sm'}
                                                         type={'btn-primary'}
                                                         arrow={'arrow-right'}
                                                         element={'button'}
-                                                        onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
+                                                        onClick={() => {
+                                                            setLoading(true)
+                                                            handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)
+                                                        }}
                                                         disabled={notValidated}
                                                     />
                                                 </div>
@@ -183,7 +189,7 @@ export const DeveloperApi = ({
 
                                             </div>
                                             {apiItem.type !== 'METAMASK' && (
-                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route && Object.keys(successResponse).length  ? 'active' : ''}`}>
+                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route && Object.keys(successResponse).length ? 'active' : ''}`}>
                                                     <div className={'api-item-params-ttl'}>
                                                         <div>Responses</div>
                                                     </div>

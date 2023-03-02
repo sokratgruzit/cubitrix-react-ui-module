@@ -680,11 +680,11 @@ stories.add("AdminPanel", () => {
     // setDeveloperApiResponseActive(route);
     setDeveloperApiResponseActive(route);
     if (type === "GET") {
-      return setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+      return setTimeout(() => {
+        setDeveloperApiSuccessResponse([{ what: "ayyyy" }]);
+      }, 2000);
     }
-    setTimeout(() => {
-      setDeveloperApiSuccessResponse([{ what: "ayyyy" }]);
-    }, 2000);
+    setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
   };
 
   let tableData;
