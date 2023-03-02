@@ -84,12 +84,12 @@ export const AdminPanel = props => {
                         array={props.developersApi}
                         currentArray={props.developersApiValues}
                         setCurrentArray={props.setDeveloperApiValues}
-                        handleSubmit={props.handleTryOutSubmit}
-                        successResponse={props.successResponse}
-                        setSuccessResponse={props.setSuccessResponse}
-                        failResponse={props.failResponse}
-                        responseActive={props.responseActive}
-                        setResponseActive={props.setResponseActive}
+                        handleSubmit={props.handleDeveloperApiTryOut}
+                        successResponse={props.developerApiSuccessResponse}
+                        setSuccessResponse={props.setDeveloperApiSuccessResponse}
+                        failResponse={props.developerApiFailResponse}
+                        responseActive={props.developerApiResponseActive}
+                        setResponseActive={props.setDeveloperApiResponseActive}
                         developerApiActive={props.developerApiActive}
                         setDeveloperApiActive={props.setDeveloperApiActive}
                     />

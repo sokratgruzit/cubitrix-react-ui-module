@@ -17,10 +17,12 @@ stories.add("AdminPanel", () => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [tableExpand, setTableExpand] = useState(null);
   const [devAppObject, setDevAppObject] = useState({});
-  const [successResponse, setSuccessResponse] = useState({});
+  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] =
+    useState({});
 
   const [developerApiActive, setDeveloperApiActive] = useState(false);
-  const [responseActive, setResponseActive] = useState(false);
+  const [developerApiResponseActive, setDeveloperApiResponseActive] =
+    useState(false);
 
   let mobileExpandFunc = (id) => {
     if (window.innerWidth <= 1300) {
@@ -637,7 +639,7 @@ stories.add("AdminPanel", () => {
     },
   ];
 
-  // const successResponse = {
+  // const developerApiSuccessResponse = {
   //   message: "OK",
   //   result: [
   //     {
@@ -666,20 +668,21 @@ stories.add("AdminPanel", () => {
   //   status: "1",
   // };
 
-  const failResponse = {
+  const developerApiFailResponse = {
     message: "No data was found",
     result: [],
     status: 0,
   };
 
-  const handleTryOutSubmit = (route, type) => {
+  const handleDeveloperApiTryOut = (route, type) => {
     console.log("hihi");
 
-    setResponseActive(route);
-    setSuccessResponse({ name: "you bitch" });
+    // setDeveloperApiResponseActive(route);
+    setDeveloperApiResponseActive(route);
+    setDeveloperApiSuccessResponse({ name: "you bitch" });
   };
 
-  console.log(successResponse);
+  console.log(developerApiSuccessResponse);
 
   let tableData;
   tableData = td.map((item, index) => {
@@ -922,14 +925,14 @@ stories.add("AdminPanel", () => {
           developersApi={developerApiArray}
           developersApiValues={devAppObject}
           setDeveloperApiValues={setDevAppObject}
-          successResponse={successResponse}
-          setSuccessResponse={setSuccessResponse}
-          failResponse={failResponse}
+          developerApiSuccessResponse={developerApiSuccessResponse}
+          setDeveloperApiSuccessResponse={setDeveloperApiSuccessResponse}
+          developerApiFailResponse={developerApiFailResponse}
           developerApiActive={developerApiActive}
           setDeveloperApiActive={setDeveloperApiActive}
-          responseActive={responseActive}
-          setResponseActive={setResponseActive}
-          handleTryOutSubmit={handleTryOutSubmit}
+          developerApiResponseActive={developerApiResponseActive}
+          setDeveloperApiResponseActive={setDeveloperApiResponseActive}
+          handleDeveloperApiTryOut={handleDeveloperApiTryOut}
         />
       </div>
     </>

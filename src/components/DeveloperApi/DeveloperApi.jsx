@@ -99,9 +99,9 @@ export const DeveloperApi = ({
                                             <div className={'api-item-top'} onClick={() => {
                                                 handleSetFields(apiItem);
                                                 if (apiItem.inputs.length) {
+                                                    setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
                                                     setSuccessResponse({});
                                                     setResponseActive(false);
-                                                    setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
                                                 }
                                             }}>
                                                 <h3>{apiItem.description}</h3>
