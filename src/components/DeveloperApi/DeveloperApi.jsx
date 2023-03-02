@@ -85,18 +85,18 @@ export const DeveloperApi = ({
         onChange(e);
     };
 
-    const handleSelectChange = (opt, params) => {
+    const handleInputChangeWithType = (e, params) => {
         const { name, onChange } = params;
         setEmptyFields(prev => ({ ...prev, [name]: false }));
-        let e = {
+        let data = {
             target: {
-                value: opt,
-                name: [name]
+                value: e,
+                name
             }
         };
 
-        onChange(e)
-    }
+        onChange(data)
+    };
  
     const notEmptyList = useMemo(() => Object.keys(currentArray)?.filter((key) => !currentArray[key]) ?? [], [currentArray]);
 
@@ -115,7 +115,7 @@ export const DeveloperApi = ({
                                 customStyles={{marginBottom: '20px'}}
                                 buttons={item?.connectWallet ? connectButton : ''}
                             />
-                            <div className={`api-items ${!walletConnect && item?.connectWallet == true? 'showGrad' : ''}`}>
+                            <div className={`api-items ${!walletConnect && item?.connectWallet == true ? 'showGrad' : ''}`}>
                                 {item.items.map((apiItem, index) => {
                                     return(
                                         <div className={'api-item'} key={index}>
@@ -172,12 +172,20 @@ export const DeveloperApi = ({
                                                         <div className={'api-item-params'} key={apiItem.route + params.name + index}>
                                                             <div className={'api-params'}>
                                                                 <Input
-                                                                    type={params.type === "select" ? "lable-input-select" : "default"}
+                                                                    type={
+                                                                        params.type === "select" 
+                                                                          ? "lable-input-select" 
+                                                                          : params.type === "upload" 
+                                                                            ? "label-input-upload" 
+                                                                            : params.type === "date" 
+                                                                              ? "date-picker-input"
+                                                                              : "default"
+                                                                    }                                                                   
                                                                     inputType={"text"}
                                                                     label={params.title}
                                                                     name={params.name}
                                                                     value={params.type === "select" ? 'Any' : currentArray[params?.name] || ''}
-                                                                    onChange={(e) => handleInputChange(e, params)}
+                                                                    onChange={(e) => params.type === 'upload' || params.type === 'date' ? handleInputChangeWithType(e, params) : handleInputChange(e, params)}
                                                                     emptyFieldErr={params.required && emptyFields[params?.name]}
                                                                     customStyles={{ width: "100%" }}
                                                                     statusCard= {
@@ -190,7 +198,7 @@ export const DeveloperApi = ({
                                                                             />
                                                                         )
                                                                     }
-                                                                    selectHandler={(opt) => handleSelectChange(opt, params)}
+                                                                    selectHandler={(opt) => handleInputChangeWithType(opt, params)}
                                                                     defaultData={params?.options}
                                                                 />
                                                             </div>
