@@ -601,6 +601,7 @@ stories.add("AdminPanel", () => {
               type: "select",
               selectType: "country",
               selectLabel: "Select Country",
+              selectPosition: "top",
               onChange: (e) => changeDevObject(e),
             },
             {

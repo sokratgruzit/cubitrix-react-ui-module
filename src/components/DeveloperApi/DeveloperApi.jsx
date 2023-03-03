@@ -205,6 +205,7 @@ export const DeveloperApi = ({
                                                                     defaultData={params?.options}
                                                                     selectType={params?.selectType}
                                                                     selectLabel={params?.selectLabel}
+                                                                    selectPosition={params?.selectPosition}
                                                                 />
                                                             </div>
                                                             <div className={'api-details'}>
