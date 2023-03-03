@@ -94,6 +94,7 @@ export const AdminPanel = props => {
                         setDeveloperApiActive={props.setDeveloperApiActive}
                         connectButton={props.developersApiConnectButton}
                         walletConnect={props.walletConnect}
+                        loading={props.developerApiLoading}
                     />
                 </>
             )}

@@ -20,6 +20,7 @@ stories.add("AdminPanel", () => {
   const [animateDom, setAnimateDom] = useState(false);
   const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] =
     useState({});
+  const [developerApiLoading, setDeveloperApiLoading] = useState(false);
 
   const [developerApiActive, setDeveloperApiActive] = useState(false);
   const [developerApiResponseActive, setDeveloperApiResponseActive] =
@@ -27,7 +28,7 @@ stories.add("AdminPanel", () => {
   useEffect(() => {
     setTimeout(() => {
       setAnimateDom(true);
-    },500)
+    }, 500);
   }, []);
   let mobileExpandFunc = (id) => {
     if (window.innerWidth <= 1300) {
@@ -592,27 +593,27 @@ stories.add("AdminPanel", () => {
           route: "api/trade/baaaaala",
           type: "GET",
           inputs: [
-            {
-              id: 0,
-              title: "Last Name",
-              description: "Name of trade",
-              name: "last_namedsssss",
-              required: true,
-              type: "select",
-              selectType: "country",
-              selectLabel: "Select Country",
-              selectPosition: "top",
-              onChange: (e) => changeDevObject(e),
-            },
-            {
-              id: 1,
-              title: "Mobile",
-              description: "Mobile",
-              name: "mobile",
-              required: true,
-              type: "mobile",
-              onChange: (e) => changeDevObject(e),
-            },
+            // {
+            //   id: 0,
+            //   title: "Last Name",
+            //   description: "Name of trade",
+            //   name: "last_namedsssss",
+            //   required: true,
+            //   type: "select",
+            //   selectType: "country",
+            //   selectLabel: "Select Country",
+            //   selectPosition: "top",
+            //   onChange: (e) => changeDevObject(e),
+            // },
+            // {
+            //   id: 1,
+            //   title: "Mobile",
+            //   description: "Mobile",
+            //   name: "mobile",
+            //   required: true,
+            //   type: "mobile",
+            //   onChange: (e) => changeDevObject(e),
+            // },
           ],
         },
         {
@@ -681,14 +682,18 @@ stories.add("AdminPanel", () => {
   const handleDeveloperApiTryOut = (route, type) => {
     console.log("hihi");
 
+    setDeveloperApiLoading(true);
+
     // setDeveloperApiResponseActive(route);
     setDeveloperApiResponseActive(route);
     if (type === "GET") {
       return setTimeout(() => {
-        setDeveloperApiSuccessResponse([{ what: "ayyyy" }]);
+        setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+        setDeveloperApiLoading(false);
       }, 2000);
     }
     setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+    setDeveloperApiLoading(false);
   };
 
   console.log(devAppObject);
@@ -854,7 +859,12 @@ stories.add("AdminPanel", () => {
         animate={animateDom}
       />
       <div className={`admin-container`}>
-        <div className={`admin-sidebar animate-translateX ${animateDom ? 'animate' : ''}`} style={{transitionDelay: '.1s'}}>
+        <div
+          className={`admin-sidebar animate-translateX ${
+            animateDom ? "animate" : ""
+          }`}
+          style={{ transitionDelay: ".1s" }}
+        >
           <BrowserRouter>
             <Routes>
               <Route
@@ -944,6 +954,7 @@ stories.add("AdminPanel", () => {
           developerApiResponseActive={developerApiResponseActive}
           setDeveloperApiResponseActive={setDeveloperApiResponseActive}
           handleDeveloperApiTryOut={handleDeveloperApiTryOut}
+          developerApiLoading={developerApiLoading}
           developersApiConnectButton={
             <Button
               label={"Connect Wallet"}
