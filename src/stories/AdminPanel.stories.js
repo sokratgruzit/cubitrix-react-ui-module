@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../assets/css/main-theme.css";
 import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
@@ -17,13 +17,18 @@ stories.add("AdminPanel", () => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [tableExpand, setTableExpand] = useState(null);
   const [devAppObject, setDevAppObject] = useState({});
+  const [animateDom, setAnimateDom] = useState(false);
   const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] =
     useState({});
 
   const [developerApiActive, setDeveloperApiActive] = useState(false);
   const [developerApiResponseActive, setDeveloperApiResponseActive] =
     useState(false);
-
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimateDom(true);
+    },500)
+  }, []);
   let mobileExpandFunc = (id) => {
     if (window.innerWidth <= 1300) {
       if (id !== mobileExpand) {
@@ -845,9 +850,10 @@ stories.add("AdminPanel", () => {
         headSvg={adminHeaderData.svg}
         userImageUrl={adminHeaderData.userImageUrl}
         authsDropdown={adminHeaderData.authsDropdown}
+        animate={animateDom}
       />
       <div className={`admin-container`}>
-        <div className={`admin-sidebar`}>
+        <div className={`admin-sidebar animate-translateX ${animateDom ? 'animate' : ''}`} style={{transitionDelay: '.1s'}}>
           <BrowserRouter>
             <Routes>
               <Route
@@ -875,6 +881,7 @@ stories.add("AdminPanel", () => {
           </BrowserRouter>
         </div>
         <AdminPanel
+          animate={animateDom}
           sideBarData={
             <BrowserRouter>
               <Routes>
