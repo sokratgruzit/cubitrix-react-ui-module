@@ -179,13 +179,15 @@ export const DeveloperApi = ({
                                                                             ? "label-input-upload" 
                                                                             : params.type === "date" 
                                                                               ? "date-picker-input"
-                                                                              : "default"
+                                                                              : params.type === "mobile" 
+                                                                                ? "label-input-phone-number" 
+                                                                                 : "default"
                                                                     }                                                                   
-                                                                    inputType={"text"}
+                                                                    inputType={params?.inputType}
                                                                     label={params.title}
                                                                     name={params.name}
                                                                     value={params.type === "select" ? 'Any' : currentArray[params?.name] || ''}
-                                                                    onChange={(e) => params.type === 'upload' || params.type === 'date' ? handleInputChangeWithType(e, params) : handleInputChange(e, params)}
+                                                                    onChange={(e) => !params.type ? handleInputChange(e, params) : handleInputChangeWithType(e, params)}
                                                                     emptyFieldErr={params.required && emptyFields[params?.name]}
                                                                     customStyles={{ width: "100%" }}
                                                                     statusCard= {
@@ -198,8 +200,11 @@ export const DeveloperApi = ({
                                                                             />
                                                                         )
                                                                     }
+                                                                    onClick={params.selectType && ((e) => handleInputChangeWithType(e, params))}
                                                                     selectHandler={(opt) => handleInputChangeWithType(opt, params)}
                                                                     defaultData={params?.options}
+                                                                    selectType={params?.selectType}
+                                                                    selectLabel={params?.selectLabel}
                                                                 />
                                                             </div>
                                                             <div className={'api-details'}>

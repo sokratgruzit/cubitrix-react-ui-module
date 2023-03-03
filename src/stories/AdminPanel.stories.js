@@ -588,39 +588,23 @@ stories.add("AdminPanel", () => {
           type: "GET",
           inputs: [
             {
-              title: "Name",
-              description: "Name of trade",
-              name: "last_nameqwa",
-              required: true,
-              type: "select",
-              options: [
-                {
-                  name: "Transaction",
-                  value: "transaction",
-                },
-                {
-                  name: "Hash",
-                  value: "hash",
-                },
-              ],
-              onChange: (e) => changeDevObject(e),
-            },
-            {
+              id: 0,
               title: "Last Name",
               description: "Name of trade",
               name: "last_namedsssss",
               required: true,
               type: "select",
-              options: [
-                {
-                  name: "Transaction",
-                  value: "transaction",
-                },
-                {
-                  name: "Hash",
-                  value: "hash",
-                },
-              ],
+              selectType: "country",
+              selectLabel: "Select Country",
+              onChange: (e) => changeDevObject(e),
+            },
+            {
+              id: 1,
+              title: "Mobile",
+              description: "Mobile",
+              name: "mobile",
+              required: true,
+              type: "mobile",
               onChange: (e) => changeDevObject(e),
             },
           ],
@@ -700,6 +684,8 @@ stories.add("AdminPanel", () => {
     }
     setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
   };
+
+  console.log(devAppObject);
 
   let tableData;
   tableData = td.map((item, index) => {
