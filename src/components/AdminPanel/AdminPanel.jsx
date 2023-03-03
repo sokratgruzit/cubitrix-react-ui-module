@@ -19,7 +19,7 @@ export const AdminPanel = props => {
         />
     }
     return (
-        <div className={`admin-content`}>
+        <div className={`admin-content  animate-translateX ${props.animate ? 'animate' : ''}`} style={{transitionDelay: '.2s'}}>
             {props.adminPage === 'dashboard' && (
                 <div style={{ display: 'flex', gap: '20px', paddingTop: '40px'}}>
                     <DashboardCard
