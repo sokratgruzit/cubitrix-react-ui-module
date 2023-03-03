@@ -22,6 +22,7 @@ export const DeveloperApi = ({
     developerApiActive,
     setDeveloperApiActive
 }) => {
+    const [loading, setLoading] = useState(false);
     const [emptyFields, setEmptyFields] = useState({});
     const [notValidated, setNotValidated] = useState(false);
     const [formErrors, setFormErrors] = useState({});
@@ -40,12 +41,18 @@ export const DeveloperApi = ({
     const handleSetFields = useCallback((item) => {
         setCurrentArray({});
         setEmptyFields({});
-        item.inputs.map((input) => {
+        item.inputs?.map((input) => {
             if (input.required) {
                 setCurrentArray((prev) => ({ ...prev, [input.name]: "" }))
             }
         }
         );
+        if (item.inputs.length) {
+            setDeveloperApiActive(prev => prev === item.route ? false : item.route)
+            setSuccessResponse({});
+            setResponseActive(false);
+            setLoading(false)
+        }
     }, []);
 
     const handleInputChange = (e, params) => {
@@ -78,6 +85,19 @@ export const DeveloperApi = ({
         onChange(e);
     };
 
+    const handleInputChangeWithType = (e, params) => {
+        const { name, onChange } = params;
+        setEmptyFields(prev => ({ ...prev, [name]: false }));
+        let data = {
+            target: {
+                value: e,
+                name
+            }
+        };
+
+        onChange(data)
+    };
+ 
     const notEmptyList = useMemo(() => Object.keys(currentArray)?.filter((key) => !currentArray[key]) ?? [], [currentArray]);
 
     const handleTryItOut = (route, type, inputs) => notEmptyList.length > 0 ? handleEmptyFields(inputs) : handleSubmit(route, type);
@@ -95,17 +115,12 @@ export const DeveloperApi = ({
                                 customStyles={{marginBottom: '20px'}}
                                 buttons={item?.connectWallet ? connectButton : ''}
                             />
-                            <div className={`api-items ${!walletConnect && item?.connectWallet == true? 'showGrad' : ''}`}>
+                            <div className={`api-items ${!walletConnect && item?.connectWallet == true ? 'showGrad' : ''}`}>
                                 {item.items.map((apiItem, index) => {
                                     return(
                                         <div className={'api-item'} key={index}>
                                             <div className={'api-item-top'} onClick={() => {
                                                 handleSetFields(apiItem);
-                                                if (apiItem.inputs.length) {
-                                                    setDeveloperApiActive(prev => prev === apiItem.route ? false : apiItem.route)
-                                                    setSuccessResponse({});
-                                                    setResponseActive(false);
-                                                }
                                             }}>
                                                 <h3>{apiItem.description}</h3>
                                                 <p>{apiItem.route}</p>
@@ -114,13 +129,14 @@ export const DeveloperApi = ({
                                                     {!apiItem.inputs.length && (
                                                         <div className={`get-btn`}>
                                                             <Button
-                                                                label={'Try it out'}
+                                                                label={loading && !Object.keys(successResponse).length && responseActive === apiItem.route && developerApiActive === apiItem.route  ? 'Loading..' : 'Try it out'}
                                                                 size={'btn-sm'}
                                                                 type={'btn-primary'}
                                                                 arrow={'arrow-right'}
                                                                 element={'button'}
                                                                 onClick={() => {
                                                                     setSuccessResponse({})
+                                                                    setLoading(true)
                                                                     setResponseActive(apiItem.route)
                                                                     setDeveloperApiActive(apiItem.route)
                                                                     handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)
@@ -135,12 +151,15 @@ export const DeveloperApi = ({
                                                 <div className={'api-item-params-ttl'}>
                                                     <div>Parameters</div>
                                                     <Button
-                                                        label={'Try it out'}
+                                                        label={loading && !Object.keys(successResponse).length && responseActive === apiItem.route && developerApiActive === apiItem.route  ? 'Loading..' : 'Try it out'}
                                                         size={'btn-sm'}
                                                         type={'btn-primary'}
                                                         arrow={'arrow-right'}
                                                         element={'button'}
-                                                        onClick={() => handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)}
+                                                        onClick={() => {
+                                                            setLoading(true)
+                                                            handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs)
+                                                        }}
                                                         disabled={notValidated}
                                                     />
                                                 </div>
@@ -153,13 +172,20 @@ export const DeveloperApi = ({
                                                         <div className={'api-item-params'} key={apiItem.route + params.name + index}>
                                                             <div className={'api-params'}>
                                                                 <Input
-                                                                    type={"default"}
+                                                                    type={
+                                                                        params.type === "select" 
+                                                                          ? "lable-input-select" 
+                                                                          : params.type === "upload" 
+                                                                            ? "label-input-upload" 
+                                                                            : params.type === "date" 
+                                                                              ? "date-picker-input"
+                                                                              : "default"
+                                                                    }                                                                   
                                                                     inputType={"text"}
                                                                     label={params.title}
                                                                     name={params.name}
-                                                                    editable={true}
-                                                                    value={currentArray[params?.name] || ''}
-                                                                    onChange={(e) => handleInputChange(e, params)}
+                                                                    value={params.type === "select" ? 'Any' : currentArray[params?.name] || ''}
+                                                                    onChange={(e) => params.type === 'upload' || params.type === 'date' ? handleInputChangeWithType(e, params) : handleInputChange(e, params)}
                                                                     emptyFieldErr={params.required && emptyFields[params?.name]}
                                                                     customStyles={{ width: "100%" }}
                                                                     statusCard= {
@@ -172,10 +198,12 @@ export const DeveloperApi = ({
                                                                             />
                                                                         )
                                                                     }
+                                                                    selectHandler={(opt) => handleInputChangeWithType(opt, params)}
+                                                                    defaultData={params?.options}
                                                                 />
                                                             </div>
                                                             <div className={'api-details'}>
-                                                                {params.description}
+                                                                {params.description}    
                                                             </div>
                                                         </div>
                                                     )
@@ -183,7 +211,7 @@ export const DeveloperApi = ({
 
                                             </div>
                                             {apiItem.type !== 'METAMASK' && (
-                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route && Object.keys(successResponse).length  ? 'active' : ''}`}>
+                                                <div className={`api-item-res-container ${responseActive === apiItem.route && developerApiActive === apiItem.route && Object.keys(successResponse).length ? 'active' : ''}`}>
                                                     <div className={'api-item-params-ttl'}>
                                                         <div>Responses</div>
                                                     </div>
@@ -216,4 +244,3 @@ export const DeveloperApi = ({
         </div>
     );
 }
-

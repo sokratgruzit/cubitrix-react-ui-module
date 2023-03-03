@@ -74,6 +74,7 @@
 }
 .api-item-params-main.active {
     max-height: 4000px;
+    overflow-y: hidden;
 }
 .api-item-params-main:after {
     content: '';
