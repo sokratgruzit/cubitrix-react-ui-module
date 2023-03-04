@@ -545,7 +545,6 @@ export const Popup = ({
               disabled={
                 notValidatedList?.length > 0 ||
                 popUpData?.password !== popUpData?.confirmPassword ||
-                notEmptyList?.length > 0 ||
                 (addAdminError && true)
               }
             />
