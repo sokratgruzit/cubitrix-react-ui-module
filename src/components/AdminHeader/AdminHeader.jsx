@@ -18,10 +18,10 @@ export const AdminHeader = props => {
     return (
         <div className={`admin-header`}>
             <div className={`admin-logo-container`}>
-                <div>
+                <div className={`admin-logo animate-scale ${props.animate ? 'animate' : ''}`}>
                     {props.headSvg}
                 </div>
-                <h1>Complend</h1>
+                <h1 className={`admin-logo animate-translateX ${props.animate ? 'animate' : ''}`}>Complend</h1>
             </div>
             <div className={`user-input-container`}>
                 <div onClick={activeHandler} className={`user-input`}>

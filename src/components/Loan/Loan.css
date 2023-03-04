@@ -1,0 +1,80 @@
+.loan-walletBalance {
+  display: flex;
+  flex-direction: column;
+  width: 324px;
+  height: 222px;
+  background: #070b1a;
+  border-radius: 18px;
+  padding: 16px;
+  margin-top: 20px;
+}
+.loan-walletBalance h3 {
+  font-size: 16px;
+  line-height: 140%;
+}
+.supply-balance {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.supply-balance p:first-child {
+  font-size: 14px;
+  line-height: 140%;
+  color: #57d29e;
+}
+.borrow-balance {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.borrow-balance p:first-child {
+  font-size: 14px;
+  line-height: 140%;
+  color: #6e62fc;
+}
+
+.earnings-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid #3d5afe;
+}
+.earning-circle-inner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.earning-circle-inner h3 {
+  font-size: 14px;
+  line-height: 140%;
+  color: #3d5afe;
+}
+.earning-amount-token {
+  font-size: 24px;
+  line-height: 130%;
+}
+.earning-amount-USDC {
+  font-size: 12px;
+  line-height: 140%;
+  color: #9c9da3;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.loan-bar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding-top: 40px;
+}

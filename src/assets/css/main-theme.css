@@ -1,8 +1,7 @@
 @font-face {
   font-family: "UberMove-Medium";
   src: url("../fonts/UberMove/UberMove-Medium.eot");
-  src: url("../fonts/UberMove/UberMove-Medium.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("../fonts/UberMove/UberMove-Medium.eot?#iefix") format("embedded-opentype"),
     url("../fonts/UberMove/UberMove-Medium.svg#Lack-Regular") format("svg"),
     url("../fonts/UberMove/UberMove-Medium.ttf") format("truetype"),
     url("../fonts/UberMove/UberMove-Medium.woff") format("woff"),
@@ -13,8 +12,7 @@
 @font-face {
   font-family: "UberMove-Regular";
   src: url("../fonts/UberMove/UberMove-Regular.eot");
-  src: url("../fonts/UberMove/UberMove-Regular.eot?#iefix")
-      format("embedded-opentype"),
+  src: url("../fonts/UberMove/UberMove-Regular.eot?#iefix") format("embedded-opentype"),
     url("../fonts/UberMove/UberMove-Regular.svg#Lack-Regular") format("svg"),
     url("../fonts/UberMove/UberMove-Regular.ttf") format("truetype"),
     url("../fonts/UberMove/UberMove-Regular.woff") format("woff"),
@@ -43,7 +41,7 @@ body {
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background: #070b1a;
-  padding: 0;
+  padding: 0 !important;
   /*padding-bottom: 200vh;*/
   /*dont use overflow hidden to body*/
 }
@@ -157,6 +155,27 @@ button {
   flex-direction: column;
   padding: 110px 20px 0 20px;
 }
+
+/*Animations Start*/
+.animate-scale {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.animate-scale.animate {
+  transform: scale(1);
+  opacity: 1;
+}
+.animate-translateX {
+  transform: translateY(5px);
+  opacity: 0;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.animate-translateX.animate {
+  transform: translateY(0px);
+  opacity: 1;
+}
+/*Animations End*/
 
 @media only screen and (max-width: 1025px) {
   .main-content {

@@ -8,7 +8,7 @@ export const useValidation = (formData, helpTexts) => {
     limitedCharacters: /^.{16}$/,
     hash: /^[a-fA-F0-9]{32}/i,
     number: /^\d+(?:\.\d+)?$/,
-    text: /^[a-zA-Z]+$/,
+    text: /^[_a-zA-Z0-9]*[a-zA-Z]+[_a-zA-Z0-9]*$/,
     address: /^0x[a-fA-F0-9]{40}$/,
   };
 

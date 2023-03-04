@@ -288,7 +288,7 @@ export const Input = (props) => {
               />
             </svg>
           </div>
-          <div className={`${"hidden"} ${active ? "select-modal-sc" : ""}`}>
+          <div className={`${"hidden"} ${active ? "select-modal-sc" : ""} ${props.selectPosition === "top" ? 'select-position-top' : ''}`}>
             {props.selectType === "country" ? (
               <Dropdown
                 type={"country"}

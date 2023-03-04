@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../assets/css/main-theme.css";
 import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
@@ -17,12 +17,19 @@ stories.add("AdminPanel", () => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [tableExpand, setTableExpand] = useState(null);
   const [devAppObject, setDevAppObject] = useState({});
-  const [successResponse, setSuccessResponse] = useState({});
+  const [animateDom, setAnimateDom] = useState(false);
+  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] =
+    useState({});
+  const [developerApiLoading, setDeveloperApiLoading] = useState(false);
 
   const [developerApiActive, setDeveloperApiActive] = useState(false);
-  const [responseActive, setResponseActive] = useState(false);
-  console.log(responseActive);
-
+  const [developerApiResponseActive, setDeveloperApiResponseActive] =
+    useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimateDom(true);
+    }, 500);
+  }, []);
   let mobileExpandFunc = (id) => {
     if (window.innerWidth <= 1300) {
       if (id !== mobileExpand) {
@@ -535,7 +542,6 @@ stories.add("AdminPanel", () => {
             //   title: "Name",
             //   name: "name",
             //   description: "Name of trade",
-            //   value: "",
             //   required: false,
             //   validation: "text",
             //   onChange: (e) => changeDevObject(e),
@@ -544,7 +550,6 @@ stories.add("AdminPanel", () => {
             //   title: "Last Name",
             //   name: "last_name",
             //   description: "Name of trade",
-            //   value: "",
             //   required: false,
             //   validation: "text",
             //   onChange: (e) => changeDevObject(e),
@@ -561,18 +566,18 @@ stories.add("AdminPanel", () => {
               title: "Name",
               name: "last_nameqqqqqqqq",
               description: "Name of trade",
-              value: "",
               required: true,
               validation: "text",
+              type: "upload",
               onChange: (e) => changeDevObject(e),
             },
             {
               title: "Last Name",
               name: "last_nameqqqqq",
               description: "Name of trade",
-              value: "",
               required: true,
               validation: "text",
+              type: "date",
               onChange: (e) => changeDevObject(e),
             },
           ],
@@ -588,24 +593,27 @@ stories.add("AdminPanel", () => {
           route: "api/trade/baaaaala",
           type: "GET",
           inputs: [
-            {
-              title: "Name",
-              description: "Name of trade",
-              name: "last_nameqwa",
-              value: "",
-              required: true,
-              validation: "text",
-              onChange: (e) => changeDevObject(e),
-            },
-            {
-              title: "Last Name",
-              description: "Name of trade",
-              name: "last_namedsssss",
-              value: "",
-              required: true,
-              validation: "text",
-              onChange: (e) => changeDevObject(e),
-            },
+            // {
+            //   id: 0,
+            //   title: "Last Name",
+            //   description: "Name of trade",
+            //   name: "last_namedsssss",
+            //   required: true,
+            //   type: "select",
+            //   selectType: "country",
+            //   selectLabel: "Select Country",
+            //   selectPosition: "top",
+            //   onChange: (e) => changeDevObject(e),
+            // },
+            // {
+            //   id: 1,
+            //   title: "Mobile",
+            //   description: "Mobile",
+            //   name: "mobile",
+            //   required: true,
+            //   type: "mobile",
+            //   onChange: (e) => changeDevObject(e),
+            // },
           ],
         },
         {
@@ -618,7 +626,6 @@ stories.add("AdminPanel", () => {
               title: "Name",
               description: "Name of trade",
               name: "last_nameaaa",
-              value: "",
               required: true,
               validation: "text",
               onChange: (e) => changeDevObject(e),
@@ -627,7 +634,6 @@ stories.add("AdminPanel", () => {
               title: "Last Name",
               description: "Name of trade",
               name: "last_nameasd",
-              value: "",
               required: true,
               validation: "text",
               onChange: (e) => changeDevObject(e),
@@ -638,7 +644,7 @@ stories.add("AdminPanel", () => {
     },
   ];
 
-  // const successResponse = {
+  // const developerApiSuccessResponse = {
   //   message: "OK",
   //   result: [
   //     {
@@ -667,19 +673,30 @@ stories.add("AdminPanel", () => {
   //   status: "1",
   // };
 
-  const failResponse = {
+  const developerApiFailResponse = {
     message: "No data was found",
     result: [],
     status: 0,
   };
 
-  const handleTryOutSubmit = (route, type) => {
+  const handleDeveloperApiTryOut = (route, type) => {
     console.log("hihi");
-    console.log(devAppObject);
-    console.log(type);
-    setResponseActive(route);
-    setDeveloperApiActive(route);
+
+    setDeveloperApiLoading(true);
+
+    // setDeveloperApiResponseActive(route);
+    setDeveloperApiResponseActive(route);
+    if (type === "GET") {
+      return setTimeout(() => {
+        setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+        setDeveloperApiLoading(false);
+      }, 2000);
+    }
+    setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+    setDeveloperApiLoading(false);
   };
+
+  console.log(devAppObject);
 
   let tableData;
   tableData = td.map((item, index) => {
@@ -839,9 +856,15 @@ stories.add("AdminPanel", () => {
         headSvg={adminHeaderData.svg}
         userImageUrl={adminHeaderData.userImageUrl}
         authsDropdown={adminHeaderData.authsDropdown}
+        animate={animateDom}
       />
       <div className={`admin-container`}>
-        <div className={`admin-sidebar`}>
+        <div
+          className={`admin-sidebar animate-translateX ${
+            animateDom ? "animate" : ""
+          }`}
+          style={{ transitionDelay: ".1s" }}
+        >
           <BrowserRouter>
             <Routes>
               <Route
@@ -869,6 +892,7 @@ stories.add("AdminPanel", () => {
           </BrowserRouter>
         </div>
         <AdminPanel
+          animate={animateDom}
           sideBarData={
             <BrowserRouter>
               <Routes>
@@ -922,14 +946,27 @@ stories.add("AdminPanel", () => {
           developersApi={developerApiArray}
           developersApiValues={devAppObject}
           setDeveloperApiValues={setDevAppObject}
-          successResponse={successResponse}
-          setSuccessResponse={setSuccessResponse}
-          failResponse={failResponse}
+          developerApiSuccessResponse={developerApiSuccessResponse}
+          setDeveloperApiSuccessResponse={setDeveloperApiSuccessResponse}
+          developerApiFailResponse={developerApiFailResponse}
           developerApiActive={developerApiActive}
           setDeveloperApiActive={setDeveloperApiActive}
-          responseActive={responseActive}
-          setResponseActive={setResponseActive}
-          handleTryOutSubmit={handleTryOutSubmit}
+          developerApiResponseActive={developerApiResponseActive}
+          setDeveloperApiResponseActive={setDeveloperApiResponseActive}
+          handleDeveloperApiTryOut={handleDeveloperApiTryOut}
+          developerApiLoading={developerApiLoading}
+          developersApiConnectButton={
+            <Button
+              label={"Connect Wallet"}
+              size={"btn-sm"}
+              type={"btn-primary"}
+              arrow={"arrow-none"}
+              element={"button"}
+              onClick={() => console.log("hi")}
+              customStyles={{ margin: "0" }}
+            />
+          }
+          walletConnect={true}
         />
       </div>
     </>
