@@ -40,11 +40,11 @@ stories.add("AddAdminPopUp", () => {
           label={"Add Admin"}
           addAdminSelect={addAdminSelect}
           handleAddAdminBtnClick={handleAddAdminBtnClick}
-          addAdminError={"cant add admin"}
+          // addAdminError={"cant add admin"}
           handlePopUpClose={() => setActive(false)}
           popUpData={popUpData}
           setPopUpData={setPopUpData}
-          edit={true}
+          edit={false}
         />
       )}
     </div>
