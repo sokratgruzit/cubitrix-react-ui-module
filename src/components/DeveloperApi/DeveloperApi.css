@@ -106,6 +106,9 @@
     display: flex;
     margin-bottom: 30px;
 }
+.api-item-params:last-child {
+    margin-bottom: 100pxs;
+}
 .api-params {
     width: 300px;
 }
