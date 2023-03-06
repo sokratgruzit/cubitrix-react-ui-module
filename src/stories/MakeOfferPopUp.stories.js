@@ -1,0 +1,87 @@
+import { storiesOf } from "@storybook/react";
+import { useState } from "react";
+import { Popup } from "../components/Popup";
+import { MakeAnOffer } from "../components/MakeAnOffer";
+
+const stories = storiesOf("MakeOfferPopUp", module);
+
+stories.add("MakeOfferPopUp", () => {
+  const [makeAnOfferActive, setMakeAnOfferActive] = useState(true);
+  const [makeAnOfferObject, setMakeAnOfferObject] = useState({});
+
+  let handleChange = (e) => {
+    const { name, value } = e.target;
+    setMakeAnOfferObject((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const inputs = [
+    {
+      title: "Name",
+      description: "Name of trade",
+      name: "last_nameaaa1",
+      required: true,
+      type: "select",
+      options: [
+        { name: "option1", value: "option1" },
+        { name: "option2", value: "option2" },
+      ],
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "Name",
+      description: "Name of trade",
+      name: "last_nameaaa2",
+      required: true,
+      type: "select",
+      options: [
+        { name: "option1", value: "option1" },
+        { name: "option2", value: "option2" },
+      ],
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "Last Name",
+      description: "Name of trade",
+      name: "last_nameasd1",
+      required: true,
+      validation: "text",
+      successText: "it is valid",
+      failureText: "its not valid",
+      handleMax: (e) => console.log("max"),
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "Last Name",
+      description: "Name of trade",
+      name: "last_nameasd2",
+      required: true,
+      validation: "text",
+      successText: "it is valid",
+      failureText: "its not valid",
+      //   handleMax: (e) => console.log("max"),
+      onChange: (e) => handleChange(e),
+    },
+  ];
+
+  console.log(makeAnOfferObject);
+
+  return (
+    <>
+      {makeAnOfferActive && (
+        <Popup
+          popUpElement={
+            <MakeAnOffer
+              inputs={inputs}
+              currentArray={makeAnOfferObject}
+              setCurrentArray={setMakeAnOfferObject}
+              handleSubmit={() => console.log("hi hi")}
+              //   makeOfferError={"there is some error"}
+            />
+          }
+          label={"Make an offer"}
+          handlePopUpClose={() => setMakeAnOfferActive(false)}
+        />
+      )}
+    </>
+  );
+});
