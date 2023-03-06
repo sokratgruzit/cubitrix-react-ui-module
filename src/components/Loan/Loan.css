@@ -33,38 +33,6 @@
   color: #6e62fc;
 }
 
-.earnings-circle {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 3px solid #3d5afe;
-}
-.earning-circle-inner {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-}
-.earning-circle-inner h3 {
-  font-size: 14px;
-  line-height: 140%;
-  color: #3d5afe;
-}
-.earning-amount-token {
-  font-size: 24px;
-  line-height: 130%;
-}
-.earning-amount-USDC {
-  font-size: 12px;
-  line-height: 140%;
-  color: #9c9da3;
-}
-
 .buttons-wrapper {
   display: flex;
   gap: 20px;
@@ -77,4 +45,78 @@
   align-items: center;
   width: 100%;
   padding-top: 40px;
+}
+
+.position-summary {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 20px;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.position-summary h3 {
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.position-summary-point {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 140%;
+}
+
+.loan-pool-row {
+  height: 44px;
+}
+.info-circle {
+  display: flex;
+  align-items: center;
+}
+.collateral-name {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.collateral-shortName {
+  display: flex;
+  align-items: center;
+}
+
+.collateral-shortName p:first-child {
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  line-height: 140%;
+  color: #6a6d76;
+}
+.collateral-shortName p:last-child {
+  font-size: 12px;
+  line-height: 140%;
+  color: #6a6d76;
+}
+
+.pool-loan-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.protocol-balance {
+  display: flex;
+  align-items: center;
+}
+
+.pool-loan-actions div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #3d5afe;
+  border-radius: 32px;
+  cursor: pointer;
 }
