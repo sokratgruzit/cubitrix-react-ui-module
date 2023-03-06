@@ -1,12 +1,13 @@
 import { storiesOf } from "@storybook/react";
 import { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { Header } from "../components/Header";
 
 const stories = storiesOf("Header", module);
 
 stories.add("Header", () => {
   return (
-    <div>
+    <BrowserRouter>
       <Header
         modules={[]}
         account={"shit"}
@@ -146,6 +147,6 @@ stories.add("Header", () => {
         }
         verified={false}
       />
-    </div>
+    </BrowserRouter>
   );
 });

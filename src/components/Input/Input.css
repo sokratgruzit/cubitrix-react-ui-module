@@ -386,6 +386,10 @@
   z-index: 1;
   width: 100%;
 }
+.select-position-top {
+  top: unset !important;
+  bottom: 50px !important;
+}
 .form-select-sc {
   position: relative;
   width: 100%;

@@ -21,7 +21,7 @@ export const AdminPanel = props => {
     return (
         <div className={`admin-content  animate-translateX ${props.animate ? 'animate' : ''}`} style={{transitionDelay: '.2s'}}>
             {props.adminPage === 'dashboard' && (
-                <div style={{ display: 'flex', gap: '20px', paddingTop: '40px'}}>
+                <div style={{ display: 'flex', gap: '20px', paddingTop: '40px', flexWrap: 'wrap'}}>
                     <DashboardCard
                         type={'sale-card'}
                         cardHeader={'TOKEN SALE - DEMO STAGE 2'}
@@ -94,6 +94,7 @@ export const AdminPanel = props => {
                         setDeveloperApiActive={props.setDeveloperApiActive}
                         connectButton={props.developersApiConnectButton}
                         walletConnect={props.walletConnect}
+                        loading={props.developerApiLoading}
                     />
                 </>
             )}
