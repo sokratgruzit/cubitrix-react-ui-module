@@ -68,21 +68,26 @@
 }
 
 .loan-pool-row {
-  height: 44px;
+  height: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .info-circle {
   display: flex;
   align-items: center;
+  padding-right: 20px;
 }
 .collateral-name {
   display: flex;
   gap: 6px;
   align-items: center;
+  width: 100px;
 }
 
 .collateral-shortName {
   display: flex;
   align-items: center;
+  padding-left: 20px;
 }
 
 .collateral-shortName p:first-child {
@@ -107,6 +112,8 @@
 .protocol-balance {
   display: flex;
   align-items: center;
+  margin-left: auto;
+  padding-right: 40px;
 }
 
 .pool-loan-actions div {
@@ -119,4 +126,48 @@
   border: 1px solid #3d5afe;
   border-radius: 32px;
   cursor: pointer;
+}
+
+.loan-title {
+  font-size: 20px;
+  line-height: 130%;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.lender {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  padding-left: 10px;
+}
+
+.interest {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.make-offer {
+  display: flex;
+  align-items: center;
+  width: 100px;
 }

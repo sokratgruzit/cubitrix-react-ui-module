@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 const stories = storiesOf("Loan", module);
 
 stories.add("Loan", (props) => {
+  const [allLoanOffers, setAllLoanOffers] = useState([]);
   return (
     <BrowserRouter>
       <Header
@@ -148,7 +149,7 @@ stories.add("Loan", (props) => {
         }
         verified={false}
       />
-      <Loan />
+      <Loan allLoanOffers={allLoanOffers} />
     </BrowserRouter>
   );
 });
