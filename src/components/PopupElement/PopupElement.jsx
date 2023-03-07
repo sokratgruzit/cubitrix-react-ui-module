@@ -100,9 +100,11 @@ export const PopupElement = ({
             <div className='popup-element-inputs' style={customStyles}>
                 {inputs?.map((params, index) => {
                     return (
-                        <div className='popup-element-input-container'>
+                        <div 
+                            className='popup-element-input-container'
+                            key={index}
+                        >
                             <Input
-                                Key={index}
                                 type={
                                     params.type === "select" 
                                         ? "lable-input-select" 

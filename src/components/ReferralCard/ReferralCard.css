@@ -3,7 +3,6 @@
     height: 156px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(42.5px);
     border-radius: 8px;
     display: flex;
     padding: 20px;

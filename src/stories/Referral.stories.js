@@ -14,7 +14,8 @@ import { PopupElement } from "../components/PopupElement";
 const stories = storiesOf("Referral", module);
 
 stories.add("Referral", () => {
-  const [createCodeActive, setCreateCodeActive] = useState(false);
+  const [createCodePopupActive, setCreateCodePopupActive] = useState(false);
+  const [levelSystemPopupActive, setLevelSystemPopupActive] = useState(false);
   const [createCodeObject, setCreateCodeObject] = useState({});
   const [mobileExpand, setMobileExpand] = useState(null);
 
@@ -27,7 +28,7 @@ stories.add("Referral", () => {
       }
     }
   };
-  const handleCreateCode = () => setCreateCodeActive(true);
+  const handleCreateCode = () => setCreateCodePopupActive(true);
 
   const { width } = useMobileWidth();
   const referalCards = [
@@ -52,7 +53,7 @@ stories.add("Referral", () => {
           element={"referral-button"}
           label={"Level System"}
           icon={<StickyNoteIcon />}
-          onClick={() => console.log("clicked")}
+          onClick={() => setLevelSystemPopupActive(true)}
         />
       ),
     },
@@ -372,7 +373,7 @@ stories.add("Referral", () => {
           icon: <NoHistoryIcon />,
         }}
       />
-      {createCodeActive && (
+      {createCodePopupActive && (
         <Popup
           popUpElement={
             <PopupElement
@@ -386,8 +387,21 @@ stories.add("Referral", () => {
             />
           }
           label={"Create Referral Code"}
-          handlePopUpClose={() => setCreateCodeActive(false)}
+          handlePopUpClose={() => setCreateCodePopupActive(false)}
           customStyles={{ width: "423px" }}
+          // description={
+          //   "Everyone starts with the Casual tier, and you can level up the tier by increasing your Comland holding"
+          // }
+        />
+      )}
+      {levelSystemPopupActive && (
+        <Popup
+          popUpElement={<div>hello nigga</div>}
+          label={"Referrer Level System"}
+          handlePopUpClose={() => setLevelSystemPopupActive(false)}
+          description={
+            "Everyone starts with the Casual tier, and you can level up the tier by increasing your Comland holding"
+          }
         />
       )}
     </BrowserRouter>
