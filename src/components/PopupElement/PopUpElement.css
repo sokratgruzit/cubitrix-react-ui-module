@@ -1,4 +1,4 @@
-.make-offer-wrap {
+.popup-element-wrap {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -12,7 +12,7 @@
     width: 100%;
 }
 
-.make-offer-inputs {
+.popup-element-inputs {
     width: 100%;
     display: grid;
     grid-template-columns: calc(50% - 10px) calc(50% - 10px);
@@ -22,11 +22,11 @@
     gap: 20px;
 }
 
-.make-offer-input-container {
+.popup-element-input-container {
     position: relative;
 }
 
-.make-offer-max {
+.popup-element-max {
     position: absolute;
     top: 36px;
     right: 15px;
@@ -34,6 +34,6 @@
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
-.make-offer-max:hover {
+.popup-element-max:hover {
     opacity: .7;
 }

@@ -23,3 +23,5 @@ export { default as SigninLogo } from "./SigninLogo";
 export { default as Warning } from "./Warning";
 export { default as NoApplicationsIcon } from "./NoApplications";
 export { default as CloseIcon } from "./Close";
+export { default as StickyNoteIcon } from "./StickyNote";
+export { default as NoHistoryIcon } from "./NoHistory";

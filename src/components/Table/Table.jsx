@@ -7,6 +7,8 @@ export const Table = ({
     tableHead,
     tableData,
     handleViewAll,
+    tableEmpty,
+    tableEmptyData,
 }) => {
     const { mobile } = useMobileWidth();
     return (
@@ -29,14 +31,21 @@ export const Table = ({
                     </>
                 ) : (
                     <div className="table-empty">
-                        <div>
-                            <NoApplicationsIcon />
-                            <p className="font-14">You have no pending KYC applications</p>
-                        </div>
-                        {handleViewAll && (
-                            <p className="table-empty__view-all font-14" onClick={handleViewAll}>
-                                View All Transactions
-                            </p>
+                        {tableEmpty ? (
+                            <div>
+                                <p className="font-14">{tableEmptyData?.label}</p>
+                                {tableEmptyData?.button}
+                            </div>
+                        ) : (
+                            <div>
+                                {tableEmptyData?.icon ? tableEmptyData?.icon : <NoApplicationsIcon />}
+                                <p className="font-14">{tableEmptyData?.label || 'You have no pending KYC applications'}</p>
+                                {handleViewAll && (
+                                    <p className="table-empty__view-all font-14" onClick={handleViewAll}>
+                                        View All Transactions
+                                    </p>
+                                )}
+                            </div>
                         )}
                     </div>
                 )}

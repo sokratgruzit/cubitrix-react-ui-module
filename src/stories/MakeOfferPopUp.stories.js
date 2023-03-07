@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import { useState } from "react";
 import { Popup } from "../components/Popup";
-import { MakeAnOffer } from "../components/MakeAnOffer";
+import { PopupElement } from "../components/PopupElement";
 
 const stories = storiesOf("MakeOfferPopUp", module);
 
@@ -17,7 +17,6 @@ stories.add("MakeOfferPopUp", () => {
   const inputs = [
     {
       title: "Name",
-      description: "Name of trade",
       name: "last_nameaaa1",
       required: true,
       type: "select",
@@ -29,7 +28,6 @@ stories.add("MakeOfferPopUp", () => {
     },
     {
       title: "Name",
-      description: "Name of trade",
       name: "last_nameaaa2",
       required: true,
       type: "select",
@@ -41,10 +39,10 @@ stories.add("MakeOfferPopUp", () => {
     },
     {
       title: "Last Name",
-      description: "Name of trade",
       name: "last_nameasd1",
       required: true,
       validation: "text",
+      placeholder: "Enter lastname",
       successText: "it is valid",
       failureText: "its not valid",
       handleMax: (e) => console.log("max"),
@@ -55,6 +53,7 @@ stories.add("MakeOfferPopUp", () => {
       description: "Name of trade",
       name: "last_nameasd2",
       required: true,
+      placeholder: "Enter lastname",
       validation: "text",
       successText: "it is valid",
       failureText: "its not valid",
@@ -70,12 +69,13 @@ stories.add("MakeOfferPopUp", () => {
       {makeAnOfferActive && (
         <Popup
           popUpElement={
-            <MakeAnOffer
+            <PopupElement
               inputs={inputs}
               currentArray={makeAnOfferObject}
               setCurrentArray={setMakeAnOfferObject}
               handleSubmit={() => console.log("hi hi")}
-              //   makeOfferError={"there is some error"}
+              submitButtonLabel={"Approve"}
+              //   popUpElementError={"there is some error"}
             />
           }
           label={"Make an offer"}

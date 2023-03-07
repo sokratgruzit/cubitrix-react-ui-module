@@ -217,5 +217,20 @@ export const Button = (props) => {
       </div>
     );
   }
+  
+  if (props.element === 'referral-button') {
+    element = (
+      <div
+        className={`referral-button ${props.active && 'referral-button-active'} ${props.disabled === true ? "disabled" : ""}`}
+        style={props.customStyles}
+        onClick={props.onClick}
+        disabled={props.disabled}
+
+      >
+        {props?.icon}
+        <span>{props.label}</span>
+      </div>
+    );
+  }
   return element;
 };
