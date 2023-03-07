@@ -9,14 +9,16 @@ import { Button } from '../Button';
 import { HelpText } from '../HelpText';
 
 // styles
-import './MakeAnOffer.css';
+import './PopUpElement.css';
 
-export const MakeAnOffer = ({ 
+export const PopupElement = ({ 
     inputs, 
     currentArray, 
     setCurrentArray, 
-    makeOfferError, 
-    handleSubmit 
+    popUpElementError, 
+    handleSubmit,
+    submitButtonLabel,
+    customStyles
 }) => {
     const [emptyFields, setEmptyFields] = useState({});
     const [notValidated, setNotValidated] = useState(false);
@@ -94,11 +96,11 @@ export const MakeAnOffer = ({
     const handleSubmitClick = (inputs) => notEmptyList.length > 0 ? handleEmptyFields(inputs) : handleSubmit();
 
     return (
-        <div className='make-offer-wrap'>
-            <div className='make-offer-inputs'>
+        <div className='popup-element-wrap'>
+            <div className='popup-element-inputs' style={customStyles}>
                 {inputs?.map((params, index) => {
                     return (
-                        <div className='make-offer-input-container'>
+                        <div className='popup-element-input-container'>
                             <Input
                                 Key={index}
                                 type={
@@ -113,6 +115,7 @@ export const MakeAnOffer = ({
                                 onChange={(e) => !params.type ? handleInputChange(e, params) : handleInputChangeWithType(e, params)}
                                 emptyFieldErr={params.required && emptyFields[params?.name]}
                                 customStyles={{ width: "100%" }}
+                                placeholder={params?.placeholder}
                                 statusCard= {
                                     formErrors[params?.name] && currentArray[params?.name]?.length > 0 && (
                                         <HelpText
@@ -126,24 +129,24 @@ export const MakeAnOffer = ({
                                 selectHandler={(opt) => handleInputChangeWithType(opt, params)}
                                 defaultData={params?.options}
                             />
-                            {params.handleMax && <p className='font-12 make-offer-max' onClick={params.handleMax}>MAX</p>}
+                            {params.handleMax && <p className='font-12 popup-element-max' onClick={params.handleMax}>MAX</p>}
                         </div>
                         )
                     })}
             </div>
             <Button
-                label={"Approve"}
+                label={submitButtonLabel}
                 size={"btn-lg"}
                 type={"btn-primary"}
                 element={"button"}
                 customStyles={{ margin: "0", width: "100%" }}
                 onClick={() => handleSubmitClick(inputs)}
-                disabled={notValidated || (makeOfferError && true)}
+                disabled={notValidated || (popUpElementError && true)}
             />
-            {makeOfferError && (
+            {popUpElementError && (
                 <HelpText
                     status={"warning"}
-                    title={makeOfferError}
+                    title={popUpElementError}
                     color={"#9CCC65"}
                     fontSize={"font-12"}
                     icon={true}

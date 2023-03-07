@@ -8,28 +8,28 @@ import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 
 
-export const CoinInfoBar = (props) => {
+export const CoinInfoBar = ({ 
+  itemList,
+  setItemList,
+  handleChange,
+  customStyles
+}) => {
   const [showDragableList, setShowDraggableList] = useState(false)
 
-  const [itemList, setItemList] = useState(props.itemList);
-
   const handleDrop = (droppedItem) => {
-    // Ignore drop outside droppable container
     if (!droppedItem.destination) return;
+
     var updatedList = [...itemList];
-    // Remove dragged item
+
     const [reorderedItem] = updatedList.splice(droppedItem.source.index, 1);
-    // Add dropped item
+
     updatedList.splice(droppedItem.destination.index, 0, reorderedItem);
-    // Update State
+    
     setItemList(updatedList);
   };
 
-  const handleChange = (item) => {
-    setItemList(prev => prev.map(prevItem => prevItem.name === item.name ? {...prevItem, active: !item.active} : prevItem ))
-  }
   return (
-    <div className="coin-info-container" style={props.customStyles}>
+    <div className="coin-info-container" style={customStyles}>
       <div className="coin-info-list">
         <Swiper
           slidesPerView={'auto'}

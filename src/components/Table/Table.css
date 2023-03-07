@@ -32,6 +32,11 @@
   text-align: center;
 }
 
+.table-empty>div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .table-empty__view-all {
   color: #3D5AFE;
   cursor: pointer;

@@ -1,0 +1,23 @@
+.referral-card-wrapper {
+    width: 100%;
+    height: 156px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(42.5px);
+    border-radius: 8px;
+    display: flex;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.referal-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.referal-card-body p {
+    color: #9C9DA3;
+}
