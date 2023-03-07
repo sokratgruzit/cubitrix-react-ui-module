@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "../components/Header";
 import { Loan } from "../components/Loan";
 import { BrowserRouter } from "react-router-dom";
@@ -8,6 +8,30 @@ const stories = storiesOf("Loan", module);
 
 stories.add("Loan", (props) => {
   const [allLoanOffers, setAllLoanOffers] = useState([]);
+  const [yourLending, setYourLending] = useState([]);
+  const [yourBorrowing, setYourBorrowing] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/loan/loan-market-offers")
+      .then((response) => response.json())
+      .then((data) => setAllLoanOffers(data.result))
+      .catch((error) => console.error(error));
+
+    fetch(
+      "http://localhost:4000/api/loan/user-created-loans?address=0xA3403975861B601aE111b4eeAFbA94060a58d0CA",
+    )
+      .then((response) => response.json())
+      .then((data) => setYourLending(data.result))
+      .catch((error) => console.error(error));
+
+    fetch(
+      "http://localhost:4000/api/loan/user-loans?address=0xA3403975861B601aE111b4eeAFbA94060a58d0CA",
+    )
+      .then((response) => response.json())
+      .then((data) => setYourBorrowing(data.result))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <BrowserRouter>
       <Header
@@ -149,7 +173,12 @@ stories.add("Loan", (props) => {
         }
         verified={false}
       />
-      <Loan allLoanOffers={allLoanOffers} />
+      <Loan
+        allLoanOffers={allLoanOffers}
+        yourLending={yourLending}
+        yourBorrowing={yourBorrowing}
+        makeOffer={() => console.log("make offer")}
+      />
     </BrowserRouter>
   );
 });
