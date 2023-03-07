@@ -13,6 +13,7 @@ export const Loan = ({
   allLoanOffers,
   yourLending,
   yourBorrowing,
+  createNewLoanOffering,
   makeOffer,
   supplyUSDC,
   borrowUSDC,
@@ -119,7 +120,11 @@ export const Loan = ({
             </>
           )}
           {loanPlatform === "p2p" && (
-            <P2pSidebar yourLending={yourLending} yourBorrowing={yourBorrowing} />
+            <P2pSidebar
+              yourLending={yourLending}
+              yourBorrowing={yourBorrowing}
+              createNewLoanOffering={createNewLoanOffering}
+            />
           )}
         </div>
       </div>

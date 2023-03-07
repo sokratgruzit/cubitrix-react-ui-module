@@ -177,6 +177,7 @@ stories.add("Loan", (props) => {
         allLoanOffers={allLoanOffers}
         yourLending={yourLending}
         yourBorrowing={yourBorrowing}
+        createNewLoanOffering={() => console.log("create new loan")}
         makeOffer={() => console.log("make offer")}
       />
     </BrowserRouter>

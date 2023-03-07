@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Button } from "../../../Button";
 import "./P2pSidebar.css";
 
-const P2pSidebar = ({ yourLending, yourBorrowing }) => {
+const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
   const [selectedTab, setSelectedTab] = useState("lending");
   return (
     <div>
@@ -38,7 +39,15 @@ const P2pSidebar = ({ yourLending, yourBorrowing }) => {
       </div>
       {selectedTab === "lending" && (
         <div className="loans-list">
-          <button>create new loan offer</button>
+          <Button
+            label={"Create New Loan Offer"}
+            size={"btn-sm"}
+            type={"btn-primary"}
+            arrow={"arrow-none"}
+            element={"button"}
+            onClick={() => createNewLoanOffering()}
+            customStyles={{ margin: "0", width: "100%" }}
+          />
           {yourLending.map((loan, index) => (
             <div key={loan._id} className={"your-lending-row"}>
               <div className={"loan-borrower"}>
