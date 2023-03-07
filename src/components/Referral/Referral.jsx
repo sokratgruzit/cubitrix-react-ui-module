@@ -26,7 +26,9 @@ export const Referral = ({
     return (
         <div className={'main'}>
             <div className={'main-sidebar'}>
-
+                <div className={'referral-sidebar'}>
+                    
+                </div>
             </div>
             <div className={'main-content'}>
                 <Visual
@@ -36,7 +38,7 @@ export const Referral = ({
                     fontSize={'font-20'}
                     customStyles={{ marginBottom: '20px', border: 'none', paddingTop: '0' }}
                 />
-                <div className={'referal-cards-container'}>
+                <div className={'referral-cards-container'}>
                     {cards?.map((item, index) => <ReferralCard item={item} key={index} />)}
                 </div>
                 <Visual

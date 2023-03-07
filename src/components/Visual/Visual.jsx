@@ -6,7 +6,7 @@ export const Visual = (props) => {
   if (props.element === "popup-header") {
     element = (
       <div className={`popup-header`} style={props.customStyles}>
-        <p className={`font-16 goBackWrapper`}>
+        <div className={`goBackWrapper`}>
           {props.goBack && (
             <span onClick={props.goBack} className="goBackSvg">
               <svg
@@ -35,8 +35,13 @@ export const Visual = (props) => {
               </svg>
             </span>
           )}
-          {props.label}
-        </p>
+          <p className={'popup-header-head'}>
+            <span className={'font-16 popup-header-label'}>{props.label}</span>
+            {props?.description && (
+              <span className={'font-14 popup-header-description'}>{props?.description}</span>
+            )}
+          </p>
+        </div>
         <svg
           onClick={props.onClick}
           width="30"

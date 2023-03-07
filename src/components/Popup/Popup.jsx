@@ -36,6 +36,7 @@ export const Popup = ({
   popUpData,
   setPopUpData,
   edit,
+  description
 }) => {
   const [emptyFields, setEmptyFields] = useState({});
 
@@ -174,6 +175,7 @@ export const Popup = ({
             customStyles={{
               width: "100%",
             }}
+            description={description}
           />
         )}
 
