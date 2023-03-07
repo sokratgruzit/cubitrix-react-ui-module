@@ -1,11 +1,80 @@
 import React, { useState } from "react";
 import { Button } from "../../../Button";
 import "./P2pSidebar.css";
+import { Popup } from "./../../../Popup";
+import { PopupElement } from "./../../../PopupElement";
 
 const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
   const [selectedTab, setSelectedTab] = useState("lending");
+  const [makeAnOfferActive, setMakeAnOfferActive] = useState(false);
+  const [newOffer, setNewOffer] = useState({});
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setNewOffer((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function handleSubmit() {
+    createNewLoanOffering(newOffer);
+    setMakeAnOfferActive(false);
+  }
+
+  const inputs = [
+    {
+      title: "token",
+      name: "token",
+      required: true,
+      type: "select",
+      options: [
+        { name: "token1", value: "token1" },
+        { name: "token2", value: "token2" },
+      ],
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "amount",
+      description: "Loan offer amount",
+      name: "amount",
+      required: true,
+      placeholder: "Enter amount",
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "interest",
+      description: "interest",
+      name: "interest",
+      required: true,
+      placeholder: "Enter interest",
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "duration",
+      description: "Loan offer duration",
+      name: "duration",
+      required: true,
+      placeholder: "Enter duration",
+      onChange: (e) => handleChange(e),
+    },
+  ];
+
   return (
     <div>
+      {makeAnOfferActive && (
+        <Popup
+          popUpElement={
+            <PopupElement
+              inputs={inputs}
+              currentArray={newOffer}
+              setCurrentArray={setNewOffer}
+              handleSubmit={handleSubmit}
+              submitButtonLabel={"Approve"}
+              //   popUpElementError={"there is some error"}
+            />
+          }
+          label={"Create a new loan offering"}
+          handlePopUpClose={() => setMakeAnOfferActive(false)}
+        />
+      )}
       <div className="tabs-wrapper">
         <div className="user-stats">
           <div
@@ -45,7 +114,9 @@ const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
             type={"btn-primary"}
             arrow={"arrow-none"}
             element={"button"}
-            onClick={() => createNewLoanOffering()}
+            onClick={() => {
+              setMakeAnOfferActive(true);
+            }}
             customStyles={{ margin: "0", width: "100%" }}
           />
           {yourLending.map((loan, index) => (

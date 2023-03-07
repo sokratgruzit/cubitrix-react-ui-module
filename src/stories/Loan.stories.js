@@ -32,6 +32,21 @@ stories.add("Loan", (props) => {
       .catch((error) => console.error(error));
   }, []);
 
+  function handleCreateNewLoanOffering(loan) {
+    const mutatedLoan = { ...loan };
+    mutatedLoan.lender = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+    fetch("http://localhost:4000/api/loan/create-loan", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(mutatedLoan),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
+
   return (
     <BrowserRouter>
       <Header
@@ -177,7 +192,7 @@ stories.add("Loan", (props) => {
         allLoanOffers={allLoanOffers}
         yourLending={yourLending}
         yourBorrowing={yourBorrowing}
-        createNewLoanOffering={() => console.log("create new loan")}
+        createNewLoanOffering={handleCreateNewLoanOffering}
         makeOffer={() => console.log("make offer")}
       />
     </BrowserRouter>
