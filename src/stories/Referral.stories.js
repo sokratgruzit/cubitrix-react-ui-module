@@ -10,6 +10,7 @@ import { useMobileWidth } from "../hooks/useMobileWidth";
 import { useState } from "react";
 import { Popup } from "../components/Popup";
 import { PopupElement } from "../components/PopupElement";
+import { LevelSystem } from "../components/LevelSystem";
 
 const stories = storiesOf("Referral", module);
 
@@ -61,27 +62,29 @@ stories.add("Referral", () => {
 
   let th = [
     {
-      name: "Staked Amount",
+      name: "My Referral Code",
       width: 15,
+      mobileWidth: 45,
       id: 0,
     },
     {
-      name: "Stake Date ",
+      name: "User Address",
       width: 15,
+      mobileWidth: 45,
       id: 1,
     },
     {
-      name: "Unstake Date",
+      name: "User Level",
       width: 15,
       id: 2,
     },
     {
-      name: "Earn Reward",
+      name: "Rate",
       width: 15,
       id: 3,
     },
     {
-      name: "Harvest",
+      name: "Total Earned",
       width: 15,
       id: 4,
     },
@@ -90,26 +93,26 @@ stories.add("Referral", () => {
   let td = [
     {
       id: 12123,
-      staked_amount: "1,220,000.2",
-      stake_date: "01.02.2023 10:00AM",
-      unstake_date: "01.02.2023 08:15PM",
-      earn_reward: "CML",
+      staked_amount: "REF_lMJm0PoJ1yS3qyeGtVk",
+      stake_date: "0xae0cf2498c...",
+      unstake_date: "VIP 1",
+      earn_reward: "5%",
       harvest: "1,132,000.1",
     },
     {
       id: 121223323,
-      staked_amount: "1,220,000.2",
-      stake_date: "01.02.2023 10:00AM",
-      unstake_date: "01.02.2023 08:15PM",
-      earn_reward: "CML",
+      staked_amount: "REF_lMJm0PoJ1yS3qyeGtVk",
+      stake_date: "0xae0cf2498c...",
+      unstake_date: "VIP 1",
+      earn_reward: "5%",
       harvest: "1,132,000.1",
     },
     {
       id: 1212323,
-      staked_amount: "1,220,000.2",
-      stake_date: "01.02.2023 10:00AM",
-      unstake_date: "01.02.2023 08:15PM",
-      earn_reward: "CML",
+      staked_amount: "REF_lMJm0PoJ1yS3qyeGtVk",
+      stake_date: "0xae0cf2498c...",
+      unstake_date: "VIP 1",
+      earn_reward: "5%",
       harvest: "1,132,000.1",
     },
   ];
@@ -184,29 +187,127 @@ stories.add("Referral", () => {
             />
           </svg>
         </div>
-        {/* <div className="table-mobile">
+        <div className="table-mobile">
           <div className="table-mobile-content">
-            {[1, 2, 3].map((index) => (
+            {[2, 3, 4].map((index) => (
               <div className="td" key={index}>
                 <div className="mobile-ttl">{th[index].name}</div>
                 <span>
                   {
                     item[
                       index === 1
-                        ? "stake_date"
-                        : index === 2
                         ? "unstake_date"
-                        : "earn_reward"
+                        : index === 2
+                        ? "earn_reward"
+                        : "harvest"
                     ]
                   }
                 </span>
               </div>
             ))}
           </div>
-        </div> */}
+        </div>
       </div>
     );
   });
+
+  let totalReferralRebates = {
+    totalTrading: "0.01",
+    totalEarned: "0.00",
+    totalEstimated: "0.00",
+  };
+
+  let popUpTh = [
+    {
+      name: "Level",
+      width: 15,
+      id: 0,
+    },
+    {
+      name: "Compland Holding (USD)",
+      width: 25,
+      id: 1,
+    },
+    {
+      name: "Rebate Rate",
+      width: 15,
+      id: 2,
+    },
+    {
+      name: "Referee’s Discount",
+      width: 25,
+      id: 3,
+    },
+  ];
+
+  let popUpTd = [
+    {
+      level: "Casual",
+      complandHolding: "≥ $0",
+      rebaseRate: "2.5%",
+      refereesDiscount: "2.5%",
+    },
+    {
+      level: "Casual",
+      complandHolding: "≥ $0",
+      rebaseRate: "2.5%",
+      refereesDiscount: "2.5%",
+    },
+    {
+      level: "Casual",
+      complandHolding: "≥ $0",
+      rebaseRate: "2.5%",
+      refereesDiscount: "2.5%",
+    },
+    {
+      level: "Casual",
+      complandHolding: "≥ $0",
+      rebaseRate: "2.5%",
+      refereesDiscount: "2.5%",
+    },
+  ];
+
+  let popUpTableData;
+  popUpTableData = popUpTd.map((item, index) => (
+    <div className="level-system-table" key={index}>
+      {popUpTh?.slice(0, 4).map((i, index) => (
+        <div
+          key={index}
+          className={`level-system-td`}
+          style={{ width: `${i.width}%` }}
+        >
+          <span>
+            {
+              [
+                item.level,
+                item.complandHolding,
+                item.rebaseRate,
+                item.refereesDiscount,
+              ][index]
+            }
+          </span>
+        </div>
+      ))}
+    </div>
+  ));
+
+  const referralCodeTableEmpty = {
+    label: "Please Create Your Code",
+    button: (
+      <Button
+        element={"referral-button"}
+        label={"Create Code"}
+        icon={<AddSquareIcon color={"#FFF"} />}
+        active={true}
+        onClick={handleCreateCode}
+      />
+    ),
+  };
+
+  const referralHistoryTableEmpty = {
+    label: "No Referral History",
+    icon: <NoHistoryIcon />,
+  };
 
   return (
     <BrowserRouter>
@@ -356,22 +457,10 @@ stories.add("Referral", () => {
         referralHistoryTableData={tableData}
         referralCodeTableHead={th}
         referralCodeTableData={tableData}
-        referralCodeTableEmpty={{
-          label: "Please Create Your Code",
-          button: (
-            <Button
-              element={"referral-button"}
-              label={"Create Code"}
-              icon={<AddSquareIcon color={"#FFF"} />}
-              active={true}
-              onClick={handleCreateCode}
-            />
-          ),
-        }}
-        referralHistoryTableEmpty={{
-          label: "No Referral History",
-          icon: <NoHistoryIcon />,
-        }}
+        referralCodeTableEmpty={referralCodeTableEmpty}
+        referralHistoryTableEmpty={referralHistoryTableEmpty}
+        totalReferralRebates={totalReferralRebates}
+        totalReferralRebatesLabel={"Total Referral Rebates"}
       />
       {createCodePopupActive && (
         <Popup
@@ -389,14 +478,17 @@ stories.add("Referral", () => {
           label={"Create Referral Code"}
           handlePopUpClose={() => setCreateCodePopupActive(false)}
           customStyles={{ width: "423px" }}
-          // description={
-          //   "Everyone starts with the Casual tier, and you can level up the tier by increasing your Comland holding"
-          // }
         />
       )}
       {levelSystemPopupActive && (
         <Popup
-          popUpElement={<div>hello nigga</div>}
+          popUpElement={
+            <LevelSystem
+              tableHead={popUpTh}
+              tableData={popUpTableData}
+              mobile={mobile}
+            />
+          }
           label={"Referrer Level System"}
           handlePopUpClose={() => setLevelSystemPopupActive(false)}
           description={
