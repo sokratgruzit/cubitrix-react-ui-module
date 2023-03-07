@@ -1,7 +1,7 @@
 import React from 'react'
 
 // components
-import { Visual } from '../Visual/Visual';
+import { Visual } from '../Visual';
 import { Table } from '../Table';
 
 // svgs
