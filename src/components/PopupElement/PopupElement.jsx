@@ -103,7 +103,7 @@ export const PopupElement = ({
                         <div 
                             className='popup-element-input-container'
                             key={index}
-                        >e
+                        >
                             <Input
                                 type={
                                     params.type === "select" 

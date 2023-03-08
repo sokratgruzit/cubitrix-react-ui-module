@@ -467,8 +467,8 @@ stories.add("Referral", () => {
           popUpElement={
             <PopupElement
               inputs={inputs}
-              currentArray={createCodeObject}
-              setCurrentArray={setCreateCodeObject}
+              currentObject={createCodeObject}
+              setCurrentObject={setCreateCodeObject}
               handleSubmit={() => console.log("hi hi")}
               submitButtonLabel={"Enter a Code"}
               customStyles={{ gridTemplateColumns: "100%" }}
