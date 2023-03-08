@@ -8,12 +8,15 @@ import { Table } from "../Table";
 import { InfoCircleIcon } from "../../assets/svgs";
 import LoanDetails from "./components/LoanDetails/LoanDetails";
 import P2pSidebar from "./components/P2pSidebar/P2pSidebar";
+import LoanStatus from "./components/LoanStatus/LoanStatus";
 
 export const Loan = ({
   allLoanOffers,
   yourLending,
   yourBorrowing,
   createNewLoanOffering,
+  handleDeleteLoanOffer,
+  handleTakeLoan,
   makeOffer,
   supplyUSDC,
   borrowUSDC,
@@ -22,8 +25,8 @@ export const Loan = ({
   const [loanPlatform, setLoanPlatform] = useState("p2p");
   const [selectedLoanId, setSelectedLoanId] = useState(false);
 
-  function handleShowLoanDetails(loanId) {
-    setSelectedLoanId(loanId);
+  function handleShowLoanDetails(loanId, type) {
+    setSelectedLoanId({ loanId, type });
   }
 
   return (
@@ -124,6 +127,8 @@ export const Loan = ({
               yourLending={yourLending}
               yourBorrowing={yourBorrowing}
               createNewLoanOffering={createNewLoanOffering}
+              handleDeleteLoanOffer={handleDeleteLoanOffer}
+              handleShowLoanDetails={handleShowLoanDetails}
             />
           )}
         </div>
@@ -270,7 +275,7 @@ export const Loan = ({
       {loanPlatform === "p2p" && (
         <>
           <div className={"main-content"}>
-            {selectedLoanId && (
+            {JSON.stringify(selectedLoanId) !== "{}" && (
               <LoanDetails
                 loan={selectedLoanId}
                 // loanDetails={loanDetails}
@@ -304,13 +309,13 @@ export const Loan = ({
                     <div className="amount">{item.amount}</div>
                     <div className="interest">{item.interest}</div>
                     <div className="duration">{item.duration}</div>
-                    <div className="status">{item.status}</div>
-                    <button className="make-offer" onClick={makeOffer}>
+                    <LoanStatus status={item.status} />
+                    <button className="make-offer" onClick={() => makeOffer(item._id)}>
                       Make Offer
                     </button>
                     <button
                       className="show-loan-details"
-                      onClick={() => handleShowLoanDetails(item._id)}
+                      onClick={() => handleShowLoanDetails(item._id, "public")}
                     >
                       Details
                     </button>
