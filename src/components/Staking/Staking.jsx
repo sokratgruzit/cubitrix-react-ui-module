@@ -46,7 +46,7 @@ export const Staking = ({
         className={`main-sidebar`}
         style={{ display: `${width > 1025 ? "flex" : "none"}` }}
       >
-        <div className={"staking-sidebar"}>
+        <div className={"main-sidebar-content"}>
           <BiddingInfo
             stackContractInfo={stackContractInfo}
             customStyles={{ display: `${width > 1025 ? "block" : "none"}` }}

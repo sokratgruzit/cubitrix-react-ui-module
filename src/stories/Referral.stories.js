@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Button } from "../components/Button";
 import { StickyNoteIcon, AddSquareIcon, NoHistoryIcon } from "../assets/svgs";
 import { useMobileWidth } from "../hooks/useMobileWidth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Popup } from "../components/Popup";
 import { PopupElement } from "../components/PopupElement";
 import { LevelSystem } from "../components/LevelSystem";
@@ -60,6 +60,13 @@ stories.add("Referral", () => {
     },
   ];
 
+  // useEffect(() => {
+  //   fetch("http://localhost:4000/api/referral/get_referral_options")
+  //     .then((response) => response.json())
+  //     .then((data) => console.log(data))
+  //     .catch((error) => console.error(error));
+  // }, []);
+
   let th = [
     {
       name: "My Referral Code",
@@ -93,27 +100,27 @@ stories.add("Referral", () => {
   let td = [
     {
       id: 12123,
-      staked_amount: "REF_lMJm0PoJ1yS3qyeGtVk",
-      stake_date: "0xae0cf2498c...",
-      unstake_date: "VIP 1",
-      earn_reward: "5%",
-      harvest: "1,132,000.1",
+      referal_code: "REF_lMJm0PoJ1yS3qyeGtVk",
+      user_address: "0xae0cf2498c...",
+      user_level: "VIP 1",
+      rate: "5%",
+      total_earned: "1,132,000.1",
     },
     {
       id: 121223323,
-      staked_amount: "REF_lMJm0PoJ1yS3qyeGtVk",
-      stake_date: "0xae0cf2498c...",
-      unstake_date: "VIP 1",
-      earn_reward: "5%",
-      harvest: "1,132,000.1",
+      referal_code: "REF_lMJm0PoJ1yS3qyeGtVk",
+      user_address: "0xae0cf2498c...",
+      user_level: "VIP 1",
+      rate: "5%",
+      total_earned: "1,132,000.1",
     },
     {
       id: 1212323,
-      staked_amount: "REF_lMJm0PoJ1yS3qyeGtVk",
-      stake_date: "0xae0cf2498c...",
-      unstake_date: "VIP 1",
-      earn_reward: "5%",
-      harvest: "1,132,000.1",
+      referal_code: "REF_lMJm0PoJ1yS3qyeGtVk",
+      user_address: "0xae0cf2498c...",
+      user_level: "VIP 1",
+      rate: "5%",
+      total_earned: "1,132,000.1",
     },
   ];
 
@@ -157,11 +164,11 @@ stories.add("Referral", () => {
               <span>
                 {
                   [
-                    item.staked_amount,
-                    item.stake_date,
-                    item.unstake_date,
-                    item.earn_reward,
-                    item.harvest,
+                    item.referal_code,
+                    item.user_address,
+                    item.user_level,
+                    item.rate,
+                    item.total_earned,
                   ][index]
                 }
               </span>
@@ -196,10 +203,10 @@ stories.add("Referral", () => {
                   {
                     item[
                       index === 1
-                        ? "unstake_date"
+                        ? "user_address"
                         : index === 2
-                        ? "earn_reward"
-                        : "harvest"
+                        ? "rate"
+                        : "total_earned"
                     ]
                   }
                 </span>
@@ -461,6 +468,16 @@ stories.add("Referral", () => {
         referralHistoryTableEmpty={referralHistoryTableEmpty}
         totalReferralRebates={totalReferralRebates}
         totalReferralRebatesLabel={"Total Referral Rebates"}
+        referralHistoryPaginationCurrent={1}
+        referralHistoryPaginationTotal={20}
+        referralHistoryPaginationEvent={() => {
+          console.log("hi");
+        }}
+        referralCodePaginationCurrent={1}
+        referralCodePaginationTotal={20}
+        referralCodePaginationEvent={() => {
+          console.log("hi");
+        }}
       />
       {createCodePopupActive && (
         <Popup
@@ -472,7 +489,7 @@ stories.add("Referral", () => {
               handleSubmit={() => console.log("hi hi")}
               submitButtonLabel={"Enter a Code"}
               customStyles={{ gridTemplateColumns: "100%" }}
-              //   popUpElementError={"there is some error"}
+              // popUpElementError={"there is some error"}
             />
           }
           label={"Create Referral Code"}
