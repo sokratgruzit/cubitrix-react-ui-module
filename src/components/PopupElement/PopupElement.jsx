@@ -13,8 +13,8 @@ import './PopUpElement.css';
 
 export const PopupElement = ({ 
     inputs, 
-    currentArray, 
-    setCurrentArray, 
+    currentObject, 
+    setCurrentObject, 
     popUpElementError, 
     handleSubmit,
     submitButtonLabel,
@@ -26,19 +26,19 @@ export const PopupElement = ({
 
     const handleEmptyFields = useCallback((inputs) => {
         inputs.map((input) => {
-            if (input.required === true && currentArray[input.name].length < 1) {
+            if (input.required === true && currentObject[input.name].length < 1) {
                 setEmptyFields(prev => ({ ...prev, [input.name]: true}))
             }
             if (input.required === false) {
                 setEmptyFields(prev => ({ ...prev, [input.name]: false}))
             }
         })
-    }, [currentArray]);
+    }, [currentObject]);
 
     const handleSetFields = useCallback((inputs) => {
         inputs?.map((input) => {
             if (input.required) {
-                setCurrentArray((prev) => ({ ...prev, [input.name]: "" }))
+                setCurrentObject((prev) => ({ ...prev, [input.name]: "" }))
             }
         }
         );
@@ -91,7 +91,7 @@ export const PopupElement = ({
         onChange(data)
     };
 
-    const notEmptyList = useMemo(() => Object.keys(currentArray)?.filter((key) => !currentArray[key]) ?? [], [currentArray]);
+    const notEmptyList = useMemo(() => Object.keys(currentObject)?.filter((key) => !currentObject[key]) ?? [], [currentObject]);
 
     const handleSubmitClick = (inputs) => notEmptyList.length > 0 ? handleEmptyFields(inputs) : handleSubmit();
 
@@ -113,13 +113,13 @@ export const PopupElement = ({
                                 inputType={params?.inputType}
                                 label={params.title}
                                 name={params.name}
-                                value={params.type === "select" ? 'Any' : currentArray[params?.name] || ''}
+                                value={params.type === "select" ? 'Any' : currentObject[params?.name] || ''}
                                 onChange={(e) => !params.type ? handleInputChange(e, params) : handleInputChangeWithType(e, params)}
                                 emptyFieldErr={params.required && emptyFields[params?.name]}
                                 customStyles={{ width: "100%" }}
                                 placeholder={params?.placeholder}
                                 statusCard= {
-                                    formErrors[params?.name] && currentArray[params?.name]?.length > 0 && (
+                                    formErrors[params?.name] && currentObject[params?.name]?.length > 0 && (
                                         <HelpText
                                             status={formErrors[params.name].failure ? 'error' : 'success'}
                                             title={formErrors[params.name].failure || formErrors[params.name].success}

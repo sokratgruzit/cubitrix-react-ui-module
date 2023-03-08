@@ -69,8 +69,8 @@ stories.add("MakeOfferPopUp", () => {
           popUpElement={
             <PopupElement
               inputs={inputs}
-              currentArray={makeAnOfferObject}
-              setCurrentArray={setMakeAnOfferObject}
+              currentObject={makeAnOfferObject}
+              setCurrentObject={setMakeAnOfferObject}
               handleSubmit={() => console.log("hi hi")}
               submitButtonLabel={"Approve"}
               //   popUpElementError={"there is some error"}
