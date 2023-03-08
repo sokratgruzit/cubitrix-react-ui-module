@@ -78,9 +78,26 @@ stories.add("Loan", (props) => {
       .catch((error) => console.error(error));
   }
 
-  function handleRepayLoan(loandId) {
-    const data = { id: loandId };
+  function handleRepayLoan(data) {
+    data.borrower = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
     fetch("http://localhost:4000/api/loan/repay-loan", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
+
+  function handleMakeOffer(loan) {
+    const data = { ...loan, borrower: "0xsecretservice" };
+
+    console.log(data);
+
+    fetch("http://localhost:4000/api/loan/send-loan-offer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -243,7 +260,8 @@ stories.add("Loan", (props) => {
         handleRepayLoan={handleRepayLoan}
         makeOffer={(loanId) => {
           console.log("temporariliy skip make offer");
-          handleTakeLoan(loanId);
+          handleMakeOffer(loanId);
+          // handleTakeLoan(loanId);
         }}
       />
     </BrowserRouter>

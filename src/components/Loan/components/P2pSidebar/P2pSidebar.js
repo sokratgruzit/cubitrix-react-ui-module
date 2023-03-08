@@ -10,6 +10,7 @@ const P2pSidebar = ({
   yourBorrowing,
   createNewLoanOffering,
   handleDeleteLoanOffer,
+  handleRepayLoan,
 }) => {
   const [selectedTab, setSelectedTab] = useState("lending");
   const [makeAnOfferActive, setMakeAnOfferActive] = useState(false);
@@ -25,6 +26,12 @@ const P2pSidebar = ({
   function handleSubmit() {
     createNewLoanOffering(newOffer);
     setMakeAnOfferActive(false);
+  }
+
+  function handleRepaySubmit() {
+    const data = { ...RepayAmount, id: OpenRepayModal };
+    handleRepayLoan(data);
+    setOpenRepayModal(false);
   }
 
   const inputs = [
@@ -65,6 +72,30 @@ const P2pSidebar = ({
     },
   ];
 
+  const repayInputs = [
+    {
+      title: "token",
+      name: "token",
+      required: true,
+      type: "select",
+      options: [
+        { name: "token1", value: "token1" },
+        { name: "token2", value: "token2" },
+      ],
+      onChange: (e) =>
+        setRepayAmount((prev) => ({ ...prev, [e.target.name]: e.target.value })),
+    },
+    {
+      title: "amount",
+      description: "Loan offer amount",
+      name: "amount",
+      required: true,
+      placeholder: "Enter amount",
+      onChange: (e) =>
+        setRepayAmount((prev) => ({ ...prev, [e.target.name]: e.target.value })),
+    },
+  ];
+
   return (
     <div>
       {makeAnOfferActive && (
@@ -72,8 +103,8 @@ const P2pSidebar = ({
           popUpElement={
             <PopupElement
               inputs={inputs}
-              currentArray={newOffer}
-              setCurrentArray={setNewOffer}
+              currentObject={newOffer}
+              setCurrentObject={setNewOffer}
               handleSubmit={handleSubmit}
               submitButtonLabel={"Approve"}
             />
@@ -86,11 +117,11 @@ const P2pSidebar = ({
         <Popup
           popUpElement={
             <PopupElement
-              inputs={inputs}
-              currentArray={RepayAmount}
-              setCurrentArray={setRepayAmount}
-              handleSubmit={handleSubmit}
-              submitButtonLabel={"Approve"}
+              inputs={repayInputs}
+              currentObject={RepayAmount}
+              setCurrentObject={setRepayAmount}
+              handleSubmit={handleRepaySubmit}
+              submitButtonLabel={"Repay"}
             />
           }
           label={"Repay loan"}
@@ -217,7 +248,7 @@ const P2pSidebar = ({
                 <button
                   className="loan-actions"
                   onClick={() => {
-                    setOpenRepayModal(true);
+                    setOpenRepayModal(loan._id);
                   }}
                 >
                   Repay Loan

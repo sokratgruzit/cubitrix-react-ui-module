@@ -9,6 +9,8 @@ import { InfoCircleIcon } from "../../assets/svgs";
 import LoanDetails from "./components/LoanDetails/LoanDetails";
 import P2pSidebar from "./components/P2pSidebar/P2pSidebar";
 import LoanStatus from "./components/LoanStatus/LoanStatus";
+import { Popup } from "../Popup";
+import { PopupElement } from "../PopupElement";
 
 export const Loan = ({
   allLoanOffers,
@@ -17,6 +19,7 @@ export const Loan = ({
   createNewLoanOffering,
   handleDeleteLoanOffer,
   handleTakeLoan,
+  handleRepayLoan,
   makeOffer,
   supplyUSDC,
   borrowUSDC,
@@ -24,18 +27,75 @@ export const Loan = ({
   const { width } = useMobileWidth();
   const [loanPlatform, setLoanPlatform] = useState("p2p");
   const [selectedLoanId, setSelectedLoanId] = useState(false);
+  const [makeOfferLoanId, setMakeOfferLoanId] = useState(false);
+  const [makeOfferData, setMakeOfferData] = useState(false);
 
   function handleShowLoanDetails(loanId, type) {
     setSelectedLoanId({ loanId, type });
   }
 
+  function handleMakeOffer() {
+    const data = { ...makeOfferData, id: makeOfferLoanId };
+    makeOffer(data);
+  }
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setMakeOfferData((prev) => ({ ...prev, [name]: value }));
+  }
+
+  const inputs = [
+    {
+      title: "token",
+      name: "token",
+      required: true,
+      type: "select",
+      options: [
+        { name: "token1", value: "token1" },
+        { name: "token2", value: "token2" },
+      ],
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "Collateral A  mount",
+      description: "Loan offer amount",
+      name: "amount",
+      required: true,
+      placeholder: "Enter amount",
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "offer duration",
+      description: "Loan offer duration",
+      name: "offerDuration",
+      required: true,
+      placeholder: "Enter duration",
+      onChange: (e) => handleChange(e),
+    },
+  ];
+
   return (
     <div className={`main`}>
+      {makeOfferLoanId && (
+        <Popup
+          popUpElement={
+            <PopupElement
+              inputs={inputs}
+              currentObject={makeOfferData}
+              setCurrentObject={setMakeOfferData}
+              handleSubmit={handleMakeOffer}
+              submitButtonLabel={"Make Offer"}
+            />
+          }
+          label={"Send loan offer to lender"}
+          handlePopUpClose={() => setMakeOfferLoanId(false)}
+        />
+      )}
       <div
         className={`main-sidebar`}
         style={{ display: `${width > 1025 ? "flex" : "none"}` }}
       >
-        <div className={"staking-sidebar"}>
+        <div className={"main-sidebar-content"}>
           <div className="tabs-wrapper">
             <div className="tabsWrap">
               <div
@@ -129,6 +189,7 @@ export const Loan = ({
               createNewLoanOffering={createNewLoanOffering}
               handleDeleteLoanOffer={handleDeleteLoanOffer}
               handleShowLoanDetails={handleShowLoanDetails}
+              handleRepayLoan={handleRepayLoan}
             />
           )}
         </div>
@@ -310,7 +371,10 @@ export const Loan = ({
                     <div className="interest">{item.interest}</div>
                     <div className="duration">{item.duration}</div>
                     <LoanStatus status={item.status} />
-                    <button className="make-offer" onClick={() => makeOffer(item._id)}>
+                    <button
+                      className="make-offer"
+                      onClick={() => setMakeOfferLoanId(item._id)}
+                    >
                       Make Offer
                     </button>
                     <button
