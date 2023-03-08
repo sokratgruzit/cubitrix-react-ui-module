@@ -476,7 +476,7 @@ stories.add("Referral", () => {
         referralCodePaginationCurrent={1}
         referralCodePaginationTotal={20}
         referralCodePaginationEvent={() => {
-          console.log("hi");
+          console.log("hi hi");
         }}
       />
       {createCodePopupActive && (
