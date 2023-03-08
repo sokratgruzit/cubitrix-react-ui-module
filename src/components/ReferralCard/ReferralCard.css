@@ -11,12 +11,50 @@
     justify-content: space-between;
 }
 
-.referal-card-body {
+.referral-card-body {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.referal-card-body p {
+.referral-card-body p {
     color: #9C9DA3;
+}
+.total-referral-info-container {
+    padding: 90px 0;
+}
+
+.total-referral-info {
+    width: 100%;
+    background: #070B1A;
+    gap: 7px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.286rem;
+    font-family: 'Uber Move';
+    line-height: 140%;
+    color: #FFFFFF;
+    padding: 1.429rem 1.143rem;
+}
+
+.total-referral-info h2 {
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+
+.total-referral-info p {
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 1025px) {
+    .total-referral-info {
+        background: #0C1121;
+        border-radius: 8px;
+    }
+
+    .total-referral-info-container {
+        padding: 0;
+    }
 }
