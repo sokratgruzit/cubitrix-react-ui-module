@@ -1,0 +1,172 @@
+.loan-walletBalance {
+  display: flex;
+  flex-direction: column;
+  width: 324px;
+  height: 222px;
+  background: #070b1a;
+  border-radius: 18px;
+  padding: 16px;
+  margin-top: 20px;
+}
+.loan-walletBalance h3 {
+  font-size: 16px;
+  line-height: 140%;
+}
+.supply-balance {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.supply-balance p:first-child {
+  font-size: 14px;
+  line-height: 140%;
+  color: #57d29e;
+}
+.borrow-balance {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.borrow-balance p:first-child {
+  font-size: 14px;
+  line-height: 140%;
+  color: #6e62fc;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.loan-bar-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding-top: 40px;
+}
+
+.position-summary {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 20px;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.position-summary h3 {
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.position-summary-point {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  line-height: 140%;
+}
+
+.loan-pool-row {
+  height: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.info-circle {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+.collateral-name {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 100px;
+}
+
+.collateral-shortName {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.collateral-shortName p:first-child {
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  line-height: 140%;
+  color: #6a6d76;
+}
+.collateral-shortName p:last-child {
+  font-size: 12px;
+  line-height: 140%;
+  color: #6a6d76;
+}
+
+.pool-loan-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.protocol-balance {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-right: 40px;
+}
+
+.pool-loan-actions div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #3d5afe;
+  border-radius: 32px;
+  cursor: pointer;
+}
+
+.loan-title {
+  font-size: 20px;
+  line-height: 130%;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.lender {
+  display: flex;
+  align-items: center;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  padding-left: 10px;
+}
+
+.interest {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.make-offer {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}

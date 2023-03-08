@@ -62,8 +62,6 @@ stories.add("MakeOfferPopUp", () => {
     },
   ];
 
-  console.log(makeAnOfferObject);
-
   return (
     <>
       {makeAnOfferActive && (

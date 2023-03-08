@@ -34,7 +34,7 @@ export const Staking = ({
   depositAmount,
   handleDepositAmount,
   stackContractInfo,
-}) => {    
+}) => {
   const [showCalculator, setShowCalculator] = useState(false);
   const { width } = useMobileWidth();
   return (
@@ -64,7 +64,7 @@ export const Staking = ({
               depositAmount,
               handleDepositAmount,
               timeperiodDate,
-              handleTimeperiodDate
+              handleTimeperiodDate,
             }}
           />
         </div>
@@ -79,9 +79,7 @@ export const Staking = ({
           stackContractInfo={stackContractInfo}
           customStyles={{ display: `${width <= 1025 ? "block" : "none"}` }}
         />
-        <h3 className={`${width < 1025 ? "font-14" : "font-20"}`}>
-          Your Stake
-        </h3>
+        <h3 className={`${width < 1025 ? "font-14" : "font-20"}`}>Your Stake</h3>
         <div className={"account-summary-container"}>
           {accountSummaryData?.map((data, index) => (
             <AccountSummary key={index} data={data} />
@@ -95,11 +93,7 @@ export const Staking = ({
         />
       </div>
       <div className={"hidden-calculator-wrapper"}>
-        <div
-          className={`hidden-calculator-container ${
-            showCalculator && "active"
-          }`}
-        >
+        <div className={`hidden-calculator-container ${showCalculator && "active"}`}>
           {showCalculator && (
             <Calculator
               {...{
@@ -114,7 +108,7 @@ export const Staking = ({
                 depositAmount,
                 handleDepositAmount,
                 timeperiodDate,
-                handleTimeperiodDate
+                handleTimeperiodDate,
               }}
             />
           )}
