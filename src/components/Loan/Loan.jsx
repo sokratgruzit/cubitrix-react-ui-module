@@ -32,7 +32,7 @@ export const Loan = ({
         className={`main-sidebar`}
         style={{ display: `${width > 1025 ? "flex" : "none"}` }}
       >
-        <div className={"staking-sidebar"}>
+        <div className={"main-sidebar-content"}>
           <div className="tabs-wrapper">
             <div className="tabsWrap">
               <div

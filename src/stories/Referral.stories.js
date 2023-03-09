@@ -18,21 +18,35 @@ stories.add("Referral", () => {
   const [createCodePopupActive, setCreateCodePopupActive] = useState(false);
   const [levelSystemPopupActive, setLevelSystemPopupActive] = useState(false);
   const [createCodeObject, setCreateCodeObject] = useState({});
-  const [mobileExpand, setMobileExpand] = useState(null);
+  const [codesTableData, setCodesTableData] = useState([]);
+  const [rebatesTableData, setRebatesTableData] = useState([]);
+  const [referralCodes, setReferralCodes] = useState([]);
+  const [rebatesCurrentPage, setRebatesCurrentPage] = useState(1);
+  const [codesCurrentPage, setCodesCurrentPage] = useState(1);
+  const { width } = useMobileWidth();
 
-  let mobileExpandFunc = (id) => {
-    if (width <= 1300) {
-      if (id !== mobileExpand) {
-        setMobileExpand(id);
-      } else {
-        setMobileExpand(null);
-      }
-    }
-  };
   const handleCreateCode = () => setCreateCodePopupActive(true);
 
-  const { width } = useMobileWidth();
-  const referalCards = [
+  const handleCreateCodeSubmit = async () => {
+    const response = await fetch(
+      "http://localhost:4000/api/referral/assign_refferal_to_user",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          referral: createCodeObject.referral,
+          address: 'koko123aaa2', 
+        }),
+      }
+    );
+    const data = await response.json();
+
+    // console.log(data)
+  }
+
+  const referralCards = [
     {
       label: "Create Code To Start",
       description: "Your Rebate Rate",
@@ -60,18 +74,88 @@ stories.add("Referral", () => {
     },
   ];
 
-  // useEffect(() => {
-  //   fetch("http://localhost:4000/api/referral/get_referral_options")
-  //     .then((response) => response.json())
-  //     .then((data) => console.log(data))
-  //     .catch((error) => console.error(error));
-  // }, []);
+  const generateCode = async () => {
+    const response = await fetch(
+      "http://localhost:4000/api/referral/get_referrals_by_address",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          address: "koko123aaa2",
+        }),
+      }
+    );
+    const data = await response.json();
 
-  let th = [
+    referralCodes(data);
+
+    if (data.length === 0) {
+      fetch("http://localhost:4000/api/referral/bind_referral_to_user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          address: "koko123aaa2",
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setReferralCodes(data);
+        })
+        .catch((error) => console.error(error));
+    }
+  };
+
+  const generateTableData = (table, page) => {
+    fetch(`http://localhost:4000/api/referral/${table === 'codes' ? 'get_referral_code_of_user' : 'get_referral_rebates_history_of_user'}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address: "koko123aaa2",
+        limit: 10,
+        page: page || 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        table === 'codes' ? setCodesTableData(data.referral_code) : setRebatesTableData(data.referral_rebates_history);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const getReferralTotal = async () => {
+    fetch(`http://localhost:4000/api/referral/get_referral_data_of_user`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        address: "koko123aaa2",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => console.error(error));
+  }
+
+  useEffect(() => {
+    generateCode();
+    generateTableData('codes');
+    generateTableData('rebates');
+    getReferralTotal();
+  }, []);
+
+  let referralCodeTh = [
     {
       name: "My Referral Code",
       width: 15,
-      mobileWidth: 45,
       id: 0,
     },
     {
@@ -93,34 +177,33 @@ stories.add("Referral", () => {
     {
       name: "Total Earned",
       width: 15,
+      mobileWidth: 45,
       id: 4,
     },
   ];
 
-  let td = [
+  let referralHistoryTh = [
     {
-      id: 12123,
-      referal_code: "REF_lMJm0PoJ1yS3qyeGtVk",
-      user_address: "0xae0cf2498c...",
-      user_level: "VIP 1",
-      rate: "5%",
-      total_earned: "1,132,000.1",
+      name: "From",
+      width: 15,
+      mobileWidth: 45,
+      id: 0,
     },
     {
-      id: 121223323,
-      referal_code: "REF_lMJm0PoJ1yS3qyeGtVk",
-      user_address: "0xae0cf2498c...",
-      user_level: "VIP 1",
-      rate: "5%",
-      total_earned: "1,132,000.1",
+      name: "Referral Code",
+      width: 15,
+      id: 1,
     },
     {
-      id: 1212323,
-      referal_code: "REF_lMJm0PoJ1yS3qyeGtVk",
-      user_address: "0xae0cf2498c...",
-      user_level: "VIP 1",
-      rate: "5%",
-      total_earned: "1,132,000.1",
+      name: "Referral Level",
+      width: 15,
+      id: 2,
+    },
+    {
+      name: "Amount",
+      width: 15,
+      mobileWidth: 45,
+      id: 3,
     },
   ];
 
@@ -132,7 +215,7 @@ stories.add("Referral", () => {
   const inputs = [
     {
       title: "",
-      name: "code",
+      name: "referral",
       placeholder: "Enter Code",
       required: true,
       validation: "text",
@@ -141,82 +224,6 @@ stories.add("Referral", () => {
       onChange: (e) => handleChange(e),
     },
   ];
-
-  let mobile = width < 1300;
-
-  let tableData;
-  tableData = td.map((item, index) => {
-    return (
-      <div
-        className={`table-parent ${mobileExpand == item.id ? "active" : ""}`}
-        key={index}
-        onClick={() => {
-          mobileExpandFunc(item.id);
-        }}
-      >
-        <div className={"table"}>
-          {th?.slice(0, 5).map((i, index) => (
-            <div
-              key={index}
-              className={`td col ${i.mobileWidth ? true : false}`}
-              style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
-            >
-              <span>
-                {
-                  [
-                    item.referal_code,
-                    item.user_address,
-                    item.user_level,
-                    item.rate,
-                    item.total_earned,
-                  ][index]
-                }
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="table-more" />
-        <div className="icon-place">
-          <svg
-            width="12"
-            height="7"
-            viewBox="0 0 12 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <div className="table-mobile">
-          <div className="table-mobile-content">
-            {[2, 3, 4].map((index) => (
-              <div className="td" key={index}>
-                <div className="mobile-ttl">{th[index].name}</div>
-                <span>
-                  {
-                    item[
-                      index === 1
-                        ? "user_address"
-                        : index === 2
-                        ? "rate"
-                        : "total_earned"
-                    ]
-                  }
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  });
 
   let totalReferralRebates = {
     totalTrading: "0.01",
@@ -458,25 +465,29 @@ stories.add("Referral", () => {
         verified={false}
       />
       <Referral
-        cards={referalCards}
+        cards={referralCards}
         handleCreateCode={handleCreateCode}
-        referalHistoryTableHead={th}
-        referralHistoryTableData={tableData}
-        referralCodeTableHead={th}
-        referralCodeTableData={tableData}
+        referralHistoryTableHead={referralHistoryTh}
+        rebatesTableData={rebatesTableData}
+        referralCodeTableHead={referralCodeTh}
+        codesTableData={codesTableData}
         referralCodeTableEmpty={referralCodeTableEmpty}
         referralHistoryTableEmpty={referralHistoryTableEmpty}
+        // referralHistoryTableLoading={true}
+        // referralCodeTableLoading={true}
         totalReferralRebates={totalReferralRebates}
         totalReferralRebatesLabel={"Total Referral Rebates"}
-        referralHistoryPaginationCurrent={1}
+        referralHistoryPaginationCurrent={rebatesCurrentPage}
         referralHistoryPaginationTotal={20}
-        referralHistoryPaginationEvent={() => {
-          console.log("hi");
+        referralHistoryPaginationEvent={(page) => {
+          setRebatesCurrentPage(page);
+          generateTableData('rebates', page);
         }}
-        referralCodePaginationCurrent={1}
+        referralCodePaginationCurrent={codesCurrentPage}
         referralCodePaginationTotal={20}
-        referralCodePaginationEvent={() => {
-          console.log("hi hi");
+        referralCodePaginationEvent={(page) => {
+          setCodesCurrentPage(page);
+          generateTableData('codes', page);
         }}
       />
       {createCodePopupActive && (
@@ -486,7 +497,7 @@ stories.add("Referral", () => {
               inputs={inputs}
               currentObject={createCodeObject}
               setCurrentObject={setCreateCodeObject}
-              handleSubmit={() => console.log("hi hi")}
+              handleSubmit={handleCreateCodeSubmit}
               submitButtonLabel={"Enter a Code"}
               customStyles={{ gridTemplateColumns: "100%" }}
               // popUpElementError={"there is some error"}
@@ -503,7 +514,7 @@ stories.add("Referral", () => {
             <LevelSystem
               tableHead={popUpTh}
               tableData={popUpTableData}
-              mobile={mobile}
+              mobile={width <= 1300}
             />
           }
           label={"Referrer Level System"}
