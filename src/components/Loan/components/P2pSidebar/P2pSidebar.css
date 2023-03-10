@@ -95,5 +95,15 @@
   display: flex;
   flex-wrap: wrap;
 }
-.status {
+
+.loan-actions {
+  font-size: 12px;
+  line-height: 130%;
+  text-decoration: underline;
+  color: #0050f0;
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.loan-actions:hover {
+  color: #3d5afe;
 }

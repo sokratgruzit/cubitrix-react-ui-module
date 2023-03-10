@@ -8,12 +8,18 @@ import { Table } from "../Table";
 import { InfoCircleIcon } from "../../assets/svgs";
 import LoanDetails from "./components/LoanDetails/LoanDetails";
 import P2pSidebar from "./components/P2pSidebar/P2pSidebar";
+import LoanStatus from "./components/LoanStatus/LoanStatus";
+import { Popup } from "../Popup";
+import { PopupElement } from "../PopupElement";
 
 export const Loan = ({
   allLoanOffers,
   yourLending,
   yourBorrowing,
   createNewLoanOffering,
+  handleDeleteLoanOffer,
+  handleTakeLoan,
+  handleRepayLoan,
   makeOffer,
   supplyUSDC,
   borrowUSDC,
@@ -21,13 +27,70 @@ export const Loan = ({
   const { width } = useMobileWidth();
   const [loanPlatform, setLoanPlatform] = useState("p2p");
   const [selectedLoanId, setSelectedLoanId] = useState(false);
+  const [makeOfferLoanId, setMakeOfferLoanId] = useState(false);
+  const [makeOfferData, setMakeOfferData] = useState(false);
 
-  function handleShowLoanDetails(loanId) {
-    setSelectedLoanId(loanId);
+  function handleShowLoanDetails(loanId, type) {
+    setSelectedLoanId({ loanId, type });
   }
+
+  function handleMakeOffer() {
+    const data = { ...makeOfferData, id: makeOfferLoanId };
+    makeOffer(data);
+  }
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setMakeOfferData((prev) => ({ ...prev, [name]: value }));
+  }
+
+  const inputs = [
+    {
+      title: "token",
+      name: "token",
+      required: true,
+      type: "select",
+      options: [
+        { name: "token1", value: "token1" },
+        { name: "token2", value: "token2" },
+      ],
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "Collateral A  mount",
+      description: "Loan offer amount",
+      name: "amount",
+      required: true,
+      placeholder: "Enter amount",
+      onChange: (e) => handleChange(e),
+    },
+    {
+      title: "offer duration",
+      description: "Loan offer duration",
+      name: "offerDuration",
+      required: true,
+      placeholder: "Enter duration",
+      onChange: (e) => handleChange(e),
+    },
+  ];
 
   return (
     <div className={`main`}>
+      {makeOfferLoanId && (
+        <Popup
+          popUpElement={
+            <PopupElement
+              inputs={inputs}
+              currentObject={makeOfferData}
+              setCurrentObject={setMakeOfferData}
+              handleSubmit={handleMakeOffer}
+              submitButtonLabel={"Make Offer"}
+            />
+          }
+          label={"Send loan offer to lender"}
+          handlePopUpClose={() => setMakeOfferLoanId(false)}
+        />
+      )}
       <div
         className={`main-sidebar`}
         style={{ display: `${width > 1025 ? "flex" : "none"}` }}
@@ -124,6 +187,9 @@ export const Loan = ({
               yourLending={yourLending}
               yourBorrowing={yourBorrowing}
               createNewLoanOffering={createNewLoanOffering}
+              handleDeleteLoanOffer={handleDeleteLoanOffer}
+              handleShowLoanDetails={handleShowLoanDetails}
+              handleRepayLoan={handleRepayLoan}
             />
           )}
         </div>
@@ -270,7 +336,7 @@ export const Loan = ({
       {loanPlatform === "p2p" && (
         <>
           <div className={"main-content"}>
-            {selectedLoanId && (
+            {JSON.stringify(selectedLoanId) !== "{}" && (
               <LoanDetails
                 loan={selectedLoanId}
                 // loanDetails={loanDetails}
@@ -304,13 +370,16 @@ export const Loan = ({
                     <div className="amount">{item.amount}</div>
                     <div className="interest">{item.interest}</div>
                     <div className="duration">{item.duration}</div>
-                    <div className="status">{item.status}</div>
-                    <button className="make-offer" onClick={makeOffer}>
+                    <LoanStatus status={item.status} />
+                    <button
+                      className="make-offer"
+                      onClick={() => setMakeOfferLoanId(item._id)}
+                    >
                       Make Offer
                     </button>
                     <button
                       className="show-loan-details"
-                      onClick={() => handleShowLoanDetails(item._id)}
+                      onClick={() => handleShowLoanDetails(item._id, "public")}
                     >
                       Details
                     </button>

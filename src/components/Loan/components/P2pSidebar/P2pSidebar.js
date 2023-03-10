@@ -3,11 +3,20 @@ import { Button } from "../../../Button";
 import "./P2pSidebar.css";
 import { Popup } from "./../../../Popup";
 import { PopupElement } from "./../../../PopupElement";
+import LoanStatus from "../LoanStatus/LoanStatus";
 
-const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
+const P2pSidebar = ({
+  yourLending,
+  yourBorrowing,
+  createNewLoanOffering,
+  handleDeleteLoanOffer,
+  handleRepayLoan,
+}) => {
   const [selectedTab, setSelectedTab] = useState("lending");
   const [makeAnOfferActive, setMakeAnOfferActive] = useState(false);
   const [newOffer, setNewOffer] = useState({});
+  const [OpenRepayModal, setOpenRepayModal] = useState(false);
+  const [RepayAmount, setRepayAmount] = useState({});
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -17,6 +26,12 @@ const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
   function handleSubmit() {
     createNewLoanOffering(newOffer);
     setMakeAnOfferActive(false);
+  }
+
+  function handleRepaySubmit() {
+    const data = { ...RepayAmount, id: OpenRepayModal };
+    handleRepayLoan(data);
+    setOpenRepayModal(false);
   }
 
   const inputs = [
@@ -57,6 +72,30 @@ const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
     },
   ];
 
+  const repayInputs = [
+    {
+      title: "token",
+      name: "token",
+      required: true,
+      type: "select",
+      options: [
+        { name: "token1", value: "token1" },
+        { name: "token2", value: "token2" },
+      ],
+      onChange: (e) =>
+        setRepayAmount((prev) => ({ ...prev, [e.target.name]: e.target.value })),
+    },
+    {
+      title: "amount",
+      description: "Loan offer amount",
+      name: "amount",
+      required: true,
+      placeholder: "Enter amount",
+      onChange: (e) =>
+        setRepayAmount((prev) => ({ ...prev, [e.target.name]: e.target.value })),
+    },
+  ];
+
   return (
     <div>
       {makeAnOfferActive && (
@@ -64,15 +103,29 @@ const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
           popUpElement={
             <PopupElement
               inputs={inputs}
-              currentArray={newOffer}
-              setCurrentArray={setNewOffer}
+              currentObject={newOffer}
+              setCurrentObject={setNewOffer}
               handleSubmit={handleSubmit}
               submitButtonLabel={"Approve"}
-              //   popUpElementError={"there is some error"}
             />
           }
           label={"Create a new loan offering"}
           handlePopUpClose={() => setMakeAnOfferActive(false)}
+        />
+      )}
+      {OpenRepayModal && (
+        <Popup
+          popUpElement={
+            <PopupElement
+              inputs={repayInputs}
+              currentObject={RepayAmount}
+              setCurrentObject={setRepayAmount}
+              handleSubmit={handleRepaySubmit}
+              submitButtonLabel={"Repay"}
+            />
+          }
+          label={"Repay loan"}
+          handlePopUpClose={() => setOpenRepayModal(false)}
         />
       )}
       <div className="tabs-wrapper">
@@ -140,8 +193,28 @@ const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
                 </div>
                 <div className={"your-lending-loan-stats"}>
                   <p>status</p>
-                  <p className="status">{loan.status}</p>
+                  <LoanStatus status={loan.status} />
                 </div>
+
+                {/* <Button
+                  label={"Delete Loan"}
+                  size={"btn-sm"}
+                  type={"btn-secondary"}
+                  arrow={"arrow-none"}
+                  element={"button"}
+                  onClick={() => {
+                    handleDeleteLoanOffer(loan._id);
+                  }}
+                  customStyles={{ margin: "0" }}
+                /> */}
+                <button
+                  className="loan-actions"
+                  onClick={() => {
+                    handleDeleteLoanOffer(loan._id);
+                  }}
+                >
+                  Delete Loan
+                </button>
               </div>
             </div>
           ))}
@@ -170,8 +243,24 @@ const P2pSidebar = ({ yourLending, yourBorrowing, createNewLoanOffering }) => {
                 </div>
                 <div className={"your-lending-loan-stats"}>
                   <p>status</p>
-                  <p className="status">{loan.status}</p>
+                  <LoanStatus status={loan.status} />
                 </div>
+                <button
+                  className="loan-actions"
+                  onClick={() => {
+                    setOpenRepayModal(loan._id);
+                  }}
+                >
+                  Repay Loan
+                </button>
+                <button
+                  className="loan-actions"
+                  onClick={() => {
+                    // handleDeleteLoanOffer(loan._id);
+                  }}
+                >
+                  Default Loan
+                </button>
               </div>
             </div>
           ))}

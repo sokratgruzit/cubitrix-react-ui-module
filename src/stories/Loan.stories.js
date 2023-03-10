@@ -47,6 +47,68 @@ stories.add("Loan", (props) => {
       .catch((error) => console.error(error));
   }
 
+  function handleDeleteLoanOffer(loanId) {
+    const data = { id: loanId, lender: "0xA3403975861B601aE111b4eeAFbA94060a58d0CA" };
+    fetch("http://localhost:4000/api/loan/delete-loan-offer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
+
+  function handleTakeLoan(loanId) {
+    const mutatedLoan = {
+      id: loanId,
+      borrower: "0xA3403975861B601aE111b4eeAFbA94060a58d0CA",
+    };
+    fetch("http://localhost:4000/api/loan/take-loan", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(mutatedLoan),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
+
+  function handleRepayLoan(data) {
+    data.borrower = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+    fetch("http://localhost:4000/api/loan/repay-loan", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
+
+  function handleMakeOffer(loan) {
+    const data = { ...loan, borrower: "0xsecretservice" };
+
+    console.log(data);
+
+    fetch("http://localhost:4000/api/loan/send-loan-offer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  }
+
   return (
     <BrowserRouter>
       <Header
@@ -193,7 +255,14 @@ stories.add("Loan", (props) => {
         yourLending={yourLending}
         yourBorrowing={yourBorrowing}
         createNewLoanOffering={handleCreateNewLoanOffering}
-        makeOffer={() => console.log("make offer")}
+        handleDeleteLoanOffer={handleDeleteLoanOffer}
+        handleTakeLoan={handleTakeLoan}
+        handleRepayLoan={handleRepayLoan}
+        makeOffer={(loanId) => {
+          console.log("temporariliy skip make offer");
+          handleMakeOffer(loanId);
+          // handleTakeLoan(loanId);
+        }}
       />
     </BrowserRouter>
   );
