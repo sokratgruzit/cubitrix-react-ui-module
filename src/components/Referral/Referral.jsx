@@ -25,7 +25,7 @@ export const Referral = ({
     rebatesTableData,
     referralCodeTableEmpty,
     referralHistoryTableEmpty,
-    totalReferralRebates,
+    referralRebatesTotal,
     totalReferralRebatesLabel,
     referralHistoryPaginationCurrent,
     referralHistoryPaginationTotal,
@@ -34,7 +34,8 @@ export const Referral = ({
     referralCodePaginationTotal,
     referralCodePaginationEvent,
     referralHistoryTableLoading,
-    referralCodeTableLoading
+    referralCodeTableLoading,
+    referralCodesCardData
 }) => {
     const [mobileExpand, setMobileExpand] = useState(null);
     const { width } = useMobileWidth();
@@ -261,7 +262,13 @@ export const Referral = ({
                 <div className={'main-sidebar-content'}>
                     <ReferralCard 
                         type={'total-info'} 
-                        item={totalReferralRebates} 
+                        data={referralCodesCardData}
+                        label={totalReferralRebatesLabel}
+                        customStyles={{ display: `${width > 1025 ? "block" : "none"}` }}
+                    />
+                    <ReferralCard
+                        type={'total-info'}
+                        data={referralRebatesTotal} 
                         label={totalReferralRebatesLabel}  
                         customStyles={{ display: `${width > 1025 ? "block" : "none"}` }}
                     />
@@ -274,7 +281,13 @@ export const Referral = ({
                 </h2>
                 <ReferralCard 
                     type={'total-info'} 
-                    item={totalReferralRebates} 
+                    data={referralCodesCardData}
+                    label={totalReferralRebatesLabel}
+                    customStyles={{ display: `${width <= 1025 ? "block" : "none"}` }}
+                />
+                <ReferralCard
+                    type={'total-info'}
+                    data={referralRebatesTotal} 
                     label={totalReferralRebatesLabel}  
                     customStyles={{ display: `${width <= 1025 ? "block" : "none"}` }}
                     />

@@ -16,7 +16,27 @@ export const LevelSystem = ({ tableHead, tableData}) => {
             })}
           </div>
           <div className={"level-system-body"}>
-            {tableData}
+            {tableData.map((item, index) => (
+              <div className="level-system-table" key={index}>
+                {tableHead?.slice(0, 4).map((i, index) => (
+                  <div
+                    key={index}
+                    className={`level-system-td`}
+                    style={{ width: `${i.width}%` }}
+                  >
+                    <span>
+                      {
+                        [
+                          item.level,
+                          item.complandHolding,
+                          item.rebaseRate,
+                        ][index]
+                      }
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </>
       ) : (
