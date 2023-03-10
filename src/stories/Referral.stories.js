@@ -41,6 +41,7 @@ stories.add("Referral", () => {
 
   const referralCards = [
     {
+      id: "001231",
       label: "Create Code To Start",
       description: "Your Rebate Rate",
       button: (
@@ -54,6 +55,7 @@ stories.add("Referral", () => {
       ),
     },
     {
+      id: "00999231",
       label: "Create Code To Start",
       description: "Your Tier",
       button: (
@@ -85,11 +87,72 @@ stories.add("Referral", () => {
     let codesData = {};
 
     data.forEach((item) => {
-      item.referral_type === 'binary' ? codesData = { ...codesData, binary: item.referral } : codesData = { ...codesData, referral: item.referral }
-    })
+      item.referral_type === "binary"
+        ? (codesData = { ...codesData, binary: item.referral })
+        : (codesData = { ...codesData, referral: item.referral });
+    });
 
     if (data.length === 0) {
-      const generateCodeResponse = await fetch("http://localhost:4000/api/referral/bind_referral_to_user", {
+      const generateCodeResponse = await fetch(
+        "http://localhost:4000/api/referral/bind_referral_to_user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            address: "koko123aaa",
+          }),
+        }
+      );
+
+      const generateCodeData = await generateCodeResponse.json();
+
+      generateCodeData.forEach((item) => {
+        item.referral_type === "binary"
+          ? (codesData = { ...codesData, binary: item.referral })
+          : (codesData = { ...codesData, referral: item.referral });
+      });
+    }
+
+    setReferralCodes(codesData);
+  };
+
+  const generateTableData = async (table, page) => {
+    const response = await fetch(
+      `http://localhost:4000/api/referral/${
+        table === "codes"
+          ? "get_referral_code_of_user"
+          : "get_referral_rebates_history_of_user"
+      }`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          address: "koko123aaa",
+          limit: 5,
+          page: page || 1,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (table === "codes") {
+      setCodesTableData(data.referral_code);
+      setCodesPaginationTotal(data.total_pages);
+    } else {
+      setRebatesTableData(data.referral_rebates_history);
+      setRebatesPaginationTotal(data.total_pages);
+    }
+  };
+
+  const getReferralTotal = async () => {
+    const response = await fetch(
+      `http://localhost:4000/api/referral/get_referral_data_of_user`,
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,91 +160,48 @@ stories.add("Referral", () => {
         body: JSON.stringify({
           address: "koko123aaa",
         }),
-      })
-
-      const generateCodeData = await generateCodeResponse.json();
-
-      generateCodeData.forEach((item) => {
-        item.referral_type === 'binary' ? codesData = { ...codesData, binary: item.referral } : codesData = { ...codesData, referral: item.referral }
-      })
-    }
-    
-    setReferralCodes(codesData);
-  };
-
-  const generateTableData = async (table, page) => {
-    const response = await fetch(`http://localhost:4000/api/referral/${table === 'codes' ? 'get_referral_code_of_user' : 'get_referral_rebates_history_of_user'}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address: "koko123aaa",
-        limit: 5,
-        page: page || 1,
-      }),
-    })
-
-    const data = await response.json();
-
-    if (table === 'codes') {
-      setCodesTableData(data.referral_code);
-      setCodesPaginationTotal(data.total_pages);
-    } else {
-      setRebatesTableData(data.referral_rebates_history);
-      setRebatesPaginationTotal(data.total_pages);
-    }
-
-  };
-
-  const getReferralTotal = async () => {
-    const response = await fetch(`http://localhost:4000/api/referral/get_referral_data_of_user`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        address: "koko123aaa",
-      }),
-    })
+      }
+    );
 
     const data = await response.json();
 
     let total = {
-      rebatesUniLevel: 0,  
-      rebatesBinaryTotal: 0, 
-      weeklyUniLevel: 0, 
-      weeklyBinaryTotal: 0, 
+      rebatesUniLevel: 0,
+      rebatesBinaryTotal: 0,
+      weeklyUniLevel: 0,
+      weeklyBinaryTotal: 0,
     };
 
     data.total_referral_rebates_total.forEach((item) => {
-      if (item._id === 'referral_bonus_uni_level') {
-        return total.rebatesUniLevel = item.amount;
+      if (item._id === "referral_bonus_uni_level") {
+        return (total.rebatesUniLevel = item.amount);
       }
       total.rebatesBinaryTotal = total.rebatesBinaryTotal + item.amount;
-    })
+    });
 
     data.total_referral_rebates_weekly.forEach((item) => {
-      if (item._id === 'referral_bonus_uni_level') {
-        return total.weeklyUniLevel = item.amount;
+      if (item._id === "referral_bonus_uni_level") {
+        return (total.weeklyUniLevel = item.amount);
       }
       total.weeklyBinaryTotal = total.weeklyBinaryTotal + item.amount;
-    })
+    });
 
-    setReferralTotal({ 
-      ...total, 
+    setReferralTotal({
+      ...total,
       rebatesTotal: total.rebatesUniLevel + total.rebatesBinaryTotal,
       weeklyTotal: total.weeklyUniLevel + total.weeklyBinaryTotal,
-    })
-  }
+    });
+  };
 
   const getOptions = async () => {
-    const response = await fetch(`http://localhost:4000/api/referral/get_referral_options`)
+    const response = await fetch(
+      `http://localhost:4000/api/referral/get_referral_options`
+    );
 
     const data = await response.json();
 
-    setLevelSystemTableOptions(data)
-  }
+    setLevelSystemTableOptions(data);
+  };
 
   const handleCreateCodeSubmit = async () => {
     const response = await fetch(
@@ -193,19 +213,19 @@ stories.add("Referral", () => {
         },
         body: JSON.stringify({
           referral: createCodeObject.referral,
-          address: 'koko123aaa', 
+          address: "koko123aaa",
         }),
       }
     );
     const data = await response.json();
 
     generateCode();
-  }
+  };
 
   useEffect(() => {
     generateCode();
-    generateTableData('codes');
-    generateTableData('rebates');
+    generateTableData("codes");
+    generateTableData("rebates");
     getReferralTotal();
     getOptions();
   }, []);
@@ -309,61 +329,70 @@ stories.add("Referral", () => {
     },
     {
       level: "VIP 1",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_1,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_1,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_1,
     },
     {
       level: "VIP 2",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_2,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_2,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_2,
     },
     {
       level: "VIP 3",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_3,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_3,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_3,
     },
     {
       level: "VIP 4",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_4,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_4,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_4,
     },
     {
       level: "VIP 5",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_5,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_5,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_5,
     },
     {
       level: "VIP 6",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_6,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_6,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_6,
     },
     {
       level: "VIP 7",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_7,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_7,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_7,
     },
     {
       level: "VIP 8",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_8,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_8,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_8,
     },
     {
       level: "VIP 9",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_9,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_9,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_9,
     },
     {
       level: "VIP 10",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_10,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_10,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_10,
     },
     {
       level: "VIP 11",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_11,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_11,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_11,
     },
-    
-
   ];
 
   const referralCodeTableEmpty = {
@@ -413,16 +442,18 @@ stories.add("Referral", () => {
 
   const referralCodesCardData = [
     {
+      id: "0012331",
       title: "Referral Code",
       value: referralCodes?.referral,
-      color: '#57D29E'
+      color: "#57D29E",
     },
     {
+      id: "00133231",
       title: "Binary Code",
       value: referralCodes?.binary,
-      color: '#6E62FC'
+      color: "#6E62FC",
     },
-  ]
+  ];
 
   return (
     <BrowserRouter>

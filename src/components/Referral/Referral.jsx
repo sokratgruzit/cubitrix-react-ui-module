@@ -299,7 +299,9 @@ export const Referral = ({
                     customStyles={{  border: 'none', paddingTop: '0' }}
                 />
                 <div className={'referral-cards-container'}>
-                    {cards?.map((item, index) => <ReferralCard type={"default"} item={item} key={index} />)}
+                    {cards?.map((item, index) => (
+                        <ReferralCard type={"default"} item={item} key={index} />
+                    ))}
                 </div>
                 <Visual
                     element={'table-header'}
