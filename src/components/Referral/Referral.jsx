@@ -290,7 +290,7 @@ export const Referral = ({
                     data={referralRebatesTotal} 
                     label={totalReferralRebatesLabel}  
                     customStyles={{ display: `${width <= 1025 ? "block" : "none"}` }}
-                    />
+                />
                 <Visual
                     element={'table-header'}
                     label={'Referral'}
