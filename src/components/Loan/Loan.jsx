@@ -21,6 +21,7 @@ export const Loan = ({
   handleTakeLoan,
   handleRepayLoan,
   makeOffer,
+  rescindOffer,
   supplyUSDC,
   borrowUSDC,
 }) => {
@@ -343,6 +344,7 @@ export const Loan = ({
               <LoanDetails
                 loan={selectedLoanId}
                 setSelectedLoanId={setSelectedLoanId}
+                rescindOffer={rescindOffer}
                 // loanDetails={loanDetails}
                 // setShowLoanDetails={setShowLoanDetails}
               />
@@ -374,7 +376,9 @@ export const Loan = ({
                     <div className="amount">{item.amount}</div>
                     <div className="interest">{item.interest}</div>
                     <div className="duration">{item.duration}</div>
-                    <LoanStatus status={item.status} />
+                    <div className="status-item">
+                      <LoanStatus status={item.status} />
+                    </div>
                     <button
                       className="make-offer"
                       onClick={() => setMakeOfferLoanId(item._id)}

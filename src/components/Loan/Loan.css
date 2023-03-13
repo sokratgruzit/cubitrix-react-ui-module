@@ -159,6 +159,12 @@
   width: 100px;
 }
 
+.status-item {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
 .status {
   display: flex;
   align-items: center;

@@ -95,8 +95,6 @@ stories.add("Loan", (props) => {
   function handleMakeOffer(loan) {
     const data = { ...loan, borrower: "0xsecretservice" };
 
-    console.log(data);
-
     fetch("http://localhost:4000/api/loan/send-loan-offer", {
       method: "POST",
       headers: {
@@ -107,6 +105,23 @@ stories.add("Loan", (props) => {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
+  }
+
+  function handleRescindOffer(loanId) {
+    const data = { id: loanId, borrower: "0xsecretservice", offerId: "not yet defined" };
+
+    console.log(data);
+
+    // fetch("http://localhost:4000/api/loan/rescind-loan-offer", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data))
+    //   .catch((error) => console.error(error));
   }
 
   return (
@@ -263,6 +278,7 @@ stories.add("Loan", (props) => {
           handleMakeOffer(loanId);
           // handleTakeLoan(loanId);
         }}
+        rescindOffer={handleRescindOffer}
       />
     </BrowserRouter>
   );

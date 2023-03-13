@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoanDetails.css";
 
-const LoanDetails = ({ loan, setSelectedLoanId }) => {
+const LoanDetails = ({ loan, setSelectedLoanId, rescindOffer }) => {
   console.log(loan.loan);
   return (
     <div className="loanDetails">
@@ -63,7 +63,9 @@ const LoanDetails = ({ loan, setSelectedLoanId }) => {
             <div className="offers-expires">
               <p>{offer?.offerDuration}</p>
             </div>
-            <div>{offer?.status}</div>
+            <div className="offers-status">
+              <span>{offer?.status}</span>
+            </div>
             <div className="offers-actions">
               {/* {offer.borrower === "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4" && (
                 <button
@@ -75,16 +77,38 @@ const LoanDetails = ({ loan, setSelectedLoanId }) => {
                   Accept Offer
                 </button>
               ))} */}
-              {offer.borrower === "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4" && (
+              {offer.borrower === "0xsecretservice" && (
                 <button
                   className="loan-actions-btn"
                   onClick={() => {
                     // handleDeleteLoanOffer(loan._id);
-                    console.log("clicked");
+                    rescindOffer(loan.loan._id, offer.borrower);
                   }}
                 >
-                  shit
+                  rescind offer
                 </button>
+              )}
+              {loan.loan.lender === "0xA3403975861B601aE111b4eeAFbA94060a58d0CA" && (
+                <>
+                  <button
+                    className="loan-actions-btn"
+                    onClick={() => {
+                      // handleDeleteLoanOffer(loan._id);
+                      console.log("clicked");
+                    }}
+                  >
+                    Accept Offer
+                  </button>
+                  <button
+                    className="loan-actions-btn"
+                    onClick={() => {
+                      // handleDeleteLoanOffer(loan._id);
+                      console.log("clicked");
+                    }}
+                  >
+                    Reject Offer
+                  </button>
+                </>
               )}
             </div>
           </div>
