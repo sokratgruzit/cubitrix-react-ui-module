@@ -1,6 +1,6 @@
 import './ReferralCard.css';
 
-export const ReferralCard = ({ type, label, item, customStyles}) => {
+export const ReferralCard = ({ type, label, item, data, customStyles }) => {
 
   let element = null;
 
@@ -21,9 +21,12 @@ export const ReferralCard = ({ type, label, item, customStyles}) => {
       <div className={'total-referral-info-container'} style={customStyles}>
         <div className={`total-referral-info`}>
           <h2>{label}</h2>
-          <p className="font-14">Total Trading <span>${item.totalTrading}</span></p>
-          <p className="font-14">Total Earned <span>${item.totalEarned}</span></p>
-          <p className="font-14">Estimated For This Week <span>${item.totalEstimated}</span></p>
+          {data.map((item, index) => (
+            <div key={index}>
+              <p style={{ color: `${item.color ? item.color : '#FFF'}` }} className="font-14">{item.title} {!item.color && <span>{item.value}</span>}</p>
+              {item.color && <span style={{ display: 'block' }}>{item.value}</span>}
+            </div>
+          ))}
         </div>
       </div>
     )
