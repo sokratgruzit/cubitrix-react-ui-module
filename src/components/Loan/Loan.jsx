@@ -24,6 +24,7 @@ export const Loan = ({
   rescindOffer,
   supplyUSDC,
   borrowUSDC,
+  account,
 }) => {
   const { width } = useMobileWidth();
   const [loanPlatform, setLoanPlatform] = useState("p2p");
@@ -345,6 +346,7 @@ export const Loan = ({
                 loan={selectedLoanId}
                 setSelectedLoanId={setSelectedLoanId}
                 rescindOffer={rescindOffer}
+                account={account}
                 // loanDetails={loanDetails}
                 // setShowLoanDetails={setShowLoanDetails}
               />

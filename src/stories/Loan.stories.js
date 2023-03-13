@@ -124,6 +124,8 @@ stories.add("Loan", (props) => {
     //   .catch((error) => console.error(error));
   }
 
+  const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+
   return (
     <BrowserRouter>
       <Header
@@ -266,6 +268,7 @@ stories.add("Loan", (props) => {
         verified={false}
       />
       <Loan
+        account={account}
         allLoanOffers={allLoanOffers}
         yourLending={yourLending}
         yourBorrowing={yourBorrowing}

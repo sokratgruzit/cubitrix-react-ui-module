@@ -1,8 +1,7 @@
 import React from "react";
 import "./LoanDetails.css";
 
-const LoanDetails = ({ loan, setSelectedLoanId, rescindOffer }) => {
-  console.log(loan.loan);
+const LoanDetails = ({ loan, setSelectedLoanId, rescindOffer, account }) => {
   return (
     <div className="loanDetails">
       {/* LoanDetails {loan?.type} */}
@@ -77,7 +76,7 @@ const LoanDetails = ({ loan, setSelectedLoanId, rescindOffer }) => {
                   Accept Offer
                 </button>
               ))} */}
-              {offer.borrower === "0xsecretservice" && (
+              {offer.borrower === account && (
                 <button
                   className="loan-actions-btn"
                   onClick={() => {
@@ -88,7 +87,7 @@ const LoanDetails = ({ loan, setSelectedLoanId, rescindOffer }) => {
                   rescind offer
                 </button>
               )}
-              {loan.loan.lender === "0xA3403975861B601aE111b4eeAFbA94060a58d0CA" && (
+              {loan.loan.lender === account && (
                 <>
                   <button
                     className="loan-actions-btn"
