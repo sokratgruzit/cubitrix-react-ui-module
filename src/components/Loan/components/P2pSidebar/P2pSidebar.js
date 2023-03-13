@@ -11,6 +11,7 @@ const P2pSidebar = ({
   createNewLoanOffering,
   handleDeleteLoanOffer,
   handleRepayLoan,
+  setSelectedLoanId,
 }) => {
   const [selectedTab, setSelectedTab] = useState("lending");
   const [makeAnOfferActive, setMakeAnOfferActive] = useState(false);
@@ -214,6 +215,15 @@ const P2pSidebar = ({
                   }}
                 >
                   Delete Loan
+                </button>
+
+                <button
+                  className="loan-actions"
+                  onClick={() => {
+                    setSelectedLoanId({ loan: loan, type: "lending" });
+                  }}
+                >
+                  Loan Details
                 </button>
               </div>
             </div>

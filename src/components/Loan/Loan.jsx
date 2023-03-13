@@ -26,12 +26,14 @@ export const Loan = ({
 }) => {
   const { width } = useMobileWidth();
   const [loanPlatform, setLoanPlatform] = useState("p2p");
-  const [selectedLoanId, setSelectedLoanId] = useState(false);
+  const [selectedLoanId, setSelectedLoanId] = useState({});
   const [makeOfferLoanId, setMakeOfferLoanId] = useState(false);
   const [makeOfferData, setMakeOfferData] = useState(false);
 
-  function handleShowLoanDetails(loanId, type) {
-    setSelectedLoanId({ loanId, type });
+  // console.log(allLoanOffers);
+
+  function handleShowLoanDetails(loan, type) {
+    setSelectedLoanId({ loan, type });
   }
 
   function handleMakeOffer() {
@@ -57,9 +59,9 @@ export const Loan = ({
       onChange: (e) => handleChange(e),
     },
     {
-      title: "Collateral A  mount",
+      title: "Collateral Amount",
       description: "Loan offer amount",
-      name: "amount",
+      name: "collateral",
       required: true,
       placeholder: "Enter amount",
       onChange: (e) => handleChange(e),
@@ -190,6 +192,7 @@ export const Loan = ({
               handleDeleteLoanOffer={handleDeleteLoanOffer}
               handleShowLoanDetails={handleShowLoanDetails}
               handleRepayLoan={handleRepayLoan}
+              setSelectedLoanId={setSelectedLoanId}
             />
           )}
         </div>
@@ -339,6 +342,7 @@ export const Loan = ({
             {JSON.stringify(selectedLoanId) !== "{}" && (
               <LoanDetails
                 loan={selectedLoanId}
+                setSelectedLoanId={setSelectedLoanId}
                 // loanDetails={loanDetails}
                 // setShowLoanDetails={setShowLoanDetails}
               />
@@ -379,7 +383,7 @@ export const Loan = ({
                     </button>
                     <button
                       className="show-loan-details"
-                      onClick={() => handleShowLoanDetails(item._id, "public")}
+                      onClick={() => handleShowLoanDetails(item, "public")}
                     >
                       Details
                     </button>

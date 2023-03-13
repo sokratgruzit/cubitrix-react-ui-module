@@ -1,0 +1,63 @@
+.loanDetails {
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.loanDetails-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+}
+
+.loan-amount-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.loanDetails-main {
+  display: flex;
+  padding: 20px 0;
+}
+
+.details-main-left {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.allOffers-row {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.allOffers-header {
+  display: flex;
+  gap: 30px;
+  height: 30px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.offers-borrower {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+.offers-collateral {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+.offers-expires {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
