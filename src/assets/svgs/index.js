@@ -26,4 +26,4 @@ export { default as CloseIcon } from "./Close";
 export { default as StickyNoteIcon } from "./StickyNote";
 export { default as NoHistoryIcon } from "./NoHistory";
 export { default as ReferralIcon } from "./ReferralIcon";
-
+export { default as Referral } from "./Referral";

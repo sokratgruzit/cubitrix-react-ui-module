@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { Popup } from "../components/Popup";
 import { PopupElement } from "../components/PopupElement";
 import { LevelSystem } from "../components/LevelSystem";
+import { Footer } from "../components/Footer";
 
 const stories = storiesOf("Referral", module);
 
@@ -28,10 +29,10 @@ stories.add("Referral", () => {
   const [rebatesPaginationTotal, setRebatesPaginationTotal] = useState(1);
 
   const [referralTotal, setReferralTotal] = useState({
-    rebatesUniLevel: 0,  
+    rebatesUniLevel: 0,
     rebatesBinaryTotal: 0,
-    weeklyUniLevel: 0, 
-    weeklyBinaryTotal: 0, 
+    weeklyUniLevel: 0,
+    weeklyBinaryTotal: 0,
     rebatesTotal: 0,
     weeklyTotal: 0,
   });
@@ -612,13 +613,13 @@ stories.add("Referral", () => {
         referralHistoryPaginationTotal={rebatesPaginationTotal}
         referralHistoryPaginationEvent={(page) => {
           setRebatesCurrentPage(page);
-          generateTableData('rebates', page);
+          generateTableData("rebates", page);
         }}
         referralCodePaginationCurrent={codesCurrentPage}
         referralCodePaginationTotal={codesPaginationTotal}
         referralCodePaginationEvent={(page) => {
           setCodesCurrentPage(page);
-          generateTableData('codes', page);
+          generateTableData("codes", page);
         }}
         referralRebatesTotal={referralRebatesTotal}
         referralCodesCardData={referralCodesCardData}

@@ -8,6 +8,7 @@ import {
   Loan,
   Staking,
   Warning,
+  Referral,
 } from "../../assets/svgs";
 import { Button } from "../Button";
 import "./Header.css";
@@ -53,12 +54,13 @@ export const Header = ({
             Loan
           </NavLink>
         )}
-        {modules.referal === "true" && (
+        {modules.referral === "true" && (
           <NavLink
-            className={`${location.pathname === "/referal" && "active"} link`}
-            to="/referal"
+            className={`${location.pathname === "/referral" && "active"} link`}
+            to="/referral"
           >
-            referal
+            <Referral className="svg" />
+            Referral
           </NavLink>
         )}
         {modules.staking === "true" && (
@@ -67,7 +69,7 @@ export const Header = ({
             to="/staking"
           >
             <Staking className="svg" />
-            staking
+            Staking
           </NavLink>
         )}
         <NavLink
