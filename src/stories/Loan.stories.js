@@ -61,23 +61,6 @@ stories.add("Loan", (props) => {
       .catch((error) => console.error(error));
   }
 
-  function handleTakeLoan(loanId) {
-    const mutatedLoan = {
-      id: loanId,
-      borrower: account,
-    };
-    fetch("http://localhost:4000/api/loan/take-loan", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(mutatedLoan),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  }
-
   function handleRepayLoan(data) {
     data.borrower = account;
     fetch("http://localhost:4000/api/loan/repay-loan", {
@@ -305,7 +288,6 @@ stories.add("Loan", (props) => {
         yourBorrowing={yourBorrowing}
         createNewLoanOffering={handleCreateNewLoanOffering}
         handleDeleteLoanOffer={handleDeleteLoanOffer}
-        handleTakeLoan={handleTakeLoan}
         handleRepayLoan={handleRepayLoan}
         makeOffer={(loanId) => {
           console.log("temporariliy skip make offer");
