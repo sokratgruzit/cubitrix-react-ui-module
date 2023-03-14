@@ -10,6 +10,10 @@ stories.add("Loan", (props) => {
   const [allLoanOffers, setAllLoanOffers] = useState([]);
   const [yourLending, setYourLending] = useState([]);
   const [yourBorrowing, setYourBorrowing] = useState([]);
+  const [makeOfferError, setMakeOfferError] = useState(false);
+
+  const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+  // const account = "0xsecretservice";
 
   useEffect(() => {
     fetch("http://localhost:4000/api/loan/loan-market-offers")
@@ -17,16 +21,12 @@ stories.add("Loan", (props) => {
       .then((data) => setAllLoanOffers(data.result))
       .catch((error) => console.error(error));
 
-    fetch(
-      "http://localhost:4000/api/loan/user-created-loans?address=0xA3403975861B601aE111b4eeAFbA94060a58d0CA",
-    )
+    fetch(`http://localhost:4000/api/loan/user-created-loans?address=${account}`)
       .then((response) => response.json())
       .then((data) => setYourLending(data.result))
       .catch((error) => console.error(error));
 
-    fetch(
-      "http://localhost:4000/api/loan/user-loans?address=0xA3403975861B601aE111b4eeAFbA94060a58d0CA",
-    )
+    fetch(`http://localhost:4000/api/loan/user-loans?address=${account}`)
       .then((response) => response.json())
       .then((data) => setYourBorrowing(data.result))
       .catch((error) => console.error(error));
@@ -34,7 +34,7 @@ stories.add("Loan", (props) => {
 
   function handleCreateNewLoanOffering(loan) {
     const mutatedLoan = { ...loan };
-    mutatedLoan.lender = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+    mutatedLoan.lender = account;
     fetch("http://localhost:4000/api/loan/create-loan", {
       method: "POST",
       headers: {
@@ -48,7 +48,7 @@ stories.add("Loan", (props) => {
   }
 
   function handleDeleteLoanOffer(loanId) {
-    const data = { id: loanId, lender: "0xA3403975861B601aE111b4eeAFbA94060a58d0CA" };
+    const data = { id: loanId, lender: account };
     fetch("http://localhost:4000/api/loan/delete-loan-offer", {
       method: "POST",
       headers: {
@@ -64,7 +64,7 @@ stories.add("Loan", (props) => {
   function handleTakeLoan(loanId) {
     const mutatedLoan = {
       id: loanId,
-      borrower: "0xA3403975861B601aE111b4eeAFbA94060a58d0CA",
+      borrower: account,
     };
     fetch("http://localhost:4000/api/loan/take-loan", {
       method: "POST",
@@ -79,7 +79,7 @@ stories.add("Loan", (props) => {
   }
 
   function handleRepayLoan(data) {
-    data.borrower = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+    data.borrower = account;
     fetch("http://localhost:4000/api/loan/repay-loan", {
       method: "POST",
       headers: {
@@ -93,9 +93,31 @@ stories.add("Loan", (props) => {
   }
 
   function handleMakeOffer(loan) {
-    const data = { ...loan, borrower: "0xsecretservice" };
+    const data = { ...loan, borrower: account };
 
     fetch("http://localhost:4000/api/loan/send-loan-offer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // setMakeOfferError(data.message);
+
+        // setTimeout(() => {
+        //   setMakeOfferError(false);
+        // }, 2000);
+      })
+      .catch((error) => console.log(error.message));
+  }
+
+  function handleRescindOffer(loanId, offerId) {
+    const data = { id: loanId, borrower: account, offerId: offerId };
+
+    fetch("http://localhost:4000/api/loan/rescind-loan-offer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -107,24 +129,23 @@ stories.add("Loan", (props) => {
       .catch((error) => console.error(error));
   }
 
-  function handleRescindOffer(loanId) {
-    const data = { id: loanId, borrower: "0xsecretservice", offerId: "not yet defined" };
-
-    console.log(data);
-
-    // fetch("http://localhost:4000/api/loan/rescind-loan-offer", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => console.log(data))
-    //   .catch((error) => console.error(error));
+  function handleAcceptOffer(loanId, offerId) {
+    const data = { id: loanId, borrower: account, offerId: offerId };
+    fetch("http://localhost:4000/api/loan/accept-loan-offer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }
 
-  const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+  function handleRejectOffer() {
+    console.log("reject offer");
+  }
 
   return (
     <BrowserRouter>
@@ -281,7 +302,10 @@ stories.add("Loan", (props) => {
           handleMakeOffer(loanId);
           // handleTakeLoan(loanId);
         }}
+        makeOfferError={makeOfferError}
         rescindOffer={handleRescindOffer}
+        acceptOffer={handleAcceptOffer}
+        rejectOffer={handleRejectOffer}
       />
     </BrowserRouter>
   );

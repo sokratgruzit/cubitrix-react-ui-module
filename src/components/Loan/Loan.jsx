@@ -21,7 +21,10 @@ export const Loan = ({
   handleTakeLoan,
   handleRepayLoan,
   makeOffer,
+  makeOfferError,
   rescindOffer,
+  acceptOffer,
+  rejectOffer,
   supplyUSDC,
   borrowUSDC,
   account,
@@ -66,7 +69,8 @@ export const Loan = ({
       name: "collateral",
       required: true,
       placeholder: "Enter amount",
-      onChange: (e) => handleChange(e),
+      onChange: (e) =>
+        setMakeOfferData((prev) => ({ ...prev, collateral: Number(e.target.value) })),
     },
     {
       title: "offer duration",
@@ -74,7 +78,8 @@ export const Loan = ({
       name: "offerDuration",
       required: true,
       placeholder: "Enter duration",
-      onChange: (e) => handleChange(e),
+      onChange: (e) =>
+        setMakeOfferData((prev) => ({ ...prev, offerDuration: Number(e.target.value) })),
     },
   ];
 
@@ -88,6 +93,7 @@ export const Loan = ({
               currentObject={makeOfferData}
               setCurrentObject={setMakeOfferData}
               handleSubmit={handleMakeOffer}
+              popUpElementError={makeOfferError}
               submitButtonLabel={"Make Offer"}
             />
           }
@@ -347,6 +353,8 @@ export const Loan = ({
                 setSelectedLoanId={setSelectedLoanId}
                 rescindOffer={rescindOffer}
                 account={account}
+                acceptOffer={acceptOffer}
+                rejectOffer={rejectOffer}
                 // loanDetails={loanDetails}
                 // setShowLoanDetails={setShowLoanDetails}
               />
