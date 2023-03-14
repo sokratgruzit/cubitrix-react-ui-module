@@ -143,8 +143,18 @@ stories.add("Loan", (props) => {
       .catch((error) => console.error(error));
   }
 
-  function handleRejectOffer() {
-    console.log("reject offer");
+  function handleRejectOffer(loanId, offerId) {
+    const data = { id: loanId, borrower: account, offerId: offerId };
+    fetch("http://localhost:4000/api/loan/reject-loan-offer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }
 
   return (
