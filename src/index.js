@@ -30,3 +30,4 @@ export * from "./components/DeveloperApi";
 export * from "./components/PopupElement";
 export * from "./components/LevelSystem";
 export * from "./components/Referral";
+export * from "./components/Footer";

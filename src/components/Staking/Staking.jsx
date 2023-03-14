@@ -16,6 +16,7 @@ import { HeaderIcon, CalculatorIcon, CloseIcon } from "../../assets/svgs";
 // styles
 import "../../assets/css/main-theme.css";
 import "./Staking.css";
+import { Footer } from "../Footer";
 
 export const Staking = ({
   durationOptions,
@@ -71,26 +72,30 @@ export const Staking = ({
       </div>
       {showCalculator && <div className={"show-calculator-dark-bg"} />}
       <div className={`main-content`}>
-        <h2 className={`font-16 staking-header`}>
-          <HeaderIcon />
-          Staking
-        </h2>
-        <BiddingInfo
-          stackContractInfo={stackContractInfo}
-          customStyles={{ display: `${width <= 1025 ? "block" : "none"}` }}
-        />
-        <h3 className={`${width < 1025 ? "font-14" : "font-20"}`}>Your Stake</h3>
-        <div className={"account-summary-container"}>
-          {accountSummaryData?.map((data, index) => (
-            <AccountSummary key={index} data={data} />
-          ))}
+        <div className={'main-content-wrapper'}>
+          <h2 className={`font-16 staking-header`}>
+            <HeaderIcon />
+            Staking
+          </h2>
+          <BiddingInfo
+            stackContractInfo={stackContractInfo}
+            customStyles={{ display: `${width <= 1025 ? "block" : "none"}` }}
+          />
+          <h3 className={`${width < 1025 ? "font-14" : "font-20"}`}>Your Stake</h3>
+          <div className={"account-summary-container"}>
+            {accountSummaryData?.map((data, index) => (
+              <AccountSummary key={index} data={data} />
+            ))}
+          </div>
+          <Table
+            type={"table-version"}
+            tableHead={tableHead}
+            mobile={width < 1280}
+            tableData={tableData}
+          />
         </div>
-        <Table
-          type={"table-version"}
-          tableHead={tableHead}
-          mobile={width < 1280}
-          tableData={tableData}
-        />
+
+        <Footer />
       </div>
       <div className={"hidden-calculator-wrapper"}>
         <div className={`hidden-calculator-container ${showCalculator && "active"}`}>
@@ -116,7 +121,7 @@ export const Staking = ({
             element={"staking-button"}
             customStyles={{
               position: "absolute",
-              bottom: "20px",
+              bottom: "60px",
               zIndex: "999",
               width: "190px",
             }}

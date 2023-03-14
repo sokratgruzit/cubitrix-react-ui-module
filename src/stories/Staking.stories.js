@@ -9,6 +9,7 @@ const stories = storiesOf("Staking", module);
 import { EarnIcon } from "../assets/svgs";
 import { useMobileWidth } from "../hooks/useMobileWidth";
 import { BrowserRouter } from "react-router-dom";
+import { Footer } from "../components/Footer";
 
 stories.add("Staking", () => {
   const [depositAmount, setDepositAmount] = useState("10");

@@ -9,12 +9,13 @@ export const Table = ({
     handleViewAll,
     tableEmpty,
     tableEmptyData,
-    loading
+    loading,
+    customStyles,
 }) => {
     const { mobile } = useMobileWidth();
     return (
         <>
-            <div className={`${type}`}>
+            <div className={`${type}`} style={customStyles}>
                 {loading ? (
                     <div className="table-loading-container">
                         <div className="table-loading" />
