@@ -27,3 +27,4 @@ export { default as StickyNoteIcon } from "./StickyNote";
 export { default as NoHistoryIcon } from "./NoHistory";
 export { default as ReferralIcon } from "./ReferralIcon";
 export { default as Referral } from "./Referral";
+export { default as Menu } from "./Menu";

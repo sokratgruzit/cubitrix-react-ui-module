@@ -1,5 +1,4 @@
 import { storiesOf } from "@storybook/react";
-import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Header } from "../components/Header";
 
