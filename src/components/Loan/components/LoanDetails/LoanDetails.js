@@ -83,7 +83,7 @@ const LoanDetails = ({
                   Accept Offer
                 </button>
               ))} */}
-              {offer.borrower === account && offer.status === "active" && (
+              {offer.borrower === account && offer.status === "Active" && (
                 <button
                   className="loan-actions-btn"
                   onClick={() => rescindOffer(loan.loan._id, offer._id)}
@@ -91,7 +91,7 @@ const LoanDetails = ({
                   rescind offer
                 </button>
               )}
-              {loan.loan.lender === account && offer.status === "active" && (
+              {loan.loan.lender === account && offer.status === "Active" && (
                 <>
                   <button
                     className="loan-actions-btn"

@@ -1,30 +1,46 @@
 .your-lending-row {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  background: #070b1a;
+  border-radius: 18px;
   padding: 18px;
-  gap: 10px;
 }
 .your-lending-loan-stats {
   display: flex;
-  flex-direction: column;
-  width: 50%;
-  padding-bottom: 10px;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 7px;
 }
 .your-lending-loan-stats p {
-  font-size: 12px;
-  line-height: 130%;
+  font-size: 14px;
+  line-height: 140%;
+  color: #ffffff;
 }
-.loan-borrower {
+
+.your-borrower {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.your-borrower p {
+  font-size: 16px;
+  line-height: 140%;
+}
+/* .loan-borrower {
   display: flex;
   flex-direction: column;
 }
 .loan-borrower p {
   font-size: 12px;
   line-height: 130%;
-}
+} */
 
+.lending-loan-buttons {
+  display: flex;
+  gap: 20px;
+}
 .user-p2p-stats {
   display: flex;
   justify-content: space-between;
@@ -60,40 +76,11 @@
   cursor: pointer;
 }
 
-.selected-assets {
-  left: 0;
-}
-
-.selected-lending {
-  left: calc(100% / 3);
-}
-
-.selected-borrowing {
-  left: calc(100% / 3 * 2);
-}
-
-.highlight-selected-loan {
-  position: absolute;
-  height: 100%;
-  width: calc(100% / 3);
-  background: rgba(255, 255, 255, 0.05);
-  pointer-events: none;
-  border-radius: 32px;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  font-size: 12px;
-  line-height: 130%;
-}
-
 .loans-list {
   display: flex;
   flex-direction: column;
   padding-top: 20px;
   gap: 20px;
-}
-
-.loan-stats-row {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .loan-actions {
@@ -106,4 +93,48 @@
 }
 .loan-actions:hover {
   color: #3d5afe;
+}
+
+.user-p2p-loans {
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.user-p2p-loans div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 14px;
+  line-height: 140%;
+  height: 30px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
+  color: #9c9da3;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.user-p2p-loans .selected-loanTab {
+  color: #3d5afe;
+  border-bottom: 1px solid #3d5afe;
+}
+
+.no-assets-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  width: 100%;
+  gap: 20px;
+}
+
+.no-assets-wrapper h3 {
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.no-account-loan {
+  padding-top: 20px;
 }

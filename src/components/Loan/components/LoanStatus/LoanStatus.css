@@ -4,20 +4,19 @@
   width: fit-content;
   height: fit-content;
   padding: 2px 10px;
-  border-radius: 8px;
+  /* border-radius: 20%; */
+  border-radius: 29px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .loan-active {
-  border: 1px solid #27ae60;
-  color: #2ecc71;
+  color: #9ccc65;
 }
 
 .loan-defaulted {
-  border: 1px solid #e74c3c;
   color: #e74c3c;
 }
 
 .loan-offered {
-  border: 1px solid #f1c40f;
-  color: #f1c40f;
+  color: #ffa726;
 }

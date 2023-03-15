@@ -4,6 +4,7 @@ import "./P2pSidebar.css";
 import { Popup } from "./../../../Popup";
 import { PopupElement } from "./../../../PopupElement";
 import LoanStatus from "../LoanStatus/LoanStatus";
+import { NoAssets } from "../../../../assets/svgs";
 
 const P2pSidebar = ({
   yourLending,
@@ -12,6 +13,8 @@ const P2pSidebar = ({
   handleDeleteLoanOffer,
   handleRepayLoan,
   setSelectedLoanId,
+  account,
+  handleConenctWallet,
 }) => {
   const [selectedTab, setSelectedTab] = useState("lending");
   const [makeAnOfferActive, setMakeAnOfferActive] = useState(false);
@@ -129,151 +132,157 @@ const P2pSidebar = ({
           handlePopUpClose={() => setOpenRepayModal(false)}
         />
       )}
-      <div className="tabs-wrapper">
-        <div className="user-stats">
-          <div
-            className={`${selectedTab === "assets" ? "selected" : ""}`}
-            onClick={() => setSelectedTab("assets")}
-          >
-            assets
-          </div>
-          <div
-            className={`${selectedTab === "lending" ? "selected" : ""}`}
-            onClick={() => setSelectedTab("lending")}
-          >
-            your lending
-          </div>
-          <div
-            className={`${selectedTab === "borrowing" ? "selected" : ""}`}
-            onClick={() => setSelectedTab("borrowing")}
-          >
-            your borrowing
-          </div>
-          <span
-            className={`highlight-selected-loan ${
-              selectedTab === "assets"
-                ? "selected-assets"
-                : selectedTab === "lending"
-                ? "selected-lending"
-                : "selected-borrowing"
-            }`}
-          ></span>
+      <div className="user-p2p-loans">
+        <div
+          className={`${selectedTab === "assets" ? "selected-loanTab" : ""}`}
+          onClick={() => setSelectedTab("assets")}
+        >
+          assets
+        </div>
+        <div
+          className={`${selectedTab === "lending" ? "selected-loanTab" : ""}`}
+          onClick={() => setSelectedTab("lending")}
+        >
+          your lending
+        </div>
+        <div
+          className={`${selectedTab === "borrowing" ? "selected-loanTab" : ""}`}
+          onClick={() => setSelectedTab("borrowing")}
+        >
+          your borrowing
         </div>
       </div>
-      {selectedTab === "lending" && (
-        <div className="loans-list">
+      {account ? (
+        <>
+          {selectedTab === "assets" && (
+            <div>
+              <div className="no-assets-wrapper">
+                <NoAssets />
+                <h3>You have no assets</h3>
+              </div>
+            </div>
+          )}
+          {selectedTab === "lending" && (
+            <div className="loans-list">
+              <Button
+                label={"Create New Loan Offer"}
+                size={"btn-sm"}
+                type={"btn-primary"}
+                arrow={"arrow-none"}
+                element={"button"}
+                onClick={() => {
+                  setMakeAnOfferActive(true);
+                }}
+                customStyles={{ margin: "0", width: "100%" }}
+              />
+              {yourLending.map((loan, index) => (
+                <div key={loan._id} className={"your-lending-row"}>
+                  <div className={"your-borrower"}>
+                    <p>Borrower</p>
+                    <p className="address">{loan.borrower}</p>
+                  </div>
+                  <div className={"your-lending-loan-stats"}>
+                    <p>Amount</p>
+                    <p>{loan.amount}</p>
+                  </div>
+                  <div className={"your-lending-loan-stats"}>
+                    <p>Interest</p>
+                    <p>{loan.interest}</p>
+                  </div>
+                  <div className={"your-lending-loan-stats"}>
+                    <p>duration</p>
+                    <p>{loan.duration}</p>
+                  </div>
+                  <div className={"your-lending-loan-stats"}>
+                    <p>status</p>
+                    <LoanStatus status={loan.status} />
+                  </div>
+                  <div className="lending-loan-buttons">
+                    <Button
+                      label={"Delete"}
+                      size={"btn-sm"}
+                      type={"btn-grey"}
+                      arrow={"arrow-none"}
+                      element={"button"}
+                      onClick={() => {
+                        handleDeleteLoanOffer(loan._id);
+                      }}
+                      customStyles={{ margin: "0", width: "calc(50% - 10px)" }}
+                    />
+                    <Button
+                      label={"Details"}
+                      size={"btn-sm"}
+                      type={"btn-secondary"}
+                      arrow={"arrow-none"}
+                      element={"button"}
+                      onClick={() => {
+                        setSelectedLoanId({ loan: loan, type: "lending" });
+                      }}
+                      customStyles={{ margin: "0", width: "calc(50% - 10px)" }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          {selectedTab === "borrowing" && (
+            <div className="loans-list">
+              {yourBorrowing.map((loan, index) => (
+                <div key={loan._id} className={"your-lending-row"}>
+                  <div className={"loan-borrower"}>
+                    <p>Borrowed from</p>
+                    <p>{loan.lender}</p>
+                  </div>
+                  <div className={"loan-stats-row"}>
+                    <div className={"your-lending-loan-stats"}>
+                      <p>Amount</p>
+                      <p>{loan.amount}</p>
+                    </div>
+                    <div className={"your-lending-loan-stats"}>
+                      <p>Interest</p>
+                      <p>{loan.interest}</p>
+                    </div>
+                    <div className={"your-lending-loan-stats"}>
+                      <p>duration</p>
+                      <p>{loan.duration}</p>
+                    </div>
+                    <div className={"your-lending-loan-stats"}>
+                      <p>status</p>
+                      <LoanStatus status={loan.status} />
+                    </div>
+                    <button
+                      className="loan-actions"
+                      onClick={() => {
+                        setOpenRepayModal(loan._id);
+                      }}
+                    >
+                      Repay Loan
+                    </button>
+                    <button
+                      className="loan-actions"
+                      onClick={() => {
+                        // handleDeleteLoanOffer(loan._id);
+                      }}
+                    >
+                      Default Loan
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="no-account-loan">
           <Button
-            label={"Create New Loan Offer"}
+            label={"Connect Wallet"}
             size={"btn-sm"}
             type={"btn-primary"}
             arrow={"arrow-none"}
             element={"button"}
-            onClick={() => {
-              setMakeAnOfferActive(true);
-            }}
+            onClick={handleConenctWallet}
             customStyles={{ margin: "0", width: "100%" }}
           />
-          {yourLending.map((loan, index) => (
-            <div key={loan._id} className={"your-lending-row"}>
-              <div className={"loan-borrower"}>
-                <p>Borrower</p>
-                <p>{loan.borrower}</p>
-              </div>
-              <div className={"loan-stats-row"}>
-                <div className={"your-lending-loan-stats"}>
-                  <p>Amount</p>
-                  <p>{loan.amount}</p>
-                </div>
-                <div className={"your-lending-loan-stats"}>
-                  <p>Interest</p>
-                  <p>{loan.interest}</p>
-                </div>
-                <div className={"your-lending-loan-stats"}>
-                  <p>duration</p>
-                  <p>{loan.duration}</p>
-                </div>
-                <div className={"your-lending-loan-stats"}>
-                  <p>status</p>
-                  <LoanStatus status={loan.status} />
-                </div>
-
-                {/* <Button
-                  label={"Delete Loan"}
-                  size={"btn-sm"}
-                  type={"btn-secondary"}
-                  arrow={"arrow-none"}
-                  element={"button"}
-                  onClick={() => {
-                    handleDeleteLoanOffer(loan._id);
-                  }}
-                  customStyles={{ margin: "0" }}
-                /> */}
-                <button
-                  className="loan-actions"
-                  onClick={() => {
-                    handleDeleteLoanOffer(loan._id);
-                  }}
-                >
-                  Delete Loan
-                </button>
-
-                <button
-                  className="loan-actions"
-                  onClick={() => {
-                    setSelectedLoanId({ loan: loan, type: "lending" });
-                  }}
-                >
-                  Loan Details
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-      {selectedTab === "borrowing" && (
-        <div className="loans-list">
-          {yourBorrowing.map((loan, index) => (
-            <div key={loan._id} className={"your-lending-row"}>
-              <div className={"loan-borrower"}>
-                <p>Borrowed from</p>
-                <p>{loan.lender}</p>
-              </div>
-              <div className={"loan-stats-row"}>
-                <div className={"your-lending-loan-stats"}>
-                  <p>Amount</p>
-                  <p>{loan.amount}</p>
-                </div>
-                <div className={"your-lending-loan-stats"}>
-                  <p>Interest</p>
-                  <p>{loan.interest}</p>
-                </div>
-                <div className={"your-lending-loan-stats"}>
-                  <p>duration</p>
-                  <p>{loan.duration}</p>
-                </div>
-                <div className={"your-lending-loan-stats"}>
-                  <p>status</p>
-                  <LoanStatus status={loan.status} />
-                </div>
-                <button
-                  className="loan-actions"
-                  onClick={() => {
-                    setOpenRepayModal(loan._id);
-                  }}
-                >
-                  Repay Loan
-                </button>
-                <button
-                  className="loan-actions"
-                  onClick={() => {
-                    // handleDeleteLoanOffer(loan._id);
-                  }}
-                >
-                  Default Loan
-                </button>
-              </div>
-            </div>
-          ))}
         </div>
       )}
     </div>

@@ -28,6 +28,7 @@ export const Loan = ({
   supplyUSDC,
   borrowUSDC,
   account,
+  handleConenctWallet,
 }) => {
   const { width } = useMobileWidth();
   const [loanPlatform, setLoanPlatform] = useState("p2p");
@@ -201,6 +202,8 @@ export const Loan = ({
               handleShowLoanDetails={handleShowLoanDetails}
               handleRepayLoan={handleRepayLoan}
               setSelectedLoanId={setSelectedLoanId}
+              account={account}
+              handleConenctWallet={handleConenctWallet}
             />
           )}
         </div>

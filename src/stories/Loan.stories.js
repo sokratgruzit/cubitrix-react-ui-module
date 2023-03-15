@@ -14,6 +14,7 @@ stories.add("Loan", (props) => {
 
   const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
   // const account = "0xsecretservice";
+  // const account = "";
 
   useEffect(() => {
     fetch("http://localhost:4000/api/loan/loan-market-offers")
@@ -113,7 +114,7 @@ stories.add("Loan", (props) => {
   }
 
   function handleAcceptOffer(loanId, offerId) {
-    const data = { id: loanId, borrower: account, offerId: offerId };
+    const data = { id: loanId, lender: account, offerId: offerId };
     fetch("http://localhost:4000/api/loan/accept-loan-offer", {
       method: "POST",
       headers: {
@@ -127,7 +128,7 @@ stories.add("Loan", (props) => {
   }
 
   function handleRejectOffer(loanId, offerId) {
-    const data = { id: loanId, borrower: account, offerId: offerId };
+    const data = { id: loanId, lender: account, offerId: offerId };
     fetch("http://localhost:4000/api/loan/reject-loan-offer", {
       method: "POST",
       headers: {
@@ -138,6 +139,10 @@ stories.add("Loan", (props) => {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
+  }
+
+  function handleConenctWallet() {
+    console.log("connect wallet");
   }
 
   return (
@@ -298,6 +303,7 @@ stories.add("Loan", (props) => {
         rescindOffer={handleRescindOffer}
         acceptOffer={handleAcceptOffer}
         rejectOffer={handleRejectOffer}
+        handleConenctWallet={handleConenctWallet}
       />
     </BrowserRouter>
   );
