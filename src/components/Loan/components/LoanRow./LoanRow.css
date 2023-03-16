@@ -1,0 +1,287 @@
+.loan-p2p-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.loan-pwp-row-main {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80px;
+  padding: 0px 16px;
+  width: calc(100% - 50px);
+  /* background: rgba(255, 255, 255, 0.05); */
+  /* border-radius: 8px; */
+}
+
+.loan-details {
+  padding: 15px;
+  background-color: #0c1121;
+}
+
+.loan-token-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(42.5px);
+  border-radius: 8px;
+}
+
+.loan-details-header {
+  display: flex;
+  gap: 20px;
+}
+
+.loan-details-body {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.loan-details-stats {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.loan-details-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 50px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  margin-right: 50px;
+}
+.loan-details-stats div:last-child {
+  border-right: none;
+  margin-right: 0;
+}
+
+.token-info-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 13px;
+}
+
+.token-info-wrap h3 {
+  font-size: 20px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.token-info-wrap p {
+  font-size: 14px;
+  line-height: 140%;
+  color: #ffffff;
+}
+
+.important-note-title {
+  color: #ffa726;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.important-note {
+  width: 477px;
+  word-break: break-all;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.loan-details-info-title {
+  font-size: 12px;
+  line-height: 140%;
+  color: #9c9da3;
+}
+
+.loan-verification-title {
+  font-size: 12px;
+  line-height: 140%;
+}
+
+.loan-verification-info {
+  font-size: 14px;
+  line-height: 140%;
+  color: #ef5350;
+}
+
+.loan-details-offers {
+  font-size: 20px;
+  line-height: 130%;
+  color: #ffffff;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.allOffers-header {
+  display: flex;
+  height: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.allOffers-header p {
+  color: #9c9da3;
+}
+
+.allOffers-header p:first-child {
+  width: 400px;
+}
+
+.allOffers-header p:nth-child(2) {
+  width: 110px;
+}
+
+.allOffers-header p:nth-child(3) {
+  width: 127px;
+}
+
+.allOffers-header p:nth-child(4) {
+  width: 100px;
+}
+.allOffers-row {
+  display: flex;
+  align-items: center;
+  height: 75px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.offers-borrower {
+  display: flex;
+  align-items: center;
+  width: 400px;
+}
+
+.offers-collateral {
+  display: flex;
+  align-items: center;
+  width: 110px;
+}
+
+.offers-expires {
+  display: flex;
+  align-items: center;
+  width: 127px;
+}
+
+.offers-status {
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+.loan-actions-btn {
+  display: flex;
+}
+
+.offers-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: auto;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.lender {
+  display: flex;
+  align-items: center;
+  width: 25%;
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  width: 15%;
+}
+
+.interest {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  width: 12%;
+}
+
+.duration {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  width: 12%;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  width: 12%;
+}
+
+.show-loan-details {
+  display: flex;
+  gap: 9px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  font-size: 14px;
+}
+
+.show-loan-details-wrap {
+  display: flex;
+  align-items: center;
+  width: 10%;
+}
+
+.show-loan-details-active {
+  color: #3d5afe;
+}
+
+.show-loan-details:hover {
+  color: #3d5afe;
+}
+
+.show-loan-details:hover .loan-details-arrow svg {
+  stroke: #3d5afe;
+}
+
+.make-offer-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14%;
+}
+
+.make-offer {
+  color: #3d5afe;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.make-offer:hover {
+  opacity: 0.7;
+}
+
+.loan-details-arrow svg {
+  width: 16px;
+  height: 20px;
+}
+
+.loan-details-arrow {
+  height: 18px;
+}
+
+.loans-expand {
+  width: 100%;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  overflow: hidden;
+  max-height: 0px;
+}
+
+.loan-details-active .loans-expand {
+  max-height: 600px;
+}
+
+.noPendingOffers {
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  color: #ffa726;
+  padding: 20px 0;
+}

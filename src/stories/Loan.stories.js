@@ -12,8 +12,8 @@ stories.add("Loan", (props) => {
   const [yourBorrowing, setYourBorrowing] = useState([]);
   const [makeOfferError, setMakeOfferError] = useState(false);
 
-  const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
-  // const account = "0xsecretservice";
+  // const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+  const account = "0xsecretservice";
   // const account = "";
 
   useEffect(() => {
@@ -101,16 +101,17 @@ stories.add("Loan", (props) => {
   function handleRescindOffer(loanId, offerId) {
     const data = { id: loanId, borrower: account, offerId: offerId };
 
-    fetch("http://localhost:4000/api/loan/rescind-loan-offer", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    console.log(data);
+    // fetch("http://localhost:4000/api/loan/rescind-loan-offer", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(data))
+    //   .catch((error) => console.error(error));
   }
 
   function handleAcceptOffer(loanId, offerId) {

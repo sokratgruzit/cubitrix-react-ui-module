@@ -20,3 +20,19 @@
 .loan-offered {
   color: #ffa726;
 }
+
+.offer-accepted {
+  color: #65cc9b;
+}
+
+.offer-rejected {
+  color: #ef5350;
+}
+
+.offer-revoked {
+  color: #d9d9d9;
+}
+
+.offer-expired {
+  color: #424242;
+}

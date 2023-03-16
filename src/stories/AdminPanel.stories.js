@@ -5,7 +5,7 @@ import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Button } from "../components/Button";
-import { useMobileWidth } from '../hooks/useMobileWidth';
+import { useMobileWidth } from "../hooks/useMobileWidth";
 import { Logo } from "../assets/svgs";
 import { MoreButton } from "../components/MoreButton";
 
@@ -18,13 +18,11 @@ stories.add("AdminPanel", () => {
   const [tableExpand, setTableExpand] = useState(null);
   const [devAppObject, setDevAppObject] = useState({});
   const [animateDom, setAnimateDom] = useState(false);
-  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] =
-    useState({});
+  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] = useState({});
   const [developerApiLoading, setDeveloperApiLoading] = useState(false);
 
   const [developerApiActive, setDeveloperApiActive] = useState(false);
-  const [developerApiResponseActive, setDeveloperApiResponseActive] =
-    useState(false);
+  const [developerApiResponseActive, setDeveloperApiResponseActive] = useState(false);
   useEffect(() => {
     setTimeout(() => {
       setAnimateDom(true);
@@ -860,9 +858,7 @@ stories.add("AdminPanel", () => {
       />
       <div className={`admin-container`}>
         <div
-          className={`admin-sidebar animate-translateX ${
-            animateDom ? "animate" : ""
-          }`}
+          className={`admin-sidebar animate-translateX ${animateDom ? "animate" : ""}`}
           style={{ transitionDelay: ".1s" }}
         >
           <BrowserRouter>
@@ -881,9 +877,7 @@ stories.add("AdminPanel", () => {
                       customStyles={{ width: "100%" }}
                       subMenu={item.subMenu}
                       active={location.pathname === item.route}
-                      subMenuActive={location.pathname.includes(
-                        item.subMenu?.route
-                      )}
+                      subMenuActive={location.pathname.includes(item.subMenu?.route)}
                     />
                   );
                 })}
@@ -914,11 +908,11 @@ stories.add("AdminPanel", () => {
               </Routes>
             </BrowserRouter>
           }
-          //    tableData={tableData}
+          tableData={tableData}
           handleViewAll={() => console.log("view all")}
           tableFilter={true}
           tableHead={th}
-          adminPage={"developerApi"}
+          adminPage={"table"}
           tableHeaderButtons={
             <>
               <Button

@@ -12,6 +12,7 @@ import LoanStatus from "./components/LoanStatus/LoanStatus";
 import { Popup } from "../Popup";
 import { PopupElement } from "../PopupElement";
 import { Footer } from "../Footer";
+import LoanRow from "./components/LoanRow./LoanRow";
 
 export const Loan = ({
   allLoanOffers,
@@ -366,51 +367,57 @@ export const Loan = ({
                   // setShowLoanDetails={setShowLoanDetails}
                 />
               )}
-              <h2 className="loan-title">All avalialbe loans</h2>
               <Table
                 type={"table-version"}
                 tableHead={[
                   {
-                    name: "Loaner Address",
-                    width: 50,
+                    name: "Lender",
+                    width: 25,
                     mobileWidth: 50,
                     id: 0,
                   },
                   {
-                    name: "Loan Amount",
-                    width: 50,
-                    mobileWidth: 50,
+                    name: "Amount",
+                    width: 15,
+                    mobileWidth: 20,
+                    id: 1,
+                  },
+                  {
+                    name: "Interest",
+                    width: 12,
+                    mobileWidth: 10,
+                    id: 1,
+                  },
+                  {
+                    name: "Duration",
+                    width: 12,
+                    mobileWidth: 10,
+                    id: 1,
+                  },
+                  {
+                    name: "Status",
+                    width: 36,
+                    mobileWidth: 31,
                     id: 1,
                   },
                 ]}
                 mobile={width < 1280}
-                tableData={allLoanOffers.map((item, index) => {
-                  return (
-                    <div className={`table-parent loan-pool-row`} key={index}>
-                      <div className="lender">
-                        <p>{item.lender}</p>
-                      </div>
-                      <div className="amount">{item.amount}</div>
-                      <div className="interest">{item.interest}</div>
-                      <div className="duration">{item.duration}</div>
-                      <div className="status-item">
-                        <LoanStatus status={item.status} />
-                      </div>
-                      <button
-                        className="make-offer"
-                        onClick={() => setMakeOfferLoanId(item._id)}
-                      >
-                        Make Offer
-                      </button>
-                      <button
-                        className="show-loan-details"
-                        onClick={() => handleShowLoanDetails(item, "public")}
-                      >
-                        Details
-                      </button>
-                    </div>
-                  );
-                })}
+                tableData={
+                  allLoanOffers.length > 0 ? (
+                    allLoanOffers.map((item, index) => {
+                      return (
+                        <LoanRow
+                          key={index}
+                          loan={item}
+                          account={account}
+                          setMakeOfferLoanId={setMakeOfferLoanId}
+                        />
+                      );
+                    })
+                  ) : (
+                    <div className="noOffers">No loan is offered</div>
+                  )
+                }
               />
             </div>
             <Footer />

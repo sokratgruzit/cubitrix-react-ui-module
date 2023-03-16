@@ -19,30 +19,30 @@ const NoAssets = ({ className, ...props }) => {
       <path
         d="M45.875 35.375H58.125"
         stroke="white"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M45.875 31H58.125"
         stroke="white"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M45.875 40H58.125"
         stroke="white"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M50.25 49.2524H43.25C38 49.2524 34.5 45.7524 34.5 40.5024V30.0024C34.5 24.7524 38 21.2524 43.25 21.2524H60.75C66 21.2524 69.5 24.7524 69.5 30.0024V40.5024C69.5 45.7524 66 49.2524 60.75 49.2524H50.25Z"
         stroke="white"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <ellipse
         opacity="0.6"

@@ -403,9 +403,16 @@
 
 .btn-grey {
   background: rgba(255, 255, 255, 0.4);
-  border-radius: 32px;
 }
 
 .btn-grey:hover {
+  opacity: 0.7;
+}
+
+.btn-yellow {
+  background: #ffa726;
+}
+
+.btn-yellow:hover {
   opacity: 0.7;
 }
