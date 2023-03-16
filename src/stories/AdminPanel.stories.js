@@ -5,7 +5,7 @@ import { AdminPanel } from "../components/AdminPanel";
 import { AdminHeader } from "../components/AdminHeader";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Button } from "../components/Button";
-import { useMobileWidth } from '../hooks/useMobileWidth';
+import { useMobileWidth } from "../hooks/useMobileWidth";
 import { Logo } from "../assets/svgs";
 import { MoreButton } from "../components/MoreButton";
 
@@ -914,11 +914,11 @@ stories.add("AdminPanel", () => {
               </Routes>
             </BrowserRouter>
           }
-          //    tableData={tableData}
+          tableData={tableData}
           handleViewAll={() => console.log("view all")}
           tableFilter={true}
           tableHead={th}
-          adminPage={"developerApi"}
+          adminPage={"table"}
           tableHeaderButtons={
             <>
               <Button

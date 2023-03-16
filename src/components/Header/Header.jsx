@@ -6,6 +6,9 @@ import { useMobileWidth } from '../../hooks/useMobileWidth';
 // helpers
 import { NavbarHelper } from "./NavbarHelper";
 
+// components
+import { Footer } from '../Footer'
+
 // svg
 import {
   Menu,
