@@ -23,7 +23,7 @@ export const NavbarHelper = ({
   sideBarOpen,
   verified,
   account,
-  handleClick,
+  onClick,
   modules,
 }) => {
   let element = null;
@@ -89,7 +89,7 @@ export const NavbarHelper = ({
       <>
         {modules.notify === "true" && (
           <span
-            onClick={handleClick}
+            onClick={onClick}
             className={`${
               sideBar === "notifications" && sideBarOpen && "activeNotify"
             } notify`}
@@ -116,7 +116,7 @@ export const NavbarHelper = ({
                 <p className="address">{account}</p>
               </span>
             }
-            onClick={handleClick}
+            onClick={onClick}
             type="btn-secondary"
             element="button"
             size="btn-sm"
@@ -127,7 +127,7 @@ export const NavbarHelper = ({
             <Button
               element="button"
               label="Connect"
-              onClick={handleClick}
+              onClick={onClick}
               type="btn-primary"
               size="btn-sm"
             />
