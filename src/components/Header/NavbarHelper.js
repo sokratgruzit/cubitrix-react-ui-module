@@ -55,12 +55,12 @@ export const NavbarHelper = ({
             Loan
           </NavLink>
         )}
-        {modules.referral === "true" && (
+        {true && (
           <NavLink
             className={`${location.pathname === "/referral" && "active"} link`}
             to="/referral"
           >
-            <Referral className="svg" />
+            <Referral active={location.pathname === "/referral"} />
             Referral
           </NavLink>
         )}
