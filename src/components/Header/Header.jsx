@@ -40,7 +40,7 @@ export const Header = ({
           {!mobile && <NavbarHelper type={'navbar'} modules={modules} />}
           <div style={{ display: 'flex', alignItems: 'center'}}>
             {mobile && <NavbarHelper type={"notification"} onClick={handleNotifications} sideBar={sideBar} sideBarOpen={sideBarOpen} modules={modules} />}
-            {mobile && <NavbarHelper type={'connect'} onClick={handleConnect} account={account} verified={verified} />}
+            {mobile && !(width <= 440) && <NavbarHelper type={'connect'} onClick={handleConnect} account={account} verified={verified} />}
             {mobile && (
               <div className={`navbar-menu`} onClick={() => setNavbarActive(prev => !prev)}>
                 <p className={`${navbarActive ? 'active' : ''} font-12`}>Close</p>
@@ -53,6 +53,7 @@ export const Header = ({
           {!mobile && <NavbarHelper type={"notification"} onClick={handleNotifications} sideBar={sideBar} sideBarOpen={sideBarOpen} modules={modules} />}
           {!mobile && <NavbarHelper type={'connect'} onClick={handleConnect} account={account} verified={verified} />}
           {mobile && <NavbarHelper type={'navbar'} modules={modules} />}
+          {width <= 440 && <NavbarHelper type={'connect'} onClick={handleConnect} account={account} verified={verified} /> }
         </div>
     </div>
   );
