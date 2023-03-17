@@ -21,7 +21,7 @@
   gap: 10px;
   height: 100%;
   width: 100%;
-  padding: 10px 0 10px 20px;
+  padding: 0 20px;
 }
 .right {
   height: 100%;
@@ -178,6 +178,15 @@
   opacity: .7;
 }
 
+@media only screen and (max-width: 1100px) {
+  .logoWrapper {
+    width: 10%;
+  }
+  .logoWrapper h3 {
+    display: none;
+  }
+} 
+
 @media only screen and (max-width: 970px) {
   .logoWrapper {
     border: none;
@@ -185,7 +194,7 @@
   .modulesWrapper {
     justify-content: space-between;
     height: 70px;
-    padding: 10px 20px;
+    padding: 20px;
 
   }
   .header {

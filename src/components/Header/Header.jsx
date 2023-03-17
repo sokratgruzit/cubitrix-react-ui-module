@@ -35,7 +35,7 @@ export const Header = ({
         <div className="modulesWrapper">
           <div className="logoWrapper">
             {logoSvg}
-            <h3 style={{ display: `${width <= 1100 ? 'none' : 'block'}`}}>{title}</h3>
+            <h3>{title}</h3>
           </div>
           {!mobile && <NavbarHelper type={'navbar'} modules={modules} />}
           <div style={{ display: 'flex', alignItems: 'center'}}>
