@@ -92,6 +92,8 @@ export const Staking = ({
             tableHead={tableHead}
             mobile={width < 1280}
             tableData={tableData}
+            loading={loading}
+            customStyles={{ marginBottom: '100px'}}
           />
         </div>
 

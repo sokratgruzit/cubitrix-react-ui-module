@@ -6,7 +6,7 @@ const Trade = ({ className, ...props }) => {
       width="20"
       height="20"
       viewBox="0 0 20 20"
-      fill="#3D5AFE"
+      fill="#CDCED1"
       className={className}
       {...props}
       xmlns="http://www.w3.org/2000/svg"
