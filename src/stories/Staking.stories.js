@@ -223,9 +223,7 @@ stories.add("Staking", () => {
             th.slice(5, 7).map((i, index) => (
               <div
                 key={index}
-                className={`td col ${i.position} ${
-                  i.mobileWidth ? true : false
-                }`}
+                className={`td col ${i.position} ${i.mobileWidth ? true : false}`}
                 style={{
                   width: `${mobile ? i.mobileWidth : i.width}%`,
                   marginRight: `${width < 1450 ? "10px" : "0"}`,
@@ -332,7 +330,7 @@ stories.add("Staking", () => {
     <BrowserRouter>
       <Header
         modules={[]}
-        account={"shit"}
+        account={"0x0000000"}
         location={{ pathName: "" }}
         title={"COMPLEND"}
         logoSvg={

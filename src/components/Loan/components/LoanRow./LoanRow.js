@@ -5,7 +5,7 @@ import LoanStatus from "../LoanStatus/LoanStatus";
 
 import "./LoanRow.css";
 
-const LoanRow = ({ loan, account, setMakeOfferLoanId }) => {
+const LoanRow = ({ loan, account, setMakeOfferLoanId, rescindOffer }) => {
   const [openDetails, setOpenDetails] = useState(false);
   return (
     <div

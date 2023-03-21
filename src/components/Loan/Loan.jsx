@@ -367,6 +367,7 @@ export const Loan = ({
                   // setShowLoanDetails={setShowLoanDetails}
                 />
               )}
+              <h2 className="loan-title">Loans accepting offers </h2>
               <Table
                 type={"table-version"}
                 tableHead={[
@@ -410,6 +411,7 @@ export const Loan = ({
                           key={index}
                           loan={item}
                           account={account}
+                          rescindOffer={rescindOffer}
                           setMakeOfferLoanId={setMakeOfferLoanId}
                         />
                       );

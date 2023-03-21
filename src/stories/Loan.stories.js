@@ -12,8 +12,8 @@ stories.add("Loan", (props) => {
   const [yourBorrowing, setYourBorrowing] = useState([]);
   const [makeOfferError, setMakeOfferError] = useState(false);
 
-  // const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
-  const account = "0xsecretservice";
+  const account = "0xA3403975861B601aE111b4eeAFbA94060a58d0CA";
+  // const account = "0xsecretservice";
   // const account = "";
 
   useEffect(() => {
@@ -44,7 +44,10 @@ stories.add("Loan", (props) => {
       body: JSON.stringify(mutatedLoan),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        setAllLoanOffers((prev) => [...prev, data.result]);
+        setYourLending((prev) => [...prev, data.result]);
+      })
       .catch((error) => console.error(error));
   }
 
@@ -58,7 +61,10 @@ stories.add("Loan", (props) => {
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        setAllLoanOffers((prev) => prev.filter((loan) => loan._id !== data.deletedID));
+        setYourLending((prev) => prev.filter((loan) => loan._id !== data.deletedID));
+      })
       .catch((error) => console.error(error));
   }
 
@@ -101,17 +107,16 @@ stories.add("Loan", (props) => {
   function handleRescindOffer(loanId, offerId) {
     const data = { id: loanId, borrower: account, offerId: offerId };
 
-    console.log(data);
-    // fetch("http://localhost:4000/api/loan/rescind-loan-offer", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => console.log(data))
-    //   .catch((error) => console.error(error));
+    fetch("http://localhost:4000/api/loan/rescind-loan-offer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }
 
   function handleAcceptOffer(loanId, offerId) {
@@ -150,7 +155,7 @@ stories.add("Loan", (props) => {
     <BrowserRouter>
       <Header
         modules={[]}
-        account={"shit"}
+        account={"0x000000"}
         location={{ pathName: "" }}
         title={"COMPLEND"}
         logoSvg={

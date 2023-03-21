@@ -10,7 +10,7 @@ stories.add("Header", () => {
     <BrowserRouter>
       <Header
         modules={[]}
-        account={"shit"}
+        account={"0xtest"}
         location={{ pathName: "" }}
         title={"COMPLEND"}
         logoSvg={
