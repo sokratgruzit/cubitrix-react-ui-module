@@ -31,11 +31,8 @@ export const NavbarHelper = ({
   if (type === "navbar") {
     element = (
       <>
-        <NavLink
-          className={`${location.pathname === "/" && "active"} link`}
-          to="/"
-        >
-          <Dashboard className="svg" /> Dashboard
+        <NavLink className={`${location.pathname === "/" && "active"} link`} to="/">
+          Dashboard
         </NavLink>
         {modules.trade === "true" && (
           <NavLink
@@ -43,7 +40,7 @@ export const NavbarHelper = ({
             `}
             to="/trade"
           >
-            <Trade className="svg" /> Trade
+            Trade
           </NavLink>
         )}
         {modules.loan === "true" && (
@@ -51,7 +48,6 @@ export const NavbarHelper = ({
             className={`${location.pathname === "/loan" && "active"} link`}
             to="/loan"
           >
-            <Loan className="svg" />
             Loan
           </NavLink>
         )}
@@ -60,7 +56,6 @@ export const NavbarHelper = ({
             className={`${location.pathname === "/referral" && "active"} link`}
             to="/referral"
           >
-            <Referral active={location.pathname === "/referral"} />
             Referral
           </NavLink>
         )}
@@ -69,7 +64,6 @@ export const NavbarHelper = ({
             className={`${location.pathname === "/staking" && "active"} link`}
             to="/staking"
           >
-            <Staking className="svg" />
             Staking
           </NavLink>
         )}
@@ -77,7 +71,6 @@ export const NavbarHelper = ({
           className={`${location.pathname === "/extensions" && "active"} link`}
           to="/extensions"
         >
-          <Extensions className="svg" />
           Extensions
         </NavLink>
       </>

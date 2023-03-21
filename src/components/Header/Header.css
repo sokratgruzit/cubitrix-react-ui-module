@@ -1,5 +1,5 @@
 .sideOpen .header {
-  border-right: 2px solid #070b1a;
+  border-right: 2px solid rgba(255, 255, 255, 0.05);
 }
 
 .header {
@@ -9,10 +9,10 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  background: #0c1121;
+  background: #2f3674;
   position: fixed;
   z-index: 100;
-  border-bottom: 2px solid #070b1a;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
   padding: 0;
 }
 .modulesWrapper {
@@ -47,14 +47,15 @@
   padding-left: 10px;
   padding-right: 10px;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .link:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .active {
-  color: #3d5afe;
+  color: #ffffff;
 }
 
 .link::before {
@@ -62,7 +63,8 @@
   width: 100%;
   height: 2px;
   content: "";
-  background: #3d5afe;
+  color: #ffffff;
+  background-color: #ffffff;
   border-radius: 2px;
   position: absolute;
   transform: scaleY(0.2);
@@ -129,7 +131,7 @@
 }
 
 .notify:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .activeNotify {
@@ -151,7 +153,6 @@
   max-width: 344px;
   width: 40%;
   height: 100%;
-  border-right: 2px solid #070b1a;
 }
 
 .navbar-menu {
@@ -171,11 +172,11 @@
 .navbar-menu p.active {
   max-height: 100%;
   opacity: 1;
-  color: #FFF;
+  color: #fff;
 }
 
 .navbar-menu:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 @media only screen and (max-width: 1100px) {
@@ -185,7 +186,7 @@
   .logoWrapper h3 {
     display: none;
   }
-} 
+}
 
 @media only screen and (max-width: 970px) {
   .logoWrapper {
@@ -195,7 +196,6 @@
     justify-content: space-between;
     height: 70px;
     padding: 20px;
-
   }
   .header {
     flex-direction: column;
@@ -205,9 +205,9 @@
     justify-content: flex-start;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
     gap: 30px;
-    background-color: #070B1A;
+    background: #2f3674;
   }
-  
+
   .header.header-active {
     height: 100vh;
     padding: 5px 0;
@@ -224,7 +224,7 @@
     justify-content: flex-start;
     overflow: hidden;
     max-height: 0px;
-    transition-delay: .6s;
+    transition-delay: 0.6s;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
     transform: translateY(5px);
     opacity: 0;
@@ -235,11 +235,11 @@
     max-height: 100%;
     transform: translateY(0px);
     opacity: 1;
-    transition-delay: .3s;
+    transition-delay: 0.3s;
     z-index: 100;
-    background-color: #070B1A;
+    background: #2f3674;
   }
-  
+
   .link {
     padding: 10px 0;
     height: unset;
