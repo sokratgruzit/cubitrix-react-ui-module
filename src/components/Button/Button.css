@@ -378,19 +378,18 @@
   gap: 6px;
   cursor: pointer;
   padding: 10px 0;
-
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
 .referral-button-active {
   width: 157px;
   padding: 10px 30px 10px 16px;
-  background: #3d5afe;
+  background: #00C6FF;
   border-radius: 32px;
 }
 
 .referral-button span {
-  color: #3d5afe;
+  color: #00C6FF;
 }
 
 .referral-button-active span {

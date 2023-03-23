@@ -39,6 +39,7 @@ stories.add("Referral", () => {
   const { width } = useMobileWidth();
 
   const handleCreateCode = () => setCreateCodePopupActive(true);
+  const handleLevelSystem = () => setLevelSystemPopupActive(true);
 
   const referralCards = [
     {
@@ -46,13 +47,13 @@ stories.add("Referral", () => {
       label: "Create Code To Start",
       description: "Your Rebate Rate",
       button: (
-        <Button
-          element={"referral-button"}
-          label={"Create Code"}
-          icon={<AddSquareIcon color={"#FFF"} />}
-          active={true}
-          onClick={handleCreateCode}
-        />
+          <Button
+            element={"referral-button"}
+            label={"Create Code"}
+            icon={<AddSquareIcon color={"#FFF"} />}
+            active={true}
+            onClick={handleCreateCode}
+          />
       ),
     },
     {
@@ -435,13 +436,11 @@ stories.add("Referral", () => {
       id: "0012331",
       title: "Referral Code",
       value: referralCodes?.referral,
-      color: "#57D29E",
     },
     {
       id: "00133231",
       title: "Binary Code",
       value: referralCodes?.binary,
-      color: "#6E62FC",
     },
   ];
 
@@ -612,6 +611,7 @@ stories.add("Referral", () => {
         }}
         referralRebatesTotal={referralRebatesTotal}
         referralCodesCardData={referralCodesCardData}
+        handleLevelSystem={handleLevelSystem}
       />
       {createCodePopupActive && (
         <Popup
@@ -629,6 +629,8 @@ stories.add("Referral", () => {
           label={"Create Referral Code"}
           handlePopUpClose={() => setCreateCodePopupActive(false)}
           customStyles={{ width: "423px" }}
+          headerCustomStyles={{ background: '#272C57'}}
+
         />
       )}
       {levelSystemPopupActive && (
@@ -641,8 +643,10 @@ stories.add("Referral", () => {
           description={
             "Everyone starts with the Casual tier, and you can level up the tier by increasing your Comland holding"
           }
+          headerCustomStyles={{ background: '#272C57'}}
         />
       )}
+      <Footer />
     </BrowserRouter>
   );
 });

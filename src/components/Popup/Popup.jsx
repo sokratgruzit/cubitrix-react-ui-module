@@ -36,7 +36,8 @@ export const Popup = ({
   popUpData,
   setPopUpData,
   edit,
-  description
+  description,
+  headerCustomStyles
 }) => {
   const [emptyFields, setEmptyFields] = useState({});
 
@@ -174,6 +175,7 @@ export const Popup = ({
             onClick={handlePopUpClose}
             customStyles={{
               width: "100%",
+              ...headerCustomStyles
             }}
             description={description}
           />

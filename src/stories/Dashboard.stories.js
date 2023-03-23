@@ -7,11 +7,11 @@ const stories = storiesOf("Dashboard", module);
 stories.add("Dashboard", () => {
   return (
     <div>
-      <CoinInfoBar
+      {/* <CoinInfoBar
         itemList={itemList}
         setItemList={setItemList}
         handleChange={handleChange}
-      />
+      /> */}
     </div>
   );
 });
