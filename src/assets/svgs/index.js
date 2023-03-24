@@ -31,3 +31,4 @@ export { default as NoAssets } from "./NoAssets";
 export { default as Menu } from "./Menu";
 export { default as DashboardCard } from "./DashboardCard";
 export { default as DashboardCardRings } from "./DashboardCardRings";
+export { default as TriangleArrow } from "./TriangleArrow";
