@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // components
-import { Table } from "../../../Table/Table";
+import { Table } from "../../../Table";
 
 // hooks
 import { useMobileWidth } from "../../../../hooks/useMobileWidth";

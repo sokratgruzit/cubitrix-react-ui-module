@@ -10,9 +10,9 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 
 import "./Dashboard.css";
-import { TopCoinsSliderBtns } from "./components/TopCoinsSliderBtns/TopCoinsSliderBtns";
-import { SelectedCoinChart } from "./components/SelectedCoinChart/SelectedCoinChart";
-import { CoinsTable } from "./components/CoinsTable/CoinsTable";
+import { TopCoinsSliderBtns } from "./components/TopCoinsSliderBtns/TopCoinsSliderBtns.jsx";
+import { SelectedCoinChart } from "./components/SelectedCoinChart/SelectedCoinChart.jsx";
+import { CoinsTable } from "./components/CoinsTable/CoinsTable.jsx";
 
 export const Dashboard = ({ topCoins, coinsList, loadCoinsList }) => {
   const { width } = useMobileWidth();
