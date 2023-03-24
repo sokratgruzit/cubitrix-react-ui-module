@@ -1,7 +1,78 @@
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  background: #2f3674;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 100px 0;
+}
+
 .dashboard-main-card {
+  position: relative;
+  display: flex;
+  padding: 55px;
   width: 1240px;
   height: 329px;
-
   background: #272c57;
   border-radius: 50px;
+}
+
+.dashboard-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard-card-info h1 {
+  display: flex;
+  align-items: center;
+  font-size: 60px;
+  line-height: 130%;
+  gap: 40px;
+}
+
+.dashboard-card-info h2 {
+  display: flex;
+  align-items: center;
+  font-size: 60px;
+  line-height: 130%;
+  gap: 18px;
+}
+
+.dashboard-card-info p {
+  font-size: 16px;
+  line-height: 130%;
+}
+
+.dashboard-cards-svg {
+  position: absolute;
+  bottom: 47px;
+  right: 80px;
+}
+
+.dashboard-cards-wrapper {
+  /* position: relative; */
+  /* height: 100%; */
+}
+
+.top-coins {
+  background: #2d3364;
+  width: 100%;
+  padding: 100px;
+}
+
+.top-cons-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-coins .swiper-slide {
+  width: 295px !important;
 }

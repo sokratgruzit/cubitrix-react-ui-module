@@ -1,0 +1,70 @@
+.top-coin-card {
+  width: 295px;
+  height: 132px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.top-coin-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+}
+
+.top-coin-image {
+  width: 34px;
+  height: 34px;
+}
+
+.top-coin-side {
+  display: flex;
+  gap: 12px;
+}
+
+.top-coin-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-coin-info h3 {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.top-coin-info p {
+  font-size: 14px;
+  line-height: 140%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.top-coin-financial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-coin-financial p:first-child {
+  font-size: 20px;
+  line-height: 150%;
+  color: #ffffff;
+}
+
+.top-coin-financial p:last-child {
+  font-size: 14px;
+  line-height: 140%;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.top-coin-card-header {
+  display: flex;
+  justify-content: space-between;
+}
