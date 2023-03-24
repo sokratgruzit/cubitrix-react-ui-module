@@ -9,7 +9,7 @@ const StickyNoteIcon = () => {
     >
       <path
         d="M8 2V5"
-        stroke="#3D5AFE"
+        stroke="#00C6FF"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -17,7 +17,7 @@ const StickyNoteIcon = () => {
       />
       <path
         d="M16 2V5"
-        stroke="#3D5AFE"
+        stroke="#00C6FF"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -25,7 +25,7 @@ const StickyNoteIcon = () => {
       />
       <path
         d="M7 11H15"
-        stroke="#3D5AFE"
+        stroke="#00C6FF"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -33,7 +33,7 @@ const StickyNoteIcon = () => {
       />
       <path
         d="M7 15H12"
-        stroke="#3D5AFE"
+        stroke="#00C6FF"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -41,7 +41,7 @@ const StickyNoteIcon = () => {
       />
       <path
         d="M15 22H9C4 22 3 19.94 3 15.82V9.65C3 4.95 4.67 3.69 8 3.5H16C19.33 3.68 21 4.95 21 9.65V16"
-        stroke="#3D5AFE"
+        stroke="#00C6FF"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"
@@ -49,7 +49,7 @@ const StickyNoteIcon = () => {
       />
       <path
         d="M21 16L15 22V19C15 17 16 16 18 16H21Z"
-        stroke="#3D5AFE"
+        stroke="#00C6FF"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

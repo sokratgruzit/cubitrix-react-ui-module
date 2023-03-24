@@ -67,10 +67,16 @@
   padding: 100px;
 }
 
-.top-cons-header {
+.top-coins-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.top-coins-header h3 {
+  font-size: 21px;
+  line-height: 130%;
 }
 
 .top-coins .swiper-slide {

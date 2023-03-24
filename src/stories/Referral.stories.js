@@ -39,6 +39,7 @@ stories.add("Referral", () => {
   const { width } = useMobileWidth();
 
   const handleCreateCode = () => setCreateCodePopupActive(true);
+  const handleLevelSystem = () => setLevelSystemPopupActive(true);
 
   const referralCards = [
     {
@@ -46,13 +47,13 @@ stories.add("Referral", () => {
       label: "Create Code To Start",
       description: "Your Rebate Rate",
       button: (
-        <Button
-          element={"referral-button"}
-          label={"Create Code"}
-          icon={<AddSquareIcon color={"#FFF"} />}
-          active={true}
-          onClick={handleCreateCode}
-        />
+          <Button
+            element={"referral-button"}
+            label={"Create Code"}
+            icon={<AddSquareIcon color={"#FFF"} />}
+            active={true}
+            onClick={handleCreateCode}
+          />
       ),
     },
     {
@@ -87,7 +88,7 @@ stories.add("Referral", () => {
 
     let codesData = {};
 
-    data.forEach((item) => {
+    Array.isArray(data) && data.forEach((item) => {
       item.referral_type === "binary"
         ? (codesData = { ...codesData, binary: item.referral })
         : (codesData = { ...codesData, referral: item.referral });
@@ -391,8 +392,7 @@ stories.add("Referral", () => {
       <Button
         element={"referral-button"}
         label={"Create Code"}
-        icon={<AddSquareIcon color={"#FFF"} />}
-        active={true}
+        icon={<AddSquareIcon color={"#00C6FF"} />}
         onClick={handleCreateCode}
       />
     ),
@@ -434,14 +434,12 @@ stories.add("Referral", () => {
     {
       id: "0012331",
       title: "Referral Code",
-      value: referralCodes?.referral,
-      color: "#57D29E",
+      value: referralCodes?.referral || '-',
     },
     {
       id: "00133231",
       title: "Binary Code",
-      value: referralCodes?.binary,
-      color: "#6E62FC",
+      value: referralCodes?.binary || '-',
     },
   ];
 
@@ -597,7 +595,7 @@ stories.add("Referral", () => {
         referralHistoryTableEmpty={referralHistoryTableEmpty}
         // referralHistoryTableLoading={true}
         // referralCodeTableLoading={true}
-        totalReferralRebatesLabel={"Total Referral Rebates"}
+        // totalReferralRebatesLabel={"Total Referral Rebates"}
         referralHistoryPaginationCurrent={rebatesCurrentPage}
         referralHistoryPaginationTotal={rebatesPaginationTotal}
         referralHistoryPaginationEvent={(page) => {
@@ -612,6 +610,7 @@ stories.add("Referral", () => {
         }}
         referralRebatesTotal={referralRebatesTotal}
         referralCodesCardData={referralCodesCardData}
+        handleLevelSystem={handleLevelSystem}
       />
       {createCodePopupActive && (
         <Popup
@@ -629,6 +628,8 @@ stories.add("Referral", () => {
           label={"Create Referral Code"}
           handlePopUpClose={() => setCreateCodePopupActive(false)}
           customStyles={{ width: "423px" }}
+          headerCustomStyles={{ background: '#272C57'}}
+
         />
       )}
       {levelSystemPopupActive && (
@@ -641,6 +642,7 @@ stories.add("Referral", () => {
           description={
             "Everyone starts with the Casual tier, and you can level up the tier by increasing your Comland holding"
           }
+          headerCustomStyles={{ background: '#272C57'}}
         />
       )}
     </BrowserRouter>

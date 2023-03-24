@@ -16,6 +16,7 @@ stories.add("Dashboard", () => {
         account={"0x0000000"}
         location={{ pathName: "" }}
         title={"COMPLEND"}
+        amount={10}
         logoSvg={
           <svg
             width="40"

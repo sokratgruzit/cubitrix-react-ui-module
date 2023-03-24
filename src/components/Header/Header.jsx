@@ -66,6 +66,7 @@ export const Header = ({
           )}
         </div>
       </div>
+      {amount}
       <div className={`right ${navbarActive ? "right-active" : ""}`}>
         {!mobile && (
           <NavbarHelper

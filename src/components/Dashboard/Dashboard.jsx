@@ -15,6 +15,7 @@ import { TopCoinsSliderBtns } from "./components/TopCoinsSliderBtns/TopCoinsSlid
 export const Dashboard = ({}) => {
   const { width } = useMobileWidth();
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const [selectOpen, setSelectOpen] = useState(false);
   const [topCoins, setTopCoins] = useState([]);
 
   useEffect(() => {
@@ -22,7 +23,10 @@ export const Dashboard = ({}) => {
       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=24h",
     )
       .then((response) => response.json())
-      .then((data) => setTopCoins(data))
+      .then((data) => {
+        setTopCoins(data);
+        console.log(data);
+      })
       .catch((error) => console.log(error));
   }, []);
 
@@ -56,7 +60,7 @@ export const Dashboard = ({}) => {
         </div>
       </header>
       <section className="top-coins">
-        <header className="top-cons-header">
+        <header className="top-coins-header">
           <h3>Top Coins</h3>
           <TopCoinsSliderBtns swiperInstance={swiperInstance} />
         </header>
@@ -72,6 +76,25 @@ export const Dashboard = ({}) => {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div>
+          <header className="selected-coin-info">
+            <div>
+              eth
+              <button onClick={(prev) => setSelectOpen(!prev)}>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="white"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M9.86334 6.78867L8.48717 8.16484L7.6469 9.0094C7.47569 9.18035 7.24363 9.27637 7.00169 9.27637C6.75974 9.27637 6.52769 9.18035 6.35648 9.0094L4.13575 6.78867C3.84423 6.49715 4.0543 5.99984 4.46157 5.99984H9.53752C9.94908 5.99984 10.1549 6.49715 9.86334 6.78867Z" />
+                </svg>
+              </button>
+            </div>
+            {selectOpen && <div className="select-coin">shit</div>}
+          </header>
+        </div>
       </section>
     </main>
   );

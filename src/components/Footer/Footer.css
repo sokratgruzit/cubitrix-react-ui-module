@@ -1,10 +1,9 @@
 .footer-container {
-    height: 44px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #0C1121;
-    border-left: 2px solid #070b1a;
+    background: #272C57;
     padding: 12px 20px;
     margin-top: auto;
     z-index: 100;
@@ -15,11 +14,11 @@
     display: flex;
     align-items: center;
     gap: 7px;
-    color: #6A6D76;
+    color: #FFF;
 }
 
 .footer-help a {
-    color: #6A6D76;
+    color: #FFF;
     text-decoration: none;
     transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
     cursor: pointer;

@@ -1,6 +1,6 @@
 import './ReferralCard.css';
 
-export const ReferralCard = ({ type, label, item, data, customStyles }) => {
+export const ReferralCard = ({ type, label, item, data, customStyles, labelTwo, totalData }) => {
 
   let element = null;
 
@@ -20,13 +20,24 @@ export const ReferralCard = ({ type, label, item, data, customStyles }) => {
     element = (
       <div className={'total-referral-info-container'} style={customStyles}>
         <div className={`total-referral-info`}>
-          <h2>{label}</h2>
-          {data.map((item, index) => (
-            <div key={index}>
-              <p style={{ color: `${item.color ? item.color : '#FFF'}` }} className="font-14">{item.title} {!item.color && <span>{item.value}</span>}</p>
-              {item.color && <span style={{ display: 'block' }}>{item.value}</span>}
-            </div>
-          ))}
+          <h2 className='font-20'>{label}</h2>
+          <div className={'total-referral-codes'}>
+            {data.map((item, index) => (
+              <div key={index}>
+                <p className="font-14">{item.title}</p>
+                <span style={{ display: 'block' }}>{item.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className={'total-referral-rebates'}>
+          <h2 className='font-20'>{labelTwo}</h2>
+          {totalData.map((item, index) => (
+              <div key={index}>
+                <span style={{ display: 'block' }}>${item.value}</span>
+                <p className="font-16">{item.title}</p>
+              </div>
+            ))}
         </div>
       </div>
     )

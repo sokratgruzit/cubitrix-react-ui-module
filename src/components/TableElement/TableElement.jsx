@@ -8,7 +8,8 @@ export const TableElement = ({
   siblingCount = 1,
   currentPage,
   type,
-  customStyle
+  customStyle,
+  color
 }) => {
   const paginationRange = usePagination({
     currentPage,
@@ -65,6 +66,7 @@ export const TableElement = ({
                   key={index}
                   className={`${pageNumber === currentPage ? "active-element" : ""}`}
                   onClick={() => onPageChange(pageNumber)}
+                  style={{ backgroundColor: `${color && pageNumber === currentPage ? color : !color && pageNumber === currentPage ? '#0500ff' : '' }`}}
                 >
                   {pageNumber}
                 </div>
