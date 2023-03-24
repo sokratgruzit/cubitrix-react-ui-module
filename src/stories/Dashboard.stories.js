@@ -1,4 +1,5 @@
 import { storiesOf } from "@storybook/react";
+import React, { useState, useEffect } from "react";
 
 import { Dashboard } from "../components/Dashboard";
 import { Header } from "../components/Header";
@@ -9,6 +10,40 @@ import { BrowserRouter } from "react-router-dom";
 const stories = storiesOf("Dashboard", module);
 
 stories.add("Dashboard", () => {
+  const [topCoins, setTopCoins] = useState([]);
+  const [coinsList, setCoinsList] = useState([]);
+
+  function loadCoinsList(page, startLoading, finishLoading) {
+    if (startLoading) startLoading();
+    fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=8
+        
+      &page=${page}&sparkline=true&price_change_percentage=24h`,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTimeout(() => {
+          setCoinsList((prev) => [...prev, ...data]);
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        if (finishLoading) finishLoading();
+      });
+  }
+  useEffect(() => {
+    fetch(
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=24h",
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setTopCoins(data);
+        setCoinsList(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <BrowserRouter>
       <Header
@@ -151,7 +186,11 @@ stories.add("Dashboard", () => {
         }
         verified={false}
       />
-      <Dashboard />
+      <Dashboard
+        topCoins={topCoins}
+        coinsList={coinsList}
+        loadCoinsList={loadCoinsList}
+      />
     </BrowserRouter>
   );
 });

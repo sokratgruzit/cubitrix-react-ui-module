@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import "./SelectedCoinChart.css";
 
@@ -70,7 +70,15 @@ export const SelectedCoinChart = ({ chartData }) => {
       show: false,
     },
     xaxis: {
-      categories: ["mon", "thu"],
+      categories: [
+        "Sat, 11PM",
+        "Sat, 12PM",
+        "Sun, 4AM",
+        "Sun, 8PM",
+        "Mon, 12PM",
+        "Tue, 4AM",
+        "Tue, 8PM",
+      ],
       // labels: {
       //   style: {
       //     fontSize: "14px",
@@ -94,21 +102,21 @@ export const SelectedCoinChart = ({ chartData }) => {
     },
   });
 
-  const [chartSeries, setChartSeries] = useState([
+  // const [chartSeries, setChartSeries] = useState([
+  //   {
+  //     name: "Price",
+  //     // data: chartData?.sparkline_in_7d?.price,
+  //     data: [10, 20],
+  //   },
+  // ]);
+
+  const chartSeries = [
     {
       name: "Price",
       // data: chartData?.sparkline_in_7d?.price,
-      data: [10, 20],
+      data: [20, 15, 30, 20, 30, 40, 20],
     },
-  ]);
-
-  useEffect(() => {
-    first;
-
-    return () => {
-      second;
-    };
-  }, [third]);
+  ];
 
   // console.log(chartSeries);
 

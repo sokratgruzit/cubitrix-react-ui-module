@@ -66,7 +66,7 @@ export const Header = ({
           )}
         </div>
       </div>
-      {amount}
+      <p className="util-token-amount">{amount}</p>
       <div className={`right ${navbarActive ? "right-active" : ""}`}>
         {!mobile && (
           <NavbarHelper

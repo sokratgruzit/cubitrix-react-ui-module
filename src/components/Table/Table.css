@@ -281,9 +281,36 @@
   width: 50px;
   height: 50px;
   border: 8px solid;
-  border-color: #00C6FF transparent #00C6FF transparent;
+  border-color: #00c6ff transparent #00c6ff transparent;
   border-radius: 50%;
   animation: spin-anim 1.2s linear infinite;
+}
+
+.table-coin-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+}
+
+.td.col.table-coin-row, .table-coin-row{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.table-coin-column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.coins-table-coin {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+  height: 20px;
+  padding: 1px 6px;
 }
 
 @keyframes spin-anim {

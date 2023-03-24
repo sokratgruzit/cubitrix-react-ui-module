@@ -341,6 +341,10 @@
   padding: 16px;
 }
 
+.coins-table-section {
+  padding: 50px 100px;
+}
+
 @media (max-width: 1300px) {
   .selected-chart-wrapper {
     width: 100%;

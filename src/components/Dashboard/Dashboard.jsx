@@ -12,26 +12,17 @@ import "swiper/swiper.min.css";
 import "./Dashboard.css";
 import { TopCoinsSliderBtns } from "./components/TopCoinsSliderBtns/TopCoinsSliderBtns";
 import { SelectedCoinChart } from "./components/SelectedCoinChart/SelectedCoinChart";
+import { CoinsTable } from "./components/CoinsTable/CoinsTable";
 
-export const Dashboard = ({}) => {
+export const Dashboard = ({ topCoins, coinsList, loadCoinsList }) => {
   const { width } = useMobileWidth();
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [selectOpen, setSelectOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
-  const [topCoins, setTopCoins] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true&price_change_percentage=24h",
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setTopCoins(data);
-        setSelectedOption(data[1]);
-        // console.log(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (topCoins.length > 0) setSelectedOption(topCoins[0]);
+  }, [topCoins]);
 
   return (
     <main className="dashboard-main">
@@ -113,7 +104,7 @@ export const Dashboard = ({}) => {
             </div>
             {selectOpen && (
               <div className="select-coin-wrap">
-                {topCoins.map((coin) => (
+                {topCoins?.map((coin) => (
                   <div
                     key={coin.name}
                     className="select-coin-option"
@@ -170,6 +161,9 @@ export const Dashboard = ({}) => {
             </div>
           </div>
         </div>
+      </section>
+      <section className="coins-table-section">
+        <CoinsTable coinsList={coinsList} loadCoinsList={loadCoinsList} />
       </section>
     </main>
   );
