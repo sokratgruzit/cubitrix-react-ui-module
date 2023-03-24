@@ -18,7 +18,6 @@ import { ReferralCard } from "../ReferralCard";
 import { Footer } from "../Footer";
 
 export const Referral = ({
-  cards,
   handleCreateCode,
   referralCodeTableHead,
   codesTableData,
@@ -27,7 +26,6 @@ export const Referral = ({
   referralCodeTableEmpty,
   referralHistoryTableEmpty,
   referralRebatesTotal,
-  totalReferralRebatesLabel,
   referralHistoryPaginationCurrent,
   referralHistoryPaginationTotal,
   referralHistoryPaginationEvent,
@@ -327,31 +325,9 @@ export const Referral = ({
         </div>
         <ReferralCard
           type={"total-info"}
-          data={[
-            {
-              title: "Referral Code",
-              value: "REF_lMJm0PoJ1yS3qyeGtVk",
-            },
-            {
-              title: "Binary Code",
-              value: "REF_lMJm0PoJ1yS3qyeGtVk",
-            },
-          ]}
-          totalData={[
-            {
-              title: "Referral Total Trading Volume",
-              value: "0.00",
-            },
-            {
-              title: "Your Total Earned Referral Rebates",
-              value: "0.00",
-            },
-            {
-              title: "Estimated Referral Rebates for this Week",
-              value: "0.00",
-            },
-          ]}
-          label={totalReferralRebatesLabel}
+          data={referralCodesCardData}
+          totalData={referralRebatesTotal}
+          label={'Your Code'}
           labelTwo={"Total Referral Rebates"}
         />
       </div>
@@ -377,7 +353,7 @@ export const Referral = ({
           type={"table-version"}
           tableHead={referralCodeTableHead}
           mobile={mobile}
-          tableData={referralCodeTableData}
+          tableData={codesTableData.length ? referralCodeTableData : false}
           tableEmpty={true}
           tableEmptyData={referralCodeTableEmpty}
           loading={referralCodeTableLoading}
@@ -388,6 +364,7 @@ export const Referral = ({
           currentPage={referralCodePaginationCurrent}
           totalCount={referralCodePaginationTotal}
           onPageChange={referralCodePaginationEvent}
+          color={"#00C6FF"}
         />
         <Visual
           element={"table-header"}
@@ -400,18 +377,20 @@ export const Referral = ({
           type={"table-version"}
           tableHead={referralHistoryTableHead}
           mobile={mobile}
-          tableData={referralHistoryTableData}
+          tableData={rebatesTableData.length ? referralHistoryTableData : false}
           tableEmptyData={referralHistoryTableEmpty}
           loading={referralHistoryTableLoading}
         />
         <TableElement
-          customStyle={{ marginTop: "30px", paddingBottom: "100px" }}
+          customStyle={{ marginTop: "30px" }}
           type={"pagination"}
           currentPage={referralHistoryPaginationCurrent}
           totalCount={referralHistoryPaginationTotal}
           onPageChange={referralHistoryPaginationEvent}
+          color={"#00C6FF"}
         />
       </div>
+      <Footer />
     </div>
   );
 };

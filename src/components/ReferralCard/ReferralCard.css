@@ -116,3 +116,12 @@
     width: 100%;
   }
 }
+
+@media only screen and (max-width: 300px) {
+  .referral-content-info_buttons {
+    gap: 20px;
+  }
+  .referral-content-main > h2 {
+    font-size: 50px;
+  }
+}

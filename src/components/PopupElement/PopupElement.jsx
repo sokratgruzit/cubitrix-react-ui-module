@@ -165,7 +165,7 @@ export const PopupElement = ({
         size={"btn-lg"}
         type={"btn-primary"}
         element={"button"}
-        customStyles={{ margin: "0", width: "100%" }}
+        customStyles={{ margin: "0", width: "100%", backgroundColor: "#00C6FF" }}
         onClick={() => handleSubmitClick(inputs)}
         disabled={notValidated || (popUpElementError && true)}
       />

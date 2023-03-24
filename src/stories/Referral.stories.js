@@ -88,7 +88,7 @@ stories.add("Referral", () => {
 
     let codesData = {};
 
-    data.forEach((item) => {
+    Array.isArray(data) && data.forEach((item) => {
       item.referral_type === "binary"
         ? (codesData = { ...codesData, binary: item.referral })
         : (codesData = { ...codesData, referral: item.referral });
@@ -392,8 +392,7 @@ stories.add("Referral", () => {
       <Button
         element={"referral-button"}
         label={"Create Code"}
-        icon={<AddSquareIcon color={"#FFF"} />}
-        active={true}
+        icon={<AddSquareIcon color={"#00C6FF"} />}
         onClick={handleCreateCode}
       />
     ),
@@ -435,12 +434,12 @@ stories.add("Referral", () => {
     {
       id: "0012331",
       title: "Referral Code",
-      value: referralCodes?.referral,
+      value: referralCodes?.referral || '-',
     },
     {
       id: "00133231",
       title: "Binary Code",
-      value: referralCodes?.binary,
+      value: referralCodes?.binary || '-',
     },
   ];
 
@@ -596,7 +595,7 @@ stories.add("Referral", () => {
         referralHistoryTableEmpty={referralHistoryTableEmpty}
         // referralHistoryTableLoading={true}
         // referralCodeTableLoading={true}
-        totalReferralRebatesLabel={"Total Referral Rebates"}
+        // totalReferralRebatesLabel={"Total Referral Rebates"}
         referralHistoryPaginationCurrent={rebatesCurrentPage}
         referralHistoryPaginationTotal={rebatesPaginationTotal}
         referralHistoryPaginationEvent={(page) => {
@@ -646,7 +645,6 @@ stories.add("Referral", () => {
           headerCustomStyles={{ background: '#272C57'}}
         />
       )}
-      <Footer />
     </BrowserRouter>
   );
 });
