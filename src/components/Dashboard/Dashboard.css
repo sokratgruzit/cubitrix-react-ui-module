@@ -369,9 +369,10 @@
   }
   .dashboard-main-card {
     width: 100%;
-    padding: 0 40px;
+    padding: 40px;
     justify-content: center;
     align-items: center;
+    height: 100%;
   }
 }
 
@@ -394,6 +395,7 @@
     width: 100%;
   }
 
+
   .dashboard-card-info h1, .dashboard-card-info h2 {
     font-size: 22px;
     justify-content: center;  
@@ -402,5 +404,18 @@
 
   .dashboard-card-info p {
     font-size: 14px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .dashboard-card-info h2 {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 330px) {
+  .dashboard-card-info h1  {
+    flex-direction: column;
   }
 }
