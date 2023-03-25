@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 100px 0;
+  padding: 100px;
 }
 
 .dashboard-main-card {
@@ -345,6 +345,12 @@
   padding: 50px 100px;
 }
 
+@media (max-width: 1328px) {
+  .dashboard-cards-svg {
+    display: none;
+  }
+}
+
 @media (max-width: 1300px) {
   .selected-chart-wrapper {
     width: 100%;
@@ -355,8 +361,23 @@
 }
 
 @media (max-width: 1024px) {
-  .top-coins {
+  .top-coins, .coins-table-section, .dashboard-header {
     padding: 100px 40px;
+  }
+  .dashboard-card-info h1, .dashboard-card-info h2 {
+    font-size: 50px;
+  }
+  .dashboard-main-card {
+    width: 100%;
+    padding: 0 40px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 750px) {
+  .dashboard-card-info h1, .dashboard-card-info h2 {
+    font-size: 35px;
   }
 }
 
@@ -371,5 +392,15 @@
     min-height: 105px;
     min-width: initial;
     width: 100%;
+  }
+
+  .dashboard-card-info h1, .dashboard-card-info h2 {
+    font-size: 22px;
+    justify-content: center;  
+    gap: 20px;
+  }
+
+  .dashboard-card-info p {
+    font-size: 14px;
   }
 }

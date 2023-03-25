@@ -24,7 +24,7 @@ stories.add("Dashboard", () => {
       .then((data) => {
         setTimeout(() => {
           setCoinsList((prev) => [...prev, ...data]);
-        }, 500);
+        }, 200);
       })
       .catch((error) => {
         console.log(error);
@@ -190,6 +190,7 @@ stories.add("Dashboard", () => {
         topCoins={topCoins}
         coinsList={coinsList}
         loadCoinsList={loadCoinsList}
+        handleGetStarted={() => console.log('get started')}
       />
     </BrowserRouter>
   );

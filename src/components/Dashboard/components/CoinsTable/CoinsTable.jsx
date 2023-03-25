@@ -81,7 +81,7 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
         () => {
           setTimeout(() => {
             setLoading(false);
-          }, 500);
+          }, 200);
         },
       );
   }, [page]);

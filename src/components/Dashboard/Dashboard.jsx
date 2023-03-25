@@ -14,7 +14,7 @@ import { TopCoinsSliderBtns } from "./components/TopCoinsSliderBtns/TopCoinsSlid
 import { SelectedCoinChart } from "./components/SelectedCoinChart/SelectedCoinChart.jsx";
 import { CoinsTable } from "./components/CoinsTable/CoinsTable.jsx";
 
-export const Dashboard = ({ topCoins, coinsList, loadCoinsList }) => {
+export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted }) => {
   const { width } = useMobileWidth();
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [selectOpen, setSelectOpen] = useState(false);
@@ -42,7 +42,7 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList }) => {
                 type={"btn-primary"}
                 arrow={"arrow-none"}
                 element={"button"}
-                onClick={() => disconnect()}
+                onClick={handleGetStarted}
                 customStyles={{ margin: "0" }}
               />
             </h2>
