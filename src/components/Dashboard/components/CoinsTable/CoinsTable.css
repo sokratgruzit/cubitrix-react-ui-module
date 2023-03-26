@@ -55,24 +55,28 @@
 }
 
 .coins-market-card p:first-child {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .coins-market-card p:last-child {
-    color: rgb(255, 255, 255, .6);
+  color: rgb(255, 255, 255, 0.6);
 }
 
 .coins-table-cards {
-    width: 100%;
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 1025px) {
-    .coins-table-cards {
-        flex-wrap: wrap;
-    }
+  .coins-table-cards {
+    flex-wrap: wrap;
+  }
+  .coins-market-card p:first-child,
+  .coins-market-card p:last-child {
+    text-align: center;
+  }
 }

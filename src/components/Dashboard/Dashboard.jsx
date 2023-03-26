@@ -13,6 +13,7 @@ import "./Dashboard.css";
 import { TopCoinsSliderBtns } from "./components/TopCoinsSliderBtns/TopCoinsSliderBtns.jsx";
 import { SelectedCoinChart } from "./components/SelectedCoinChart/SelectedCoinChart.jsx";
 import { CoinsTable } from "./components/CoinsTable/CoinsTable.jsx";
+import { Footer } from "../Footer";
 
 export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted }) => {
   const { width } = useMobileWidth();
@@ -165,6 +166,7 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted
       <section className="coins-table-section">
         <CoinsTable coinsList={coinsList} loadCoinsList={loadCoinsList} />
       </section>
+      <Footer />
     </main>
   );
 };

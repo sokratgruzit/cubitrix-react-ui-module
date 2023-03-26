@@ -313,6 +313,10 @@
   padding: 1px 6px;
 }
 
+.table-coin-none {
+  display: none;
+}
+
 @keyframes spin-anim {
   0% {
     transform: rotate(0deg);
