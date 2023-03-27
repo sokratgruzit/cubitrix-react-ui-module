@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TriangleArrow } from "../../../../assets/svgs";
-import { MiniChart } from "../MiniChart/MiniChart";
+import { MiniChart } from "../MiniChart/MiniChart.jsx";
 
 import "./TopCoinCard.css";
 
