@@ -190,7 +190,7 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted
                 <SelectedCoinChart chartData={selectedOption} />
               </div>
             ) : (
-              <div> no chart</div>
+              <div className="no-chart-data"></div>
             )}
 
             <div className="selected-token-market-info">

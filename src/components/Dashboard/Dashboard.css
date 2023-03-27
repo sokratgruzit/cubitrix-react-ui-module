@@ -482,6 +482,15 @@
   rotate: 180deg;
 }
 
+.no-chart-data {
+  position: relative;
+  width: calc(100% - 420px);
+  min-height: 360px;
+  height: 460px;
+  background: #00ffd0;
+  border-radius: 16px;
+}
+
 @media (max-width: 1328px) {
   .dashboard-main-card {
     grid-template-columns: 1fr;
