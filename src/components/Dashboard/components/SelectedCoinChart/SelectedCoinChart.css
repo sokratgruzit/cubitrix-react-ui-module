@@ -21,10 +21,15 @@
   font-size: 12px;
   line-height: 150%;
   color: #272c57;
-  /* opacity: 0.6; */
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .chart-options-wrapper {
+  position: absolute;
+  z-index: 20;
+  right: 16px;
+  top: 16px;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -37,4 +42,5 @@
   font-size: 12px;
   line-height: 150%;
   color: #272c57;
+  opacity: 1;
 }

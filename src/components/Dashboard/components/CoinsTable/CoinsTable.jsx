@@ -309,16 +309,28 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
         type={"table-version"}
         tableHead={coinsTableTh}
         mobile={mobile}
-        tableData={coinsTableData}
+        tableData={
+          coinsData.length > 0
+            ? coinsTableData
+            : [
+                <div key={"ts"} className="coins-list-no-data">
+                  Loading ...
+                </div>,
+              ]
+        }
         customStyles={{ position: "relative" }}
       />
-      <div className={"coins-table-bg"} />
-      <button
-        className="coins-table-more-btn font-14"
-        onClick={() => setPage((prev) => prev + 1)}
-      >
-        {loading ? "Loading..." : "Load More"}
-      </button>
+      {coinsData.length > 0 && (
+        <>
+          <div className={"coins-table-bg"} />
+          <button
+            className="coins-table-more-btn font-14"
+            onClick={() => setPage((prev) => prev + 1)}
+          >
+            {loading ? "Loading..." : "Load More"}
+          </button>
+        </>
+      )}
     </div>
   );
 };

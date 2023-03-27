@@ -19,14 +19,6 @@ export const SelectedCoinChart = ({ chartData }) => {
 
     return formattedDate;
   });
-  // const categories = Array.from({ length: 7 * 24 }, (_, i) => {
-  //   const categoryIndex = Math.floor(i / 24);
-  //   if (i % 24 === 0) {
-  //     return dates[categoryIndex];
-  //   } else {
-  //     return "";
-  //   }
-  // });
 
   const categories = Array.from({ length: 7 * 24 }, (_, i) => {
     const categoryIndex = Math.floor(i / 24);
@@ -40,7 +32,25 @@ export const SelectedCoinChart = ({ chartData }) => {
     }
   });
 
-  console.log(categories);
+  const hours = Array.from({ length: 8 }, (_, i) => {
+    const hoursAgo = (8 - i - 1) * 3;
+    const date = new Date(latestUpdateDate.getTime() - hoursAgo * 60 * 60 * 1000);
+    const options = { hour: "numeric", hour12: true };
+    const formattedDate = date.toLocaleString("en-US", options);
+    return formattedDate;
+  });
+
+  const categories24H = Array.from({ length: 24 }, (_, i) => {
+    const categoryIndex = Math.floor(i / 3);
+    const categoryStartIndex = categoryIndex * 3;
+    if (i === categoryStartIndex + 1) {
+      return hours[categoryIndex];
+    } else if (i >= categoryStartIndex && i < categoryStartIndex + 3) {
+      return "";
+    } else {
+      return null;
+    }
+  });
 
   const [chartOptions, setChartOptions] = useState({
     chart: {
@@ -74,19 +84,6 @@ export const SelectedCoinChart = ({ chartData }) => {
         );
       },
     },
-    // dataLabels: {
-    //   enabled: false,
-    //   formatter: function (val, opts) {
-    //     console.log(val, opts);
-    //     if (opts.dataPointIndex % 24 === 0) {
-    //       return opts.xaxis.categories[opts.dataPointIndex / 24];
-    //     }
-    //     return "";
-    //   },
-    //   // formatter: function (value, { seriesIndex, dataPointIndex, w }) {
-    //   //   return w.config.series[seriesIndex].name + ":  " + value;
-    //   // },
-    // },
     stroke: {
       curve: "smooth",
       width: 3,
@@ -114,8 +111,7 @@ export const SelectedCoinChart = ({ chartData }) => {
         hideOverlappingLabels: true,
         skipOverlapLabels: false,
       },
-      // categories: [1991, "", 1992, "", 1993],
-      categories: categories,
+      categories: chartType === "24H" ? categories24H : categories,
       axisBorder: {
         show: false,
       },
@@ -133,23 +129,36 @@ export const SelectedCoinChart = ({ chartData }) => {
     },
   });
 
-  // const [chartSeries, setChartSeries] = useState([
-  //   {
-  //     name: "Price",
-  //     // data: chartData?.sparkline_in_7d?.price,
-  //     data: [10, 20],
-  //   },
-  // ]);
-
-  const chartSeries = [
+  const [chartSeries, setChartSeries] = useState([
     {
       name: "Price",
-      data: chartData?.sparkline_in_7d?.price,
-      // data: [20, 15, 30, 1, 40],
+      data: [],
     },
-  ];
+  ]);
 
-  // console.log(chartSeries);
+  useEffect(() => {
+    if (chartData) {
+      setChartSeries((prevState) => [
+        {
+          ...prevState[0],
+          data:
+            chartType === "24H"
+              ? [...chartData?.sparkline_in_7d?.price].slice(-24)
+              : chartData?.sparkline_in_7d?.price,
+        },
+      ]);
+    }
+  }, [chartData, chartType]);
+
+  useEffect(() => {
+    setChartOptions((prevState) => ({
+      ...prevState,
+      xaxis: {
+        ...prevState.xaxis,
+        categories: chartType === "24H" ? categories24H : categories,
+      },
+    }));
+  }, [chartType]);
 
   return (
     <div className="selected-coin-chart">

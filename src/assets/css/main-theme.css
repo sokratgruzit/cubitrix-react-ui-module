@@ -144,7 +144,7 @@ button {
 }
 .main-sidebar {
   width: 365px;
-  background: #070b1a;
+  background: #2d3364;
   display: flex;
   overflow-y: auto;
   max-height: 100%;
@@ -154,7 +154,7 @@ button {
   height: 100vh;
   left: 0;
   top: 0;
-  background: #0c1121;
+  background: #2d3364;
   overflow-y: scroll;
   width: 365px;
   padding: 70px 20px 0 20px;
