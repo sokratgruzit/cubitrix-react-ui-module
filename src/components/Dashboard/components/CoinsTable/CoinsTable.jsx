@@ -17,6 +17,7 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
   }, [coinsList]);
 
   // const [coinsData, setCoinsData] = useState([]);
+
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [mobileExpand, setMobileExpand] = useState(false);
