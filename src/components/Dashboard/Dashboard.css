@@ -97,29 +97,120 @@
 
 .select-coin-wrap {
   position: absolute;
-  flex-direction: column;
+  z-index: 10;
   display: flex;
-  width: 100px;
-  height: 200px;
+  flex-direction: column;
+  left: 60px;
+  top: 45px;
+
+  width: 322px;
+  height: 376px;
+  background: #22274d;
+  border: 1px solid #202431;
+  border-radius: 8px;
   overflow-y: auto;
   gap: 2px;
-  background-color: #2f3674;
-  padding: 4px;
+  padding: 6px;
   border-radius: 8px;
 }
 
 .select-coin-option {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
-  min-height: 30px;
-  background-color: #272c57;
+  padding: 8px;
+  min-height: 60px;
   border-radius: 8px;
   cursor: pointer;
 }
 .select-coin-option:hover {
-  opacity: 0.7;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.select-coin-option-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+}
+
+.select-coin-option-image {
+  width: 24px;
+  height: 24px;
+}
+
+.select-coin-option-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.select-coin-option-left-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.select-coin-option-left-info h3 {
+  font-size: 14px;
+  line-height: 140%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.selected-coin-option .select-coin-option-left-info h3 {
+  color: #00c6ff !important;
+}
+
+.select-coin-option-left-info p {
+  font-size: 14px;
+  line-height: 140%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.select-coin-option:hover .select-coin-option-left-info h3 {
+  color: #fff;
+}
+
+.select-coin-option-right {
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+}
+
+.select-coin-option-right h3 {
+  font-size: 14px;
+  line-height: 150%;
+}
+.select-coin-option-right-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.selected-coin-option::before {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  width: 2px;
+  height: 60px;
+  left: 0;
+  background-color: #00c6ff;
+  border-radius: 0px 4px 4px 0px;
+  z-index: -1;
+}
+
+.select-coin-header {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.select-coin-header h2 {
+  font-size: 14px;
+  line-height: 140%;
 }
 
 .selected-coin-stats {

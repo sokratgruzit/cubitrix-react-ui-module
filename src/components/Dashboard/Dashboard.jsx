@@ -105,18 +105,58 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted
             </div>
             {selectOpen && (
               <div className="select-coin-wrap">
-                {topCoins?.map((coin) => (
-                  <div
-                    key={coin.name}
-                    className="select-coin-option"
-                    onClick={() => {
-                      setSelectOpen(false);
-                      setSelectedOption(coin);
-                    }}
-                  >
-                    {coin.symbol.toUpperCase()}
-                  </div>
-                ))}
+                <header className="select-coin-header">
+                  <h2>Select Coin</h2>
+                </header>
+                {topCoins
+                  ?.sort((a, b) => {
+                    if (a.name === selectedOption.name) return -1;
+                    if (b.name === selectedOption.name) return 1;
+                    return 0;
+                  })
+                  ?.map((coin, index) => (
+                    <div
+                      key={coin.name}
+                      className={`select-coin-option ${
+                        index === 0 ? "selected-coin-option" : ""
+                      }`}
+                      onClick={() => {
+                        setSelectOpen(false);
+                        setSelectedOption(coin);
+                      }}
+                    >
+                      <div className="select-coin-option-left">
+                        <div className="select-coin-option-image-wrapper">
+                          <img src={coin.image} className="select-coin-option-image" />
+                        </div>
+                        <div className="select-coin-option-left-info">
+                          <h3>{coin.name}</h3>
+                          <p>{coin.symbol.toUpperCase()}</p>
+                        </div>
+                      </div>
+                      <div className="select-coin-option-right">
+                        <h3>${coin.current_price}</h3>
+                        <span className="select-coin-option-right-change">
+                          <TriangleArrow
+                            className={
+                              coin.price_change_percentage_24h > 0
+                                ? "arrow-positive-change"
+                                : "arrow-negative-change"
+                            }
+                          />
+                          <p
+                            className={
+                              coin.price_change_percentage_24h > 0
+                                ? "positive-change"
+                                : "negative-change"
+                            }
+                          >
+                            {coin.price_change_24h.toFixed(4)}%
+                          </p>
+                        </span>
+                      </div>
+                    </div>
+                  ))}
               </div>
             )}
           </header>
