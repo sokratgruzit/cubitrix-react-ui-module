@@ -8,6 +8,7 @@ import { useMobileWidth } from "../../../../hooks/useMobileWidth";
 
 // css
 import "./CoinsTable.css";
+import { TriangleArrow } from "../../../../assets/svgs";
 
 export const CoinsTable = ({ coinsList, loadCoinsList }) => {
   const [coinsData, setCoinsData] = useState(coinsList);
@@ -45,7 +46,7 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
       width: 15,
       mobileWidth: 45,
       id: 1,
-      className: `${width <= 500 ? 'table-coin-none' : ''}`
+      className: `${width <= 500 ? "table-coin-none" : ""}`,
     },
     {
       name: "24h Change",
@@ -83,7 +84,7 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
           setTimeout(() => {
             setLoading(false);
           }, 200);
-        }
+        },
       );
   }, [page]);
 
@@ -108,24 +109,19 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
           mobileExpandFunc(item.id);
         }}
       >
-        <div className='table'>
+        <div className="table">
           <div
             className={`td col ${
               coinsTableTh[0].mobileWidth ? true : false
             } table-coin-row`}
             style={{
-              width: `${
-                mobile ? coinsTableTh[0].mobileWidth : coinsTableTh[0].width
-              }%`,
+              width: `${mobile ? coinsTableTh[0].mobileWidth : coinsTableTh[0].width}%`,
             }}
           >
-            <img className='table-coin-img' src={item.image} />
+            <img className="table-coin-img" src={item.image} />
             <div className={"table-coin-column"} style={{ gap: "2px" }}>
-              <span className='font-16'>{item.name}</span>
-              <span
-                className='font-14'
-                style={{ color: "rgba(255, 255, 255, 0.6)" }}
-              >
+              <span className="font-16">{item.name}</span>
+              <span className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
                 {item.symbol.toUpperCase()}
               </span>
             </div>
@@ -134,35 +130,43 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
             <div
               className={`td ${coinsTableTh[1].mobileWidth ? true : false}`}
               style={{
-                width: `${
-                  mobile ? coinsTableTh[1].mobileWidth : coinsTableTh[1].width
-                }%`,
+                width: `${mobile ? coinsTableTh[1].mobileWidth : coinsTableTh[1].width}%`,
               }}
             >
               <span> ${item.current_price}</span>
             </div>
           )}
           <div
-            className={`td ${
-              coinsTableTh[2].mobileWidth ? true : false
-            } table-coin-row`}
+            className={`td ${coinsTableTh[2].mobileWidth ? true : false} table-coin-row`}
             style={{
-              width: `${
-                mobile ? coinsTableTh[2].mobileWidth : coinsTableTh[2].width
-              }%`,
+              width: `${mobile ? coinsTableTh[2].mobileWidth : coinsTableTh[2].width}%`,
             }}
           >
-            <span>
-              {item.price_change_percentage_24h.toFixed(3).split(".")}%
+            <span className="top-coins-card-price-change-wrap">
+              <TriangleArrow
+                className={
+                  item.price_change_percentage_24h > 0
+                    ? "arrow-positive-change"
+                    : "arrow-negative-change"
+                }
+              />
+              <p
+                className={
+                  item.price_change_percentage_24h > 0
+                    ? "positive-change"
+                    : "negative-change"
+                }
+              >
+                {Math.abs(item.price_change_24h).toFixed(4)}%
+              </p>
             </span>
-            <span>${item.price_change_24h.toFixed(2).split(".")}</span>
+            {/* <span>{item.price_change_percentage_24h.toFixed(3).split(".")}%</span>
+            <span>${item.price_change_24h.toFixed(2).split(".")}</span> */}
           </div>
           <div
             className={`td ${coinsTableTh[3].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile ? coinsTableTh[3].mobileWidth : coinsTableTh[3].width
-              }%`,
+              width: `${mobile ? coinsTableTh[3].mobileWidth : coinsTableTh[3].width}%`,
             }}
           >
             <span>-</span>
@@ -172,14 +176,12 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
               coinsTableTh[4].mobileWidth ? true : false
             } table-coin-column`}
             style={{
-              width: `${
-                mobile ? coinsTableTh[4].mobileWidth : coinsTableTh[4].width
-              }%`,
+              width: `${mobile ? coinsTableTh[4].mobileWidth : coinsTableTh[4].width}%`,
             }}
           >
-            <p className='table-coin-row' style={{ gap: "5px" }}>
+            <p className="table-coin-row" style={{ gap: "5px" }}>
               <span>{item.circulating_supply}</span>
-              <span className='coins-table-coin font-12'>
+              <span className="coins-table-coin font-12">
                 {item.symbol.toUpperCase()}
               </span>
             </p>
@@ -188,9 +190,7 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
           <div
             className={`td col ${coinsTableTh[5].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile ? coinsTableTh[5].mobileWidth : coinsTableTh[4].width
-              }%`,
+              width: `${mobile ? coinsTableTh[5].mobileWidth : coinsTableTh[4].width}%`,
             }}
           >
             <span>${item.total_volume}</span>
@@ -198,77 +198,71 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
           <div
             className={`td col ${coinsTableTh[6].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile ? coinsTableTh[6].mobileWidth : coinsTableTh[4].width
-              }%`,
+              width: `${mobile ? coinsTableTh[6].mobileWidth : coinsTableTh[4].width}%`,
               paddingRight: "0",
             }}
           >
             <span>${item.high_24h}</span>
           </div>
         </div>
-        <div className='table-more' />
-        <div className='icon-place'>
+        <div className="table-more" />
+        <div className="icon-place">
           <svg
-            width='12'
-            height='7'
-            viewBox='0 0 12 7'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
+            width="12"
+            height="7"
+            viewBox="0 0 12 7"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
-              stroke='white'
-              strokeWidth='1.5'
-              strokeMiterlimit='10'
-              strokeLinecap='round'
-              strokeLinejoin='round'
+              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
-        <div className='table-mobile'>
-          <div className='table-mobile-content'>
+        <div className="table-mobile">
+          <div className="table-mobile-content">
             {width < 500 && (
-              <div className='td'>
-                <div className='mobile-ttl'>{coinsTableTh[1].name}</div>
-                <div className='table-coin-column'>
+              <div className="td">
+                <div className="mobile-ttl">{coinsTableTh[1].name}</div>
+                <div className="table-coin-column">
                   <span>${item.current_price}</span>
                 </div>
               </div>
             )}
-            <div className='td'>
-              <div className='mobile-ttl'>{coinsTableTh[2].name}</div>
-              <div className='table-coin-column'>
-                <span>
-                  {item.price_change_percentage_24h.toFixed(3).split(".")}%
-                </span>
+            <div className="td">
+              <div className="mobile-ttl">{coinsTableTh[2].name}</div>
+              <div className="table-coin-column">
+                <span>{item.price_change_percentage_24h.toFixed(3).split(".")}%</span>
                 <span>${item.price_change_24h.toFixed(2).split(".")}</span>
               </div>
             </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{coinsTableTh[3].name}</div>
+            <div className="td">
+              <div className="mobile-ttl">{coinsTableTh[3].name}</div>
               <span>-</span>
             </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{coinsTableTh[4].name}</div>
-              <div className='table-coin-column'>
-                <p className='table-coin-row'>
+            <div className="td">
+              <div className="mobile-ttl">{coinsTableTh[4].name}</div>
+              <div className="table-coin-column">
+                <p className="table-coin-row">
                   <span>{item.circulating_supply}</span>
-                  <span className='coins-table-coin font-12'>
+                  <span className="coins-table-coin font-12">
                     {item.symbol.toUpperCase()}
                   </span>
                 </p>
-                <p>
-                  {formatNumber(item.circulating_supply * item.current_price)}
-                </p>
+                <p>{formatNumber(item.circulating_supply * item.current_price)}</p>
               </div>
             </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{coinsTableTh[5].name}</div>
+            <div className="td">
+              <div className="mobile-ttl">{coinsTableTh[5].name}</div>
               <span>${item.total_volume}</span>
             </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{coinsTableTh[6].name}</div>
+            <div className="td">
+              <div className="mobile-ttl">{coinsTableTh[6].name}</div>
               <span>${item.high_24h}</span>
             </div>
           </div>
@@ -302,12 +296,12 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
       </header>
       <div className={"coins-table-cards"}>
         {marketCardsData.map((item, index) => (
-          <div className='coins-market-card' key={index}>
+          <div className="coins-market-card" key={index}>
             <p>
-              <span className='font-14'>{item.title}</span>
-              <span className='font-20'>{item.value}</span>
+              <span className="font-14">{item.title}</span>
+              <span className="font-20">{item.value}</span>
             </p>
-            <p className='font-14'>{item.description}</p>
+            <p className="font-14">{item.description}</p>
           </div>
         ))}
       </div>
@@ -320,7 +314,7 @@ export const CoinsTable = ({ coinsList, loadCoinsList }) => {
       />
       <div className={"coins-table-bg"} />
       <button
-        className='coins-table-more-btn font-14'
+        className="coins-table-more-btn font-14"
         onClick={() => setPage((prev) => prev + 1)}
       >
         {loading ? "Loading..." : "Load More"}

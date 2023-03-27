@@ -72,7 +72,7 @@ export const Staking = ({
       </div>
       {showCalculator && <div className={"show-calculator-dark-bg"} />}
       <div className={`main-content`}>
-        <div className={'main-content-wrapper'}>
+        <div className={"main-content-wrapper"}>
           <h2 className={`font-16 staking-header`}>
             <HeaderIcon />
             Staking
@@ -93,7 +93,7 @@ export const Staking = ({
             mobile={width < 1280}
             tableData={tableData}
             loading={loading}
-            customStyles={{ marginBottom: '100px'}}
+            customStyles={{ marginBottom: "100px" }}
           />
         </div>
 

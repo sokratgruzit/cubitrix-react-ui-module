@@ -3,37 +3,44 @@ import ReactApexChart from "react-apexcharts";
 import "./SelectedCoinChart.css";
 
 export const SelectedCoinChart = ({ chartData }) => {
-  // const categories = [
-  //   "Week 1",
-  //   "Week 2",
-  //   "Week 3",
-  //   "Week 4",
-  //   "Week 5",
-  //   "Week 6",
-  //   "Week 7",
-  // ];
-  // const data = [
-  //   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
-  //   25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45,
-  //   46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66,
-  //   67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87,
-  //   88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106,
-  //   107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123,
-  //   124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140,
-  //   141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157,
-  //   158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168,
-  // ];
+  const [chartType, setChartType] = useState("7D");
+  const latestUpdate = "2023-03-27T07:56:43.706Z";
+  const latestUpdateDate = new Date(latestUpdate);
 
-  // const paddedData = new Array(data.length).fill(null);
-  // for (let i = 0; i < data.length; i++) {
+  const days = 7;
+  const dates = Array.from({ length: days }, (_, i) => {
+    const daysAgo = days - i - 1;
+    const date = new Date(
+      latestUpdateDate.getTime() - daysAgo * 24 * 60 * 60 * 1000 - 11 * 60 * 60 * 1000,
+    );
+
+    const options = { weekday: "short", hour: "numeric", hour12: true };
+    const formattedDate = date.toLocaleString("en-US", options);
+
+    return formattedDate;
+  });
+  // const categories = Array.from({ length: 7 * 24 }, (_, i) => {
+  //   const categoryIndex = Math.floor(i / 24);
   //   if (i % 24 === 0) {
-  //     const categoryIndex = i / 24;
-  //     paddedData[i] = data[i];
-  //     categories[categoryIndex] = `Category ${categoryIndex + 1}`;
+  //     return dates[categoryIndex];
   //   } else {
-  //     paddedData[i] = null;
+  //     return "";
   //   }
-  // }
+  // });
+
+  const categories = Array.from({ length: 7 * 24 }, (_, i) => {
+    const categoryIndex = Math.floor(i / 24);
+    const categoryStartIndex = categoryIndex * 24;
+    if (i === categoryStartIndex + 12) {
+      return dates[categoryIndex];
+    } else if (i >= categoryStartIndex && i < categoryStartIndex + 24) {
+      return "";
+    } else {
+      return null;
+    }
+  });
+
+  console.log(categories);
 
   const [chartOptions, setChartOptions] = useState({
     chart: {
@@ -60,7 +67,8 @@ export const SelectedCoinChart = ({ chartData }) => {
         return (
           '<div class="arrow_box biggest-test-ever">' +
           "<span>" +
-          series[seriesIndex][dataPointIndex] +
+          "$ " +
+          series[seriesIndex][dataPointIndex].toFixed(4) +
           "</span>" +
           "</div>"
         );
@@ -106,17 +114,8 @@ export const SelectedCoinChart = ({ chartData }) => {
         hideOverlappingLabels: true,
         skipOverlapLabels: false,
       },
-      categories: [1991, null, 1992, null, 1993],
-      // categories: [
-      //   "Sat, 11PM",
-      //   "Sat, 12PM",
-      //   "Sun, 4AM",
-      //   "Sun, 8PM",
-      //   "Mon, 12PM",
-      //   "Tue, 4AM",
-      //   "Tue, 8PM",
-      // ],
-      // categories: ["Sat, 11PM", "Sat, 12PM", "Tue, 8PM"],
+      // categories: [1991, "", 1992, "", 1993],
+      categories: categories,
       axisBorder: {
         show: false,
       },
@@ -145,8 +144,8 @@ export const SelectedCoinChart = ({ chartData }) => {
   const chartSeries = [
     {
       name: "Price",
-      // data: chartData?.sparkline_in_7d?.price,
-      data: [20, 15, 30, 1, 40],
+      data: chartData?.sparkline_in_7d?.price,
+      // data: [20, 15, 30, 1, 40],
     },
   ];
 
@@ -154,6 +153,20 @@ export const SelectedCoinChart = ({ chartData }) => {
 
   return (
     <div className="selected-coin-chart">
+      <div className="chart-options-wrapper">
+        <div
+          onClick={() => setChartType("24H")}
+          className={`chart-option ${chartType === "24H" ? "selected-chart-type" : ""}`}
+        >
+          24H
+        </div>
+        <div
+          onClick={() => setChartType("7D")}
+          className={`chart-option ${chartType === "7D" ? "selected-chart-type" : ""}`}
+        >
+          7D
+        </div>
+      </div>
       {chartData.id && (
         <ReactApexChart
           options={chartOptions}

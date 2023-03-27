@@ -236,10 +236,14 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  width: 71px;
+  padding: 0 10px;
   height: 29px;
   background: #00ffd0;
   border-radius: 10px;
+  color: #272c57;
+}
+
+.selected-coin-price-wrap p {
   font-size: 14px;
   line-height: 150%;
   color: #272c57;
@@ -399,6 +403,7 @@
 }
 
 .circulating-supply-progressbar span {
+  transition: 0.5s;
   background-color: #00ffd0;
   border-radius: 4px;
 }
@@ -448,6 +453,13 @@
   background: #2f3674;
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
+}
+
+/* .arrow-up { */
+/* } */
+
+.arrow-down {
+  rotate: 180deg;
 }
 
 @media (max-width: 1328px) {
@@ -509,6 +521,11 @@
 }
 
 @media (max-width: 750px) {
+  .top-coins,
+  .coins-table-section,
+  .dashboard-header {
+    padding: 100px 20px;
+  }
   .dashboard-card-info h1,
   .dashboard-card-info h2 {
     font-size: 35px;

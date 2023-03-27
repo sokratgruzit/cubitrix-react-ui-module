@@ -97,9 +97,19 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted
               </div>
 
               <div className="selected-coin-price-wrap">
-                <h3>${selectedOption.current_price}</h3>
+                <h3>${selectedOption?.current_price}</h3>
                 <div>
-                  <TriangleArrow fill={"272C57"} />- 17%
+                  <TriangleArrow
+                    fill={"272C57"}
+                    className={
+                      selectedOption?.price_change_percentage_24h > 0
+                        ? "arrow-up"
+                        : "arrow-down"
+                    }
+                  />
+                  <p>
+                    {Math.abs(selectedOption?.price_change_percentage_24h?.toFixed(4))}%
+                  </p>
                 </div>
               </div>
             </div>
@@ -108,7 +118,7 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted
                 <header className="select-coin-header">
                   <h2>Select Coin</h2>
                 </header>
-                {topCoins
+                {[...topCoins]
                   ?.sort((a, b) => {
                     if (a.name === selectedOption.name) return -1;
                     if (b.name === selectedOption.name) return 1;
@@ -160,47 +170,88 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted
               </div>
             )}
           </header>
-          <div className="selected-coin-main-info">
-            <div className="selected-chart-wrapper">
-              <SelectedCoinChart chartData={selectedOption} />
-            </div>
-            <div className="selected-token-market-info">
-              <div className="selected-coin-market-wrap">
-                <div className="coin-market-wrap-stats">
-                  <p className="coin-market-cap-ttl">Market Cap</p>
-                  <div className="coin-market-price">
-                    <h3>${selectedOption?.market_cap}</h3>
-                    <p>18%</p>
+          {selectedOption?.name && (
+            <div className="selected-coin-main-info">
+              <div className="selected-chart-wrapper">
+                <SelectedCoinChart chartData={selectedOption} />
+              </div>
+              <div className="selected-token-market-info">
+                <div className="selected-coin-market-wrap">
+                  <div className="coin-market-wrap-stats">
+                    <p className="coin-market-cap-ttl">Market Cap</p>
+                    <div className="coin-market-price">
+                      <h3>${selectedOption?.market_cap}</h3>
+                      <span>
+                        <TriangleArrow
+                          className={
+                            selectedOption?.market_cap_change_percentage_24h
+                              ? "arrow-u["
+                              : "arrow-down"
+                          }
+                        />
+                        <p>
+                          {selectedOption?.market_cap_change_percentage_24h?.toFixed(2)}%
+                        </p>
+                      </span>
+                    </div>
+                    <h4>24H Volume / Market Cap</h4>
+                    <p className="coin-market-24h-vol">
+                      {(
+                        selectedOption?.market_cap_change_24h / selectedOption?.market_cap
+                      ).toFixed(4)}
+                    </p>
                   </div>
-                  <h4>24H Volume / Market Cap</h4>
-                  <p className="coin-market-24h-vol">0.0829</p>
+                  <div className="coin-market-value-wrap">
+                    <div className="coin-market-value-title">
+                      <h4>Value</h4>
+                      <span>24H</span>
+                    </div>
+                    <div className="coin-market-value">
+                      <p>${selectedOption?.market_cap_change_24h}</p>
+                      <span>
+                        <TriangleArrow
+                          className={
+                            selectedOption?.market_cap_change_percentage_24h
+                              ? "arrow-u["
+                              : "arrow-down"
+                          }
+                        />
+                        {selectedOption?.market_cap_change_percentage_24h?.toFixed(4)}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="coin-market-value-wrap">
-                  <div className="coin-market-value-title">
-                    <h4>Value</h4>
-                    <span>24H</span>
+                <div className="selected-coin-circulating-wrap">
+                  <h3>Circulating Supply</h3>
+                  <div className="circulating-supply-row">
+                    <h4>
+                      {selectedOption?.circulating_supply}{" "}
+                      {selectedOption?.symbol?.toUpperCase()}
+                    </h4>
+                    <p>
+                      {selectedOption?.circulating_supply / selectedOption?.max_supply}
+                    </p>
                   </div>
-                  <div className="coin-market-value">
-                    <p>$42,420,094,218</p>
-                    <span>1.42%</span>
-                  </div>
+                  <span className="circulating-supply-progressbar">
+                    <span
+                      style={{
+                        width: `${
+                          isFinite(
+                            selectedOption?.circulating_supply /
+                              selectedOption?.max_supply,
+                          )
+                            ? (selectedOption?.circulating_supply /
+                                selectedOption?.max_supply) *
+                              100
+                            : 100
+                        }%`,
+                      }}
+                    ></span>
+                  </span>
                 </div>
               </div>
-              <div className="selected-coin-circulating-wrap">
-                <h3>Circulating Supply</h3>
-                <div className="circulating-supply-row">
-                  <h4>
-                    {selectedOption?.circulating_supply}{" "}
-                    {selectedOption?.symbol?.toUpperCase()}
-                  </h4>
-                  <p>92%</p>
-                </div>
-                <span className="circulating-supply-progressbar">
-                  <span style={{ width: "92%" }}></span>
-                </span>
-              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
       <section className="coins-table-section">
