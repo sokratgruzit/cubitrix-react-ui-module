@@ -8,7 +8,6 @@ import { AccountSummary } from "../AccountSummary";
 import { Button } from "../Button";
 import { Table } from "../Table";
 import { Visual } from "../Visual";
-import { TableElement } from "../TableElement";
 
 // svgs
 import { AddSquareIcon } from "../../assets/svgs";
@@ -201,14 +200,6 @@ export const Staking = ({
             tableEmpty={true}
             tableEmptyData={tableEmptyData}
             loading={loading}
-          />
-          <TableElement
-            customStyle={{ marginTop: "30px" }}
-            type={"pagination"}
-            currentPage={3}
-            totalCount={10}
-            onPageChange={() => console.log("yeah")}
-            color={"#00C6FF"}
           />
         </div>
         <Footer />

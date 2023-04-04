@@ -158,7 +158,7 @@ stories.add("Staking", () => {
       amount: "1,220,000.2",
       staketime: "01.02.2023 10:00AM",
       unstaketime: "01.02.2023 08:15PM",
-      CML: "CML", 
+      CML: "CML",
       realtimeRewardPerBlock: "1,132,000.1",
     },
     {
@@ -213,11 +213,11 @@ stories.add("Staking", () => {
     label: "Stake to earn Complend reward",
     button: (
       <Button
-      element={"referral-button"}
-      label={"Create Staking"}
-      icon={<AddSquareIcon color={`#00C6FF`} />}
-      onClick={handlePopUpOpen}
-    />
+        element={"referral-button"}
+        label={"Create Staking"}
+        icon={<AddSquareIcon color={`#00C6FF`} />}
+        onClick={handlePopUpOpen}
+      />
     ),
   };
 
