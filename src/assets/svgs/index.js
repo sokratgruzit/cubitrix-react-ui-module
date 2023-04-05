@@ -32,3 +32,5 @@ export { default as Menu } from "./Menu";
 export { default as DashboardCard } from "./DashboardCard";
 export { default as DashboardCardRings } from "./DashboardCardRings";
 export { default as TriangleArrow } from "./TriangleArrow";
+export { default as ArrowRight } from "./ArrowRight";
+export { default as ArrowLeft } from "./ArrowLeft";
