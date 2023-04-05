@@ -29,9 +29,9 @@ export const Extensions = ({ extensionsCardsData }) => {
             type='default-card'
             item={item}
             active={true}
-            setIsActive={() =>
-              item.handleSwitch(item.title.toLocaleLowerCase(!item.active), )
-            }
+            setIsActive={() => {
+              item.handleSwitch(item.title.toLocaleLowerCase(), !item.active);
+            }}
             isActive={item.active}
             onClick={() =>
               navigate("/extensions/" + item.title.toLocaleLowerCase())
