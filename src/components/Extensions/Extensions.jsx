@@ -41,13 +41,13 @@ export const Extensions = ({ extensionsCardsData }) => {
                 active={true}
                 setIsActive={() => {
                   item.handleSwitch(
-                    item.title.toLocaleLowerCase(),
+                    item.value.toLocaleLowerCase(),
                     !item.active
                   );
                 }}
                 isActive={item.active}
                 onClick={() =>
-                  navigate("/extensions/" + item.title.toLocaleLowerCase())
+                  navigate("/extensions/" + item.value.toLocaleLowerCase())
                 }
                 customStyles={{ height: "fit-content" }}
                 disabled={item.disabled}

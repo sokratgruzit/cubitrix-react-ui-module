@@ -54,7 +54,6 @@ export const ExtensionCard = ({
             className='extension-card-body active'
             style={{
               opacity: item.disabled ? ".4" : "1",
-              pointerEvents: item.disabled ? "none" : "all",
             }}
           >
             <div className='extension-card-body-header' onClick={onClick}>
