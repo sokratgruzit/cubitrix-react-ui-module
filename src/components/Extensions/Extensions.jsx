@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+  
 // components
 import { ExtensionCard } from "../ExtensionCard";
 import { Footer } from "../Footer";
 
 // styles
 import "./Extensions.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
 
 export const Extensions = ({ extensionsCardsData }) => {
   const navigate = useNavigate();
@@ -23,22 +25,36 @@ export const Extensions = ({ extensionsCardsData }) => {
         </p>
       </header>
       <main>
-        {extensionsCardsData?.map((item, index) => (
-          <ExtensionCard
-            key={index}
-            type='default-card'
-            item={item}
-            active={true}
-            setIsActive={() => {
-              item.handleSwitch(item.title.toLocaleLowerCase(), !item.active);
-            }}
-            isActive={item.active}
-            onClick={() =>
-              navigate("/extensions/" + item.title.toLocaleLowerCase())
-            }
-            customStyles={{ height: "fit-content" }}
-          />
-        ))}
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={"auto"}
+          className='mySwiper2'
+          mousewheel={true}
+          freeMode={true}
+        >
+          {extensionsCardsData?.map((item, index) => (
+            <SwiperSlide key={index}>
+              <ExtensionCard
+                key={index}
+                type='default-card'
+                item={item}
+                active={true}
+                setIsActive={() => {
+                  item.handleSwitch(
+                    item.title.toLocaleLowerCase(),
+                    !item.active
+                  );
+                }}
+                isActive={item.active}
+                onClick={() =>
+                  navigate("/extensions/" + item.title.toLocaleLowerCase())
+                }
+                customStyles={{ height: "fit-content" }}
+                disabled={item.disabled}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </main>
       <Footer />
     </div>

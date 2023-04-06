@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // components
 import { ExtensionCard } from "../ExtensionCard";
@@ -12,12 +12,11 @@ import "./Extensions.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
-export const InnerExtensions = ({ extensionsCardsData }) => {
+export const InnerExtensions = ({ extensionsCardsData, id }) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isEnd, setIsEnd] = useState(false);
   const [isStart, setIsBeginning] = useState(true);
-
-  const { id } = useParams();
+  const [cardsData, setCardsData] = useState([]);
 
   const navigate = useNavigate();
 
@@ -33,7 +32,16 @@ export const InnerExtensions = ({ extensionsCardsData }) => {
     };
   }, [swiperInstance]);
 
-  const exactExtension = extensionsCardsData?.find((item) => item.title.toLocaleLowerCase() === id);
+  useEffect(() => {
+    const data = extensionsCardsData?.filter(
+      (item) => item.value.toLocaleLowerCase() !== id
+    );
+    setCardsData(data);
+  }, [id]);
+
+  const exactExtension = extensionsCardsData?.find(
+    (item) => item.value.toLocaleLowerCase() === id
+  );
 
   return (
     <div className={"inner-extensions-wrapper"}>
@@ -53,7 +61,7 @@ export const InnerExtensions = ({ extensionsCardsData }) => {
               strokeWidth='1.5'
               strokeMiterlimit='10'
               strokeLinecap='round'
-             strokeLinejoin='round'
+              strokeLinejoin='round'
             />
             <path
               d='M17.0836 10H3.05859'
@@ -73,15 +81,25 @@ export const InnerExtensions = ({ extensionsCardsData }) => {
             type='full-info-card'
             item={exactExtension}
             active={true}
-            customStyles={{ width: "fit-content", height: '100%', padding: "0" }}
+            customStyles={{
+              width: "fit-content",
+              height: "100%",
+              padding: "0",
+            }}
           />
           <Button
-            label={"Add Extension"}
+            label={exactExtension.active ? "Disable" : "Enable"}
             element={"staking-button"}
             active={true}
-            onClick={() => exactExtension.handleSwitch(exactExtension.title, true)}
+            onClick={() =>
+              exactExtension.handleSwitch(
+                exactExtension.value,
+                !exactExtension.active
+              )
+            }
             className={"inner-add-extension-btn"}
             customStyles={{ maxWidth: "150px", width: "100%" }}
+            disabled={exactExtension.disabled}
           />
         </div>
       </main>
@@ -161,14 +179,14 @@ export const InnerExtensions = ({ extensionsCardsData }) => {
             freeMode={true}
             onSwiper={(swiper) => setSwiperInstance(swiper)}
           >
-            {extensionsCardsData?.map((item, index) => (
+            {cardsData?.map((item, index) => (
               <SwiperSlide key={index}>
                 <ExtensionCard
                   type='other-extensions-card'
                   item={item}
                   active={true}
                   onClick={() =>
-                    navigate("/extensions/" + item.title.toLocaleLowerCase())
+                    navigate("/extensions/" + item.value.toLowerCase())
                   }
                   customStyles={{
                     maxWidth: "610px",

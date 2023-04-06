@@ -43,8 +43,8 @@
 }
 
 .default-card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  /* transform: translateY(-15px); */
+  /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); */
 }
 
 .extension-card .other-extensions-card:hover .arrowSvg path {
@@ -246,17 +246,26 @@
 .other-extensions-card-icon {
   min-width: 50px;
   min-height: 50px;
-  color: #FFF;
+  color: #fff;
 }
 
 .extension-card .other-extensions-card:hover .other-extensions-card-icon {
   fill: #00c6ff;
 }
 
-
-
 @media (max-width: 667px) {
   .full-info-card .full-info-card-body {
     gap: 20px;
   }
+  .full-info-card .full-info-card-wrapp {
+    flex-direction: column;
+    width: 100%;
+  }
+  .full-info-card-wrapp .full-info-card-content {
+    padding: 0;
+  }
+  .inner-extensions-card-container {
+    width: 100%;
+  }
+
 }

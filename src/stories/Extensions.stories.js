@@ -17,60 +17,75 @@ stories.add("Extensions", () => {
     staking: false,
     loan: false,
     referral: true,
-    notifications: false,
+    notify: true,
   });
+
+  console.log(isActive);
   const extensionsCardsData = [
     {
       icon: <Staking className={"other-extensions-card-icon"} />,
       title: "Trade",
+      value: "trade",
       description:
         "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
       hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
-      handleSwitch: (title, boolean) =>
-        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      handleSwitch: (title, value) =>
+        setIsActive((prev) => ({ ...prev, [title]: value })),
       active: isActive.trade,
+      disabled: true,
     },
     {
       icon: <Staking className={"other-extensions-card-icon"} />,
       title: "Staking",
+      value: "staking",
+
       description:
         "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
       hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
-      handleSwitch: (title, boolean) =>
-        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      handleSwitch: (title, value) =>
+        setIsActive((prev) => ({ ...prev, [title]: value })),
       active: isActive.staking,
+      disabled: false,
     },
     {
       icon: <Staking className={"other-extensions-card-icon"} />,
       title: "Loan",
+      value: "loan",
       description:
         "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
       hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
-      handleSwitch: (title, boolean) =>
-        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      handleSwitch: (title, value) =>
+        setIsActive((prev) => ({ ...prev, [title]: value })),
       active: isActive.loan,
+      disabled: false,
     },
     {
       icon: <Staking className={"other-extensions-card-icon"} />,
       title: "Referral",
+      value: "referral",
+
       description:
         "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
       hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
-      handleSwitch: (title, boolean) =>
-        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      handleSwitch: (title, value) =>
+        setIsActive((prev) => ({ ...prev, [title]: value })),
       active: isActive.referral,
+      disabled: false,
     },
     {
       icon: <Staking className={"other-extensions-card-icon"} />,
       title: "Notifications",
+      value: "notify",
       description:
         "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
       hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
-      handleSwitch: (title, boolean) =>
-        setIsActive((prev) => ({ ...prev, [title]: boolean })),
-      active: isActive.notifications,
+      handleSwitch: (title, value) =>
+        setIsActive((prev) => ({ ...prev, [title]: value })),
+      active: isActive.notify,
+      disabled: true,
     },
   ];
+
   return (
     <BrowserRouter>
       <Header
@@ -213,8 +228,11 @@ stories.add("Extensions", () => {
         }
         verified={false}
       />
-      <Extensions extensionsCardsData={extensionsCardsData} />
-      {/* <InnerExtensions extensionsCardsData={extensionsCardsData} /> */}
+      {/* <Extensions extensionsCardsData={extensionsCardsData} /> */}
+      <InnerExtensions
+        extensionsCardsData={extensionsCardsData}
+        id={"trade"}
+      />
     </BrowserRouter>
   );
 });

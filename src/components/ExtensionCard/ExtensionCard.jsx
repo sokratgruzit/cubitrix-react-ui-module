@@ -18,8 +18,8 @@ export const ExtensionCard = ({
 }) => {
   return (
     <div
-      style={customStyles}
       className={`extension-card ${type} ${active === true ? "animation" : ""}`}
+      style={{ opacity: item.disabled ? ".4" : "1", pointerEvents: item.disabled ? "none" : "all", ...customStyles}}
     >
       {type === "other-extensions-card" && (
         <div className='other-extensions-card' onClick={onClick}>
