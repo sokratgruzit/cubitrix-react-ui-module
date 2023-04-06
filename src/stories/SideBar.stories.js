@@ -28,13 +28,13 @@ stories.add("SideBar", () => {
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
-      {twoFactorAuth && (
+      {/* {twoFactorAuth && (
         <Popup
           popUpElement={<NoMetaMask />}
           label={"Check Your Network"}
           handlePopUpClose={() => setTwoFactorAuth(false)}
         />
-      )}
+      )} */}
 
       {/* <div style={{ width: "400px" }}>
         <ResetPasswordForm

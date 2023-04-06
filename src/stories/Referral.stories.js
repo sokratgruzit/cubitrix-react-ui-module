@@ -47,13 +47,13 @@ stories.add("Referral", () => {
       label: "Create Code To Start",
       description: "Your Rebate Rate",
       button: (
-          <Button
-            element={"referral-button"}
-            label={"Create Code"}
-            icon={<AddSquareIcon color={"#FFF"} />}
-            active={true}
-            onClick={handleCreateCode}
-          />
+        <Button
+          element={"referral-button"}
+          label={"Create Code"}
+          icon={<AddSquareIcon color={"#FFF"} />}
+          active={true}
+          onClick={handleCreateCode}
+        />
       ),
     },
     {
@@ -88,11 +88,12 @@ stories.add("Referral", () => {
 
     let codesData = {};
 
-    Array.isArray(data) && data.forEach((item) => {
-      item.referral_type === "binary"
-        ? (codesData = { ...codesData, binary: item.referral })
-        : (codesData = { ...codesData, referral: item.referral });
-    });
+    Array.isArray(data) &&
+      data.forEach((item) => {
+        item.referral_type === "binary"
+          ? (codesData = { ...codesData, binary: item.referral })
+          : (codesData = { ...codesData, referral: item.referral });
+      });
 
     if (data.length === 0) {
       const generateCodeResponse = await fetch(
@@ -133,7 +134,7 @@ stories.add("Referral", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "koko123aaa",
+          address: "0xe72c1054c1900fc6c266fec9bedc178e72793a35",
           limit: 5,
           page: page || 1,
         }),
@@ -434,12 +435,12 @@ stories.add("Referral", () => {
     {
       id: "0012331",
       title: "Referral Code",
-      value: referralCodes?.referral || '-',
+      value: referralCodes?.referral || "-",
     },
     {
       id: "00133231",
       title: "Binary Code",
-      value: referralCodes?.binary || '-',
+      value: referralCodes?.binary || "-",
     },
   ];
 
@@ -628,8 +629,7 @@ stories.add("Referral", () => {
           label={"Create Referral Code"}
           handlePopUpClose={() => setCreateCodePopupActive(false)}
           customStyles={{ width: "423px" }}
-          headerCustomStyles={{ background: '#272C57'}}
-
+          headerCustomStyles={{ background: "#272C57" }}
         />
       )}
       {levelSystemPopupActive && (
@@ -642,7 +642,7 @@ stories.add("Referral", () => {
           description={
             "Everyone starts with the Casual tier, and you can level up the tier by increasing your Comland holding"
           }
-          headerCustomStyles={{ background: '#272C57'}}
+          headerCustomStyles={{ background: "#272C57" }}
         />
       )}
     </BrowserRouter>
