@@ -1,226 +1,76 @@
-import React, { useState } from "react";
 import { storiesOf } from "@storybook/react";
-import { Staking } from "../components/Staking/Staking";
-import { Button } from "../components/Button";
+import { Extensions } from "../components/Extensions";
+import { InnerExtensions } from "../components/Extensions/InnerExtensions.jsx";
 import { Header } from "../components/Header";
-
-const stories = storiesOf("Staking", module);
-
-import { EarnIcon, AddSquareIcon } from "../assets/svgs";
+import "../assets/css/main-theme.css";
 import { BrowserRouter } from "react-router-dom";
-import { Popup } from "../components/Popup";
-import { Calculator } from "../components/Calculator";
 
-stories.add("Staking", () => {
-  const [depositAmount, setDepositAmount] = useState("10");
-  const [timeperiod, setTimeperiod] = useState(4);
-  const [timeperiodDate, setTimeperiodDate] = useState(0);
-  const [createStakingPopUpActive, setCreateStakingPopUpActive] =
-    useState(false);
+// svg
+import { Staking } from "../assets/svgs";
+import { useState } from "react";
 
-  const handlePopUpOpen = () => {
-    setCreateStakingPopUpActive(true);
-  };
+const stories = storiesOf("Extensions", module);
 
-  const [stackContractInfo, setStackContractInfo] = useState({
-    totalStakers: 0,
-    totalStakedToken: 0,
+stories.add("Extensions", () => {
+  const [isActive, setIsActive] = useState({
+    trade: false,
+    staking: false,
+    loan: false,
+    referral: true,
+    notifications: false,
   });
-
-  const [stakersInfo, setStakersInfo] = useState({
-    currentStake: 0,
-    earn: 0,
-    claimedReward: 0,
-    walletBalance: 0,
-    totalStaked: 0,
-    totalUnstaked: 0,
-  });
-
-  const [isAllowance, setIsAllowance] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const durationOptions = [
+  const extensionsCardsData = [
     {
-      title: "30 D",
-      time: 0,
-      period: 30,
+      icon: <Staking className={"other-extensions-card-icon"} />,
+      title: "Trade",
+      description:
+        "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
+      hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
+      handleSwitch: (title, boolean) =>
+        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      active: isActive.trade,
     },
     {
-      title: "60 D",
-      time: 1,
-      period: 60,
+      icon: <Staking className={"other-extensions-card-icon"} />,
+      title: "Staking",
+      description:
+        "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
+      hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
+      handleSwitch: (title, boolean) =>
+        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      active: isActive.staking,
     },
     {
-      title: "90 D",
-      time: 2,
-      period: 90,
+      icon: <Staking className={"other-extensions-card-icon"} />,
+      title: "Loan",
+      description:
+        "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
+      hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
+      handleSwitch: (title, boolean) =>
+        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      active: isActive.loan,
     },
     {
-      title: "180 D",
-      time: 3,
-      period: 180,
+      icon: <Staking className={"other-extensions-card-icon"} />,
+      title: "Referral",
+      description:
+        "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
+      hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
+      handleSwitch: (title, boolean) =>
+        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      active: isActive.referral,
     },
     {
-      title: "360 D",
-      time: 4,
-      period: 360,
-    },
-  ];
-
-  const accountSummaryData = [
-    [
-      {
-        icon: <EarnIcon />,
-        title: "Current Stake",
-        value: stakersInfo?.currentStake,
-      },
-      {
-        icon: <EarnIcon />,
-        title: "Earn",
-        value: stakersInfo?.earn,
-      },
-      {
-        icon: <EarnIcon />,
-        title: "Claimed Reward",
-        value: stakersInfo?.claimedReward,
-      },
-    ],
-    [
-      {
-        icon: <EarnIcon />,
-        title: "Your Wallet Balance",
-        value: stakersInfo?.walletBalance,
-      },
-      {
-        icon: <EarnIcon />,
-        title: "Total Staked",
-        value: stakersInfo?.totalStaked,
-      },
-      {
-        icon: <EarnIcon />,
-        title: "Total Unstaked",
-        value: stakersInfo?.totalUnstaked,
-      },
-    ],
-  ];
-
-  let th = [
-    {
-      name: "Staked Amount",
-      width: 15,
-      mobileWidth: 45,
-      id: 0,
-    },
-    {
-      name: "Stake Date ",
-      width: 15,
-      id: 1,
-    },
-    {
-      name: "Unstake Date",
-      width: 15,
-      id: 2,
-    },
-    {
-      name: "Earn Reward",
-      width: 15,
-      id: 3,
-    },
-    {
-      name: "Harvest",
-      width: 15,
-      mobileWidth: 45,
-      id: 4,
-    },
-    {
-      name: "",
-      width: 10,
-      id: 5,
-      mobileWidth: 35,
-      position: "right",
-      className: "buttons-th",
-      onClick: (index) => console.log(index),
-    },
-    {
-      name: "",
-      width: 7,
-      id: 6,
-      mobileWidth: 20,
-      position: "right",
-      className: "buttons-th",
-      onClick: (index) => console.log(index),
+      icon: <Staking className={"other-extensions-card-icon"} />,
+      title: "Notifications",
+      description:
+        "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
+      hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
+      handleSwitch: (title, boolean) =>
+        setIsActive((prev) => ({ ...prev, [title]: boolean })),
+      active: isActive.notifications,
     },
   ];
-
-  let stakersRecord = [
-    {
-      id: 12123,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 2121234,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-  ];
-
-  let account = false;
-
-  const handleCalculatorSubmit = () => {
-    if (!account) {
-      console.log("connect");
-    }
-    if (account && isAllowance) {
-      console.log("enable");
-    }
-    if (account && !isAllowance) {
-      console.log("hihi");
-      console.log(depositAmount);
-      console.log(timeperiod);
-    }
-  };
-
-  const handleTimeperiodDate = (period) => {
-    setTimeperiodDate(period);
-  };
-
-  const handleDepositAmount = (amount) => {
-    setDepositAmount(amount);
-  };
-
-  const handleTimePeriod = (period) => {
-    setTimeperiod(period);
-  };
-
-  const handleMaxClick = () => console.log("max!");
-
-  const tableEmptyData = {
-    label: "Stake to earn Complend reward",
-    button: (
-      <Button
-        element={"referral-button"}
-        label={"Create Staking"}
-        icon={<AddSquareIcon color={`#00C6FF`} />}
-        onClick={handlePopUpOpen}
-      />
-    ),
-  };
-
   return (
     <BrowserRouter>
       <Header
@@ -228,6 +78,7 @@ stories.add("Staking", () => {
         account={"0x0000000"}
         location={{ pathName: "" }}
         title={"COMPLEND"}
+        amount={10}
         logoSvg={
           <svg
             width='40'
@@ -362,52 +213,8 @@ stories.add("Staking", () => {
         }
         verified={false}
       />
-      <Staking
-        account={true}
-        durationOptions={durationOptions}
-        stackContractInfo={stackContractInfo}
-        loading={loading}
-        isAllowance={isAllowance}
-        handleCalculatorSubmit={handleCalculatorSubmit}
-        timeperiod={timeperiod}
-        handleTimePeriod={handleTimePeriod}
-        depositAmount={depositAmount}
-        handleDepositAmount={handleDepositAmount}
-        handleTimeperiodDate={handleTimeperiodDate}
-        timeperiodDate={timeperiodDate}
-        handleMaxClick={() => console.log("max!!!")}
-        accountSummaryData={accountSummaryData}
-        stakersRecord={stakersRecord}
-        tableHead={th}
-        handlePopUpOpen={handlePopUpOpen}
-        tableEmptyData={tableEmptyData}
-      />
-      {createStakingPopUpActive && (
-        <Popup
-          popUpElement={
-            <Calculator
-              {...{
-                durationOptions,
-                handleCalculatorSubmit,
-                handleMaxClick,
-                loading,
-                isAllowance,
-                account,
-                timeperiod,
-                handleTimePeriod,
-                depositAmount,
-                handleDepositAmount,
-                timeperiodDate,
-                handleTimeperiodDate,
-              }}
-            />
-          }
-          label={"Staking Calculator"}
-          handlePopUpClose={() => setCreateStakingPopUpActive(false)}
-          description={"Stake Complend to earn Complend reward"}
-          headerCustomStyles={{ background: "#272C57" }}
-        />
-      )}
+      <Extensions extensionsCardsData={extensionsCardsData} />
+      {/* <InnerExtensions extensionsCardsData={extensionsCardsData} /> */}
     </BrowserRouter>
   );
 });

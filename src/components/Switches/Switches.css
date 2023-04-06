@@ -12,8 +12,8 @@
   z-index: 5;
 }
 .form-switch input:checked ~ .check {
-  background: #3D5AFE;
-  border: 1px solid #3D5AFE;
+  background: #00C6FF;
+  border: 1px solid #00C6FF;
 }
 .check {
   display: flex;

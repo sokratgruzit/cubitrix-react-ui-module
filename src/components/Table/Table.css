@@ -7,7 +7,7 @@
   flex-direction: row;
 }
 .table-head {
-  width: calc(100% - 50px);
+  width: 100%;
   display: flex;
   background: rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -16,7 +16,7 @@
 }
 .table {
   display: flex;
-  width: calc(100% - 50px);
+  width: 100%;
   padding: 0px 16px;
   justify-content: space-between;
 }
@@ -249,8 +249,7 @@
 .table-more {
   height: 81px;
   width: 50px;
-  display: flex;
-  align-items: center;
+  display: none;
 }
 .td-expand .hide {
   display: none !important;
@@ -292,7 +291,8 @@
   border-radius: 16px;
 }
 
-.td.col.table-coin-row, .table-coin-row{
+.td.col.table-coin-row,
+.table-coin-row {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -344,11 +344,14 @@
   }
   .table-more {
     width: 35px;
+    display: flex;
+    align-items: center;
   }
   .table-mobile {
     display: block;
   }
 }
+
 /*Ipad 768*/
 @media (max-width: 1023px) {
 }

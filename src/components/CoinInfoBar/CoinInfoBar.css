@@ -92,10 +92,10 @@
   margin-left: auto;
 }
 
-.swiper-slide {
+.coin-info-list .swiper-slide {
   width: 100px !important;
 }
 
-.swiper {
+.coin-info-list .swiper {
   margin: 0 !important;
 }

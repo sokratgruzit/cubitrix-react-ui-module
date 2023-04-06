@@ -345,15 +345,14 @@
 }
 
 .calculator-button-active {
-  background: #3d5afe;
+  background: #00C6FF;
   color: #fff;
 }
 
 .staking-button {
-  width: 87px;
-  height: 52px;
-  background: #3d5afe;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  min-width: 89px;
+  height: 43px;
+  background: #00C6FF ;
   border-radius: 42px;
   display: flex;
   gap: 10px;
@@ -368,8 +367,8 @@
 }
 
 .staking-button-active {
-  border: 1px solid #3d5afe;
-  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #00C6FF;
+  background-color: unset;
 }
 
 .referral-button {
@@ -383,7 +382,7 @@
 }
 
 .referral-button-active {
-  width: 157px;
+  min-width: 157px;
   padding: 10px 30px 10px 16px;
   background: #00C6FF;
   border-radius: 32px;
