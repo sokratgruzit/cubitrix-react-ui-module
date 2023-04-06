@@ -19,7 +19,7 @@ export const ExtensionCard = ({
   return (
     <div
       className={`extension-card ${type} ${active === true ? "animation" : ""}`}
-      style={{ opacity: item.disabled ? ".4" : "1", pointerEvents: item.disabled ? "none" : "all", ...customStyles}}
+      style={{ ...customStyles }}
     >
       {type === "other-extensions-card" && (
         <div className='other-extensions-card' onClick={onClick}>
@@ -35,7 +35,13 @@ export const ExtensionCard = ({
 
       {type === "default-card" && (
         <>
-          <div className='card-header active'>
+          <div
+            className='card-header active'
+            style={{
+              opacity: item.disabled ? ".4" : "1",
+              pointerEvents: item.disabled ? "none" : "all",
+            }}
+          >
             {item.icon}
             <Switches
               type={"lg-switches"}
@@ -44,7 +50,13 @@ export const ExtensionCard = ({
               value={isActive}
             />
           </div>
-          <div className='extension-card-body active'>
+          <div
+            className='extension-card-body active'
+            style={{
+              opacity: item.disabled ? ".4" : "1",
+              pointerEvents: item.disabled ? "none" : "all",
+            }}
+          >
             <div className='extension-card-body-header' onClick={onClick}>
               <h1>{item.title}</h1>
               <ArrowRight className={"arrowSvg"} />
@@ -61,8 +73,8 @@ export const ExtensionCard = ({
               padding: "35px",
               backgroundColor: "rgba(39, 44, 87, 0.5)",
               borderRadius: "16px",
-              border: '1px solid rgba(39, 44, 87, 0.5)',
-              height: '100%'
+              border: "1px solid rgba(39, 44, 87, 0.5)",
+              height: "100%",
             }}
             className='card-header active'
           >

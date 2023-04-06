@@ -228,11 +228,11 @@ stories.add("Extensions", () => {
         }
         verified={false}
       />
-      {/* <Extensions extensionsCardsData={extensionsCardsData} /> */}
-      <InnerExtensions
+      <Extensions extensionsCardsData={extensionsCardsData} />
+      {/* <InnerExtensions
         extensionsCardsData={extensionsCardsData}
         id={"trade"}
-      />
+      /> */}
     </BrowserRouter>
   );
 });
