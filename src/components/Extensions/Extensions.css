@@ -5,7 +5,6 @@
   background: #272c57;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100%;
   height: 100vh;
 }
 
@@ -24,8 +23,7 @@
   flex-direction: column;
   gap: 20px;
   background: #2f3674;
-  padding: 60px 100px 0;
-  height: 50%;
+  padding: 60px 100px 144px;
 }
 
 .extensions-main > header > h1 {
@@ -128,16 +126,24 @@
   display: flex;
 }
 
-.other-extensions-cards-container .swiper-slide {
+.other-extensions-cards-container .swiper-slide { 
   max-width: 610px;
   width: 100%;
 }
 
-.other-extensions-cards-container .swiper {
+.other-extensions-cards-container .swiper, .extensions-main > main .swiper{
   margin: 0 !important;
   width: 100% !important;
 }
 
+.extensions-main  .swiper.swiper-initialized  {
+  /* overflow-y: visible!important; */
+}
+
+.extensions-main > main .swiper-slide {
+  max-width: 400px;
+  width: 100%;
+}
 .inner-extensions-swiper-buttons {
   display: flex;
   gap: 20px;
@@ -145,9 +151,7 @@
 
 @media (max-width: 1025px) {
   .extensions-main > main {
-    flex-direction: column;
     padding: 0 40px 100px;
-    height: unset;
   }
   .extensions-main > header {
     padding: 30px 40px 144px;
