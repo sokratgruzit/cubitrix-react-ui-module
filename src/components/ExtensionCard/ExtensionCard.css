@@ -115,6 +115,7 @@
   display: flex;
   gap: 10px;
   cursor: pointer;
+  word-break: break-all;
 }
 
 .full-info-card .hushCode p,
@@ -253,13 +254,23 @@
   fill: #00c6ff;
 }
 
+.full-info-card-header-img {
+  background-color: rgba(39, 44, 87, 0.5);
+  border-radius: 16px;
+  border: 1px solid rgba(39, 44, 87, 0.5);
+  height: 100%;
+  padding: 35px;
+}
+
 @media (max-width: 667px) {
   .full-info-card .full-info-card-body {
     gap: 20px;
+    flex-direction: column;
   }
   .full-info-card .full-info-card-wrapp {
     flex-direction: column;
     width: 100%;
+    gap: 20px;
   }
   .full-info-card-wrapp .full-info-card-content {
     padding: 0;
@@ -267,5 +278,11 @@
   .inner-extensions-card-container {
     width: 100%;
   }
-
+  .line {
+    display: none;
+  }
+  .full-info-card-header-img {
+    justify-content: center;
+    width: 100%;
+  }
 }

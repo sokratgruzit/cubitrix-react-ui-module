@@ -68,14 +68,7 @@ export const ExtensionCard = ({
       {type === "full-info-card" && (
         <div className='full-info-card-wrapp'>
           <div
-            style={{
-              padding: "35px",
-              backgroundColor: "rgba(39, 44, 87, 0.5)",
-              borderRadius: "16px",
-              border: "1px solid rgba(39, 44, 87, 0.5)",
-              height: "100%",
-            }}
-            className='card-header active'
+            className='card-header active full-info-card-header-img'
           >
             {item.icon}
           </div>
