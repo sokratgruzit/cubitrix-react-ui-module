@@ -19,6 +19,7 @@ export const PopupElement = ({
   handleSubmit,
   submitButtonLabel,
   customStyles,
+  popUpElementSuccess
 }) => {
   const [emptyFields, setEmptyFields] = useState({});
   const [notValidated, setNotValidated] = useState(false);
@@ -165,7 +166,11 @@ export const PopupElement = ({
         size={"btn-lg"}
         type={"btn-primary"}
         element={"button"}
-        customStyles={{ margin: "0", width: "100%", backgroundColor: "#00C6FF" }}
+        customStyles={{
+          margin: "0",
+          width: "100%",
+          backgroundColor: "#00C6FF",
+        }}
         onClick={() => handleSubmitClick(inputs)}
         disabled={notValidated || (popUpElementError && true)}
       />
@@ -173,7 +178,15 @@ export const PopupElement = ({
         <HelpText
           status={"warning"}
           title={popUpElementError}
-          color={"#9CCC65"}
+          fontSize={"font-12"}
+          icon={true}
+          customStyles={{ marginRight: "auto" }}
+        />
+      )}
+      {popUpElementSuccess && (
+        <HelpText
+          status={"success"}
+          title={popUpElementSuccess}
           fontSize={"font-12"}
           icon={true}
           customStyles={{ marginRight: "auto" }}
