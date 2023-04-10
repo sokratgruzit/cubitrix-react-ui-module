@@ -13,6 +13,8 @@
   position: fixed;
   z-index: 100;
   border-bottom: 2px solid #070b1a;
+  left: 0px;
+  top: 0px;
 }
 .modulesWrapper {
   display: flex;
@@ -137,7 +139,7 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  width: 344px;
+  width: 347px;
   height: 100%;
   border-right: 2px solid #070b1a;
 }

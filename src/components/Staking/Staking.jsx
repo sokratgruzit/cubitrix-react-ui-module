@@ -34,7 +34,7 @@ export const Staking = ({
   depositAmount,
   handleDepositAmount,
   stackContractInfo,
-}) => {    
+}) => {
   const [showCalculator, setShowCalculator] = useState(false);
   const { width } = useMobileWidth();
   return (
@@ -47,10 +47,12 @@ export const Staking = ({
         style={{ display: `${width > 1025 ? "flex" : "none"}` }}
       >
         <div className={"staking-sidebar"}>
-          <BiddingInfo
-            stackContractInfo={stackContractInfo}
-            customStyles={{ display: `${width > 1025 ? "block" : "none"}` }}
-          />
+          <div className={"staking-sidebar"}>
+            <BiddingInfo
+              stackContractInfo={stackContractInfo}
+              customStyles={{ display: `${width > 1025 ? "block" : "none"}` }}
+            />
+          </div>
           <Calculator
             {...{
               durationOptions,
