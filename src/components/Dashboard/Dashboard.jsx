@@ -246,7 +246,14 @@ export const Dashboard = ({ topCoins, coinsList, loadCoinsList, handleGetStarted
                     {selectedOption?.circulating_supply}{" "}
                     {selectedOption?.symbol?.toUpperCase()}
                   </h4>
-                  <p>{selectedOption?.circulating_supply / selectedOption?.max_supply}</p>
+                  {/* <p>{selectedOption?.circulating_supply / selectedOption?.max_supply}</p> */}
+                  <p>
+                    {isFinite(selectedOption?.circulating_supply) &&
+                    isFinite(selectedOption?.max_supply) &&
+                    selectedOption?.max_supply > 0
+                      ? selectedOption?.circulating_supply / selectedOption?.max_supply
+                      : "N/A"}
+                  </p>
                 </div>
                 <span className="circulating-supply-progressbar">
                   <span
