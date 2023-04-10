@@ -25,6 +25,7 @@ export const Calculator = ({
   handleDepositAmount,
   timeperiodDate,
   handleTimeperiodDate,
+  approveResonse,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -47,7 +48,7 @@ export const Calculator = ({
     {
       amount: depositAmount || "",
     },
-    helpTexts
+    helpTexts,
   );
 
   const handleSubmit = () => {
@@ -74,10 +75,7 @@ export const Calculator = ({
             validationErrors?.amount && (
               <HelpText
                 status={validationErrors.amount.failure ? "error" : "success"}
-                title={
-                  validationErrors.amount.failure ||
-                  validationErrors.amount.success
-                }
+                title={validationErrors.amount.failure || validationErrors.amount.success}
                 fontSize={"font-12"}
                 icon={true}
               />
@@ -88,7 +86,7 @@ export const Calculator = ({
           MAX
         </span>
       </div>
-      <div className='calculator__buttons'>
+      <div className="calculator__buttons">
         {durationOptions.map((item, index) => (
           <Button
             key={index}
@@ -115,10 +113,18 @@ export const Calculator = ({
             ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
             : "50.0% APY On 360 Days. Locked until " + timeperiodDate
         }
-        status='info'
-        color='#6A6D76'
+        status="info"
+        color="#6A6D76"
         icon={true}
       />
+      {approveResonse && (
+        <HelpText
+          status={approveResonse?.status}
+          title={approveResonse?.message}
+          fontSize={"font-12"}
+          icon={true}
+        />
+      )}
       <Button
         element={"button"}
         label={
@@ -137,9 +143,7 @@ export const Calculator = ({
           backgroundColor: "#00C6FF",
         }}
         onClick={
-          !account || (account && isAllowance)
-            ? handleCalculatorSubmit
-            : handleSubmit
+          !account || (account && isAllowance) ? handleCalculatorSubmit : handleSubmit
         }
         disabled={validationErrors?.amount?.failure && account && true}
       />
