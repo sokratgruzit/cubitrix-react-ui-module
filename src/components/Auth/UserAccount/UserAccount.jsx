@@ -114,8 +114,7 @@ export const UserAccount = ({
         element={"popup-header"}
         customStyles={{ width: "100%" }}
         onClick={sideBarClose}
-        // goBack={goBack}
-        goBack={true}
+        goBack={goBack}
       />
 
       <div className="tabs-wrapper">
