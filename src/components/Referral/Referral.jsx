@@ -203,8 +203,7 @@ export const Referral = ({
               }%`,
             }}
           >
-            {/* <span>{item.tx_options.referral}</span> */}
-            <span>refferal</span>
+            <span>{item?.tx_options?.referral}</span>
           </div>
           <div
             className={`td ${referralHistoryTableHead[2].mobileWidth ? true : false}`}
@@ -217,8 +216,9 @@ export const Referral = ({
             }}
           >
             <span>
-              {/* {item.tx_type === "uni" ? "UNI LVL" : `VIP ${item.tx_options.lvl}`} */}
-              {item.tx_type === "uni" ? "UNI LVL" : `VIP 999`}
+              {item?.tx_options?.referral_module === "uni"
+                ? "UNI LVL"
+                : `VIP ${item?.tx_options?.lvl}`}
             </span>
           </div>
           <div
@@ -257,15 +257,13 @@ export const Referral = ({
           <div className="table-mobile-content">
             <div className="td">
               <div className="mobile-ttl">{referralHistoryTableHead[1].name}</div>
-              {/* {item.tx_options.referral} */}
-              refferal
+              {item?.tx_options?.referral}
             </div>
             <div className="td">
               <div className="mobile-ttl">{referralHistoryTableHead[2].name}</div>
-              {item.tx_type === "uni"
+              {item?.tx_options?.referral_module === "uni"
                 ? "UNI LVL"
-                : // : `VIP ${item.tx_options.lvl}`}
-                  `VIP 999`}
+                : `VIP ${item?.tx_options?.lvl}`}
             </div>
           </div>
         </div>
