@@ -1,15 +1,29 @@
-import React from "react";
-import { Button } from "../../../Button";
-import "./DashboardHeader.css";
+import React, { useState, useEffect } from "react";
 
+// components
+import { Button } from "../../../Button";
+
+// images
 import man from "../../../../assets/img/dashboard/man.png";
 import dots from "../../../../assets/img/dashboard/dots.png";
 import planet from "../../../../assets/img/dashboard/planet.png";
 import dotsRight from "../../../../assets/img/dashboard/dotsRight.png";
+import rocket from "../../../../assets/img/dashboard/rocket.png";
+import bottom from "../../../../assets/img/dashboard/bottom.png";
 
-export const DashboardHeader = () => {
+// styles
+import "./DashboardHeader.css";
+
+export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
+
   return (
-    <header className='dashboard-header-container'>
+    <header className={`dashboard-header-container ${animate ? 'animate' : ""}`}>
+      <img src={rocket} className={"dashboard-header-rocket-img"} />
       <div className='dashboard-header'>
         <img src={dots} className={"dashboard-header-dots-img"} />
         <div className={"dashboard-header-top"}>
@@ -31,9 +45,8 @@ export const DashboardHeader = () => {
           type={"btn-primary"}
           arrow={"arrow-none"}
           element={"button"}
-          onClick={() => console.log('hi')}
-          customStyles={{ margin: '0'}}
-
+          onClick={handleConnect}
+          customStyles={{ margin: "0" }}
         />
         <Button
           label={"Get Started"}
@@ -41,10 +54,11 @@ export const DashboardHeader = () => {
           type={"btn-secondary"}
           arrow={"arrow-none"}
           element={"button"}
-          onClick={() => console.log('hi')}
-          customStyles={{ margin: '0'}}
+          onClick={handleGetStarted}
+          customStyles={{ margin: "0" }}
         />
       </div>
+      <img src={bottom} className={"dashboard-header-bottom-img"} />
     </header>
   );
 };
