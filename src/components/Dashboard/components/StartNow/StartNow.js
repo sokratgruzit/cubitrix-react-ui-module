@@ -2,13 +2,17 @@ import React from "react";
 import { Button } from "../../../Button";
 import "./StartNow.css";
 
-import startNowBG from "../../../../assets/img/dashboard/startNowBG.png";
+// import {startNowBG} from "../../../../assets/img/dashboard/startNowBG.png";
 import { StartNowBlocks1, StartNowBlocks2 } from "../../../../assets/svgs";
 
 export const StartNow = () => {
   return (
     <section className="start-section">
-      <img src={startNowBG} className="startNowBG" alt="" />
+      <img
+        src={"../../../../assets/img/dashboard/startNowBG.png"}
+        className="startNowBG"
+        alt=""
+      />
       <StartNowBlocks1
         className={"start-blocks-1"}
         data-aos="fade-up"

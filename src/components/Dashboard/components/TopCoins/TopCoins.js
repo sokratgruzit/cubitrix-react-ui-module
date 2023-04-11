@@ -2,10 +2,6 @@ import React from "react";
 import { Button } from "../../../Button";
 import "./TopCoins.css";
 
-import EthCard from "../../../../assets/img/dashboard/coinCards/EthCard.png";
-import BitcoinCard from "../../../../assets/img/dashboard/coinCards/BitcoinCard.png";
-import TetherCard from "../../../../assets/img/dashboard/coinCards/TetherCard.png";
-import TopCoinsIcon from "../../../../assets/img/dashboard/TopCoinsIcon.png";
 import { DashboardCoinsLeverageCard, DashboardCoinsBuy } from "../../../../assets/svgs";
 
 export const TopCoins = () => {
@@ -35,9 +31,21 @@ export const TopCoins = () => {
         </p>
       </header>
       <div className="top-coins-main">
-        <img src={EthCard} alt="" className="ethCard" />
-        <img src={BitcoinCard} alt="" className="BitcoinCard" />
-        <img src={TetherCard} alt="" className="TetherCard" />
+        <img
+          src={"../../../../assets/img/dashboard/coinCards/EthCard.png"}
+          alt=""
+          className="ethCard"
+        />
+        <img
+          src={"../../../../assets/img/dashboard/coinCards/BitcoinCard.png"}
+          alt=""
+          className="BitcoinCard"
+        />
+        <img
+          src={"../../../../assets/img/dashboard/coinCards/TetherCard.png"}
+          alt=""
+          className="TetherCard"
+        />
         <DashboardCoinsLeverageCard className={"coins-leverage-card"} />
         <DashboardCoinsBuy className={"coins-buy-card"} />
       </div>
@@ -51,7 +59,11 @@ export const TopCoins = () => {
         className={"start-trade-btn"}
       />
       <div className="bg-gradient"></div>
-      <img src={TopCoinsIcon} alt="" className="top-coins-coin" />
+      <img
+        src={"../../../../assets/img/dashboard/TopCoinsIcon.png"}
+        alt=""
+        className="top-coins-coin"
+      />
     </section>
   );
 };

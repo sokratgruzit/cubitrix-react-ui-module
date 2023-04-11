@@ -2,8 +2,6 @@ import React from "react";
 import { Button } from "../../../Button";
 import "./Meditation.css";
 
-import MeditationBG from "../../../../assets/img/dashboard/MeditationBG.png";
-import MeditationPerson from "../../../../assets/img/dashboard/MeditationPerson.png";
 import { InfoItem } from "./InfoItem";
 import { DashboardMeditationBG } from "../../../../assets/svgs";
 
@@ -24,9 +22,17 @@ export const Meditation = () => {
       </div>
       <div className="center-box">
         <DashboardMeditationBG className={"person-background"} />
-        <img src={MeditationPerson} alt="" className="meditation-person" />
+        <img
+          src={"../../../../assets/img/dashboard/MeditationPerson.png"}
+          alt=""
+          className="meditation-person"
+        />
       </div>
-      <img src={MeditationBG} alt="" className="meditation-bg" />
+      <img
+        src={"../../../../assets/img/dashboard/MeditationBG.png"}
+        alt=""
+        className="meditation-bg"
+      />
     </div>
   );
 };
