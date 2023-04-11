@@ -12,18 +12,12 @@ export const StartNow = () => {
         className="startNowBG"
         alt=""
       />
-      <StartNowBlocks1
-        className={"start-blocks-1"}
-        data-aos="fade-up"
-        data-aos-delay="20"
-      />
-      <StartNowBlocks2
-        className={"start-blocks-2"}
-        data-aos="fade-up"
-        data-aos-delay="20"
-      />
+      <StartNowBlocks1 className={"start-blocks-1"} />
+      <StartNowBlocks2 className={"start-blocks-2"} />
       <div className="start-titles-wrapper">
-        <h2 className="start-title">start now</h2>
+        <h2 className="start-title" data-aos="fade-up" data-aos-delay="20">
+          start now
+        </h2>
         <h4 className="start-title-sm">
           Connect your crypto wallet to start using the app in seconds. No registration
           needed.
@@ -39,6 +33,7 @@ export const StartNow = () => {
           onClick={() => console.log("connect wallet")}
         />
       </span>
+      <div className="corners-bg" />
     </section>
   );
 };

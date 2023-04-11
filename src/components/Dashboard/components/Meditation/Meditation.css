@@ -28,10 +28,11 @@
 .meditation-bg {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 50%;
   left: 0;
-  top: 0;
-  z-index: -1;
+  top: 50%;
+  z-index: 1;
+  opacity: 0.25;
 }
 
 .meditation-container {
@@ -40,15 +41,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  /* background-color: #2f3674; */
+  background: #2f3674;
 }
 
 .meditation-person {
   position: absolute;
   animation: float 3s ease-in-out infinite;
+  z-index: 10;
 }
 
 .center-box {
+  z-index: 10;
   position: relative;
   left: 50%;
   translate: -50%;
