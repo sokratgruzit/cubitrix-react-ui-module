@@ -16,12 +16,14 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
   }, []);
 
   return (
-    <header className={`dashboard-header-container ${animate ? "animate" : ""}`}>
+    <header
+      className={`dashboard-header-container ${animate ? "animate" : ""}`}
+    >
       <img
         src={require("../../../../assets/img/dashboard/rocket.png")}
         className={"dashboard-header-rocket-img"}
       />
-      <div className="dashboard-header">
+      <div className='dashboard-header'>
         <img
           src={require("../../../../assets/img/dashboard/dots.png")}
           className={"dashboard-header-dots-img"}
@@ -68,9 +70,8 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
         />
       </div>
       <img
-        src={require("../../../../assets/img/dashboard/bottom.png")}
+        src={require("../../../../assets/img/dashboard/bottom.svg")}
         className={"dashboard-header-bottom-img"}
-      />
-    </header>
+      />    </header>
   );
 };
