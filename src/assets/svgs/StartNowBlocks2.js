@@ -92,9 +92,9 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           width="434"
           height="131"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -110,9 +110,9 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           width="118.057"
           height="119.439"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -145,9 +145,9 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           width="126.719"
           height="127.923"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -182,7 +182,7 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           gradientTransform="translate(217 180.5) rotate(90) scale(20.5 172)"
         >
           <stop />
-          <stop offset="1" stop-opacity="0" />
+          <stop offset="1" stopOpacity="0" />
         </radialGradient>
         <linearGradient
           id="paint1_linear_2918_7928"
@@ -192,8 +192,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="113.536"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#007AD3" />
-          <stop offset="1" stop-color="#002ABF" />
+          <stop stopColor="#007AD3" />
+          <stop offset="1" stopColor="#002ABF" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_2918_7928"
@@ -203,8 +203,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="112.006"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#007AD3" />
-          <stop offset="1" stop-color="#002ABF" />
+          <stop stopColor="#007AD3" />
+          <stop offset="1" stopColor="#002ABF" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_2918_7928"
@@ -214,8 +214,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="122.993"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#007AD3" />
-          <stop offset="1" stop-color="#002ABF" />
+          <stop stopColor="#007AD3" />
+          <stop offset="1" stopColor="#002ABF" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_2918_7928"
@@ -225,8 +225,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="144.686"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#007AD3" />
-          <stop offset="1" stop-color="#002ABF" />
+          <stop stopColor="#007AD3" />
+          <stop offset="1" stopColor="#002ABF" />
         </linearGradient>
         <radialGradient
           id="paint5_radial_2918_7928"
@@ -236,15 +236,15 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(281.459 120.453) rotate(180) scale(60.5165 60.7399)"
         >
-          <stop stop-color="#00FFFF" />
-          <stop offset="0.05" stop-color="#00E8FF" />
-          <stop offset="0.17" stop-color="#00BBFF" />
-          <stop offset="0.29" stop-color="#0095FF" />
-          <stop offset="0.41" stop-color="#0076FF" />
-          <stop offset="0.54" stop-color="#005EFF" />
-          <stop offset="0.67" stop-color="#004CFF" />
-          <stop offset="0.82" stop-color="#0042FF" />
-          <stop offset="1" stop-color="#003FFF" />
+          <stop stopColor="#00FFFF" />
+          <stop offset="0.05" stopColor="#00E8FF" />
+          <stop offset="0.17" stopColor="#00BBFF" />
+          <stop offset="0.29" stopColor="#0095FF" />
+          <stop offset="0.41" stopColor="#0076FF" />
+          <stop offset="0.54" stopColor="#005EFF" />
+          <stop offset="0.67" stopColor="#004CFF" />
+          <stop offset="0.82" stopColor="#0042FF" />
+          <stop offset="1" stopColor="#003FFF" />
         </radialGradient>
         <linearGradient
           id="paint6_linear_2918_7928"
@@ -254,8 +254,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="88.2124"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00A0FF" />
-          <stop offset="1" stop-color="#003AEB" />
+          <stop stopColor="#00A0FF" />
+          <stop offset="1" stopColor="#003AEB" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_2918_7928"
@@ -265,8 +265,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="86.9836"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00A0FF" />
-          <stop offset="1" stop-color="#003AEB" />
+          <stop stopColor="#00A0FF" />
+          <stop offset="1" stopColor="#003AEB" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_2918_7928"
@@ -276,8 +276,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="98.2856"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00A0FF" />
-          <stop offset="1" stop-color="#003AEB" />
+          <stop stopColor="#00A0FF" />
+          <stop offset="1" stopColor="#003AEB" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_2918_7928"
@@ -287,8 +287,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="123.355"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00A0FF" />
-          <stop offset="1" stop-color="#003AEB" />
+          <stop stopColor="#00A0FF" />
+          <stop offset="1" stopColor="#003AEB" />
         </linearGradient>
         <radialGradient
           id="paint10_radial_2918_7928"
@@ -298,14 +298,14 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(262.126 100.904) rotate(180) scale(93.8233 94.1696)"
         >
-          <stop stop-color="#00FFFF" />
-          <stop offset="0.09" stop-color="#00E1FF" />
-          <stop offset="0.25" stop-color="#00B0FF" />
-          <stop offset="0.42" stop-color="#0087FF" />
-          <stop offset="0.57" stop-color="#0068FF" />
-          <stop offset="0.73" stop-color="#0051FF" />
-          <stop offset="0.87" stop-color="#0044FF" />
-          <stop offset="1" stop-color="#003FFF" />
+          <stop stopColor="#00FFFF" />
+          <stop offset="0.09" stopColor="#00E1FF" />
+          <stop offset="0.25" stopColor="#00B0FF" />
+          <stop offset="0.42" stopColor="#0087FF" />
+          <stop offset="0.57" stopColor="#0068FF" />
+          <stop offset="0.73" stopColor="#0051FF" />
+          <stop offset="0.87" stopColor="#0044FF" />
+          <stop offset="1" stopColor="#003FFF" />
         </radialGradient>
         <linearGradient
           id="paint11_linear_2918_7928"
@@ -315,8 +315,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="64.4724"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00BEFF" />
-          <stop offset="1" stop-color="#007BFF" />
+          <stop stopColor="#00BEFF" />
+          <stop offset="1" stopColor="#007BFF" />
         </linearGradient>
         <linearGradient
           id="paint12_linear_2918_7928"
@@ -326,8 +326,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="58.433"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00BEFF" />
-          <stop offset="1" stop-color="#007BFF" />
+          <stop stopColor="#00BEFF" />
+          <stop offset="1" stopColor="#007BFF" />
         </linearGradient>
         <linearGradient
           id="paint13_linear_2918_7928"
@@ -337,8 +337,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="75.6175"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00BEFF" />
-          <stop offset="1" stop-color="#007BFF" />
+          <stop stopColor="#00BEFF" />
+          <stop offset="1" stopColor="#007BFF" />
         </linearGradient>
         <linearGradient
           id="paint14_linear_2918_7928"
@@ -348,8 +348,8 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           y2="101.345"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#00BEFF" />
-          <stop offset="1" stop-color="#007BFF" />
+          <stop stopColor="#00BEFF" />
+          <stop offset="1" stopColor="#007BFF" />
         </linearGradient>
         <radialGradient
           id="paint15_radial_2918_7928"
@@ -359,14 +359,14 @@ const StartNowBlocks2 = ({ className, ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(184.435 26.4274) rotate(180) scale(109.415 109.819)"
         >
-          <stop stop-color="#00FFFF" />
-          <stop offset="0.12" stop-color="#00FAFF" />
-          <stop offset="0.27" stop-color="#00ECFF" />
-          <stop offset="0.43" stop-color="#00D4FF" />
-          <stop offset="0.59" stop-color="#00B3FF" />
-          <stop offset="0.76" stop-color="#0089FF" />
-          <stop offset="0.93" stop-color="#0055FF" />
-          <stop offset="1" stop-color="#003FFF" />
+          <stop stopColor="#00FFFF" />
+          <stop offset="0.12" stopColor="#00FAFF" />
+          <stop offset="0.27" stopColor="#00ECFF" />
+          <stop offset="0.43" stopColor="#00D4FF" />
+          <stop offset="0.59" stopColor="#00B3FF" />
+          <stop offset="0.76" stopColor="#0089FF" />
+          <stop offset="0.93" stopColor="#0055FF" />
+          <stop offset="1" stopColor="#003FFF" />
         </radialGradient>
       </defs>
     </svg>

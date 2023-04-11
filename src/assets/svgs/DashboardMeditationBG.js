@@ -36,7 +36,7 @@ const DashboardMeditationBG = ({ className, ...props }) => {
         <path
           d="M615.661 556.723V568.916L625.967 573.521L615.661 556.723Z"
           fill="white"
-          fill-opacity="0.6"
+          fillOpacity="0.6"
         />
         <path
           d="M615.659 556.723L605.352 573.521L615.659 568.916V556.723Z"
@@ -45,18 +45,18 @@ const DashboardMeditationBG = ({ className, ...props }) => {
         <path
           d="M615.661 581.423V589.708L625.973 575.44L615.661 581.423Z"
           fill="white"
-          fill-opacity="0.6"
+          fillOpacity="0.6"
         />
         <path d="M615.659 589.708V581.422L605.352 575.44L615.659 589.708Z" fill="white" />
         <path
           d="M615.661 579.504L625.967 573.52L615.661 568.918V579.504Z"
           fill="white"
-          fill-opacity="0.4"
+          fillOpacity="0.4"
         />
         <path
           d="M605.352 573.52L615.659 579.504V568.918L605.352 573.52Z"
           fill="white"
-          fill-opacity="0.6"
+          fillOpacity="0.6"
         />
       </g>
       <g filter="url(#filter5_d_2918_7926)">
@@ -77,9 +77,9 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           width="431"
           height="382"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -95,9 +95,9 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           width="104"
           height="112"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -130,9 +130,9 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           width="944"
           height="944"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -148,9 +148,9 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           width="98.5714"
           height="101.667"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -183,9 +183,9 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           width="100.622"
           height="112.985"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -218,9 +218,9 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           width="102.5"
           height="102.5"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -254,8 +254,8 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           y2="887"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-opacity="0.1" />
-          <stop offset="1" stop-opacity="0.3" />
+          <stop stopOpacity="0.1" />
+          <stop offset="1" stopOpacity="0.3" />
         </linearGradient>
         <radialGradient
           id="paint1_radial_2918_7926"
@@ -265,8 +265,8 @@ const DashboardMeditationBG = ({ className, ...props }) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(472 472) rotate(90) scale(372)"
         >
-          <stop stop-color="#288F89" />
-          <stop offset="1" stop-color="#2F3674" stop-opacity="0" />
+          <stop stopColor="#288F89" />
+          <stop offset="1" stopColor="#2F3674" stopOpacity="0" />
         </radialGradient>
       </defs>
     </svg>
