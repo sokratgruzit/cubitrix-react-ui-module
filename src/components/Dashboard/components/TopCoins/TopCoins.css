@@ -1,7 +1,6 @@
 .top-coins-section {
   background: #2a305e;
   padding-top: 85px;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,11 +83,7 @@
   position: absolute;
   width: 950px;
   height: 950px;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #6d7df5 0%,
-    rgba(42, 48, 94, 0) 100%
-  );
+  background: radial-gradient(50% 50% at 50% 50%, #6d7df5 0%, rgba(42, 48, 94, 0) 100%);
   filter: blur(150px);
   translate: 0 50px;
 }
@@ -108,7 +103,19 @@
   height: 100%;
   position: absolute;
   right: 0;
-  top: 100px;
-  transform: matrix(1, 0, 0, -1, 0, 0);
+  top: 700px;
+  /* transform: matrix(1, 0, 0, -1, 0, 0); */
   z-index: 5;
+}
+
+.silver-coin {
+  position: absolute;
+  max-width: 132px;
+  max-height: 139px;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  z-index: 1;
+  top: 2220px;
+  margin-right: 53px;
 }

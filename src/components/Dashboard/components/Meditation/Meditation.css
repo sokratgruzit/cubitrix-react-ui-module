@@ -45,9 +45,14 @@
 }
 
 .meditation-person {
-  position: absolute;
-  animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite 0.5s;
   z-index: 10;
+}
+
+.person-wrapper {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
 }
 
 .center-box {
