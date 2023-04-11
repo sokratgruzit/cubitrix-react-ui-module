@@ -66,13 +66,25 @@
   padding-bottom: 30px;
 }
 
+@media (max-width: 1500px) {
+  .start-blocks-1 {
+    left: 168px;
+    top: 120px;
+  }
+
+  .start-blocks-2 {
+    right: 115px;
+    bottom: 10px;
+  }
+}
+
 @media (max-width: 767px) {
   .start-section {
     padding: 0 20px;
   }
   .startNowBG {
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     width: 767px;
     height: 100%;
     left: 50%;
@@ -87,6 +99,33 @@
     height: 42px;
     font-size: 14px;
     word-wrap: break-word;
+  }
+  .start-blocks-1 {
+    left: 0;
+    top: 70px;
+    width: 250px;
+  }
+  .start-blocks-2 {
+    right: 0;
+    bottom: 0;
+    width: 250px;
+  }
+}
+
+@media (max-width: 470px) {
+  .start-blocks-1 {
+    left: 50%;
+    translate: -50%;
+    top: 70px;
+    width: 230px;
+    height: 210px;
+  }
+  .start-blocks-2 {
+    left: 50%;
+    translate: -50%;
+    bottom: 0;
+    width: 230px;
+    height: 210px;
   }
 }
 

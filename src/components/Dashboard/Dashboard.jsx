@@ -5,7 +5,7 @@ import { useMobileWidth } from "../../hooks/useMobileWidth";
 import "./Dashboard.css";
 
 import { Footer } from "../Footer";
-import { DashboardHeader, Meditation, StartNow } from "./components";
+import { DashboardHeader, Meditation, StartNow, TopCoins } from "./components";
 
 export const Dashboard = ({ handleGetStarted }) => {
   const { width } = useMobileWidth();
@@ -13,6 +13,7 @@ export const Dashboard = ({ handleGetStarted }) => {
   return (
     <main className="dashboard-main">
       <DashboardHeader />
+      <TopCoins />
       <Meditation />
       <StartNow />
       <Footer />

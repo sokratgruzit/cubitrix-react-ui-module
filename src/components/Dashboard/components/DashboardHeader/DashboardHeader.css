@@ -6,6 +6,7 @@
   align-items: center;
   /* min-height: 925px; */
   padding: 100px 0;
+  position: relative;
 }
 
 .dashboard-header-man-img {

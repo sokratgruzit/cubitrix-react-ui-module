@@ -37,3 +37,5 @@ export { default as ArrowLeft } from "./ArrowLeft";
 export { default as DashboardMeditationBG } from "./DashboardMeditationBG";
 export { default as StartNowBlocks1 } from "./StartNowBlocks1";
 export { default as StartNowBlocks2 } from "./StartNowBlocks2";
+export { default as DashboardCoinsLeverageCard } from "./DashboardCoinsLeverageCard";
+export { default as DashboardCoinsBuy } from "./DashboardCoinsBuy";
