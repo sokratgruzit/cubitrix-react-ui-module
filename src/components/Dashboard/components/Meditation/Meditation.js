@@ -3,16 +3,13 @@ import { Button } from "../../../Button";
 import "./Meditation.css";
 
 import MeditationBG from "../../../../assets/img/dashboard/MeditationBG.png";
+import MeditationPerson from "../../../../assets/img/dashboard/MeditationPerson.png";
 import { InfoItem } from "./InfoItem";
+import { DashboardMeditationBG } from "../../../../assets/svgs";
 
 export const Meditation = () => {
   return (
-    // <section className="start-section">
-    //   <div className="start-titles-wrapper"></div>
-    //   <div>
-    //   </div>
-    // </section>
-    <div className="container">
+    <div className="meditation-container">
       <div className="corner-box top-left">
         <InfoItem title="USERS" amount="1.3 B" link="/sit" linkTitle="Become a Member" />
       </div>
@@ -25,7 +22,10 @@ export const Meditation = () => {
       <div className="corner-box bottom-right">
         <InfoItem title="LOAN" amount="1 B" link="/loan" linkTitle="Make Loan" />
       </div>
-      <div className="center-box"></div>
+      <div className="center-box">
+        <DashboardMeditationBG className={"meditation-bg"} />
+        <img src={MeditationPerson} alt="" className="meditation-person" />
+      </div>
       <img src={MeditationBG} alt="" className="meditation-bg" />
     </div>
   );

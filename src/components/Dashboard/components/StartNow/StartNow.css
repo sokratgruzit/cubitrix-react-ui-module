@@ -1,11 +1,29 @@
 .start-section {
-  position: relative;
   height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  /* background: #2f3674; */
+}
+
+.start-blocks-1 {
+  position: absolute;
+  left: 168px;
+  top: 120px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.start-blocks-2 {
+  position: absolute;
+  right: 115px;
+  bottom: 10px;
+  animation: float 5s ease-in-out infinite;
+}
+
+.relative-test {
+  position: relative;
 }
 
 .startNowBG {
@@ -53,6 +71,7 @@
   }
   .startNowBG {
     position: absolute;
+    z-index: 1;
     width: 767px;
     height: 100%;
     left: 50%;
@@ -67,5 +86,29 @@
     height: 42px;
     font-size: 14px;
     word-wrap: break-word;
+  }
+}
+
+@keyframes float1 {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-5px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-5px);
+  }
+  100% {
+    transform: translatey(0px);
   }
 }

@@ -34,3 +34,6 @@ export { default as DashboardCardRings } from "./DashboardCardRings";
 export { default as TriangleArrow } from "./TriangleArrow";
 export { default as ArrowRight } from "./ArrowRight";
 export { default as ArrowLeft } from "./ArrowLeft";
+export { default as DashboardMeditationBG } from "./DashboardMeditationBG";
+export { default as StartNowBlocks1 } from "./StartNowBlocks1";
+export { default as StartNowBlocks2 } from "./StartNowBlocks2";
