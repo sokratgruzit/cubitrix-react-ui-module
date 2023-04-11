@@ -186,7 +186,7 @@ stories.add("Dashboard", () => {
         }
         verified={false}
       />
-      <Dashboard handleGetStarted={() => console.log("get started")} />
+      <Dashboard handleGetStarted={() => console.log("get started")} handleConnect={() => console.log('hi')} />
     </BrowserRouter>
   );
 });

@@ -83,7 +83,11 @@
   position: absolute;
   width: 950px;
   height: 950px;
-  background: radial-gradient(50% 50% at 50% 50%, #6d7df5 0%, rgba(42, 48, 94, 0) 100%);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #6d7df5 0%,
+    rgba(42, 48, 94, 0) 100%
+  );
   filter: blur(150px);
   translate: 0 50px;
 }
@@ -118,4 +122,79 @@
   z-index: 1;
   top: 2220px;
   margin-right: 53px;
+}
+
+@media only screen and (max-width: 1328px) {
+  .silver-coin {
+    top: 2100px;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .dashboard-header-ball-img {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .top-coins-coin {
+    width: 100px;
+    height: 170px;
+    top: 960px;
+  }
+}
+@media only screen and (max-width: 667px) {
+  .dashboard-header-ball-img {
+    max-width: 200px;
+    max-height: 200px;
+    top: 850px;
+  }
+  .top-coins-coin {
+    width: 80px;
+    height: 130px;
+    top: 1150px;
+  }
+}
+
+@media only screen and (max-width: 668px) {
+  .dashboard-header-ball-img {
+    max-width: 180px;
+    max-height: 180px;
+    top: 830px;
+  }
+  .top-coins-coin {
+    width: 70px;
+    height: 120px;
+    top: 1100px;
+  }
+  .silver-coin {
+    top: 2250px;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .silver-coin {
+    top: 2210px;
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media only screen and (max-width: 349px) {
+  .silver-coin {
+    top: 2290px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .dashboard-header-ball-img {
+    top: 960px;
+    max-width: 160px;
+    max-height: 160px;
+  }
+  .top-coins-coin {
+    top: 1170px;
+  }
 }
