@@ -23,13 +23,13 @@ export const Meditation = () => {
       <div className="center-box">
         <DashboardMeditationBG className={"person-background"} />
         <img
-          src={"../../../../assets/img/dashboard/MeditationPerson.png"}
+          src={require("../../../../assets/img/dashboard/MeditationPerson.png")}
           alt=""
           className="meditation-person"
         />
       </div>
       <img
-        src={"../../../../assets/img/dashboard/MeditationBG.png"}
+        src={require("../../../../assets/img/dashboard/MeditationBG.png")}
         alt=""
         className="meditation-bg"
       />

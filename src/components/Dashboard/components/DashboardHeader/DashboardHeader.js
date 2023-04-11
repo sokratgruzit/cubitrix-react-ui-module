@@ -18,12 +18,12 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
   return (
     <header className={`dashboard-header-container ${animate ? "animate" : ""}`}>
       <img
-        src={"../../../../assets/img/dashboard/rocket.png"}
+        src={require("../../../../assets/img/dashboard/rocket.png")}
         className={"dashboard-header-rocket-img"}
       />
       <div className="dashboard-header">
         <img
-          src={"../../../../assets/img/dashboard/dots.png"}
+          src={require("../../../../assets/img/dashboard/dots.png")}
           className={"dashboard-header-dots-img"}
         />
         <div className={"dashboard-header-top"}>
@@ -35,16 +35,16 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
           <p>Trade, buy, staking and loan cryptocurrency at Complend</p>
         </div>
         <img
-          src={"../../../../assets/img/dashboard/man.png"}
+          src={require("../../../../assets/img/dashboard/man.png")}
           className={"dashboard-header-man-img"}
         />
         <img
-          src={"../../../../assets/img/dashboard/planet.png"}
+          src={require("../../../../assets/img/dashboard/planet.png")}
           className={"dashboard-header-planet-img"}
         />
       </div>
       <img
-        src={"../../../../assets/img/dashboard/dotsRight.png"}
+        src={require("../../../../assets/img/dashboard/dotsRight.png")}
         className={"dashboard-header-dotsRight-img"}
       />
       <div className={"dashboard-buttons"}>
@@ -68,7 +68,7 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
         />
       </div>
       <img
-        src={"../../../../assets/img/dashboard/bottom.png"}
+        src={require("../../../../assets/img/dashboard/bottom.png")}
         className={"dashboard-header-bottom-img"}
       />
     </header>

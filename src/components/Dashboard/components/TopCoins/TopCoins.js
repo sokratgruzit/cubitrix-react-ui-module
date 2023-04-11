@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../../../Button";
 import "./TopCoins.css";
 
+import EthCard from "../../../../assets/img/dashboard/coinCards/EthCard.png";
 import { DashboardCoinsLeverageCard, DashboardCoinsBuy } from "../../../../assets/svgs";
 
 export const TopCoins = () => {
@@ -32,17 +33,18 @@ export const TopCoins = () => {
       </header>
       <div className="top-coins-main">
         <img
-          src={"../../../../assets/img/dashboard/coinCards/EthCard.png"}
+          src={require("../../../../assets/img/dashboard/coinCards/EthCard.png")}
           alt=""
           className="ethCard"
         />
+
         <img
-          src={"../../../../assets/img/dashboard/coinCards/BitcoinCard.png"}
+          src={require("../../../../assets/img/dashboard/coinCards/BitcoinCard.png")}
           alt=""
           className="BitcoinCard"
         />
         <img
-          src={"../../../../assets/img/dashboard/coinCards/TetherCard.png"}
+          src={require("../../../../assets/img/dashboard/coinCards/TetherCard.png")}
           alt=""
           className="TetherCard"
         />
@@ -60,7 +62,7 @@ export const TopCoins = () => {
       />
       <div className="bg-gradient"></div>
       <img
-        src={"../../../../assets/img/dashboard/TopCoinsIcon.png"}
+        src={require("../../../../assets/img/dashboard/TopCoinsIcon.png")}
         alt=""
         className="top-coins-coin"
       />
