@@ -104,6 +104,22 @@
   fill: rgba(255, 255, 255, 0.7);
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
+.btn-phospore span {
+  color: #45f4ea;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.btn.btn-phospore {
+  padding: 16px 30px;
+  border: 1px solid #45f4ea;
+  border-radius: 32px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.btn-phospore:hover span {
+  color: #ffa726;
+}
+.btn-phospore:hover {
+  border: 1px solid #ffa726;
+}
 .no-label.btn span {
   display: none;
 }
@@ -345,14 +361,14 @@
 }
 
 .calculator-button-active {
-  background: #00C6FF;
+  background: #00c6ff;
   color: #fff;
 }
 
 .staking-button {
   min-width: 89px;
   height: 43px;
-  background: #00C6FF ;
+  background: #00c6ff;
   border-radius: 42px;
   display: flex;
   gap: 10px;
@@ -367,7 +383,7 @@
 }
 
 .staking-button-active {
-  border: 1px solid #00C6FF;
+  border: 1px solid #00c6ff;
   background-color: unset;
 }
 
@@ -384,12 +400,12 @@
 .referral-button-active {
   min-width: 157px;
   padding: 10px 30px 10px 16px;
-  background: #00C6FF;
+  background: #00c6ff;
   border-radius: 32px;
 }
 
 .referral-button span {
-  color: #00C6FF;
+  color: #00c6ff;
 }
 
 .referral-button-active span {
