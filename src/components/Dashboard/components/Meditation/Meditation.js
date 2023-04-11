@@ -23,7 +23,7 @@ export const Meditation = () => {
         <InfoItem title="LOAN" amount="1 B" link="/loan" linkTitle="Make Loan" />
       </div>
       <div className="center-box">
-        <DashboardMeditationBG className={"meditation-bg"} />
+        <DashboardMeditationBG className={"person-background"} />
         <img src={MeditationPerson} alt="" className="meditation-person" />
       </div>
       <img src={MeditationBG} alt="" className="meditation-bg" />
