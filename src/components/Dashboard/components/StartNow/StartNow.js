@@ -23,7 +23,7 @@ export const StartNow = () => {
         data-aos-delay="20"
       />
       <div className="start-titles-wrapper">
-        <h2 className="start-title">start now</h2>
+        <h2 className="start-title" data-aos='fade-up' data-aos-delay="20">start now</h2>
         <h4 className="start-title-sm">
           Connect your crypto wallet to start using the app in seconds. No registration
           needed.
