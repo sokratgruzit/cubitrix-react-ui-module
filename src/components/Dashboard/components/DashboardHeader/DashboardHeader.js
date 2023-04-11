@@ -72,6 +72,7 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
       <img
         src={require("../../../../assets/img/dashboard/bottom.svg")}
         className={"dashboard-header-bottom-img"}
-      />    </header>
+      />
+    </header>
   );
 };

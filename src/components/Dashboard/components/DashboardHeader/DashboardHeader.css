@@ -181,13 +181,13 @@
   text-align: center;
 }
 
-.dashboard-buttons > divdashboard-header-bottom-img {
+.dashboard-buttons  {
   transition: 0.7s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   transform: translateY(10px);
   opacity: 0;
 }
 
-.animate .dashboard-buttons > div {
+.animate .dashboard-buttons {
   transform: translateY(0px);
   opacity: 1;
   transition-delay: 0.9s;
