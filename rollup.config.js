@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import external from "rollup-plugin-peer-deps-external";
 import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
+import image from "rollup-plugin-image";
 import React from "react";
 
 import commonjs from "rollup-plugin-commonjs";
@@ -41,6 +42,7 @@ export default [
       resolve(),
       commonjs(),
       terser(),
+      image(),
     ],
     external: ["react-router-dom"],
   },
