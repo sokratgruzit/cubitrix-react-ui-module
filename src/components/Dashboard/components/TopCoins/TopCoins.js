@@ -51,7 +51,7 @@ export const TopCoins = ({ startTrade }) => {
         <DashboardCoinsLeverageCard className={"coins-leverage-card"} />
         <DashboardCoinsBuy className={"coins-buy-card"} />
       </div>
-      <span data-aos="fade-up" data-aos-delay="20">
+      <span data-aos="fade-up" data-aos-delay="20" className="btn-started-wrap">
         <Button
           label={"Start Trade"}
           size={"btn-lg"}

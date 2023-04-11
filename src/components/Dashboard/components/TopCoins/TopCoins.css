@@ -83,11 +83,7 @@
   position: absolute;
   width: 950px;
   height: 950px;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #6d7df5 0%,
-    rgba(42, 48, 94, 0) 100%
-  );
+  background: radial-gradient(50% 50% at 50% 50%, #6d7df5 0%, rgba(42, 48, 94, 0) 100%);
   filter: blur(150px);
   translate: 0 50px;
 }
@@ -112,6 +108,10 @@
   z-index: 5;
 }
 
+.btn-started-wrap {
+  position: relative;
+  z-index: 13;
+}
 .silver-coin {
   position: absolute;
   max-width: 132px;
@@ -138,6 +138,60 @@
     width: 100px;
     height: 170px;
     top: 960px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .top-coins-main:hover .ethCard {
+    translate: none;
+    rotate: 0deg;
+  }
+
+  .top-coins-main:hover .BitcoinCard {
+    rotate: 0deg;
+    translate: none;
+  }
+
+  .top-coins-main:hover .TetherCard {
+    rotate: 0deg;
+    translate: none;
+  }
+
+  .ethCard {
+    translate: none;
+    transform: translateX(-29%);
+    margin-top: 110px;
+  }
+
+  .BitcoinCard {
+    translate: none;
+  }
+  .TetherCard {
+    translate: none;
+    transform: translateX(33%);
+    margin-top: 100px;
+  }
+
+  .coins-buy-card {
+    position: absolute;
+    translate: 0 -235px;
+  }
+  .coins-leverage-card {
+    translate: 0 275px;
+  }
+  .btn-started-wrap {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .top-coins-main {
+    max-width: 100%;
+    padding: 0px 20px;
+  }
+  .top-coins-main img {
+    width: calc(100% - 100px);
+    max-width: 500px;
   }
 }
 @media only screen and (max-width: 667px) {
@@ -177,6 +231,19 @@
     top: 2210px;
     width: 80px;
     height: 80px;
+  }
+}
+
+@media (max-width: 410px) {
+  .coins-buy-card {
+    position: absolute;
+    translate: 0 -205px;
+  }
+  .coins-leverage-card {
+    translate: 0 235px;
+  }
+  .btn-started-wrap {
+    margin-top: 20px;
   }
 }
 
