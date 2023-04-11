@@ -9,9 +9,7 @@ import "aos/dist/aos.css";
 import { Footer } from "../Footer";
 import { DashboardHeader, Meditation, StartNow, TopCoins } from "./components";
 
-export const Dashboard = ({ handleGetStarted, handleConnect }) => {
-  const { width } = useMobileWidth();
-
+export const Dashboard = ({ handleGetStarted, handleConnect, account, startTrade }) => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -21,11 +19,12 @@ export const Dashboard = ({ handleGetStarted, handleConnect }) => {
       <DashboardHeader
         handleGetStarted={handleGetStarted}
         handleConnect={handleConnect}
+        account={account}
       />
 
-      <TopCoins />
+      <TopCoins startTrade={startTrade} />
       <Meditation />
-      <StartNow />
+      <StartNow handleConnect={handleConnect} account={account} />
       <Footer />
     </main>
   );

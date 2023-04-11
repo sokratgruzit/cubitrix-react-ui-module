@@ -4,7 +4,7 @@ import "./StartNow.css";
 
 import { StartNowBlocks1, StartNowBlocks2 } from "../../../../assets/svgs";
 
-export const StartNow = () => {
+export const StartNow = ({ account, handleConnect }) => {
   return (
     <section className="start-section">
       <img
@@ -12,12 +12,12 @@ export const StartNow = () => {
         className="startNowBG"
         alt=""
       />
-      {/* <span data-aos="fade-up" data-aos-delay="20"> */}
-      <StartNowBlocks1 className={"start-blocks-1"} />
-      {/* </span> */}
-      {/* <span data-aos="fade-up" data-aos-delay="20"> */}
-      <StartNowBlocks2 className={"start-blocks-2"} />
-      {/* </span> */}
+      <span data-aos="fade-up" data-aos-delay="20" className="start-blocks-1-wrap">
+        <StartNowBlocks1 className={"start-blocks-1"} />
+      </span>
+      <span data-aos="fade-up" data-aos-delay="20" className="start-blocks-2-wrap">
+        <StartNowBlocks2 className={"start-blocks-2"} />
+      </span>
       <div className="start-titles-wrapper">
         <h2 className="start-title" data-aos="fade-up" data-aos-delay="20">
           start now
@@ -28,14 +28,16 @@ export const StartNow = () => {
         </h4>
       </div>
       <span data-aos="fade-up" data-aos-delay="20">
-        <Button
-          label={"Connect Wallet"}
-          size={"btn-lg"}
-          type={"btn-phospore"}
-          arrow={"arrow-none"}
-          element={"button"}
-          onClick={() => console.log("connect wallet")}
-        />
+        {account ? null : (
+          <Button
+            label={"Connect Wallet"}
+            size={"btn-lg"}
+            type={"btn-secondary"}
+            arrow={"arrow-none"}
+            element={"button"}
+            onClick={handleConnect}
+          />
+        )}
       </span>
       <div className="corners-bg" />
     </section>

@@ -5,7 +5,7 @@ import "./TopCoins.css";
 import EthCard from "../../../../assets/img/dashboard/coinCards/EthCard.png";
 import { DashboardCoinsLeverageCard, DashboardCoinsBuy } from "../../../../assets/svgs";
 
-export const TopCoins = () => {
+export const TopCoins = ({ startTrade }) => {
   return (
     <section className="top-coins-section">
       <header className="top-coins-header">
@@ -58,7 +58,7 @@ export const TopCoins = () => {
           type={"btn-primary"}
           arrow={"arrow-none"}
           element={"button"}
-          onClick={() => console.log("Start Trade")}
+          onClick={startTrade}
           className={"start-trade-btn"}
         />
       </span>
