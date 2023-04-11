@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import { useMobileWidth } from "../../hooks/useMobileWidth";
 
-import kacuna1 from "../../assets/img/dashboard/kacuna1.png";
-
 import "./Dashboard.css";
 
 import { Footer } from "../Footer";

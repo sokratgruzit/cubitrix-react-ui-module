@@ -70,20 +70,22 @@
   display: none;
 }
 .btn-primary {
-  background: #3d5afe;
+  background: #45f4ea;
 }
 .btn-secondary {
-  border: 1px solid #3d5afe;
+  border: 1px solid #45f4ea;
 }
 .btn-primary span {
-  color: #3d5afe;
+  color: #191a42;
+  font-weight: 700;
+}
+.btn-secondary span {
+  color: #45f4ea;
+  font-weight: 700;
 }
 .btn-primary:hover,
 .btn-secondary:hover {
   opacity: 0.7;
-}
-.btn-primary span {
-  color: #fff;
 }
 .btn-tertiary span {
   color: #3d5afe;
