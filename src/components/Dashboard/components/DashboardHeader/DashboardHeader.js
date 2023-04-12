@@ -10,6 +10,7 @@ export const DashboardHeader = ({
   handleConnect,
   handleGetStarted,
   dashboardHeaderImages,
+  account
 }) => {
   const [animate, setAnimate] = useState(false);
 
@@ -52,15 +53,17 @@ export const DashboardHeader = ({
         className={"dashboard-header-dotsRight-img"}
       />
       <div className={"dashboard-buttons"}>
-        <Button
-          label={"Connect Wallet"}
-          size={"btn-lg"}
-          type={"btn-primary"}
-          arrow={"arrow-none"}
-          element={"button"}
-          onClick={handleConnect}
-          customStyles={{ margin: "0" }}
-        />
+        {!account && (
+          <Button
+            label={"Connect Wallet"}
+            size={"btn-lg"}
+            type={"btn-primary"}
+            arrow={"arrow-none"}
+            element={"button"}
+            onClick={handleConnect}
+            customStyles={{ margin: "0" }}
+          />
+        )}
         <Button
           label={"Get Started"}
           size={"btn-lg"}
