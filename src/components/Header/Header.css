@@ -15,6 +15,7 @@
   border-bottom: 2px solid rgba(255, 255, 255, 0.05);
   padding: 0;
 }
+
 .modulesWrapper {
   display: flex;
   align-items: center;
@@ -48,6 +49,41 @@
   padding-right: 10px;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   color: rgba(255, 255, 255, 0.4);
+  transform: translateY(120%);
+  opacity: 0;
+}
+
+.animate .link {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.animate .link:nth-child(1) {
+  transition-delay: 0.3s;
+}
+
+.animate .link:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.animate .link:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+.animate .link:nth-child(4) {
+  transition-delay: 0.6s;
+}
+
+.animate .link:nth-child(5) {
+  transition-delay: 0.7s;
+}
+
+.animate .link:nth-child(6) {
+  transition-delay: 0.8s;
+}
+
+.animate .link:nth-child(7) {
+  transition-delay: 0.9s;
 }
 
 .link:hover {
@@ -117,6 +153,17 @@
 
 .connect {
   margin-right: 10px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  overflow: hidden;
+  transform: scale(0.9);
+  opacity: 0;
+  overflow: hidden;
+}
+
+.animate .connect {
+  transform: scale(1);
+  transition-delay: 1s;
+  opacity: 1;
 }
 
 .notify {
@@ -128,6 +175,15 @@
   border-radius: 50%;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   cursor: pointer;
+  transform: scale(0.9);
+  opacity: 0;
+  overflow: hidden;
+}
+
+.animate .notify {
+  transform: scale(1);
+  transition-delay: 0.9s;
+  opacity: 1;
 }
 
 .notify:hover {
@@ -153,6 +209,31 @@
   max-width: 344px;
   width: 40%;
   height: 100%;
+  overflow: hidden;
+}
+
+.logoWrapper svg {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.animate .logoWrapper svg {
+  transform: scale(1);
+  transition-delay: 0.2s;
+  opacity: 1;
+}
+
+.logoWrapper > h3 {
+  transition: 0.8s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transform: translateY(240%);
+  opacity: 0;
+}
+
+.animate .logoWrapper > h3 {
+  transform: translateY(0%);
+  transition-delay: 0.25s;
+  opacity: 1;
 }
 
 .navbar-menu {
@@ -161,6 +242,14 @@
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.animate .navbar-menu {
+  transform: scale(1);
+  transition-delay: 0.4s;
+  opacity: 1;
 }
 
 .navbar-menu p {
@@ -183,6 +272,15 @@
   display: flex;
   padding-left: 20px;
   padding-right: 20px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.animate .util-token-amount {
+  transform: scale(1);
+  transition-delay: 0.9s;
+  opacity: 1;
 }
 
 @media only screen and (max-width: 1100px) {
