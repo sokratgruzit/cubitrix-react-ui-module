@@ -80,7 +80,7 @@ stories.add("Referral", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "koko123aaa",
+          address: "0x327a32d66ee9110d81992be6924a469bef5cd429",
         }),
       },
     );
@@ -104,7 +104,7 @@ stories.add("Referral", () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            address: "koko123aaa",
+            address: "0x327a32d66ee9110d81992be6924a469bef5cd429",
           }),
         },
       );
@@ -134,7 +134,7 @@ stories.add("Referral", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "0xe72c1054c1900fc6c266fec9bedc178e72793a35",
+          address: "0x327a32d66ee9110d81992be6924a469bef5cd429",
           limit: 5,
           page: page || 1,
         }),
@@ -161,7 +161,7 @@ stories.add("Referral", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "koko123aaa",
+          address: "0x327a32d66ee9110d81992be6924a469bef5cd429",
         }),
       },
     );
@@ -216,7 +216,7 @@ stories.add("Referral", () => {
         },
         body: JSON.stringify({
           referral: createCodeObject.referral,
-          address: "koko123aaa",
+          address: "0x327a32d66ee9110d81992be6924a469bef5cd429",
         }),
       },
     );

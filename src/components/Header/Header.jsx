@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // hooks
 import { useMobileWidth } from "../../hooks/useMobileWidth";
@@ -25,14 +25,23 @@ export const Header = ({
   amount,
 }) => {
   const [navbarActive, setNavbarActive] = useState(false);
+  const [animate, setAnimate] = useState(false);
   const { width } = useMobileWidth();
+
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
 
   let mobile = width <= 970;
 
   return (
-    <div className={`header ${mobile && navbarActive ? "header-active" : ""}`}>
-      <div className="modulesWrapper">
-        <div className="logoWrapper">
+    <div
+      className={`header ${mobile && navbarActive ? "header-active" : ""} ${
+        animate ? "animate" : ""
+      }`}
+    >
+      <div className='modulesWrapper'>
+        <div className='logoWrapper'>
           {logoSvg}
           <h3>{title}</h3>
         </div>
@@ -66,7 +75,7 @@ export const Header = ({
           )}
         </div>
       </div>
-      <p className="util-token-amount">{amount}</p>
+      <p className='util-token-amount'>{amount}</p>
       <div className={`right ${navbarActive ? "right-active" : ""}`}>
         {!mobile && (
           <NavbarHelper
