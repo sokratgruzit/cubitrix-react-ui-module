@@ -7,12 +7,7 @@ import { StartNowBlocks1, StartNowBlocks2 } from "../../../../assets/svgs";
 export const StartNow = ({ account, handleConnect, startNowImages }) => {
   return (
     <section className="start-section">
-      <img src={startNowImages.bg} className="startNowBG" alt="" />
-      <img
-        src={startNowImages?.startNowBG}
-        className="startNowBG"
-        alt=""
-      />
+      <img src={startNowImages?.startNowBG} className="startNowBG" alt="" />
       <span data-aos="fade-up" data-aos-delay="20" className="start-blocks-1-wrap">
         <StartNowBlocks1 className={"start-blocks-1"} />
       </span>

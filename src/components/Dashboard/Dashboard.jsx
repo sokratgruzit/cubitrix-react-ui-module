@@ -13,24 +13,22 @@ export const Dashboard = ({
   account,
   startTrade,
   allImages,
+  info,
 }) => {
   useEffect(() => {
     AOS.init();
   }, []);
 
   return (
-    <main className='dashboard-main'>
+    <main className="dashboard-main">
       <DashboardHeader
         handleGetStarted={handleGetStarted}
         handleConnect={handleConnect}
         account={account}
         dashboardHeaderImages={allImages?.dashboardHeader}
       />
-      <TopCoins
-        startTrade={startTrade}
-        topCoinsImages={allImages?.topcoins}
-      />
-      <Meditation meditationImages={allImages?.meditation} />
+      <TopCoins startTrade={startTrade} topCoinsImages={allImages?.topcoins} />
+      <Meditation meditationImages={allImages?.meditation} info={info} />
       <StartNow
         handleConnect={handleConnect}
         account={account}

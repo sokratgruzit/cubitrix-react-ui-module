@@ -84,12 +84,9 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
           id="anchor"
         />
       </span>
-      <img
-        src={topCoinsImages?.silverCoin}
-        className={"silver-coin"}
-        data-aos="fade-left"
-        data-aos-delay="200"
-      />
+      <span className={"silver-coin-wrap"} data-aos="fade-left" data-aos-delay="200">
+        <img src={topCoinsImages?.silverCoin} className={"silver-coin"} />
+      </span>
     </section>
   );
 };

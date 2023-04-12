@@ -213,8 +213,34 @@ stories.add("Dashboard", () => {
             MeditationPerson: require("../assets/img/dashboard/MeditationPerson.png"),
             MeditationBG: require("../assets/img/dashboard/MeditationBG.png"),
           },
-          startNow: { bg: backgroundIMg },
+          startNow: { startNowBG: backgroundIMg },
         }}
+        info={[
+          {
+            title: "USERS",
+            amount: "1.3 B",
+            action: (act) => console.log(act),
+            linkTitle: "Become a Member",
+          },
+          {
+            title: "TRADE",
+            amount: "8 M",
+            action: (act) => console.log(act),
+            linkTitle: "Trade Now",
+          },
+          {
+            title: "STAKED",
+            amount: "4 B",
+            action: (act) => console.log(act),
+            linkTitle: "Make Staking",
+          },
+          {
+            title: "LOAN",
+            amount: "1 B",
+            action: (act) => console.log(act),
+            linkTitle: "Make Loan",
+          },
+        ]}
       />
     </BrowserRouter>
   );
