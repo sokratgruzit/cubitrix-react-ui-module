@@ -3,12 +3,6 @@ import React, { useState, useEffect } from "react";
 // components
 import { Button } from "../../../Button";
 
-// images
-// import { default as rocket } from "../../../../assets/img/dashboard/rocket.png";
-// const rocket = require("../../../../assets/img/dashboard/rocket.png");
-
-// Use the rocket variable in your code
-
 // styles
 import "./DashboardHeader.css";
 
@@ -27,7 +21,10 @@ export const DashboardHeader = ({
     <header
       className={`dashboard-header-container ${animate ? "animate" : ""}`}
     >
-      <img src={dashboardHeaderImages?.rocket} />
+      <img
+        src={dashboardHeaderImages?.rocket}
+        className={"dashboard-header-rocket-img"}
+      />
       <div className='dashboard-header'>
         <img
           src={dashboardHeaderImages?.dots}
