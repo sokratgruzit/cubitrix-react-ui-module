@@ -1,13 +1,12 @@
 import "./Visual.css";
 import React from "react";
-import { Button } from '../Button';
 
 export const Visual = (props) => {
   let element = null;
   if (props.element === "popup-header") {
     element = (
       <div className={`popup-header`} style={props.customStyles}>
-        <span className={`font-16 goBackWrapper`}>
+        <div className={`goBackWrapper`}>
           {props.goBack && (
             <span onClick={props.goBack} className="goBackSvg">
               <svg
@@ -36,8 +35,13 @@ export const Visual = (props) => {
               </svg>
             </span>
           )}
-          {props.label}
-        </span>
+          <p className={'popup-header-head'}>
+            <span className={'font-16 popup-header-label'}>{props.label}</span>
+            {props?.description && (
+              <span className={'font-14 popup-header-description'}>{props?.description}</span>
+            )}
+          </p>
+        </div>
         <svg
           onClick={props.onClick}
           width="30"
@@ -114,6 +118,7 @@ export const Visual = (props) => {
       <div style={props.customStyles} className="tb-head">
         <div className="left-panel">
           <h1 className={props.fontSize}>{props.label}</h1>
+          {props.description && <p className="font-14">{props.description}</p>}
         </div>
         <div className="right-panel">
           {props.buttons}
@@ -121,5 +126,6 @@ export const Visual = (props) => {
       </div>
     )
   }
+
   return element;
 };

@@ -29,7 +29,7 @@ svg path {
   stroke: #fff;
 }
 .active-element {
-  background-color: #0500ff !important;
+  /* background-color: #0500ff !important; */
   color: #fff !important;
   border-radius: 32px;
 }

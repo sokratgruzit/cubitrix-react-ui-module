@@ -1,0 +1,110 @@
+.top-coin-card {
+  width: 295px;
+  height: 132px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.top-coin-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+}
+
+.top-coin-image {
+  width: 34px;
+  height: 34px;
+}
+
+.top-coin-side {
+  display: flex;
+  gap: 12px;
+}
+
+.top-coin-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-coin-info h3 {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.top-coin-info p {
+  font-size: 14px;
+  line-height: 140%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.top-coin-financial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.top-coin-financial p:first-child {
+  font-size: 20px;
+  line-height: 150%;
+  color: #ffffff;
+}
+
+.top-coin-financial p:last-child {
+  font-size: 14px;
+  line-height: 140%;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.top-coin-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 60px;
+}
+
+.positive-change {
+  font-size: 14px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+
+  color: #00ffd0;
+}
+
+.negative-change {
+  font-size: 14px;
+  line-height: 150%;
+
+  /* identical to box height, or 21px */
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+
+  color: #f61379;
+}
+
+.arrow-positive-change {
+  fill: #00ffd0;
+}
+
+.arrow-negative-change {
+  fill: #f61379;
+  rotate: 180deg;
+}
+
+.top-coins-card-price-change-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

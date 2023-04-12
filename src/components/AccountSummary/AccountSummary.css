@@ -1,63 +1,79 @@
+.total-summary-info {
+  width: 100%;
+  background: #ffaa00;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  font-family: "Uber Move";
+  line-height: 140%;
+  color: #272c57;
+  padding: 30px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.total-summary-info > h2,
+.total-account-info > p,
+.total-account-info span {
+  color: #272c57;
+}
+
+.account-summary-data {
+  background: #272c57;
+  border-radius: 0px 0px 16px 16px;
+  padding: 45px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  bottom: 15px;
+}
+
+.total-account-info {
+  display: flex;
+  gap: 132px;
+  align-items: center;
+}
+
+.total-account-info > p {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: 400;
+}
+
+.total-account-info span {
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 41px;
+}
+
+.account-summary-data-item {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid rgb(0, 255, 208, 0.2);
+}
+
 .account-summary {
-    width: 100%;
-    height: 158px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(42.5px);
-    border-radius: 8px;
-    display: flex;
-    padding: 29px 16px 29px 16px; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.account-summary__item {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px;
 }
 
-.account-summary__item p {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 140%;
-}
-
-.account-summary__item p:first-child {
+.account-summary > p:first-child {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.account-summary__item p:last-child {
-    letter-spacing: 1px;
-}
-
-.account-summary__item svg {
-    padding-right: 10px;
-}
-
-@media only screen and (max-width: 1075px) {
-    .account-summary {
-        height: 168px;
-    }
-}
-
-@media only screen and (max-width: 769px) {
-    .account-summary {
-        height: 144px;
-    }
-}
-
-@media only screen and (max-width: 360px) {
-    .account-summary {
-        height: 230px;
-    }
-    .account-summary__item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .account-summary__item p:last-child {
-        padding-left: 24px;
-    }
+@media only screen and (max-width: 667px) {
+  .total-account-info {
+    gap: 60px;
+  }
 }

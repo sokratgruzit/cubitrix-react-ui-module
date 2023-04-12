@@ -7,7 +7,7 @@
   flex-direction: row;
 }
 .table-head {
-  width: calc(100% - 50px);
+  width: 100%;
   display: flex;
   background: rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -16,7 +16,7 @@
 }
 .table {
   display: flex;
-  width: calc(100% - 50px);
+  width: 100%;
   padding: 0px 16px;
   justify-content: space-between;
 }
@@ -24,16 +24,21 @@
 .table-empty {
   min-height: 342px;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   gap: 50px;
   margin: 0 auto;
   text-align: center;
 }
 
+.table-empty > div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .table-empty__view-all {
-  color: #3D5AFE;
+  color: #3d5afe;
   cursor: pointer;
 }
 
@@ -85,7 +90,7 @@
 .icon-place {
   display: none;
   height: 81px;
-  width: 30px;
+  width: 40px;
   justify-content: center;
   align-items: center;
 }
@@ -94,7 +99,7 @@
   display: flex;
   flex-wrap: wrap;
 }
-.table-parent:nth-child(even) {
+.table-parent:nth-child(odd) {
   background: rgba(255, 255, 255, 0.03);
 }
 .table-head ~ .icon-place,
@@ -244,11 +249,10 @@
 .table-more {
   height: 81px;
   width: 50px;
-  display: flex;
-  align-items: center;
+  display: none;
 }
 .td-expand .hide {
-  display: none!important;
+  display: none !important;
 }
 
 .table-buttons {
@@ -264,6 +268,64 @@
   padding-right: 0;
 }
 
+.table-loading-container {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-loading {
+  width: 50px;
+  height: 50px;
+  border: 8px solid;
+  border-color: #00c6ff transparent #00c6ff transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;
+}
+
+.table-coin-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+}
+
+.td.col.table-coin-row,
+.table-coin-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.table-coin-column {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.coins-table-coin {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+  height: 20px;
+  padding: 1px 6px;
+}
+
+.table-coin-none {
+  display: none;
+}
+
+@keyframes spin-anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /*Ipad Pro 1024*/
 @media (max-width: 1300px) {
   .table-parent {
@@ -282,11 +344,14 @@
   }
   .table-more {
     width: 35px;
+    display: flex;
+    align-items: center;
   }
   .table-mobile {
     display: block;
   }
 }
+
 /*Ipad 768*/
 @media (max-width: 1023px) {
 }

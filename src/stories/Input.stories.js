@@ -42,11 +42,14 @@ let selectData = [
 let defaultData = [
   {
     name: "Transaction",
+    value: 'hi'
   },
   {
     name: "Hash",
+    value: 'hi2'
   },
 ];
+let multiplyData = ["admin@gmail.com","ad2@gmail.com","admin2@il.com","a@g.com","admin2@gil.com","adm@gmail.com","admin2@gmil.com","ad2@mail.com"];
 
 
 stories.add("Input", (props) => {
@@ -73,9 +76,18 @@ stories.add("Input", (props) => {
     console.log("coverHandler");
     setCover(true);
   };
-  const selectHandler = () => {
-    // console.log('selecthandler')
+  const selectHandler = (value) => {
+    console.log('selecthandler')
+    console.log(value)
   };
+    const multiItemClick = (value) => {
+        console.log('multiItemClick')
+        console.log(value)
+    };
+    const onChangeDropdown = (e) => {
+        console.log('onChangeDropdown')
+        console.log(e.target.value)
+    };
 
   return (
     <div
@@ -86,6 +98,56 @@ stories.add("Input", (props) => {
         marginTop: "30px",
       }}
     >
+        <Input
+            type={"lable-input-multi-select"}
+            icon={false}
+            multiplyData={multiplyData}
+            multiItemClick={multiItemClick}
+            emptyFieldErr={false}
+            defaultData={defaultData}
+            label={"yourText"}
+            selectHandler={selectHandler}
+            selectLabel={"select"}
+            active={active}
+            status={false}
+            onChangeDropdown={(e) => {
+                onChangeDropdown(e);
+            }}
+            statusCard={
+                <HelpText
+                    status={'error'}
+                    title={'your text'}
+                    fontSize={'font-12'}
+                    icon={true}
+                />
+            }
+            title={"your text"}
+            color={"#FFA726"}
+            customStyles={{ width: "520px" }}
+        />
+        <Input
+            type={"lable-input-select"}
+            icon={false}
+            selectData={selectData}
+            emptyFieldErr={true}
+            defaultData={defaultData}
+            label={"yourText"}
+            selectHandler={selectHandler}
+            selectLabel={"select"}
+            active={active}
+            status={"warning"}
+            statusCard={
+                <HelpText
+                    status={'error'}
+                    title={'your text'}
+                    fontSize={'font-12'}
+                    icon={true}
+                />
+            }
+            title={"your text"}
+            color={"#FFA726"}
+            customStyles={{ width: "320px" }}
+        />
       <Input
         type={"default"}
         // value={value}
@@ -150,7 +212,7 @@ stories.add("Input", (props) => {
         label={"Eneter e-mail"}
         subLabel={""}
         placeholder={"default input"}
-        value={'xle@gmail.com'} // value 
+        value={'xle@gmail.com'} // value
         onChange={changeHandler}
         statusCard={
           <HelpText
@@ -250,29 +312,7 @@ stories.add("Input", (props) => {
         customStyles={{ width: "fit-content" }}
       />
 
-      <Input
-        type={"lable-input-select"}
-        icon={false}
-        selectData={selectData}
-        emptyFieldErr={true}
-        defaultData={defaultData}
-        label={"yourText"}
-        selectHandler={selectHandler}
-        selectLabel={"select"}
-        active={active}
-        status={"warning"}
-        statusCard={
-          <HelpText
-            status={'error'}
-            title={'your text'}
-            fontSize={'font-12'}
-            icon={true}
-          />
-        }
-        title={"your text"}
-        color={"#FFA726"}
-        customStyles={{ width: "320px" }}
-      />
+
       <Input
         type={"lable-input-select"}
         icon={false}

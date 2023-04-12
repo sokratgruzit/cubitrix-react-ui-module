@@ -1,15 +1,22 @@
 .popup-header {
   display: flex;
   justify-content: space-between;
-  height: 70px;
-  padding: 0px 20px;
+  padding: 20px;
+  /* height: 70px; */
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: #141726;
+  background: #2d3364;
+
+  border-radius: 16px 16px 0 0;
 }
+
 .popup-header svg {
+  right: 20px;
   cursor: pointer;
+  position: absolute;
+  top: 20px;
 }
+
 .popup-header path {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
@@ -55,8 +62,25 @@
 
 .goBackSvg {
   display: flex;
+  position: relative;
+  width: 24px;
+  height: 24px;
 }
 
+.goBackSvg svg {
+  position: initial;
+}
+
+.popup-header-head {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.popup-header-description {
+  color: #cdced1;
+  max-width: 500px;
+}
 
 /* tb-head */
 .tb-head {
@@ -70,4 +94,8 @@
 .right-panel {
   display: flex;
   gap: 10px;
+}
+.left-panel p {
+  color: #9c9da3;
+  max-width: 500px;
 }

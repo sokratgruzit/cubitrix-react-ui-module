@@ -1,0 +1,32 @@
+.loanDetails {
+  width: 100%;
+  height: fit-content;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.loanDetails-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+}
+
+.loan-amount-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.loanDetails-main {
+  display: flex;
+  padding: 20px 0;
+}
+
+.details-main-left {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}

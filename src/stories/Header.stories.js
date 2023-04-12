@@ -1,5 +1,4 @@
 import { storiesOf } from "@storybook/react";
-import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Header } from "../components/Header";
 
@@ -10,7 +9,7 @@ stories.add("Header", () => {
     <BrowserRouter>
       <Header
         modules={[]}
-        account={"shit"}
+        account={"0xtest"}
         location={{ pathName: "" }}
         title={"COMPLEND"}
         logoSvg={

@@ -336,6 +336,87 @@ export const Input = (props) => {
     );
     // im waiting for guram here
   }
+  if (props.type === "lable-input-multi-select") {
+    element = (
+        <div style={props.customStyles} className="select-group">
+          <p className="input-group-title font-12">{props.label}</p>
+          <div
+              ref={ref}
+              className="form-select-sc relative"
+          >
+            <div
+                className={`${"form-select-item"} ${"form-control"} ${"form-multiply"} ${
+                    props.emptyFieldErr ? "error-border" : ""
+                } ${
+                    !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
+                }`}
+            >
+              <div className="form-multiply-clicker" onClick={activeHandler}></div>
+              <div className="flag-wrapper">
+                  {
+                      props.multiplyData.map((item, index) => {
+                          return (
+                              <div className="multiply-select-item">
+                                  {item}
+                                  <div
+                                      className="close-multiply-select-item"
+                                      onClick={() => {
+                                          props.multiItemClick(item);
+                                      }}
+                                      key={index}
+                                  >
+                                      <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M1.5 9L9.5 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                          <path d="M9.5 9L1.5 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                                      </svg>
+                                  </div>
+                              </div>
+                          )
+                      })
+                  }
+              </div>
+              <svg
+                  className={`${active ? "rotate" : ""} ${"arrow"} ${
+                      props?.value?.length > 0 && !edit && props.editable
+                          ? "arrow-none"
+                          : "arrow-show"
+                  } `}
+                  width="20"
+                  height="21"
+                  viewBox="0 0 20 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                    d="M13 10L10.5303 12.4697C10.2386 12.7614 9.76136 12.7614 9.4697 12.4697L7 10"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className={`${"hidden"} ${active ? "select-modal-sc" : ""} ${props.selectPosition === "top" ? 'select-position-top' : ''}`}>
+                <Dropdown
+                    type={"search-dropdown"}
+                    data={props.defaultData}
+                    active={props.active}
+                    handlerClick={handlerClick}
+                    selectHandler={props.selectHandler}
+                    customStyles={{ width: "inherit" }}
+                    defaultOption={props.selectLabel}
+                    onChangeDropdown={(e) => {
+                        props.onChangeDropdown(e);
+                    }}
+                />
+            </div>
+          </div>
+          {props.statusCard}
+        </div>
+    );
+    // im waiting for guram here
+  }
   if (props.type === "label-input-phone-number") {
     element = (
       <div style={props.customStyles} className="input-group-item phone-numbers relative">

@@ -7,15 +7,15 @@
   justify-content: space-between;
   align-items: center;
   padding: 14px 22px 14px 30px;
-  background: #070B1A;
+  background: #070b1a;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .coin-info-list__item p:first-child {
-  color: #CDCED1;
+  color: #cdced1;
 }
 
-.coin-info-list__item span{
+.coin-info-list__item span {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -29,7 +29,7 @@
   cursor: pointer;
 }
 
-.draggable-list{
+.draggable-list {
   display: flex;
   font-size: 18px;
   background-color: #eee;
@@ -55,8 +55,8 @@
 .marker {
   width: 20px;
   height: 20px;
-  background-color: #070B1A;
-  border: 1px solid #3D5AFE;
+  background-color: #070b1a;
+  border: 1px solid #3d5afe;
   border-radius: 6px;
   transition: 0.4s;
   display: flex;
@@ -77,7 +77,7 @@
 
 .draggable-label {
   padding-left: 8px;
-  color: #9C9DA3
+  color: #9c9da3;
 }
 
 .draggingListItem {
@@ -85,17 +85,17 @@
 }
 
 .draggingListItem .draggable-label {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drag-icon {
   margin-left: auto;
 }
 
-.swiper-slide {
-  width: 100px!important;
+.coin-info-list .swiper-slide {
+  width: 100px !important;
 }
 
-.swiper {
-  margin: 0!important;
+.coin-info-list .swiper {
+  margin: 0 !important;
 }

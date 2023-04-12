@@ -161,3 +161,29 @@
   max-height: 300px;
   overflow: scroll;
 }
+.dropdown-search-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #1f2330;
+  height: 35px;
+  margin-bottom: 15px;
+  padding: 0px 10px;
+  border-radius: 4px;
+}
+.add-search-btn {
+  position: absolute;
+  right: 10px;
+  top: 17px;
+  height: 26px;
+  padding: 0px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #3d5afe;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.add-search-btn:hover {
+  opacity: .7;
+}

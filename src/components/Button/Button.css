@@ -154,8 +154,6 @@
   stroke: #3d5afe;
 }
 
-.img-btn path {
-}
 .img-btn img {
   width: 24px;
 }
@@ -264,19 +262,21 @@
 .side-admin-button.open {
   max-width: 400px;
 }
-.side-admin-button:hover,.side-admin-button.active {
-  background: rgba(255,255,255,.05);
+.side-admin-button:hover,
+.side-admin-button.active {
+  background: rgba(255, 255, 255, 0.05);
 }
 .side-admin-button span {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.side-admin-button:hover span,.side-admin-button.active span {
+.side-admin-button:hover span,
+.side-admin-button.active span {
   color: #3d5afe;
 }
 .side-admin-button .drop-arrow path {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.side-admin-button .drop-arrow{
+.side-admin-button .drop-arrow {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   margin-left: auto;
   transform: rotate(180deg);
@@ -287,7 +287,7 @@
 .side-admin-button.active .drop-arrow path {
   fill: #3d5afe;
 }
-.side-admin-expand{
+.side-admin-expand {
   display: flex;
   flex-direction: column;
   padding-left: 25px;
@@ -305,7 +305,8 @@
 .side-admin-button-expand:first-child {
   margin-top: 20px;
 }
-.side-admin-button-expand:hover,.side-admin-button-expand.active {
+.side-admin-button-expand:hover,
+.side-admin-button-expand.active {
   color: #3d5afe;
 }
 
@@ -321,7 +322,7 @@
 .side-admin-button.open .side-btn-text {
   transform: translateY(0px);
   opacity: 1;
-  transition-delay: .2s;
+  transition-delay: 0.2s;
 }
 
 .calculator-button {
@@ -332,7 +333,7 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   cursor: pointer;
   height: 44px;
-  color: #6A6D76;
+  color: #6a6d76;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,15 +345,14 @@
 }
 
 .calculator-button-active {
-  background: #3D5AFE;
-  color: #FFF;
+  background: #00C6FF;
+  color: #fff;
 }
 
 .staking-button {
-  width: 87px;
-  height: 52px;
-  background: #3D5AFE;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  min-width: 89px;
+  height: 43px;
+  background: #00C6FF ;
   border-radius: 42px;
   display: flex;
   gap: 10px;
@@ -363,10 +363,55 @@
 }
 
 .staking-button:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .staking-button-active {
-  border: 1px solid #3D5AFE;
-  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #00C6FF;
+  background-color: unset;
+}
+
+.referral-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  justify-content: center;
+}
+
+.referral-button-active {
+  min-width: 157px;
+  padding: 10px 30px 10px 16px;
+  background: #00C6FF;
+  border-radius: 32px;
+}
+
+.referral-button span {
+  color: #00C6FF;
+}
+
+.referral-button-active span {
+  color: #fff;
+}
+
+.referral-button:hover {
+  opacity: 0.7;
+}
+
+.btn-grey {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.btn-grey:hover {
+  opacity: 0.7;
+}
+
+.btn-yellow {
+  background: #ffa726;
+}
+
+.btn-yellow:hover {
+  opacity: 0.7;
 }

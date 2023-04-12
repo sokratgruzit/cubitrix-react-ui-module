@@ -18,7 +18,7 @@ export const Button = (props) => {
       <div
         className={`btn ${props.size} ${props.type} ${props.arrow} ${
           props.labelSetting
-        } ${props.disabled === true ? "disabled" : ""}`}
+        } ${props.disabled === true ? "disabled" : ""} ${props.className}`}
         onClick={props.onClick}
         style={props.customStyles}
         disabled={props.disabled}
@@ -192,10 +192,10 @@ export const Button = (props) => {
     );
   }
 
-  if (props.element === 'calculator-button') {
+  if (props.element === "calculator-button") {
     element = (
       <div
-        className={`calculator-button ${props.active && 'calculator-button-active'}`}
+        className={`calculator-button ${props.active && "calculator-button-active"}`}
         style={props.customStyles}
         onClick={props.onClick}
       >
@@ -204,10 +204,28 @@ export const Button = (props) => {
     );
   }
 
-  if (props.element === 'staking-button') {
+  if (props.element === "staking-button") {
     element = (
       <div
-        className={`staking-button ${props.active && 'staking-button-active'} ${props.disabled === true ? "disabled" : ""}`}
+        className={`staking-button ${props.active && "staking-button-active"} ${
+          props.disabled === true ? "disabled" : ""
+        }`}
+        style={props.customStyles}
+        onClick={props.onClick}
+        disabled={props.disabled}
+      >
+        {props?.icon}
+        <span>{props.label}</span>
+      </div>
+    );
+  }
+
+  if (props.element === "referral-button") {
+    element = (
+      <div
+        className={`referral-button ${props.active && "referral-button-active"} ${
+          props.disabled === true ? "disabled" : ""
+        }`}
         style={props.customStyles}
         onClick={props.onClick}
         disabled={props.disabled}

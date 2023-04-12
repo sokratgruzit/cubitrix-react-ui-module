@@ -1,0 +1,38 @@
+.level-system-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgb(32, 36, 49);
+  border-right: 1px solid rgb(32, 36, 49);
+  border-left: 1px solid rgb(32, 36, 49);
+  background: #272c57;
+  border-radius: 0px 0px 16px 16px;
+  gap: 20px;
+  width: 100%;
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
+.level-system-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.level-system-th {
+  color: #9c9da3;
+}
+
+.level-system-table {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.level-system-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

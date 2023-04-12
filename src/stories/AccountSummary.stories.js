@@ -27,7 +27,7 @@ const data = [
 stories.add("AccountSummary", () => {
     return (
         <div>
-            <AccountSummary data={data} />
+            {/* <AccountSummary data={data} /> */}
         </div>
     );
 });
