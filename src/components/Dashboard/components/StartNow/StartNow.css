@@ -9,7 +9,7 @@
 }
 .corners-bg {
   position: absolute;
-  z-index: -10;
+  z-index: -3;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -47,11 +47,11 @@
 
 .startNowBG {
   position: absolute;
-  z-index: -2;
-  top: 0;
-  left: 0;
-  width: 100%;
+  width: calc(100% + 2px);
   height: 100%;
+  left: -1px;
+  z-index: -2;
+  top: -1px;
 }
 
 .start-title {
