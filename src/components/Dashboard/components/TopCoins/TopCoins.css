@@ -91,9 +91,11 @@
   z-index: 3;
 }
 
-.top-coins-coin {
+.top-coins-coin-wrap {
   position: absolute;
   left: 0;
+  width: fit-content;
+  height: fit-content;
 }
 
 .dashboard-header-ball-img {
@@ -101,10 +103,26 @@
   max-height: 435px;
   width: 100%;
   height: 100%;
+  /* transform: matrix(1, 0, 0, -1, 0, 0); */
+  animation: float 3s infinite 1s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.dashboard-header-ball-img-wrap {
   position: absolute;
   right: 0;
   top: 700px;
-  /* transform: matrix(1, 0, 0, -1, 0, 0); */
   z-index: 5;
 }
 
@@ -137,6 +155,8 @@
   .top-coins-coin {
     width: 100px;
     height: 170px;
+  }
+  .top-coins-coin-wrap {
     top: 960px;
   }
 }
@@ -198,11 +218,15 @@
   .dashboard-header-ball-img {
     max-width: 200px;
     max-height: 200px;
+  }
+  .dashboard-header-ball-img-wrap {
     top: 850px;
   }
   .top-coins-coin {
     width: 80px;
     height: 130px;
+  }
+  .top-coins-coin-wrap {
     top: 1150px;
   }
 }
@@ -211,11 +235,15 @@
   .dashboard-header-ball-img {
     max-width: 180px;
     max-height: 180px;
+  }
+  .dashboard-header-ball-img-wrap {
     top: 830px;
   }
   .top-coins-coin {
     width: 70px;
     height: 120px;
+  }
+  .top-coins-coin-wrap {
     top: 1100px;
   }
   .silver-coin {
@@ -257,11 +285,13 @@
 
 @media only screen and (max-width: 330px) {
   .dashboard-header-ball-img {
-    top: 960px;
     max-width: 160px;
     max-height: 160px;
   }
-  .top-coins-coin {
+  .dashboard-header-ball-img-wrap {
+    top: 960px;
+  }
+  .top-coins-coin-wrap {
     top: 1170px;
   }
 }

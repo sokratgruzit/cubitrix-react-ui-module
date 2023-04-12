@@ -193,6 +193,26 @@ stories.add("Dashboard", () => {
         handleGetStarted={() => console.log("get started")}
         handleConnect={() => console.log("hi")}
         allImages={{
+          dashboardHeader: {
+            rocket: require("../assets/img/dashboard/rocket.png"),
+            dots: require("../assets/img/dashboard/dots.png"),
+            man: require("../assets/img/dashboard/man.png"),
+            planet: require("../assets/img/dashboard/planet.png"),
+            dotsRight: require("../assets/img/dashboard/dotsRight.png"),
+            bottom: require("../assets/img/dashboard/bottom.svg"),
+          },
+          topcoins: {
+            EthCard: require("../assets/img/dashboard/coinCards/EthCard.png"),
+            BitcoinCard: require("../assets/img/dashboard/coinCards/BitcoinCard.png"),
+            TetherCard: require("../assets/img/dashboard/coinCards/TetherCard.png"),
+            TopCoinsIcon: require("../assets/img/dashboard/TopCoinsIcon.png"),
+            ball: require("../assets/img/dashboard/ball.svg"),
+            silverCoin: require("../assets/img/dashboard/silverCoin.png"),
+          },
+          meditation: {
+            MeditationPerson: require("../assets/img/dashboard/MeditationPerson.png"),
+            MeditationBG: require("../assets/img/dashboard/MeditationBG.png"),
+          },
           startNow: { bg: backgroundIMg },
         }}
       />
