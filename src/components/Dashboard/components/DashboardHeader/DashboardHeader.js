@@ -9,14 +9,6 @@ import { Button } from "../../../Button";
 
 // Use the rocket variable in your code
 
-import { dirname } from "path";
-
-// Get the directory name of the current module
-// const __dirname = dirname(new URL(import.meta.url).pathname);
-const currentPath = window.location.pathname;
-const dirName = dirname(currentPath);
-console.log(`${process.env.PUBLIC_URL}/public/rocket.png`);
-
 // styles
 import "./DashboardHeader.css";
 
