@@ -209,7 +209,6 @@
   max-width: 344px;
   width: 40%;
   height: 100%;
-  overflow: hidden;
 }
 
 .logoWrapper svg {
@@ -248,7 +247,7 @@
 
 .animate .navbar-menu {
   transform: scale(1);
-  transition-delay: 0.4s;
+  transition-delay: 1s;
   opacity: 1;
 }
 
@@ -279,7 +278,7 @@
 
 .animate .util-token-amount {
   transform: scale(1);
-  transition-delay: 0.9s;
+  transition-delay: .9s;
   opacity: 1;
 }
 
