@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "../../../Button";
 import "./TopCoins.css";
 
-import EthCard from "../../../../assets/img/dashboard/coinCards/EthCard.png";
 import {
   DashboardCoinsLeverageCard,
   DashboardCoinsBuy,
