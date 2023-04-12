@@ -9,6 +9,8 @@ import { BrowserRouter } from "react-router-dom";
 
 const stories = storiesOf("Dashboard", module);
 
+const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
+
 stories.add("Dashboard", () => {
   // const [topCoins, setTopCoins] = useState([]);
   // const [coinsList, setCoinsList] = useState([]);
@@ -44,6 +46,7 @@ stories.add("Dashboard", () => {
   //     })
   //     .catch((error) => console.log(error));
   // }, []);
+
   return (
     <BrowserRouter>
       <Header
@@ -186,7 +189,13 @@ stories.add("Dashboard", () => {
         }
         verified={false}
       />
-      <Dashboard handleGetStarted={() => console.log("get started")} handleConnect={() => console.log('hi')} />
+      <Dashboard
+        handleGetStarted={() => console.log("get started")}
+        handleConnect={() => console.log("hi")}
+        allImages={{
+          startNow: { bg: backgroundIMg },
+        }}
+      />
     </BrowserRouter>
   );
 });

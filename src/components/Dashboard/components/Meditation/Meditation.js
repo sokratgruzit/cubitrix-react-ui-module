@@ -23,18 +23,18 @@ export const Meditation = () => {
       <div className="center-box">
         <DashboardMeditationBG className={"person-background"} />
         <span data-aos="fade-up" data-aos-delay="20" className="person-wrapper">
-          <img
+          {/* <img
             src={require("../../../../assets/img/dashboard/MeditationPerson.png")}
             alt=""
             className="meditation-person"
-          />
+          /> */}
         </span>
       </div>
-      <img
+      {/* <img
         src={require("../../../../assets/img/dashboard/MeditationBG.png")}
         alt=""
         className="meditation-bg"
-      />
+      /> */}
     </div>
   );
 };

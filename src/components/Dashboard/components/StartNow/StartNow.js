@@ -4,14 +4,15 @@ import "./StartNow.css";
 
 import { StartNowBlocks1, StartNowBlocks2 } from "../../../../assets/svgs";
 
-export const StartNow = ({ account, handleConnect }) => {
+export const StartNow = ({ account, handleConnect, startNowImages }) => {
   return (
     <section className="start-section">
-      <img
+      <img src={startNowImages.bg} className="startNowBG" alt="" />
+      {/* <img
         src={require("../../../../assets/img/dashboard/startNowBG.png")}
         className="startNowBG"
         alt=""
-      />
+      /> */}
       <span data-aos="fade-up" data-aos-delay="20" className="start-blocks-1-wrap">
         <StartNowBlocks1 className={"start-blocks-1"} />
       </span>

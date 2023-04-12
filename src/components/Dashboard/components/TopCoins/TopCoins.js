@@ -32,7 +32,7 @@ export const TopCoins = ({ startTrade }) => {
         </p>
       </header>
       <div className="top-coins-main" data-aos="fade-up" data-aos-delay="20">
-        <img
+        {/* <img
           src={require("../../../../assets/img/dashboard/coinCards/EthCard.png")}
           alt=""
           className="ethCard"
@@ -47,7 +47,7 @@ export const TopCoins = ({ startTrade }) => {
           src={require("../../../../assets/img/dashboard/coinCards/TetherCard.png")}
           alt=""
           className="TetherCard"
-        />
+        /> */}
         <DashboardCoinsLeverageCard className={"coins-leverage-card"} />
         <DashboardCoinsBuy className={"coins-buy-card"} />
       </div>
@@ -63,7 +63,7 @@ export const TopCoins = ({ startTrade }) => {
         />
       </span>
       <div className="bg-gradient"></div>
-      <img
+      {/* <img
         src={require("../../../../assets/img/dashboard/TopCoinsIcon.png")}
         alt=""
         className="top-coins-coin"
@@ -81,7 +81,7 @@ export const TopCoins = ({ startTrade }) => {
         className={"silver-coin"}
         data-aos="fade-left"
         data-aos-delay="200"
-      />
+      /> */}
     </section>
   );
 };
