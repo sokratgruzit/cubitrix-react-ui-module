@@ -12,7 +12,11 @@ import { Button } from "../../../Button";
 // styles
 import "./DashboardHeader.css";
 
-export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
+export const DashboardHeader = ({
+  handleConnect,
+  handleGetStarted,
+  dashboardHeaderImages,
+}) => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
@@ -20,17 +24,15 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
   }, []);
 
   return (
-    <header className={`dashboard-header-container ${animate ? "animate" : ""}`}>
-      <img
-      // src={require("../../../../assets/img/dashboard/rocket.png")}
-      // src={require(`${dirName}src/assets/img/dashboard/rocket.png`)}
-      // src={`${process.env.PUBLIC_URL}/src/assets/img/dashboard/rocket.png`}
-      />
-      <div className="dashboard-header">
-        {/* <img
-          src={require("../../../../assets/img/dashboard/dots.png")}
+    <header
+      className={`dashboard-header-container ${animate ? "animate" : ""}`}
+    >
+      <img src={dashboardHeaderImages?.rocket} />
+      <div className='dashboard-header'>
+        <img
+          src={dashboardHeaderImages?.dots}
           className={"dashboard-header-dots-img"}
-        /> */}
+        />
         <div className={"dashboard-header-top"}>
           <h1>Buy</h1>
           <h1>Sell & Trade</h1>
@@ -39,19 +41,19 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
           <h1>Crypto</h1>
           <p>Trade, buy, staking and loan cryptocurrency at Complend</p>
         </div>
-        {/* <img
-          src={require("../../../../assets/img/dashboard/man.png")}
+        <img
+          src={dashboardHeaderImages?.man}
           className={"dashboard-header-man-img"}
         />
         <img
-          src={require("../../../../assets/img/dashboard/planet.png")}
+          src={dashboardHeaderImages?.planet}
           className={"dashboard-header-planet-img"}
-        /> */}
+        />
       </div>
-      {/* <img
-        src={require("../../../../assets/img/dashboard/dotsRight.png")}
+      <img
+        src={dashboardHeaderImages?.dotsRight}
         className={"dashboard-header-dotsRight-img"}
-      /> */}
+      />
       <div className={"dashboard-buttons"}>
         <Button
           label={"Connect Wallet"}
@@ -72,10 +74,10 @@ export const DashboardHeader = ({ handleConnect, handleGetStarted }) => {
           customStyles={{ margin: "0" }}
         />
       </div>
-      {/* <img
-        src={require("../../../../assets/img/dashboard/bottom.svg")}
+      <img
+        src={dashboardHeaderImages?.bottom}
         className={"dashboard-header-bottom-img"}
-      /> */}
+      />
     </header>
   );
 };

@@ -19,14 +19,18 @@ export const Dashboard = ({
   }, []);
 
   return (
-    <main className="dashboard-main">
+    <main className='dashboard-main'>
       <DashboardHeader
         handleGetStarted={handleGetStarted}
         handleConnect={handleConnect}
         account={account}
+        dashboardHeaderImages={allImages?.dashboardHeader}
       />
-      <TopCoins startTrade={startTrade} />
-      <Meditation />
+      <TopCoins
+        startTrade={startTrade}
+        topCoinsImages={allImages?.topcoins}
+      />
+      <Meditation meditationImages={allImages?.meditation} />
       <StartNow
         handleConnect={handleConnect}
         account={account}
