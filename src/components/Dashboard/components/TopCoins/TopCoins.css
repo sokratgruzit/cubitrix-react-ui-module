@@ -145,7 +145,7 @@
   position: absolute;
   right: 0;
   z-index: 1;
-  top: 2220px;
+  top: 2160px;
   margin-right: 53px;
 }
 
@@ -258,7 +258,7 @@
     height: 100px;
   }
   .silver-coin-wrap {
-    top: 2250px;
+    top: 2180px;
     margin-right: 20px;
   }
 }
@@ -269,7 +269,10 @@
     height: 80px;
   }
   .silver-coin-wrap {
-    top: 2210px;
+    top: 2150px;
+  }
+  .top-coins-coin-wrap {
+    top: 1050px;
   }
 }
 
@@ -292,7 +295,7 @@
     height: 60px;
   }
   .silver-coin-wrap {
-    top: 2290px;
+    top: 2215px;
   }
 }
 

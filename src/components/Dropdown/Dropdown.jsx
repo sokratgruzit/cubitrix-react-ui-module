@@ -102,6 +102,41 @@ export const Dropdown = (props) => {
       </div>
     );
   }
+  if (props.type === "search-dropdown") {
+    element = (
+        <div style={props.customStyles} className={`${"active"} ${"dropdown"}`}>
+          <input type="text" className="dropdown-search-input"
+                 onChange={(e) => {
+                   props.onChangeDropdown(e);
+                 }}
+          />
+          <div className="add-search-btn">Add</div>
+          {props.defaultOption && (
+              <div
+                  className="dropdown-item"
+                  onClick={() => {
+                    props.handlerClick(props.defaultOption);
+                    props.selectHandler("all");
+                  }}
+                  key={props.defaultOption}
+              >
+                {props.defaultOption}
+              </div>
+          )}
+          {props.data?.map((item, index) => {
+            return (
+                <div className="dropdown-item" onClick={() => {
+                  props.handlerClick(item.name)
+                  props.selectHandler(item.value)
+                }}
+                     key={index}>
+                  {item.name}
+                </div>
+            );
+          })}
+        </div>
+    );
+  }
   if (props.type === "simple-drowpdown") {
     element = (
       <div className="dropdown" style={props.customStyles}>

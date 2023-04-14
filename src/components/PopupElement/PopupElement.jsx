@@ -112,11 +112,13 @@ export const PopupElement = ({
             <div className='popup-element-input-container' key={index}>
               <Input
                 type={
-                  params.type === "select" ? "lable-input-select" : "default"
+                  // params.type === "select" ? "lable-input-select" : "default"
+                  params.type === "select" ? "lable-input-select" : (params.type === "lable-input-multi-select" ? "lable-input-multi-select" : "default")
                 }
                 inputType={params?.inputType}
                 label={params.title}
                 name={params.name}
+                multiplyData={params.multiplyData}
                 value={
                   params.type === "select"
                     ? "Any"

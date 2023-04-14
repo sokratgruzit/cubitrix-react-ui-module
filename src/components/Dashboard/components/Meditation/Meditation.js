@@ -4,8 +4,10 @@ import "./Meditation.css";
 
 import { InfoItem } from "./InfoItem";
 import { DashboardMeditationBG } from "../../../../assets/svgs";
+import { useFade } from "../../../../hooks/useFade";
 
 export const Meditation = ({ info, meditationImages }) => {
+  useFade("up", [".fade-up"]);
   return (
     <div className="meditation-container">
       <div className="corner-box top-left">
@@ -22,7 +24,7 @@ export const Meditation = ({ info, meditationImages }) => {
       </div>
       <div className="center-box">
         <DashboardMeditationBG className={"person-background"} />
-        <span data-aos="fade-up" data-aos-delay="20" className="person-wrapper">
+        <span className="person-wrapper fade-up">
           <img
             src={meditationImages?.MeditationPerson}
             alt=""

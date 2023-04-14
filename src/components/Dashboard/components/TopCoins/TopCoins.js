@@ -3,10 +3,13 @@ import { Button } from "../../../Button";
 import "./TopCoins.css";
 
 import { DashboardCoinsLeverageCard, DashboardCoinsBuy } from "../../../../assets/svgs";
-import { useFadeUp } from "../../../../hooks/useFadeUp";
+import { useFade } from "../../../../hooks/useFade";
 
 export const TopCoins = ({ startTrade, topCoinsImages }) => {
-  useFadeUp([".fade-up"]);
+  useFade("up", [".fade-up"]);
+  useFade("right", [".fade-right"]);
+  useFade("left", [".fade-left"]);
+
   // useEffect(() => {
   //   window.addEventListener("mousemove", (e) => {
   //     const { clientX, clientY } = e;
@@ -27,44 +30,10 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
   //   return Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
   // }
 
-  // const ref = useRef(null);
-
-  // useEffect(() => {
-  //   let lastY = 0;
-  //   let timeoutId;
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       clearTimeout(timeoutId);
-  //       timeoutId = setTimeout(() => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("is-visible");
-  //         } else if (
-  //           entry.boundingClientRect.bottom > 0 &&
-  //           entry.boundingClientRect.y > lastY
-  //         ) {
-  //           entry.target.classList.remove("is-visible");
-  //         }
-  //         lastY = entry.boundingClientRect.y;
-  //       }, 50);
-  //     },
-  //     { threshold: 0.25 },
-  //   );
-
-  //   if (ref.current) {
-  //     observer.observe(ref.current);
-  //   }
-
-  //   return () => {
-  //     if (ref.current) {
-  //       observer.unobserve(ref.current);
-  //     }
-  //   };
-  // }, []);
-
   return (
     <section className="top-coins-section">
       <header className="top-coins-header">
-        <h1 className="top-coins-title" data-aos="fade-up" data-aos-delay="20">
+        <h1 className="top-coins-title fade-up">
           Top
           <span>
             <svg
@@ -86,8 +55,7 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
           Trade, buy, staking and loan cryptocurrency at Complend
         </p>
       </header>
-      {/* <div className="top-coins-main" data-aos="fade-up" data-aos-delay="20"> */}
-      <div className="top-coins-main">
+      <div className="top-coins-main fade-up">
         <img src={topCoinsImages?.EthCard} alt="" className="ethCard" />
 
         <img src={topCoinsImages?.BitcoinCard} alt="" className="BitcoinCard" />
@@ -107,21 +75,17 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
         />
       </span>
       <div className="bg-gradient"></div>
-      <span className="top-coins-coin-wrap" data-aos="fade-right" data-aos-delay="50">
+      <span className="top-coins-coin-wrap fade-right delay-50">
         <img src={topCoinsImages?.TopCoinsIcon} alt="" className="top-coins-coin" />
       </span>
-      <span
-        className={"dashboard-header-ball-img-wrap"}
-        data-aos="fade-left"
-        data-aos-delay="1200"
-      >
+      <span className={"dashboard-header-ball-img-wrap fade-left delay-1200"}>
         <img
           src={topCoinsImages?.ball}
           className={"dashboard-header-ball-img"}
           id="anchor"
         />
       </span>
-      <span className={"silver-coin-wrap"} data-aos="fade-left" data-aos-delay="200">
+      <span className={"silver-coin-wrap fade-left delay-200"}>
         <img src={topCoinsImages?.silverCoin} className={"silver-coin"} />
       </span>
     </section>

@@ -12,6 +12,7 @@ import { useValidation } from "../../hooks/useValidation";
 
 // styles
 import "./Popup.css";
+import React from "react";
 
 export const Popup = ({
   label,
@@ -37,7 +38,9 @@ export const Popup = ({
   setPopUpData,
   edit,
   description,
-  headerCustomStyles
+  headerCustomStyles,
+  writeEmailMultiplyData,
+  writeEmailEmailsData
 }) => {
   const [emptyFields, setEmptyFields] = useState({});
 
@@ -553,6 +556,62 @@ export const Popup = ({
               }
             />
           </div>
+        )}
+
+        {type === "writeEmail" && (
+            <div className={`addAdmin-container`}>
+              <Input
+                  type={"lable-input-multi-select"}
+                  icon={false}
+                  // selectData={selectData}
+                  multiplyData={writeEmailMultiplyData}
+                  // multiItemClick={multiItemClick}
+                  emptyFieldErr={false}
+                  multiplySelectData={writeEmailEmailsData}
+                  label={"Choose Email"}
+                  // selectHandler={selectHandler}
+                  selectLabel={false}
+                  // active={active}
+                  status={false}
+                  onChangeDropdown={(e) => {
+                    // onChangeDropdown(e);
+                  }}
+                  statusCard={
+                    <HelpText
+                        status={'error'}
+                        title={'your text'}
+                        fontSize={'font-12'}
+                        icon={true}
+                    />
+                  }
+                  title={"your text"}
+                  color={"#FFA726"}
+                  customStyles={{ width: "520px" }}
+              />
+              {addAdminError && (
+                  <HelpText
+                      status={"warning"}
+                      title={addAdminError}
+                      fontSize={"font-12"}
+                      icon={true}
+                  />
+              )}
+
+              <Button
+                  element={"button"}
+                  label={"Save"}
+                  size={"btn-lg"}
+                  type={"btn-primary"}
+                  arrow={"arrow-none"}
+                  customStyles={{ width: "100%", margin: "0" }}
+                  onClick={handleAdminSaveClick}
+                  disabled={
+                      notValidatedList?.length > 0 ||
+                      popUpData?.password !== popUpData?.confirmPassword ||
+                      (addAdminError && true)
+                  }
+              />
+            </div>
         )}
 
         {popUpElement && popUpElement}
