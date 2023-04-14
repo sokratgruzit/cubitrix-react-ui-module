@@ -16,25 +16,27 @@ export const Dashboard = ({
   info,
 }) => {
   useEffect(() => {
-    AOS.init();
+    AOS.init({ container: "#aos-container" });
   }, []);
 
   return (
-    <main className="dashboard-main">
-      <DashboardHeader
-        handleGetStarted={handleGetStarted}
-        handleConnect={handleConnect}
-        account={account}
-        dashboardHeaderImages={allImages?.dashboardHeader}
-      />
-      <TopCoins startTrade={startTrade} topCoinsImages={allImages?.topcoins} />
-      <Meditation meditationImages={allImages?.meditation} info={info} />
-      <StartNow
-        handleConnect={handleConnect}
-        account={account}
-        startNowImages={allImages?.startNow}
-      />
-      <Footer />
-    </main>
+    <div>
+      <main className="dashboard-main" id="aos-container" data-aos-container>
+        <DashboardHeader
+          handleGetStarted={handleGetStarted}
+          handleConnect={handleConnect}
+          account={account}
+          dashboardHeaderImages={allImages?.dashboardHeader}
+        />
+        <TopCoins startTrade={startTrade} topCoinsImages={allImages?.topcoins} />
+        <Meditation meditationImages={allImages?.meditation} info={info} />
+        <StartNow
+          handleConnect={handleConnect}
+          account={account}
+          startNowImages={allImages?.startNow}
+        />
+        <Footer />
+      </main>
+    </div>
   );
 };

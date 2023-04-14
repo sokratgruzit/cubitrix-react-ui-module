@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "../../../Button";
 import "./TopCoins.css";
 
 import { DashboardCoinsLeverageCard, DashboardCoinsBuy } from "../../../../assets/svgs";
+import { useFadeUp } from "../../../../hooks/useFadeUp";
 
 export const TopCoins = ({ startTrade, topCoinsImages }) => {
+  useFadeUp([".fade-up"]);
   // useEffect(() => {
   //   window.addEventListener("mousemove", (e) => {
   //     const { clientX, clientY } = e;
@@ -24,6 +26,40 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
   // function angle(x1, y1, x2, y2) {
   //   return Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
   // }
+
+  // const ref = useRef(null);
+
+  // useEffect(() => {
+  //   let lastY = 0;
+  //   let timeoutId;
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       clearTimeout(timeoutId);
+  //       timeoutId = setTimeout(() => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("is-visible");
+  //         } else if (
+  //           entry.boundingClientRect.bottom > 0 &&
+  //           entry.boundingClientRect.y > lastY
+  //         ) {
+  //           entry.target.classList.remove("is-visible");
+  //         }
+  //         lastY = entry.boundingClientRect.y;
+  //       }, 50);
+  //     },
+  //     { threshold: 0.25 },
+  //   );
+
+  //   if (ref.current) {
+  //     observer.observe(ref.current);
+  //   }
+
+  //   return () => {
+  //     if (ref.current) {
+  //       observer.unobserve(ref.current);
+  //     }
+  //   };
+  // }, []);
 
   return (
     <section className="top-coins-section">
@@ -46,11 +82,12 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
           </span>
           Coins
         </h1>
-        <p className="top-coins-info" data-aos="fade-up" data-aos-delay="20">
+        <p className="top-coins-info fade-up">
           Trade, buy, staking and loan cryptocurrency at Complend
         </p>
       </header>
-      <div className="top-coins-main" data-aos="fade-up" data-aos-delay="20">
+      {/* <div className="top-coins-main" data-aos="fade-up" data-aos-delay="20"> */}
+      <div className="top-coins-main">
         <img src={topCoinsImages?.EthCard} alt="" className="ethCard" />
 
         <img src={topCoinsImages?.BitcoinCard} alt="" className="BitcoinCard" />
@@ -58,7 +95,7 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
         <DashboardCoinsLeverageCard className={"coins-leverage-card"} />
         <DashboardCoinsBuy className={"coins-buy-card"} />
       </div>
-      <span data-aos="fade-up" data-aos-delay="20" className="btn-started-wrap">
+      <span className="btn-started-wrap fade-up">
         <Button
           label={"Start Trade"}
           size={"btn-lg"}
