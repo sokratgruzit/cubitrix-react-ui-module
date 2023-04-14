@@ -19,7 +19,7 @@ export const PopupElement = ({
   handleSubmit,
   submitButtonLabel,
   customStyles,
-  popUpElementSuccess
+  popUpElementSuccess,
 }) => {
   const [emptyFields, setEmptyFields] = useState({});
   const [notValidated, setNotValidated] = useState(false);
@@ -42,7 +42,10 @@ export const PopupElement = ({
   const handleSetFields = useCallback((inputs) => {
     inputs?.map((input) => {
       if (input.required) {
-        setCurrentObject((prev) => ({ ...prev, [input.name]: "" }));
+        setCurrentObject((prev) => ({
+          ...prev,
+          [input.name]: input?.defaultValue || "",
+        }));
       }
     });
   }, []);
@@ -83,6 +86,7 @@ export const PopupElement = ({
   };
 
   const handleInputChangeWithType = (e, params) => {
+    console.log(e);
     const { name, onChange } = params;
     setEmptyFields((prev) => ({ ...prev, [name]: false }));
     let data = {
@@ -97,7 +101,14 @@ export const PopupElement = ({
 
   const notEmptyList = useMemo(
     () =>
-      Object.keys(currentObject)?.filter((key) => !currentObject[key]) ?? [],
+      Object.keys(currentObject)?.filter((key) => {
+        const value = currentObject[key];
+        if (!value) return true; // Falsy value
+        if (Array.isArray(value) && value.length === 0) return true; // Empty array
+        if (typeof value === "object" && Object.keys(value).length === 0)
+          return true; // Empty object
+        return false; // Not empty
+      }) ?? [],
     [currentObject]
   );
 
@@ -112,8 +123,11 @@ export const PopupElement = ({
             <div className='popup-element-input-container' key={index}>
               <Input
                 type={
-                  // params.type === "select" ? "lable-input-select" : "default"
-                  params.type === "select" ? "lable-input-select" : (params.type === "lable-input-multi-select" ? "lable-input-multi-select" : "default")
+                  params.type === "select"
+                    ? "lable-input-select"
+                    : params.directType
+                    ? params.type
+                    : "default"
                 }
                 inputType={params?.inputType}
                 label={params.title}
@@ -125,13 +139,22 @@ export const PopupElement = ({
                     : currentObject[params?.name] || ""
                 }
                 onChange={(e) =>
-                  !params.type
+                  !params.type || params.type === "textarea"
                     ? handleInputChange(e, params)
                     : handleInputChangeWithType(e, params)
                 }
                 emptyFieldErr={params.required && emptyFields[params?.name]}
                 customStyles={{ width: "100%" }}
                 placeholder={params?.placeholder}
+                handleItemRemove={params.handleItemRemove}
+                icon={params?.icon}
+                readOnly={params?.readOnly}
+                rows={params?.rows}
+                cols={params?.cols}
+                disabled={params?.disabled}
+                autoFocus={params?.autoFocus}
+                resize={params?.resize}
+                maxLength={params?.maxLength}
                 statusCard={
                   formErrors[params?.name] &&
                   currentObject[params?.name]?.length > 0 && (
@@ -148,8 +171,11 @@ export const PopupElement = ({
                     />
                   )
                 }
-                selectHandler={(opt) => handleInputChangeWithType(opt, params)}
+                selectHandler={(opt) => {
+                  handleInputChangeWithType(opt, params);
+                }}
                 defaultData={params?.options}
+                onChangeDropdown={params?.onChangeDropdown}
               />
               {params.handleMax && (
                 <p
