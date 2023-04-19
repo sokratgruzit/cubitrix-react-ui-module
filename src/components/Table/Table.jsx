@@ -13,6 +13,7 @@ export const Table = ({
   customStyles,
   tableHeadMore,
   customHeadStyles,
+  customTableMoreStyles,
 }) => {
   const { mobile } = useMobileWidth();
   return (
@@ -41,8 +42,8 @@ export const Table = ({
               );
             })}
           </div>
-          <div className='table-more'></div>
-          <div className='icon-place'></div>
+          <div className='table-more' style={customTableMoreStyles}></div>
+          <div className='icon-place' style={customTableMoreStyles}></div>
           {tableHeadMore}
           {tableData}
         </>
