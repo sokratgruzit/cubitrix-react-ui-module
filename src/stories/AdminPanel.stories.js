@@ -706,7 +706,7 @@ stories.add("AdminPanel", () => {
         }}
         key={index}
       >
-        <div className="table">
+        <div className="table more">
           <div
             className={`td col ${th[0].mobileWidth ? true : false}`}
             style={{ width: `${mobile ? th[0].mobileWidth : th[0].width}%` }}

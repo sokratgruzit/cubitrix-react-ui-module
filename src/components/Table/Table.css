@@ -20,7 +20,9 @@
   padding: 0px 16px;
   justify-content: space-between;
 }
-
+.table.more {
+  width: calc(100% - 35px);
+}
 .table-empty {
   min-height: 342px;
   display: flex;
@@ -249,8 +251,12 @@
 }
 .table-more {
   height: 81px;
-  width: 50px;
+  width: 35px;
   display: none;
+  align-items: center;
+}
+.table.more ~ .table-more {
+  display: flex;
 }
 .td-expand .hide {
   display: none !important;
@@ -384,11 +390,6 @@
   .table,
   .table-head {
     width: calc(100% - 75px);
-  }
-  .table-more {
-    width: 35px;
-    display: flex;
-    align-items: center;
   }
   .table-mobile {
     display: block;
