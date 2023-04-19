@@ -34,3 +34,4 @@ export * from "./components/Referral";
 export * from "./components/Footer";
 export * from "./components/Dashboard";
 export * from "./components/Extensions";
+export * from "./components/Table";
