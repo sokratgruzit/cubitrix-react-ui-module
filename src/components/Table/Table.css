@@ -99,6 +99,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .table-parent:nth-child(odd) {
   background: rgba(255, 255, 255, 0.03);
 }
@@ -315,6 +316,48 @@
 
 .table-coin-none {
   display: none;
+}
+
+.status {
+  height: 30px;
+  border-radius: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+}
+
+.status-green {
+  background: rgba(74, 183, 98, 0.1);
+  border: 1px solid rgba(74, 183, 98, 0.3);
+}
+
+.status-purple {
+  background: rgba(109, 74, 183, 0.1);
+  border: 1px solid rgba(109, 74, 183, 0.3);
+}
+
+.table-img-wrapper {
+  background-color: #12131d;
+  backdrop-filter: blur(30px);
+  border-radius: 19px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-parent-active {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
+}
+
+.table-parent-active:hover {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 @keyframes spin-anim {

@@ -11,6 +11,9 @@ export const Table = ({
   tableEmptyData,
   loading,
   customStyles,
+  tableHeadMore,
+  customHeadStyles,
+  customTableMoreStyles,
 }) => {
   const { mobile } = useMobileWidth();
   return (
@@ -21,7 +24,7 @@ export const Table = ({
         </div>
       ) : tableData ? (
         <>
-          <div className='table-head'>
+          <div className='table-head' style={customHeadStyles}>
             {tableHead.map((item, index) => {
               return (
                 <div
@@ -31,6 +34,7 @@ export const Table = ({
                   }`}
                   style={{
                     width: `${mobile ? item.mobileWidth : item.width}%`,
+                    height: `${item.height}`,
                   }}
                 >
                   {item.name}
@@ -38,8 +42,9 @@ export const Table = ({
               );
             })}
           </div>
-          <div className='table-more'></div>
-          <div className='icon-place'></div>
+          <div className='table-more' style={customTableMoreStyles}></div>
+          <div className='icon-place' style={customTableMoreStyles}></div>
+          {tableHeadMore}
           {tableData}
         </>
       ) : (

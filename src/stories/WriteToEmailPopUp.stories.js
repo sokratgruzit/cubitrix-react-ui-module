@@ -1,101 +1,110 @@
 import { storiesOf } from "@storybook/react";
 import { useState } from "react";
 import { Popup } from "../components/Popup";
-import {PopupElement} from "../components/PopupElement";
+import { PopupElement } from "../components/PopupElement";
 const stories = storiesOf("WriteToEmailPopUp", module);
 
 stories.add("WriteToEmailPopUp", () => {
-    const [active, setActive] = useState(true);
-    const [createCodeObject, setCreateCodeObject] = useState({});
-    const [createCodePopupActive, setCreateCodePopupActive] = useState(true);
-    const [multiplyData, setMultiplyData] = useState(["admin@gmail.com","ad2@gmail.com","admin2@il.com","a@g.com","admin2@gil.com","adm@gmail.com","admin2@gmil.com","ad2@mail.com"]);
-    const [popUpData, setPopUpData] = useState({
-        roles: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
+  const [active, setActive] = useState(true);
+  const [createCodeObject, setCreateCodeObject] = useState({
+    emails: [],
+  });
+
+  let defaultData = [
+    {
+      name: "email1",
+      value: "email1",
+    },
+    {
+      name: "email2",
+      value: "email2",
+    },
+    {
+      name: "email3",
+      value: "email3",
+    },
+    {
+      name: "email4",
+      value: "email4",
+    },
+  ];
+
+  let handleChange = (e) => {
+    if (!createCodeObject.emails.includes(e.target.value)) {
+      return setCreateCodeObject((prev) => ({
+        ...prev,
+        [e.target.name]: [...prev[e.target.name], e.target.value],
+      }));
+    }
+    console.log("email is added already");
+  };
+
+  console.log(createCodeObject);
+
+  const handleItemRemove = (item) => {
+    setCreateCodeObject((prevState) => {
+      const updatedEmails = prevState.emails.filter((email) => email !== item);
+      return { ...prevState, emails: updatedEmails };
     });
-    let defaultData = [
-        {
-            name: "Transaction",
-            value: 'hi'
-        },
-        {
-            name: "Hash",
-            value: 'hi2'
-        },
-    ];
-    let handleChange = (e) => {
-        console.log(e)
-    };
-    const inputs = [
-        {
-            title: "Choose Emails",
-            type:"lable-input-multi-select",
-            name: "referral",
-            placeholder: "Enter Code",
-            required: true,
-            validation: "text",
-            successText: "it is valid",
-            failureText: "its not valid",
-            multiplyData: multiplyData,
-            options: defaultData,
-            onChange: (e) => handleChange(e),
-        },
-    ];
+  };
 
-    const handleAddAdminBtnClick = () => {
-        console.log('hhiii');
-        console.log(popUpData)
-    };
-    const handleCreateCodeSubmit = async () => {
-        // const response = await fetch(
-        //     "http://localhost:4000/api/referral/assign_refferal_to_user",
-        //     {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //             referral: createCodeObject.referral,
-        //             address: "koko123aaa",
-        //         }),
-        //     },
-        // );
-        // const data = await response.json();
+  const inputs = [
+    {
+      title: "Choose Emails",
+      directType: true,
+      type: "lable-input-multi-select",
+      name: "emails",
+      placeholder: "Enter Code",
+      required: true,
+      validation: "text",
+      successText: "it is valid",
+      failureText: "its not valid",
+      multiplyData: createCodeObject.emails,
+      options: defaultData,
+      defaultValue: [],
+      onChange: (e) => handleChange(e),
+      handleItemRemove: (item) => handleItemRemove(item),
+      onChangeDropdown: (value) => console.log(value),
+    },
+    {
+      title: "Choose Emails",
+      directType: true,
+      type: "textarea",
+      name: "textarea",
+      placeholder: "Enter Code",
+      required: true,
+      validation: "text",
+      successText: "it is valid",
+      failureText: "its not valid",
+      onChange: (e) =>
+        setCreateCodeObject({
+          ...createCodeObject,
+          [e.target.name]: e.target.value,
+        }),
+    },
+  ];
 
-    };
-
-    return (
-        <div>
-            {active && (
-                // <Popup
-                //     type={"writeEmail"}
-                //     label={"Send Email"}
-                //     writeEmailMultiplyData={multiplyData}
-                //     witeEmailEmailsData={defaultData}
-                //     // addAdminError={"cant add admin"}
-                //     handlePopUpClose={() => setActive(false)}
-                // />
-                <Popup
-                popUpElement={
-                <PopupElement
-                    inputs={inputs}
-                    currentObject={createCodeObject}
-                    setCurrentObject={setCreateCodeObject}
-                    handleSubmit={handleCreateCodeSubmit}
-                    submitButtonLabel={"Enter a Code"}
-                    customStyles={{ gridTemplateColumns: "100%" }}
-                    multiplyData={multiplyData}
-                    // popUpElementError={"there is some error"}
-                    />
-                }
-                label={"Create Referral Code"}
-                handlePopUpClose={() => setCreateCodePopupActive(false)}
-                customStyles={{ width: "623px" }}
-                headerCustomStyles={{ background: "#272C57" }}
-                />
-            )}
-        </div>
-    );
+  return (
+    <div>
+      {active && (
+        <Popup
+          popUpElement={
+            <PopupElement
+              inputs={inputs}
+              currentObject={createCodeObject}
+              setCurrentObject={setCreateCodeObject}
+              handleSubmit={() => console.log("submit")}
+              submitButtonLabel={"Enter a Code"}
+              customStyles={{ gridTemplateColumns: "100%" }}
+              // popUpElementError={"there is some error"}
+            />
+          }
+          label={"Create Referral Code"}
+          handlePopUpClose={() => setActive(true)}
+          customStyles={{ width: "623px" }}
+          headerCustomStyles={{ background: "#272C57" }}
+        />
+      )}
+    </div>
+  );
 });
