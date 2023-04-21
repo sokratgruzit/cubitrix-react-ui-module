@@ -135,7 +135,7 @@ export const PopupElement = ({
                 multiplyData={params.multiplyData}
                 value={
                   params.type === "select"
-                    ? "Any"
+                    ? currentObject[params?.name] || "Any"
                     : currentObject[params?.name] || ""
                 }
                 onChange={(e) =>
