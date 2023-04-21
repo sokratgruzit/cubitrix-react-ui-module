@@ -1,10 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "../../../Button";
 import "./TopCoins.css";
 
 import { DashboardCoinsLeverageCard, DashboardCoinsBuy } from "../../../../assets/svgs";
+import { useFade } from "../../../../hooks/useFade";
 
 export const TopCoins = ({ startTrade, topCoinsImages }) => {
+  useFade("up", [".fade-up"]);
+  useFade("right", [".fade-right"]);
+  useFade("left", [".fade-left"]);
+
   // useEffect(() => {
   //   window.addEventListener("mousemove", (e) => {
   //     const { clientX, clientY } = e;
@@ -28,7 +33,7 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
   return (
     <section className="top-coins-section">
       <header className="top-coins-header">
-        <h1 className="top-coins-title" data-aos="fade-up" data-aos-delay="20">
+        <h1 className="top-coins-title fade-up">
           Top
           <span>
             <svg
@@ -46,11 +51,11 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
           </span>
           Coins
         </h1>
-        <p className="top-coins-info" data-aos="fade-up" data-aos-delay="20">
+        <p className="top-coins-info fade-up">
           Trade, buy, staking and loan cryptocurrency at Complend
         </p>
       </header>
-      <div className="top-coins-main" data-aos="fade-up" data-aos-delay="20">
+      <div className="top-coins-main fade-up">
         <img src={topCoinsImages?.EthCard} alt="" className="ethCard" />
 
         <img src={topCoinsImages?.BitcoinCard} alt="" className="BitcoinCard" />
@@ -58,7 +63,7 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
         <DashboardCoinsLeverageCard className={"coins-leverage-card"} />
         <DashboardCoinsBuy className={"coins-buy-card"} />
       </div>
-      <span data-aos="fade-up" data-aos-delay="20" className="btn-started-wrap">
+      <span className="btn-started-wrap fade-up">
         <Button
           label={"Start Trade"}
           size={"btn-lg"}
@@ -70,26 +75,19 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
         />
       </span>
       <div className="bg-gradient"></div>
-      <span className="top-coins-coin-wrap" data-aos="fade-right" data-aos-delay="50">
+      <span className="top-coins-coin-wrap fade-right delay-50">
         <img src={topCoinsImages?.TopCoinsIcon} alt="" className="top-coins-coin" />
       </span>
-      <span
-        className={"dashboard-header-ball-img-wrap"}
-        data-aos="fade-left"
-        data-aos-delay="1200"
-      >
+      <span className={"dashboard-header-ball-img-wrap fade-left delay-1200"}>
         <img
           src={topCoinsImages?.ball}
           className={"dashboard-header-ball-img"}
           id="anchor"
         />
       </span>
-      <img
-        src={topCoinsImages?.silverCoin}
-        className={"silver-coin"}
-        data-aos="fade-left"
-        data-aos-delay="200"
-      />
+      <span className={"silver-coin-wrap fade-left delay-200"}>
+        <img src={topCoinsImages?.silverCoin} className={"silver-coin"} />
+      </span>
     </section>
   );
 };

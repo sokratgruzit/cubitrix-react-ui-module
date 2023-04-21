@@ -91,6 +91,9 @@
   z-index: 3;
 }
 
+.top-coins-coin {
+  animation: float 3s infinite 1s;
+}
 .top-coins-coin-wrap {
   position: absolute;
   left: 0;
@@ -131,19 +134,23 @@
   z-index: 13;
 }
 .silver-coin {
-  position: absolute;
   max-width: 132px;
   max-height: 139px;
   width: 100%;
   height: 100%;
+  animation: float 3s infinite 1s;
+}
+
+.silver-coin-wrap {
+  position: absolute;
   right: 0;
   z-index: 1;
-  top: 2220px;
+  top: 2160px;
   margin-right: 53px;
 }
 
 @media only screen and (max-width: 1328px) {
-  .silver-coin {
+  .silver-coin-wrap {
     top: 2100px;
   }
 }
@@ -247,18 +254,25 @@
     top: 1100px;
   }
   .silver-coin {
-    top: 2250px;
     width: 100px;
     height: 100px;
+  }
+  .silver-coin-wrap {
+    top: 2180px;
     margin-right: 20px;
   }
 }
 
 @media only screen and (max-width: 481px) {
   .silver-coin {
-    top: 2210px;
     width: 80px;
     height: 80px;
+  }
+  .silver-coin-wrap {
+    top: 2150px;
+  }
+  .top-coins-coin-wrap {
+    top: 1050px;
   }
 }
 
@@ -277,9 +291,11 @@
 
 @media only screen and (max-width: 349px) {
   .silver-coin {
-    top: 2290px;
     width: 60px;
     height: 60px;
+  }
+  .silver-coin-wrap {
+    top: 2215px;
   }
 }
 

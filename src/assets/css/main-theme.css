@@ -199,3 +199,61 @@ button {
     padding-top: 90px;
   }
 }
+
+.fade-up {
+  opacity: 0;
+  transform: translate3d(0, 100px, 0);
+  transition-property: opacity, transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translate3d(-99%, 0, 0);
+  transition-property: opacity, transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+
+.fade-left {
+  opacity: 0;
+  transform: translate3d(99%, 0, 0);
+  transition-property: opacity, transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+}
+.fade-right.is-visible {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-left.is-visible {
+  opacity: 1;
+  transform: translateZ(0);
+}
+
+.delay-20 {
+  transition-delay: 20ms;
+}
+
+.delay-50 {
+  transition-delay: 50ms;
+}
+
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-1200 {
+  transition-delay: 1200ms;
+}
