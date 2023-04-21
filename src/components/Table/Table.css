@@ -344,6 +344,11 @@
   border: 1px solid rgba(109, 74, 183, 0.3);
 }
 
+.status-red {
+  background: rgba(183, 74, 74, 0.1);
+  border: 1px solid rgb(239, 83, 80, 0.3);
+}
+
 .table-img-wrapper {
   background-color: #12131d;
   backdrop-filter: blur(30px);
