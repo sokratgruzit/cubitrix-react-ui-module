@@ -14,6 +14,8 @@ stories.add("MakeOfferPopUp", () => {
     setMakeAnOfferObject((prev) => ({ ...prev, [name]: value }));
   };
 
+  console.log("makeAnOfferObject", makeAnOfferObject);
+
   const inputs = [
     {
       title: "Name",
@@ -31,6 +33,7 @@ stories.add("MakeOfferPopUp", () => {
       name: "last_nameaaa2",
       required: true,
       type: "select",
+      defaultValue: "option1",
       options: [
         { name: "option1", value: "option1" },
         { name: "option2", value: "option2" },

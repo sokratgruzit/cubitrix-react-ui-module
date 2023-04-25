@@ -98,14 +98,29 @@ export const PopupElement = ({
     onChange(data);
   };
 
+  // const notEmptyList = useMemo(
+  //   () =>
+  //     Object.keys(currentObject)?.filter((key) => {
+  //       const value = currentObject[key];
+  //       if (!value) return true; // Falsy value
+  //       if (!value && value !== false)
+  //         if (Array.isArray(value) && value.length === 0) return true; // Empty array
+  //       if (typeof value === "object" && Object.keys(value).length === 0) return true; // Empty object
+  //       return false; // Not empty
+  //     }) ?? [],
+  //   [currentObject],
+  // );
+
   const notEmptyList = useMemo(
     () =>
       Object.keys(currentObject)?.filter((key) => {
-        const value = currentObject[key];
-        if (!value) return true; // Falsy value
-        if (!value && value !== false)
+        const value = editUserData[key];
+        const test = inputs?.find((input) => input?.name === key);
+        if (test?.required) {
+          if (!value && value !== false) return true; // Falsy value
           if (Array.isArray(value) && value.length === 0) return true; // Empty array
-        if (typeof value === "object" && Object.keys(value).length === 0) return true; // Empty object
+          if (typeof value === "object" && Object.keys(value).length === 0) return true; // Empty object
+        }
         return false; // Not empty
       }) ?? [],
     [currentObject],
