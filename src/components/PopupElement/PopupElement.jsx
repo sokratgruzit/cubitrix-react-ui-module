@@ -103,7 +103,8 @@ export const PopupElement = ({
       Object.keys(currentObject)?.filter((key) => {
         const value = currentObject[key];
         if (!value) return true; // Falsy value
-        if (Array.isArray(value) && value.length === 0) return true; // Empty array
+        if (!value && value !== false)
+          if (Array.isArray(value) && value.length === 0) return true; // Empty array
         if (typeof value === "object" && Object.keys(value).length === 0) return true; // Empty object
         return false; // Not empty
       }) ?? [],
