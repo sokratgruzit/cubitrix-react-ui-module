@@ -114,7 +114,7 @@ export const PopupElement = ({
   const notEmptyList = useMemo(
     () =>
       Object.keys(currentObject)?.filter((key) => {
-        const value = editUserData[key];
+        const value = currentObject[key];
         const test = inputs?.find((input) => input?.name === key);
         if (test?.required) {
           if (!value && value !== false) return true; // Falsy value
