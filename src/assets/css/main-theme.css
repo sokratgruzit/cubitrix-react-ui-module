@@ -1,4 +1,4 @@
-/*@font-face {*/
+/* @font-face {*/
 /*  font-family: "UberMove-Medium";*/
 /*  src: url("../fonts/UberMove/UberMove-Medium.eot");*/
 /*  src: url("../fonts/UberMove/UberMove-Medium.eot?#iefix") format("embedded-opentype"),*/
@@ -19,16 +19,16 @@
 /*  url("../fonts/UberMove/UberMove-Regular.woff2") format("woff2");*/
 /*  font-weight: normal;*/
 /*  font-style: normal;*/
-/*}*/
-/** {*/
-/*  font-family: "UberMove-Medium";*/
-/*  font-size: 14px;*/
-/*  !*line-height: 24px;*!*/
-/*  color: rgba(255, 255, 255, 1);*/
-/*  text-decoration: none;*/
-/*  outline-color: none;*/
-/*  box-sizing: border-box;*/
-/*}*/
+/* }*/
+* {
+  font-family: "UberMove-Medium";
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+  outline-color: none;
+  box-sizing: border-box;
+}
 
 html {
   overflow-x: hidden;
