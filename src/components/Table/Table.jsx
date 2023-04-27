@@ -24,24 +24,26 @@ export const Table = ({
         </div>
       ) : tableData ? (
         <>
-          <div className='table-head' style={customHeadStyles}>
-            {tableHead.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className={`th ${item.mobileWidth ? true : false} ${
-                    item?.className
-                  }`}
-                  style={{
-                    width: `${mobile ? item.mobileWidth : item.width}%`,
-                    height: `${item.height}`,
-                  }}
-                >
-                  {item.name}
-                </div>
-              );
-            })}
-          </div>
+          {tableHead && (
+            <div className='table-head' style={customHeadStyles}>
+              {tableHead?.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`th ${item.mobileWidth ? true : false} ${
+                      item?.className
+                    }`}
+                    style={{
+                      width: `${mobile ? item.mobileWidth : item.width}%`,
+                      height: `${item.height}`,
+                    }}
+                  >
+                    {item.name}
+                  </div>
+                );
+              })}
+            </div>
+          )}
           <div className='table-more' style={customTableMoreStyles}></div>
           <div className='icon-place' style={customTableMoreStyles}></div>
           {tableHeadMore}
