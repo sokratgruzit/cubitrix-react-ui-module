@@ -54,12 +54,12 @@ export const Table = ({
       ) : (
         <div className='table-empty'>
           {tableEmpty ? (
-            <div>
+            <>
               <p className='font-14'>{tableEmptyData?.label}</p>
               {tableEmptyData?.button}
-            </div>
+            </>
           ) : (
-            <div>
+            <>
               {tableEmptyData?.icon ? (
                 tableEmptyData?.icon
               ) : (
@@ -77,7 +77,7 @@ export const Table = ({
                   View All Transactions
                 </p>
               )}
-            </div>
+            </>
           )}
         </div>
       )}
