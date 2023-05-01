@@ -65,7 +65,10 @@ export const Table = ({
               ) : (
                 <NoApplicationsIcon />
               )}
-              <p className='font-14'>
+              <p
+                className='font-14'
+                style={{ color: "rgba(255, 255, 255, 0.6)" }}
+              >
                 {tableEmptyData?.label ||
                   "You have no pending KYC applications"}
               </p>
