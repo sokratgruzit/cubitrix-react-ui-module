@@ -14,6 +14,7 @@ export const Table = ({
   tableHeadMore,
   customHeadStyles,
   customTableMoreStyles,
+  customThStyles,
 }) => {
   const { mobile } = useMobileWidth();
   return (
@@ -36,6 +37,7 @@ export const Table = ({
                     style={{
                       width: `${mobile ? item.mobileWidth : item.width}%`,
                       height: `${item.height}`,
+                      ...customThStyles,
                     }}
                   >
                     {item.name}
@@ -52,18 +54,21 @@ export const Table = ({
       ) : (
         <div className='table-empty'>
           {tableEmpty ? (
-            <div>
+            <>
               <p className='font-14'>{tableEmptyData?.label}</p>
               {tableEmptyData?.button}
-            </div>
+            </>
           ) : (
-            <div>
+            <>
               {tableEmptyData?.icon ? (
                 tableEmptyData?.icon
               ) : (
                 <NoApplicationsIcon />
               )}
-              <p className='font-14'>
+              <p
+                className='font-14'
+                style={{ color: "rgba(255, 255, 255, 0.6)" }}
+              >
                 {tableEmptyData?.label ||
                   "You have no pending KYC applications"}
               </p>
@@ -75,7 +80,7 @@ export const Table = ({
                   View All Transactions
                 </p>
               )}
-            </div>
+            </>
           )}
         </div>
       )}

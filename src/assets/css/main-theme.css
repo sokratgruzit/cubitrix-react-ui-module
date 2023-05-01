@@ -20,8 +20,22 @@
 /*  font-weight: normal;*/
 /*  font-style: normal;*/
 /* }*/
+
+@font-face {
+  font-family: "Lack-Regular";
+  src: url("../fonts/LackRegular/Lack-Regular.eot");
+  src: url("../fonts/LackRegular/Lack-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/LackRegular/Lack-Regular.svg#Lack-Regular") format("svg"),
+    url("../fonts/LackRegular/Lack-Regular.ttf") format("truetype"),
+    url("../fonts/LackRegular/Lack-Regular.woff") format("woff"),
+    url("../fonts/LackRegular/Lack-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
-  font-family: "UberMove-Medium";
+  font-family: "Lack-Regular";
   font-size: 14px;
   line-height: 24px;
   color: rgba(255, 255, 255, 1);
