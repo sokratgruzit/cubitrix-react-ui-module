@@ -14,6 +14,7 @@ export const Table = ({
   tableHeadMore,
   customHeadStyles,
   customTableMoreStyles,
+  customThStyles,
 }) => {
   const { mobile } = useMobileWidth();
   return (
@@ -36,6 +37,7 @@ export const Table = ({
                     style={{
                       width: `${mobile ? item.mobileWidth : item.width}%`,
                       height: `${item.height}`,
+                      ...customThStyles,
                     }}
                   >
                     {item.name}
