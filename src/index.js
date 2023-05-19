@@ -36,3 +36,4 @@ export * from "./components/Dashboard";
 export * from "./components/Extensions";
 export * from "./components/Table";
 export * from "./components/TableElement";
+export * from "./components/TopUp";

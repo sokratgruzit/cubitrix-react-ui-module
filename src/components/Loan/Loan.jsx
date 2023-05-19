@@ -12,7 +12,7 @@ import LoanStatus from "./components/LoanStatus/LoanStatus";
 import { Popup } from "../Popup";
 import { PopupElement } from "../PopupElement";
 import { Footer } from "../Footer";
-import LoanRow from "./components/LoanRow./LoanRow";
+import LoanRow from "./components/LoanRow/LoanRow";
 
 export const Loan = ({
   allLoanOffers,
