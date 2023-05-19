@@ -12,6 +12,7 @@ export const TopUp = ({
   handlePaymentConfirm,
   receivePaymentAddress,
   methods = [],
+  qrcode,
 }) => {
   const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
@@ -140,6 +141,7 @@ export const TopUp = ({
               walletAddress={"0x123"}
               receivePaymentAddress={receivePaymentAddress}
               handlePaymentConfirm={handlePaymentConfirm}
+              qrcode={qrcode}
             />
           }
           label={"Confirm Payment"}
