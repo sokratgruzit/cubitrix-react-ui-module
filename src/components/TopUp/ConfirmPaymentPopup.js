@@ -11,6 +11,8 @@ const ConfirmPaymentPopup = ({
   receivePaymentAddress,
   handlePaymentConfirm,
   qrcode,
+  selectedMethod,
+  handlePopUpClose,
 }) => {
   const [userWalletAddress, setUserWalletAddress] = useState("");
   const [timeLeft, setTimeLeft] = useState(10 * 60);
@@ -59,7 +61,7 @@ const ConfirmPaymentPopup = ({
                 type={"default"}
                 value={userWalletAddress}
                 inputType={"text"}
-                placeholder="Enter Email"
+                placeholder="Insert your payment address *"
                 onChange={(e) => setUserWalletAddress(e.target.value)}
                 customStyles={{ width: "100%" }}
                 editable={true}
@@ -78,7 +80,10 @@ const ConfirmPaymentPopup = ({
                   width: "100%",
                   margin: "0",
                 }}
-                onClick={() => handlePaymentConfirm(userWalletAddress, orderNo)}
+                onClick={() =>
+                  // handlePaymentConfirsetSelectedPaymentMethodm(userWalletAddress, orderNo)
+                  handlePaymentConfirm(userWalletAddress, selectedMethod)
+                }
               />
               <Button
                 element="button"
@@ -89,6 +94,7 @@ const ConfirmPaymentPopup = ({
                   width: "100%",
                   margin: "0",
                 }}
+                onClick={() => handlePopUpClose()}
               />
             </div>
             <h3>I'll provide wallet address later</h3>

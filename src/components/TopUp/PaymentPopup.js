@@ -4,18 +4,21 @@ import "./PaymentPopup.css";
 
 const PaymentPopup = ({
   setOpenConfirmPaymentPopup,
-  handlePaymentProcess,
   setOpenPopup,
   selectedMethod,
+  setSelectedPaymentMethod,
+  selectedPaymentMethod,
+  handleCoindbasePayment,
 }) => {
-  // const [selectedMethod, setSelectedMethod] = useState(null);
   const [agreed, setAgreed] = useState(false);
+  const paymentMethods = [
+    { id: 1, title: "Pay via Crypto" },
+    { id: 2, title: "Pay with CoinBase" },
+  ];
 
-  const paymentMethods = [{ id: 1, title: "CryptoManual" }];
-
-  // const handleMethodSelect = (id) => {
-  //   setSelectedMethod(id);
-  // };
+  const handleMethodSelect = (id) => {
+    setSelectedPaymentMethod(id);
+  };
 
   const handleAgreement = (e) => {
     setAgreed(e.target.checked);
@@ -32,37 +35,42 @@ const PaymentPopup = ({
           You can choose any of the following payment methods to make your payment. The
           token balance will appear in your account after successful payment.
         </p>
-        {/* <h3>Select payment method:</h3>
-        {paymentMethods.map((method) => (
-          <div
-            key={method.id}
-            className={`payment_popup_methodBox ${
-              selectedMethod === method.id ? "payment_popup_selected" : ""
-            }`}
-            onClick={() => handleMethodSelect(method.id)}
-          >
-            {method.title}
-            <div
-              className={`payment_popup_check-icon ${
-                selectedMethod === method.id ? "active-check-proc" : ""
-              }`}
-            >
-              <svg
-                width="11"
-                height="9"
-                viewBox="0 0 11 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+        <h3>Select payment method:</h3>
+        <div className="payment_methods_container">
+          {paymentMethods.map((method) => {
+            if (selectedMethod === "USDT" && method.id === 2) return null;
+            return (
+              <div
+                key={method.id}
+                className={`payment_popup_methodBox ${
+                  selectedPaymentMethod === method.id ? "payment_popup_selected" : ""
+                }`}
+                onClick={() => handleMethodSelect(method.id)}
               >
-                <path
-                  d="M0.800049 4.39999L3.80005 7.39999L9.80005 1.39999"
-                  stroke="white"
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </div>
-          </div>
-        ))} */}
+                {method.title}
+                <div
+                  className={`payment-list__check-icon ${
+                    selectedPaymentMethod === method.id ? "active-check" : ""
+                  }`}
+                >
+                  <svg
+                    width="11"
+                    height="9"
+                    viewBox="0 0 11 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.800049 4.39999L3.80005 7.39999L9.80005 1.39999"
+                      stroke="white"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+            );
+          })}
+        </div>
         <p className="payment_popup_grayText">
           * Payment gateway may charge you a processing fee.
         </p>
@@ -89,12 +97,16 @@ const PaymentPopup = ({
             margin: "0",
           }}
           onClick={() => {
-            handlePaymentProcess(selectedMethod, agreed);
+            if (selectedMethod === "Coinbase" && selectedPaymentMethod === 2) {
+              handleCoindbasePayment();
+              alert("Please select another payment method");
+              return;
+            }
             setOpenConfirmPaymentPopup(true);
             setOpenPopup(false);
           }}
+          disabled={!agreed}
         />
-
         <p className="payment_popup_grayText">
           Our payment address will appear or redirect you for payment after the order is
           placed.

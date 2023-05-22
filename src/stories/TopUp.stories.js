@@ -21,11 +21,11 @@ stories.add("ToolTip", () => {
     <div style={{ display: "flex", gap: "30px" }}>
       <TopUp
         receivePaymentAddress={"0x420"}
-        handlePaymentConfirm={() => console.log("payment confirm")}
-        handlePaymentProcess={(selected, agreed) =>
-          console.log("payment process", selected, agreed)
+        handlePaymentConfirm={(userAddress, selectedMethod) =>
+          console.log("payment confirm", userAddress, selectedMethod)
         }
         methods={methods}
+        handleCoindbasePayment={() => console.log("coinbase payment send request")}
       />
     </div>
   );

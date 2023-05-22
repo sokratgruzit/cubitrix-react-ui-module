@@ -8,17 +8,18 @@ import { Input } from "../Input";
 
 export const TopUp = ({
   address,
-  handlePaymentProcess,
   handlePaymentConfirm,
   receivePaymentAddress,
   methods = [],
   qrcode,
+  handleCoindbasePayment,
 }) => {
   const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
   const [transactionFee, setTransactionFee] = useState(0.0005475);
   const [paymentAmount, setPaymentAmount] = useState(0.0003311209044);
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
   const [tokenAmount, setTokenAmount] = useState(0);
   const [openPopup, setOpenPopup] = useState(false);
   const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
@@ -35,7 +36,6 @@ export const TopUp = ({
   };
 
   const handlePurchase = () => {
-    console.log(selectedMethod);
     setOpenPopup(true);
   };
 
@@ -125,9 +125,11 @@ export const TopUp = ({
           popUpElement={
             <PaymentPopup
               setOpenConfirmPaymentPopup={setOpenConfirmPaymentPopup}
-              handlePaymentProcess={handlePaymentProcess}
               setOpenPopup={setOpenPopup}
               selectedMethod={selectedMethod}
+              selectedPaymentMethod={selectedPaymentMethod}
+              setSelectedPaymentMethod={setSelectedPaymentMethod}
+              handleCoindbasePayment={handleCoindbasePayment}
             />
           }
           label={"Payment Process"}
@@ -142,6 +144,8 @@ export const TopUp = ({
               receivePaymentAddress={receivePaymentAddress}
               handlePaymentConfirm={handlePaymentConfirm}
               qrcode={qrcode}
+              selectedMethod={selectedMethod}
+              handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
             />
           }
           label={"Confirm Payment"}
