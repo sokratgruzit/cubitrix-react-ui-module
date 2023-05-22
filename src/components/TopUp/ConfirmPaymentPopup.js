@@ -13,6 +13,7 @@ const ConfirmPaymentPopup = ({
   qrcode,
   selectedMethod,
   handlePopUpClose,
+  tokenAmount,
 }) => {
   const [userWalletAddress, setUserWalletAddress] = useState("");
   const [timeLeft, setTimeLeft] = useState(10 * 60);
@@ -82,7 +83,7 @@ const ConfirmPaymentPopup = ({
                 }}
                 onClick={() =>
                   // handlePaymentConfirsetSelectedPaymentMethodm(userWalletAddress, orderNo)
-                  handlePaymentConfirm(userWalletAddress, selectedMethod)
+                  handlePaymentConfirm(userWalletAddress, selectedMethod, tokenAmount)
                 }
               />
               <Button

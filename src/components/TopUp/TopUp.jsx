@@ -32,7 +32,7 @@ export const TopUp = ({
   };
 
   const handleTokenAmountChange = (event) => {
-    setTokenAmount(event.target.value);
+    setTokenAmount(Number(event.target.value));
   };
 
   const handlePurchase = () => {
@@ -146,6 +146,7 @@ export const TopUp = ({
               qrcode={qrcode}
               selectedMethod={selectedMethod}
               handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
+              tokenAmount={tokenAmount}
             />
           }
           label={"Confirm Payment"}

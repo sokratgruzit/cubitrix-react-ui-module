@@ -99,7 +99,6 @@ const PaymentPopup = ({
           onClick={() => {
             if (selectedMethod === "Coinbase" && selectedPaymentMethod === 2) {
               handleCoindbasePayment();
-              alert("Please select another payment method");
               return;
             }
             setOpenConfirmPaymentPopup(true);
