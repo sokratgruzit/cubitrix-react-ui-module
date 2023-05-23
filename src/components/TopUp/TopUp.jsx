@@ -5,6 +5,7 @@ import { Button } from "../Button";
 import PaymentPopup from "./PaymentPopup";
 import ConfirmPaymentPopup from "./ConfirmPaymentPopup";
 import { Input } from "../Input";
+import { HelpText } from "../HelpText";
 
 export const TopUp = ({
   address,
@@ -15,6 +16,7 @@ export const TopUp = ({
   handleCoindbasePayment,
   tranasctionFee,
   paymentAmount,
+  paymentTypes,
 }) => {
   const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
@@ -35,6 +37,7 @@ export const TopUp = ({
   const handleTokenAmountChange = (event) => {
     const value = event.target.value;
     if (!isNaN(value) && value >= 0) {
+      if (value > 0) setTokenError(null);
       setTokenAmount(Number(value));
     }
   };
@@ -105,7 +108,7 @@ export const TopUp = ({
         customStyles={{ width: "100%" }}
         editable={true}
       />
-      {tokenError && <p className="error">{tokenError}</p>}
+      {tokenError && <HelpText status={"error"} title={tokenError} color={"#EF5350"} />}
       <div className="topup_resultContainer">
         <div className="topup_resultLeft">
           <h3>Total CMCX</h3>
@@ -138,6 +141,7 @@ export const TopUp = ({
               setSelectedPaymentMethod={setSelectedPaymentMethod}
               handleCoindbasePayment={handleCoindbasePayment}
               tokenAmount={tokenAmount}
+              paymentTypes={paymentTypes}
             />
           }
           label={"Payment Process"}

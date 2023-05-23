@@ -10,12 +10,9 @@ const PaymentPopup = ({
   selectedPaymentMethod,
   handleCoindbasePayment,
   tokenAmount,
+  paymentTypes,
 }) => {
   const [agreed, setAgreed] = useState(false);
-  const paymentMethods = [
-    { id: 1, title: "Pay via Crypto" },
-    { id: 2, title: "Pay with CoinBase" },
-  ];
 
   const handleMethodSelect = (id) => {
     setSelectedPaymentMethod(id);
@@ -38,7 +35,7 @@ const PaymentPopup = ({
         </p>
         <h3>Select payment method:</h3>
         <div className="payment_methods_container">
-          {paymentMethods.map((method) => {
+          {paymentTypes.map((method) => {
             if (selectedMethod === "USDT" && method.id === 2) return null;
             return (
               <div
@@ -48,7 +45,8 @@ const PaymentPopup = ({
                 }`}
                 onClick={() => handleMethodSelect(method.id)}
               >
-                {method.title}
+                <img src={method.logo} className="topup_method_logo" alt="" />
+                <p className="payment_popup_grayText">{method.title}</p>
                 <div
                   className={`payment-list__check-icon ${
                     selectedPaymentMethod === method.id ? "active-check" : ""

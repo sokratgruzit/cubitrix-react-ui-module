@@ -18,6 +18,19 @@ stories.add("ToolTip", () => {
     },
   ];
 
+  const paymentTypes = [
+    {
+      id: 1,
+      title: "Pay via Crypto",
+      logo: "https://shopgeorgia.ge/assets/images/pay-manual.png",
+    },
+    {
+      id: 2,
+      title: "Pay with CoinBase",
+      logo: "https://shopgeorgia.ge/assets/images/contribute/eth.png",
+    },
+  ];
+
   return (
     <div style={{ display: "flex", gap: "30px" }}>
       <TopUp
@@ -29,6 +42,7 @@ stories.add("ToolTip", () => {
         handleCoindbasePayment={(e) => console.log("coinbase payment send request", e)}
         tranasctionFee={`1 USDT`}
         paymentAmount={`2.192810859999999806 USDT`}
+        paymentTypes={paymentTypes}
       />
     </div>
   );
