@@ -9,6 +9,7 @@ const PaymentPopup = ({
   setSelectedPaymentMethod,
   selectedPaymentMethod,
   handleCoindbasePayment,
+  tokenAmount,
 }) => {
   const [agreed, setAgreed] = useState(false);
   const paymentMethods = [
@@ -98,7 +99,7 @@ const PaymentPopup = ({
           }}
           onClick={() => {
             if (selectedMethod === "Coinbase" && selectedPaymentMethod === 2) {
-              handleCoindbasePayment();
+              handleCoindbasePayment(tokenAmount);
               return;
             }
             setOpenConfirmPaymentPopup(true);

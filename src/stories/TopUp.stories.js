@@ -17,6 +17,7 @@ stories.add("ToolTip", () => {
       logo: "https://shopgeorgia.ge/assets/images/contribute/eth.png",
     },
   ];
+
   return (
     <div style={{ display: "flex", gap: "30px" }}>
       <TopUp
@@ -25,7 +26,9 @@ stories.add("ToolTip", () => {
           console.log("payment confirm", userAddress, selectedMethod, amount)
         }
         methods={methods}
-        handleCoindbasePayment={() => console.log("coinbase payment send request")}
+        handleCoindbasePayment={(e) => console.log("coinbase payment send request", e)}
+        tranasctionFee={`1 USDT`}
+        paymentAmount={`2.192810859999999806 USDT`}
       />
     </div>
   );

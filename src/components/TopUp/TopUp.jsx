@@ -13,11 +13,11 @@ export const TopUp = ({
   methods = [],
   qrcode,
   handleCoindbasePayment,
+  tranasctionFee,
+  paymentAmount,
 }) => {
   const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
-  const [transactionFee, setTransactionFee] = useState(0.0005475);
-  const [paymentAmount, setPaymentAmount] = useState(0.0003311209044);
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
   const [tokenAmount, setTokenAmount] = useState(0);
@@ -85,11 +85,8 @@ export const TopUp = ({
         tokens you will receive. The calculator below helps to convert the required
         quantity of tokens into the amount of your selected currency.
       </p>
-      <p className="topup_info">Transaction Fee: {transactionFee}ETH</p>
-      <p className="topup_info">Payment Amount: {paymentAmount}ETH</p>
-      {/* <input className="input" value={tokenAmount} onChange={handleTokenAmountChange} /> */}
-      {/* <input className="input" */}
-
+      <p className="topup_info">Transaction Fee: {tranasctionFee}</p>
+      <p className="topup_info">Payment Amount: {paymentAmount}</p>
       <Input
         type={"default"}
         value={tokenAmount}
@@ -130,6 +127,7 @@ export const TopUp = ({
               selectedPaymentMethod={selectedPaymentMethod}
               setSelectedPaymentMethod={setSelectedPaymentMethod}
               handleCoindbasePayment={handleCoindbasePayment}
+              tokenAmount={tokenAmount}
             />
           }
           label={"Payment Process"}
