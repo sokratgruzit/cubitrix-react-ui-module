@@ -21,6 +21,7 @@ export const TopUp = ({
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
   const [tokenAmount, setTokenAmount] = useState(0);
+  const [tokenError, setTokenError] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
   const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
 
@@ -32,10 +33,18 @@ export const TopUp = ({
   };
 
   const handleTokenAmountChange = (event) => {
-    setTokenAmount(Number(event.target.value));
+    const value = event.target.value;
+    if (!isNaN(value) && value >= 0) {
+      setTokenAmount(Number(value));
+    }
   };
 
   const handlePurchase = () => {
+    if (tokenAmount <= 0) {
+      setTokenError("Amount has to be greater than 0");
+      return;
+    }
+    setTokenError(null);
     setOpenPopup(true);
   };
 
@@ -96,6 +105,7 @@ export const TopUp = ({
         customStyles={{ width: "100%" }}
         editable={true}
       />
+      {tokenError && <p className="error">{tokenError}</p>}
       <div className="topup_resultContainer">
         <div className="topup_resultLeft">
           <h3>Total CMCX</h3>
