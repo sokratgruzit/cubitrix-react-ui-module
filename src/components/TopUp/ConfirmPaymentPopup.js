@@ -14,17 +14,26 @@ const ConfirmPaymentPopup = ({
   selectedMethod,
   handlePopUpClose,
   tokenAmount,
+  setOpenConfirmPaymentPopup,
 }) => {
   const [userWalletAddress, setUserWalletAddress] = useState("");
   const [timeLeft, setTimeLeft] = useState(10 * 60);
+  const [startTime, setStartTime] = useState(null);
 
   useEffect(() => {
+    setStartTime(new Date());
     const timer = setInterval(() => {
       setTimeLeft((timeLeft) => timeLeft - 1);
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setOpenConfirmPaymentPopup(false);
+    }
+  }, [timeLeft, setOpenConfirmPaymentPopup]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(walletAddress);
@@ -67,7 +76,7 @@ const ConfirmPaymentPopup = ({
                 customStyles={{ width: "100%" }}
                 editable={true}
               />
-              <p>
+              <p style={{ width: "35px" }}>
                 {Math.floor(timeLeft / 60)}:{timeLeft % 60}
               </p>
             </div>
@@ -82,8 +91,12 @@ const ConfirmPaymentPopup = ({
                   margin: "0",
                 }}
                 onClick={() =>
-                  // handlePaymentConfirsetSelectedPaymentMethodm(userWalletAddress, orderNo)
-                  handlePaymentConfirm(userWalletAddress, selectedMethod, tokenAmount)
+                  handlePaymentConfirm(
+                    userWalletAddress,
+                    selectedMethod,
+                    tokenAmount,
+                    startTime,
+                  )
                 }
               />
               <Button

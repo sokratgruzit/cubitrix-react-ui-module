@@ -159,6 +159,7 @@ export const TopUp = ({
               selectedMethod={selectedMethod}
               handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
               tokenAmount={tokenAmount}
+              setOpenConfirmPaymentPopup={setOpenConfirmPaymentPopup}
             />
           }
           label={"Confirm Payment"}
