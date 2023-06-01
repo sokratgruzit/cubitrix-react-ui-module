@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
 import './CardSlider.css'
+import { AccountType } from '../../../../assets/svgs'
 
 export const CardSlider = () => {
   const [accountType, setAccountType] = useState('main')
@@ -10,7 +11,6 @@ export const CardSlider = () => {
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
   const [slidePercentage, setSlidePercentage] = useState(0)
-  const [slidesPerView, setSlidesPerView] = useState(4)
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -20,10 +20,13 @@ export const CardSlider = () => {
         setIsPrevDisabled(swiperInstance.isBeginning)
         setIsNextDisabled(swiperInstance.isEnd)
 
-        const { translate, width } = swiperInstance
+        const { translate, width, snapGrid } = swiperInstance
         const slideWidth = width / swiperInstance.slides.length
         const slideIndex = Math.round(-translate / slideWidth)
-        const percentage = (slideIndex / (swiperInstance.slides.length - 1)) * 100
+
+        // Calculate the percentage based on the active slide index
+        const activeSlideIndex = Math.abs(snapGrid.indexOf(translate)) / slideWidth
+        const percentage = (activeSlideIndex / (swiperInstance.slides.length - 1)) * 100
         setSlidePercentage(percentage)
       }
 
@@ -144,77 +147,15 @@ export const CardSlider = () => {
   const cardFooterData = [
     {
       title: 'Deposit',
-      svg: (
-        <svg
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-          className='card-slider-card_footer-item-svg'
-        >
-          <path d='M6 12H18' stroke='white' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
-          <path d='M12 18V6' stroke='white' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round' />
-        </svg>
-      ),
+      svg: <AccountType type={'top-up'} className='card-slider-card_footer-item-svg' />,
     },
     {
       title: 'Withdraw',
-      svg: (
-        <svg
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-          className='card-slider-card_footer-item-svg'
-        >
-          <path
-            d='M18.0697 11.07L11.9997 5L5.92969 11.07'
-            stroke='white'
-            strokeWidth='1.5'
-            strokeMiterlimit='10'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-          <path
-            d='M12 18.5L12 5.5'
-            stroke='white'
-            strokeWidth='1.5'
-            strokeMiterlimit='10'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-        </svg>
-      ),
+      svg: <AccountType type={'withraw'} className='card-slider-card_footer-item-svg' />,
     },
     {
       title: 'Exchange',
-      svg: (
-        <svg
-          width='24'
-          height='24'
-          viewBox='0 0 24 24'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-          className='card-slider-card_footer-item-svg'
-        >
-          <path
-            d='M13.6756 4L15.8444 6.08L8.77778 6.06222C5.60444 6.06222 3 8.66667 3 11.8578C3 13.4489 3.64889 14.8978 4.69778 15.9467'
-            stroke='white'
-            strokeWidth='1.5'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-          <path
-            d='M10.1201 20.0001L7.95117 17.9201L15.0178 17.9379C18.1912 17.9379 20.7956 15.3335 20.7956 12.1424C20.7956 10.5512 20.1467 9.10236 19.0978 8.05347'
-            stroke='white'
-            strokeWidth='1.5'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-        </svg>
-      ),
+      svg: <AccountType type={'exchange'} className='card-slider-card_footer-item-svg' />,
     },
   ]
 

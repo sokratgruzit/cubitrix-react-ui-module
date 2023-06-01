@@ -2,8 +2,9 @@ import React from 'react'
 
 import { Link, useLocation } from 'react-router-dom'
 
-import './Dashboard.css'
 import { CardSlider } from './components/CardSlider/CardSlider'
+import { DashboardTable } from './components/DashboardTable/DashboardTable'
+import './Dashboard.css'
 
 export const Dashboard = () => {
   const location = {
@@ -61,6 +62,154 @@ export const Dashboard = () => {
     },
   ]
 
+  const transactionsData = [
+    {
+      _id: 13123123123,
+      account: 'CPL',
+      time: '29.05.2023',
+      amount: '15.00 CPL',
+      type: 'Top up balance',
+    },
+    {
+      _id: 13123123123999,
+      account: 'CPL',
+      time: '29.05.2023',
+      amount: '15.00 CPL',
+      type: 'Top up balance',
+    },
+    {
+      _id: 13123999123123,
+      account: 'CPL',
+      time: '29.05.2023',
+      amount: '15.00 CPL',
+      type: 'Top up balance',
+    },
+  ]
+
+  const transactionHeader = [
+    {
+      name: 'Account',
+      width: 25,
+      id: 0,
+    },
+    {
+      name: 'Type',
+      width: 25,
+      // mobileWidth: 45,
+      id: 1,
+    },
+    {
+      name: 'Time',
+      width: 25,
+      id: 2,
+    },
+    {
+      name: 'Amount',
+      width: 25,
+      mobileWidth: 45,
+      id: 3,
+    },
+  ]
+
+  const referralCodeHeader = [
+    {
+      name: 'My Referral Code',
+      width: 20,
+      id: 0,
+      height: '40px',
+    },
+    {
+      name: 'User Address',
+      width: 20,
+      mobileWidth: 45,
+      id: 1,
+      height: '40px',
+    },
+    {
+      name: 'User Level',
+      width: 20,
+      id: 2,
+      height: '40px',
+    },
+    {
+      name: 'Rate',
+      width: 20,
+      // mobileWidth: 45,
+      id: 3,
+      height: '40px',
+    },
+    {
+      name: 'Total Earned',
+      width: 20,
+      id: 3,
+      height: '40px',
+    },
+  ]
+
+  const referralHistoryHeader = [
+    {
+      name: 'My Referral Code',
+      width: 20,
+      id: 0,
+      height: '40px',
+    },
+    {
+      name: 'User Address',
+      width: 20,
+      mobileWidth: 45,
+      id: 1,
+      height: '40px',
+    },
+    {
+      name: 'User Level',
+      width: 20,
+      id: 2,
+      height: '40px',
+    },
+    {
+      name: 'Rate',
+      width: 20,
+      id: 3,
+      height: '40px',
+    },
+    {
+      name: 'Total Earned',
+      width: 20,
+      id: 3,
+      height: '40px',
+    },
+  ]
+
+  const referralCardsData = [
+    {
+      title: 'Uni',
+      active: true,
+      data: [
+        {
+          title: 'Level User',
+          value: '2',
+        },
+        {
+          title: 'Total Comission',
+          value: '4',
+        },
+      ],
+    },
+    {
+      title: 'Binary',
+      data: [
+        {
+          title: 'Level User',
+          value: '2',
+        },
+        {
+          title: 'Total Comission',
+          value: '7',
+        },
+      ],
+    },
+  ]
+
   return (
     <div className='dashboard-content-container'>
       <div className='dashboard-sidebar-container'>
@@ -101,6 +250,50 @@ export const Dashboard = () => {
       </div>
       <div className='dashboard-main-container'>
         <CardSlider />
+        <DashboardTable
+          type={'transactions'}
+          header={'Transactions'}
+          description={`Total number of operations: ${(<span style={{ color: '#FFF' }}>54</span>)}`}
+          rightPanelData={[
+            {
+              title: 'Recieved',
+              value: '2,032.03',
+            },
+            {
+              title: 'Spent',
+              value: '-2,012.56',
+            },
+          ]}
+          data={transactionsData}
+          footer={{
+            link: '/transactions',
+            label: 'All transactions',
+          }}
+          tableHeader={transactionHeader}
+        />
+        <DashboardTable
+          type={'referral-code'}
+          header={'Referral Code'}
+          description={`You can create multiple referral codes to attract traders`}
+          data={transactionsData}
+          footer={{
+            link: '/referral',
+            label: 'All Code',
+          }}
+          tableHeader={referralCodeHeader}
+          referralCardsData={referralCardsData}
+        />
+        <DashboardTable
+          type={'referral-history'}
+          header={'Referral Revates History'}
+          description={`The airdrop history of your weekly referral rebates.`}
+          data={transactionsData}
+          footer={{
+            link: '/referral',
+            label: 'All Code',
+          }}
+          tableHeader={referralHistoryHeader}
+        />
       </div>
     </div>
   )
