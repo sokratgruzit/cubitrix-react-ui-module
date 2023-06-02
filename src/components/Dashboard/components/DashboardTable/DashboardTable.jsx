@@ -17,275 +17,9 @@ export const DashboardTable = ({
   footer,
   tableHeader,
   referralCardsData,
+  tableData,
 }) => {
-  const [mobileExpand, setMobileExpand] = useState(null)
-  const { width } = useMobileWidth()
-
-  let mobileExpandFunc = id => {
-    if (width <= 1300) {
-      if (id !== mobileExpand) {
-        setMobileExpand(id)
-      } else {
-        setMobileExpand(null)
-      }
-    }
-  }
-
-  let mobile = width <= 1300
-
   let element = null
-
-  let transactionsTableData
-  let referralHistoryTableData
-  let referralCodeTableData
-
-  transactionsTableData = data?.map((item, index) => {
-    return (
-      <div
-        className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
-        key={index}
-        onClick={() => {
-          mobileExpandFunc(item._id)
-        }}
-      >
-        <div className='table' style={{ padding: '0' }}>
-          <div
-            className={`td col ${tableHeader[0].mobileWidth ? true : false} dashboard-td table-coin-row`}
-            style={{
-              width: `${mobile ? tableHeader[0].mobileWidth : tableHeader[0].width}%`,
-            }}
-          >
-            <Account type={'spl'} />
-            <span>{item?.account} Account</span>
-          </div>
-          <div
-            className={`td ${
-              tableHeader[1].mobileWidth ? true : false
-            } dashboard-td table-coin-row dashboard-table-button`}
-            style={{
-              width: `${mobile ? tableHeader[1].mobileWidth : tableHeader[1].width}%`,
-            }}
-          >
-            <AccountType type={'top-up'} />
-            <span>{item?.type}</span>
-          </div>
-          <div
-            className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
-            }}
-          >
-            <span>{item?.time}</span>
-          </div>
-          <div
-            className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
-            }}
-          >
-            <span>{item?.amount}</span>
-          </div>
-        </div>
-        <div className='table-more' />
-        <div className='icon-place' style={{ height: '40px' }}>
-          <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path
-              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
-              stroke='white'
-              strokeWidth='1.5'
-              strokeMiterlimit='10'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-        </div>
-        {/* <div className='table-mobile'>
-          <div className='table-mobile-content'>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[0].name}</div>
-              <span>{item._id.referrral}</span>
-            </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[2].name}</div>
-              {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}
-            </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[3].name}</div>
-              <span>{item._id.percent}</span>
-            </div>
-          </div>
-        </div> */}
-      </div>
-    )
-  })
-
-  referralCodeTableData = data?.map((item, index) => {
-    return (
-      <div
-        className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
-        key={index}
-        onClick={() => {
-          mobileExpandFunc(item._id)
-        }}
-      >
-        <div className='table' style={{ padding: '0' }}>
-          <div
-            className={`td col ${tableHeader[0].mobileWidth ? true : false} dashboard-td table-coin-row`}
-            style={{
-              width: `${mobile ? tableHeader[0].mobileWidth : tableHeader[0].width}%`,
-            }}
-          >
-            <Account type={'spl'} />
-            <span>{item?.account} Account</span>
-          </div>
-          <div
-            className={`td ${
-              tableHeader[1].mobileWidth ? true : false
-            } dashboard-td table-coin-row dashboard-table-button`}
-            style={{
-              width: `${mobile ? tableHeader[1].mobileWidth : tableHeader[1].width}%`,
-            }}
-          >
-            <AccountType type={'top-up'} />
-            <span>{item?.type}</span>
-          </div>
-          <div
-            className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
-            }}
-          >
-            <span>{item?.time}</span>
-          </div>
-          <div
-            className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
-            }}
-          >
-            <span>{item?.amount}</span>
-          </div>
-        </div>
-        <div className='table-more' />
-        <div className='icon-place' style={{ height: '40px' }}>
-          <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path
-              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
-              stroke='white'
-              strokeWidth='1.5'
-              strokeMiterlimit='10'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-        </div>
-        {/* <div className='table-mobile'>
-          <div className='table-mobile-content'>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[0].name}</div>
-              <span>{item._id.referrral}</span>
-            </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[2].name}</div>
-              {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}
-            </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[3].name}</div>
-              <span>{item._id.percent}</span>
-            </div>
-          </div>
-        </div> */}
-      </div>
-    )
-  })
-
-  referralHistoryTableData = data?.map((item, index) => {
-    return (
-      <div
-        className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
-        key={index}
-        onClick={() => {
-          mobileExpandFunc(item._id)
-        }}
-      >
-        <div className='table' style={{ padding: '0' }}>
-          <div
-            className={`td col ${tableHeader[0].mobileWidth ? true : false} dashboard-td table-coin-row`}
-            style={{
-              width: `${mobile ? tableHeader[0].mobileWidth : tableHeader[0].width}%`,
-            }}
-          >
-            <Account type={'spl'} />
-            <span>{item?.account} Account</span>
-          </div>
-          <div
-            className={`td ${
-              tableHeader[1].mobileWidth ? true : false
-            } dashboard-td table-coin-row dashboard-table-button`}
-            style={{
-              width: `${mobile ? tableHeader[1].mobileWidth : tableHeader[1].width}%`,
-            }}
-          >
-            <AccountType type={'top-up'} />
-            <span>{item?.type}</span>
-          </div>
-          <div
-            className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
-            }}
-          >
-            <span>{item?.time}</span>
-          </div>
-          <div
-            className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
-            }}
-          >
-            <span>{item?.amount}</span>
-          </div>
-          <div
-            className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
-            }}
-          >
-            <span>{item?.amount}</span>
-          </div>
-        </div>
-        <div className='table-more' />
-        <div className='icon-place' style={{ height: '40px' }}>
-          <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path
-              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
-              stroke='white'
-              strokeWidth='1.5'
-              strokeMiterlimit='10'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-        </div>
-        {/* <div className='table-mobile'>
-          <div className='table-mobile-content'>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[0].name}</div>
-              <span>{item._id.referrral}</span>
-            </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[2].name}</div>
-              {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}
-            </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{tableHeader[3].name}</div>
-              <span>{item._id.percent}</span>
-            </div>
-          </div>
-        </div> */}
-      </div>
-    )
-  })
 
   const tableVisualMore = (
     <div className={'dashboard-table-head-wrap'}>
@@ -313,7 +47,7 @@ export const DashboardTable = ({
   )
 
   if (type === 'transactions') {
-    element = (
+    return (element = (
       <>
         <Table
           tableHeadMore={
@@ -328,7 +62,7 @@ export const DashboardTable = ({
               />
             </div>
           }
-          tableData={transactionsTableData}
+          tableData={tableData}
           tableFooter={tableFooter}
           customStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '20px' }}
           customTableMoreStyles={{
@@ -336,16 +70,21 @@ export const DashboardTable = ({
           }}
         />
       </>
-    )
+    ))
   }
 
   if (type === 'referral-code') {
-    element = (
+    return (element = (
       <div className='dashboard-table-referral-wrapper'>
         <h2 className='dashboard-table-header-title'>Referral</h2>
         <div className='dashboard-table-referral-card-container'>
           {referralCardsData?.map((item, index) => (
-            <div key={index} className='dashboard-table-referral-card-wrap'>
+            <div
+              key={index}
+              className={`dashboard-table-referral-card-wrap ${
+                item.active ? 'dashboard-table-referral-card-wrap__active' : ''
+              }`}
+            >
               <h3>{item.title}</h3>
               <div className='dashboard-table-referral-card'>
                 {item?.data?.map((item, index) => (
@@ -377,7 +116,7 @@ export const DashboardTable = ({
               />
             </div>
           }
-          tableData={referralCodeTableData}
+          tableData={tableData}
           tableFooter={tableFooter}
           tableHead={tableHeader}
           customStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '20px' }}
@@ -392,11 +131,11 @@ export const DashboardTable = ({
           }}
         />
       </div>
-    )
+    ))
   }
 
   if (type === 'referral-history') {
-    element = (
+    return (element = (
       <>
         <Table
           tableHeadMore={
@@ -410,7 +149,7 @@ export const DashboardTable = ({
               />
             </div>
           }
-          tableData={referralHistoryTableData}
+          tableData={tableData}
           tableFooter={tableFooter}
           tableHead={tableHeader}
           customStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '20px' }}
@@ -425,7 +164,7 @@ export const DashboardTable = ({
           }}
         />
       </>
-    )
+    ))
   }
 
   return element

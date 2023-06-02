@@ -110,6 +110,11 @@
   gap: 20px;
 }
 
+.dashboard-table-referral-card-wrap__active {
+  background: rgba(202, 155, 99, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .dashboard-table-referral-card-wrap > h3 {
   font-weight: 700;
   font-size: 30px;
@@ -141,7 +146,44 @@
   color: #ffffff;
 }
 
-.dashboard-table-referral-card-content:nth-child(odd) {
-  /* padding-right: 50px; */
-  /* border-right: 1px solid rgba(96, 159, 194, 0.1); */
+@media only screen and (max-width: 1025px) {
+  .dashboard-table-referral-card-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .dashboard-table-referral-card-wrap {
+    flex-wrap: wrap;
+  }
+  .dashboard-table-head-wrap {
+    flex-direction: column;
+    min-width: unset;
+    width: 100%;
+    padding: 10px 20px;
+  }
+  .dashboard-table-head {
+    padding: 10px 0;
+    word-wrap: break-word;
+  }
+  .dashboard-table-head:nth-child(odd) {
+    border-right: none;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+  }
+  .dashboard-table-header-container > .tb-head {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .dashboard-table-header-container .right-panel {
+    max-width: 100%;
+    width: 100%;
+  }
+  .dashboard-table-header-container > .left-panel > h1 {
+    word-break: break-all;
+  }
+  .dashboard-table-header-container > .left-panel > p {
+    max-width: 100%;
+  }
 }

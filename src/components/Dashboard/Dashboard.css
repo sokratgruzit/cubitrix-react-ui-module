@@ -99,3 +99,24 @@
 .sidebar-footer-copyright a {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
+
+@media only screen and (max-width: 1025px) {
+  .dashboard-sidebar-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+    padding: 10px;
+    overflow-x: scroll;
+  }
+  .dashboard-sidebar-links {
+    flex-direction: row;
+  }
+  .dashboard-sidebar-link {
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-all;
+    text-align: center;
+  }
+}

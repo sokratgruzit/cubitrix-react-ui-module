@@ -134,7 +134,7 @@ stories.add("Referral", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "0x327a32d66ee9110d81992be6924a469bef5cd429",
+          address: "0x43f59F41518903A274c7897dfFB24DB86a0dd23a",
           limit: 5,
           page: page || 1,
         }),
