@@ -1,0 +1,134 @@
+.aboutContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 145px 0;
+  background-color: #2b315f;
+}
+
+.aboutWrapper {
+  position: relative;
+  z-index: 2;
+}
+.bgImg {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.aboutHeader {
+  text-align: center;
+  font-size: 48px;
+  line-height: 140%;
+  text-transform: capitalize;
+}
+
+.aboutContent {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+.aboutImgWrapper {
+  position: relative;
+  min-width: 715px;
+  min-height: 467px;
+  border: 6px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.aboutImg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.aboutTitle {
+  font-size: 55px;
+  line-height: 130%;
+  white-space: nowrap;
+  transition-delay: 20ms;
+}
+
+.aboutInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 420px;
+  transition-delay: 20ms;
+}
+
+.aboutText {
+  word-wrap: break-word;
+  font-size: 24px;
+  line-height: 41px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.aboutCirclular-bg {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  pointer-events: none;
+}
+
+.aboutCirclular-bg-2 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  pointer-events: none;
+  top: 132px;
+}
+
+@media (max-width: 1023px) {
+  .aboutContainer {
+    padding: 10px 40px;
+  }
+  .aboutContent {
+    margin-top: 0px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutImgWrapper {
+    min-width: 100px;
+    min-height: 100px;
+  }
+
+  .aboutImg {
+    position: inherit;
+  }
+
+  .aboutInfo {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .aboutTitle {
+    font-size: 30px;
+    list-style: 100%;
+    white-space: unset;
+  }
+  .aboutText {
+    font-size: 15px;
+    line-height: 30 px;
+  }
+
+  .aboutHeader,
+  .becomeMemberHeader {
+    font-size: 34px;
+  }
+
+  .becomeMemberContent {
+    padding: 0px;
+  }
+}
