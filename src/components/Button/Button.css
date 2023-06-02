@@ -106,6 +106,22 @@
   fill: rgba(255, 255, 255, 0.7);
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
+.btn-secondary-white span {
+  color: #2a305e;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  font-weight: 700;
+}
+.btn.btn-secondary-white {
+  padding: 16px 30px;
+  border: none;
+  border-radius: 32px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  background-color: #fff;
+}
+
+.btn-secondary-white:hover {
+  opacity: 0.7;
+}
 .btn-phospore span {
   color: #45f4ea;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
