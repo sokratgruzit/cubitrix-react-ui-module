@@ -1,0 +1,147 @@
+.dashboard-table-header-container {
+  background: #2f3674;
+  border-radius: 20px 20px 0px 0px;
+  min-height: 88px;
+  padding: 20px;
+}
+
+.dashboard-table-head-wrap {
+  display: flex;
+  min-width: 260px;
+  min-height: 69px;
+  background: #2b326b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 10px 0;
+}
+
+.dashboard-table-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 30px 0 20px;
+}
+
+.dashboard-table-head:nth-child(odd) {
+  border-right: 1px solid rgb(255, 255, 255, 0.1);
+}
+
+.dashboard-table-head > p {
+  color: rgb(255, 255, 255, 0.6);
+}
+
+.dashboard-table-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard-table-footer a {
+  display: flex;
+  gap: 6px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.dashboard-table-footer a:hover {
+  opacity: 0.8;
+}
+
+.dashboard-table-footer > a > p {
+  color: #45f4ea;
+}
+
+.dashboard-table-parent {
+  padding: 16px 20px;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.05);
+}
+.dashboard-table-parent .dashboard-td {
+  height: 40px;
+}
+
+.dashboard-table-button {
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.dashboard-table-button:hover {
+  opacity: 0.8;
+}
+
+.dashboard-table-button > svg > path {
+  stroke: #45f4ea;
+}
+
+.dashboard-table-header-title {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 150%;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.dashboard-table-referral-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.05);
+}
+
+.dashboard-table-referral-card-container {
+  display: flex;
+  gap: 20px;
+  /* flex-wrap: wrap; */
+  width: 100%;
+}
+
+.dashboard-table-referral-card-wrap {
+  width: 100%;
+  background: rgba(96, 159, 194, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  /* max-width: 555px; */
+  min-height: 90px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  gap: 20px;
+}
+
+.dashboard-table-referral-card-wrap > h3 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.dashboard-table-referral-card {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.dashboard-table-referral-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-table-referral-card-content h4 {
+  color: rgb(255, 255, 255, 0.6);
+}
+
+.dashboard-table-referral-card-content p {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.dashboard-table-referral-card-content:nth-child(odd) {
+  /* padding-right: 50px; */
+  /* border-right: 1px solid rgba(96, 159, 194, 0.1); */
+}

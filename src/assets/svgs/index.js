@@ -40,3 +40,5 @@ export { default as StartNowBlocks2 } from "./StartNowBlocks2";
 export { default as DashboardCoinsLeverageCard } from "./DashboardCoinsLeverageCard";
 export { default as DashboardCoinsBuy } from "./DashboardCoinsBuy";
 export { default as DashboardChart } from "./DashboardChart";
+export { default as Account } from "./Account";
+export { default as AccountType } from "./AccountType";
