@@ -1,0 +1,165 @@
+.whyComplend__container {
+  position: relative;
+}
+
+.whyComplend__cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  padding: 100px 40px 300px 40px;
+  background-color: #2a305e;
+}
+
+.whyComplend__cardHeader {
+  font-size: 48px;
+  line-height: 67.2px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.whyComplend__cardsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 30px;
+}
+
+.whyComplend__card {
+  background: rgba(127, 147, 255, 0.02);
+  border-radius: 32px;
+  width: calc(33.33% - 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-height: 520px;
+  padding: 40px 20px;
+  height: 100%;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  gap: 40px;
+  cursor: pointer;
+}
+
+.whyComplend__card:hover {
+  transform: translateY(-20px);
+}
+
+.whyComplend__green {
+  border: 1px solid #45f4ea;
+  background: rgba(69, 244, 234, 0.05);
+  box-shadow: 0px 20px 60px rgba(69, 244, 234, 0.2);
+  border-radius: 32px;
+}
+
+.whyComplend__green:hover {
+  box-shadow: 0px 20px 60px rgb(149, 255, 193, 0.1);
+}
+
+.whyComplend__yellow {
+  border: 1px solid #ffdd78;
+}
+
+.whyComplend__yellow:hover {
+  box-shadow: 0px 20px 60px rgb(255, 221, 120, 0.1);
+}
+
+.whyComplend__blue {
+  border: 1px solid #64d1ff;
+}
+
+.whyComplend__blue:hover {
+  box-shadow: 0px 20px 60px rgb(100, 209, 255, 0.1);
+}
+
+.whyComplend__imgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 170px;
+  transition-delay: 20ms;
+}
+
+.whyComplend__cardImg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.whyComplend__cardTitle {
+  font-size: 24px;
+  line-height: 31.2px;
+  text-align: center;
+}
+
+.whyComplend__cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition-delay: 20ms;
+}
+
+.whyComplend__cardText {
+  font-size: 16px;
+  line-height: 25.6px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.whyComplend__card:hover .whyComplend__cardText {
+  color: #fff;
+}
+
+.whyComplend__bottom {
+  width: calc(100% + 4px);
+  position: absolute;
+  bottom: -1px;
+  left: -2px;
+}
+
+@media (max-width: 1500px) {
+  .whyComplend__cardInfo {
+    height: 200px;
+  }
+}
+
+@media (max-width: 1365px) {
+  .whyComplend__card {
+    min-height: 600px;
+  }
+
+  .whyComplend__cardInfo {
+    height: 250px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .whyComplend__cardContent {
+    gap: 60px;
+  }
+
+  .whyComplend__cardsWrapper {
+    flex-direction: column;
+  }
+
+  .whyComplend__card {
+    width: 100%;
+    padding: 30px;
+    height: auto;
+    min-height: 400px;
+    padding: 40px 24px;
+  }
+
+  .whyComplend__cardInfo {
+    height: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .whyComplend__cardHeader {
+    font-size: 34px;
+  }
+}

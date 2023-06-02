@@ -10,7 +10,7 @@ export const DashboardHeader = ({
   handleConnect,
   handleGetStarted,
   dashboardHeaderImages,
-  account
+  account,
 }) => {
   const [animate, setAnimate] = useState(false);
 
@@ -19,18 +19,13 @@ export const DashboardHeader = ({
   }, []);
 
   return (
-    <header
-      className={`dashboard-header-container ${animate ? "animate" : ""}`}
-    >
+    <header className={`dashboard-header-container ${animate ? "animate" : ""}`}>
       <img
         src={dashboardHeaderImages?.rocket}
         className={"dashboard-header-rocket-img"}
       />
-      <div className='dashboard-header'>
-        <img
-          src={dashboardHeaderImages?.dots}
-          className={"dashboard-header-dots-img"}
-        />
+      <div className="dashboard-header">
+        <img src={dashboardHeaderImages?.dots} className={"dashboard-header-dots-img"} />
         <div className={"dashboard-header-top"}>
           <h1>Buy</h1>
           <h1>Sell & Trade</h1>
@@ -39,10 +34,7 @@ export const DashboardHeader = ({
           <h1>Crypto</h1>
           <p>Trade, buy, staking and loan cryptocurrency at Complend</p>
         </div>
-        <img
-          src={dashboardHeaderImages?.man}
-          className={"dashboard-header-man-img"}
-        />
+        <img src={dashboardHeaderImages?.man} className={"dashboard-header-man-img"} />
         <img
           src={dashboardHeaderImages?.planet}
           className={"dashboard-header-planet-img"}

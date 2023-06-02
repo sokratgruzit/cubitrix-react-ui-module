@@ -39,3 +39,4 @@ export { default as StartNowBlocks1 } from "./StartNowBlocks1";
 export { default as StartNowBlocks2 } from "./StartNowBlocks2";
 export { default as DashboardCoinsLeverageCard } from "./DashboardCoinsLeverageCard";
 export { default as DashboardCoinsBuy } from "./DashboardCoinsBuy";
+export { default as DashboardChart } from "./DashboardChart";

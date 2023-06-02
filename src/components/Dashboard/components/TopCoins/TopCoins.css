@@ -1,24 +1,26 @@
 .top-coins-section {
-  background: #2a305e;
-  padding-top: 85px;
+  background: #45f4ea;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 1300px;
+  padding-bottom: 100px;
 }
 .top-coins-title {
   display: flex;
   font-size: 51px;
   line-height: 130%;
+  color: #2b325f;
 }
 
 .top-coins-info {
   font-size: 16px;
   line-height: 130%;
-  color: rgba(255, 255, 255, 0.6);
   text-align: center;
   max-width: 330px;
+  color: rgba(7, 11, 26, 0.6);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
 }
 
 .top-coins-header {
@@ -26,6 +28,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 15px;
 }
 
 .top-coins-main {
@@ -78,17 +81,33 @@
   position: absolute;
   translate: -338px -135px;
 }
+.coins-chart {
+  z-index: 100;
+  translate: 100px 160px;
+  position: absolute;
+}
 
 .bg-gradient {
   position: absolute;
   width: 950px;
   height: 950px;
-  background: radial-gradient(50% 50% at 50% 50%, #6d7df5 0%, rgba(42, 48, 94, 0) 100%);
-  filter: blur(150px);
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #eafffa 0%,
+    rgba(255, 255, 255, 0) 100%,
+    rgba(234, 255, 250, 0) 100%
+  );
+  filter: blur(100px);
   translate: 0 50px;
 }
 .start-trade-btn {
   z-index: 3;
+  /* width: 141px; */
+  height: 54px;
+  display: flex;
+  align-items: center;
+  padding: 16px 30px;
+  margin: 0;
 }
 
 .top-coins-coin {
@@ -99,6 +118,7 @@
   left: 0;
   width: fit-content;
   height: fit-content;
+  translate: 0px 400px;
 }
 
 .dashboard-header-ball-img {
@@ -108,6 +128,15 @@
   height: 100%;
   /* transform: matrix(1, 0, 0, -1, 0, 0); */
   animation: float 3s infinite 1s;
+}
+
+.top3-3 {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 60px;
+  rotate: -15deg;
+  margin-right: 12px;
 }
 
 @keyframes float {
@@ -125,7 +154,7 @@
 .dashboard-header-ball-img-wrap {
   position: absolute;
   right: 0;
-  top: 700px;
+  top: 450px;
   z-index: 5;
 }
 
@@ -145,15 +174,9 @@
   position: absolute;
   right: 0;
   z-index: 1;
-  top: 2160px;
-  margin-right: 53px;
+  translate: 0px 760px;
 }
 
-@media only screen and (max-width: 1328px) {
-  .silver-coin-wrap {
-    top: 2100px;
-  }
-}
 @media only screen and (max-width: 1300px) {
   .dashboard-header-ball-img {
     max-width: 300px;
@@ -164,11 +187,14 @@
     height: 170px;
   }
   .top-coins-coin-wrap {
-    top: 960px;
+    translate: 0px 600px;
   }
 }
 
 @media (max-width: 1023px) {
+  .top-coins-section {
+    padding-top: 50px;
+  }
   .top-coins-main:hover .ethCard {
     translate: none;
     rotate: 0deg;
@@ -203,6 +229,9 @@
     position: absolute;
     translate: 0 -235px;
   }
+  .coins-chart {
+    translate: 80px 160px;
+  }
   .coins-leverage-card {
     translate: 0 275px;
   }
@@ -226,15 +255,12 @@
     max-width: 200px;
     max-height: 200px;
   }
-  .dashboard-header-ball-img-wrap {
-    top: 850px;
-  }
   .top-coins-coin {
     width: 80px;
     height: 130px;
   }
   .top-coins-coin-wrap {
-    top: 1150px;
+    translate: 0px 100px;
   }
 }
 
@@ -244,22 +270,24 @@
     max-height: 180px;
   }
   .dashboard-header-ball-img-wrap {
-    top: 830px;
+    top: 750px;
   }
   .top-coins-coin {
     width: 70px;
     height: 120px;
-  }
-  .top-coins-coin-wrap {
-    top: 1100px;
   }
   .silver-coin {
     width: 100px;
     height: 100px;
   }
   .silver-coin-wrap {
-    top: 2180px;
-    margin-right: 20px;
+    translate: 0px 800px;
+  }
+}
+
+@media (max-width: 510px) {
+  .coins-chart {
+    translate: 75px 140px;
   }
 }
 
@@ -269,10 +297,18 @@
     height: 80px;
   }
   .silver-coin-wrap {
-    top: 2150px;
+    translate: 0px 820px;
   }
   .top-coins-coin-wrap {
-    top: 1050px;
+    translate: 0px 100px;
+  }
+  .top-coins-coin {
+    width: 40px;
+    height: 70px;
+  }
+  .coins-chart {
+    translate: 0px -150px;
+    width: 120px;
   }
 }
 
@@ -281,6 +317,11 @@
     position: absolute;
     translate: 0 -205px;
   }
+
+  .coins-chart {
+    translate: 0px -140px;
+  }
+
   .coins-leverage-card {
     translate: 0 235px;
   }
@@ -294,9 +335,6 @@
     width: 60px;
     height: 60px;
   }
-  .silver-coin-wrap {
-    top: 2215px;
-  }
 }
 
 @media only screen and (max-width: 330px) {
@@ -305,9 +343,6 @@
     max-height: 160px;
   }
   .dashboard-header-ball-img-wrap {
-    top: 960px;
-  }
-  .top-coins-coin-wrap {
-    top: 1170px;
+    top: 830px;
   }
 }

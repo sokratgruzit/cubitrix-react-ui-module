@@ -3,7 +3,13 @@ import React, { useEffect } from "react";
 import "./Dashboard.css";
 
 import { Footer } from "../Footer";
-import { DashboardHeader, Meditation, StartNow, TopCoins } from "./components";
+import {
+  DashboardHeader,
+  Meditation,
+  StartNow,
+  TopCoins,
+  WhyComplend,
+} from "./components";
 
 export const Dashboard = ({
   handleGetStarted,
@@ -12,6 +18,7 @@ export const Dashboard = ({
   startTrade,
   allImages,
   info,
+  whyComplendData,
 }) => {
   return (
     <div style={{ paddingTop: "70px" }}>
@@ -23,6 +30,7 @@ export const Dashboard = ({
             account={account}
             dashboardHeaderImages={allImages?.dashboardHeader}
           />
+          <WhyComplend data={whyComplendData} images={allImages?.whyComplend} />
           <TopCoins startTrade={startTrade} topCoinsImages={allImages?.topcoins} />
           <Meditation meditationImages={allImages?.meditation} info={info} />
           <StartNow
