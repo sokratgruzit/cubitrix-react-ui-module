@@ -2,8 +2,7 @@ import React from "react";
 
 import { Link, useLocation } from "react-router-dom";
 
-import { CardSlider } from "./components/CardSlider/CardSlider";
-import { DashboardTable } from "./components/DashboardTable/DashboardTable";
+import { DashboardTable, CardSlider } from "./components";
 import "./Dashboard.css";
 
 export const Dashboard = () => {
