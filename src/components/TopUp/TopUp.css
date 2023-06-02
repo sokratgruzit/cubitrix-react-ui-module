@@ -1,0 +1,129 @@
+.topup_main {
+  height: 100%;
+  width: 800px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.topup_title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.topup_methodContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.topup_methodBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+  min-width: 200px;
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.topup_selected {
+  border-color: green;
+}
+
+.topup_info {
+  margin-bottom: 10px;
+}
+
+.topup_input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.topup_resultContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+}
+
+.topup_resultLeft,
+.topup_resultRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 300px;
+}
+
+@media screen and (max-width: 768px) {
+  .topup_resultContainer {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .topup_resultLeft,
+  .topup_resultRight {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.topup_button {
+  width: 100%;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.payment-list__check-icon {
+  height: 20px;
+  width: 20px;
+  background: #5f9f55;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transform: scale(0);
+  z-index: 2;
+}
+.pay-check-label:before {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid #00050f;
+
+  background: transparent;
+  opacity: 0.1;
+}
+.active-check {
+  transform: scale(1);
+}
+
+.topup_method_logo {
+  width: 48px;
+}

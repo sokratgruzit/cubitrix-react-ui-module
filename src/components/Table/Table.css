@@ -394,7 +394,7 @@
   }
   .table,
   .table-head {
-    width: calc(100% - 75px);
+    width: calc(100% - 40px);
   }
   .table-mobile {
     display: block;
