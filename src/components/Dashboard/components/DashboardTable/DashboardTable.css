@@ -60,15 +60,6 @@
   height: 40px;
 }
 
-.dashboard-table-button {
-  cursor: pointer;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-}
-
-.dashboard-table-button:hover {
-  opacity: 0.8;
-}
-
 .dashboard-table-button > svg > path {
   stroke: #45f4ea;
 }

@@ -364,6 +364,9 @@ export const Dashboard = ({
         </div>
       </div>
       <div className='dashboard-main-container' style={{ width: `${width <= 1025 ? '100%' : 'calc(100% - 255px)'}` }}>
+        <div className='dashboard-border-container'>
+          <div className='dashboard-border' />
+        </div>
         <CardSlider />
         {tables?.map((item, index) => (
           <DashboardTable

@@ -171,4 +171,7 @@
   .card-slider-navigation_item.active {
     border-radius: 20px;
   }
+  .card-slider-cards-mover{
+    padding: 0 10px;
+  }
 }
