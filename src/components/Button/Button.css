@@ -118,6 +118,22 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   background-color: #fff;
 }
+.btn-darkBlue-secondary span {
+  color: #2a305e;
+  font-weight: 700;
+}
+
+.btn,
+.btn-darkBlue-secondary {
+  padding: 16px 30px;
+  border: none;
+  border-radius: 32px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  border: 1px solid #2a305e;
+}
+.btn-darkBlue-secondary:hover {
+  opacity: 0.7;
+}
 
 .btn-secondary-white:hover {
   opacity: 0.7;
