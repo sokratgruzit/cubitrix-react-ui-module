@@ -38,3 +38,4 @@ export * from "./components/Table";
 export * from "./components/TableElement";
 export * from "./components/TopUp";
 export * from "./components/Landing";
+export * from "./components/LandingSteps";
