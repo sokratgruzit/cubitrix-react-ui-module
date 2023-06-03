@@ -8,6 +8,7 @@ import '../assets/css/main-theme.css'
 import { useEffect, useState } from 'react'
 import { useMobileWidth } from '../hooks/useMobileWidth'
 import { DashboardSharedLayout } from '../components/DashboardSharedLayout/DashboardSharedLayout'
+import { AddSquareIcon, NoHistoryIcon } from '../assets/svgs'
 
 const stories = storiesOf('Dashboard', module)
 
@@ -26,6 +27,10 @@ stories.add('Dashboard', () => {
       totalComission: 0,
     },
   })
+  const [accountsData, setAccountsData] = useState([])
+  const [referralCodeTableLoading, setReferralCodeTableLoading] = useState(false)
+  const [referralHistoryTableLoading, setReferralHistoryTableLoading] = useState(false)
+  const [transactionsTableLoading, setTransactionsTableLoading] = useState(false)
 
   const [codesPaginationTotal, setCodesPaginationTotal] = useState(1)
   const [rebatesPaginationTotal, setRebatesPaginationTotal] = useState(1)
@@ -94,6 +99,11 @@ stories.add('Dashboard', () => {
   ]
 
   const generateTableData = async (table, page) => {
+    if (table === 'codes') {
+      setReferralCodeTableLoading(true)
+    } else {
+      setReferralHistoryTableLoading(true)
+    }
     const response = await fetch(
       `http://localhost:4000/api/referral/${
         table === 'codes' ? 'get_referral_code_of_user' : 'get_referral_rebates_history_of_user'
@@ -116,13 +126,16 @@ stories.add('Dashboard', () => {
     if (table === 'codes') {
       setCodesTableData(data.referral_code)
       setCodesPaginationTotal(data.total_pages)
+      setReferralCodeTableLoading(false)
     } else {
       setRebatesTableData(data.referral_rebates_history)
       setRebatesPaginationTotal(data.total_pages)
+      setReferralHistoryTableLoading(false)
     }
   }
 
   const generateTransactionsData = async () => {
+    setTransactionsTableLoading(true)
     const response = await fetch(`http://localhost:4000/api/transactions/get_transactions_of_user`, {
       method: 'POST',
       headers: {
@@ -143,6 +156,7 @@ stories.add('Dashboard', () => {
       received: data.amounts_to_from[0].toCount,
       spent: data.amounts_to_from[0].fromSum,
     })
+    setTransactionsTableLoading(false)
   }
 
   const generateTotalReferralData = async () => {
@@ -158,44 +172,38 @@ stories.add('Dashboard', () => {
 
     const data = await response.json()
 
-    setTotalReferralData({
-      uni: {
-        levelUser: data.referral_count_binary,
-        totalComission: data.referral_sum_uni[0].amount,
-      },
-      binary: {
-        levelUser: data.referral_count_uni,
-        totalComission: data.referral_sum_binary[0].amount,
-      },
-    })
+    console.log(data)
+
+    // setTotalReferralData({
+    //   uni: {
+    //     levelUser: data.referral_count_binary,
+    //     totalComission: data.referral_sum_uni[0].amount,
+    //   },
+    //   binary: {
+    //     levelUser: data.referral_count_uni,
+    //     totalComission: data.referral_sum_binary[0].amount,
+    //   },
+    // })
   }
 
-  // const generateAccountsData = async () => {
-  //   const response = await fetch(`http://localhost:4000/api/accounts/get_account_balances`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       address: '0xe72c1054c1900fc6c266fec9bedc178e72793a35',
-  //     }),
-  //   })
+  const generateAccountsData = async () => {
+    const response = await fetch(`http://localhost:4000/api/accounts/get_account_balances`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        address: '0xe72c1054c1900fc6c266fec9bedc178e72793a35',
+      }),
+    })
 
-  //   const data = await response.json()
+    const data = await response.json()
 
-  //   setTotalReferralData({
-  //     uni: {
-  //       levelUser: data.referral_count_binary,
-  //       totalComission: data.referral_sum_uni[0].amount,
-  //     },
-  //     binary: {
-  //       levelUser: data.referral_count_uni,
-  //       totalComission: data.referral_sum_binary[0].amount,
-  //     },
-  //   })
-  // }
+    setAccountsData(data?.data)
+  }
 
   useEffect(() => {
+    generateAccountsData()
     generateTransactionsData()
     generateTotalReferralData()
     generateTableData('codes')
@@ -331,6 +339,22 @@ stories.add('Dashboard', () => {
       ],
     },
   ]
+
+  const referralCodeTableEmpty = {
+    label: 'No Referral Code History',
+    icon: <NoHistoryIcon />,
+  }
+
+  const referralRebatesTableEmpty = {
+    label: 'No Referral Rebates History',
+    icon: <NoHistoryIcon />,
+  }
+
+  const transactionsTableEmpty = {
+    label: 'No Referral Rebates History',
+    icon: <NoHistoryIcon />,
+  }
+
   return (
     <BrowserRouter>
       <Header
@@ -477,6 +501,13 @@ stories.add('Dashboard', () => {
           codesTableData={codesTableData}
           rebatesTableData={rebatesTableData}
           totalTransactions={totalTransactions}
+          referralCodeTableEmpty={referralCodeTableEmpty}
+          referralHistoryTableEmpty={referralRebatesTableEmpty}
+          transactionsTableEmpty={transactionsTableEmpty}
+          referralCodeTableLoading={referralCodeTableLoading}
+          referralHistoryTableLoading={referralHistoryTableLoading}
+          transactionsTableLoading={transactionsTableLoading}
+          accountsData={accountsData}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

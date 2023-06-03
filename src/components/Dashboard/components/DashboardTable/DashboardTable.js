@@ -17,6 +17,8 @@ export const DashboardTable = ({
   tableHeader,
   referralCardsData,
   data,
+  tableEmpty,
+  loading,
 }) => {
   let element = null
 
@@ -180,12 +182,13 @@ export const DashboardTable = ({
               />
             </div>
           }
-          tableData={tableData}
+          tableData={data?.length ? tableData : false}
           tableFooter={tableFooter}
           customStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '20px' }}
           customTableMoreStyles={{
             display: 'none',
           }}
+          loading={loading}
         />
       </>
     ))
@@ -323,7 +326,7 @@ export const DashboardTable = ({
               />
             </div>
           }
-          tableData={tableData}
+          tableData={data.length ? tableData : false}
           tableFooter={tableFooter}
           tableHead={tableHeader}
           customStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '20px' }}
@@ -336,6 +339,8 @@ export const DashboardTable = ({
           customTableMoreStyles={{
             display: 'none',
           }}
+          tableEmptyData={tableEmpty}
+          loading={loading}
         />
       </div>
     ))
@@ -435,7 +440,7 @@ export const DashboardTable = ({
               />
             </div>
           }
-          tableData={tableData}
+          tableData={data.length ? tableData : false}
           tableFooter={tableFooter}
           tableHead={tableHeader}
           customStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '20px' }}
@@ -448,6 +453,8 @@ export const DashboardTable = ({
           customTableMoreStyles={{
             display: 'none',
           }}
+          tableEmptyData={tableEmpty}
+          loading={loading}
         />
       </>
     ))

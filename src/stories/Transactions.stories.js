@@ -14,6 +14,8 @@ const stories = storiesOf('Transactions', module)
 stories.add('Transactions', () => {
   const [transactionsData, setTransactionsData] = useState({})
   const [totalTransactions, setTotalTransactions] = useState({})
+  const [filterObject, setFilterObject] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const [transactionsPaginationTotal, setTransactionsPaginationTotal] = useState(1)
   const [transactionsCurrentPage, setTransactionsCurrentPage] = useState(1)
@@ -80,6 +82,7 @@ stories.add('Transactions', () => {
   ]
 
   const generateTransactionsData = async () => {
+    setLoading(true)
     const response = await fetch(`http://localhost:4000/api/transactions/get_transactions_of_user`, {
       method: 'POST',
       headers: {
@@ -87,24 +90,27 @@ stories.add('Transactions', () => {
       },
       body: JSON.stringify({
         address: '0xe72c1054c1900fc6c266fec9bedc178e72793a35',
-        limit: 3,
-        page: 1,
+        limit: 5,
+        page: transactionsCurrentPage,
+        ...filterObject,
       }),
     })
 
     const data = await response.json()
 
+    setTransactionsPaginationTotal(data.total_pages)
     setTransactionsData(data)
     setTotalTransactions({
       total_transaction: data.total_transaction,
       received: data.amounts_to_from[0].toCount,
       spent: data.amounts_to_from[0].fromSum,
     })
+    setLoading(false)
   }
 
   useEffect(() => {
     generateTransactionsData()
-  }, [])
+  }, [filterObject?.type, filterObject?.date, filterObject?.account, transactionsCurrentPage])
 
   const transactionHeader = [
     {
@@ -158,81 +164,57 @@ stories.add('Transactions', () => {
     },
   ]
 
-  const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({})
-
-  const tableFilterData = {
-    search: {
+  const inputs = [
+    {
+      title: 'Choose Account',
+      name: 'account',
+      type: 'lable-input-select',
       options: [
-        {
-          name: 'Account Owner',
-          value: 'account_owner',
-        },
-        {
-          name: 'Account Type Id',
-          value: 'account_type_id',
-        },
-        {
-          name: 'Address',
-          value: 'address',
-        },
+        { name: 'System', value: 'System' },
+        { name: 'Trade', value: 'trade' },
+        { name: 'Loan', value: 'loan' },
       ],
+      defaultAny: 'Any Account',
+      onChange: e =>
+        setFilterObject(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
     },
-    selects: [
-      {
-        name: 'Tranx Type',
-        value: 'tx_type',
-        options: [
-          {
-            name: 'Transaction',
-            value: 'transaction',
-          },
-          {
-            name: 'Hash',
-            value: 'hash',
-          },
-        ],
-      },
-      {
-        name: 'Date Within',
-        value: 'createdAt',
-        options: [
-          {
-            name: 'Transaction',
-            value: 'transaction',
-          },
-          {
-            name: 'Hash',
-            value: 'hash',
-          },
-        ],
-      },
-      {
-        name: 'Transaction Status',
-        value: 'ts_status',
-        options: [
-          {
-            name: 'Pending',
-            value: 'pending',
-          },
-          {
-            name: 'Cenceled',
-            value: 'canceled',
-          },
-          {
-            name: 'Approved',
-            value: 'approved',
-          },
-          {
-            name: 'Bonuses',
-            value: 'bonuses',
-          },
-          {
-            name: 'Claimed',
-            value: 'claimed',
-          },
-        ],
-      },
-    ],
+    {
+      title: 'Choose Type',
+      name: 'type',
+      type: 'lable-input-select',
+      options: [
+        { name: 'Deposit', value: 'deposit' },
+        { name: 'Transfer', value: 'transfer' },
+        { name: 'Internal Transaction', value: 'internal_transaction' },
+        { name: 'Withdrawal', value: 'withdrawal' },
+        { name: 'Referral Bonus', value: 'referral_bonus' },
+      ],
+      defaultAny: 'Any Type',
+      onChange: e =>
+        setFilterObject(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
+    },
+    {
+      title: 'Choose Time',
+      name: 'time',
+      type: 'date-picker-input',
+      defaultAny: 'Any Time',
+      onChange: e =>
+        setFilterObject(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
+    },
+  ]
+
+  const transactionsTableEmpty = {
+    label: 'No Referral Rebates History',
+    icon: <NoHistoryIcon />,
   }
 
   return (
@@ -379,12 +361,13 @@ stories.add('Transactions', () => {
           footer={footer}
           tableHead={transactionHeader}
           data={transactionsData?.transactions}
-          paginationCurrent={1}
-          paginationTotal={20}
-          paginationEvent={page => console.log(page)}
-          tableFilterData={tableFilterData}
-          // tableHeader={2}
-          setTableFilterOutcomingData={setTableFilterOutcomingData}
+          paginationCurrent={transactionsCurrentPage}
+          paginationTotal={transactionsPaginationTotal}
+          paginationEvent={page => setTransactionsCurrentPage(page)}
+          inputs={inputs}
+          currentObject={filterObject}
+          loading={loading}
+          tableEmpty={transactionsTableEmpty}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

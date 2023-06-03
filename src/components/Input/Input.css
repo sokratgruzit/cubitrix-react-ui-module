@@ -212,7 +212,7 @@
   border: none;
   width: 100%;
 }
-.number-control[type="number"]::-webkit-inner-spin-button {
+.number-control[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 .select-body {
@@ -422,8 +422,8 @@
 }
 
 .react-datepicker__header:after {
-  content: "";
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  content: '';
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 8px;
   width: 90%;
   display: block;
@@ -432,7 +432,7 @@
 
 .react-datepicker__day {
   border-radius: 3px;
-  border: 0.5px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin-left: 0.3rem !important;
   margin-right: 0.3rem !important;
 }
@@ -442,11 +442,11 @@
 }
 
 .react-datepicker__day--selected {
-  background: #0500ff !important;
+  background: #45F4EA !important;
 }
 
 .react-datepicker__day--keyboard-selected {
-  background-color: #0500ff !important;
+  background-color: #45F4EA !important;
 }
 
 .react-datepicker__day:hover {
@@ -494,7 +494,7 @@
   background: #0a0f18 !important;
 }
 .react-datepicker__time-list-item--selected {
-  background-color: #0500ff !important;
+  background-color: red !important;
 }
 
 .react-datepicker__time-list-item:hover {
@@ -717,14 +717,14 @@ select input
     text-decoration: underline;
 } */
 
-.phone-numbers input[type="number"]::-webkit-outer-spin-button,
-.phone-numbers input[type="number"]::-webkit-inner-spin-button {
+.phone-numbers input[type='number']::-webkit-outer-spin-button,
+.phone-numbers input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
   background-color: red;
 }
 
-.phone-numbers input[type="number"] {
+.phone-numbers input[type='number'] {
   -moz-appearance: textfield;
 }
 

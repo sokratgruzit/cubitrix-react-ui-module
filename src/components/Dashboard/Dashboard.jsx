@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 
-import { Link, useLocation } from 'react-router-dom'
-
 import { CardSlider } from './components/CardSlider/CardSlider'
 import { DashboardTable } from './components/DashboardTable/DashboardTable'
 import './Dashboard.css'
-import { useMobileWidth } from '../../hooks/useMobileWidth'
 import { Account, AccountType } from '../../assets/svgs'
 
 export const Dashboard = ({
-  links,
   transactionsData,
   transactionHeader,
   referralCodeHeader,
@@ -18,10 +14,14 @@ export const Dashboard = ({
   codesTableData,
   rebatesTableData,
   totalTransactions,
+  referralCodeTableEmpty,
+  referralHistoryTableEmpty,
+  transactionsTableEmpty,
+  referralCodeTableLoading,
+  referralHistoryTableLoading,
+  transactionsTableLoading,
+  accountsData,
 }) => {
-  const { width } = useMobileWidth()
-  const location = useLocation()
-
   const tables = [
     {
       type: 'transactions',
@@ -43,6 +43,8 @@ export const Dashboard = ({
       },
       tableHeader: transactionHeader,
       data: transactionsData?.transactions,
+      tableEmpty: transactionsTableEmpty,
+      loading: transactionsTableLoading,
     },
     {
       type: 'referral-code',
@@ -55,6 +57,8 @@ export const Dashboard = ({
       tableHeader: referralCodeHeader,
       referralCardsData: referralCardsData,
       data: codesTableData,
+      tableEmpty: referralCodeTableEmpty,
+      loading: referralCodeTableLoading,
     },
     {
       type: 'referral-history',
@@ -66,12 +70,14 @@ export const Dashboard = ({
       },
       tableHeader: referralHistoryHeader,
       data: rebatesTableData,
+      tableEmpty: referralHistoryTableEmpty,
+      loading: referralHistoryTableLoading,
     },
   ]
 
   return (
     <>
-      <CardSlider />
+      <CardSlider accounts={accountsData} />
       {tables?.map((item, index) => (
         <DashboardTable
           key={index}
@@ -83,6 +89,8 @@ export const Dashboard = ({
           tableHeader={item?.tableHeader}
           referralCardsData={item?.referralCardsData}
           data={item?.data}
+          tableEmpty={item?.tableEmpty}
+          loading={item?.loading}
         />
       ))}
     </>

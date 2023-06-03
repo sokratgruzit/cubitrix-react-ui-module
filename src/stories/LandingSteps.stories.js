@@ -102,6 +102,12 @@ stories.add("LandingSteps", () => {
     console.log("coinbase payment send request");
   }
 
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    referral: "",
+  });
+
   return (
     <BrowserRouter>
       <div className="test-animation-w">
@@ -286,7 +292,9 @@ stories.add("LandingSteps", () => {
             handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
               console.log("payment confirm", userAddress, selectedMethod, amount, date)
             }
-            connectionLoading={true}
+            connectionLoading={false}
+            formData={formData}
+            setFormData={setFormData}
           />
         </div>
         <SideBar open={toggle}>

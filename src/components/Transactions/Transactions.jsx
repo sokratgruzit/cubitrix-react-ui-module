@@ -7,6 +7,7 @@ import { TableElement } from '../TableElement'
 import { useMobileWidth } from '../../hooks/useMobileWidth'
 import { Link } from 'react-router-dom'
 import { FilterBox } from '../FilterBox'
+import { Input } from '../Input'
 
 export const Transactions = ({
   tableHead,
@@ -18,10 +19,10 @@ export const Transactions = ({
   description,
   rightPanelData,
   footer,
-  tableFilterData,
-  setTableFilterOutcomingData,
-  tableSearchSelect,
-  tableHeader,
+  inputs,
+  currentObject,
+  loading,
+  tableEmpty,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null)
   const { width } = useMobileWidth()
@@ -167,18 +168,39 @@ export const Transactions = ({
     )
   })
 
+  const handleInputChange = (e, params) => {
+    const { name, onChange } = params
+    let data = {
+      target: {
+        value: e,
+        name,
+      },
+    }
+
+    onChange(data)
+  }
+
   return (
     <div className='transactions-page-container'>
       <h1>Transactions History</h1>
-      <FilterBox
-        tableFilterData={tableFilterData}
-        setTableFilterOutcomingData={setTableFilterOutcomingData}
-        tableSearchSelect={tableSearchSelect}
-        tableHeader={tableHeader}
-        customStyles={{ marginBottom: '20px' }}
-        searchInputValue={true}
-        buttonCustomStyles={{ backroundColor: '#45F4EA' }}
-      />
+      <div className='transaction-selects-container'>
+        {inputs?.map((params, index) => (
+          <Input
+            key={index}
+            type={params?.type}
+            label={params.title}
+            name={params.name}
+            value={currentObject[params?.name] || params?.defaultAny}
+            customStyles={{ width: '100%' }}
+            selectHandler={opt => {
+              handleInputChange(opt, params)
+            }}
+            onChange={e => handleInputChange(e, params)}
+            defaultData={params?.options}
+            customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+          />
+        ))}
+      </div>
       <Table
         tableHeadMore={
           <div className='dashboard-table-header-container'>
@@ -205,6 +227,8 @@ export const Transactions = ({
         customTableMoreStyles={{
           display: 'none',
         }}
+        tableEmptyData={tableEmpty}
+        loading={loading}
       />
       <TableElement
         customStyle={{ marginTop: '30px', paddingBottom: '100px' }}
