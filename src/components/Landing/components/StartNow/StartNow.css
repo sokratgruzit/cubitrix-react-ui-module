@@ -62,6 +62,10 @@
 }
 
 .start-title {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 130%;
+  color: #2b315f;
   font-size: 80px;
   line-height: 130%;
   display: flex;
@@ -74,12 +78,12 @@
 .start-title-sm {
   width: 440px;
   height: 42px;
-  font-family: "Uber Move";
   font-size: 16px;
   line-height: 130%;
   display: flex;
   align-items: center;
   text-align: center;
+  color: #2b315f;
 }
 
 .start-titles-wrapper {
@@ -104,9 +108,9 @@
 }
 
 @media (max-width: 767px) {
-  .start-section {
+  /* .start-section {
     padding: 0 20px;
-  }
+  } */
   .startNowBG {
     position: absolute;
     z-index: -1;

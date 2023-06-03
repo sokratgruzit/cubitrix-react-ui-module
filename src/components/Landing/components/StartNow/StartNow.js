@@ -10,7 +10,6 @@ export const StartNow = ({ account, handleConnect, startNowImages }) => {
 
   return (
     <section className="start-section">
-      {/* <img src={startNowImages?.startNowBG} className="startNowBG" alt="" /> */}
       <div className="start-section_container">
         <span className="start-blocks-1-wrap fade-up">
           <StartNowBlocks1 className={"start-blocks-1"} />
@@ -30,7 +29,7 @@ export const StartNow = ({ account, handleConnect, startNowImages }) => {
             <Button
               label={"Connect Wallet"}
               size={"btn-lg"}
-              type={"btn-secondary"}
+              type={"btn-darkBlue-secondary"}
               arrow={"arrow-none"}
               element={"button"}
               onClick={handleConnect}

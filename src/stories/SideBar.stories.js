@@ -14,6 +14,7 @@ import ResetPassword from "../components/Auth/ResetPassword/ResetPassword";
 import { Popup } from "../components/Popup/Popup";
 import { ChangeNetwork } from "../components/Auth/ChangeNetwork";
 import { NoMetaMask } from "../components/Auth/NoMetaMask";
+import { MetaMask } from "../assets/svgs";
 
 const stories = storiesOf("SideBar", module);
 
@@ -52,11 +53,11 @@ stories.add("SideBar", () => {
         label={"Check Your Network"}
       /> */}
       <SideBar open={toggle}>
-        {/* <Connect
+        <Connect
           ConnectOptions={[
             {
               label: "Metamask",
-              svg: <MetaMask />,
+              svg: <MetaMask width="26" />,
               connect: () => {
                 console.log("connect");
               },
@@ -74,8 +75,8 @@ stories.add("SideBar", () => {
             console.log("sign in");
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
-        /> */}
-        <UserAccount
+        />
+        {/* <UserAccount
           type={"Metamask"}
           personalData={{
             name: "",
@@ -109,7 +110,7 @@ stories.add("SideBar", () => {
             setTwoFactorAuth(val);
           }}
           handleForgetPassword={() => console.log("forget password")}
-        />
+        /> */}
         {/* <ResetPassword
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}

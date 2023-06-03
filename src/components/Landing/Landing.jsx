@@ -6,6 +6,7 @@ import { Footer } from "../Footer";
 import {
   DashboardHeader,
   Meditation,
+  Overview,
   StartNow,
   TopCoins,
   WhyComplend,
@@ -19,6 +20,7 @@ export const Landing = ({
   allImages,
   info,
   whyComplendData,
+  overviewProjectsData,
 }) => {
   return (
     <div style={{ paddingTop: "70px" }}>
@@ -33,6 +35,7 @@ export const Landing = ({
           <WhyComplend data={whyComplendData} images={allImages?.whyComplend} />
           <TopCoins startTrade={startTrade} topCoinsImages={allImages?.topcoins} />
           <Meditation meditationImages={allImages?.meditation} info={info} />
+          <Overview data={overviewProjectsData} />
           <StartNow
             handleConnect={handleConnect}
             account={account}

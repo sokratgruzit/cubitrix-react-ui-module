@@ -10,12 +10,12 @@ export const Meditation = ({ info, meditationImages }) => {
   useFade("up", [".fade-up"]);
   return (
     <div className="meditation-container">
-      <InfoItem className="info-item" {...info[0]} />
-      <InfoItem className="info-item" {...info[1]} />
-      <InfoItem className="info-item" {...info[2]} />
-      <InfoItem className="info-item" {...info[3]} />
-      <InfoItem className="info-item" {...info[4]} />
       <div className="center-box">
+        <InfoItem className="info-item" {...info[0]} />
+        <InfoItem className="info-item" {...info[1]} />
+        <InfoItem className="info-item" {...info[2]} />
+        <InfoItem className="info-item" {...info[3]} />
+        <InfoItem className="info-item" {...info[4]} />
         <DashboardMeditationBG className={"person-background"} />
         <span className="person-wrapper fade-up">
           <img

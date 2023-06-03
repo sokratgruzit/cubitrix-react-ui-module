@@ -1,1 +1,1 @@
-export * from "./Visual.jsx";
+export * from "./Visual.js";
