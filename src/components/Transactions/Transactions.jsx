@@ -153,12 +153,16 @@ export const Transactions = ({
               <span>{item?.tx_type}</span>
             </div>
             <div className='td'>
-              <div className='mobile-ttl'>{tableHead[3].name}</div>
+              <div className='mobile-ttl'>
+                {tableHead[3].name} {tableHead[3]?.icon}
+              </div>
               <span>{createdTime}</span>
             </div>
             {width < 500 && (
               <div className='td'>
-                <div className='mobile-ttl'>{tableHead[4].name}</div>
+                <div className='mobile-ttl'>
+                  {tableHead[4].name} {tableHead[4]?.icon}
+                </div>
                 <span>{item?.amount}</span>
               </div>
             )}

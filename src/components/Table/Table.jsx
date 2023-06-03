@@ -41,6 +41,7 @@ export const Table = ({
                     }}
                   >
                     {item.name}
+                    {item?.icon}
                   </div>
                 )
               })}
