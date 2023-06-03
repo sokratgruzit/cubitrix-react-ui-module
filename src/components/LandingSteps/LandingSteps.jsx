@@ -24,12 +24,9 @@ export const LandingSteps = ({
   registrationState,
   setRegistrationState,
   connectionLoading,
+  formData,
+  setFormData,
 }) => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    referral: "",
-  });
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
   const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
@@ -125,13 +122,6 @@ export const LandingSteps = ({
   if (initialLoading) {
     return <div>Loading...</div>;
   }
-
-  console.log(
-    registrationState?.loading ||
-      registrationState?.emailError ||
-      registrationState?.fullNameError ||
-      registrationState?.referralError,
-  );
 
   return (
     <div className="LandingSteps__container">
