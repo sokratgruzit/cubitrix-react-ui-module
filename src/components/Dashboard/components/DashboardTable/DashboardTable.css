@@ -51,8 +51,12 @@
   color: #45f4ea;
 }
 
+.dashboard-table-parent > .table {
+  padding: 0 20px 16px;
+}
+
 .dashboard-table-parent {
-  padding: 16px 20px;
+  padding: 16px 0 0 0;
   background-color: transparent !important;
   border-bottom: 1px solid rgb(255, 255, 255, 0.05);
 }
