@@ -23,6 +23,7 @@ export const LandingSteps = ({
   qrcode,
   registrationState,
   setRegistrationState,
+  connectionLoading,
 }) => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -146,7 +147,11 @@ export const LandingSteps = ({
           <div className="LandingSteps__step__title">Connect Wallet</div>
           <div className="LandingSteps__step__content LandingSteps__step__content--wallet">
             <div className="LandingSteps__wallet-option" onClick={handleMetamaskConnect}>
-              <MetaMask className="LandingSteps__walletmetamaskIcon" />
+              {connectionLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <MetaMask className="LandingSteps__walletmetamaskIcon" />
+              )}
               MetaMask
             </div>
             <div className="LandingSteps__wallet-option" onClick={handleWalletConnect}>

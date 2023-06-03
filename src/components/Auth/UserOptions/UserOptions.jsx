@@ -32,7 +32,7 @@ export const UserOptions = ({
                 type="btn-primary"
                 size="btn-lg"
                 onClick={completeAccount}
-                customStyles={{ width: "179px" }}
+                customStyles={{ width: "190px" }}
               />
             </div>
             <span className="border-full"></span>
@@ -41,7 +41,8 @@ export const UserOptions = ({
         <div className="address-wrap">
           <p>Your Address</p>
           <p>
-            {type === "Metamask" && <MetaMask />}
+            {type === "Metamask" && <MetaMask width="24" />}
+            sd
             {type}
           </p>
         </div>
