@@ -1,5 +1,6 @@
 .card-slider-navigation {
   display: flex;
+  overflow-x: scroll;
 }
 
 .card-slider-navigation_item {
@@ -56,7 +57,7 @@
 .card-slider-content .swiper {
   margin: 0 !important;
   width: 100% !important;
-  position: relative!important;
+  position: relative !important;
 }
 
 .card-slider-content .swiper-slide {
@@ -159,4 +160,18 @@
   width: 30%;
   z-index: 2;
   height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  .card-slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-slider-navigation_item.active {
+    border-radius: 20px;
+  }
+  .card-slider-cards-mover{
+    padding: 0 10px;
+  }
 }

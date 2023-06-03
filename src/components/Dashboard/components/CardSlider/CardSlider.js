@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "./CardSlider.css";
 import { AccountType } from "../../../../assets/svgs";
+import { useMobileWidth } from "../../../../hooks/useMobileWidth";
 
 export const CardSlider = () => {
   const [accountType, setAccountType] = useState("main");
@@ -11,6 +12,7 @@ export const CardSlider = () => {
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [slidePercentage, setSlidePercentage] = useState(0);
+  const { width } = useMobileWidth();
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -163,19 +165,19 @@ export const CardSlider = () => {
 
   const accounts = [
     {
-      title: "Main account",
+      title: `Main ${width <= 1025 ? "" : "account"}`,
       value: "main",
     },
     {
-      title: "Investment account",
+      title: `Investment ${width <= 1025 ? "" : "account"}`,
       value: "investment",
     },
     {
-      title: "Trade account",
+      title: `Trade ${width <= 1025 ? "" : "account"}`,
       value: "trade",
     },
     {
-      title: "Loan account",
+      title: `Loan ${width <= 1025 ? "" : "account"}`,
       value: "loan",
     },
   ];

@@ -1,36 +1,22 @@
 import { storiesOf } from '@storybook/react'
 
 import { BrowserRouter } from 'react-router-dom'
-import { Dashboard } from '../components/Dashboard'
 import { Header } from '../components/Header'
 
 import '../assets/css/main-theme.css'
 import { useEffect, useState } from 'react'
 import { useMobileWidth } from '../hooks/useMobileWidth'
 import { DashboardSharedLayout } from '../components/DashboardSharedLayout/DashboardSharedLayout'
+import { Transactions } from '../components/Transactions'
 
-const stories = storiesOf('Dashboard', module)
+const stories = storiesOf('Transactions', module)
 
-stories.add('Dashboard', () => {
-  const [codesTableData, setCodesTableData] = useState([])
-  const [rebatesTableData, setRebatesTableData] = useState([])
+stories.add('Transactions', () => {
   const [transactionsData, setTransactionsData] = useState({})
   const [totalTransactions, setTotalTransactions] = useState({})
-  const [totalReferralData, setTotalReferralData] = useState({
-    uni: {
-      levelUser: 0,
-      totalComission: 0,
-    },
-    binary: {
-      levelUser: 0,
-      totalComission: 0,
-    },
-  })
 
-  const [codesPaginationTotal, setCodesPaginationTotal] = useState(1)
-  const [rebatesPaginationTotal, setRebatesPaginationTotal] = useState(1)
-  const [rebatesCurrentPage, setRebatesCurrentPage] = useState(1)
-  const [codesCurrentPage, setCodesCurrentPage] = useState(1)
+  const [transactionsPaginationTotal, setTransactionsPaginationTotal] = useState(1)
+  const [transactionsCurrentPage, setTransactionsCurrentPage] = useState(1)
 
   const { width } = useMobileWidth()
 
@@ -93,35 +79,6 @@ stories.add('Dashboard', () => {
     },
   ]
 
-  const generateTableData = async (table, page) => {
-    const response = await fetch(
-      `http://localhost:4000/api/referral/${
-        table === 'codes' ? 'get_referral_code_of_user' : 'get_referral_rebates_history_of_user'
-      }`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          address: '0x43f59F41518903A274c7897dfFB24DB86a0dd23a',
-          limit: 3,
-          page: 1,
-        }),
-      }
-    )
-
-    const data = await response.json()
-
-    if (table === 'codes') {
-      setCodesTableData(data.referral_code)
-      setCodesPaginationTotal(data.total_pages)
-    } else {
-      setRebatesTableData(data.referral_rebates_history)
-      setRebatesPaginationTotal(data.total_pages)
-    }
-  }
-
   const generateTransactionsData = async () => {
     const response = await fetch(`http://localhost:4000/api/transactions/get_transactions_of_user`, {
       method: 'POST',
@@ -145,61 +102,8 @@ stories.add('Dashboard', () => {
     })
   }
 
-  const generateTotalReferralData = async () => {
-    const response = await fetch(`http://localhost:4000/api/referral/get_referral_code_of_user_dashboard`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        address: '0xe72c1054c1900fc6c266fec9bedc178e72793a35',
-      }),
-    })
-
-    const data = await response.json()
-
-    setTotalReferralData({
-      uni: {
-        levelUser: data.referral_count_binary,
-        totalComission: data.referral_sum_uni[0].amount,
-      },
-      binary: {
-        levelUser: data.referral_count_uni,
-        totalComission: data.referral_sum_binary[0].amount,
-      },
-    })
-  }
-
-  // const generateAccountsData = async () => {
-  //   const response = await fetch(`http://localhost:4000/api/accounts/get_account_balances`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       address: '0xe72c1054c1900fc6c266fec9bedc178e72793a35',
-  //     }),
-  //   })
-
-  //   const data = await response.json()
-
-  //   setTotalReferralData({
-  //     uni: {
-  //       levelUser: data.referral_count_binary,
-  //       totalComission: data.referral_sum_uni[0].amount,
-  //     },
-  //     binary: {
-  //       levelUser: data.referral_count_uni,
-  //       totalComission: data.referral_sum_binary[0].amount,
-  //     },
-  //   })
-  // }
-
   useEffect(() => {
     generateTransactionsData()
-    generateTotalReferralData()
-    generateTableData('codes')
-    generateTableData('rebates')
   }, [])
 
   const transactionHeader = [
@@ -238,99 +142,99 @@ stories.add('Dashboard', () => {
     },
   ]
 
-  const referralCodeHeader = [
+  const footer = {
+    link: '/referral',
+    label: 'All Code',
+  }
+
+  const rightPanelData = [
     {
-      id: 0,
-      name: 'My Referral Code',
-      width: 15,
-      height: '40px',
+      title: 'Recieved',
+      value: totalTransactions?.received,
     },
     {
-      id: 1,
-      name: 'User Address',
-      width: 15,
-      mobileWidth: width >= 500 ? 45 : 100,
-      height: '40px',
-    },
-    {
-      id: 2,
-      name: 'User Level',
-      width: 15,
-      height: '40px',
-    },
-    {
-      id: 3,
-      name: 'Rate',
-      width: 15,
-      height: '40px',
-    },
-    {
-      id: 4,
-      name: 'Total Earned',
-      width: 15,
-      mobileWidth: width >= 500 ? 45 : false,
-      height: '40px',
+      title: 'Spent',
+      value: totalTransactions?.spent,
     },
   ]
 
-  const referralHistoryHeader = [
-    {
-      id: 0,
-      name: 'From',
-      width: 15,
-      mobileWidth: width >= 500 ? 45 : 100,
-      height: '40px',
-    },
-    {
-      id: 1,
-      name: 'Referral Code',
-      width: 15,
-      height: '40px',
-    },
-    {
-      id: 2,
-      name: 'Referral Level',
-      width: 15,
-      height: '40px',
-    },
-    {
-      id: 3,
-      name: 'Amount',
-      width: 15,
-      mobileWidth: width >= 500 ? 45 : false,
-      height: '40px',
-    },
-  ]
+  const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({})
 
-  const referralCardsData = [
-    {
-      title: 'Uni',
-      data: [
+  const tableFilterData = {
+    search: {
+      options: [
         {
-          title: 'Level User',
-          value: totalReferralData?.uni?.levelUser,
+          name: 'Account Owner',
+          value: 'account_owner',
         },
         {
-          title: 'Total Comission',
-          value: totalReferralData?.uni?.totalComission,
-        },
-      ],
-    },
-    {
-      title: 'Binary',
-      active: true,
-      data: [
-        {
-          title: 'Level User',
-          value: totalReferralData?.binary?.levelUser,
+          name: 'Account Type Id',
+          value: 'account_type_id',
         },
         {
-          title: 'Total Comission',
-          value: totalReferralData?.binary?.totalComission,
+          name: 'Address',
+          value: 'address',
         },
       ],
     },
-  ]
+    selects: [
+      {
+        name: 'Tranx Type',
+        value: 'tx_type',
+        options: [
+          {
+            name: 'Transaction',
+            value: 'transaction',
+          },
+          {
+            name: 'Hash',
+            value: 'hash',
+          },
+        ],
+      },
+      {
+        name: 'Date Within',
+        value: 'createdAt',
+        options: [
+          {
+            name: 'Transaction',
+            value: 'transaction',
+          },
+          {
+            name: 'Hash',
+            value: 'hash',
+          },
+        ],
+      },
+      {
+        name: 'Transaction Status',
+        value: 'ts_status',
+        options: [
+          {
+            name: 'Pending',
+            value: 'pending',
+          },
+          {
+            name: 'Cenceled',
+            value: 'canceled',
+          },
+          {
+            name: 'Approved',
+            value: 'approved',
+          },
+          {
+            name: 'Bonuses',
+            value: 'bonuses',
+          },
+          {
+            name: 'Claimed',
+            value: 'claimed',
+          },
+        ],
+      },
+    ],
+  }
+
   return (
     <BrowserRouter>
       <Header
@@ -468,15 +372,19 @@ stories.add('Dashboard', () => {
         verified={false}
       />
       <DashboardSharedLayout links={links}>
-        <Dashboard
-          transactionsData={transactionsData}
-          transactionHeader={transactionHeader}
-          referralCodeHeader={referralCodeHeader}
-          referralHistoryHeader={referralHistoryHeader}
-          referralCardsData={referralCardsData}
-          codesTableData={codesTableData}
-          rebatesTableData={rebatesTableData}
-          totalTransactions={totalTransactions}
+        <Transactions
+          header={'Transactions'}
+          description={`Total number of operations: ${totalTransactions?.total_transaction}`}
+          rightPanelData={rightPanelData}
+          footer={footer}
+          tableHead={transactionHeader}
+          data={transactionsData?.transactions}
+          paginationCurrent={1}
+          paginationTotal={20}
+          paginationEvent={page => console.log(page)}
+          tableFilterData={tableFilterData}
+          // tableHeader={2}
+          setTableFilterOutcomingData={setTableFilterOutcomingData}
         />
       </DashboardSharedLayout>
     </BrowserRouter>
