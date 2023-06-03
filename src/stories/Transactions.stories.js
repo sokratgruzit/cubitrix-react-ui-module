@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { useMobileWidth } from '../hooks/useMobileWidth'
 import { DashboardSharedLayout } from '../components/DashboardSharedLayout/DashboardSharedLayout'
 import { Transactions } from '../components/Transactions'
+import { NoHistoryIcon } from '../assets/svgs'
 
 const stories = storiesOf('Transactions', module)
 

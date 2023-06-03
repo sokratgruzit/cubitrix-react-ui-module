@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
@@ -7,7 +7,7 @@ import { AccountType } from '../../../../assets/svgs'
 import { useMobileWidth } from '../../../../hooks/useMobileWidth'
 
 export const CardSlider = ({ accounts }) => {
-  const [accountType, setAccountType] = useState('external')
+  const [accountType, setAccountType] = useState('system')
   const swiperRef = useRef(null)
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
@@ -161,24 +161,42 @@ export const CardSlider = ({ accounts }) => {
     },
   ]
 
-  const cardsData = accounts?.find(item => item?.account_category === accountType)
+  const cardsData = useMemo(
+    () => accounts?.find(item => item?.account_category === accountType),
+    [accounts, accountType]
+  )
 
-  console.log(cardsData, 'cardsData')
+  const isAccountTypeFirstItem = useMemo(() => accounts?.[0]?.account_category !== accountType, [accounts, accountType])
 
   return (
     <div className='card-slider-wrapper'>
       <div className='card-slider-navigation'>
-        {accounts?.map((item, index) => (
-          <div
-            className={`card-slider-navigation_item ${accountType === item?.account_category ? 'active' : ''} font-16`}
-            key={index}
-            onClick={() => setAccountType(item.account_category)}
-          >
-            {item.account_category}
-          </div>
-        ))}
+        {accounts?.map((item, index) => {
+          const activeIndex = accounts.findIndex(acc => accountType === acc.account_category)
+          const isLeftOfActive = index === activeIndex - 1
+          const isRightOfActive = index === activeIndex + 1
+          const borderRadiusClass = isLeftOfActive ? 'left-border-radius' : isRightOfActive ? 'right-border-radius' : ''
+
+          return (
+            <div
+              className={`${accountType !== item?.account_category ? 'card-slider-navigation_item_container' : ''}`}
+              key={index}
+            >
+              <div
+                className={`card-slider-navigation_item ${accountType === item?.account_category ? 'active' : ''} ${
+                  width >= 767 && borderRadiusClass
+                }`}
+                onClick={() => setAccountType(item?.account_category)}
+              >
+                <p className='font-16'>
+                  {item?.account_category} {width > 767 ? 'account' : ''}
+                </p>
+              </div>
+            </div>
+          )
+        })}
       </div>
-      <div className='card-slider-content'>
+      <div className={`card-slider-content ${isAccountTypeFirstItem && width > 767 ? 'card-slider-content-wrap' : ''}`}>
         <Swiper
           ref={swiperRef}
           spaceBetween={10}

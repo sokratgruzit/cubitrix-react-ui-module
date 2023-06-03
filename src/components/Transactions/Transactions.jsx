@@ -231,7 +231,7 @@ export const Transactions = ({
         loading={loading}
       />
       <TableElement
-        customStyle={{ marginTop: '30px', paddingBottom: '100px' }}
+        customStyle={{ marginTop: '30px' }}
         color={'#45F4EA'}
         type={'pagination'}
         currentPage={paginationCurrent}
