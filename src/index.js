@@ -42,3 +42,4 @@ export * from "./components/LandingSteps";
 export * from "./components/LoadingScreen";
 export * from "./components/DashboardSharedLayout";
 export * from "./components/Transactions";
+export * from "./components/TransferFromAcc";

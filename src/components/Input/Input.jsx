@@ -94,7 +94,11 @@ export const Input = props => {
           }}
           value={props.value}
           name={props.name}
-          style={props.icon ? { paddingRight: '43px' } : { paddingRight: '16px' }}
+          style={
+            props.icon
+              ? { paddingRight: '43px', ...props?.customInputStyles }
+              : { paddingRight: '16px', ...props?.customInputStyles }
+          }
           className={`${'form-control'} ${props.emptyFieldErr ? 'error-border' : ''}  ${
             !edit && props.editable && props?.value?.length > 0 ? 'disabled-input' : ''
           }`}
@@ -642,7 +646,7 @@ export const Input = props => {
           selected={props.value instanceof Date ? props.value : null}
           onChange={date => props.onChange(date)}
           value={props.value}
-          customInput={<input value={props.value}  style={props?.customInputStyles}/>}
+          customInput={<input value={props.value} style={props?.customInputStyles} />}
         />
         {props.statusCard}
         {props.editable ? (
