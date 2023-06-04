@@ -40,3 +40,5 @@ export * from "./components/TopUp";
 export * from "./components/Landing";
 export * from "./components/LandingSteps";
 export * from "./components/LoadingScreen";
+export * from "./components/DashboardSharedLayout";
+export * from "./components/Transactions";
