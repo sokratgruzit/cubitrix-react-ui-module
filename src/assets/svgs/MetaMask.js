@@ -1,6 +1,6 @@
 import React from "react";
 
-const MetaMask = ({ className, ...props }) => {
+const MetaMask = ({ ...props }) => {
   return (
     <svg
       width="74"

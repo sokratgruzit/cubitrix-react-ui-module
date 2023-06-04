@@ -102,7 +102,7 @@ export const NavbarHelper = ({
             label={
               <span className="addressWrapper">
                 {verified ? (
-                  <MetaMask className="MetaMask" />
+                  <MetaMask className="MetaMask" width="24" />
                 ) : (
                   <Warning className="Warning" />
                 )}

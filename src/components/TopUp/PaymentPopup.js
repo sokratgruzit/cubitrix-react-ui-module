@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../Button";
 import "./PaymentPopup.css";
 import { HelpText } from "../HelpText";
+import { EthIcon } from "../../assets/svgs";
 
 const PaymentPopup = ({
   setOpenConfirmPaymentPopup,
