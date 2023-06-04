@@ -297,6 +297,7 @@ stories.add("LandingSteps", () => {
             formData={formData}
             setFormData={setFormData}
             resendEmail={() => console.log("resend email")}
+            disconnect={() => console.log("disconnect")}
           />
         </div>
         <SideBar open={toggle}>

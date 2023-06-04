@@ -28,7 +28,7 @@ export const LandingSteps = ({
   formData,
   setFormData,
   resendEmail,
-  Disconnect,
+  disconnect,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -247,7 +247,7 @@ export const LandingSteps = ({
               type={"btn-primary"}
               arrow={"arrow-none"}
               element={"button"}
-              onClick={Disconnect}
+              onClick={disconnect}
               customStyles={{ margin: "0" }}
             />
             <Button
