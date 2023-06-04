@@ -67,6 +67,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+}
+
+.card-slider-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .card-slider-content .swiper-slide {
@@ -90,11 +99,14 @@
   gap: 10px;
   padding: 20px 20px 10px;
 }
-
 .card-slider-card_header {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.card-slider-card_header h4 {
+  text-transform: capitalize;
 }
 
 .card-slider-card_content {

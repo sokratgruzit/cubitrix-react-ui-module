@@ -209,7 +209,8 @@ stories.add('Transactions', () => {
       name: 'account',
       type: 'lable-input-select',
       options: [
-        { name: 'System', value: 'System' },
+        { name: 'All', value: 'all' },
+        { name: 'System', value: 'system' },
         { name: 'Trade', value: 'trade' },
         { name: 'Loan', value: 'loan' },
       ],
@@ -225,6 +226,7 @@ stories.add('Transactions', () => {
       name: 'type',
       type: 'lable-input-select',
       options: [
+        { name: 'All', value: 'all' },
         { name: 'Deposit', value: 'deposit' },
         { name: 'Transfer', value: 'transfer' },
         { name: 'Internal Transaction', value: 'internal_transaction' },

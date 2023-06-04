@@ -28,7 +28,7 @@
   border: 1px solid rgba(69, 244, 234, 0.05);
   background: rgba(69, 244, 234, 0.05);
   border-radius: 32px;
-  gap: 20px;
+  gap: 6px;
   font-weight: 700;
   font-size: 20px;
   line-height: 130%;
@@ -132,5 +132,4 @@
 }
 
 .topup_method_logo {
-  width: 48px;
 }

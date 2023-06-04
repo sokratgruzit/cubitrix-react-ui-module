@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "../Button";
 import "./PaymentPopup.css";
+import { HelpText } from "../HelpText";
+import { EthIcon } from "../../assets/svgs";
 
 const PaymentPopup = ({
   setOpenConfirmPaymentPopup,
@@ -11,6 +13,9 @@ const PaymentPopup = ({
   handleCoindbasePayment,
   tokenAmount,
   paymentTypes,
+  fee,
+  payment,
+  receiveTokens,
 }) => {
   const [agreed, setAgreed] = useState(false);
 
@@ -26,9 +31,9 @@ const PaymentPopup = ({
     <div className="payment_popup_container">
       <div className="payment_popup_body">
         <p>
-          Please make payment of 2.192810859999999806 USDT to receive 1002 CMCX token.
+          Please make payment of {payment} to receive {receiveTokens}token.
         </p>
-        <p>Transaction Fee: 1 USDT</p>
+        <p>Transaction Fee: {fee}</p>
         <p>
           You can choose any of the following payment methods to make your payment. The
           token balance will appear in your account after successful payment.
@@ -40,38 +45,20 @@ const PaymentPopup = ({
             return (
               <div
                 key={method.id}
-                className={`payment_popup_methodBox ${
-                  selectedPaymentMethod === method.id ? "payment_popup_selected" : ""
+                className={`topup_methodBox payment_methods_topup ${
+                  selectedPaymentMethod === method.id ? "topup_selected" : ""
                 }`}
                 onClick={() => handleMethodSelect(method.id)}
               >
                 <img src={method.logo} className="topup_method_logo" alt="" />
                 <p className="payment_popup_grayText">{method.title}</p>
-                <div
-                  className={`payment-list__check-icon ${
-                    selectedPaymentMethod === method.id ? "active-check" : ""
-                  }`}
-                >
-                  <svg
-                    width="11"
-                    height="9"
-                    viewBox="0 0 11 9"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M0.800049 4.39999L3.80005 7.39999L9.80005 1.39999"
-                      stroke="white"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </div>
               </div>
             );
           })}
         </div>
         <p className="payment_popup_grayText">
-          * Payment gateway may charge you a processing fee.
+          <span className="payment-starChar">*</span> Payment gateway may charge you a
+          processing fee.
         </p>
         <p className="payment_popup_grayText">You can use these currencies to pay —</p>
 
@@ -89,11 +76,12 @@ const PaymentPopup = ({
         <Button
           element="button"
           label={`Contribute Now`}
-          type="btn-primary"
+          type="btn-secondary"
           size="btn-lg"
           customStyles={{
             width: "100%",
             margin: "0",
+            marginBottom: "10px",
           }}
           onClick={() => {
             if (selectedMethod === "Coinbase" && selectedPaymentMethod === 2) {
@@ -105,10 +93,15 @@ const PaymentPopup = ({
           }}
           disabled={!agreed}
         />
-        <p className="payment_popup_grayText">
-          Our payment address will appear or redirect you for payment after the order is
-          placed.
-        </p>
+        <p className="payment_popup_grayText"></p>
+        <HelpText
+          status={"info"}
+          title={
+            "Our payment address will appear or redirect you for payment after the order is placed."
+          }
+          fontSize={"font-12"}
+          icon={true}
+        />
       </div>
     </div>
   );
