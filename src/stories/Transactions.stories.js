@@ -216,7 +216,7 @@ stories.add('Transactions', () => {
       type: 'lable-input-select',
       options: [
         { name: 'All', value: 'all' },
-        { name: 'System', value: 'system' },
+        { name: 'Main', value: 'system' },
         { name: 'Trade', value: 'trade' },
         { name: 'Loan', value: 'loan' },
       ],
