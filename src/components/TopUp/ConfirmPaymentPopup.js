@@ -19,6 +19,7 @@ const ConfirmPaymentPopup = ({
   const [userWalletAddress, setUserWalletAddress] = useState("");
   const [timeLeft, setTimeLeft] = useState(10 * 60);
   const [startTime, setStartTime] = useState(null);
+  const [copyButtonText, setCopyButtonText] = useState("Copy"); // New state variable
 
   useEffect(() => {
     setStartTime(new Date());
@@ -37,6 +38,12 @@ const ConfirmPaymentPopup = ({
 
   const handleCopy = () => {
     navigator.clipboard.writeText(walletAddress);
+    setCopyButtonText("Copied!"); // Change button text to "Copied!"
+
+    // Change button text back to "Copy" after 3 seconds
+    setTimeout(() => {
+      setCopyButtonText("Copy");
+    }, 3000);
   };
 
   return (
@@ -63,7 +70,7 @@ const ConfirmPaymentPopup = ({
             <div className="confirm_payment_popup_address">
               <p>{receivePaymentAddress}</p>
               <button onClick={handleCopy} className="confirm_payment_copy">
-                Copy
+                {copyButtonText}
               </button>
             </div>
             <h3 className="confirm_payment_speedup">
