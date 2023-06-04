@@ -5,7 +5,7 @@ import { Account } from '../../assets/svgs'
 import { Button } from '../Button'
 import { Input } from '../Input'
 
-export const TransferFromAcc = ({ sideBarClose, inputs, currentObject, cardImg }) => {
+export const TransferFromAcc = ({ sideBarClose, inputs, currentObject, cardImg, handleSubmit }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params
 
@@ -76,7 +76,7 @@ export const TransferFromAcc = ({ sideBarClose, inputs, currentObject, cardImg }
               width: '100%',
               backgroundColor: '#45F4EA',
             }}
-            onClick={() => console.log('hi')}
+            onClick={handleSubmit}
           />
         </div>
       </div>
