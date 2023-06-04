@@ -44,15 +44,31 @@
 }
 
 .payment_popup_grayText {
-  color: gray;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.payment-starChar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline;
+  margin-right: 3px;
 }
 
 .payment_methods_container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.payment_methods_topup {
+  width: 100% !important;
+  height: 100px !important;
 }
 
 .payment_popup_button {
@@ -78,6 +94,8 @@
   cursor: pointer;
   font-size: 14px;
   user-select: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .confirm_payment_popup_checkbox input {

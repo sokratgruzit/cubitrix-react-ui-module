@@ -350,15 +350,6 @@ export const LandingSteps = ({
               }}
               onClick={handlePurchase}
             />
-            <Button
-              label={"Back"}
-              size={"btn-lg"}
-              type={"btn-primary"}
-              arrow={"arrow-none"}
-              element={"button"}
-              onClick={handlePreviousStep}
-              customStyles={{ margin: "0" }}
-            />
           </div>
         </div>
       )}

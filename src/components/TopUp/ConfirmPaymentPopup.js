@@ -4,7 +4,7 @@ import { Input } from "../Input";
 import "./ConfirmPaymentPopup.css";
 
 const ConfirmPaymentPopup = ({
-  orderNo,
+  hash,
   amount,
   fee,
   walletAddress,
@@ -42,7 +42,7 @@ const ConfirmPaymentPopup = ({
   return (
     <div className="confirm_payment_popup_container">
       <div className="confirm_payment_popup_body">
-        <p>Your Order no. {orderNo} has been placed successfully.</p>
+        <p>Your transaction {hash} has been placed successfully.</p>
         <p>
           Please send {amount} USDT to the address below. The token balance will appear in
           your account only after transaction gets 3 confirmation and approved by our
@@ -51,18 +51,22 @@ const ConfirmPaymentPopup = ({
         <div className="confirm_payment_popup_content">
           <div className="confirm_payment_popup_qr">
             <div className="payment_qrcode">
-              <img src={qrcode} alt="qrcode url" />
+              <img src={qrcode} alt=" " />
             </div>
           </div>
           <div className="confirm_payment_popup_info">
-            <h3>Payment to the following Tether Wallet Address</h3>
+            <h3 className="confitm_payment_title">
+              Payment to the following Tether Wallet Address
+            </h3>
             <p className="confirm_payment_popup_grayText">Transaction Fee: {fee} USDT</p>
             <p className="confirm_payment_popup_grayText">Send Amount: {amount} USDT</p>
             <div className="confirm_payment_popup_address">
               <p>{receivePaymentAddress}</p>
-              <button onClick={handleCopy}>Copy</button>
+              <button onClick={handleCopy} className="confirm_payment_copy">
+                Copy
+              </button>
             </div>
-            <h3>
+            <h3 className="confirm_payment_speedup">
               To speed up verification process please enter your wallet address from where
               you'll transferring your amount to our address.
             </h3>
@@ -71,12 +75,12 @@ const ConfirmPaymentPopup = ({
                 type={"default"}
                 value={userWalletAddress}
                 inputType={"text"}
-                placeholder="Insert your payment address *"
+                placeholder="Enter"
                 onChange={(e) => setUserWalletAddress(e.target.value)}
-                customStyles={{ width: "100%" }}
+                inputClassName="confirm_payment_popup_input"
                 editable={true}
               />
-              <p style={{ width: "35px" }}>
+              <p className="confirm_payment_timer">
                 {Math.floor(timeLeft / 60)}:{timeLeft % 60}
               </p>
             </div>
@@ -84,7 +88,7 @@ const ConfirmPaymentPopup = ({
               <Button
                 element="button"
                 label={`Confirm Payment`}
-                type="btn-primary"
+                type="btn-secondary"
                 size="btn-lg"
                 customStyles={{
                   width: "100%",
@@ -102,7 +106,7 @@ const ConfirmPaymentPopup = ({
               <Button
                 element="button"
                 label={`Cancel Payment`}
-                type="btn-secondary"
+                type="btn-gray"
                 size="btn-lg"
                 customStyles={{
                   width: "100%",
@@ -111,15 +115,14 @@ const ConfirmPaymentPopup = ({
                 onClick={() => handlePopUpClose()}
               />
             </div>
-            <h3>I'll provide wallet address later</h3>
-            <p className="confirm_payment_popup_grayText">
+            {/* <p className="confirm_payment_popup_grayText">
               Do not make payment through exchange (Kraken, Bitfinex). You can use
               MyEtherWallet, MetaMask, Mist wallets etc.
             </p>
             <p className="confirm_payment_popup_grayText">
               In case you send a different amount, number of CMCX token will update
               accordingly.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

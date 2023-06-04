@@ -55,7 +55,7 @@ stories.add("LandingSteps", () => {
 
   // const [registerLoading, setRegisterLoading] = useState(false);
   const [registrationState, setRegistrationState] = useState({
-    loading: true,
+    loading: false,
     fullnameError: "",
     emailError: "",
     referralError: "",
@@ -63,40 +63,40 @@ stories.add("LandingSteps", () => {
   });
 
   async function handleRegistration({ fullName, email, referral }) {
-    const errors = {};
-    if (!fullName) {
-      errors.fullNameError = "Full Name is required";
-    }
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    if (email && !emailRegex.test(email)) {
-      errors.emailError = "Invalid email";
-    }
-    if (!email) {
-      errors.emailError = "Email is required";
-    }
-    if (!referral) {
-      errors.referralError = "Referral code is required";
-    }
+    // const errors = {};
+    // if (!fullName) {
+    //   errors.fullNameError = "Full Name is required";
+    // }
+    // const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    // if (email && !emailRegex.test(email)) {
+    //   errors.emailError = "Invalid email";
+    // }
+    // if (!email) {
+    //   errors.emailError = "Email is required";
+    // }
+    // if (!referral) {
+    //   errors.referralError = "Referral code is required";
+    // }
 
-    if (Object.keys(errors).length > 0) {
-      setRegistrationState({
-        ...registrationState,
-        ...errors,
-      });
-      return;
-    }
+    // if (Object.keys(errors).length > 0) {
+    //   setRegistrationState({
+    //     ...registrationState,
+    //     ...errors,
+    //   });
+    //   return;
+    // }
 
+    // setRegistrationState({
+    //   ...registrationState,
+    //   loading: true,
+    // });
+    // setTimeout(() => {
+    // }, 1000);
     setRegistrationState({
       ...registrationState,
-      loading: true,
+      loading: false,
     });
-    setTimeout(() => {
-      setRegistrationState({
-        ...registrationState,
-        loading: false,
-      });
-      setStep(3);
-    }, 1000);
+    setStep(3);
   }
 
   async function handleCoindbasePayment() {
@@ -297,7 +297,7 @@ stories.add("LandingSteps", () => {
             formData={formData}
             setFormData={setFormData}
             resendEmail={() => console.log("resend email")}
-            disconnect={() => console.log("disconnect")}
+            disconnect={() => console.log("ds")}
           />
         </div>
         <SideBar open={toggle}>

@@ -97,7 +97,7 @@ export const Input = (props) => {
           style={props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }}
           className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
             !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
-          }`}
+          } ${props.inputClassName}`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
         />
