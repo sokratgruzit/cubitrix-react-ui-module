@@ -8,12 +8,19 @@ import { useEffect, useState } from 'react'
 import { useMobileWidth } from '../hooks/useMobileWidth'
 import { DashboardSharedLayout } from '../components/DashboardSharedLayout/DashboardSharedLayout'
 import { Transactions } from '../components/Transactions'
+import { NoHistoryIcon } from '../assets/svgs'
 
 const stories = storiesOf('Transactions', module)
 
 stories.add('Transactions', () => {
   const [transactionsData, setTransactionsData] = useState({})
   const [totalTransactions, setTotalTransactions] = useState({})
+  const [filterObject, setFilterObject] = useState({
+    type: 'all',
+    account: 'all',
+    date: 'all',
+  })
+  const [loading, setLoading] = useState(false)
 
   const [transactionsPaginationTotal, setTransactionsPaginationTotal] = useState(1)
   const [transactionsCurrentPage, setTransactionsCurrentPage] = useState(1)
@@ -80,6 +87,7 @@ stories.add('Transactions', () => {
   ]
 
   const generateTransactionsData = async () => {
+    setLoading(true)
     const response = await fetch(`http://localhost:4000/api/transactions/get_transactions_of_user`, {
       method: 'POST',
       headers: {
@@ -87,24 +95,27 @@ stories.add('Transactions', () => {
       },
       body: JSON.stringify({
         address: '0xe72c1054c1900fc6c266fec9bedc178e72793a35',
-        limit: 3,
-        page: 1,
+        limit: 5,
+        page: transactionsCurrentPage,
+        ...filterObject,
       }),
     })
 
     const data = await response.json()
 
+    setTransactionsPaginationTotal(data.total_pages)
     setTransactionsData(data)
     setTotalTransactions({
       total_transaction: data.total_transaction,
       received: data.amounts_to_from[0].toCount,
       spent: data.amounts_to_from[0].fromSum,
     })
+    setLoading(false)
   }
 
   useEffect(() => {
     generateTransactionsData()
-  }, [])
+  }, [filterObject?.type, filterObject?.date, filterObject?.account, transactionsCurrentPage])
 
   const transactionHeader = [
     {
@@ -132,6 +143,25 @@ stories.add('Transactions', () => {
       width: 20,
       id: 3,
       height: '40px',
+      icon: (
+        <svg
+          width='10'
+          height='10'
+          viewBox='0 0 10 10'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          style={{ marginLeft: '2px' }}
+        >
+          <path
+            d='M7.78064 2.4178L6.44314 1.0803L5.62647 0.259469C5.46007 0.0933205 5.23453 0 4.99939 0C4.76424 0 4.5387 0.0933205 4.3723 0.259469L2.21397 2.4178C1.93064 2.70114 2.1348 3.18447 2.53064 3.18447H7.46397C7.86397 3.18447 8.06397 2.70114 7.78064 2.4178Z'
+            fill='white'
+          />
+          <path
+            d='M7.78259 7.5822L6.44509 8.9197L5.62842 9.74053C5.46202 9.90668 5.23649 10 5.00134 10C4.76619 10 4.54066 9.90668 4.37426 9.74053L2.21592 7.5822C1.93259 7.29886 2.13676 6.81553 2.53259 6.81553H7.46592C7.86592 6.81553 8.06592 7.29886 7.78259 7.5822Z'
+            fill='white'
+          />
+        </svg>
+      ),
     },
     {
       name: 'Amount',
@@ -139,8 +169,29 @@ stories.add('Transactions', () => {
       mobileWidth: width >= 500 ? 45 : false,
       id: 4,
       height: '40px',
+      icon: (
+        <svg
+          width='10'
+          height='10'
+          viewBox='0 0 10 10'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          style={{ marginLeft: '2px' }}
+        >
+          <path
+            d='M7.78064 2.4178L6.44314 1.0803L5.62647 0.259469C5.46007 0.0933205 5.23453 0 4.99939 0C4.76424 0 4.5387 0.0933205 4.3723 0.259469L2.21397 2.4178C1.93064 2.70114 2.1348 3.18447 2.53064 3.18447H7.46397C7.86397 3.18447 8.06397 2.70114 7.78064 2.4178Z'
+            fill='white'
+          />
+          <path
+            d='M7.78259 7.5822L6.44509 8.9197L5.62842 9.74053C5.46202 9.90668 5.23649 10 5.00134 10C4.76619 10 4.54066 9.90668 4.37426 9.74053L2.21592 7.5822C1.93259 7.29886 2.13676 6.81553 2.53259 6.81553H7.46592C7.86592 6.81553 8.06592 7.29886 7.78259 7.5822Z'
+            fill='white'
+          />
+        </svg>
+      ),
     },
   ]
+
+  console.log(filterObject)
 
   const footer = {
     link: '/referral',
@@ -158,81 +209,59 @@ stories.add('Transactions', () => {
     },
   ]
 
-  const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({})
-
-  const tableFilterData = {
-    search: {
+  const inputs = [
+    {
+      title: 'Choose Account',
+      name: 'account',
+      type: 'lable-input-select',
       options: [
-        {
-          name: 'Account Owner',
-          value: 'account_owner',
-        },
-        {
-          name: 'Account Type Id',
-          value: 'account_type_id',
-        },
-        {
-          name: 'Address',
-          value: 'address',
-        },
+        { name: 'All', value: 'all' },
+        { name: 'System', value: 'system' },
+        { name: 'Trade', value: 'trade' },
+        { name: 'Loan', value: 'loan' },
       ],
+      defaultAny: 'Any Account',
+      onChange: e =>
+        setFilterObject(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
     },
-    selects: [
-      {
-        name: 'Tranx Type',
-        value: 'tx_type',
-        options: [
-          {
-            name: 'Transaction',
-            value: 'transaction',
-          },
-          {
-            name: 'Hash',
-            value: 'hash',
-          },
-        ],
-      },
-      {
-        name: 'Date Within',
-        value: 'createdAt',
-        options: [
-          {
-            name: 'Transaction',
-            value: 'transaction',
-          },
-          {
-            name: 'Hash',
-            value: 'hash',
-          },
-        ],
-      },
-      {
-        name: 'Transaction Status',
-        value: 'ts_status',
-        options: [
-          {
-            name: 'Pending',
-            value: 'pending',
-          },
-          {
-            name: 'Cenceled',
-            value: 'canceled',
-          },
-          {
-            name: 'Approved',
-            value: 'approved',
-          },
-          {
-            name: 'Bonuses',
-            value: 'bonuses',
-          },
-          {
-            name: 'Claimed',
-            value: 'claimed',
-          },
-        ],
-      },
-    ],
+    {
+      title: 'Choose Type',
+      name: 'type',
+      type: 'lable-input-select',
+      options: [
+        { name: 'All', value: 'all' },
+        { name: 'Deposit', value: 'deposit' },
+        { name: 'Transfer', value: 'transfer' },
+        { name: 'Internal Transaction', value: 'internal_transaction' },
+        { name: 'Withdrawal', value: 'withdrawal' },
+        { name: 'Referral Bonus', value: 'referral_bonus' },
+      ],
+      defaultAny: 'Any Type',
+      onChange: e =>
+        setFilterObject(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
+    },
+    {
+      title: 'Choose Time',
+      name: 'time',
+      type: 'date-picker-input',
+      defaultAny: 'Any Time',
+      onChange: e =>
+        setFilterObject(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
+    },
+  ]
+
+  const transactionsTableEmpty = {
+    label: 'No Referral Rebates History',
+    icon: <NoHistoryIcon />,
   }
 
   return (
@@ -379,12 +408,13 @@ stories.add('Transactions', () => {
           footer={footer}
           tableHead={transactionHeader}
           data={transactionsData?.transactions}
-          paginationCurrent={1}
-          paginationTotal={20}
-          paginationEvent={page => console.log(page)}
-          tableFilterData={tableFilterData}
-          // tableHeader={2}
-          setTableFilterOutcomingData={setTableFilterOutcomingData}
+          paginationCurrent={transactionsCurrentPage}
+          paginationTotal={transactionsPaginationTotal}
+          paginationEvent={page => setTransactionsCurrentPage(page)}
+          inputs={inputs}
+          currentObject={filterObject}
+          loading={loading}
+          tableEmpty={transactionsTableEmpty}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

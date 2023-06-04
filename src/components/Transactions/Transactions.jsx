@@ -7,6 +7,7 @@ import { TableElement } from '../TableElement'
 import { useMobileWidth } from '../../hooks/useMobileWidth'
 import { Link } from 'react-router-dom'
 import { FilterBox } from '../FilterBox'
+import { Input } from '../Input'
 
 export const Transactions = ({
   tableHead,
@@ -18,10 +19,10 @@ export const Transactions = ({
   description,
   rightPanelData,
   footer,
-  tableFilterData,
-  setTableFilterOutcomingData,
-  tableSearchSelect,
-  tableHeader,
+  inputs,
+  currentObject,
+  loading,
+  tableEmpty,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null)
   const { width } = useMobileWidth()
@@ -51,15 +52,13 @@ export const Transactions = ({
 
   const tableFooter = (
     <div className={'dashboard-table-footer'}>
-      <Link to={footer?.link}>
-        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path
-            d='M8.50018 17.9999C8.49931 17.8683 8.52448 17.7378 8.57426 17.616C8.62403 17.4941 8.69741 17.3833 8.79018 17.2899L13.3802 12.7099C13.4737 12.6168 13.5479 12.5062 13.5985 12.3844C13.6491 12.2625 13.6751 12.1319 13.6751 11.9999C13.6751 11.868 13.6491 11.7374 13.5985 11.6155C13.5479 11.4937 13.4737 11.383 13.3802 11.2899L8.79018 6.70994C8.69694 6.6167 8.62298 6.50601 8.57252 6.38419C8.52206 6.26237 8.49609 6.1318 8.49609 5.99994C8.49609 5.86808 8.52206 5.73751 8.57252 5.61569C8.62298 5.49387 8.69694 5.38318 8.79018 5.28994C8.88342 5.1967 8.99411 5.12274 9.11593 5.07228C9.23775 5.02182 9.36832 4.99585 9.50018 4.99585C9.63204 4.99585 9.76261 5.02182 9.88443 5.07228C10.0063 5.12274 10.1169 5.1967 10.2102 5.28994L14.7902 9.87994C15.3377 10.4499 15.6436 11.2096 15.6436 11.9999C15.6436 12.7903 15.3377 13.55 14.7902 14.1199L10.2102 18.7099C10.0701 18.8505 9.89145 18.9462 9.69687 18.985C9.50229 19.0238 9.30057 19.0039 9.11733 18.9278C8.93408 18.8517 8.77758 18.7229 8.6677 18.5577C8.55782 18.3925 8.49951 18.1983 8.50018 17.9999Z'
-            fill='#45F4EA'
-          />
-        </svg>
-        <p className={`font-16`}>{footer?.label}</p>
-      </Link>
+      <TableElement
+        color={'#45F4EA'}
+        type={'pagination'}
+        currentPage={paginationCurrent}
+        totalCount={paginationTotal}
+        onPageChange={paginationEvent}
+      />
     </div>
   )
 
@@ -152,12 +151,16 @@ export const Transactions = ({
               <span>{item?.tx_type}</span>
             </div>
             <div className='td'>
-              <div className='mobile-ttl'>{tableHead[3].name}</div>
+              <div className='mobile-ttl'>
+                {tableHead[3].name} {tableHead[3]?.icon}
+              </div>
               <span>{createdTime}</span>
             </div>
             {width < 500 && (
               <div className='td'>
-                <div className='mobile-ttl'>{tableHead[4].name}</div>
+                <div className='mobile-ttl'>
+                  {tableHead[4].name} {tableHead[4]?.icon}
+                </div>
                 <span>{item?.amount}</span>
               </div>
             )}
@@ -167,18 +170,39 @@ export const Transactions = ({
     )
   })
 
+  const handleInputChange = (e, params) => {
+    const { name, onChange } = params
+    let data = {
+      target: {
+        value: e,
+        name,
+      },
+    }
+
+    onChange(data)
+  }
+
   return (
     <div className='transactions-page-container'>
       <h1>Transactions History</h1>
-      <FilterBox
-        tableFilterData={tableFilterData}
-        setTableFilterOutcomingData={setTableFilterOutcomingData}
-        tableSearchSelect={tableSearchSelect}
-        tableHeader={tableHeader}
-        customStyles={{ marginBottom: '20px' }}
-        searchInputValue={true}
-        buttonCustomStyles={{ backroundColor: '#45F4EA' }}
-      />
+      <div className='transaction-selects-container'>
+        {inputs?.map((params, index) => (
+          <Input
+            key={index}
+            type={params?.type}
+            label={params.title}
+            name={params.name}
+            value={currentObject[params?.name] || params?.defaultAny}
+            customStyles={{ width: '100%' }}
+            selectHandler={opt => {
+              handleInputChange(opt, params)
+            }}
+            onChange={e => handleInputChange(e, params)}
+            defaultData={params?.options}
+            customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+          />
+        ))}
+      </div>
       <Table
         tableHeadMore={
           <div className='dashboard-table-header-container'>
@@ -205,14 +229,8 @@ export const Transactions = ({
         customTableMoreStyles={{
           display: 'none',
         }}
-      />
-      <TableElement
-        customStyle={{ marginTop: '30px', paddingBottom: '100px' }}
-        color={'#45F4EA'}
-        type={'pagination'}
-        currentPage={paginationCurrent}
-        totalCount={paginationTotal}
-        onPageChange={paginationEvent}
+        tableEmptyData={tableEmpty}
+        loading={loading}
       />
     </div>
   )

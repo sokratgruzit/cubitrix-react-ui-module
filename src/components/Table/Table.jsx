@@ -20,11 +20,7 @@ export const Table = ({
   const { mobile } = useMobileWidth()
   return (
     <div className={`${type}`} style={customStyles}>
-      {loading ? (
-        <div className='table-loading-container'>
-          <div className='table-loading' />
-        </div>
-      ) : tableData ? (
+      {tableData ? (
         <>
           {tableHeadMore}
           {tableHead && (
@@ -41,6 +37,7 @@ export const Table = ({
                     }}
                   >
                     {item.name}
+                    {item?.icon}
                   </div>
                 )
               })}
@@ -48,7 +45,13 @@ export const Table = ({
           )}
           <div className='table-more' style={customTableMoreStyles}></div>
           <div className='icon-place' style={customTableMoreStyles}></div>
-          {tableData}
+          {loading ? (
+            <div className='table-loading-container'>
+              <div className='table-loading' />
+            </div>
+          ) : (
+            tableData
+          )}
           {tableFooter}
         </>
       ) : (

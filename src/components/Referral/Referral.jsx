@@ -304,7 +304,7 @@ export const Referral = ({
           labelTwo={"Total Referral Rebates"}
         />
       </div>
-      <div className="referral-tables-container" id="referral-tables">
+      <div className='referral-tables-container' id='referral-tables'>
         <Visual
           element={"table-header"}
           label={"Referral Code"}
