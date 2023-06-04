@@ -549,6 +549,9 @@ stories.add('Dashboard', () => {
           transactionsTableLoading={transactionsTableLoading}
           accountsData={accountsData}
           cardImgs={cardImgs}
+          handleDeposit={() => console.log('hi')}
+          handleExchange={() => console.log('hi')}
+          handleWithdraw={() => console.log('hi')}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

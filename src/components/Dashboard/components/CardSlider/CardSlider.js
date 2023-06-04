@@ -6,7 +6,7 @@ import './CardSlider.css'
 import { Account, AccountType } from '../../../../assets/svgs'
 import { useMobileWidth } from '../../../../hooks/useMobileWidth'
 
-export const CardSlider = ({ accounts, cardImgs }) => {
+export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, handleExchange }) => {
   const [accountType, setAccountType] = useState('system')
   const swiperRef = useRef(null)
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
@@ -138,7 +138,19 @@ export const CardSlider = ({ accounts, cardImgs }) => {
               </div>
               <div className='card-slider-card_footer'>
                 {cardFooterData?.map((item, index) => (
-                  <div className='card-slider-card_footer-item' key={index} onClick={() => console.log(item.title)}>
+                  <div
+                    className='card-slider-card_footer-item'
+                    key={index}
+                    onClick={() => {
+                      if (item.title === 'Deposit') {
+                        handleDeposit(mainAcc)
+                      } else if (item.title === 'Withdraw') {
+                        handleWithdraw(mainAcc)
+                      } else if (item.title === 'Exchange') {
+                        handleExchange(mainAcc)
+                      }
+                    }}
+                  >
                     {item.svg}
                     <p className='font-10'>{item.title}</p>
                   </div>
@@ -148,7 +160,6 @@ export const CardSlider = ({ accounts, cardImgs }) => {
           </SwiperSlide>
           {assets &&
             Object.entries(assets)?.map(([key, value], index) => {
-              if (key === 'external') return
               return (
                 <SwiperSlide key={index}>
                   <div className='card-slider-card'>
@@ -161,11 +172,19 @@ export const CardSlider = ({ accounts, cardImgs }) => {
                       <p className='card-slider-card_content'>{value}</p>
                     </div>
                     <div className='card-slider-card_footer'>
-                      {cardFooterData?.map((item, index) => (
+                      {cardFooterData?.map((item, footerIndex) => (
                         <div
                           className='card-slider-card_footer-item'
-                          key={index}
-                          onClick={() => console.log(item.title)}
+                          key={footerIndex}
+                          onClick={() => {
+                            if (item.title === 'Deposit') {
+                              handleDeposit(accountsData[index])
+                            } else if (item.title === 'Withdraw') {
+                              handleWithdraw(accountsData[index])
+                            } else if (item.title === 'Exchange') {
+                              handleExchange(accountsData[index])
+                            }
+                          }}
                         >
                           {item.svg}
                           <p className='font-10'>{item.title}</p>
