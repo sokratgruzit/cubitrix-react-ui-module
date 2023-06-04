@@ -66,9 +66,8 @@
 
 .LandingSteps__step__content--register {
   flex-direction: column;
-  /* gap: 20px; */
   width: 440px;
-  height: 299px;
+  min-height: 299px;
   background: rgba(69, 244, 234, 0.05);
   border-radius: 20px;
   border: 1px solid rgba(69, 244, 234, 0.05);
@@ -115,4 +114,9 @@
 .LandingSteps__topUpOptions {
   display: flex;
   gap: 20px;
+}
+
+.LandingSteps__emailSent {
+  width: 100%;
+  margin-bottom: 10px;
 }

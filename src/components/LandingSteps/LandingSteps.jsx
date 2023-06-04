@@ -7,6 +7,7 @@ import { Popup } from "../Popup";
 import PaymentPopup from "../TopUp/PaymentPopup";
 import { HelpText } from "../HelpText";
 import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
+import { HelpCard } from "../HelpCard";
 
 export const LandingSteps = ({
   handleMetamaskConnect,
@@ -26,6 +27,8 @@ export const LandingSteps = ({
   connectionLoading,
   formData,
   setFormData,
+  resendEmail,
+  Disconnect,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -119,6 +122,12 @@ export const LandingSteps = ({
     }
   };
 
+  const [emailResend, setEmailResend] = useState(false);
+
+  useEffect(() => {
+    setEmailResend(registrationState.emailSent);
+  }, [registrationState.emailSent]);
+
   if (initialLoading) {
     return <div>Loading...</div>;
   }
@@ -156,16 +165,19 @@ export const LandingSteps = ({
         <div className="LandingSteps__step">
           <div className="LandingSteps__step__title">Registration</div>
           <div className="LandingSteps__step__content LandingSteps__step__content--register">
-            {/* <Input
-              type={"default"}
-              // value={userData.name}
-              inputType={"text"}
-              placeholder="Enter Full Name"
-              label={"Full Name"}
-              // onChange={(e) => handleUserUpdate(e.target.value, "name")}
-              customStyles={{ width: "100%" }}
-              editable={true}
-            /> */}
+            <div className={`email_sent ${emailResend ? "email_active" : ""}`}>
+              <HelpCard
+                status={"warning"}
+                color={"#FFA726"}
+                body={"long"}
+                active={emailResend}
+                title={"Help Text"}
+                onClick={resendEmail}
+                handleClose={() => setEmailResend(false)}
+                className={"LandingSteps__emailSent"}
+              />
+            </div>
+
             <Input
               type={"default"}
               icon={false}
@@ -230,6 +242,15 @@ export const LandingSteps = ({
           )}
           <div className="LandingSteps__buttonsWrap">
             <Button
+              label={"Disconnect"}
+              size={"btn-lg"}
+              type={"btn-primary"}
+              arrow={"arrow-none"}
+              element={"button"}
+              onClick={Disconnect}
+              customStyles={{ margin: "0" }}
+            />
+            <Button
               label={registrationState?.loading ? "Loading..." : "Continue"}
               size={"btn-lg"}
               type={"btn-secondary"}
@@ -243,16 +264,6 @@ export const LandingSteps = ({
                 !!registrationState?.fullNameError ||
                 !!registrationState?.referralError
               }
-            />
-
-            <Button
-              label={"Back"}
-              size={"btn-lg"}
-              type={"btn-primary"}
-              arrow={"arrow-none"}
-              element={"button"}
-              onClick={handlePreviousStep}
-              customStyles={{ margin: "0" }}
             />
           </div>
         </div>

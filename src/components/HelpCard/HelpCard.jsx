@@ -127,87 +127,58 @@ export const HelpCard = (props) => {
   );
 
   return (
-    <div>
-      <div
-        className={`${"toast"} ${props.active ? "animate" : ""} ${
-          !props.body ? "toast-sml" : ""
-        }`}
-        role={"alert"}
-      >
-        <div className="toast-header">
-          <div className="toast-title">
-            {svg}
-            <p style={{ color: props.color }}>
-              {props.body === "long" ? "Mail Verification" : props.title}
-            </p>
-          </div>
-          <div className="close-btn" onClick={props.handleClose}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-                stroke="#6A6D76"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M9.16992 14.83L14.8299 9.17"
-                stroke="#6A6D76"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M14.8299 14.83L9.16992 9.17"
-                stroke="#6A6D76"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+    <div
+      className={`${"toast"} ${props.active ? "animate" : ""} ${
+        !props.body ? "toast-sml" : ""
+      } ${props.className}`}
+      role={"alert"}
+    >
+      <div className="toast-header">
+        <div className="toast-title">
+          {svg}
+          <p style={{ color: props.color }}>
+            {props.body === "long" ? "Mail Verification" : props.title}
+          </p>
         </div>
-        {!props.body ? "" : ""}
-        {props.body === "normal" ? (
-          <div className="toast-body">
-            <p className="font-12">
-              {props.content}
-              <span className="toast-btn font-12">
-                Button
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M7.66898 5.16898C7.44367 5.39428 7.44367 5.75957 7.66898 5.98487L11.2022 9.51807C11.3941 9.71004 11.3941 10.0275 11.2022 10.2195L7.66898 13.7527C7.44367 13.978 7.44367 14.3433 7.66898 14.5686C7.89428 14.7939 8.25957 14.7939 8.48487 14.5686L12.0181 11.0354C12.6606 10.3928 12.6606 9.34475 12.0181 8.70218L8.48487 5.16898C8.25957 4.94367 7.89428 4.94367 7.66898 5.16898Z"
-                    fill="#3D5AFE"
-                  />
-                </svg>
-              </span>
-            </p>
-          </div>
-        ) : (
-          ""
-        )}
-        {props.body === "long" ? (
-          <div className="toast-body">
-            <p className="font-12">Mail verification is necessary to set up security.</p>
-            <p className="toast-text font-12">
-              If you did not receive the verification code in the mail
-            </p>
-            <span className="toast-btn font-12" onClick={props.onClick}>
-              Send it Again
+        <div className="close-btn" onClick={props.handleClose}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+              stroke="#6A6D76"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M9.16992 14.83L14.8299 9.17"
+              stroke="#6A6D76"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M14.8299 14.83L9.16992 9.17"
+              stroke="#6A6D76"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+      {!props.body ? "" : ""}
+      {props.body === "normal" ? (
+        <div className="toast-body">
+          <p className="font-12">
+            {props.content}
+            <span className="toast-btn font-12">
+              Button
               <svg
                 width="20"
                 height="20"
@@ -223,11 +194,38 @@ export const HelpCard = (props) => {
                 />
               </svg>
             </span>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
+      {props.body === "long" ? (
+        <div className="toast-body">
+          <p className="font-12">Mail verification is necessary to set up security.</p>
+          <p className="toast-text font-12">
+            If you did not receive the verification code in the mail
+          </p>
+          <span className="toast-btn font-12" onClick={props.onClick}>
+            Send it Again
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7.66898 5.16898C7.44367 5.39428 7.44367 5.75957 7.66898 5.98487L11.2022 9.51807C11.3941 9.71004 11.3941 10.0275 11.2022 10.2195L7.66898 13.7527C7.44367 13.978 7.44367 14.3433 7.66898 14.5686C7.89428 14.7939 8.25957 14.7939 8.48487 14.5686L12.0181 11.0354C12.6606 10.3928 12.6606 9.34475 12.0181 8.70218L8.48487 5.16898C8.25957 4.94367 7.89428 4.94367 7.66898 5.16898Z"
+                fill="#3D5AFE"
+              />
+            </svg>
+          </span>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

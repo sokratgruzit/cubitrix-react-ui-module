@@ -1,92 +1,92 @@
 .toast {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 17px;
-    width: 320px;
-    height: fit-content;
-    background-color: #141726;
-    border: 1px solid #202431;
-    border-radius: 8px;
-    opacity: 0;
-    transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-    pointer-events: none;
-    transition-delay: .3s;    
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  width: 320px;
+  height: fit-content;
+  border: 2px solid rgba(69, 244, 234, 0.1);
+  background: rgba(69, 244, 234, 0.1);
+  border-radius: 8px;
+  opacity: 0;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  pointer-events: none;
+  transition-delay: 0.3s;
 }
 .toast.animate {
-    opacity: 1;
-    pointer-events: all;
-    transition-delay: 0s;
+  opacity: 1;
+  pointer-events: all;
+  transition-delay: 0s;
 }
 .toast-sml {
-    width: 190px;
-    height: 60px;
-    padding: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 190px;
+  height: 60px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .toast-sml .toast-header .toast-title {
-    padding: 0px;
+  padding: 0px;
 }
 .toast-header {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 .toast-title {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    gap: 10px;
-    padding: 13px 0px 0px 3px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 0px 0px 3px;
 }
 .toast-title svg {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 .close-btn {
-    width: 20px;
-    height: 20px;
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
 }
 .close-btn svg path {
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .close-btn:hover svg path {
-    stroke: #3D5AFE;
+  stroke: #3d5afe;
 }
 .toast-body {
-    padding: 0px 3px 8px 3px;
+  padding: 0px 3px 8px 3px;
 }
 .close {
-    display: none;
+  display: none;
 }
 .toast-text {
-    color: #6A6D76;
-    margin-top: 6px;
+  color: #6a6d76;
+  margin-top: 6px;
 }
 .toast-btn {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: #3D5AFE;
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-    cursor: pointer;
-    width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #3d5afe;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
+  width: fit-content;
 }
 .toast-btn svg {
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .toast-btn svg path {
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.toast-btn:hover  {
-    color: #EF5350;
+.toast-btn:hover {
+  color: #ef5350;
 }
 .toast-btn:hover svg path {
-    fill: #EF5350;
+  fill: #ef5350;
 }
 .toast-btn:hover svg {
-    transform: translateX(5px);
+  transform: translateX(5px);
 }

@@ -55,10 +55,11 @@ stories.add("LandingSteps", () => {
 
   // const [registerLoading, setRegisterLoading] = useState(false);
   const [registrationState, setRegistrationState] = useState({
-    loading: false,
+    loading: true,
     fullnameError: "",
     emailError: "",
     referralError: "",
+    emailSent: true,
   });
 
   async function handleRegistration({ fullName, email, referral }) {
@@ -295,6 +296,7 @@ stories.add("LandingSteps", () => {
             connectionLoading={false}
             formData={formData}
             setFormData={setFormData}
+            resendEmail={() => console.log("resend email")}
           />
         </div>
         <SideBar open={toggle}>
