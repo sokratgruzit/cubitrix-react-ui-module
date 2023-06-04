@@ -65,6 +65,7 @@ export const DashboardTable = ({
   let tableData
 
   if (type === 'transactions') {
+    let tableData
     tableData = data?.map((item, index) => {
       const createdAt = new Date(item?.createdAt)
       const createdTime = createdAt.toLocaleString('en-US', {
@@ -153,12 +154,16 @@ export const DashboardTable = ({
                 <span>{item?.tx_type}</span>
               </div>
               <div className='td'>
-                <div className='mobile-ttl'>{tableHeader[3].name}</div>
+                <div className='mobile-ttl'>
+                  {tableHeader[3].name} {tableHeader[3]?.icon}
+                </div>
                 <span>{createdTime}</span>
               </div>
               {width < 500 && (
                 <div className='td'>
-                  <div className='mobile-ttl'>{tableHeader[4].name}</div>
+                  <div className='mobile-ttl'>
+                    {tableHeader[4].name} {tableHeader[4]?.icon}
+                  </div>
                   <span>{item?.amount}</span>
                 </div>
               )}

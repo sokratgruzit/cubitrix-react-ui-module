@@ -7,7 +7,8 @@ import { Header } from '../components/Header'
 import '../assets/css/main-theme.css'
 import { useEffect, useState } from 'react'
 import { useMobileWidth } from '../hooks/useMobileWidth'
-import { DashboardSharedLayout } from '../components/DashboardSharedLayout/DashboardSharedLayout'
+import { DashboardSharedLayout } from '../components/DashboardSharedLayout'
+import { SideBar } from '../components/SideBar'
 import { AddSquareIcon, NoHistoryIcon } from '../assets/svgs'
 
 const stories = storiesOf('Dashboard', module)
@@ -166,24 +167,24 @@ stories.add('Dashboard', () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        address: '0xe72c1054c1900fc6c266fec9bedc178e72793a35',
+        address: '0x3bfc0a5f09bf01e71124b6ba5faa3642b2757de3',
       }),
     })
 
     const data = await response.json()
 
-    console.log(data)
+    console.log(data, 'referraldata')
 
-    // setTotalReferralData({
-    //   uni: {
-    //     levelUser: data.referral_count_binary,
-    //     totalComission: data.referral_sum_uni[0].amount,
-    //   },
-    //   binary: {
-    //     levelUser: data.referral_count_uni,
-    //     totalComission: data.referral_sum_binary[0].amount,
-    //   },
-    // })
+    setTotalReferralData({
+      uni: {
+        levelUser: data.referral_count_binary,
+        totalComission: data.referral_sum_uni[0].amount,
+      },
+      binary: {
+        levelUser: data.referral_count_uni,
+        totalComission: data.referral_sum_binary[0].amount,
+      },
+    })
   }
 
   const generateAccountsData = async () => {
@@ -236,6 +237,25 @@ stories.add('Dashboard', () => {
       width: 20,
       id: 3,
       height: '40px',
+      icon: (
+        <svg
+          width='10'
+          height='10'
+          viewBox='0 0 10 10'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          style={{ marginLeft: '2px' }}
+        >
+          <path
+            d='M7.78064 2.4178L6.44314 1.0803L5.62647 0.259469C5.46007 0.0933205 5.23453 0 4.99939 0C4.76424 0 4.5387 0.0933205 4.3723 0.259469L2.21397 2.4178C1.93064 2.70114 2.1348 3.18447 2.53064 3.18447H7.46397C7.86397 3.18447 8.06397 2.70114 7.78064 2.4178Z'
+            fill='white'
+          />
+          <path
+            d='M7.78259 7.5822L6.44509 8.9197L5.62842 9.74053C5.46202 9.90668 5.23649 10 5.00134 10C4.76619 10 4.54066 9.90668 4.37426 9.74053L2.21592 7.5822C1.93259 7.29886 2.13676 6.81553 2.53259 6.81553H7.46592C7.86592 6.81553 8.06592 7.29886 7.78259 7.5822Z'
+            fill='white'
+          />
+        </svg>
+      ),
     },
     {
       name: 'Amount',
@@ -243,6 +263,25 @@ stories.add('Dashboard', () => {
       mobileWidth: width >= 500 ? 45 : false,
       id: 4,
       height: '40px',
+      icon: (
+        <svg
+          width='10'
+          height='10'
+          viewBox='0 0 10 10'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          style={{ marginLeft: '2px' }}
+        >
+          <path
+            d='M7.78064 2.4178L6.44314 1.0803L5.62647 0.259469C5.46007 0.0933205 5.23453 0 4.99939 0C4.76424 0 4.5387 0.0933205 4.3723 0.259469L2.21397 2.4178C1.93064 2.70114 2.1348 3.18447 2.53064 3.18447H7.46397C7.86397 3.18447 8.06397 2.70114 7.78064 2.4178Z'
+            fill='white'
+          />
+          <path
+            d='M7.78259 7.5822L6.44509 8.9197L5.62842 9.74053C5.46202 9.90668 5.23649 10 5.00134 10C4.76619 10 4.54066 9.90668 4.37426 9.74053L2.21592 7.5822C1.93259 7.29886 2.13676 6.81553 2.53259 6.81553H7.46592C7.86592 6.81553 8.06592 7.29886 7.78259 7.5822Z'
+            fill='white'
+          />
+        </svg>
+      ),
     },
   ]
 
@@ -310,6 +349,8 @@ stories.add('Dashboard', () => {
     },
   ]
 
+  console.log(totalReferralData, 'totalReferralData')
+
   const referralCardsData = [
     {
       title: 'Uni',
@@ -353,6 +394,15 @@ stories.add('Dashboard', () => {
   const transactionsTableEmpty = {
     label: 'No Referral Rebates History',
     icon: <NoHistoryIcon />,
+  }
+
+  const cardImgs = {
+    cpl: 'dadsadasdsa',
+    btc: 'dsadsadsa',
+    eth: 'dsadsadsa',
+    usdt: 'dsadsadsa',
+    gold: 'dsadsadsa',
+    platinium: 'dsadsadsa',
   }
 
   return (
@@ -508,6 +558,7 @@ stories.add('Dashboard', () => {
           referralHistoryTableLoading={referralHistoryTableLoading}
           transactionsTableLoading={transactionsTableLoading}
           accountsData={accountsData}
+          cardImgs={cardImgs}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

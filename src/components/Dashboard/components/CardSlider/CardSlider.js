@@ -6,7 +6,7 @@ import './CardSlider.css'
 import { Account, AccountType } from '../../../../assets/svgs'
 import { useMobileWidth } from '../../../../hooks/useMobileWidth'
 
-export const CardSlider = ({ accounts }) => {
+export const CardSlider = ({ accounts, cardImgs }) => {
   const [accountType, setAccountType] = useState('system')
   const swiperRef = useRef(null)
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
@@ -22,12 +22,10 @@ export const CardSlider = ({ accounts }) => {
         setIsPrevDisabled(swiperInstance.isBeginning)
         setIsNextDisabled(swiperInstance.isEnd)
 
-        const { translate, width, snapGrid } = swiperInstance
-        const slideWidth = width / swiperInstance.slides.length
-        const slideIndex = Math.round(-translate / slideWidth)
+        // Use the activeIndex property to get the index of the currently active slide
+        const activeSlideIndex = swiperInstance.activeIndex
 
         // Calculate the percentage based on the active slide index
-        const activeSlideIndex = Math.abs(snapGrid.indexOf(translate)) / slideWidth
         const percentage = (activeSlideIndex / (swiperInstance.slides.length - 1)) * 100
         setSlidePercentage(percentage)
       }
@@ -130,7 +128,7 @@ export const CardSlider = ({ accounts }) => {
         >
           <SwiperSlide>
             <div className='card-slider-card'>
-              <img src={`../../../../assets/img/dashboard/cpl.png`} className='card-slider-bg-img' />
+              <img src={cardImgs['cpl']} className='card-slider-bg-img' />
               <div className='card-slider-card_header-container'>
                 <div className='card-slider-card_header'>
                   <Account type={'cpl'} />
@@ -154,7 +152,7 @@ export const CardSlider = ({ accounts }) => {
               return (
                 <SwiperSlide key={index}>
                   <div className='card-slider-card'>
-                    <img src={`../../../../assets/img/dashboard/${key}.png`} className='card-slider-bg-img' />
+                    <img src={cardImgs[key]} className='card-slider-bg-img' />
                     <div className='card-slider-card_header-container'>
                       <div className='card-slider-card_header'>
                         <Account type={key} />

@@ -21,6 +21,7 @@ export const Dashboard = ({
   referralHistoryTableLoading,
   transactionsTableLoading,
   accountsData,
+  cardImgs,
 }) => {
   const tables = [
     {
@@ -77,7 +78,7 @@ export const Dashboard = ({
 
   return (
     <>
-      <CardSlider accounts={accountsData} />
+      <CardSlider accounts={accountsData} cardImgs={cardImgs} />
       {tables?.map((item, index) => (
         <DashboardTable
           key={index}

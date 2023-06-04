@@ -15,7 +15,11 @@ const stories = storiesOf('Transactions', module)
 stories.add('Transactions', () => {
   const [transactionsData, setTransactionsData] = useState({})
   const [totalTransactions, setTotalTransactions] = useState({})
-  const [filterObject, setFilterObject] = useState({})
+  const [filterObject, setFilterObject] = useState({
+    type: 'all',
+    account: 'all',
+    date: 'all',
+  })
   const [loading, setLoading] = useState(false)
 
   const [transactionsPaginationTotal, setTransactionsPaginationTotal] = useState(1)
@@ -186,6 +190,8 @@ stories.add('Transactions', () => {
       ),
     },
   ]
+
+  console.log(filterObject)
 
   const footer = {
     link: '/referral',
