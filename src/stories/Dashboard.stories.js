@@ -33,11 +33,6 @@ stories.add('Dashboard', () => {
   const [referralHistoryTableLoading, setReferralHistoryTableLoading] = useState(false)
   const [transactionsTableLoading, setTransactionsTableLoading] = useState(false)
 
-  const [codesPaginationTotal, setCodesPaginationTotal] = useState(1)
-  const [rebatesPaginationTotal, setRebatesPaginationTotal] = useState(1)
-  const [rebatesCurrentPage, setRebatesCurrentPage] = useState(1)
-  const [codesCurrentPage, setCodesCurrentPage] = useState(1)
-
   const { width } = useMobileWidth()
 
   const location = {
@@ -126,11 +121,9 @@ stories.add('Dashboard', () => {
 
     if (table === 'codes') {
       setCodesTableData(data.referral_code)
-      setCodesPaginationTotal(data.total_pages)
       setReferralCodeTableLoading(false)
     } else {
       setRebatesTableData(data.referral_rebates_history)
-      setRebatesPaginationTotal(data.total_pages)
       setReferralHistoryTableLoading(false)
     }
   }
@@ -173,18 +166,17 @@ stories.add('Dashboard', () => {
 
     const data = await response.json()
 
-    console.log(data, 'referraldata')
-
-    setTotalReferralData({
+    setTotalReferralData(prev => ({
+      ...prev,
       uni: {
-        levelUser: data.referral_count_binary,
-        totalComission: data.referral_sum_uni[0].amount,
+        levelUser: data?.referral_count_binary || 0,
+        totalComission: data?.referral_sum_uni[0]?.amount || 0,
       },
       binary: {
-        levelUser: data.referral_count_uni,
-        totalComission: data.referral_sum_binary[0].amount,
+        levelUser: data?.referral_count_uni || 0,
+        totalComission: data?.referral_sum_binary[0]?.amount || 0,
       },
-    })
+    }))
   }
 
   const generateAccountsData = async () => {
@@ -348,8 +340,6 @@ stories.add('Dashboard', () => {
       height: '40px',
     },
   ]
-
-  console.log(totalReferralData, 'totalReferralData')
 
   const referralCardsData = [
     {
@@ -559,6 +549,9 @@ stories.add('Dashboard', () => {
           transactionsTableLoading={transactionsTableLoading}
           accountsData={accountsData}
           cardImgs={cardImgs}
+          handleDeposit={() => console.log('hi')}
+          handleExchange={() => console.log('hi')}
+          handleWithdraw={() => console.log('hi')}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

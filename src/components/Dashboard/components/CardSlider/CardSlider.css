@@ -62,12 +62,12 @@
 .card-slider-card {
   width: 268px;
   height: 176px;
-  background: #2f3674;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  background: linear-gradient(180deg, rgba(43, 50, 107, 0) 0%, #2b326b 100%);
 }
 
 .card-slider-bg-img {
@@ -76,6 +76,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 
 .card-slider-content .swiper-slide {

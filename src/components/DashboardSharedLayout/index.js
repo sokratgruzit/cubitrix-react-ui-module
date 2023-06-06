@@ -1,1 +1,1 @@
-export * from './DashboardSharedLayout'
+export * from './DashboardSharedLayout.jsx'

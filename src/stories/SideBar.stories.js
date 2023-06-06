@@ -1,34 +1,97 @@
-import React, { useState } from "react";
-import { storiesOf } from "@storybook/react";
-import "../assets/css/main-theme.css";
-import { SideBar } from "../components/SideBar";
-import { Visual } from "../components/Visual";
-import { Button } from "../components/Button";
+import React, { useState } from 'react'
+import { storiesOf } from '@storybook/react'
+import '../assets/css/main-theme.css'
+import { SideBar } from '../components/SideBar'
+import { Visual } from '../components/Visual'
+import { Button } from '../components/Button'
 
-import { Connect } from "../components/Auth/Connect";
-import { UserAccount } from "../components/Auth/UserAccount";
-import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
-import { SignIn } from "../components/Auth/SignIn";
-import { ResetPasswordForm } from "../components/Auth/ResetPasswordForm";
-import ResetPassword from "../components/Auth/ResetPassword/ResetPassword";
-import { Popup } from "../components/Popup/Popup";
-import { ChangeNetwork } from "../components/Auth/ChangeNetwork";
-import { NoMetaMask } from "../components/Auth/NoMetaMask";
-import { MetaMask } from "../assets/svgs";
+import { Connect } from '../components/Auth/Connect'
+import { UserAccount } from '../components/Auth/UserAccount'
+import { UserOptions } from '../components/Auth/UserOptions/UserOptions'
+import { SignIn } from '../components/Auth/SignIn'
+import { ResetPasswordForm } from '../components/Auth/ResetPasswordForm'
+import ResetPassword from '../components/Auth/ResetPassword/ResetPassword'
+import { Popup } from '../components/Popup/Popup'
+import { ChangeNetwork } from '../components/Auth/ChangeNetwork'
+import { NoMetaMask } from '../components/Auth/NoMetaMask'
+import { Account, MetaMask } from '../assets/svgs'
+import { TransferFromAcc } from '../components/TransferFromAcc'
+import { Exchange } from '../components/Exchange'
 
-const stories = storiesOf("SideBar", module);
+const stories = storiesOf('SideBar', module)
 
-stories.add("SideBar", () => {
-  const [toggle, setToggle] = useState(false);
-  let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`;
-  const completeHandler = (i) => {
-    console.log(i);
-  };
-  const [twoFactorAuth, setTwoFactorAuth] = useState(true);
+stories.add('SideBar', () => {
+  const [toggle, setToggle] = useState(false)
+  let image = `https://s3.cointelegraph.com/storage/uploads/view/45ac886ece164ffba711e9c73b59d7b8.png`
+  const completeHandler = i => {
+    console.log(i)
+  }
+  const [twoFactorAuth, setTwoFactorAuth] = useState(true)
+  const [currentObject, setCurrentObejct] = useState({
+    amount: '0',
+  })
+
+  const inputs = [
+    {
+      title: 'Transfer amount',
+      name: 'transfer_amount',
+      type: 'default',
+      rightText: 'CPL',
+      onChange: e =>
+        setCurrentObejct(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
+    },
+    {
+      title: 'Receive amount',
+      name: 'receive_amount',
+      type: 'default',
+      rightText: 'BTC',
+      onChange: e =>
+        setCurrentObejct(prev => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        })),
+    },
+  ]
+
+  const accounts = [
+    {
+      svg: <Account type={'btc'} />,
+      title: 'BTC',
+      value: '0.000000 BTC',
+      price: '$0.00',
+    },
+    {
+      svg: <Account type={'usdt'} />,
+      title: 'USDT',
+      value: '0.000000 USDT',
+      price: '$0.00',
+    },
+    {
+      svg: <Account type={'eth'} />,
+      title: 'ETH',
+      value: '0.000000 ETH',
+      price: '$0.00',
+    },
+    {
+      svg: <Account type={'gold'} />,
+      title: 'GOLD',
+      value: '0.000000 G',
+      price: '$0.00',
+    },
+    {
+      svg: <Account type={'platinium'} />,
+      title: 'PLATINUM',
+      value: '0.000000 P',
+      price: '$0.00',
+    },
+  ]
 
   return (
     <div>
-      <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
+      <button onClick={() => setToggle(prev => !prev)}>toggle</button>
       {/* {twoFactorAuth && (
         <Popup
           popUpElement={<NoMetaMask />}
@@ -52,8 +115,16 @@ stories.add("SideBar", () => {
         }
         label={"Check Your Network"}
       /> */}
-      <SideBar open={toggle}>
-        <Connect
+      <SideBar open={true}>
+        <Exchange
+          sideBarClose={() => setToggle(prev => !prev)}
+          inputs={inputs}
+          currentObject={currentObject}
+          cardImg={'sada'}
+          accounts={accounts}
+          handleSubmit={() => console.log('hi')}
+        />
+        {/* <Connect
           ConnectOptions={[
             {
               label: "Metamask",
@@ -75,7 +146,7 @@ stories.add("SideBar", () => {
             console.log("sign in");
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
-        />
+        /> */}
         {/* <UserAccount
           type={"Metamask"}
           personalData={{
@@ -147,5 +218,5 @@ stories.add("SideBar", () => {
         /> */}
       </SideBar>
     </div>
-  );
-});
+  )
+})

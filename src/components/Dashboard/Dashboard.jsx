@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { CardSlider } from './components/CardSlider/CardSlider'
 import { DashboardTable } from './components/DashboardTable/DashboardTable'
 import './Dashboard.css'
-import { Account, AccountType } from '../../assets/svgs'
+// import { Account, AccountType } from '../../assets/svgs'
 
 export const Dashboard = ({
   transactionsData,
@@ -21,6 +21,9 @@ export const Dashboard = ({
   referralHistoryTableLoading,
   transactionsTableLoading,
   accountsData,
+  handleDeposit,
+  handleExchange,
+  handleWithdraw,
   cardImgs,
 }) => {
   const tables = [
@@ -39,8 +42,8 @@ export const Dashboard = ({
         },
       ],
       footer: {
-        link: '/referral',
-        label: 'All Code',
+        link: '/transactions',
+        label: 'All Transactions',
       },
       tableHeader: transactionHeader,
       data: transactionsData?.transactions,
@@ -52,7 +55,7 @@ export const Dashboard = ({
       header: 'Referral Code',
       description: `You can create multiple referral codes to attract traders`,
       footer: {
-        link: '/referral#referral-tables',
+        link: '/referral',
         label: 'All Code',
       },
       tableHeader: referralCodeHeader,
@@ -66,7 +69,7 @@ export const Dashboard = ({
       header: 'Referral Revates History',
       description: `The airdrop history of your weekly referral rebates.`,
       footer: {
-        link: '/referral#referral-tables',
+        link: '/referral',
         label: 'All History',
       },
       tableHeader: referralHistoryHeader,
@@ -78,7 +81,13 @@ export const Dashboard = ({
 
   return (
     <>
-      <CardSlider accounts={accountsData} cardImgs={cardImgs} />
+      <CardSlider
+        accounts={accountsData}
+        cardImgs={cardImgs}
+        handleDeposit={handleDeposit}
+        handleExchange={handleExchange}
+        handleWithdraw={handleWithdraw}
+      />
       {tables?.map((item, index) => (
         <DashboardTable
           key={index}

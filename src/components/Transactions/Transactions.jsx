@@ -51,7 +51,7 @@ export const Transactions = ({
   )
 
   const tableFooter = (
-    <div className={'dashboard-table-footer'}>
+    <div className={'dashboard-table-footer'} style={{ display: `${data?.length ? 'flex' : 'none'}` }}>
       <TableElement
         color={'#45F4EA'}
         type={'pagination'}
@@ -216,7 +216,7 @@ export const Transactions = ({
             />
           </div>
         }
-        tableData={tableData}
+        tableData={data?.length ? tableData : false}
         tableFooter={tableFooter}
         tableHead={tableHead}
         customStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '20px' }}
