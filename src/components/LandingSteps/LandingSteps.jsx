@@ -14,7 +14,6 @@ export const LandingSteps = ({
   handleWalletConnect,
   step,
   setStep,
-  initialLoading,
   methods = [],
   paymentTypes,
   handleRegistration,
@@ -29,6 +28,7 @@ export const LandingSteps = ({
   setFormData,
   resendEmail,
   disconnect,
+  closeLandingSteps,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -128,19 +128,23 @@ export const LandingSteps = ({
     setEmailResend(registrationState.emailSent);
   }, [registrationState.emailSent]);
 
-  if (initialLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="LandingSteps__container">
+      <Button
+        label={"Close"}
+        size={"btn-lg"}
+        type={"btn-secondary"}
+        arrow={"arrow-none"}
+        element={"button"}
+        onClick={closeLandingSteps}
+        customStyles={{ margin: "0" }}
+      />
       <div className="LandingSteps__progress-bar">
         <div
           className="LandingSteps__progress-bar__fill"
           style={{ width: `${(step / 4) * 100}%` }}
         />
       </div>
-
       {step === 1 && (
         <div className="LandingSteps__step">
           <div className="LandingSteps__step__title">Connect Wallet</div>
@@ -353,10 +357,6 @@ export const LandingSteps = ({
           </div>
         </div>
       )}
-      {/* <button onClick={handlePreviousStep}>Previous</button>
-          <button onClick={handleNextStep}>Next</button>
-          <Button /> */}
-
       {openPopup && (
         <Popup
           popUpElement={

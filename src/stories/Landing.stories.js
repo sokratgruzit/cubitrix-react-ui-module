@@ -7,6 +7,7 @@ import { SideBar } from "../components/SideBar";
 
 import "../assets/css/main-theme.css";
 import { BrowserRouter } from "react-router-dom";
+import { LandingSteps } from "../components/LandingSteps/LandingSteps";
 
 const stories = storiesOf("Landing", module);
 
@@ -84,6 +85,111 @@ stories.add("Landing", () => {
     },
   ];
 
+  const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  const [initialRegister, setInitialRegister] = useState(false);
+
+  // useEffect(() => {
+  //   setStep(4);
+
+  //   setTimeout(() => {
+  //     setStep(1);
+  //   }, 100);
+  //   setTimeout(() => {
+  //     setStep(4);
+  //   }, 300);
+  // }, []);
+
+  // Simulate fetching data from the database
+  useEffect(() => {
+    setTimeout(() => {
+      setStep(1); // Set the initial step based on the database
+      setLoading(false);
+    }, 100);
+  }, []);
+
+  const methods = [
+    {
+      id: "USDT",
+      title: "USDT",
+      logo: "https://shopgeorgia.ge/assets/images/contribute/usdt.png",
+    },
+    {
+      id: "Coinbase",
+      title: "Coinbase",
+      logo: "https://shopgeorgia.ge/assets/images/contribute/eth.png",
+    },
+  ];
+
+  const paymentTypes = [
+    {
+      id: 1,
+      title: "Pay via Crypto",
+      logo: "https://shopgeorgia.ge/assets/images/pay-manual.png",
+    },
+    {
+      id: 2,
+      title: "Pay with CoinBase",
+      logo: "https://shopgeorgia.ge/assets/images/contribute/eth.png",
+    },
+  ];
+
+  // const [registerLoading, setRegisterLoading] = useState(false);
+  const [registrationState, setRegistrationState] = useState({
+    loading: false,
+    fullnameError: "",
+    emailError: "",
+    referralError: "",
+    emailSent: true,
+  });
+
+  async function handleRegistration({ fullName, email, referral }) {
+    const errors = {};
+    if (!fullName) {
+      errors.fullNameError = "Full Name is required";
+    }
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (email && !emailRegex.test(email)) {
+      errors.emailError = "Invalid email";
+    }
+    if (!email) {
+      errors.emailError = "Email is required";
+    }
+    if (!referral) {
+      errors.referralError = "Referral code is required";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setRegistrationState({
+        ...registrationState,
+        ...errors,
+      });
+      return;
+    }
+
+    setRegistrationState({
+      ...registrationState,
+      loading: true,
+    });
+    setTimeout(() => {}, 1000);
+    setRegistrationState({
+      ...registrationState,
+      loading: false,
+    });
+    setStep(3);
+  }
+
+  async function handleCoindbasePayment() {
+    console.log("coinbase payment send request");
+  }
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    referral: "",
+  });
+  // console.log(initialRegister, step < 4);
   return (
     <BrowserRouter>
       <div className="test-animation-w">
@@ -94,6 +200,8 @@ stories.add("Landing", () => {
           }}
         >
           <Header
+            initialRegister={step < 4}
+            setInitialRegister={setInitialRegister}
             modules={[]}
             account={"0x0000000"}
             location={{ pathName: "" }}
@@ -233,19 +341,7 @@ stories.add("Landing", () => {
             }
             verified={false}
           />
-          {/* <button
-            onClick={() => setToggle((prev) => !prev)}
-            style={{
-              marginTop: "100px",
-              position: "absolute",
-              left: "400px",
-              top: "100px",
-              zIndex: "1000",
-            }}
-          >
-            open
-          </button> */}
-          <Landing
+          {/* <Landing
             handleGetStarted={() => console.log("get started")}
             handleConnect={() => console.log("hi")}
             allImages={{
@@ -337,9 +433,39 @@ stories.add("Landing", () => {
             ]}
             whyComplendData={defaultCardsData}
             overviewProjectsData={aboutProjectsData}
-          />
+          /> */}
+          {initialRegister && step < 4 && (
+            <LandingSteps
+              receivePaymentAddress={"0x43f59F41518903A274c7897dfFB24DB86a0dd23a"}
+              handleMetamaskConnect={() => {
+                console.log("metamask");
+                setStep(2);
+              }}
+              handleWalletConnect={() => {
+                console.log("walletConnect");
+                setStep(2);
+              }}
+              step={step}
+              setStep={setStep}
+              initialLoading={loading}
+              methods={methods}
+              paymentTypes={paymentTypes}
+              handleRegistration={handleRegistration}
+              registrationState={registrationState}
+              setRegistrationState={setRegistrationState}
+              handleCoindbasePayment={handleCoindbasePayment}
+              handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
+                console.log("payment confirm", userAddress, selectedMethod, amount, date)
+              }
+              connectionLoading={false}
+              formData={formData}
+              setFormData={setFormData}
+              resendEmail={() => console.log("resend email")}
+              disconnect={() => console.log("ds")}
+              closeLandingSteps={() => setInitialRegister(false)}
+            />
+          )}
         </div>
-
         <SideBar open={toggle}>
           <div
             style={{

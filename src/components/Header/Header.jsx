@@ -23,6 +23,9 @@ export const Header = ({
   logoSvg,
   verified,
   amount,
+  onLogoClick,
+  initialRegister,
+  setInitialRegister,
 }) => {
   const [navbarActive, setNavbarActive] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -40,10 +43,12 @@ export const Header = ({
         animate ? "animate" : ""
       }`}
     >
-      <div className='modulesWrapper'>
-        <div className='logoWrapper'>
-          {logoSvg}
-          <h3>{title}</h3>
+      <div className="modulesWrapper">
+        <div className="logo-logoWrapper">
+          <div className="logoWrapper" onClick={onLogoClick}>
+            {logoSvg}
+            <h3>{title}</h3>
+          </div>
         </div>
         {!mobile && <NavbarHelper type={"navbar"} modules={modules} />}
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -62,6 +67,8 @@ export const Header = ({
               onClick={handleConnect}
               account={account}
               verified={verified}
+              initialRegister={initialRegister}
+              setInitialRegister={setInitialRegister}
             />
           )}
           {mobile && (
@@ -75,7 +82,6 @@ export const Header = ({
           )}
         </div>
       </div>
-      <p className='util-token-amount'>{amount}</p>
       <div className={`right ${navbarActive ? "right-active" : ""}`}>
         {!mobile && (
           <NavbarHelper
@@ -92,6 +98,8 @@ export const Header = ({
             onClick={handleConnect}
             account={account}
             verified={verified}
+            initialRegister={initialRegister}
+            setInitialRegister={setInitialRegister}
           />
         )}
         {mobile && <NavbarHelper type={"navbar"} modules={modules} />}
@@ -101,6 +109,8 @@ export const Header = ({
             onClick={handleConnect}
             account={account}
             verified={verified}
+            initialRegister={initialRegister}
+            setInitialRegister={setInitialRegister}
           />
         )}
       </div>

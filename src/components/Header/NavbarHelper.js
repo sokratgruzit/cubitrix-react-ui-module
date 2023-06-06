@@ -25,15 +25,23 @@ export const NavbarHelper = ({
   account,
   onClick,
   modules,
+  initialRegister,
+  setInitialRegister,
 }) => {
   let element = null;
 
   if (type === "navbar") {
     element = (
       <>
-        <NavLink className={`${location.pathname === "/" && "active"} link`} to="/">
-          Dashboard
-        </NavLink>
+        {modules.dashboard === "true" && (
+          <NavLink
+            className={`${location.pathname === "/dashboard" && "active"} link`}
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
+        )}
+
         {modules.trade === "true" && (
           <NavLink
             className={`${location.pathname === "/trade" && "active"} link
@@ -109,7 +117,7 @@ export const NavbarHelper = ({
                 <p className="address">{account}</p>
               </span>
             }
-            onClick={onClick}
+            onClick={initialRegister ? () => setInitialRegister(true) : onClick}
             type="btn-secondary"
             element="button"
             size="btn-sm"
@@ -120,7 +128,7 @@ export const NavbarHelper = ({
             <Button
               element="button"
               label="Connect"
-              onClick={onClick}
+              onClick={initialRegister ? () => setInitialRegister(true) : onClick}
               type="btn-primary"
               size="btn-sm"
             />

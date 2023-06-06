@@ -202,13 +202,18 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
+.logo-logoWrapper {
+  max-width: 344px;
+  width: 40%;
+}
+
 .logoWrapper {
   display: flex;
   align-items: center;
   gap: 16px;
-  max-width: 344px;
   width: 40%;
   height: 100%;
+  cursor: pointer;
 }
 
 .logoWrapper svg {
@@ -278,7 +283,7 @@
 
 .animate .util-token-amount {
   transform: scale(1);
-  transition-delay: .9s;
+  transition-delay: 0.9s;
   opacity: 1;
 }
 

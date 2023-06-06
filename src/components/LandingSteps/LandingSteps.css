@@ -1,13 +1,17 @@
 /* LandingSteps.css */
 
 .LandingSteps__container {
+  position: absolute;
+  left: 0;
+  top: 0;
   padding-top: 70px;
   min-height: 100vh;
   width: 100%;
-  background-color: #2f3674;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(43, 49, 95, 0.9);
+  z-index: 1000;
 }
 
 .LandingSteps__progress-bar {
