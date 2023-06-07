@@ -16,16 +16,16 @@ const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(3);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database
-  useEffect(() => {
-    setTimeout(() => {
-      setStep(1); // Set the initial step based on the database
-      setLoading(false);
-    }, 100);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setStep(1); // Set the initial step based on the database
+  //     setLoading(false);
+  //   }, 100);
+  // }, []);
 
   const methods = [
     {
@@ -297,6 +297,9 @@ stories.add("LandingSteps", () => {
             setFormData={setFormData}
             resendEmail={() => console.log("resend email")}
             disconnect={() => console.log("ds")}
+            exchangeRate={2}
+            tranasctionFee={1}
+            handlePurchaseEvent={(e, sd) => console.log(e, sd)}
           />
         </div>
         <SideBar open={toggle}>

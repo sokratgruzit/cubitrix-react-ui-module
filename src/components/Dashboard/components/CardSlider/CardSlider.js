@@ -140,6 +140,7 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
                 {cardFooterData?.map((item, index) => {
                   if (accountType === 'system' && item.title === 'Withdraw') return
                   if (accountType !== 'system' && item.title === 'Deposit') return
+
                   return (
                     <div
                       className='card-slider-card_footer-item'
@@ -176,24 +177,27 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
                       <p className='card-slider-card_content'>{value}</p>
                     </div>
                     <div className='card-slider-card_footer'>
-                      {cardFooterData?.map((item, footerIndex) => (
-                        <div
-                          className='card-slider-card_footer-item'
-                          key={footerIndex}
-                          onClick={() => {
-                            if (item.title === 'Deposit') {
-                              handleDeposit(accountsData[index])
-                            } else if (item.title === 'Withdraw') {
-                              handleWithdraw(accountsData[index])
-                            } else if (item.title === 'Exchange') {
-                              handleExchange(accountsData[index])
-                            }
-                          }}
-                        >
-                          {item.svg}
-                          <p className='font-10'>{item.title}</p>
-                        </div>
-                      ))}
+                      {cardFooterData?.map((item, footerIndex) => {
+                        if (item.title === 'Deposit') return
+                        return (
+                          <div
+                            className='card-slider-card_footer-item'
+                            key={footerIndex}
+                            onClick={() => {
+                              if (item.title === 'Deposit') {
+                                handleDeposit(accountsData[index])
+                              } else if (item.title === 'Withdraw') {
+                                handleWithdraw(accountsData[index])
+                              } else if (item.title === 'Exchange') {
+                                handleExchange(accountsData[index])
+                              }
+                            }}
+                          >
+                            {item.svg}
+                            <p className='font-10'>{item.title}</p>
+                          </div>
+                        )
+                      })}
                     </div>
                   </div>
                 </SwiperSlide>

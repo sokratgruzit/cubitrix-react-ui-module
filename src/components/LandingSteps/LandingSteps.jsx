@@ -29,6 +29,9 @@ export const LandingSteps = ({
   resendEmail,
   disconnect,
   closeLandingSteps,
+  exchangeRate,
+  tranasctionFee,
+  handlePurchaseEvent,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -98,7 +101,10 @@ export const LandingSteps = ({
       return;
     }
     setTokenError(null);
-    setOpenPopup(true);
+    handlePurchaseEvent(
+      selectedMethod,
+      Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
+    );
   };
 
   const handleMethodSelect = (method) => {
@@ -292,36 +298,46 @@ export const LandingSteps = ({
                   <img src={method.logo} className="topup_method_logo" alt="" />
                 </div>
               ))}
-
-              {/* <div
-                  className="LandingSteps__wallet-option"
-                  onClick={() => handleTopUpMethod("metamask")}
-                >
-                  USDT
-                </div>
-                <div
-                  className="LandingSteps__wallet-option"
-                  onClick={() => handleTopUpMethod("metamask")}
-                >
-                  Coin Base
-                </div> */}
             </div>
             <p>Set amount of CMCX tokens you would like to purchase</p>
-            <Input
-              type={"default"}
-              icon={false}
-              inputType={"default"}
-              placeholder={"Enter"}
-              label={"Payment Amount"}
-              value={tokenAmount}
-              onChange={handleTokenAmountChange}
-              customStyles={{ width: "100%" }}
-              name={"referral"}
-            />
+
+            <p className="LandingSteps__topUpLabel">Payment Amount</p>
+            <div className="topupDashboard_inputContainer">
+              <Input
+                type={"default"}
+                icon={false}
+                inputType={"default"}
+                placeholder={"Enter"}
+                value={tokenAmount}
+                onChange={handleTokenAmountChange}
+                customStyles={{ width: "100%" }}
+                name={"referral"}
+              />
+              <div className="topupDashboard_inputOverlay">
+                <p className="topupDashboard_inputOverlay_text">CPL</p>
+              </div>
+            </div>
+            <p className="topupDashboard_info-exchangeRate">
+              1 CPL = {exchangeRate} USDT
+            </p>
 
             {tokenError && (
               <HelpText status={"error"} title={tokenError} color={"#EF5350"} />
             )}
+            <div className="topupDashboard_bottom-row topup_bottom-padding">
+              <p>Token Amount:</p>
+              <p>
+                {tokenAmount} CPL = {tokenAmount * exchangeRate} USDT
+              </p>
+            </div>
+            <div className="topupDashboard_bottom-row">
+              <p>Transaction Fee: </p>
+              <p> {tranasctionFee} USDT</p>
+            </div>
+            <h3 className="topupDashboard_bottom-result">
+              TOTAL: {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
+              USDT
+            </h3>
             <Button
               element="button"
               label={`Purchase token`}

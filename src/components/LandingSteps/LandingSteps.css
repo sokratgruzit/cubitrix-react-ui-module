@@ -32,7 +32,7 @@
 }
 
 .LandingSteps__step {
-  margin-top: 90px;
+  margin-top: 20px;
   width: 80%;
   padding: 20px;
   border-radius: 10px;
@@ -111,7 +111,6 @@
   max-width: 610px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   width: 100%;
   height: 100%;
 }
@@ -119,6 +118,15 @@
 .LandingSteps__topUpOptions {
   display: flex;
   gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.LandingSteps__topUpLabel {
+  font-size: 12px;
+  line-height: 140%;
+  margin-top: 20px;
+  margin-bottom: 4px;
 }
 
 .LandingSteps__emailSent {
