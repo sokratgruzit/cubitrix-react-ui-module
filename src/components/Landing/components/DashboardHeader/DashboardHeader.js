@@ -11,13 +11,8 @@ export const DashboardHeader = ({
   handleGetStarted,
   dashboardHeaderImages,
   account,
+  animate
 }) => {
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    setAnimate(true);
-  }, []);
-
   return (
     <header className={`dashboard-header-container ${animate ? "animate" : ""}`}>
       <img
