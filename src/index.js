@@ -37,6 +37,7 @@ export * from "./components/Extensions";
 export * from "./components/Table";
 export * from "./components/TableElement";
 export * from "./components/TopUp";
+export * from "./components/TopUpDashboard";
 export * from "./components/Landing";
 export * from "./components/LandingSteps";
 export * from "./components/LoadingScreen";
