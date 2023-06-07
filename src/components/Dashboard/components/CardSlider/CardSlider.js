@@ -139,6 +139,8 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
               <div className='card-slider-card_footer'>
                 {cardFooterData?.map((item, index) => {
                   if (accountType === 'system' && item.title === 'Withdraw') return
+                  if (accountType !== 'system' && item.title === 'Deposit') return
+
                   return (
                     <div
                       className='card-slider-card_footer-item'
