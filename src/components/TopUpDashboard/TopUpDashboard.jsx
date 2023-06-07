@@ -18,6 +18,7 @@ export const TopUpDashboard = ({
   paymentAmount,
   paymentTypes,
   exchangeRate = 0,
+  handlePurchaseEvent,
 }) => {
   const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
@@ -49,7 +50,11 @@ export const TopUpDashboard = ({
       return;
     }
     setTokenError(null);
-    setOpenPopup(true);
+    handlePurchaseEvent(
+      selectedMethod,
+      Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
+    );
+    // setOpenPopup(true);
   };
 
   return (
@@ -131,7 +136,7 @@ export const TopUpDashboard = ({
             onClick={handlePurchase}
           />
         </div>
-
+        {/* 
         {openPopup && (
           <Popup
             popUpElement={
@@ -167,7 +172,7 @@ export const TopUpDashboard = ({
             label={"Confirm Payment"}
             handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
           />
-        )}
+        )} */}
       </div>
     </div>
   );

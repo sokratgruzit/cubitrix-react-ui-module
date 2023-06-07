@@ -34,18 +34,20 @@ stories.add("ToolTip", () => {
 
   return (
     <div style={{ display: "flex", gap: "30px" }}>
-      {/* <TopUp
+      <TopUp
         receivePaymentAddress={"0x420"}
         handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
           console.log("payment confirm", userAddress, selectedMethod, amount, date)
         }
         methods={methods}
         handleCoindbasePayment={(e) => console.log("coinbase payment send request", e)}
-        tranasctionFee={`1 USDT`}
-        paymentAmount={`2.192810859999999806 USDT`}
         paymentTypes={paymentTypes}
-      /> */}
-      <TopUpDashboard
+        tranasctionFee={1}
+        exchangeRate={2}
+        handlePurchaseEvent={(e, sd) => console.log(e, sd)}
+      />
+
+      {/* <TopUpDashboard
         receivePaymentAddress={"0x420"}
         handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
           console.log("payment confirm", userAddress, selectedMethod, amount, date)
@@ -56,7 +58,8 @@ stories.add("ToolTip", () => {
         paymentAmount={`2.192810859999999806 USDT`}
         paymentTypes={paymentTypes}
         exchangeRate={2}
-      />
+        handlePurchaseEvent={(e, sd) => console.log(e, sd)}
+      /> */}
     </div>
   );
 });

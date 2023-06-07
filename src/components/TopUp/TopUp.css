@@ -67,6 +67,10 @@
   margin-bottom: 10px;
 }
 
+.topup_bottom-padding {
+  margin-top: 10px;
+}
+
 .topup_resultLeft,
 .topup_resultRight {
   display: flex;

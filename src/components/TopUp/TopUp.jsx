@@ -15,8 +15,10 @@ export const TopUp = ({
   qrcode,
   handleCoindbasePayment,
   tranasctionFee,
+  exchangeRate,
   paymentAmount,
   paymentTypes,
+  handlePurchaseEvent,
 }) => {
   const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
@@ -78,32 +80,42 @@ export const TopUp = ({
         tokens you will receive. The calculator below helps to convert the required
         quantity of tokens into the amount of your selected currency.
       </p>
-      <p className="topup_info">Transaction Fee: {tranasctionFee}</p>
-      <p className="topup_info">Payment Amount: {paymentAmount}</p>
-      <Input
-        type={"default"}
-        value={tokenAmount}
-        inputType={"text"}
-        placeholder="Enter amount"
-        onChange={handleTokenAmountChange}
-        customStyles={{ width: "100%" }}
-        editable={true}
-      />
-      {tokenError && <HelpText status={"error"} title={tokenError} color={"#EF5350"} />}
-      <div className="topup_resultContainer">
-        <div className="topup_resultLeft">
-          <h3>Total CMCX</h3>
-          <p>1000</p>
-        </div>
-        <div className="topup_resultRight">
-          <h3>+ Sale Bonus 0%</h3>
-          <p>0</p>
+      <p>Token Amount</p>
+      <div className="topupDashboard_inputContainer">
+        <Input
+          type={"default"}
+          value={tokenAmount}
+          inputType={"text"}
+          placeholder="Enter amount"
+          onChange={handleTokenAmountChange}
+          customStyles={{ width: "100%" }}
+          inputClassName={"topupDashboard_input"}
+          editable={true}
+        />
+        <div className="topupDashboard_inputOverlay">
+          <p className="topupDashboard_inputOverlay_text">CPL</p>
         </div>
       </div>
+      <p className="topupDashboard_info-exchangeRate">1 CPL = {exchangeRate} USDT</p>
+      {tokenError && <HelpText status={"error"} title={tokenError} color={"#EF5350"} />}
+      <div className="topupDashboard_bottom-row topup_bottom-padding">
+        <p>Token Amount:</p>
+        <p>
+          {tokenAmount} CPL = {tokenAmount * exchangeRate} USDT
+        </p>
+      </div>
+      <div className="topupDashboard_bottom-row">
+        <p>Transaction Fee: </p>
+        <p> {tranasctionFee} USDT</p>
+      </div>
+      <h3 className="topupDashboard_bottom-result">
+        TOTAL: {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
+        USDT
+      </h3>
       <Button
         element="button"
         label={`Purchase token`}
-        type="btn-primary"
+        type="btn-secondary"
         size="btn-lg"
         customStyles={{
           width: "100%",

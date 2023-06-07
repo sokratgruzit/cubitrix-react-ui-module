@@ -206,7 +206,7 @@ stories.add("Landing", () => {
           }}
         >
           <Header
-            initialRegister={step < 4}
+            initialRegister={step < 5}
             setInitialRegister={setInitialRegister}
             modules={[]}
             account={"0x0000000"}
@@ -441,7 +441,7 @@ stories.add("Landing", () => {
             whyComplendData={defaultCardsData}
             overviewProjectsData={aboutProjectsData}
           />
-          {initialRegister && step < 4 && (
+          {initialRegister && step < 5 && (
             <LandingSteps
               receivePaymentAddress={"0x43f59F41518903A274c7897dfFB24DB86a0dd23a"}
               handleMetamaskConnect={() => {
@@ -470,6 +470,7 @@ stories.add("Landing", () => {
               resendEmail={() => console.log("resend email")}
               disconnect={() => console.log("ds")}
               closeLandingSteps={() => setInitialRegister(false)}
+              handlePurchaseEvent={() => setStep(4)}
             />
           )}
         </div>
