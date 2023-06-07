@@ -59,8 +59,8 @@
 }
 
 .deposit-inputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -167,4 +167,9 @@
 
 .deposit-rate-card > h4 {
   color: rgba(255, 255, 255, 0.6);
+}
+
+.deposit__buttons {
+  display: flex;
+  gap: 7px;
 }
