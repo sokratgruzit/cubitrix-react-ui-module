@@ -36,7 +36,7 @@
 }
 
 .topup_methodBox:hover {
-  border: 1px solid #45f4ea;
+  border: 1px solid;
   /* background: rgba(69, 244, 234, 0.1); */
 }
 

@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
 import { TopUp } from "../components/TopUp";
+import { TopUpDashboard } from "../components/TopUpDashboard";
 
 const stories = storiesOf("TopUp", module);
 
@@ -33,7 +34,7 @@ stories.add("ToolTip", () => {
 
   return (
     <div style={{ display: "flex", gap: "30px" }}>
-      <TopUp
+      {/* <TopUp
         receivePaymentAddress={"0x420"}
         handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
           console.log("payment confirm", userAddress, selectedMethod, amount, date)
@@ -43,6 +44,18 @@ stories.add("ToolTip", () => {
         tranasctionFee={`1 USDT`}
         paymentAmount={`2.192810859999999806 USDT`}
         paymentTypes={paymentTypes}
+      /> */}
+      <TopUpDashboard
+        receivePaymentAddress={"0x420"}
+        handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
+          console.log("payment confirm", userAddress, selectedMethod, amount, date)
+        }
+        methods={methods}
+        handleCoindbasePayment={(e) => console.log("coinbase payment send request", e)}
+        tranasctionFee={1}
+        paymentAmount={`2.192810859999999806 USDT`}
+        paymentTypes={paymentTypes}
+        exchangeRate={2}
       />
     </div>
   );
