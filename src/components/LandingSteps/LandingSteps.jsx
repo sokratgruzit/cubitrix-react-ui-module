@@ -32,6 +32,15 @@ export const LandingSteps = ({
   exchangeRate,
   tranasctionFee,
   handlePurchaseEvent,
+  inputs,
+  durationOptions,
+  handleTimePeriod,
+  handleTimeperiodDate,
+  timeperiod,
+  timeperiodDate,
+  buttonLabel,
+  handleSubmit,
+  currentObject,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -105,6 +114,7 @@ export const LandingSteps = ({
       selectedMethod,
       Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
     );
+    setStep(4);
   };
 
   const handleMethodSelect = (method) => {
@@ -148,7 +158,7 @@ export const LandingSteps = ({
       <div className="LandingSteps__progress-bar">
         <div
           className="LandingSteps__progress-bar__fill"
-          style={{ width: `${(step / 4) * 100}%` }}
+          style={{ width: `${(step / 5) * 100}%` }}
         />
       </div>
       {step === 1 && (
@@ -349,6 +359,86 @@ export const LandingSteps = ({
               }}
               onClick={handlePurchase}
             />
+          </div>
+        </div>
+      )}
+      {step === 4 && (
+        <div className="LandingSteps__step">
+          <div className="LandingSteps__step__title">Stake your investment</div>
+          <div className="LandingSteps__topUp-box">
+            <div className="deposit-container">
+              <div className="deposit-inputs-wrapper">
+                <div className="deposit-inputs">
+                  {inputs?.map((params, index) => (
+                    <Input
+                      key={index}
+                      type={params?.type}
+                      label={params.title}
+                      name={params.name}
+                      value={currentObject[params?.name] || params?.defaultAny}
+                      customStyles={{ width: "100%" }}
+                      placeholder={params?.placeholder}
+                      onChange={params?.onChange}
+                      defaultData={params?.options}
+                      customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
+                      svg={params?.svg}
+                    />
+                  ))}
+                </div>
+                <div className="deposit__buttons">
+                  {durationOptions.map((item, index) => (
+                    <Button
+                      key={index}
+                      label={item.title}
+                      element={"calculator-button"}
+                      onClick={() => {
+                        handleTimePeriod(item.time);
+                        handleTimeperiodDate(item.period);
+                      }}
+                      customStyles={{
+                        width: "100%",
+                        background: "rgba(255, 255, 255, 0.05)",
+                        border: `${
+                          item.time === timeperiod
+                            ? "1px solid #45F4EA"
+                            : "1px solid rgba(255, 255, 255, 0.1)"
+                        }`,
+                        borderRadius: "8px",
+                      }}
+                      active={item.time === timeperiod}
+                    />
+                  ))}
+                </div>
+                <HelpText
+                  title={
+                    timeperiod === 0
+                      ? "15 % APY On 30 Days. Locked until " + timeperiodDate
+                      : timeperiod === 1
+                      ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
+                      : timeperiod === 2
+                      ? "29% APY On 90 Days. Locked until " + timeperiodDate
+                      : timeperiod === 3
+                      ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
+                      : "50.0% APY On 360 Days. Locked until " + timeperiodDate
+                  }
+                  status="info"
+                  color="#6A6D76"
+                  icon={true}
+                />
+              </div>
+              <Button
+                label={buttonLabel}
+                size={"btn-lg"}
+                type={"btn-primary"}
+                element={"button"}
+                customStyles={{
+                  margin: "0",
+                  width: "100%",
+                  backgroundColor: "#45F4EA",
+                }}
+                onClick={handleSubmit}
+              />
+            </div>
           </div>
         </div>
       )}

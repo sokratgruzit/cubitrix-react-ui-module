@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
 // hooks
-import { useMobileWidth } from "../../hooks/useMobileWidth";
+import { useMobileWidth } from '../../hooks/useMobileWidth'
 
 // helpers
-import { NavbarHelper } from "./NavbarHelper";
+import { NavbarHelper } from './NavbarHelper'
 
 // svg
-import { Menu } from "../../assets/svgs";
+import { Menu } from '../../assets/svgs'
 
 // styles
-import "./Header.css";
+import './Header.css'
 
 export const Header = ({
   modules,
@@ -27,34 +27,28 @@ export const Header = ({
   initialRegister,
   setInitialRegister,
 }) => {
-  const [navbarActive, setNavbarActive] = useState(false);
-  const [animate, setAnimate] = useState(false);
-  const { width } = useMobileWidth();
+  const [navbarActive, setNavbarActive] = useState(false)
+  const [animate, setAnimate] = useState(false)
+  const { width } = useMobileWidth()
 
   useEffect(() => {
-    setAnimate(true);
-  }, []);
+    setAnimate(true)
+  }, [])
 
-  let mobile = width <= 970;
+  let mobile = width <= 970
 
   return (
-    <div
-      className={`header ${mobile && navbarActive ? "header-active" : ""} ${
-        animate ? "animate" : ""
-      }`}
-    >
-      <div className="modulesWrapper">
-        <div className="logo-logoWrapper">
-          <div className="logoWrapper" onClick={onLogoClick}>
-            {logoSvg}
-            <h3>{title}</h3>
-          </div>
+    <div className={`header ${mobile && navbarActive ? 'header-active' : ''} ${animate ? 'animate' : ''}`}>
+      <div className='modulesWrapper'>
+        <div className='logoWrapper' onClick={onLogoClick}>
+          {logoSvg}
+          <h3>{title}</h3>
         </div>
-        {!mobile && <NavbarHelper type={"navbar"} modules={modules} />}
-        <div style={{ display: "flex", alignItems: "center" }}>
+        {!mobile && <NavbarHelper type={'navbar'} modules={modules} />}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           {mobile && (
             <NavbarHelper
-              type={"notification"}
+              type={'notification'}
               onClick={handleNotifications}
               sideBar={sideBar}
               sideBarOpen={sideBarOpen}
@@ -63,7 +57,7 @@ export const Header = ({
           )}
           {mobile && !(width <= 440) && (
             <NavbarHelper
-              type={"connect"}
+              type={'connect'}
               onClick={handleConnect}
               account={account}
               verified={verified}
@@ -72,20 +66,17 @@ export const Header = ({
             />
           )}
           {mobile && (
-            <div
-              className={`navbar-menu`}
-              onClick={() => setNavbarActive((prev) => !prev)}
-            >
-              <p className={`${navbarActive ? "active" : ""} font-12`}>Close</p>
+            <div className={`navbar-menu`} onClick={() => setNavbarActive(prev => !prev)}>
+              <p className={`${navbarActive ? 'active' : ''} font-12`}>Close</p>
               <Menu active={navbarActive} />
             </div>
           )}
         </div>
       </div>
-      <div className={`right ${navbarActive ? "right-active" : ""}`}>
+      <div className={`right ${navbarActive ? 'right-active' : ''}`}>
         {!mobile && (
           <NavbarHelper
-            type={"notification"}
+            type={'notification'}
             onClick={handleNotifications}
             sideBar={sideBar}
             sideBarOpen={sideBarOpen}
@@ -94,7 +85,7 @@ export const Header = ({
         )}
         {!mobile && (
           <NavbarHelper
-            type={"connect"}
+            type={'connect'}
             onClick={handleConnect}
             account={account}
             verified={verified}
@@ -102,10 +93,10 @@ export const Header = ({
             setInitialRegister={setInitialRegister}
           />
         )}
-        {mobile && <NavbarHelper type={"navbar"} modules={modules} />}
+        {mobile && <NavbarHelper type={'navbar'} modules={modules} />}
         {width <= 440 && (
           <NavbarHelper
-            type={"connect"}
+            type={'connect'}
             onClick={handleConnect}
             account={account}
             verified={verified}
@@ -115,5 +106,5 @@ export const Header = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}

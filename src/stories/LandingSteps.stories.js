@@ -16,7 +16,7 @@ const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(4);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database
@@ -107,6 +107,65 @@ stories.add("LandingSteps", () => {
     email: "",
     referral: "",
   });
+
+  const [timeperiod, setTimeperiod] = useState(4);
+  const [timeperiodDate, setTimeperiodDate] = useState(0);
+
+  const handleTimeperiodDate = (period) => {
+    setTimeperiodDate(period);
+  };
+
+  const handleTimePeriod = (period) => {
+    setTimeperiod(period);
+  };
+
+  const durationOptions = [
+    {
+      title: "30 D",
+      time: 0,
+      period: 30,
+    },
+    {
+      title: "60 D",
+      time: 1,
+      period: 60,
+    },
+    {
+      title: "90 D",
+      time: 2,
+      period: 90,
+    },
+    {
+      title: "180 D",
+      time: 3,
+      period: 180,
+    },
+    {
+      title: "360 D",
+      time: 4,
+      period: 360,
+    },
+  ];
+
+  const [currentObject, setCurrentObejct] = useState({
+    amount: "",
+  });
+
+  const inputs = [
+    {
+      title: "Amount",
+      name: "amount",
+      type: "default",
+      placeholder: "0",
+      onChange: (e) => {
+        console.log(e, "sdddd");
+        setCurrentObejct((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      },
+    },
+  ];
 
   return (
     <BrowserRouter>
@@ -300,6 +359,15 @@ stories.add("LandingSteps", () => {
             exchangeRate={2}
             tranasctionFee={1}
             handlePurchaseEvent={(e, sd) => console.log(e, sd)}
+            timeperiod={timeperiod}
+            timeperiodDate={timeperiodDate}
+            handleTimePeriod={handleTimePeriod}
+            handleTimeperiodDate={handleTimeperiodDate}
+            durationOptions={durationOptions}
+            buttonLabel={"Top Up"}
+            handleSubmit={() => console.log(currentObject.amount, timeperiodDate)}
+            inputs={inputs}
+            currentObject={currentObject}
           />
         </div>
         <SideBar open={toggle}>
