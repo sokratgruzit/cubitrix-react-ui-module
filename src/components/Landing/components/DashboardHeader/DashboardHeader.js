@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 
 // components
 import { Button } from "../../../Button";
@@ -14,7 +14,7 @@ export const DashboardHeader = ({
 }) => {
   const [animate, setAnimate] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setAnimate(true);
   }, []);
 

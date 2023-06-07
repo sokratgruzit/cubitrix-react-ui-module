@@ -189,7 +189,6 @@ stories.add("Landing", () => {
     email: "",
     referral: "",
   });
-  // console.log(initialRegister, step < 4);
   return (
     <BrowserRouter>
       <div className="test-animation-w">
@@ -341,7 +340,7 @@ stories.add("Landing", () => {
             }
             verified={false}
           />
-          {/* <Landing
+          <Landing
             handleGetStarted={() => console.log("get started")}
             handleConnect={() => console.log("hi")}
             allImages={{
@@ -433,7 +432,7 @@ stories.add("Landing", () => {
             ]}
             whyComplendData={defaultCardsData}
             overviewProjectsData={aboutProjectsData}
-          /> */}
+          />
           {initialRegister && step < 4 && (
             <LandingSteps
               receivePaymentAddress={"0x43f59F41518903A274c7897dfFB24DB86a0dd23a"}
