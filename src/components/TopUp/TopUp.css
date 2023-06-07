@@ -26,7 +26,7 @@
   width: 295px;
   height: 180px;
   border: 1px solid rgba(69, 244, 234, 0.05);
-  background: rgba(69, 244, 234, 0.05);
+  background: #2f3674;
   border-radius: 32px;
   gap: 6px;
   font-weight: 700;
@@ -36,13 +36,13 @@
 }
 
 .topup_methodBox:hover {
-  border: 1px solid rgba(69, 244, 234, 0.1);
-  background: rgba(69, 244, 234, 0.1);
+  border: 1px solid;
+  /* background: rgba(69, 244, 234, 0.1); */
 }
 
 .topup_selected {
-  background: rgba(69, 244, 234, 0.15) !important;
-  border: 1px solid rgba(69, 244, 234, 0.5) !important;
+  background: #45f4ea !important;
+  border: #45f4ea !important;
 }
 
 .topup_info {
@@ -98,21 +98,6 @@
   cursor: pointer;
 }
 
-.payment-list__check-icon {
-  height: 20px;
-  width: 20px;
-  background: #5f9f55;
-  border-radius: 50%;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  transform: scale(0);
-  z-index: 2;
-}
 .pay-check-label:before {
   position: absolute;
   top: 10px;
@@ -127,9 +112,12 @@
   background: transparent;
   opacity: 0.1;
 }
-.active-check {
-  transform: scale(1);
-}
 
 .topup_method_logo {
+}
+
+@media (max-width: 560px) {
+  .topup_methodBox {
+    width: 100%;
+  }
 }

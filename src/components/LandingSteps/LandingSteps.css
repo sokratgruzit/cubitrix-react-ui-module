@@ -10,13 +10,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(43, 49, 95, 0.9);
+  background: rgba(43, 49, 95, 0.97);
   z-index: 1000;
 }
 
 .LandingSteps__progress-bar {
   width: 820px;
-  max-width: 100%;
+  max-width: 90%;
   height: 8px;
   background-color: rgba(69, 244, 234, 0.1);
   /* background-color: rgba(69, 244, 234, 0.1); */
@@ -57,6 +57,7 @@
   font-weight: 700;
   font-size: 34px;
   line-height: 130%;
+  text-align: center;
 }
 
 .LandingSteps__step__content {
@@ -71,6 +72,7 @@
 .LandingSteps__step__content--register {
   flex-direction: column;
   width: 440px;
+  max-width: 100%;
   min-height: 299px;
   background: rgba(69, 244, 234, 0.05);
   border-radius: 20px;
@@ -85,8 +87,8 @@
   justify-content: center;
   width: 295px;
   height: 295px;
-  border: 2px solid rgba(69, 244, 234, 0.05);
-  background: rgba(69, 244, 234, 0.05);
+  border: 1px solid rgba(69, 244, 234, 0.05);
+  background: #2f3674;
   border-radius: 32px;
   gap: 20px;
   font-weight: 700;
@@ -97,8 +99,7 @@
 
 .LandingSteps__wallet-option:hover {
   cursor: pointer;
-  border: 2px solid rgba(69, 244, 234, 0.1);
-  background: rgba(69, 244, 234, 0.1);
+  border: 1px solid #45f4ea;
 }
 
 .LandingSteps__walletmetamaskIcon {
@@ -123,4 +124,25 @@
 .LandingSteps__emailSent {
   width: 100%;
   margin-bottom: 10px;
+}
+
+@media (max-width: 680px) {
+  .LandingSteps__step__content--wallet {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    /* padding-bottom: 100%; Creates a square aspect ratio */
+  }
+  .LandingSteps__wallet-option {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1; /* Creates a square aspect ratio */
+  }
+}
+
+@media (max-width: 560px) {
+  .LandingSteps__topUpOptions {
+    flex-direction: column;
+  }
 }

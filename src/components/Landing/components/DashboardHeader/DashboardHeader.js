@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 
 // components
 import { Button } from "../../../Button";
@@ -11,7 +11,7 @@ export const DashboardHeader = ({
   handleGetStarted,
   dashboardHeaderImages,
   account,
-  animate
+  animate,
 }) => {
   return (
     <header className={`dashboard-header-container ${animate ? "animate" : ""}`}>

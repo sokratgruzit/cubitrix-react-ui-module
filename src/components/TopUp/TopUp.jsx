@@ -67,25 +67,6 @@ export const TopUp = ({
           >
             {method.title}
             <img src={method.logo} className="topup_method_logo" alt="" />
-            <div
-              className={`payment-list__check-icon ${
-                selectedMethod === method.id ? "active-check" : ""
-              }`}
-            >
-              <svg
-                width="11"
-                height="9"
-                viewBox="0 0 11 9"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0.800049 4.39999L3.80005 7.39999L9.80005 1.39999"
-                  stroke="white"
-                  strokeWidth="1.5"
-                />
-              </svg>
-            </div>
           </div>
         ))}
       </div>
