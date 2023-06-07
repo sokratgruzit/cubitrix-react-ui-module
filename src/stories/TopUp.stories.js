@@ -56,6 +56,7 @@ stories.add("ToolTip", () => {
         paymentAmount={`2.192810859999999806 USDT`}
         paymentTypes={paymentTypes}
         exchangeRate={2}
+        handlePurchaseEvent={(e, sd) => console.log(e, sd)}
       />
     </div>
   );
