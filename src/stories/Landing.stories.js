@@ -85,6 +85,7 @@ stories.add("Landing", () => {
     },
   ];
 
+  const [animate, setAnimate] = useState(false);
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(true);
 
@@ -100,6 +101,10 @@ stories.add("Landing", () => {
   //     setStep(4);
   //   }, 300);
   // }, []);
+
+  useEffect(() => {
+    setAnimate(true);
+  }, []);
 
   // Simulate fetching data from the database
   useEffect(() => {
@@ -189,6 +194,8 @@ stories.add("Landing", () => {
     email: "",
     referral: "",
   });
+  // console.log(initialRegister, step < 4);
+
   return (
     <BrowserRouter>
       <div className="test-animation-w">
@@ -341,6 +348,7 @@ stories.add("Landing", () => {
             verified={false}
           />
           <Landing
+            animate={animate}
             handleGetStarted={() => console.log("get started")}
             handleConnect={() => console.log("hi")}
             allImages={{
