@@ -79,6 +79,45 @@ stories.add('SideBar', () => {
     },
   ]
 
+  const [timeperiod, setTimeperiod] = useState(4)
+  const [timeperiodDate, setTimeperiodDate] = useState(0)
+
+  const handleTimeperiodDate = period => {
+    setTimeperiodDate(period)
+  }
+
+  const handleTimePeriod = period => {
+    setTimeperiod(period)
+  }
+
+  const durationOptions = [
+    {
+      title: '30 D',
+      time: 0,
+      period: 30,
+    },
+    {
+      title: '60 D',
+      time: 1,
+      period: 60,
+    },
+    {
+      title: '90 D',
+      time: 2,
+      period: 90,
+    },
+    {
+      title: '180 D',
+      time: 3,
+      period: 180,
+    },
+    {
+      title: '360 D',
+      time: 4,
+      period: 360,
+    },
+  ]
+
   return (
     <div>
       <button onClick={() => setToggle(prev => !prev)}>toggle</button>
@@ -105,6 +144,7 @@ stories.add('SideBar', () => {
         }
         label={"Check Your Network"}
       /> */}
+
       <SideBar open={toggle}>
         <Deposit
           sideBarClose={() => setToggle(prev => !prev)}
@@ -119,6 +159,11 @@ stories.add('SideBar', () => {
           accountType={'CPL'}
           accountBalance={'1,400.00'}
           accountBalanceSecond={'$2,034.04'}
+          timeperiod={timeperiod}
+          timeperiodDate={timeperiodDate}
+          handleTimePeriod={handleTimePeriod}
+          handleTimeperiodDate={handleTimeperiodDate}
+          durationOptions={durationOptions}
         />
         {/* <Connect
           ConnectOptions={[
