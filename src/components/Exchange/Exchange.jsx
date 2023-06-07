@@ -4,8 +4,23 @@ import { Visual } from '../Visual'
 import { Account } from '../../assets/svgs'
 import { Button } from '../Button'
 import { Input } from '../Input'
+import { HelpText } from '../HelpText'
 
-export const Exchange = ({ sideBarClose, inputs, currentObject, cardImg, accounts, handleSubmit }) => {
+export const Exchange = ({
+  accountType,
+  sideBarClose,
+  inputs,
+  currentObject,
+  cardImg,
+  accounts,
+  handleSubmit,
+  buttonLabel,
+  showHelpText,
+  helpText,
+  success,
+  accountBalance,
+  accountBalanceSecond,
+}) => {
   const [card, setCard] = useState({})
   const [cardsSelectOpen, setCardsSelectOpen] = useState(true)
   const handleInputChange = (e, params) => {
@@ -37,13 +52,13 @@ export const Exchange = ({ sideBarClose, inputs, currentObject, cardImg, account
           <div className='exchange-card'>
             <img src={cardImg} className='exchange-card-img' />
             <div className='exchange-card_header'>
-              <Account type={'cpl'} />
-              <h4 className='font-16'>CPL account</h4>
+              <Account type={accountType.toLowerCase()} />
+              <h4 className='font-16'>{accountType.toUpperCase()} account</h4>
             </div>
             <div className='exchange-card_content'>
-              <h4 className='font-14'>Account Balance</h4>
-              <p>1,400.00</p>
-              <span className='font-14'>$203532</span>
+              <h4 className='font-14'>{accountType.toUpperCase()} Balance</h4>
+              <p>{accountBalance}</p>
+              <span className='font-14'>{accountBalanceSecond}</span>
             </div>
           </div>
 
@@ -134,7 +149,7 @@ export const Exchange = ({ sideBarClose, inputs, currentObject, cardImg, account
           )}
 
           <Button
-            label={'Continue'}
+            label={buttonLabel}
             size={'btn-lg'}
             type={'btn-primary'}
             element={'button'}
@@ -146,6 +161,9 @@ export const Exchange = ({ sideBarClose, inputs, currentObject, cardImg, account
             onClick={handleSubmit}
           />
         </div>
+        {showHelpText && (
+          <HelpText status={success ? 'success' : 'error'} title={helpText} fontSize={'font-12'} icon={true} />
+        )}
       </div>
     </>
   )

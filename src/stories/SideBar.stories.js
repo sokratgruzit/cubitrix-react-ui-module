@@ -17,6 +17,7 @@ import { NoMetaMask } from '../components/Auth/NoMetaMask'
 import { Account, MetaMask } from '../assets/svgs'
 import { TransferFromAcc } from '../components/TransferFromAcc'
 import { Exchange } from '../components/Exchange'
+import { Deposit } from '../components/Deposit'
 
 const stories = storiesOf('SideBar', module)
 
@@ -28,26 +29,15 @@ stories.add('SideBar', () => {
   }
   const [twoFactorAuth, setTwoFactorAuth] = useState(true)
   const [currentObject, setCurrentObejct] = useState({
-    amount: '0',
+    amount: '',
   })
 
   const inputs = [
     {
-      title: 'Transfer amount',
-      name: 'transfer_amount',
+      title: 'Amount',
+      name: 'amount',
       type: 'default',
-      rightText: 'CPL',
-      onChange: e =>
-        setCurrentObejct(prev => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        })),
-    },
-    {
-      title: 'Receive amount',
-      name: 'receive_amount',
-      type: 'default',
-      rightText: 'BTC',
+      placeholder: '0',
       onChange: e =>
         setCurrentObejct(prev => ({
           ...prev,
@@ -115,14 +105,20 @@ stories.add('SideBar', () => {
         }
         label={"Check Your Network"}
       /> */}
-      <SideBar open={true}>
-        <Exchange
+      <SideBar open={toggle}>
+        <Deposit
           sideBarClose={() => setToggle(prev => !prev)}
           inputs={inputs}
           currentObject={currentObject}
           cardImg={'sada'}
-          accounts={accounts}
           handleSubmit={() => console.log('hi')}
+          buttonLabel={'Top Up'}
+          success={true}
+          helpText={'hi'}
+          showHelpText={true}
+          accountType={'CPL'}
+          accountBalance={'1,400.00'}
+          accountBalanceSecond={'$2,034.04'}
         />
         {/* <Connect
           ConnectOptions={[

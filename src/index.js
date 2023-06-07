@@ -44,3 +44,4 @@ export * from "./components/DashboardSharedLayout";
 export * from "./components/Transactions";
 export * from "./components/TransferFromAcc";
 export * from "./components/Exchange";
+export * from "./components/Deposit";

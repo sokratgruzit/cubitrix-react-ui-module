@@ -137,24 +137,28 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
                 <p className='card-slider-card_content'>{mainAcc?.balance}</p>
               </div>
               <div className='card-slider-card_footer'>
-                {cardFooterData?.map((item, index) => (
-                  <div
-                    className='card-slider-card_footer-item'
-                    key={index}
-                    onClick={() => {
-                      if (item.title === 'Deposit') {
-                        handleDeposit(mainAcc)
-                      } else if (item.title === 'Withdraw') {
-                        handleWithdraw(mainAcc)
-                      } else if (item.title === 'Exchange') {
-                        handleExchange(mainAcc)
-                      }
-                    }}
-                  >
-                    {item.svg}
-                    <p className='font-10'>{item.title}</p>
-                  </div>
-                ))}
+                {cardFooterData?.map((item, index) => {
+                  if (accountType === 'system' && item.title === 'Withdraw') return
+                  if (accountType !== 'system' && item.title === 'Deposit') return
+                  return (
+                    <div
+                      className='card-slider-card_footer-item'
+                      key={index}
+                      onClick={() => {
+                        if (item.title === 'Deposit') {
+                          handleDeposit(mainAcc)
+                        } else if (item.title === 'Withdraw') {
+                          handleWithdraw(mainAcc)
+                        } else if (item.title === 'Exchange') {
+                          handleExchange(mainAcc)
+                        }
+                      }}
+                    >
+                      {item.svg}
+                      <p className='font-10'>{item.title}</p>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </SwiperSlide>

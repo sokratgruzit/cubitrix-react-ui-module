@@ -1,12 +1,12 @@
-import './TransferFromAcc.css'
-import React from 'react'
+import './Deposit.css'
+import React, { useState } from 'react'
 import { Visual } from '../Visual'
 import { Account } from '../../assets/svgs'
 import { Button } from '../Button'
 import { Input } from '../Input'
 import { HelpText } from '../HelpText'
 
-export const TransferFromAcc = ({
+export const Deposit = ({
   accountType,
   sideBarClose,
   inputs,
@@ -39,45 +39,43 @@ export const TransferFromAcc = ({
   return (
     <>
       <Visual
-        label={'Withdraw'}
+        label={'Deposit'}
         element={'popup-header'}
         customStyles={{ width: '100%', maxWidth: '100%' }}
         onClick={sideBarClose}
       />
       <div className='sidebar-body'>
-        <div className='withdraw-to-acc-container'>
-          <div className='withdraw-to-acc-card'>
-            <img src={cardImg} className='withdraw-to-acc-card-img' />
-            <div className='withdraw-to-acc-card_header'>
+        <div className='deposit-container'>
+          <div className='deposit-card'>
+            <img src={cardImg} className='deposit-card-img' />
+            <div className='deposit-card_header'>
               <Account type={accountType.toLowerCase()} />
               <h4 className='font-16'>{accountType.toUpperCase()} account</h4>
             </div>
-            <div className='withdraw-to-acc-card_content'>
+            <div className='deposit-card_content'>
               <h4 className='font-14'>{accountType.toUpperCase()} Balance</h4>
               <p>{accountBalance}</p>
               <span className='font-14'>{accountBalanceSecond}</span>
             </div>
           </div>
-          <div className='withdraw-to-acc-inputs'>
+          <div className='deposit-inputs-wrapper'>
             {inputs?.map((params, index) => (
-              <div className='withdraw-to-acc-input-wrapper' key={index}>
-                <Input
-                  type={params?.type}
-                  label={params.title}
-                  name={params.name}
-                  value={currentObject[params?.name] || params?.defaultAny}
-                  customStyles={{ width: '100%' }}
-                  selectHandler={opt => {
-                    handleInputChange(opt, params)
-                  }}
-                  placeholder={params?.placeholder}
-                  onChange={e => handleInputChange(e, params)}
-                  defaultData={params?.options}
-                  customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
-                  svg={params?.svg}
-                />
-                {params?.rightText && <span className='font-14 withdraw-to-acc-input-right'>{params?.rightText}</span>}
-              </div>
+              <Input
+                key={index}
+                type={params?.type}
+                label={params.title}
+                name={params.name}
+                value={currentObject[params?.name] || params?.defaultAny}
+                customStyles={{ width: '100%' }}
+                selectHandler={opt => {
+                  handleInputChange(opt, params)
+                }}
+                placeholder={params?.placeholder}
+                onChange={e => handleInputChange(e, params)}
+                defaultData={params?.options}
+                customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+                svg={params?.svg}
+              />
             ))}
           </div>
           <Button
