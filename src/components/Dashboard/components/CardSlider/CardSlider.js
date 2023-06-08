@@ -6,7 +6,7 @@ import './CardSlider.css'
 import { Account, AccountType } from '../../../../assets/svgs'
 import { useMobileWidth } from '../../../../hooks/useMobileWidth'
 
-export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, handleExchange }) => {
+export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, handleExchange, handleTransfer }) => {
   const [accountType, setAccountType] = useState('system')
   const swiperRef = useRef(null)
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
@@ -54,6 +54,10 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
     {
       title: 'Deposit',
       svg: <AccountType type={'top-up'} className='card-slider-card_footer-item-svg' />,
+    },
+    {
+      title: 'Transfer',
+      svg: <AccountType type={'transfer'} className='card-slider-card_footer-item-svg' />,
     },
     {
       title: 'Withdraw',
@@ -150,6 +154,8 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
                           handleDeposit(mainAcc)
                         } else if (item.title === 'Withdraw') {
                           handleWithdraw(mainAcc)
+                        } else if (item.title === 'Transfer') {
+                          handleTransfer(mainAcc)
                         } else if (item.title === 'Exchange') {
                           handleExchange(mainAcc)
                         }
@@ -179,6 +185,7 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
                     <div className='card-slider-card_footer'>
                       {cardFooterData?.map((item, footerIndex) => {
                         if (item.title === 'Deposit') return
+
                         return (
                           <div
                             className='card-slider-card_footer-item'
@@ -190,6 +197,8 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
                                 handleWithdraw(accountsData[index])
                               } else if (item.title === 'Exchange') {
                                 handleExchange(accountsData[index])
+                              } else if (item.title === 'Transfer') {
+                                handleTransfer(accountsData[index])
                               }
                             }}
                           >

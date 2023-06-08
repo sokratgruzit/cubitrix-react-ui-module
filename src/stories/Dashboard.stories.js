@@ -10,6 +10,8 @@ import { useMobileWidth } from '../hooks/useMobileWidth'
 import { DashboardSharedLayout } from '../components/DashboardSharedLayout'
 import { SideBar } from '../components/SideBar'
 import { AddSquareIcon, NoHistoryIcon } from '../assets/svgs'
+import { LoadingScreen } from '../components/LoadingScreen/LoadingScreen'
+
 
 const stories = storiesOf('Dashboard', module)
 
@@ -552,7 +554,9 @@ stories.add('Dashboard', () => {
           handleDeposit={() => console.log('hi')}
           handleExchange={() => console.log('hi')}
           handleWithdraw={() => console.log('hi')}
+          handleTransfer={() => console.log('hi')}
         />
+        
       </DashboardSharedLayout>
     </BrowserRouter>
   )
