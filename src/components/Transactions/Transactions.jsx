@@ -189,7 +189,7 @@ export const Transactions = ({
         {inputs?.map((params, index) => {
           let selectedOption
           if (params.type === 'lable-input-select') {
-            params?.options.find(option => option.value === currentObject[params?.name])
+            selectedOption = params?.options.find(option => option.value === currentObject[params?.name])
           }
           return (
             <Input
@@ -199,8 +199,8 @@ export const Transactions = ({
               name={params.name}
               value={
                 params?.type === 'lable-input-select'
-                  ? selectedOption || params?.defaultAny || params?.options[0]?.value
-                  : currentObject[params?.name] || params?.defaultAny 
+                  ? selectedOption?.name || params?.defaultAny || params?.options[0]?.value
+                  : currentObject[params?.name] || params?.defaultAny
               }
               customStyles={{ width: '100%' }}
               selectHandler={opt => {
@@ -209,6 +209,7 @@ export const Transactions = ({
               onChange={e => handleInputChange(e, params)}
               defaultData={params?.options}
               customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+              svg={params?.type === 'lable-input-select' ? selectedOption?.svg : params?.svg}
             />
           )
         })}

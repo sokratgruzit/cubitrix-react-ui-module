@@ -20,6 +20,7 @@ export const Exchange = ({
   success,
   accountBalance,
   accountBalanceSecond,
+  label,
 }) => {
   const [card, setCard] = useState({})
   const [cardsSelectOpen, setCardsSelectOpen] = useState(true)
@@ -42,7 +43,7 @@ export const Exchange = ({
   return (
     <>
       <Visual
-        label={'Exchange'}
+        label={label}
         element={'popup-header'}
         customStyles={{ width: '100%', maxWidth: '100%' }}
         onClick={sideBarClose}
@@ -123,17 +124,18 @@ export const Exchange = ({
                 {inputs?.map((params, index) => {
                   let selectedOption
                   if (params.type === 'lable-input-select') {
-                    params?.options.find(option => option.value === currentObject[params?.name])
+                    selectedOption = params?.options.find(option => option.value === currentObject[params?.name])
                   }
                   return (
                     <div className='exchange-input-wrapper' key={index}>
                       <Input
+                        key={index}
                         type={params?.type}
                         label={params.title}
                         name={params.name}
                         value={
                           params?.type === 'lable-input-select'
-                            ? selectedOption || params?.defaultAny || params?.options[0]?.value
+                            ? selectedOption?.name || params?.defaultAny || params?.options[0]?.value
                             : currentObject[params?.name] || params?.defaultAny
                         }
                         customStyles={{ width: '100%' }}
@@ -144,7 +146,7 @@ export const Exchange = ({
                         onChange={e => handleInputChange(e, params)}
                         defaultData={params?.options}
                         customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
-                        svg={params?.svg}
+                        svg={params?.type === 'lable-input-select' ? selectedOption?.svg : params?.svg}
                       />
                       {params?.rightText && <span className='font-14 exchange-input-right'>{params?.rightText}</span>}
                     </div>

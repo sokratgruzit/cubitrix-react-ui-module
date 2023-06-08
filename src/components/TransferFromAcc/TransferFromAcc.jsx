@@ -19,6 +19,7 @@ export const TransferFromAcc = ({
   success,
   accountBalance,
   accountBalanceSecond,
+  label,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params
@@ -39,7 +40,7 @@ export const TransferFromAcc = ({
   return (
     <>
       <Visual
-        label={'Withdraw'}
+        label={label}
         element={'popup-header'}
         customStyles={{ width: '100%', maxWidth: '100%' }}
         onClick={sideBarClose}
@@ -62,17 +63,18 @@ export const TransferFromAcc = ({
             {inputs?.map((params, index) => {
               let selectedOption
               if (params.type === 'lable-input-select') {
-                params?.options.find(option => option.value === currentObject[params?.name])
+                selectedOption = params?.options.find(option => option.value === currentObject[params?.name])
               }
               return (
                 <div className='withdraw-to-acc-input-wrapper' key={index}>
                   <Input
+                    key={index}
                     type={params?.type}
                     label={params.title}
                     name={params.name}
                     value={
                       params?.type === 'lable-input-select'
-                        ? selectedOption || params?.defaultAny || params?.options[0]?.value
+                        ? selectedOption?.name || params?.defaultAny || params?.options[0]?.value
                         : currentObject[params?.name] || params?.defaultAny
                     }
                     customStyles={{ width: '100%' }}
@@ -83,7 +85,7 @@ export const TransferFromAcc = ({
                     onChange={e => handleInputChange(e, params)}
                     defaultData={params?.options}
                     customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
-                    svg={params?.svg}
+                    svg={params?.type === 'lable-input-select' ? selectedOption?.svg : params?.svg}
                   />
                   {params?.rightText && (
                     <span className='font-14 withdraw-to-acc-input-right'>{params?.rightText}</span>
