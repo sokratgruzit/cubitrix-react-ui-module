@@ -114,7 +114,6 @@ export const LandingSteps = ({
       selectedMethod,
       Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
     );
-    setStep(4);
   };
 
   const handleMethodSelect = (method) => {
