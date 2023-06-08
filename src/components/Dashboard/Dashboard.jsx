@@ -24,6 +24,7 @@ export const Dashboard = ({
   handleDeposit,
   handleExchange,
   handleWithdraw,
+  handleTransfer,
   cardImgs,
 }) => {
   const tables = [
@@ -87,6 +88,7 @@ export const Dashboard = ({
         handleDeposit={handleDeposit}
         handleExchange={handleExchange}
         handleWithdraw={handleWithdraw}
+        handleTransfer={handleTransfer}
       />
       {tables?.map((item, index) => (
         <DashboardTable

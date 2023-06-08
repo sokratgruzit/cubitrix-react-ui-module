@@ -51,7 +51,10 @@ export const Transactions = ({
   )
 
   const tableFooter = (
-    <div className={'dashboard-table-footer'} style={{ display: `${data?.length ? 'flex' : 'none'}` }}>
+    <div
+      className={'dashboard-table-footer'}
+      style={{ display: `${data?.length ? 'flex' : 'none'}`, padding: `${data?.length ? '20px' : '0px'}` }}
+    >
       <TableElement
         color={'#45F4EA'}
         type={'pagination'}
@@ -186,22 +189,33 @@ export const Transactions = ({
     <div className='transactions-page-container'>
       <h1>Transactions History</h1>
       <div className='transaction-selects-container'>
-        {inputs?.map((params, index) => (
-          <Input
-            key={index}
-            type={params?.type}
-            label={params.title}
-            name={params.name}
-            value={currentObject[params?.name] || params?.defaultAny}
-            customStyles={{ width: '100%' }}
-            selectHandler={opt => {
-              handleInputChange(opt, params)
-            }}
-            onChange={e => handleInputChange(e, params)}
-            defaultData={params?.options}
-            customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
-          />
-        ))}
+        {inputs?.map((params, index) => {
+          let selectedOption
+          if (params.type === 'lable-input-select') {
+            selectedOption = params?.options.find(option => option.value === currentObject[params?.name])
+          }
+          return (
+            <Input
+              key={index}
+              type={params?.type}
+              label={params.title}
+              name={params.name}
+              value={
+                params?.type === 'lable-input-select'
+                  ? selectedOption?.name || params?.defaultAny || params?.options[0]?.value
+                  : currentObject[params?.name] || params?.defaultAny
+              }
+              customStyles={{ width: '100%' }}
+              selectHandler={opt => {
+                handleInputChange(opt, params)
+              }}
+              onChange={e => handleInputChange(e, params)}
+              defaultData={params?.options}
+              customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+              svg={params?.type === 'lable-input-select' ? selectedOption?.svg : params?.svg}
+            />
+          )
+        })}
       </div>
       <Table
         tableHeadMore={

@@ -20,6 +20,7 @@ export const Exchange = ({
   success,
   accountBalance,
   accountBalanceSecond,
+  label,
 }) => {
   const [card, setCard] = useState({})
   const [cardsSelectOpen, setCardsSelectOpen] = useState(true)
@@ -42,7 +43,7 @@ export const Exchange = ({
   return (
     <>
       <Visual
-        label={'Exchange'}
+        label={label}
         element={'popup-header'}
         customStyles={{ width: '100%', maxWidth: '100%' }}
         onClick={sideBarClose}
@@ -120,26 +121,37 @@ export const Exchange = ({
             <div className='exchange-inputs-wrapper'>
               <h3 className='font-20'>Transfer Amount</h3>
               <div className='exchange-inputs'>
-                {inputs?.map((params, index) => (
-                  <div className='exchange-input-wrapper' key={index}>
-                    <Input
-                      type={params?.type}
-                      label={params.title}
-                      name={params.name}
-                      value={currentObject[params?.name] || params?.defaultAny}
-                      customStyles={{ width: '100%' }}
-                      selectHandler={opt => {
-                        handleInputChange(opt, params)
-                      }}
-                      placeholder={params?.placeholder}
-                      onChange={e => handleInputChange(e, params)}
-                      defaultData={params?.options}
-                      customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
-                      svg={params?.svg}
-                    />
-                    {params?.rightText && <span className='font-14 exchange-input-right'>{params?.rightText}</span>}
-                  </div>
-                ))}
+                {inputs?.map((params, index) => {
+                  let selectedOption
+                  if (params.type === 'lable-input-select') {
+                    selectedOption = params?.options.find(option => option.value === currentObject[params?.name])
+                  }
+                  return (
+                    <div className='exchange-input-wrapper' key={index}>
+                      <Input
+                        key={index}
+                        type={params?.type}
+                        label={params.title}
+                        name={params.name}
+                        value={
+                          params?.type === 'lable-input-select'
+                            ? selectedOption?.name || params?.defaultAny || params?.options[0]?.value
+                            : currentObject[params?.name] || params?.defaultAny
+                        }
+                        customStyles={{ width: '100%' }}
+                        selectHandler={opt => {
+                          handleInputChange(opt, params)
+                        }}
+                        placeholder={params?.placeholder}
+                        onChange={e => handleInputChange(e, params)}
+                        defaultData={params?.options}
+                        customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+                        svg={params?.type === 'lable-input-select' ? selectedOption?.svg : params?.svg}
+                      />
+                      {params?.rightText && <span className='font-14 exchange-input-right'>{params?.rightText}</span>}
+                    </div>
+                  )
+                })}
               </div>
               <div className='exchange-rate-card'>
                 <h4 className='font-14'>Rate</h4>

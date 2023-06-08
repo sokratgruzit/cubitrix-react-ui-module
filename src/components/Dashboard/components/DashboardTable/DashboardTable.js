@@ -193,6 +193,7 @@ export const DashboardTable = ({
           customTableMoreStyles={{
             display: 'none',
           }}
+          tableEmptyData={tableEmpty}
           loading={loading}
         />
       </>
