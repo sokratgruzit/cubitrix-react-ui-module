@@ -12,6 +12,7 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
   const [isPrevDisabled, setIsPrevDisabled] = useState(true)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
   const [slidePercentage, setSlidePercentage] = useState(0)
+  const [isEnd, setIsEnd] = useState(false)
   const { width } = useMobileWidth()
 
   useEffect(() => {
@@ -22,12 +23,12 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
         setIsPrevDisabled(swiperInstance.isBeginning)
         setIsNextDisabled(swiperInstance.isEnd)
 
-        // Use the activeIndex property to get the index of the currently active slide
         const activeSlideIndex = swiperInstance.activeIndex
 
-        // Calculate the percentage based on the active slide index
         const percentage = (activeSlideIndex / (swiperInstance.slides.length - 1)) * 100
         setSlidePercentage(percentage)
+
+        setIsEnd(swiperInstance.isEnd)
       }
 
       swiperInstance.on('slideChange', updateNavigation)
@@ -36,7 +37,13 @@ export const CardSlider = ({ accounts, cardImgs, handleDeposit, handleWithdraw, 
         swiperInstance.off('slideChange', updateNavigation)
       }
     }
-  }, [])
+  }, [swiperRef])
+
+  useEffect(() => {
+    if (isEnd) {
+      setSlidePercentage(100)
+    }
+  }, [isEnd])
 
   const moveNext = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
