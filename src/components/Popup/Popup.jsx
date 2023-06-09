@@ -41,6 +41,7 @@ export const Popup = ({
   headerCustomStyles,
   writeEmailMultiplyData,
   writeEmailEmailsData,
+  popupBGclass,
 }) => {
   const [emptyFields, setEmptyFields] = useState({});
 
@@ -168,7 +169,7 @@ export const Popup = ({
   };
 
   return (
-    <div className={`popup-bg ${props.popupBGclass}`}>
+    <div className={`popup-bg ${popupBGclass}`}>
       <div className="popup-wrapper-container" onClick={handlePopUpClose} />
       <div className="popup-wrapper" style={customStyles}>
         {label && (
