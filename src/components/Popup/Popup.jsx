@@ -168,7 +168,7 @@ export const Popup = ({
   };
 
   return (
-    <div className="popup-bg">
+    <div className={`popup-bg ${props.popupBGclass}`}>
       <div className="popup-wrapper-container" onClick={handlePopUpClose} />
       <div className="popup-wrapper" style={customStyles}>
         {label && (
