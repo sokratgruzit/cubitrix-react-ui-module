@@ -350,13 +350,22 @@ export const LandingSteps = ({
             <Button
               element="button"
               label={`Purchase token`}
-              type="btn-secondary"
+              type="btn-primary"
               size="btn-lg"
               customStyles={{
                 width: "100%",
                 margin: "0",
               }}
               onClick={handlePurchase}
+            />
+            <Button
+              label={"Disconnect"}
+              size={"btn-lg"}
+              type={"btn-secondary"}
+              arrow={"arrow-none"}
+              element={"button"}
+              onClick={disconnect}
+              customStyles={{ margin: "0", width: "100%", marginTop: "20px" }}
             />
           </div>
         </div>
@@ -436,6 +445,15 @@ export const LandingSteps = ({
                   backgroundColor: "#45F4EA",
                 }}
                 onClick={handleSubmit}
+              />
+              <Button
+                label={"Disconnect"}
+                size={"btn-lg"}
+                type={"btn-secondary"}
+                arrow={"arrow-none"}
+                element={"button"}
+                onClick={disconnect}
+                customStyles={{ margin: "0", width: "100%" }}
               />
             </div>
           </div>
