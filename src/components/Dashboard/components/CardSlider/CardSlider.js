@@ -169,7 +169,7 @@ export const CardSlider = ({
                   <Account type={"cpl"} />
                   <h4 className="font-16">CPL account</h4>
                 </div>
-                <p className="card-slider-card_content">{mainAcc?.balance}</p>
+                <p className="card-slider-card_content">{mainAcc?.balance?.toFixed(2)}</p>
               </div>
               <div className="card-slider-card_footer">
                 {cardFooterData?.map((item, index) => {
