@@ -1,31 +1,33 @@
-import React, { useState } from "react";
-import { storiesOf } from "@storybook/react";
-import { Staking } from "../components/Staking/Staking";
-import { Button } from "../components/Button";
-import { Header } from "../components/Header";
+import React, { useState } from 'react'
+import { storiesOf } from '@storybook/react'
+import { Staking } from '../components/Staking/Staking'
+import { Button } from '../components/Button'
+import { Header } from '../components/Header'
 
-const stories = storiesOf("Staking", module);
+const stories = storiesOf('Staking', module)
 
-import { EarnIcon, AddSquareIcon } from "../assets/svgs";
-import { BrowserRouter } from "react-router-dom";
-import { Popup } from "../components/Popup";
-import { Calculator } from "../components/Calculator";
+import { EarnIcon, AddSquareIcon } from '../assets/svgs'
+import { BrowserRouter } from 'react-router-dom'
+import { Popup } from '../components/Popup'
+import { Calculator } from '../components/Calculator'
+import { useMobileWidth } from '../hooks/useMobileWidth'
 
-stories.add("Staking", () => {
-  const [depositAmount, setDepositAmount] = useState("10");
-  const [timeperiod, setTimeperiod] = useState(4);
-  const [timeperiodDate, setTimeperiodDate] = useState(0);
-  const [createStakingPopUpActive, setCreateStakingPopUpActive] =
-    useState(false);
+stories.add('Staking', () => {
+  const [depositAmount, setDepositAmount] = useState('10')
+  const [timeperiod, setTimeperiod] = useState(4)
+  const [timeperiodDate, setTimeperiodDate] = useState(0)
+  const [createStakingPopUpActive, setCreateStakingPopUpActive] = useState(false)
 
   const handlePopUpOpen = () => {
-    setCreateStakingPopUpActive(true);
-  };
+    setCreateStakingPopUpActive(true)
+  }
+
+  const { width } = useMobileWidth()
 
   const [stackContractInfo, setStackContractInfo] = useState({
     totalStakers: 0,
     totalStakedToken: 0,
-  });
+  })
 
   const [stakersInfo, setStakersInfo] = useState({
     currentStake: 0,
@@ -34,208 +36,201 @@ stories.add("Staking", () => {
     walletBalance: 0,
     totalStaked: 0,
     totalUnstaked: 0,
-  });
+  })
 
-  const [isAllowance, setIsAllowance] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isAllowance, setIsAllowance] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const durationOptions = [
     {
-      title: "30 D",
+      title: '30 D',
       time: 0,
       period: 30,
     },
     {
-      title: "60 D",
+      title: '60 D',
       time: 1,
       period: 60,
     },
     {
-      title: "90 D",
+      title: '90 D',
       time: 2,
       period: 90,
     },
     {
-      title: "180 D",
+      title: '180 D',
       time: 3,
       period: 180,
     },
     {
-      title: "360 D",
+      title: '360 D',
       time: 4,
       period: 360,
     },
-  ];
+  ]
 
   const accountSummaryData = [
     [
       {
         icon: <EarnIcon />,
-        title: "Current Stake",
+        title: 'Current Stake',
         value: stakersInfo?.currentStake,
       },
       {
         icon: <EarnIcon />,
-        title: "Earn",
+        title: 'Earn',
         value: stakersInfo?.earn,
       },
       {
         icon: <EarnIcon />,
-        title: "Claimed Reward",
+        title: 'Claimed Reward',
         value: stakersInfo?.claimedReward,
       },
     ],
     [
       {
         icon: <EarnIcon />,
-        title: "Your Wallet Balance",
+        title: 'Your Wallet Balance',
         value: stakersInfo?.walletBalance,
       },
       {
         icon: <EarnIcon />,
-        title: "Total Staked",
+        title: 'Total Staked',
         value: stakersInfo?.totalStaked,
       },
       {
         icon: <EarnIcon />,
-        title: "Total Unstaked",
+        title: 'Total Unstaked',
         value: stakersInfo?.totalUnstaked,
       },
     ],
-  ];
+  ]
 
   let th = [
     {
-      name: "Staked Amount",
-      width: 15,
-      mobileWidth: 45,
+      name: 'Staked Amount',
+      width: 25,
+      mobileWidth: width > 400 ? 45 : 100,
       id: 0,
     },
     {
-      name: "Stake Date ",
-      width: 15,
+      name: 'Stake Date',
+      width: 25,
       id: 1,
     },
     {
-      name: "Unstake Date",
-      width: 15,
+      name: 'Unstake Date',
+      width: 25,
       id: 2,
     },
     {
-      name: "Earn Reward",
-      width: 15,
-      id: 3,
-    },
-    {
-      name: "Harvest",
-      width: 15,
-      mobileWidth: 45,
+      name: 'Harvest',
+      width: 25,
+      mobileWidth: width > 400 ? 45 : false,
       id: 4,
     },
     {
-      name: "",
-      width: 10,
+      name: '',
+      width: 0,
       id: 5,
-      mobileWidth: 35,
-      position: "right",
-      className: "buttons-th",
-      onClick: (index) => console.log(index),
+      className: 'table-button-none',
+      onClick: index => console.log(index),
     },
     {
-      name: "",
-      width: 7,
+      name: '',
+      width: 0,
       id: 6,
-      mobileWidth: 20,
-      position: "right",
-      className: "buttons-th",
-      onClick: (index) => console.log(index),
+      className: 'table-button-none',
+      onClick: index => console.log(index),
     },
-  ];
+  ]
 
   let stakersRecord = [
     {
       id: 12123,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
     },
     {
       id: 2121234,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
     },
     {
       id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
     },
-  ];
+    {
+      id: 1221235,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+  ]
 
-  let account = false;
+  let account = false
 
   const handleCalculatorSubmit = () => {
     if (!account) {
-      console.log("connect");
+      console.log('connect')
     }
     if (account && isAllowance) {
-      console.log("enable");
+      console.log('enable')
     }
     if (account && !isAllowance) {
-      console.log("hihi");
-      console.log(depositAmount);
-      console.log(timeperiod);
+      console.log('hihi')
+      console.log(depositAmount)
+      console.log(timeperiod)
     }
-  };
+  }
 
-  const handleTimeperiodDate = (period) => {
-    setTimeperiodDate(period);
-  };
+  const handleTimeperiodDate = period => {
+    setTimeperiodDate(period)
+  }
 
-  const handleDepositAmount = (amount) => {
-    setDepositAmount(amount);
-  };
+  const handleDepositAmount = amount => {
+    setDepositAmount(amount)
+  }
 
-  const handleTimePeriod = (period) => {
-    setTimeperiod(period);
-  };
+  const handleTimePeriod = period => {
+    setTimeperiod(period)
+  }
 
-  const handleMaxClick = () => console.log("max!");
+  const handleMaxClick = () => console.log('max!')
 
   const tableEmptyData = {
-    label: "Stake to earn Complend reward",
+    label: 'Stake to earn Complend reward',
     button: (
       <Button
-        element={"referral-button"}
-        label={"Create Staking"}
+        element={'referral-button'}
+        label={'Create Staking'}
         icon={<AddSquareIcon color={`#00C6FF`} />}
         onClick={handlePopUpOpen}
       />
     ),
-  };
+  }
 
   return (
     <BrowserRouter>
       <Header
         modules={[]}
-        account={"0x0000000"}
-        location={{ pathName: "" }}
-        title={"COMPLEND"}
+        account={'0x0000000'}
+        location={{ pathName: '' }}
+        title={'COMPLEND'}
         logoSvg={
-          <svg
-            width='40'
-            height='40'
-            viewBox='0 0 40 40'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
+          <svg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <g clipPath='url(#clip0_317_1822)'>
               <path
                 d='M20.0059 8.51846e-05C19.9982 -0.00230704 19.9901 -0.00230704 19.9825 8.51844e-05C13.9025 3.50807 8.8543 8.55624 5.34625 14.6362C1.83821 20.7161 -0.00578025 27.6131 1.36113e-05 34.6325V34.6325C6.07723 38.1412 12.971 39.9883 19.9883 39.9883C27.0057 39.9883 33.8994 38.1412 39.9766 34.6325V34.6325C39.9809 27.6148 38.1375 20.7196 34.6318 14.6403C31.1261 8.56095 26.0818 3.51167 20.0059 8.51844e-05V8.51846e-05ZM27.9988 27.8587C25.5687 29.264 22.8111 30.0039 20.0039 30.0039C17.1967 30.0039 14.4391 29.264 12.009 27.8587V27.8587C12.0081 25.0544 12.7456 22.2994 14.1473 19.8706C15.5491 17.4419 17.5656 15.425 19.9942 14.0229V14.0229C22.4244 15.4237 24.4434 17.4392 25.8485 19.8671C27.2535 22.2949 27.9951 25.0497 27.9988 27.8548V27.8587Z'
@@ -375,7 +370,7 @@ stories.add("Staking", () => {
         handleDepositAmount={handleDepositAmount}
         handleTimeperiodDate={handleTimeperiodDate}
         timeperiodDate={timeperiodDate}
-        handleMaxClick={() => console.log("max!!!")}
+        handleMaxClick={() => console.log('max!!!')}
         accountSummaryData={accountSummaryData}
         stakersRecord={stakersRecord}
         tableHead={th}
@@ -402,12 +397,12 @@ stories.add("Staking", () => {
               }}
             />
           }
-          label={"Staking Calculator"}
+          label={'Staking Calculator'}
           handlePopUpClose={() => setCreateStakingPopUpActive(false)}
-          description={"Stake Complend to earn Complend reward"}
-          headerCustomStyles={{ background: "#272C57" }}
+          description={'Stake Complend to earn Complend reward'}
+          headerCustomStyles={{ background: '#272C57' }}
         />
       )}
     </BrowserRouter>
-  );
-});
+  )
+})

@@ -10,11 +10,11 @@ const stories = storiesOf('TopUp', module)
 
 stories.add('ToolTip', () => {
   const methods = [
-    {
-      id: 'USDT',
-      title: 'USDT',
-      logo: 'https://shopgeorgia.ge/assets/images/contribute/usdt.png',
-    },
+    // {
+    //   id: 'USDT',
+    //   title: 'USDT',
+    //   logo: 'https://shopgeorgia.ge/assets/images/contribute/usdt.png',
+    // },
     {
       id: 'Coinbase',
       title: 'Coinbase',
@@ -23,11 +23,11 @@ stories.add('ToolTip', () => {
   ]
 
   const paymentTypes = [
-    {
-      id: 1,
-      title: 'Pay via Crypto',
-      logo: 'https://shopgeorgia.ge/assets/images/pay-manual.png',
-    },
+    // {
+    //   id: 1,
+    //   title: 'Pay via Crypto',
+    //   logo: 'https://shopgeorgia.ge/assets/images/pay-manual.png',
+    // },
     {
       id: 2,
       title: 'Pay with CoinBase',

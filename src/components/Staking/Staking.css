@@ -2,14 +2,16 @@
   padding: 70px 0 0 0;
   background: #272c57;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  margin-bottom: auto;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .staking-tables-container {
   background: #2d3364;
-  border-bottom-right-radius: 100px;
-  border-bottom-left-radius: 100px;
   padding: 70px 100px;
 }
 
@@ -17,8 +19,12 @@
   background-color: #2f3674;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 125px;
-  padding: 60px 100px;
+  gap: 30px;
+  padding: 60px 40px 60px 40px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  min-height: calc(100vh - 130px);
+  height: 100%;
 }
 
 .staking-content-main {
@@ -44,11 +50,19 @@
   padding-top: 30px;
 }
 
+.staking-content .table-more {
+  display: none !important;
+}
+
+.staking-content .table-button-none {
+  display: none !important;
+}
+
 @media only screen and (max-width: 1025px) {
   .staking-content {
     display: flex;
     flex-direction: column;
-    padding: 60px 20px;
+    padding: 60px 20px 60px 20px;
   }
   .staking-tables-container {
     padding: 70px 20px;
