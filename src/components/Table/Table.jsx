@@ -19,7 +19,7 @@ export const Table = ({
 }) => {
   const { mobile } = useMobileWidth()
   return (
-    <div className={`${type}`} style={customStyles} id={type}>
+    <div className={`${type}`} style={customStyles} id={'table-version'}>
       {tableData ? (
         <>
           {tableHeadMore}
