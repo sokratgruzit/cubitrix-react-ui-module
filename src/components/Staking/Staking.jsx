@@ -25,6 +25,9 @@ export const Staking = ({
   stackContractInfo,
   handlePopUpOpen,
   tableEmptyData,
+  isFetching,
+  hasMoreData,
+  infiniteScrollRef,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null)
   const { width, mobile } = useMobileWidth()
@@ -163,7 +166,21 @@ export const Staking = ({
             type={'table-version'}
             tableHead={tableHead}
             mobile={true}
-            tableData={stakersRecord.length ? tableData : false}
+            tableData={
+              stakersRecord.length ? (
+                <>
+                  {tableData}
+                  {isFetching && (
+                    <div className='table-loading-container' style={{ height: '50px' }}>
+                      <div className='table-loading' style={{ height: '30px', width: '30px' }} />
+                    </div>
+                  )}
+                  {!isFetching && hasMoreData && <div style={{ minHeight: '1px' }} ref={infiniteScrollRef} />}
+                </>
+              ) : (
+                false
+              )
+            }
             tableEmpty={true}
             tableEmptyData={tableEmptyData}
             loading={loading}

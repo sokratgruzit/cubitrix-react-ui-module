@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import { storiesOf } from '@storybook/react'
 import { Staking } from '../components/Staking/Staking'
 import { Button } from '../components/Button'
@@ -11,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Popup } from '../components/Popup'
 import { Calculator } from '../components/Calculator'
 import { useMobileWidth } from '../hooks/useMobileWidth'
+import { useOnScreen } from '../hooks/useOnScreen'
 
 stories.add('Staking', () => {
   const [depositAmount, setDepositAmount] = useState('10')
@@ -178,6 +179,86 @@ stories.add('Staking', () => {
       CML: 'CML',
       realtimeRewardPerBlock: '1,132,000.1',
     },
+    {
+      id: 12123,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 2121234,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 1221235,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 1221235,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 12123,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 2121234,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 1221235,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 1221235,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 1221235,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
+    {
+      id: 1221235,
+      amount: '1,220,000.2',
+      staketime: '01.02.2023 10:00AM',
+      unstaketime: '01.02.2023 08:15PM',
+      CML: 'CML',
+      realtimeRewardPerBlock: '1,132,000.1',
+    },
   ]
 
   let account = false
@@ -221,6 +302,20 @@ stories.add('Staking', () => {
       />
     ),
   }
+
+  const infiniteScrollRef = createRef()
+  const isLoadMoreButtonOnScreen = useOnScreen(infiniteScrollRef)
+
+  const [isFetching, setIsFetching] = useState(false)
+
+  useEffect(() => {
+    if (isLoadMoreButtonOnScreen) {
+      console.log('hi')
+      setIsFetching(true)
+    }
+  }, [isLoadMoreButtonOnScreen])
+
+  console.log(isFetching)
 
   return (
     <BrowserRouter>
@@ -376,6 +471,9 @@ stories.add('Staking', () => {
         tableHead={th}
         handlePopUpOpen={handlePopUpOpen}
         tableEmptyData={tableEmptyData}
+        hasMoreData={false}
+        infiniteScrollRef={infiniteScrollRef}
+        isFetching={isFetching}
       />
       {createStakingPopUpActive && (
         <Popup
