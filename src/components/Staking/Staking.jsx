@@ -145,7 +145,7 @@ export const Staking = ({
   return (
     <div className='staking-main'>
       <div className='staking-content'>
-        <AccountSummary data={accountSummaryData} stackContractInfo={stackContractInfo} label={'Your Stake'} />
+        <AccountSummary data={accountSummaryData} stackContractInfo={stackContractInfo} label={'Total Stake'} />
         <div className={'staking-content-main'}>
           <Visual
             element={'table-header'}
