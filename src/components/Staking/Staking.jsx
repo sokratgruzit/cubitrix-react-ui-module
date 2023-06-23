@@ -43,14 +43,13 @@ export const Staking = ({
   let tableData =
     stakersRecord?.length > 0 &&
     stakersRecord.map((item, index) => (
-      <div className={`table-parent ${mobileExpand === index ? 'active' : ''}`}>
+      <div className={`table-parent ${mobileExpand === index ? 'active' : ''}`} key={index}>
         <div
           className={'table'}
           style={{
             width: 'calc(100% - 50px)',
             cursor: 'pointer',
           }}
-          key={index}
           onClick={() => {
             mobileExpandFunc(index)
           }}
