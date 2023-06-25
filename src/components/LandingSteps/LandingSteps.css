@@ -1,7 +1,7 @@
 /* LandingSteps.css */
 
 .LandingSteps__container {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   padding-top: 70px;
@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(43, 49, 95, 0.97);
+  background-color: rgba(16, 40, 43, 0.97);
   z-index: 1000;
 }
 
