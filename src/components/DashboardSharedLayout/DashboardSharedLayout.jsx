@@ -60,6 +60,7 @@ export const DashboardSharedLayout = ({ links, children, loading }) => {
               <div className='dashboard-border' />
             </div>
             {children}
+            <div className='dashboard-layout-svg' />
           </div>
         </div>
       )}

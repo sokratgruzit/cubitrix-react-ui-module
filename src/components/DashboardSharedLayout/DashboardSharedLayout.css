@@ -152,6 +152,19 @@
   }
 }
 
+.dashboard-layout-svg {
+  position: absolute;
+  width: 1178px;
+  height: 826px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(53.84% 29.5% at 50% 50%, rgba(5, 58, 26, 0.1) 0%, rgba(85, 125, 0, 0) 100%);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
 @media only screen and (max-width: 767px) {
   .dashboard-main-container {
     padding: 30px 20px 120px;
