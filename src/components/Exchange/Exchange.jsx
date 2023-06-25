@@ -168,7 +168,7 @@ export const Exchange = ({
             customStyles={{
               margin: '0',
               width: '100%',
-              backgroundColor: '#45F4EA',
+              backgroundColor: '#C38C5C',
             }}
             onClick={handleSubmit}
           />
