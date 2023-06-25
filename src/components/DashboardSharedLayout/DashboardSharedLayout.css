@@ -148,8 +148,7 @@
     padding: 30px 20px 140px 30px;
     border-radius: 0px;
     margin: 0px;
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 }
 
