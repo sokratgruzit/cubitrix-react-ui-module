@@ -1,6 +1,7 @@
 .dashboard-table-header-container {
-  background: #2f3674;
   border-radius: 20px 20px 0px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #10282b;
   min-height: 88px;
   padding: 20px;
 }
@@ -9,9 +10,10 @@
   display: flex;
   min-width: 260px;
   min-height: 69px;
-  background: #2b326b;
   border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(134deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
   border-radius: 16px;
+  border-radius: 20px;
   padding: 10px 0;
 }
 
@@ -48,7 +50,7 @@
 }
 
 .dashboard-table-footer > a > p {
-  color: #45f4ea;
+  color: #c38c5c;
 }
 
 .dashboard-table-parent > .table {
@@ -140,6 +142,10 @@
   font-size: 26px;
   line-height: 130%;
   color: #ffffff;
+}
+
+.dashboard-transactions-span {
+  color: #fff;
 }
 
 @media only screen and (max-width: 1025px) {

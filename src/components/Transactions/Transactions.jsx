@@ -59,7 +59,7 @@ export const Transactions = ({
       }}
     >
       <TableElement
-        color={"#45F4EA"}
+        color={"#C38C5C"}
         type={"pagination"}
         currentPage={paginationCurrent}
         totalCount={paginationTotal}
@@ -244,6 +244,7 @@ export const Transactions = ({
               fontSize={"font-20"}
               customStyles={{ border: "none", padding: "0" }}
               buttons={tableVisualMore}
+              labelCustomStyles={{ color: '#C38C5C'}}
             />
           </div>
         }

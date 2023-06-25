@@ -96,7 +96,7 @@ stories.add("Transactions", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "0x86018bb7be2f8e4b23e5d09f795311405aae24d3",
+          address: "0x43f59f41518903a274c7897dffb24db86a0dd23a",
           limit: 5,
           page: transactionsCurrentPage,
           ...filterObject,
@@ -417,7 +417,7 @@ stories.add("Transactions", () => {
       <DashboardSharedLayout links={links}>
         <Transactions
           header={"Transactions"}
-          description={`Total number of operations: ${totalTransactions?.total_transaction}`}
+          description={<p className='font-14'>Total number of operations: <span className='dashboard-transactions-span'>{totalTransactions?.total_transaction}</span></p>}
           rightPanelData={rightPanelData}
           footer={footer}
           tableHead={transactionHeader}

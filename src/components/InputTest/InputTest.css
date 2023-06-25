@@ -1,120 +1,121 @@
 /* DEFAULT STYLES */
 .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: auto;
 }
 .mb-3 {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .input-group-text-outer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 .input-group-labels {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 .bordered {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 1px 6px;
-    height: 17px;
-    width: auto;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1px 6px;
+  height: 17px;
+  width: auto;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .frame-label {
-    font-size: 10px;
+  font-size: 10px;
 }
 .form-control-outer {
-    position: relative;
+  position: relative;
 }
 .password-icon {
-    position: absolute;
-    top: 13px;
-    right: 13px;
-    width: 24px;
-    height: 20px;
-    cursor: pointer;
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 24px;
+  height: 20px;
+  cursor: pointer;
 }
-.pass-icon, .pass-icon-f {
-    width: 100%;
-    height: 100%;
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+.pass-icon,
+.pass-icon-f {
+  width: 100%;
+  height: 100%;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .password-icon svg path {
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .password-icon:hover .pass-icon-f path {
-    fill: #3d5afe;
+  fill: #3d5afe;
 }
 .password-icon:hover .pass-icon path {
-    stroke: #3d5afe;
+  stroke: #3d5afe;
 }
 .form-control {
-    width: 100%;
-    padding: 11.5px 16px 11.5px 16px;
-    background-color: transparent;
-    border: 1px solid #1f2330;
-    border-radius: 6px;
-    color: #fff;
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-    height: 44px;
+  width: 100%;
+  padding: 11.5px 16px 11.5px 16px;
+  background-color: transparent;
+  border: 1px solid #1f2330;
+  border-radius: 6px;
+  color: #fff;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  height: 44px;
 }
 .form-control:hover {
-    border: 1px solid rgba(61, 90, 254, 0.6);
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  border: 1px solid rgba(61, 90, 254, 0.6);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .form-control:focus {
-    border: 1px solid #3d5afe;
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  border: 1px solid #3d5afe;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .error-border {
-    border: 1px solid rgb(239, 83, 80)!important;
+  border: 1px solid rgb(239, 83, 80) !important;
 }
 
 /* SELECT STYLES */
 .select-panel {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 .visible {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: inherit;
-    height: fit-content;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: fit-content;
 }
 .hidden {
-    display: none;
+  display: none;
 }
 .arrow {
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 .rotate {
-    transform: rotate(-180deg);
+  transform: rotate(-180deg);
 }
 .form-control-inner {
-    display: flex;
-    align-items: center;
-    width: 33%;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  width: 33%;
+  gap: 6px;
 }
 .form-control-inner div {
-    margin-left: 6px;
+  margin-left: 6px;
 }
 .number-control {
   background-color: transparent;
@@ -122,190 +123,190 @@
   width: 100%;
   margin-left: 6px;
 }
-.number-control[type="number"]::-webkit-inner-spin-button {
+.number-control[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
 /* UPLOAD STYLES */
 
 .upload-group {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
 }
 .upload-group-title {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 .upload-group-title p:last-child {
-    color: #ef5350;
+  color: #ef5350;
 }
 .upload-group-inner {
-    display: flex;
-    align-items: center;
-    gap: 55px;
-    width: 100%;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  width: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
 }
 .upload-group-placeholder {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .upload-group-text {
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    gap: 5px;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  gap: 5px;
 }
 .upload-group-text p:first-child {
-    color: #9c9da3;
+  color: #9c9da3;
 }
 .upload-btn {
-    color: #3d5afe;
-    cursor: pointer;
+  color: #3d5afe;
+  cursor: pointer;
 }
 .upload-control {
-    position: absolute;
-    top: 23px;
-    left: 49px;
-    width: 50px;
-    height: 16px;
-    opacity: 0;
+  position: absolute;
+  top: 23px;
+  left: 49px;
+  width: 50px;
+  height: 16px;
+  opacity: 0;
 }
 .avatar-sm {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 58px;
-    height: 58px;
-    border-radius: 40px;
-    object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 58px;
+  height: 58px;
+  border-radius: 40px;
+  object-fit: cover;
 }
 .delete-btn {
-    transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-    cursor: pointer;
-    color: #ef5350;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
+  color: #ef5350;
 }
 .delete-btn:hover {
-    color: #3d5afe !important;
+  color: #3d5afe !important;
 }
 
 /* Date Picker Styles */
 
 .react-datepicker {
-    background: #0a0f18 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
-    border-radius: 4px;
-    width: 255px !important;
-    display: flex;
-    justify-content: flex-start;
+  background: #0a0f18 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px;
+  width: 255px !important;
+  display: flex;
+  justify-content: flex-start;
 }
 .react-datepicker div {
-    color: white;
+  color: white;
 }
 .react-datepicker__header {
-    background: #0a0f18 !important;
-    border-bottom: none !important;
-    padding-bottom: 0px !important;
-    width: 252px !important;
+  background: #0a0f18 !important;
+  border-bottom: none !important;
+  padding-bottom: 0px !important;
+  width: 252px !important;
 }
 
 .react-datepicker__header:after {
-    content: "";
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 8px;
-    width: 90%;
-    display: block;
-    margin: 0 auto;
+  content: '';
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
 }
 
 .react-datepicker__day {
-    border-radius: 3px;
-    border: 0.5px solid rgba(255, 255, 255, 0.05);
-    margin-left: 0.3rem !important;
-    margin-right: 0.3rem !important;
+  border-radius: 3px;
+  border: 0.5px solid rgba(255, 255, 255, 0.05);
+  margin-left: 0.3rem !important;
+  margin-right: 0.3rem !important;
 }
 
 .react-datepicker__day--disabled {
-    color: #4d5057 !important;
+  color: #4d5057 !important;
 }
 
 .react-datepicker__day--selected {
-    background: #0500ff !important;
+  background: #c38c5c !important;
 }
 
-.react-datepicker__day--keyboard-selected {
-background-color: #0500ff !important;
+.react-datepicker__dayC38C5Ckeyboard-selected {
+  background-color: #c38c5c !important;
 }
 
 .react-datepicker__day:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .react-datepicker__navigation-icon::before {
-    border-width: 1px 1px 0 0 !important;
-    width: 6px !important;
-    height: 6px !important;
-    top: 50%;
-    transform: translateY(-50%);
-    top: 11px !important;
+  border-width: 1px 1px 0 0 !important;
+  width: 6px !important;
+  height: 6px !important;
+  top: 50%;
+  transform: translateY(-50%);
+  top: 11px !important;
 }
 
 .react-datepicker__time-list-item {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .react-datepicker__day-name {
-    margin: 0.3rem !important;
+  margin: 0.3rem !important;
 }
 .react-datepicker__time-container {
-    float: none;
-    width: 252px !important;
+  float: none;
+  width: 252px !important;
 }
 
 .react-datepicker__time {
-    width: 252px !important;
+  width: 252px !important;
 }
 
 .react-datepicker__time-box {
-    width: 252px !important;
-    margin-left: 1 !important;
-    margin-right: 1 !important;
-    text-align: left !important;
+  width: 252px !important;
+  margin-left: 1 !important;
+  margin-right: 1 !important;
+  text-align: left !important;
 }
 
 .react-datepicker__time-list-item {
-    border-radius: 2px;
+  border-radius: 2px;
 }
 /* 1px solid rgba(255, 255, 255, 0.1) */
 
 .react-datepicker__time {
-    background: #0a0f18 !important;
+  background: #0a0f18 !important;
 }
-.react-datepicker__time-list-item--selected {
-    background-color: #0500ff !important;
+.react-datepicker .react-datepicker__time-list-item--selected {
+  background-color: rgb(195, 140, 92) !important;
 }
-  
+
 .react-datepicker__time-list-item:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+  opacity: 0.8 !important;
 }
-  
+
 .react-datepicker__triangle {
-    display: none;
+  display: none;
 }

@@ -117,7 +117,7 @@ export const Visual = (props) => {
     element = (
       <div style={props.customStyles} className="tb-head">
         <div className="left-panel">
-          <h1 className={props.fontSize}>{props.label}</h1>
+          <h1 className={props.fontSize} style={props?.labelCustomStyles}>{props.label}</h1>
           {props.description && <p className="font-14">{props.description}</p>}
         </div>
         <div className="right-panel">

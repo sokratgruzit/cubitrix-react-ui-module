@@ -5,12 +5,12 @@
   min-height: 100vh;
   padding-top: 70px;
   height: 100%;
-  background-color: #2f3674;
+  background-color: #10282b;
 }
 
 .dashboard-sidebar-container {
   height: 100vh;
-  background-color: #2f3674;
+  background-color: #10282b;
   width: 100%;
   width: 255px;
   padding: 39px 20px 100px;
@@ -26,10 +26,9 @@
   min-height: 100%;
   width: calc(100% - 255px);
   background: #2b326b;
-  border-width: 1px 0px 0px 1px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 30px 0px 0px 0px;
+  background: #0e2225;
   padding: 30px 20px 30px 30px;
   display: flex;
   flex-direction: column;
@@ -42,10 +41,10 @@
   width: 30px;
   height: 30px;
   position: fixed;
-  top: 70px;
-  left: 255.5px;
+  top: 71px;
+  left: 255px;
   z-index: 100;
-  background-color: #2f3674;
+  background-color: #10282b;
   border: none;
 }
 
@@ -57,7 +56,8 @@
   border: none;
   top: 0;
   left: 0;
-  background: #2b326b;
+  background: #0e2225;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .dashboard-sidebar-links {
@@ -69,8 +69,8 @@
 .dashboard-sidebar-link {
   padding: 14px 20px;
   gap: 10px;
-  border-radius: 16px;
-  color: rgb(255, 255, 255, 0.6);
+  border-radius: 43px;
+  color: rgb(255, 255, 255);
   font-weight: 500;
   display: flex;
   gap: 10px;
@@ -79,12 +79,11 @@
 }
 
 .dashboard-sidebar-link:hover {
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .dashboard-sidebar-link.active {
-  background: #45f4ea;
-  color: #141726;
+  background: #c38c5c;
 }
 
 .sidebar-footer {
@@ -99,11 +98,12 @@
   padding: 14px 36px;
   gap: 10px;
   width: 218px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
   display: flex;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255);
+  border-radius: 41px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #0e2225;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   cursor: pointer;
 }
@@ -148,6 +148,8 @@
     padding: 30px 20px 140px 30px;
     border-radius: 0px;
     margin: 0px;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
   }
 }
 
