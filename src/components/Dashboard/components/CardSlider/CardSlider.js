@@ -214,7 +214,7 @@ export const CardSlider = ({
               <div className="card-slider-card_header-container">
                 <div className="card-slider-card_header">
                   <Account type={"cpl"} />
-                  <h4 className="font-16">Atar account</h4>
+                  <h4 className="font-16">ATAR account</h4>
                 </div>
                 <p className="card-slider-card_content">{mainAcc?.balance?.toFixed(2)}</p>
               </div>
