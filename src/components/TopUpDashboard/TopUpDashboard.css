@@ -9,7 +9,7 @@
   font-size: 26px;
   line-height: 150%;
   letter-spacing: 1px;
-  color: #ffffff;
+  color: #c38c5c;
   margin-bottom: 30px;
 }
 
@@ -32,9 +32,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 1px solid rgba(69, 244, 234, 0.05);
-  background: rgba(69, 244, 234, 0.05);
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0d1e21;
   gap: 6px;
   font-weight: 700;
   font-size: 20px;
@@ -43,8 +43,9 @@
 }
 
 .topupDashboard_title-container {
-  background: #262c5e;
+  background: #0d1e21;
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
   padding: 20px;
 }
@@ -99,9 +100,9 @@
 .topupDashboard_bottom-right {
   width: 100%;
   max-width: 460px;
-  background: #2f3674;
-  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: #10282B; 
   padding: 20px;
 }
 
@@ -128,7 +129,8 @@
 
 .topupDashboard_selected {
   background: rgba(69, 244, 234, 0.1);
-  border: #45f4ea !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
 }
 
 .topupDashboard_info {
@@ -148,7 +150,7 @@
   height: 100px;
   padding: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   margin-bottom: 10px;
 }

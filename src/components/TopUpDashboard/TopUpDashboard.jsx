@@ -66,8 +66,8 @@ export const TopUpDashboard = ({
               className={`topupDashboard_methodBox ${selectedMethod === method.id ? 'topupDashboard_selected' : ''}`}
               onClick={() => handleMethodSelect(method.id)}
             >
-              {method.title}
               <img src={method.logo} className='topupDashboard_method_logo' alt='' />
+              {method.title}
             </div>
           ))}
         </div>

@@ -73,14 +73,14 @@
   background: #45f4ea;
 }
 .btn-secondary {
-  border: 1px solid #45f4ea;
+  border: 1px solid #C38C5C;
 }
 .btn-primary span {
   color: #191a42;
   font-weight: 700;
 }
 .btn-secondary span {
-  color: #45f4ea;
+  color: #C38C5C;
   font-weight: 700;
 }
 .btn-primary:hover,

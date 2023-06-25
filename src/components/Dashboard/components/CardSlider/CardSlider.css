@@ -1,21 +1,19 @@
 .card-slider-navigation {
   display: flex;
   overflow-x: scroll;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .card-slider-navigation_item_container {
-  background: #0D1E21; 
+  background: #0d1e21;
   border-radius: 20px 20px 0px 0px;
 }
 
 .card-slider-navigation_item {
   padding: 14px 28px;
   cursor: pointer;
-  background-color: #2b326b;
+  background: #0e2225;
   border-radius: 20px 20px 0px 0px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-bottom: none;
+  border: none;
 }
 
 .card-slider-navigation_item > p {
@@ -28,7 +26,7 @@
 }
 
 .card-slider-navigation_item.active > p {
-  color: #C38C5C;
+  color: #c38c5c;
 }
 
 .card-slider-navigation_item > p:hover {
@@ -36,7 +34,7 @@
 }
 
 .card-slider-navigation_item.active {
-  background: #0D1E21; 
+  background: #0d1e21;
   border-radius: 20px 20px 0px 0px;
 }
 
@@ -45,9 +43,8 @@
   left: 424px;
   top: 160px;
   border-radius: 0px 0px 0px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
   border-top: none;
-  background: #0D1E21; 
+  background: #0d1e21;
   padding: 20px 20px 30px;
   display: flex;
   flex-direction: column;
@@ -75,7 +72,6 @@
   justify-content: space-between;
   position: relative;
   border: 1px solid transparent;
-
 }
 
 .card-slider-bg-img {
@@ -129,7 +125,7 @@
 .card-slider-card_footer {
   display: flex;
   border-radius: 0px 0px 19px 19px;
-  background: #0E2225; 
+  background: #0e2225;
   padding: 10px 0;
   border: 1px solid transparent;
   align-items: center;
@@ -152,11 +148,11 @@
 }
 
 .card-slider-card_footer-item:hover p {
-  color: #C38C5C;
+  color: #c38c5c;
 }
 
 .card-slider-card_footer-item:hover .card-slider-card_footer-item-svg path {
-  stroke: #C38C5C;
+  stroke: #c38c5c;
 }
 
 .card-slider-cards-mover {
