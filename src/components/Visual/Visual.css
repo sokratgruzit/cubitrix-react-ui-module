@@ -4,10 +4,14 @@
   padding: 20px;
   /* height: 70px; */
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: #2d3364;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+  background:  #10282B;
 
   border-radius: 16px 16px 0 0;
+}
+
+.popup-header-label {
+  color: #C38C5C;
 }
 
 .popup-header svg {

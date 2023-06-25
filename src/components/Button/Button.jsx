@@ -199,7 +199,7 @@ export const Button = (props) => {
         style={props.customStyles}
         onClick={props.onClick}
       >
-        <span>{props.label}</span>
+        {props.label}
       </div>
     );
   }

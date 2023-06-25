@@ -76,7 +76,7 @@
   border: 1px solid #C38C5C;
 }
 .btn-primary span {
-  color: #191a42;
+  color: #FFF;
   font-weight: 700;
 }
 .btn-secondary span {
@@ -404,7 +404,7 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   cursor: pointer;
   height: 44px;
-  color: #6a6d76;
+  color: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;

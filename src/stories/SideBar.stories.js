@@ -187,7 +187,7 @@ stories.add('SideBar', () => {
       /> */}
 
       <SideBar open={toggle}>
-        <Deposit
+        <TransferFromAcc
           sideBarClose={() => setToggle(prev => !prev)}
           inputs={inputs}
           currentObject={currentObject}
@@ -205,6 +205,7 @@ stories.add('SideBar', () => {
           handleTimePeriod={handleTimePeriod}
           handleTimeperiodDate={handleTimeperiodDate}
           durationOptions={durationOptions}
+          label={'hi'}
         />
         {/* <Connect
           ConnectOptions={[
