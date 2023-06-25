@@ -6,6 +6,8 @@ import "./CardSlider.css";
 import { Account, AccountType } from "../../../../assets/svgs";
 import { useMobileWidth } from "../../../../hooks/useMobileWidth";
 
+import { Pagination, Navigation } from "swiper";
+
 export const CardSlider = ({
   accounts,
   cardImgs,
@@ -158,8 +160,14 @@ export const CardSlider = ({
           spaceBetween={10}
           slidesPerView={"auto"}
           className="card-slider-cards-container"
-          mousewheel={true}
-          freeMode={true}
+          modules={[Pagination, Navigation]}
+          navigation={{
+            nextEl: ".card-slider-cards-mover-icons_next",
+            prevEl: ".card-slider-cards-mover-icons_prev",
+          }}
+          pagination={{
+            type: "progressbar",
+          }}
         >
           <SwiperSlide>
             <div className="card-slider-card">
@@ -253,7 +261,8 @@ export const CardSlider = ({
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               onClick={movePrev}
-              className={isPrevDisabled ? "card-slider-cards-mover-icons_active" : ""}
+              // className={isPrevDisabled ? "card-slider-cards-mover-icons_active" : ""}
+              className="card-slider-cards-mover-icons_prev"
             >
               <path
                 d="M9.57 5.92993L3.5 11.9999L9.57 18.0699"
@@ -279,7 +288,8 @@ export const CardSlider = ({
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               onClick={moveNext}
-              className={isNextDisabled ? "card-slider-cards-mover-icons_active" : ""}
+              // className={isNextDisabled ? "card-slider-cards-mover-icons_active" : ""}
+              className="card-slider-cards-mover-icons_next"
             >
               <path
                 d="M14.43 5.92993L20.5 11.9999L14.43 18.0699"
@@ -298,12 +308,6 @@ export const CardSlider = ({
                 strokeLinejoin="round"
               />
             </svg>
-          </div>
-          <div className="card-slider-cards-mover-line-container">
-            <div
-              className="card-slider-cards-mover-line"
-              style={{ width: `${slidePercentage}%` }}
-            />
           </div>
         </div>
       </div>

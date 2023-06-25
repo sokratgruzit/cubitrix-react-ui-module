@@ -57,6 +57,8 @@
 .card-slider-cards-container {
   display: flex;
   gap: 10px;
+  overflow-y: visible !important;
+  overflow-x: clip !important;
 }
 
 .card-slider-card {
@@ -177,23 +179,36 @@
   stroke: rgb(255, 255, 255, 0.4);
 }
 
-.card-slider-cards-mover-line-container {
-  width: 100%;
+.card-slider-cards-container .swiper-pagination-progressbar {
+  width: calc(100% - 148px);
   height: 8px;
-  background-color: rgb(255, 255, 255, 0.1);
+  background-color: rgb(255, 255, 255, 0.1) !important;
   border-radius: 4px;
-  position: relative;
+  position: absolute;
+  left: 128px;
+  top: 214px;
+  z-index: 10;
+  overflow: hidden;
+}
+.card-slider-content .swiper-button-disabled {
+  opacity: 0.5 !important;
 }
 
-.card-slider-cards-mover-line {
-  border-radius: 4px;
-  background-color: #45f4ea;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30%;
-  z-index: 2;
-  height: 100%;
+.card-slider-content .swiper-button-lock {
+  display: flex !important;
+}
+
+.card-slider-cards-container .swiper-pagination-progressbar-fill {
+  border-radius: 4px !important;
+  background-color: #c38c5c;
+}
+
+.card-slider-cards-container .swiper-pagination-lock {
+  display: flex !important;
+}
+
+.card-slider-cards-container .swiper-pagination-lock .swiper-pagination-progressbar-fill {
+  width: 0% !important;
 }
 
 .card-slider-navigation_item_container .left-border-radius {
@@ -218,5 +233,9 @@
   }
   .card-slider-content {
     border-radius: 20px;
+  }
+  .card-slider-cards-container .swiper-pagination-progressbar {
+    width: calc(100% - 118px);
+    left: 108px;
   }
 }
