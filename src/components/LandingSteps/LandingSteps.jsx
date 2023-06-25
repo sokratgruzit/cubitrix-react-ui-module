@@ -131,12 +131,6 @@ export const LandingSteps = ({
     setStep(step + 1);
   };
 
-  const handlePreviousStep = () => {
-    if (step > 0) {
-      setStep(step - 1);
-    }
-  };
-
   const [emailResend, setEmailResend] = useState(false);
 
   useEffect(() => {
