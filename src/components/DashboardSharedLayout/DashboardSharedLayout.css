@@ -55,6 +55,7 @@
   left: 254.38px;
   background-color: #10282b;
   border: none;
+  z-index: 101;
 }
 
 .dashboard-border {
@@ -159,6 +160,7 @@
   top: 70px;
   width: calc(100% - 255px);
   right: 0;
+  z-index: 100;
 }
 
 @media only screen and (max-width: 1025px) {
