@@ -224,7 +224,7 @@ stories.add("Transactions", () => {
       type: "lable-input-select",
       options: [
         { name: "All", value: "all" },
-        { name: "Main", value: "system" },
+        { name: "Main", value: "main" },
         { name: "Trade", value: "trade" },
         { name: "Loan", value: "loan" },
       ],
@@ -417,7 +417,14 @@ stories.add("Transactions", () => {
       <DashboardSharedLayout links={links}>
         <Transactions
           header={"Transactions"}
-          description={<p className='font-14'>Total number of operations: <span className='dashboard-transactions-span'>{totalTransactions?.total_transaction}</span></p>}
+          description={
+            <p className="font-14">
+              Total number of operations:{" "}
+              <span className="dashboard-transactions-span">
+                {totalTransactions?.total_transaction}
+              </span>
+            </p>
+          }
           rightPanelData={rightPanelData}
           footer={footer}
           tableHead={transactionHeader}
