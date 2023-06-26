@@ -41,7 +41,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 103;
+  z-index: 93;
   display: flex;
   flex-direction: column;
   gap: 30px;
