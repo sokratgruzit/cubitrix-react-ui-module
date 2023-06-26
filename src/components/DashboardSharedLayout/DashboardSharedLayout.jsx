@@ -56,7 +56,7 @@ export const DashboardSharedLayout = ({ links, children, loading }) => {
             className='dashboard-main-container'
             style={{ width: `${width <= 1025 ? '100%' : 'calc(100% - 255px)'}` }}
           >
-            <div class="dashboard-fixed-border" />
+            <div className="dashboard-fixed-border" />
             <div className='dashboard-border-container'>
               <div className='dashboard-border' />
             </div>
