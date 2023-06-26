@@ -16,7 +16,7 @@ export const CardSlider = ({
   handleExchange,
   handleTransfer,
 }) => {
-  const [accountType, setAccountType] = useState("system");
+  const [accountType, setAccountType] = useState("main");
   const swiperRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
@@ -94,7 +94,7 @@ export const CardSlider = ({
   //   {
   //     address: '0xc2e42a2338ad2ef5b247c4027b0b29ccfc672eb9',
   //     balance: 688,
-  //     account_category: 'system',
+  //     account_category: 'main',
   //     assets: {
   //       btc: 0,
   //       eth: 0,
@@ -181,7 +181,7 @@ export const CardSlider = ({
                 onClick={() => setAccountType(item?.account_category)}
               >
                 <p className="font-16">
-                  {item?.account_category === "system" ? "main" : item?.account_category}{" "}
+                  {item?.account_category === "main" ? "main" : item?.account_category}{" "}
                   {width > 767 ? "account" : ""}
                 </p>
               </div>
@@ -214,14 +214,14 @@ export const CardSlider = ({
               <div className="card-slider-card_header-container">
                 <div className="card-slider-card_header">
                   <Account type={"cpl"} />
-                  <h4 className="font-16">Atar account</h4>
+                  <h4 className="font-16">ATAR account</h4>
                 </div>
                 <p className="card-slider-card_content">{mainAcc?.balance?.toFixed(2)}</p>
               </div>
               <div className="card-slider-card_footer">
                 {cardFooterData?.map((item, index) => {
-                  if (accountType === "system" && item.title === "Withdraw") return;
-                  if (accountType !== "system" && item.title === "Deposit") return;
+                  if (accountType === "main" && item.title === "Withdraw") return;
+                  if (accountType !== "main" && item.title === "Deposit") return;
 
                   return (
                     <div

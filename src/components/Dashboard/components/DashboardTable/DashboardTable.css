@@ -76,8 +76,8 @@
   font-size: 26px;
   line-height: 150%;
   letter-spacing: 1px;
-  color: #C38C5C; 
-  font-size: 30px; 
+  color: #c38c5c;
+  font-size: 30px;
 }
 
 .dashboard-table-referral-wrapper {
@@ -98,8 +98,8 @@
 .dashboard-table-referral-card-wrap {
   width: 100%;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(194, 126, 96, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(194, 126, 96, 0.1);
   /* max-width: 555px; */
   min-height: 90px;
   display: flex;
@@ -111,8 +111,8 @@
 
 .dashboard-table-referral-card-wrap__active {
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(202, 192, 99, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(202, 192, 99, 0.1);
 }
 
 .dashboard-table-referral-card-wrap > h3 {
