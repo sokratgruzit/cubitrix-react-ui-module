@@ -70,17 +70,17 @@
   display: none;
 }
 .btn-primary {
-  background: #45f4ea;
+  background: #c38c5c;
 }
 .btn-secondary {
-  border: 1px solid #C38C5C;
+  border: 1px solid #c38c5c;
 }
 .btn-primary span {
-  color: #FFF;
+  color: #fff;
   font-weight: 700;
 }
 .btn-secondary span {
-  color: #C38C5C;
+  color: #c38c5c;
   font-weight: 700;
 }
 .btn-primary:hover,

@@ -26,7 +26,7 @@
 
 .LandingSteps__progress-bar__fill {
   height: 0px;
-  border: 4px solid #45f4ea;
+  border: 4px solid #c38c5c;
   border-radius: 8px;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
@@ -87,9 +87,9 @@
   justify-content: center;
   width: 295px;
   height: 295px;
-  border: 1px solid rgba(69, 244, 234, 0.05);
-  background: #2f3674;
-  border-radius: 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0e2225;
   gap: 20px;
   font-weight: 700;
   font-size: 20px;
@@ -99,7 +99,9 @@
 
 .LandingSteps__wallet-option:hover {
   cursor: pointer;
-  border: 1px solid #45f4ea;
+  border: 1px solid #c38c5c;
+  /* border-left: 1px solid rgba(255, 255, 255, 0.5); */
+  /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
 }
 
 .LandingSteps__walletmetamaskIcon {
