@@ -20,7 +20,7 @@
   flex-direction: column;
   gap: 20px;
   position: relative;
-  background: linear-gradient(180deg, rgba(43, 50, 107, 0) 0%, #2b326b 100%);
+  /* background: linear-gradient(180deg, rgba(43, 50, 107, 0) 0%, #2b326b 100%); */
 }
 
 .deposit-card-img {
