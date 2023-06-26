@@ -25,7 +25,6 @@
   flex: 1;
   min-height: 100%;
   width: calc(100% - 255px);
-  background: #2b326b;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 30px 0px 0px 0px;
   background: #0e2225;
@@ -35,6 +34,7 @@
   background-clip: padding-box;
   border-right: none;
   border-bottom: none;
+  border-top: none;
 }
 
 .dashboard-layout-content {
@@ -51,7 +51,7 @@
   width: 30px;
   height: 30px;
   position: fixed;
-  top: 70.5px;
+  top: 70px;
   left: 254.38px;
   background-color: #10282b;
   border: none;
@@ -146,9 +146,19 @@
   left: 0;
   right: 0;
   background: radial-gradient(53.84% 29.5% at 50% 50%, rgba(5, 58, 26, 0.1) 0%, rgba(85, 125, 0, 0) 100%);
-  width: 1178px;
+  width: 100%;
   height: 826px;
   top: 10%;
+}
+
+.dashboard-fixed-border {
+  height: 1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  position: fixed;
+  width: 100%;
+  top: 70px;
+  width: calc(100% - 255px);
+  right: 0;
 }
 
 @media only screen and (max-width: 1025px) {
@@ -178,7 +188,10 @@
     padding: 30px 20px 140px 30px;
     border-radius: 0px;
     margin: 0px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: none;
+  }
+  .dashboard-fixed-border {
+    width: 100%;
   }
 }
 
