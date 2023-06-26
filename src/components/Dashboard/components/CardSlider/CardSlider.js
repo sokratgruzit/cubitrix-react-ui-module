@@ -183,7 +183,7 @@ export const CardSlider = ({
                 onClick={() => setAccountType(item?.account_category)}
               >
                 <p className="font-16">
-                  {item?.account_category === "main" ? "main" : item?.account_category}
+                  {item?.account_category === "main" ? "main" : item?.account_category}{" "}
                   {width > 767 ? "account" : ""}
                 </p>
               </div>
