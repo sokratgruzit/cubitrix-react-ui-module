@@ -55,7 +55,7 @@
   text-transform: capitalize;
   font-size: 14px;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  color: #9c9da3;
+  color: rgba(255, 255, 255, 0.6);
 }
 .dropdown-item:hover p {
   color: #ffffff;

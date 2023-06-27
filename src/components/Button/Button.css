@@ -249,7 +249,7 @@
   cursor: pointer;
 }
 .side-btn:after {
-  content: "";
+  content: '';
   position: absolute;
   width: calc(100% + 24px);
   height: 100%;
@@ -266,7 +266,7 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   width: 2px;
   height: 100%;
-  content: "";
+  content: '';
   background: #3d5afe;
   border-radius: 2px;
   position: absolute;
@@ -399,12 +399,12 @@
 .calculator-button {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
   overflow: hidden;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   cursor: pointer;
   height: 44px;
-  color: rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -412,12 +412,19 @@
 }
 
 .calculator-button:hover {
-  opacity: 0.7;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
 }
 
 .calculator-button-active {
-  background: #00c6ff;
-  color: #fff;
+  border: 1px solid #c38c5c;
+  color: #c38c5c;
+}
+
+.calculator-button-active:hover {
+  opacity: 0.9;
+  border: 1px solid #c38c5c;
+  color: #c38c5c;
 }
 
 .staking-button {

@@ -90,12 +90,20 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
-.dashboard-sidebar-link:hover {
-  opacity: 0.9;
+.dashboard-sidebar-link.active:hover {
+  border-radius: 46px;
 }
 
 .dashboard-sidebar-link.active {
   background: #c38c5c;
+}
+
+.dashboard-sidebar-link.active:hover {
+  opacity: 0.9;
+}
+
+.dashboard-sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .sidebar-footer {
@@ -123,7 +131,14 @@
 }
 
 .sidebar-footer-support:hover {
-  opacity: 0.9;
+  border-radius: 41px;
+  border: 1px solid #c38c5c;
+  background: #0e2225;
+  color: #c38c5c;
+}
+
+.sidebar-footer-support:hover > svg > path {
+  fill: #c38c5c;
 }
 
 .dashboard-svg {

@@ -399,13 +399,6 @@ export const LandingSteps = ({
                       }}
                       customStyles={{
                         width: "100%",
-                        background: "rgba(255, 255, 255, 0.05)",
-                        border: `${
-                          item.time === timeperiod
-                            ? "1px solid #45F4EA"
-                            : "1px solid rgba(255, 255, 255, 0.1)"
-                        }`,
-                        borderRadius: "8px",
                       }}
                       active={item.time === timeperiod}
                     />

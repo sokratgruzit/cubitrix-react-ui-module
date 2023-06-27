@@ -147,12 +147,36 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
+.card-slider-card_footer-item p {
+  color: rgb(255, 255, 255, 0.6);
+}
+
+.card-slider-card_footer-item .card-slider-card_footer-item-svg path {
+  stroke: rgb(255, 255, 255, 0.6);
+}
+
 .card-slider-card_footer-item:hover p {
-  color: #c38c5c;
+  color: #fff;
 }
 
 .card-slider-card_footer-item:hover .card-slider-card_footer-item-svg path {
+  stroke: #fff;
+}
+
+.card-slider-card_footer-item.active p {
+  color: #c38c5c;
+}
+
+.card-slider-card_footer-item.active .card-slider-card_footer-item-svg path {
   stroke: #c38c5c;
+}
+
+.card-slider-card_footer-item.active:hover p {
+  opacity: 0.9;
+}
+
+.card-slider-card_footer-item.active:hover .card-slider-card_footer-item-svg path {
+  opacity: 0.9;
 }
 
 .card-slider-cards-mover {

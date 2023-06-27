@@ -42,15 +42,20 @@
 .dashboard-table-footer a {
   display: flex;
   gap: 6px;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
-.dashboard-table-footer a:hover {
-  opacity: 0.8;
+.dashboard-table-footer > a > p {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
 .dashboard-table-footer > a > p {
   color: #c38c5c;
+}
+
+.dashboard-table-footer > a:hover p,
+.dashboard-table-footer > a:hover svg path {
+  fill: white;
+  color: white;
 }
 
 .dashboard-table-parent > .table {

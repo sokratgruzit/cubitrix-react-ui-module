@@ -120,7 +120,7 @@ stories.add('SideBar', () => {
     },
   ]
 
-  const [timeperiod, setTimeperiod] = useState(4)
+  const [timeperiod, setTimeperiod] = useState(0)
   const [timeperiodDate, setTimeperiodDate] = useState(0)
 
   const handleTimeperiodDate = period => {
@@ -187,7 +187,7 @@ stories.add('SideBar', () => {
       /> */}
 
       <SideBar open={toggle}>
-        <TransferFromAcc
+        <Deposit
           sideBarClose={() => setToggle(prev => !prev)}
           inputs={inputs}
           currentObject={currentObject}

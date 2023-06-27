@@ -108,10 +108,6 @@ export const Deposit = ({
                   }}
                   customStyles={{
                     width: '100%',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: `${item.time === timeperiod ? '1px solid #C38C5C' : '1px solid rgba(255, 255, 255, 0.1)'}`,
-                    borderRadius: '8px',
-                    color: `${item.time === timeperiod ? '#C38C5C' : 'rgba(255, 255, 255, 0.6)'}`,
                   }}
                   active={item.time === timeperiod}
                 />
