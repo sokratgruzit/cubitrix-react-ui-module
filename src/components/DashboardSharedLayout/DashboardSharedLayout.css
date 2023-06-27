@@ -90,11 +90,13 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
-.dashboard-sidebar-link.active:hover {
-  border-radius: 46px;
+.dashboard-sidebar-link.active {
+  background: #c38c5c;
 }
 
-.dashboard-sidebar-link.active {
+.dashboard-sidebar-link.active:hover {
+  border-radius: 46px;
+  opacity: 0.9;
   background: #c38c5c;
 }
 
