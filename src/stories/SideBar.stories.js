@@ -207,6 +207,7 @@ stories.add("SideBar", () => {
           accountBalance={"1,400.00"}
           accountBalanceSecond={"$2,034.04"}
           label={"hi"}
+          info={"info"}
         />
 
         {/* <Connect
