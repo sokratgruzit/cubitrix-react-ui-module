@@ -113,7 +113,7 @@ stories.add("Dashboard", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "0x03c9527F673E322c16d0C1A567e02d3f3a6aB30B",
+          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
           limit: 3,
           page: 1,
         }),
@@ -141,7 +141,7 @@ stories.add("Dashboard", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "0x03c9527F673E322c16d0C1A567e02d3f3a6aB30B",
+          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
           limit: 3,
           page: 1,
         }),
@@ -170,7 +170,7 @@ stories.add("Dashboard", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "0x03c9527F673E322c16d0C1A567e02d3f3a6aB30B",
+          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
         }),
       },
     );
@@ -199,7 +199,7 @@ stories.add("Dashboard", () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          address: "0x03c9527F673E322c16d0C1A567e02d3f3a6aB30B",
+          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
         }),
       },
     );

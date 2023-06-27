@@ -73,11 +73,7 @@
   display: flex;
   flex-direction: column;
   padding: 0px 16px 16px 16px;
-  background: linear-gradient(
-    180deg,
-    rgba(61, 90, 254, 0.1) 0%,
-    rgba(61, 90, 254, 0.03) 100%
-  );
+  background: linear-gradient(180deg, rgba(61, 90, 254, 0.1) 0%, rgba(61, 90, 254, 0.03) 100%);
 }
 .table-mobile-content .td {
   flex-direction: column;
@@ -182,7 +178,7 @@
   background: #3d5afe;
   top: 6px;
   left: 0px;
-  content: "";
+  content: '';
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   transform: scaleX(0);
   transform-origin: left;

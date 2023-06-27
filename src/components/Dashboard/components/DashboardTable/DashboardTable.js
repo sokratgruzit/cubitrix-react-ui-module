@@ -193,6 +193,8 @@ export const DashboardTable = ({
           customStyles={{
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '20px',
+            background: 'rgba(255, 255, 255, 0.01)',
+            backdropFilter: 'blur(5px)',
           }}
           customTableMoreStyles={{
             display: 'none',
@@ -342,9 +344,10 @@ export const DashboardTable = ({
           customStyles={{
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '20px',
+            background: 'rgba(255, 255, 255, 0.01)',
+            backdropFilter: 'blur(5px)',
           }}
           customHeadStyles={{
-            background: 'none',
             padding: '10px 20px',
             borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
             width: '100%',
@@ -459,9 +462,10 @@ export const DashboardTable = ({
           customStyles={{
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '20px',
+            background: 'rgba(255, 255, 255, 0.01)',
+            backdropFilter: 'blur(5px)',
           }}
           customHeadStyles={{
-            background: 'none',
             padding: '10px 20px',
             borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
             width: '100%',
