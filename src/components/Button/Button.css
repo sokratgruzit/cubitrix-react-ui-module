@@ -461,8 +461,8 @@
 
 .referral-button-active {
   min-width: 157px;
-  padding: 10px 30px 10px 16px;
-  background: #00c6ff;
+  padding: 14px 30px;
+  background: #c38c5c;
   border-radius: 32px;
 }
 
@@ -475,7 +475,7 @@
 }
 
 .referral-button:hover {
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .btn-grey {

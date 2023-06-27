@@ -275,7 +275,7 @@ export const Referral = ({
             <span className="font-20">
               You can earn rebates by inviting traders to trade on Complend
             </span>
-            <p className="font-20">
+            <p className="font-16">
               After creating your first code, you will receive a Casual status to start,
               granting you a 2.5% rebate on your referee’s trading fees.
             </p>
@@ -283,15 +283,9 @@ export const Referral = ({
           <div className="referral-content-info_buttons">
             <Button
               element={"referral-button"}
-              label={"Create Code"}
-              icon={<AddSquareIcon color={"#FFF"} />}
-              active={true}
-              onClick={handleCreateCode}
-            />
-            <Button
-              element={"referral-button"}
               label={"Level System"}
-              icon={<StickyNoteIcon />}
+              icon={<StickyNoteIcon className={'referral-button-icon'} />}
+              active={true}
               onClick={handleLevelSystem}
             />
           </div>
@@ -300,7 +294,7 @@ export const Referral = ({
           type={"total-info"}
           data={referralCodesCardData}
           totalData={referralRebatesTotal}
-          label={"Your Code"}
+          label={"Your Referral Code"}
           labelTwo={"Total Referral Rebates"}
         />
       </div>
