@@ -41,7 +41,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 103;
+  z-index: 106;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -55,7 +55,7 @@
   left: 254.38px;
   background-color: #10282b;
   border: none;
-  z-index: 101;
+  z-index: 108;
 }
 
 .dashboard-border {
@@ -140,7 +140,7 @@
   left: 0;
   top: 0;
   opacity: 0.15;
-  z-index: 102;
+  z-index: 105;
 }
 
 .dashboard-layout-background {
@@ -161,7 +161,7 @@
   top: 70px;
   width: calc(100% - 255px);
   right: 0;
-  z-index: 100;
+  z-index: 107;
 }
 
 @media only screen and (max-width: 1025px) {
@@ -176,7 +176,7 @@
     padding: 0;
     padding: 5px 10px;
     overflow-x: scroll;
-    z-index: 100;
+    z-index: 109;
   }
   .dashboard-sidebar-links {
     flex-direction: row;

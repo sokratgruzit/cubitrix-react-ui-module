@@ -24,6 +24,8 @@ export const CardSlider = ({
   const [isEnd, setIsEnd] = useState(false);
   const { width } = useMobileWidth();
 
+  console.log(accounts)
+
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
       const swiperInstance = swiperRef.current.swiper;
