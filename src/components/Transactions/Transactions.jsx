@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-import "./Transactions.css";
-import { Table } from "../Table";
-import { Visual } from "../Visual";
-import { TableElement } from "../TableElement";
-import { useMobileWidth } from "../../hooks/useMobileWidth";
-import { Link } from "react-router-dom";
-import { FilterBox } from "../FilterBox";
-import { Input } from "../Input";
+import './Transactions.css'
+import { Table } from '../Table'
+import { Visual } from '../Visual'
+import { TableElement } from '../TableElement'
+import { useMobileWidth } from '../../hooks/useMobileWidth'
+import { Link } from 'react-router-dom'
+import { FilterBox } from '../FilterBox'
+import { Input } from '../Input'
 
 export const Transactions = ({
   tableHead,
@@ -24,73 +24,71 @@ export const Transactions = ({
   loading,
   tableEmpty,
 }) => {
-  const [mobileExpand, setMobileExpand] = useState(null);
-  const { width } = useMobileWidth();
+  const [mobileExpand, setMobileExpand] = useState(null)
+  const { width } = useMobileWidth()
 
-  let mobileExpandFunc = (id) => {
+  let mobileExpandFunc = id => {
     if (width <= 1300) {
       if (id !== mobileExpand) {
-        setMobileExpand(id);
+        setMobileExpand(id)
       } else {
-        setMobileExpand(null);
+        setMobileExpand(null)
       }
     }
-  };
+  }
 
-  let mobile = width <= 1300;
+  let mobile = width <= 1300
 
   const tableVisualMore = (
-    <div className={"dashboard-table-head-wrap"}>
+    <div className={'dashboard-table-head-wrap'}>
       {rightPanelData?.map((item, index) => (
-        <div key={index} className={"dashboard-table-head"}>
+        <div key={index} className={'dashboard-table-head'}>
           <h3 className={`font-20`}>{item?.value?.toFixed(2)}</h3>
           <p className={`font-16`}>{item?.title}</p>
         </div>
       ))}
     </div>
-  );
+  )
 
   const tableFooter = (
     <div
-      className={"dashboard-table-footer"}
+      className={'dashboard-table-footer'}
       style={{
-        display: `${data?.length ? "flex" : "none"}`,
-        padding: `${data?.length ? "20px" : "0px"}`,
+        display: `${data?.length ? 'flex' : 'none'}`,
+        padding: `${data?.length ? '20px' : '0px'}`,
       }}
     >
       <TableElement
-        color={"#C38C5C"}
-        type={"pagination"}
+        color={'#C38C5C'}
+        type={'pagination'}
         currentPage={paginationCurrent}
         totalCount={paginationTotal}
         onPageChange={paginationEvent}
       />
     </div>
-  );
+  )
 
-  let tableData;
+  let tableData
   tableData = data?.map((item, index) => {
-    const createdAt = new Date(item?.createdAt);
-    const createdTime = createdAt.toLocaleString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
+    const createdAt = new Date(item?.createdAt)
+    const createdTime = createdAt.toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
       hour12: true,
-    });
+    })
     return (
       <div
-        className={`table-parent ${
-          mobileExpand == item._id ? "active" : ""
-        } dashboard-table-parent`}
+        className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
         key={index}
         onClick={() => {
-          mobileExpandFunc(item._id);
+          mobileExpandFunc(item._id)
         }}
       >
-        <div className="table">
+        <div className='table'>
           <div
             className={`td col ${tableHead[0].mobileWidth ? true : false} dashboard-td`}
             style={{
@@ -135,44 +133,38 @@ export const Transactions = ({
             <span>{item?.amount?.toFixed(2)}</span>
           </div>
         </div>
-        <div className="table-more" />
-        <div className="icon-place" style={{ height: "40px" }}>
-          <svg
-            width="12"
-            height="7"
-            viewBox="0 0 12 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <div className='table-more' />
+        <div className='icon-place' style={{ height: '40px' }}>
+          <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
-              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
+              stroke='white'
+              strokeWidth='1.5'
+              strokeMiterlimit='10'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </div>
-        <div className="table-mobile">
-          <div className="table-mobile-content">
-            <div className="td">
-              <div className="mobile-ttl">{tableHead[1].name}</div>
+        <div className='table-mobile'>
+          <div className='table-mobile-content'>
+            <div className='td'>
+              <div className='mobile-ttl'>{tableHead[1].name}</div>
               <span>{item?.to}</span>
             </div>
-            <div className="td">
-              <div className="mobile-ttl">{tableHead[2].name}</div>
+            <div className='td'>
+              <div className='mobile-ttl'>{tableHead[2].name}</div>
               <span>{item?.tx_type}</span>
             </div>
-            <div className="td">
-              <div className="mobile-ttl">
+            <div className='td'>
+              <div className='mobile-ttl'>
                 {tableHead[3].name} {tableHead[3]?.icon}
               </div>
               <span>{createdTime}</span>
             </div>
             {width < 500 && (
-              <div className="td">
-                <div className="mobile-ttl">
+              <div className='td'>
+                <div className='mobile-ttl'>
                   {tableHead[4].name} {tableHead[4]?.icon}
                 </div>
                 <span>{item?.amount?.toFixed(2)}</span>
@@ -181,31 +173,29 @@ export const Transactions = ({
           </div>
         </div>
       </div>
-    );
-  });
+    )
+  })
 
   const handleInputChange = (e, params) => {
-    const { name, onChange } = params;
+    const { name, onChange } = params
     let data = {
       target: {
         value: e,
         name,
       },
-    };
+    }
 
-    onChange(data);
-  };
+    onChange(data)
+  }
 
   return (
-    <div className="transactions-page-container">
+    <div className='transactions-page-container'>
       <h1>Transactions History</h1>
-      <div className="transaction-selects-container">
+      <div className='transaction-selects-container'>
         {inputs?.map((params, index) => {
-          let selectedOption;
-          if (params.type === "lable-input-select") {
-            selectedOption = params?.options.find(
-              (option) => option.value === currentObject[params?.name],
-            );
+          let selectedOption
+          if (params.type === 'lable-input-select') {
+            selectedOption = params?.options.find(option => option.value === currentObject[params?.name])
           }
           return (
             <Input
@@ -214,37 +204,33 @@ export const Transactions = ({
               label={params.title}
               name={params.name}
               value={
-                params?.type === "lable-input-select"
-                  ? selectedOption?.name ||
-                    params?.defaultAny ||
-                    params?.options[0]?.value
+                params?.type === 'lable-input-select'
+                  ? selectedOption?.name || params?.defaultAny || params?.options[0]?.value
                   : currentObject[params?.name] || params?.defaultAny
               }
-              customStyles={{ width: "100%" }}
-              selectHandler={(opt) => {
-                handleInputChange(opt, params);
+              customStyles={{ width: '100%' }}
+              selectHandler={opt => {
+                handleInputChange(opt, params)
               }}
-              onChange={(e) => handleInputChange(e, params)}
+              onChange={e => handleInputChange(e, params)}
               defaultData={params?.options}
-              customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
-              svg={
-                params?.type === "lable-input-select" ? selectedOption?.svg : params?.svg
-              }
+              customInputStyles={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+              svg={params?.type === 'lable-input-select' ? selectedOption?.svg : params?.svg}
             />
-          );
+          )
         })}
       </div>
       <Table
         tableHeadMore={
-          <div className="dashboard-table-header-container">
+          <div className='dashboard-table-header-container'>
             <Visual
-              element={"table-header"}
+              element={'table-header'}
               label={header}
               description={description}
-              fontSize={"font-20"}
-              customStyles={{ border: "none", padding: "0" }}
+              fontSize={'font-20'}
+              customStyles={{ border: 'none', padding: '0' }}
               buttons={tableVisualMore}
-              labelCustomStyles={{ color: '#C38C5C'}}
+              labelCustomStyles={{ color: '#C38C5C' }}
             />
           </div>
         }
@@ -252,21 +238,23 @@ export const Transactions = ({
         tableFooter={tableFooter}
         tableHead={tableHead}
         customStyles={{
-          border: "1px solid rgba(255, 255, 255, 0.1)",
-          borderRadius: "20px",
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '20px',
+          background: 'rgba(255, 255, 255, 0.01)',
+          backdropFilter: 'blur(5px)',
         }}
         customHeadStyles={{
-          background: "none",
-          padding: "10px 20px",
-          borderBottom: "px solid rgba(255, 255, 255, 0.1)",
-          width: "100%",
+          background: 'none',
+          padding: '10px 20px',
+          borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
+          width: '100%',
         }}
         customTableMoreStyles={{
-          display: "none",
+          display: 'none',
         }}
         tableEmptyData={tableEmpty}
         loading={loading}
       />
     </div>
-  );
-};
+  )
+}

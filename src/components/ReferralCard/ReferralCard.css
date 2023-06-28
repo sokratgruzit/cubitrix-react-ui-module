@@ -38,7 +38,7 @@
   font-family: 'Uber Move';
   line-height: 140%;
   color: #ffffff;
-  padding: 30px 20px;
+  padding: 20px 10px 10px;
   position: relative;
   z-index: 2;
 }
@@ -52,27 +52,6 @@
   display: flex;
   gap: 20px;
   align-items: center;
-}
-
-.total-referral-codes div {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.total-referral-codes p {
-  font-weight: 400;
-  display: flex;
-  justify-content: space-between;
-  color: rgb(39, 44, 87, 0.6);
-}
-
-.total-referral-codes span {
-  background: rgba(39, 44, 87, 0.05);
-  border: 1px solid rgba(39, 44, 87, 0.1);
-  border-radius: 10px;
-  padding: 10px;
-  color: #272c57;
 }
 
 .total-referral-rebates {
@@ -106,9 +85,60 @@
   font-size: 26px;
 }
 
+.referral-copy-container {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  justify-content: space-between;
+  border-radius: 14px;
+  background: linear-gradient(134deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.referral-copy-container:hover {
+  opacity: 0.8;
+}
+
+.referral-copy-container p {
+  /* min-width: 382px; */
+  overflow-x: hidden;
+}
+
+.referral-copy-svg {
+  min-width: 24;
+  min-height: 24;
+}
+
+.referral-tooltip {
+  position: absolute;
+  width: 169px;
+  height: 56.157px;
+  border-radius: 16px;
+  border: 1px solid #c38c5c;
+  background: #0d1e21;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.14);
+  right: 0;
+  top: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(50%);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.referral-tooltip-visible {
+  opacity: 1;
+}
+
 @media only screen and (max-width: 1025px) {
   .total-referral-info-container {
     padding: 0;
+  }
+  .referral-tooltip {
+    transform: translateX(0);
   }
 }
 

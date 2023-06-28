@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
 // components
-import { Visual } from "../Visual";
-import { Table } from "../Table";
-import { TableElement } from "../TableElement";
+import { Visual } from '../Visual'
+import { Table } from '../Table'
+import { TableElement } from '../TableElement'
+import { DashboardTable } from '../Dashboard/components/DashboardTable/DashboardTable'
 
 // svgs
-import { StickyNoteIcon, AddSquareIcon } from "../../assets/svgs";
+import { StickyNoteIcon, AddSquareIcon, ReferralPattern } from '../../assets/svgs'
 
 // hooks
-import { useMobileWidth } from "../../hooks/useMobileWidth";
+import { useMobileWidth } from '../../hooks/useMobileWidth'
 
 // styles
-import "./Referral.css";
-import { Button } from "../Button";
-import { ReferralCard } from "../ReferralCard";
-import { Footer } from "../Footer";
+import './Referral.css'
+import { Button } from '../Button'
+import { ReferralCard } from '../ReferralCard'
+import { Footer } from '../Footer'
 
 export const Referral = ({
   handleCreateCode,
@@ -37,40 +38,36 @@ export const Referral = ({
   referralCodesCardData,
   handleLevelSystem,
 }) => {
-  const [mobileExpand, setMobileExpand] = useState(null);
-  const { width } = useMobileWidth();
+  const [mobileExpand, setMobileExpand] = useState(null)
+  const { width } = useMobileWidth()
 
-  let mobileExpandFunc = (id) => {
+  let mobileExpandFunc = id => {
     if (width <= 1300) {
       if (id !== mobileExpand) {
-        setMobileExpand(id);
+        setMobileExpand(id)
       } else {
-        setMobileExpand(null);
+        setMobileExpand(null)
       }
     }
-  };
+  }
 
-  let mobile = width <= 1300;
+  let mobile = width <= 1300
 
-  let referralCodeTableData;
+  let referralCodeTableData
   referralCodeTableData = codesTableData?.map((item, index) => {
     return (
       <div
-        className={`table-parent ${mobileExpand == item._id ? "active" : ""}`}
+        className={`table-parent ${mobileExpand == item._id ? 'active' : ''}`}
         key={index}
         onClick={() => {
-          mobileExpandFunc(item._id);
+          mobileExpandFunc(item._id)
         }}
       >
-        <div className="table">
+        <div className='table'>
           <div
             className={`td col ${referralCodeTableHead[0].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralCodeTableHead[0].mobileWidth
-                  : referralCodeTableHead[0].width
-              }%`,
+              width: `${mobile ? referralCodeTableHead[0].mobileWidth : referralCodeTableHead[0].width}%`,
             }}
           >
             <span>{item._id.referrral}</span>
@@ -78,11 +75,7 @@ export const Referral = ({
           <div
             className={`td ${referralCodeTableHead[1].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralCodeTableHead[1].mobileWidth
-                  : referralCodeTableHead[1].width
-              }%`,
+              width: `${mobile ? referralCodeTableHead[1].mobileWidth : referralCodeTableHead[1].width}%`,
             }}
           >
             <span>{item._id.from}</span>
@@ -90,25 +83,15 @@ export const Referral = ({
           <div
             className={`td ${referralCodeTableHead[2].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralCodeTableHead[2].mobileWidth
-                  : referralCodeTableHead[2].width
-              }%`,
+              width: `${mobile ? referralCodeTableHead[2].mobileWidth : referralCodeTableHead[2].width}%`,
             }}
           >
-            <span>
-              {item._id.referral_module === "uni" ? "UNI LVL" : `VIP ${item._id.lvl}`}
-            </span>
+            <span>{item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}</span>
           </div>
           <div
             className={`td ${referralCodeTableHead[3].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralCodeTableHead[3].mobileWidth
-                  : referralCodeTableHead[3].width
-              }%`,
+              width: `${mobile ? referralCodeTableHead[3].mobileWidth : referralCodeTableHead[3].width}%`,
             }}
           >
             <span>{item._id.percent}</span>
@@ -116,74 +99,60 @@ export const Referral = ({
           <div
             className={`td col ${referralCodeTableHead[4].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralCodeTableHead[4].mobileWidth
-                  : referralCodeTableHead[4].width
-              }%`,
+              width: `${mobile ? referralCodeTableHead[4].mobileWidth : referralCodeTableHead[4].width}%`,
             }}
           >
             <span>{item.amount}</span>
           </div>
         </div>
-        <div className="table-more" />
-        <div className="icon-place">
-          <svg
-            width="12"
-            height="7"
-            viewBox="0 0 12 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <div className='table-more' />
+        <div className='icon-place'>
+          <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
-              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
+              stroke='white'
+              strokeWidth='1.5'
+              strokeMiterlimit='10'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </div>
-        <div className="table-mobile">
-          <div className="table-mobile-content">
-            <div className="td">
-              <div className="mobile-ttl">{referralCodeTableHead[0].name}</div>
+        <div className='table-mobile'>
+          <div className='table-mobile-content'>
+            <div className='td'>
+              <div className='mobile-ttl'>{referralCodeTableHead[0].name}</div>
               <span>{item._id.referrral}</span>
             </div>
-            <div className="td">
-              <div className="mobile-ttl">{referralCodeTableHead[2].name}</div>
-              {item._id.referral_module === "uni" ? "UNI LVL" : `VIP ${item._id.lvl}`}
+            <div className='td'>
+              <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>
+              {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}
             </div>
-            <div className="td">
-              <div className="mobile-ttl">{referralCodeTableHead[3].name}</div>
+            <div className='td'>
+              <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>
               <span>{item._id.percent}</span>
             </div>
           </div>
         </div>
       </div>
-    );
-  });
+    )
+  })
 
-  let referralHistoryTableData;
+  let referralHistoryTableData
   referralHistoryTableData = rebatesTableData?.map((item, index) => {
     return (
       <div
-        className={`table-parent ${mobileExpand == item._id ? "active" : ""}`}
+        className={`table-parent ${mobileExpand == item._id ? 'active' : ''}`}
         key={index}
         onClick={() => {
-          mobileExpandFunc(item._id);
+          mobileExpandFunc(item._id)
         }}
       >
-        <div className="table">
+        <div className='table'>
           <div
             className={`td col ${referralHistoryTableHead[0].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[0].mobileWidth
-                  : referralHistoryTableHead[0].width
-              }%`,
+              width: `${mobile ? referralHistoryTableHead[0].mobileWidth : referralHistoryTableHead[0].width}%`,
             }}
           >
             <span>{item.from.address}</span>
@@ -191,11 +160,7 @@ export const Referral = ({
           <div
             className={`td ${referralHistoryTableHead[1].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[1].mobileWidth
-                  : referralHistoryTableHead[1].width
-              }%`,
+              width: `${mobile ? referralHistoryTableHead[1].mobileWidth : referralHistoryTableHead[1].width}%`,
             }}
           >
             <span>{item?.tx_options?.referral}</span>
@@ -203,102 +168,135 @@ export const Referral = ({
           <div
             className={`td ${referralHistoryTableHead[2].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[2].mobileWidth
-                  : referralHistoryTableHead[2].width
-              }%`,
+              width: `${mobile ? referralHistoryTableHead[2].mobileWidth : referralHistoryTableHead[2].width}%`,
             }}
           >
-            <span>
-              {item?.tx_options?.referral_module === "uni"
-                ? "UNI LVL"
-                : `VIP ${item?.tx_options?.lvl}`}
-            </span>
+            <span>{item?.tx_options?.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item?.tx_options?.lvl}`}</span>
           </div>
           <div
             className={`td col ${referralHistoryTableHead[3].mobileWidth ? true : false}`}
             style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[3].mobileWidth
-                  : referralHistoryTableHead[3].width
-              }%`,
+              width: `${mobile ? referralHistoryTableHead[3].mobileWidth : referralHistoryTableHead[3].width}%`,
             }}
           >
             <span>{item.amount}</span>
           </div>
         </div>
-        <div className="table-more" />
-        <div className="icon-place">
-          <svg
-            width="12"
-            height="7"
-            viewBox="0 0 12 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        <div className='table-more' />
+        <div className='icon-place'>
+          <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
-              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
+              stroke='white'
+              strokeWidth='1.5'
+              strokeMiterlimit='10'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </div>
-        <div className="table-mobile">
-          <div className="table-mobile-content">
-            <div className="td">
-              <div className="mobile-ttl">{referralHistoryTableHead[1].name}</div>
+        <div className='table-mobile'>
+          <div className='table-mobile-content'>
+            <div className='td'>
+              <div className='mobile-ttl'>{referralHistoryTableHead[1].name}</div>
               {item?.tx_options?.referral}
             </div>
-            <div className="td">
-              <div className="mobile-ttl">{referralHistoryTableHead[2].name}</div>
-              {item?.tx_options?.referral_module === "uni"
-                ? "UNI LVL"
-                : `VIP ${item?.tx_options?.lvl}`}
+            <div className='td'>
+              <div className='mobile-ttl'>{referralHistoryTableHead[2].name}</div>
+              {item?.tx_options?.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item?.tx_options?.lvl}`}
             </div>
           </div>
         </div>
       </div>
-    );
-  });
+    )
+  })
+
+  const tables = [
+    {
+      type: 'referral-code',
+      header: 'Referral Code',
+      description: `You can create multiple referral codes to attract traders`,
+      footer: {
+        link: '/referral',
+        label: 'All Code',
+      },
+      tableHeader: referralCodeTableHead,
+      data: codesTableData,
+      tableEmpty: referralCodeTableEmpty,
+      loading: referralCodeTableLoading,
+    },
+    {
+      type: 'referral-history',
+      header: 'Referral Revates History',
+      description: `The airdrop history of your weekly referral rebates.`,
+      footer: {
+        link: '/referral',
+        label: 'All Binary',
+      },
+      tableHeader: referralHistoryTableHead,
+      data: rebatesTableData,
+      tableEmpty: referralHistoryTableEmpty,
+      loading: referralHistoryTableLoading,
+    },
+  ]
 
   return (
-    <div className={"referral-main"}>
-      <div className="referral-content">
-        <div className={"referral-content-main"}>
-          <h2>Referral</h2>
-          <div className="referral-content-info">
-            <span className="font-20">
-              You can earn rebates by inviting traders to trade on Complend
-            </span>
-            <p className="font-16">
-              After creating your first code, you will receive a Casual status to start,
-              granting you a 2.5% rebate on your referee’s trading fees.
-            </p>
+    <div className={'referral-main'}>
+      <div className='referral-fixed-border-container'>
+      <div className='referral-fixed-border' />
+      </div>
+      <div className='referral-content'>
+        <div className='referral-content-container'>
+          <div className={'referral-content-main'}>
+            <h2>Referral</h2>
+            <div className='referral-content-info'>
+              <span className='font-20'>You can earn rebates by inviting traders to trade on Complend</span>
+              <p className='font-16'>
+                After creating your first code, you will receive a Casual status to start, granting you a 2.5% rebate on
+                your referee’s trading fees.
+              </p>
+            </div>
+            <div className='referral-content-info_buttons'>
+              <Button
+                element={'referral-button'}
+                label={'Level System'}
+                icon={<StickyNoteIcon className={'referral-button-icon'} />}
+                active={true}
+                onClick={handleLevelSystem}
+              />
+            </div>
+            <ReferralPattern className={'referral-content-svg'} />
           </div>
-          <div className="referral-content-info_buttons">
-            <Button
-              element={"referral-button"}
-              label={"Level System"}
-              icon={<StickyNoteIcon className={'referral-button-icon'} />}
-              active={true}
-              onClick={handleLevelSystem}
+          <div className='referral-card-container'>
+            <ReferralCard
+              type={'total-info'}
+              referral={'0xae0cf2498c1A1zP1eP5QGefi2DMPTfTL5SLm'}
+              totalData={referralRebatesTotal}
+              label={'Your Referral Code'}
+              labelTwo={'Total Referral Rebates'}
             />
           </div>
         </div>
-        <ReferralCard
-          type={"total-info"}
-          data={referralCodesCardData}
-          totalData={referralRebatesTotal}
-          label={"Your Referral Code"}
-          labelTwo={"Total Referral Rebates"}
-        />
+        <div className='referral-content-bg' />
       </div>
-      <div className='referral-tables-container' id='referral-tables'>
+      <div className='referral-tables-container'>
+        {tables?.map((item, index) => (
+          <DashboardTable
+            key={index}
+            type={item?.type}
+            header={item?.header}
+            description={item?.description}
+            footer={item?.footer}
+            rightPanelData={item?.rightPanelData}
+            tableHeader={item?.tableHeader}
+            referralCardsData={item?.referralCardsData}
+            data={item?.data}
+            tableEmpty={item?.tableEmpty}
+            loading={item?.loading}
+          />
+        ))}
+      </div>
+      {/* <div className='referral-tables-container' id='referral-tables'>
         <Visual
           element={"table-header"}
           label={"Referral Code"}
@@ -354,8 +352,8 @@ export const Referral = ({
           onPageChange={referralHistoryPaginationEvent}
           color={"#00C6FF"}
         />
-      </div>
+      </div> */}
       <Footer />
     </div>
-  );
-};
+  )
+}

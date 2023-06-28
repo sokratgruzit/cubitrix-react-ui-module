@@ -238,28 +238,38 @@ stories.add("Referral", () => {
       name: "My Referral Code",
       width: 15,
       id: 0,
+      height: "40px",
+
     },
     {
       name: "User Address",
       width: 15,
       mobileWidth: 45,
       id: 1,
+      height: "40px",
+
     },
     {
       name: "User Level",
       width: 15,
       id: 2,
+      height: "40px",
+
     },
     {
       name: "Rate",
       width: 15,
       id: 3,
+      height: "40px",
+
     },
     {
       name: "Total Earned",
       width: 15,
       mobileWidth: 45,
       id: 4,
+      height: "40px",
+
     },
   ];
 
@@ -269,22 +279,30 @@ stories.add("Referral", () => {
       width: 15,
       mobileWidth: 45,
       id: 0,
+      height: "40px",
+
     },
     {
       name: "Referral Code",
       width: 15,
       id: 1,
+      height: "40px",
+
     },
     {
       name: "Referral Level",
       width: 15,
       id: 2,
+      height: "40px",
+
     },
     {
       name: "Amount",
       width: 15,
       mobileWidth: 45,
       id: 3,
+      height: "40px",
+
     },
   ];
 
@@ -416,18 +434,6 @@ stories.add("Referral", () => {
     {
       title: "Total 3",
       value: referralTotal?.rebatesTotal,
-    },
-    {
-      title: "Total 4",
-      value: referralTotal?.weeklyUniLevel,
-    },
-    {
-      title: "Total 5",
-      value: referralTotal?.weeklyBinaryTotal,
-    },
-    {
-      title: "Total 6",
-      value: referralTotal?.weeklyTotal,
     },
   ];
 

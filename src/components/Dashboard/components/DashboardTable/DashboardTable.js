@@ -298,34 +298,38 @@ export const DashboardTable = ({
     })
     return (element = (
       <div className='dashboard-table-referral-wrapper'>
-        <h2 className='dashboard-table-header-title'>Referral</h2>
-        <div className='dashboard-table-referral-card-container'>
-          {referralCardsData?.map((item, index) => (
-            <div
-              key={index}
-              className={`dashboard-table-referral-card-wrap ${
-                item.active ? 'dashboard-table-referral-card-wrap__active' : ''
-              }`}
-            >
-              <h3>{item.title}</h3>
-              <div className='dashboard-table-referral-card'>
-                {item?.data?.map((item, index) => (
-                  <Fragment key={index}>
-                    <div className={'dashboard-table-referral-card-content'}>
-                      <h4 className={`font-12`}>{item?.title}</h4>
-                      <p>{item?.title === 'Total Comission' ? item?.value?.toFixed(2) : item?.value}</p>
-                    </div>
-                    {index === 0 && (
-                      <svg width='1' height='26' viewBox='0 0 1 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                        <line opacity='0.1' x1='0.5' y1='2.18557e-08' x2='0.499999' y2='26' stroke='white' />
-                      </svg>
-                    )}
-                  </Fragment>
-                ))}
-              </div>
+        {referralCardsData && (
+          <>
+            <h2 className='dashboard-table-header-title'>Referral</h2>
+            <div className='dashboard-table-referral-card-container'>
+              {referralCardsData?.map((item, index) => (
+                <div
+                  key={index}
+                  className={`dashboard-table-referral-card-wrap ${
+                    item.active ? 'dashboard-table-referral-card-wrap__active' : ''
+                  }`}
+                >
+                  <h3>{item.title}</h3>
+                  <div className='dashboard-table-referral-card'>
+                    {item?.data?.map((item, index) => (
+                      <Fragment key={index}>
+                        <div className={'dashboard-table-referral-card-content'}>
+                          <h4 className={`font-12`}>{item?.title}</h4>
+                          <p>{item?.title === 'Total Comission' ? item?.value?.toFixed(2) : item?.value}</p>
+                        </div>
+                        {index === 0 && (
+                          <svg width='1' height='26' viewBox='0 0 1 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                            <line opacity='0.1' x1='0.5' y1='2.18557e-08' x2='0.499999' y2='26' stroke='white' />
+                          </svg>
+                        )}
+                      </Fragment>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
         <Table
           tableHeadMore={
             <div className='dashboard-table-header-container'>
@@ -335,6 +339,7 @@ export const DashboardTable = ({
                 description={description}
                 fontSize={'font-20'}
                 customStyles={{ border: 'none', padding: '0' }}
+                labelCustomStyles={{ color: '#C38C5C' }}
               />
             </div>
           }
@@ -351,6 +356,7 @@ export const DashboardTable = ({
             padding: '10px 20px',
             borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
             width: '100%',
+            background: 'none'
           }}
           customTableMoreStyles={{
             display: 'none',
@@ -453,6 +459,7 @@ export const DashboardTable = ({
                 description={description}
                 fontSize={'font-20'}
                 customStyles={{ border: 'none', padding: '0' }}
+                labelCustomStyles={{ color: '#C38C5C' }}
               />
             </div>
           }
@@ -469,6 +476,7 @@ export const DashboardTable = ({
             padding: '10px 20px',
             borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
             width: '100%',
+            background: 'none'
           }}
           customTableMoreStyles={{
             display: 'none',
