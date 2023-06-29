@@ -58,7 +58,9 @@ export const Table = ({
         <div className='table-empty'>
           {tableEmpty ? (
             <>
-              <p className='font-14'>{tableEmptyData?.label}</p>
+              <p className='font-14' style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                {tableEmptyData?.label}
+              </p>
               {tableEmptyData?.button}
             </>
           ) : (

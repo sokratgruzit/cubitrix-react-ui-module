@@ -224,6 +224,15 @@ export const Referral = ({
       data: codesTableData,
       tableEmpty: referralCodeTableEmpty,
       loading: referralCodeTableLoading,
+      tableEmptyValue: true,
+      tableButtons: [
+        <Button
+          element={'referral-button'}
+          label={'Create Code'}
+          icon={<AddSquareIcon color={'#C38C5C'} />}
+          onClick={handleCreateCode}
+        />,
+      ],
     },
     {
       type: 'referral-history',
@@ -241,119 +250,120 @@ export const Referral = ({
   ]
 
   return (
-    <div className={'referral-main'}>
-      <div className='referral-fixed-border-container'>
-      <div className='referral-fixed-border' />
-      </div>
-      <div className='referral-content'>
-        <div className='referral-content-container'>
-          <div className={'referral-content-main'}>
-            <h2>Referral</h2>
-            <div className='referral-content-info'>
-              <span className='font-20'>You can earn rebates by inviting traders to trade on Complend</span>
-              <p className='font-16'>
-                After creating your first code, you will receive a Casual status to start, granting you a 2.5% rebate on
-                your referee’s trading fees.
-              </p>
+    <div className='referral-main-wrap'>
+      <div className={'referral-main'}>
+        <div className='referral-content'>
+          <div className='referral-content-container'>
+            <div className={'referral-content-main'}>
+              <h2>Referral</h2>
+              <div className='referral-content-info'>
+                <span className='font-20'>You can earn rebates by inviting traders to trade on Complend</span>
+                <p className='font-16'>
+                  After creating your first code, you will receive a Casual status to start, granting you a 2.5% rebate on
+                  your referee’s trading fees.
+                </p>
+              </div>
+              <div className='referral-content-info_buttons'>
+                <Button
+                  element={'referral-button'}
+                  label={'Level System'}
+                  icon={<StickyNoteIcon className={'referral-button-icon'} />}
+                  active={true}
+                  onClick={handleLevelSystem}
+                />
+              </div>
+              <ReferralPattern className={'referral-content-svg'} />
             </div>
-            <div className='referral-content-info_buttons'>
-              <Button
-                element={'referral-button'}
-                label={'Level System'}
-                icon={<StickyNoteIcon className={'referral-button-icon'} />}
-                active={true}
-                onClick={handleLevelSystem}
+            <div className='referral-card-container'>
+              <ReferralCard
+                type={'total-info'}
+                referral={'0xae0cf2498c1A1zP1eP5QGefi2DMPTfTL5SLm'}
+                totalData={referralRebatesTotal}
+                label={'Your Referral Code'}
+                labelTwo={'Total Referral Rebates'}
               />
             </div>
-            <ReferralPattern className={'referral-content-svg'} />
           </div>
-          <div className='referral-card-container'>
-            <ReferralCard
-              type={'total-info'}
-              referral={'0xae0cf2498c1A1zP1eP5QGefi2DMPTfTL5SLm'}
-              totalData={referralRebatesTotal}
-              label={'Your Referral Code'}
-              labelTwo={'Total Referral Rebates'}
-            />
-          </div>
+          <div className='referral-content-bg' />
         </div>
-        <div className='referral-content-bg' />
-      </div>
-      <div className='referral-tables-container'>
-        {tables?.map((item, index) => (
-          <DashboardTable
-            key={index}
-            type={item?.type}
-            header={item?.header}
-            description={item?.description}
-            footer={item?.footer}
-            rightPanelData={item?.rightPanelData}
-            tableHeader={item?.tableHeader}
-            referralCardsData={item?.referralCardsData}
-            data={item?.data}
-            tableEmpty={item?.tableEmpty}
-            loading={item?.loading}
-          />
-        ))}
-      </div>
-      {/* <div className='referral-tables-container' id='referral-tables'>
-        <Visual
-          element={"table-header"}
-          label={"Referral Code"}
-          description={"You can create multiple referral codes to attract traders"}
-          fontSize={"font-20"}
-          customStyles={{ border: "none", padding: "0px" }}
-          buttons={
-            <Button
-              element={"referral-button"}
-              label={"Create Code"}
-              icon={<AddSquareIcon color={`#00C6FF`} />}
-              onClick={handleCreateCode}
+        <div className='referral-tables-container'>
+          {tables?.map((item, index) => (
+            <DashboardTable
+              key={index}
+              type={item?.type}
+              header={item?.header}
+              description={item?.description}
+              footer={item?.footer}
+              rightPanelData={item?.rightPanelData}
+              tableHeader={item?.tableHeader}
+              referralCardsData={item?.referralCardsData}
+              data={item?.data}
+              tableEmpty={item?.tableEmpty}
+              loading={item?.loading}
+              tableButtons={item?.tableButtons}
+              tableEmptyValue={item?.tableEmptyValue}
             />
-          }
-        />
-        <Table
-          type={"table-version"}
-          tableHead={referralCodeTableHead}
-          mobile={mobile}
-          tableData={codesTableData.length ? referralCodeTableData : false}
-          tableEmpty={true}
-          tableEmptyData={referralCodeTableEmpty}
-          loading={referralCodeTableLoading}
-        />
-        <TableElement
-          customStyle={{ marginTop: "30px", paddingBottom: "20px" }}
-          type={"pagination"}
-          currentPage={referralCodePaginationCurrent}
-          totalCount={referralCodePaginationTotal}
-          onPageChange={referralCodePaginationEvent}
-          color={"#00C6FF"}
-        />
-        <Visual
-          element={"table-header"}
-          label={"Referral Rebates History"}
-          description={"The airdrop history of your weekly referral rebates."}
-          fontSize={"font-20"}
-          customStyles={{ border: "none" }}
-        />
-        <Table
-          type={"table-version"}
-          tableHead={referralHistoryTableHead}
-          mobile={mobile}
-          tableData={rebatesTableData.length ? referralHistoryTableData : false}
-          tableEmptyData={referralHistoryTableEmpty}
-          loading={referralHistoryTableLoading}
-        />
-        <TableElement
-          customStyle={{ marginTop: "30px" }}
-          type={"pagination"}
-          currentPage={referralHistoryPaginationCurrent}
-          totalCount={referralHistoryPaginationTotal}
-          onPageChange={referralHistoryPaginationEvent}
-          color={"#00C6FF"}
-        />
-      </div> */}
-      <Footer />
+          ))}
+        </div>
+        {/* <div className='referral-tables-container' id='referral-tables'>
+          <Visual
+            element={"table-header"}
+            label={"Referral Code"}
+            description={"You can create multiple referral codes to attract traders"}
+            fontSize={"font-20"}
+            customStyles={{ border: "none", padding: "0px" }}
+            buttons={
+              <Button
+                element={"referral-button"}
+                label={"Create Code"}
+                icon={<AddSquareIcon color={`#00C6FF`} />}
+                onClick={handleCreateCode}
+              />
+            }
+          />
+          <Table
+            type={"table-version"}
+            tableHead={referralCodeTableHead}
+            mobile={mobile}
+            tableData={codesTableData.length ? referralCodeTableData : false}
+            tableEmpty={true}
+            tableEmptyData={referralCodeTableEmpty}
+            loading={referralCodeTableLoading}
+          />
+          <TableElement
+            customStyle={{ marginTop: "30px", paddingBottom: "20px" }}
+            type={"pagination"}
+            currentPage={referralCodePaginationCurrent}
+            totalCount={referralCodePaginationTotal}
+            onPageChange={referralCodePaginationEvent}
+            color={"#00C6FF"}
+          />
+          <Visual
+            element={"table-header"}
+            label={"Referral Rebates History"}
+            description={"The airdrop history of your weekly referral rebates."}
+            fontSize={"font-20"}
+            customStyles={{ border: "none" }}
+          />
+          <Table
+            type={"table-version"}
+            tableHead={referralHistoryTableHead}
+            mobile={mobile}
+            tableData={rebatesTableData.length ? referralHistoryTableData : false}
+            tableEmptyData={referralHistoryTableEmpty}
+            loading={referralHistoryTableLoading}
+          />
+          <TableElement
+            customStyle={{ marginTop: "30px" }}
+            type={"pagination"}
+            currentPage={referralHistoryPaginationCurrent}
+            totalCount={referralHistoryPaginationTotal}
+            onPageChange={referralHistoryPaginationEvent}
+            color={"#00C6FF"}
+          />
+        </div> */}
+        <Footer />
+      </div>
     </div>
   )
 }

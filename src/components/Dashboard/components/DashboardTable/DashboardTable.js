@@ -19,6 +19,8 @@ export const DashboardTable = ({
   data,
   tableEmpty,
   loading,
+  tableButtons,
+  tableEmptyValue
 }) => {
   let element = null
 
@@ -340,6 +342,7 @@ export const DashboardTable = ({
                 fontSize={'font-20'}
                 customStyles={{ border: 'none', padding: '0' }}
                 labelCustomStyles={{ color: '#C38C5C' }}
+                buttons={tableButtons}
               />
             </div>
           }
@@ -356,13 +359,14 @@ export const DashboardTable = ({
             padding: '10px 20px',
             borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
             width: '100%',
-            background: 'none'
+            background: 'none',
           }}
           customTableMoreStyles={{
             display: 'none',
           }}
           tableEmptyData={tableEmpty}
           loading={loading}
+          tableEmpty={tableEmptyValue}
         />
       </div>
     ))
@@ -476,7 +480,7 @@ export const DashboardTable = ({
             padding: '10px 20px',
             borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
             width: '100%',
-            background: 'none'
+            background: 'none',
           }}
           customTableMoreStyles={{
             display: 'none',
