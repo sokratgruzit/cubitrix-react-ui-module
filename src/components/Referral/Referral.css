@@ -108,6 +108,53 @@
   z-index: -1;
 }
 
+.referral-inner-table-more {
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #10282b;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  gap: 10px;
+}
+
+.referral-table-more-svg {
+  padding: 4px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  border-radius: 45px;
+  border: none;
+  border: 1px solid #10282b;
+}
+
+.referral-table-more-svg:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.referral-table-more-svg_active {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #0e2225;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.referral-table-more-svg_active:hover {
+  background: #0e2225;
+}
+
+.referral-binary-wrapper {
+  padding: 20px 20px 36px 20px;
+  background: #0e2225;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-bottom: none;
+}
+
 @media only screen and (max-width: 1025px) {
   .referral-cards-container {
     flex-direction: column;

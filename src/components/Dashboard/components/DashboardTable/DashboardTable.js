@@ -7,6 +7,7 @@ import { Visual } from '../../../Visual/Visual'
 import { Link } from 'react-router-dom'
 import { useMobileWidth } from '../../../../hooks/useMobileWidth'
 import { Account, AccountType } from '../../../../assets/svgs'
+import { TableElement } from '../../../TableElement'
 
 export const DashboardTable = ({
   type,
@@ -20,7 +21,11 @@ export const DashboardTable = ({
   tableEmpty,
   loading,
   tableButtons,
-  tableEmptyValue
+  tableEmptyValue,
+  tablePagination,
+  paginationCurrent,
+  paginationTotal,
+  paginationEvent,
 }) => {
   let element = null
 
@@ -61,6 +66,24 @@ export const DashboardTable = ({
         </svg>
         <p className={`font-16`}>{footer?.label}</p>
       </Link>
+    </div>
+  )
+
+  const tableFooterPagination = (
+    <div
+      className={'dashboard-table-footer'}
+      style={{
+        display: `${data?.length ? 'flex' : 'none'}`,
+        padding: `${data?.length ? '20px' : '0px'}`,
+      }}
+    >
+      <TableElement
+        color={'#C38C5C'}
+        type={'pagination'}
+        currentPage={paginationCurrent}
+        totalCount={paginationTotal}
+        onPageChange={paginationEvent}
+      />
     </div>
   )
 
@@ -347,7 +370,7 @@ export const DashboardTable = ({
             </div>
           }
           tableData={data.length ? tableData : false}
-          tableFooter={tableFooter}
+          tableFooter={tablePagination ? tableFooterPagination : tableFooter}
           tableHead={tableHeader}
           customStyles={{
             border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -468,7 +491,7 @@ export const DashboardTable = ({
             </div>
           }
           tableData={data.length ? tableData : false}
-          tableFooter={tableFooter}
+          tableFooter={tablePagination ? tableFooterPagination : tableFooter}
           tableHead={tableHeader}
           customStyles={{
             border: '1px solid rgba(255, 255, 255, 0.1)',

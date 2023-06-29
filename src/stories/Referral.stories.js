@@ -27,6 +27,7 @@ stories.add('Referral', () => {
   const [codesCurrentPage, setCodesCurrentPage] = useState(1)
   const [codesPaginationTotal, setCodesPaginationTotal] = useState(1)
   const [rebatesPaginationTotal, setRebatesPaginationTotal] = useState(1)
+  const [referralType, setReferralType] = useState('binary')
 
   const [referralTotal, setReferralTotal] = useState({
     rebatesUniLevel: 0,
@@ -389,7 +390,7 @@ stories.add('Referral', () => {
           label={'Create Code'}
           icon={<AddSquareIcon color={'#C38C5C'} />}
           onClick={handleCreateCode}
-          customStyles={{ border: 'none'}}
+          customStyles={{ border: 'none' }}
         />
       </p>
     ),

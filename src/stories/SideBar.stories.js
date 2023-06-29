@@ -19,6 +19,7 @@ import { TransferFromAcc } from '../components/TransferFromAcc'
 import { Exchange } from '../components/Exchange'
 import { Deposit } from '../components/Deposit'
 import { LevelSystem } from '../components/LevelSystem'
+import { ReferralCode } from '../components/ReferralCode'
 import { useMobileWidth } from '../hooks/useMobileWidth'
 
 const stories = storiesOf('SideBar', module)
@@ -285,13 +286,33 @@ stories.add('SideBar', () => {
       /> */}
 
       <SideBar open={toggle}>
-        <LevelSystem
+        {/* <LevelSystem
           label={'Referral Level System'}
           tableHead={popUpTh}
           tableData={popUpTd}
           mobile={width <= 1300}
           sideBarClose={() => setToggle(prev => !prev)}
           description={'Everyone starts with the Casual tier, and you can level up the tier by increasing your Atar holding'}
+        /> */}
+
+        <ReferralCode
+          sideBarClose={() => setToggle(prev => !prev)}
+          inputs={inputs}
+          currentObject={currentObject}
+          cardImg={'sada'}
+          handleSubmit={() => console.log('hi')}
+          buttonLabel={'Top Up'}
+          success={true}
+          helpText={'hi'}
+          showHelpText={true}
+          accountType={'CPL'}
+          accountBalance={'1,400.00'}
+          accountBalanceSecond={'$2,034.04'}
+          label={'hi'}
+          info={'info'}
+          description={
+            'Everyone starts with the Casual tier, and you can level up the tier by increasing your Atar holding'
+          }
         />
 
         {/* <Deposit
