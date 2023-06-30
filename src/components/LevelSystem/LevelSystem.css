@@ -1,17 +1,21 @@
+.level-system-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.level-system-container p {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+}
+
 .level-system-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid rgb(32, 36, 49);
-  border-right: 1px solid rgb(32, 36, 49);
-  border-left: 1px solid rgb(32, 36, 49);
-  background: #272c57;
   border-radius: 0px 0px 16px 16px;
   gap: 20px;
   width: 100%;
-  overflow-y: scroll;
-  max-height: 400px;
 }
 
 .level-system-head {
