@@ -7,7 +7,7 @@ import { TableElement } from '../TableElement'
 import { DashboardTable } from '../Dashboard/components/DashboardTable/DashboardTable'
 
 // svgs
-import { StickyNoteIcon, AddSquareIcon, ReferralPattern } from '../../assets/svgs'
+import { StickyNoteIcon, AddSquareIcon, ReferralPattern, Root } from '../../assets/svgs'
 
 // hooks
 import { useMobileWidth } from '../../hooks/useMobileWidth'
@@ -30,9 +30,17 @@ export const Referral = ({
   referralHistoryTableLoading,
   referralCodeTableLoading,
   handleLevelSystem,
+  referralBinaryTableEmpty,
+  totalBinaryMembers,
+  referralHistoryPaginationCurrent,
+  referralHistoryPaginationTotal,
+  referralHistoryPaginationEvent,
+  referralCodePaginationCurrent,
+  referralCodePaginationTotal,
+  referralCodePaginationEvent,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null)
-  const [referralBinaryType, setReferralBinaryType] = useState('visual')
+  const [referralBinaryType, setReferralBinaryType] = useState('table')
 
   const { width } = useMobileWidth()
 
@@ -99,7 +107,7 @@ export const Referral = ({
   referralCodeTableData = codesTableData?.map((item, index) => {
     return (
       <div
-        className={`table-parent ${mobileExpand == item._id ? 'active' : ''}`}
+        className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
         key={index}
         onClick={() => {
           mobileExpandFunc(item._id)
@@ -107,7 +115,7 @@ export const Referral = ({
       >
         <div className='table'>
           <div
-            className={`td col ${referralCodeTableHead[0].mobileWidth ? true : false}`}
+            className={`td col ${referralCodeTableHead[0].mobileWidth ? true : false} dashboard-td`}
             style={{
               width: `${mobile ? referralCodeTableHead[0].mobileWidth : referralCodeTableHead[0].width}%`,
             }}
@@ -115,7 +123,7 @@ export const Referral = ({
             <span>{item._id.referrral}</span>
           </div>
           <div
-            className={`td ${referralCodeTableHead[1].mobileWidth ? true : false}`}
+            className={`td ${referralCodeTableHead[1].mobileWidth ? true : false} dashboard-td`}
             style={{
               width: `${mobile ? referralCodeTableHead[1].mobileWidth : referralCodeTableHead[1].width}%`,
             }}
@@ -123,7 +131,7 @@ export const Referral = ({
             <span>{item._id.from}</span>
           </div>
           <div
-            className={`td ${referralCodeTableHead[2].mobileWidth ? true : false}`}
+            className={`td ${referralCodeTableHead[2].mobileWidth ? true : false} dashboard-td`}
             style={{
               width: `${mobile ? referralCodeTableHead[2].mobileWidth : referralCodeTableHead[2].width}%`,
             }}
@@ -131,7 +139,7 @@ export const Referral = ({
             <span>{item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}</span>
           </div>
           <div
-            className={`td ${referralCodeTableHead[3].mobileWidth ? true : false}`}
+            className={`td ${referralCodeTableHead[3].mobileWidth ? true : false} dashboard-td`}
             style={{
               width: `${mobile ? referralCodeTableHead[3].mobileWidth : referralCodeTableHead[3].width}%`,
             }}
@@ -139,7 +147,7 @@ export const Referral = ({
             <span>{item._id.percent}</span>
           </div>
           <div
-            className={`td col ${referralCodeTableHead[4].mobileWidth ? true : false}`}
+            className={`td col ${referralCodeTableHead[4].mobileWidth ? true : false} dashboard-td`}
             style={{
               width: `${mobile ? referralCodeTableHead[4].mobileWidth : referralCodeTableHead[4].width}%`,
             }}
@@ -148,7 +156,7 @@ export const Referral = ({
           </div>
         </div>
         <div className='table-more' />
-        <div className='icon-place'>
+        <div className='icon-place' style={{ height: '40px' }}>
           <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
               d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
@@ -272,9 +280,9 @@ export const Referral = ({
         />,
       ],
       tablePagination: true,
-      paginationCurrent: 2,
-      paginationTotal: 10,
-      paginationEvent: () => console.log('hi'),
+      paginationCurrent: referralCodePaginationCurrent,
+      paginationTotal: referralCodePaginationTotal,
+      paginationEvent: referralCodePaginationEvent,
     },
     {
       type: 'referral-history',
@@ -285,9 +293,9 @@ export const Referral = ({
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
       tablePagination: true,
-      paginationCurrent: 2,
-      paginationTotal: 10,
-      paginationEvent: () => console.log('hi'),
+      paginationCurrent: referralHistoryPaginationCurrent,
+      paginationTotal: referralHistoryPaginationTotal,
+      paginationEvent: referralHistoryPaginationEvent,
     },
   ]
 
@@ -348,47 +356,46 @@ export const Referral = ({
         </div>
         <div className='referral-binary-wrapper'>
           {referralBinaryType === 'table' && (
-            <Table
-              tableHeadMore={
-                <div className='dashboard-table-header-container'>
-                  <Visual
-                    element={'table-header'}
-                    label={'Binary Tree'}
-                    description={'Total Downline Members: 0'}
-                    fontSize={'font-20'}
-                    customStyles={{ border: 'none', padding: '0' }}
-                    buttons={tableVisualMore}
-                    labelCustomStyles={{ color: '#C38C5C' }}
-                  />
-                </div>
-              }
-              tableData={codesTableData?.length ? referralCodeTableData : false}
-              tableFooter={tableFooterPagination}
-              tableHead={referralCodeTableHead}
-              customStyles={{
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '20px',
-                background: 'rgba(255, 255, 255, 0.01)',
-                backdropFilter: 'blur(5px)',
-              }}
-              customHeadStyles={{
-                background: 'none',
-                padding: '10px 20px',
-                borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
-                width: '100%',
-              }}
-              customTableMoreStyles={{
-                display: 'none',
-              }}
-              tableEmptyData={referralCodeTableEmpty}
-              loading={false}
-            />
-          )}
-          {referralBinaryType === 'visual' && (
-            <div>
-              hi
+            <div className='referral-table-container'>
+              <Root className={'referral-table-bg-svg'} />
+              <Table
+                tableHeadMore={
+                  <div className='dashboard-table-header-container'>
+                    <Visual
+                      element={'table-header'}
+                      label={'Binary Tree'}
+                      description={`Total Downline Members: ${totalBinaryMembers}`}
+                      fontSize={'font-20'}
+                      customStyles={{ border: 'none', padding: '0' }}
+                      buttons={tableVisualMore}
+                      labelCustomStyles={{ color: '#C38C5C' }}
+                    />
+                  </div>
+                }
+                tableData={codesTableData?.length ? referralCodeTableData : false}
+                tableFooter={tableFooterPagination}
+                tableHead={referralCodeTableHead}
+                customStyles={{
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '20px',
+                  zIndex: '1',
+                  position: 'relative',
+                }}
+                customHeadStyles={{
+                  background: 'none',
+                  padding: '10px 20px',
+                  borderBottom: 'px solid rgba(255, 255, 255, 0.1)',
+                  width: '100%',
+                }}
+                customTableMoreStyles={{
+                  display: 'none',
+                }}
+                tableEmptyData={referralBinaryTableEmpty}
+                loading={false}
+              />
             </div>
           )}
+          {referralBinaryType === 'visual' && <div>hi</div>}
         </div>
         <div className='referral-tables-container'>
           {tables?.map((item, index) => (

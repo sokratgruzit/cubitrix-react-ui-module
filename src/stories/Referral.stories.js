@@ -401,6 +401,11 @@ stories.add('Referral', () => {
     icon: <NoHistoryIcon />,
   }
 
+  const referralBinaryTableEmpty = {
+    label: 'No Referral Binary History',
+    icon: <NoHistoryIcon />,
+  }
+
   const referralRebatesTotal = [
     {
       title: 'Rebates UNI LVL Total',
@@ -591,6 +596,8 @@ stories.add('Referral', () => {
         referralRebatesTotal={referralRebatesTotal}
         referralCodesCardData={referralCodesCardData}
         handleLevelSystem={handleLevelSystem}
+        referralBinaryTableEmpty={referralBinaryTableEmpty}
+        totalBinaryMembers={5}
       />
       {createCodePopupActive && (
         <Popup
