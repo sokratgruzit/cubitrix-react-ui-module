@@ -44,3 +44,4 @@ export { default as Account } from "./Account";
 export { default as AccountType } from "./AccountType";
 export { default as WalletConnect } from "./WalletConnect";
 export { default as ReferralPattern } from "./ReferralPattern";
+export { default as Root } from "./Root";

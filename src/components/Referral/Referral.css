@@ -9,6 +9,7 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   background: #10282b;
   position: relative;
   border-top-right-radius: 30px;
@@ -155,6 +156,21 @@
   border-bottom: none;
 }
 
+.referral-table-container {
+  position: relative;
+}
+
+.referral-table-bg-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.08;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 @media only screen and (max-width: 1025px) {
   .referral-cards-container {
     flex-direction: column;
@@ -170,12 +186,18 @@
     gap: 0;
   }
   .referral-content-main {
-    padding: 60px 20px;
+    padding: 60px 20px 120px 20px;
   }
   .referral-card-container {
     padding: 0 20px 60px 20px;
   }
   .referral-tables-container {
     padding: 70px 20px;
+  }
+  .referral-content-svg {
+    height: 500px;
+    width: 60%;
+    right: unset;
+    bottom: unset;
   }
 }
