@@ -3,32 +3,28 @@ import { Button } from "../../../Button";
 import "./StartNow.css";
 
 import { StartNowBlocks1, StartNowBlocks2 } from "../../../../assets/svgs";
+import { useFade } from "../../../../hooks/useFade";
 
 export const StartNow = ({ account, handleConnect, startNowImages }) => {
+  useFade("up", [".fade-up"]);
+
   return (
     <section className="start-section">
-      <img src={startNowImages.bg} className="startNowBG" alt="" />
-      <img
-        src={startNowImages?.startNowBG}
-        className="startNowBG"
-        alt=""
-      />
-      <span data-aos="fade-up" data-aos-delay="20" className="start-blocks-1-wrap">
+      <img src={startNowImages?.startNowBG} className="startNowBG" alt="" />
+      <span className="start-blocks-1-wrap fade-up">
         <StartNowBlocks1 className={"start-blocks-1"} />
       </span>
-      <span data-aos="fade-up" data-aos-delay="20" className="start-blocks-2-wrap">
+      <span className="start-blocks-2-wrap fade-up">
         <StartNowBlocks2 className={"start-blocks-2"} />
       </span>
       <div className="start-titles-wrapper">
-        <h2 className="start-title" data-aos="fade-up" data-aos-delay="20">
-          start now
-        </h2>
-        <h4 className="start-title-sm" data-aos="fade-up" data-aos-delay="20">
+        <h2 className="start-title fade-up">start now</h2>
+        <h4 className="start-title-sm fade-up">
           Connect your crypto wallet to start using the app in seconds. No registration
           needed.
         </h4>
       </div>
-      <span data-aos="fade-up" data-aos-delay="20">
+      <span className="fade-up">
         {account ? null : (
           <Button
             label={"Connect Wallet"}

@@ -48,7 +48,7 @@
 .startNowBG {
   position: absolute;
   width: calc(100% + 2px);
-  height: 100%;
+  height: calc(100% + 2px);
   left: -1px;
   z-index: -2;
   top: -1px;

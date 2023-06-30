@@ -36,7 +36,7 @@ export const PopupElement = ({
         }
       });
     },
-    [currentObject]
+    [currentObject],
   );
 
   const handleSetFields = useCallback((inputs) => {
@@ -79,8 +79,7 @@ export const PopupElement = ({
       setFormErrors((prev) => ({ ...prev, ...formError }));
     }
 
-    inputValue?.length > 0 &&
-      setEmptyFields((prev) => ({ ...prev, [name]: false }));
+    inputValue?.length > 0 && setEmptyFields((prev) => ({ ...prev, [name]: false }));
 
     onChange(e);
   };
@@ -105,22 +104,21 @@ export const PopupElement = ({
         const value = currentObject[key];
         if (!value) return true; // Falsy value
         if (Array.isArray(value) && value.length === 0) return true; // Empty array
-        if (typeof value === "object" && Object.keys(value).length === 0)
-          return true; // Empty object
+        if (typeof value === "object" && Object.keys(value).length === 0) return true; // Empty object
         return false; // Not empty
       }) ?? [],
-    [currentObject]
+    [currentObject],
   );
 
   const handleSubmitClick = (inputs) =>
     notEmptyList.length > 0 ? handleEmptyFields(inputs) : handleSubmit();
 
   return (
-    <div className='popup-element-wrap'>
-      <div className='popup-element-inputs' style={customStyles}>
+    <div className="popup-element-wrap">
+      <div className="popup-element-inputs" style={customStyles}>
         {inputs?.map((params, index) => {
           return (
-            <div className='popup-element-input-container' key={index}>
+            <div className="popup-element-input-container" key={index}>
               <Input
                 type={
                   params.type === "select"
@@ -135,7 +133,7 @@ export const PopupElement = ({
                 multiplyData={params.multiplyData}
                 value={
                   params.type === "select"
-                    ? "Any"
+                    ? currentObject[params?.name] || "any"
                     : currentObject[params?.name] || ""
                 }
                 onChange={(e) =>
@@ -159,12 +157,9 @@ export const PopupElement = ({
                   formErrors[params?.name] &&
                   currentObject[params?.name]?.length > 0 && (
                     <HelpText
-                      status={
-                        formErrors[params.name].failure ? "error" : "success"
-                      }
+                      status={formErrors[params.name].failure ? "error" : "success"}
                       title={
-                        formErrors[params.name].failure ||
-                        formErrors[params.name].success
+                        formErrors[params.name].failure || formErrors[params.name].success
                       }
                       fontSize={"font-12"}
                       icon={true}
@@ -178,10 +173,7 @@ export const PopupElement = ({
                 onChangeDropdown={params?.onChangeDropdown}
               />
               {params.handleMax && (
-                <p
-                  className='font-12 popup-element-max'
-                  onClick={params.handleMax}
-                >
+                <p className="font-12 popup-element-max" onClick={params.handleMax}>
                   MAX
                 </p>
               )}
