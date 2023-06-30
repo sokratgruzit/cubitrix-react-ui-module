@@ -270,7 +270,6 @@ export const Referral = ({
       data: codesTableData,
       tableEmpty: referralCodeTableEmpty,
       loading: referralCodeTableLoading,
-      tableEmptyValue: true,
       tableButtons: [
         <Button
           element={'referral-button'}

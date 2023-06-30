@@ -185,6 +185,23 @@ stories.add('Referral', () => {
       weeklyTotal: total.weeklyUniLevel + total.weeklyBinaryTotal,
     })
   }
+  const getReferralBinaryData = async () => {
+    const response = await fetch(`http://localhost:4000/api/referral/get_referral_data`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        address: '1',
+        limit: 10,
+        page: 1,
+      }),
+    })
+
+    const data = await response.json()
+
+    console.log(data)
+  }
 
   const getOptions = async () => {
     const response = await fetch(`http://localhost:4000/api/referral/get_referral_options`)
@@ -211,11 +228,12 @@ stories.add('Referral', () => {
   }
 
   useEffect(() => {
-    generateCode()
-    generateTableData('codes')
-    generateTableData('rebates')
-    getReferralTotal()
-    getOptions()
+    getReferralBinaryData()
+    // generateCode()
+    // generateTableData('codes')
+    // generateTableData('rebates')
+    // getReferralTotal()
+    // getOptions()
   }, [])
 
   let referralCodeTh = [
@@ -381,19 +399,24 @@ stories.add('Referral', () => {
     },
   ]
 
+  // const referralCodeTableEmpty = {
+  //   label: 'No Referral Code History',
+  //   button: (
+  //     <p>
+  //       <Button
+  //         element={'referral-button'}
+  //         label={'Create Code'}
+  //         icon={<AddSquareIcon color={'#C38C5C'} />}
+  //         onClick={handleCreateCode}
+  //         customStyles={{ border: 'none' }}
+  //       />
+  //     </p>
+  //   ),
+  // }
+
   const referralCodeTableEmpty = {
     label: 'No Referral Code History',
-    button: (
-      <p>
-        <Button
-          element={'referral-button'}
-          label={'Create Code'}
-          icon={<AddSquareIcon color={'#C38C5C'} />}
-          onClick={handleCreateCode}
-          customStyles={{ border: 'none' }}
-        />
-      </p>
-    ),
+    icon: <NoHistoryIcon />,
   }
 
   const referralHistoryTableEmpty = {
