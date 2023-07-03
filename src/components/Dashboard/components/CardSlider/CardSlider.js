@@ -136,7 +136,7 @@ export const CardSlider = ({
   // ]
 
   const assets = useMemo(
-    () => accountsData?.find((item) => item?.account_category === accountType)?.assets,
+    () => accountsData?.find((item) => item?.account_category === "main")?.assets,
     [accounts, accountType],
   );
 
