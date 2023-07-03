@@ -306,7 +306,7 @@ stories.add("SideBar", () => {
           handleNewPassword={(e) => console.log(e)}
         />
       </div> */}
-      {/* <Popup
+      <Popup
         popUpElement={
           <ChangeNetwork
             disconnect={() => console.log("disconnect")}
@@ -314,7 +314,7 @@ stories.add("SideBar", () => {
           />
         }
         label={"Check Your Network"}
-      /> */}
+      />
 
       <SideBar open={toggle}>
         <TransferFromAcc

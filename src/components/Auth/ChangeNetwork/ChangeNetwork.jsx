@@ -16,42 +16,42 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
         >
           <path
             d="M120.755 71.0719C129.778 62.1288 134.776 27.7401 123.469 16.8276C106.283 0.24056 77.8441 10.0817 56.0811 1.58544C34.3182 -6.91081 2.16748e-05 20.414 1.96422e-05 43.7256C1.72911e-05 70.6906 41.5476 95.4345 66.0309 93.9352C90.5143 92.4358 110.353 81.3828 120.755 71.0719Z"
-            fill="#47BCF5"
+            fill="#C38C5C"
             fillOpacity="0.05"
           />
           <path
             d="M63.75 31.6468C67.3744 31.6468 70.3125 28.7009 70.3125 25.0668C70.3125 21.4328 67.3744 18.4868 63.75 18.4868C60.1256 18.4868 57.1875 21.4328 57.1875 25.0668C57.1875 28.7009 60.1256 31.6468 63.75 31.6468Z"
-            stroke="#47BCF5"
+            stroke="#C38C5C"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M46.25 62.3534C49.8744 62.3534 52.8125 59.4074 52.8125 55.7734C52.8125 52.1393 49.8744 49.1934 46.25 49.1934C42.6256 49.1934 39.6875 52.1393 39.6875 55.7734C39.6875 59.4074 42.6256 62.3534 46.25 62.3534Z"
-            stroke="#47BCF5"
+            stroke="#C38C5C"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M81.25 62.3534C84.8744 62.3534 87.8125 59.4074 87.8125 55.7734C87.8125 52.1393 84.8744 49.1934 81.25 49.1934C77.6256 49.1934 74.6875 52.1393 74.6875 55.7734C74.6875 59.4074 77.6256 62.3534 81.25 62.3534Z"
-            stroke="#47BCF5"
+            stroke="#C38C5C"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M44.6006 49.4129C44.2429 47.9038 44.0623 46.358 44.0625 44.8069C44.0558 39.6624 46.058 34.7197 49.6406 31.0371"
-            stroke="#47BCF5"
+            stroke="#C38C5C"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M76.2703 60.0371C73.9198 61.9809 71.1514 63.3512 68.183 64.0401C65.2147 64.729 62.1273 64.7177 59.1641 64.007"
-            stroke="#47BCF5"
+            stroke="#C38C5C"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
           <path
             d="M70.2168 26.1548C73.3856 27.2638 76.22 29.1646 78.4523 31.6776C80.6845 34.1906 82.2409 37.2328 82.9743 40.5167"
-            stroke="#47BCF5"
+            stroke="#C38C5C"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -60,7 +60,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
             cy="7.52083"
             rx="2.5"
             ry="2.50667"
-            fill="#47BCF5"
+            fill="#C38C5C"
             fillOpacity="0.6"
           />
           <ellipse
@@ -68,7 +68,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
             cy="83.973"
             rx="2.5"
             ry="2.50667"
-            fill="#47BCF5"
+            fill="#C38C5C"
             fillOpacity="0.4"
           />
           <ellipse
@@ -76,7 +76,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
             cy="78.3335"
             rx="3.125"
             ry="3.13333"
-            fill="#47BCF5"
+            fill="#C38C5C"
             fillOpacity="0.4"
           />
           <ellipse
@@ -84,7 +84,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
             cy="23.1866"
             rx="1.875"
             ry="1.88"
-            fill="#47BCF5"
+            fill="#C38C5C"
             fillOpacity="0.8"
           />
           <ellipse
@@ -92,7 +92,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
             cy="71.4399"
             rx="1.25"
             ry="1.25333"
-            fill="#47BCF5"
+            fill="#C38C5C"
             fillOpacity="0.6"
           />
         </svg>
@@ -135,6 +135,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
         customStyles={{
           width: "100%",
           margin: "0",
+          height: "50px",
         }}
         onClick={handleNetworkChange}
       />
@@ -146,6 +147,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
         customStyles={{
           width: "100%",
           margin: "0",
+          height: "50px",
         }}
         onClick={disconnect}
       />
