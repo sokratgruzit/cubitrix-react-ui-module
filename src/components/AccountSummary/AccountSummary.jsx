@@ -7,7 +7,8 @@ export const AccountSummary = ({ data, stackContractInfo, label }) => {
         <h2 className="font-20">{label}</h2>
         <div className={"total-account-info"}>
           <p className="font-16">
-            Bidding Balance <span>{stackContractInfo.totalStakedToken?.toFixed(2)}</span>
+            Bidding Balance{" "}
+            <span>{Number(stackContractInfo.totalStakedToken)?.toFixed(2)}</span>
           </p>
           <p className="font-16">
             Bidding Stakers <span>{stackContractInfo.totalStakers}</span>
