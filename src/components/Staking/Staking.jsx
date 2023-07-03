@@ -172,7 +172,7 @@ export const Staking = ({
               <Button
                 element={"referral-button"}
                 label={"Create Staking"}
-                icon={<AddSquareIcon color={`#00C6FF`} />}
+                icon={<AddSquareIcon />}
                 onClick={handlePopUpOpen}
               />
             }
@@ -218,7 +218,7 @@ export const Staking = ({
           />
         </div>
       </div>
-      <Footer customStyles={{ background: "#272C57" }} />
+      <Footer />
     </div>
   );
 };

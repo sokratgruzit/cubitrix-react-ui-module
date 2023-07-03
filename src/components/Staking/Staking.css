@@ -1,6 +1,6 @@
 .staking-main {
   padding: 70px 0 0 0;
-  background: #272c57;
+  background: #10282b;
   width: 100%;
   min-height: 100vh;
   margin-bottom: auto;
@@ -16,7 +16,9 @@
 }
 
 .staking-content {
-  background-color: #2f3674;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  background: #0e2225;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
@@ -25,6 +27,7 @@
   border-bottom-left-radius: 100px;
   min-height: calc(100vh - 130px);
   height: 100%;
+  border-radius: 20px;
 }
 
 .staking-content-main {
