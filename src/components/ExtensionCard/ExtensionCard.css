@@ -1,8 +1,9 @@
 .extension-card {
-  background: rgba(39, 44, 87, 0.7);
+  background-color: #10282b;
   border: 1px solid rgba(39, 44, 87, 0.5);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 42px;
+
   display: flex;
   flex-direction: column;
   gap: 42px;
