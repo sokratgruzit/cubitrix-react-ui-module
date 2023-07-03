@@ -15,16 +15,15 @@ export const CardSlider = ({
   handleWithdraw,
   handleExchange,
   handleTransfer,
+  accountType,
+  setAccountType,
 }) => {
-  const [accountType, setAccountType] = useState("main");
   const swiperRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [slidePercentage, setSlidePercentage] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const { width } = useMobileWidth();
-
-  console.log(accounts);
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
