@@ -90,7 +90,7 @@ export const CardSlider = ({
   const accountsData = useMemo(() => {
     const data = accounts?.filter(
       (item) =>
-        item?.account_category !== "external" || item?.account_category !== "system",
+        item?.account_category !== "external" && item?.account_category !== "system",
     );
 
     return data;
