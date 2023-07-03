@@ -135,10 +135,13 @@ export const CardSlider = ({
   //   },
   // ]
 
-  const assets = useMemo(
-    () => accountsData?.find((item) => item?.account_category === "main")?.assets,
-    [accounts, accountType],
-  );
+  const assets = useMemo(() => {
+    if (accountType === "main") {
+      return accountsData?.find((item) => item?.account_category === "main")?.assets;
+    } else {
+      return [];
+    }
+  }, [accounts, accountType]);
 
   const mainAcc = useMemo(() => {
     const item =
