@@ -105,7 +105,7 @@ export const Staking = ({
           <div className="table-mobile-content">
             {width <= 1300 && (
               <>
-                {[1, 2].map((index) => (
+                {[0, 1].map((index) => (
                   <div className="td" key={index}>
                     <div className="mobile-ttl">{tableHead[index].name}</div>
                     <span>
@@ -118,7 +118,7 @@ export const Staking = ({
             )}
             {width <= 400 && (
               <>
-                {[3].map((index) => (
+                {[2].map((index) => (
                   <div className="td" key={index}>
                     <div className="mobile-ttl">{tableHead[index].name}</div>
                     <span>{parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}</span>
@@ -135,15 +135,15 @@ export const Staking = ({
               ))}
             </>
             <div className="table-buttons">
-              {[5, 6].map((index) => (
+              {[4, 5].map((index) => (
                 <div className="td" key={index}>
                   <Button
                     element="staking-button"
-                    label={index === 5 ? "Unstake" : "Harvest"}
-                    active={index === 5}
+                    label={index === 4 ? "Unstake" : "Harvest"}
+                    active={index === 4}
                     customStyles={{ borderRadius: "32px" }}
                     onClick={() => tableHead[index].onClick(index)}
-                    disabled={index === 5 ? item.unstaked : item.withdrawan}
+                    disabled={index === 4 ? item.unstaked : item.withdrawan}
                   />
                 </div>
               ))}
