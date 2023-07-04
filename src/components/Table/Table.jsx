@@ -1,6 +1,6 @@
-import './Table.css'
-import { useMobileWidth } from '../../hooks/useMobileWidth'
-import { NoApplicationsIcon } from '../../assets/svgs'
+import "./Table.css";
+import { useMobileWidth } from "../../hooks/useMobileWidth";
+import { NoApplicationsIcon } from "../../assets/svgs";
 
 export const Table = ({
   type,
@@ -17,14 +17,14 @@ export const Table = ({
   customThStyles,
   tableFooter,
 }) => {
-  const { mobile } = useMobileWidth()
+  const { mobile } = useMobileWidth();
   return (
-    <div className={`${type}`} style={customStyles} id={'table-version'}>
+    <div className={`${type}`} style={customStyles} id={"table-version"}>
       {tableHeadMore}
       {tableData ? (
         <>
           {tableHead && (
-            <div className='table-head' style={customHeadStyles}>
+            <div className="table-head" style={customHeadStyles}>
               {tableHead?.map((item, index) => {
                 return (
                   <div
@@ -39,15 +39,15 @@ export const Table = ({
                     {item.name}
                     {item?.icon}
                   </div>
-                )
+                );
               })}
             </div>
           )}
-          <div className='table-more' style={customTableMoreStyles}></div>
-          <div className='icon-place' style={customTableMoreStyles}></div>
+          <div className="table-more" style={customTableMoreStyles}></div>
+          <div className="icon-place" style={customTableMoreStyles}></div>
           {loading ? (
-            <div className='table-loading-container'>
-              <div className='table-loading' />
+            <div className="table-loading-container">
+              <div className="table-loading" />
             </div>
           ) : (
             tableData
@@ -55,10 +55,10 @@ export const Table = ({
           {tableFooter}
         </>
       ) : (
-        <div className='table-empty'>
+        <div className="table-empty">
           {tableEmpty ? (
             <>
-              <p className='font-14' style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+              <p className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
                 {tableEmptyData?.label}
               </p>
               {tableEmptyData?.button}
@@ -66,11 +66,11 @@ export const Table = ({
           ) : (
             <>
               {tableEmptyData?.icon ? tableEmptyData?.icon : <NoApplicationsIcon />}
-              <p className='font-14' style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-                {tableEmptyData?.label || 'You have no pending KYC applications'}
+              <p className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
+                {tableEmptyData?.label || "You have no pending KYC applications"}
               </p>
               {handleViewAll && (
-                <p className='table-empty__view-all font-14' onClick={handleViewAll}>
+                <p className="table-empty__view-all font-14" onClick={handleViewAll}>
                   View All Transactions
                 </p>
               )}
@@ -79,5 +79,5 @@ export const Table = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};

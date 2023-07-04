@@ -159,8 +159,6 @@ stories.add("Dashboard", () => {
     setTransactionsTableLoading(false);
   };
 
-  console.log(totalTransactions);
-
   const generateTotalReferralData = async () => {
     const response = await fetch(
       `http://localhost:4000/api/referral/get_referral_code_of_user_dashboard`,

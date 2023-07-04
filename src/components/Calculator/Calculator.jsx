@@ -26,6 +26,7 @@ export const Calculator = ({
   timeperiodDate,
   handleTimeperiodDate,
   approveResonse,
+  stakingLoading,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -117,6 +118,14 @@ export const Calculator = ({
         color="#6A6D76"
         icon={true}
       />
+      {isAllowance && (
+        <HelpText
+          title={"Staking token is unapproved, please approve token before staking"}
+          status="info"
+          color="#6A6D76"
+          icon={true}
+        />
+      )}
       {approveResonse && (
         <HelpText
           status={approveResonse?.status}
@@ -131,7 +140,11 @@ export const Calculator = ({
           account
             ? loading
               ? "Please wait, Loading.."
-              : `${isAllowance ? "Enable" : "Stake"}`
+              : stakingLoading
+              ? "Loading..."
+              : isAllowance
+              ? "Enable"
+              : "Stake"
             : "Connect Wallet"
         }
         size={"btn-lg"}
@@ -140,12 +153,11 @@ export const Calculator = ({
         customStyles={{
           width: "100%",
           margin: "10px 0 0 0",
-          backgroundColor: "#00C6FF",
         }}
         onClick={
           !account || (account && isAllowance) ? handleCalculatorSubmit : handleSubmit
         }
-        disabled={validationErrors?.amount?.failure && account && true}
+        disabled={(validationErrors?.amount?.failure && account) || stakingLoading}
       />
     </div>
   );
