@@ -1,0 +1,50 @@
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #2f3674;
+  position: relative;
+  z-index: 1000;
+}
+
+.top-content {
+  position: absolute;
+  top: 100px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.loading-screen-wrap {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-screen-container {
+  width: 50px;
+  height: 50px;
+  border: 8px solid;
+  border-color: #45f4ea transparent #45f4ea transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;
+}
+
+.complend_title {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700px;
+}

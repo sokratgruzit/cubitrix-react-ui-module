@@ -1,17 +1,34 @@
-.referral-main {
+.referral-main-wrap {
+  background: #10282b;
   padding: 70px 0 0 0;
-  background: #272c57;
   width: 100%;
   height: 100vh;
-  overflow-y: auto; 
+}
+
+.referral-main {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #10282b;
+  position: relative;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .referral-tables-container {
-  background: #2d3364;
-  border-bottom-right-radius: 100px;
-  border-bottom-left-radius: 100px;
-  padding: 70px 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  padding: 20px;
+  background: #0e2225;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
+
 .referral-cards-container {
   display: flex;
   gap: 20px;
@@ -22,23 +39,47 @@
 }
 
 .referral-content {
-  background-color: #2f3674;
+  background: #0e2225;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-bottom: none;
+}
+
+.referral-content-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 125px;
-  padding: 60px 100px;
+  position: relative;
+  z-index: 2;
+}
+
+.referral-content-bg {
+  position: absolute;
+  background: radial-gradient(53.84% 29.5% at 50% 50%, rgba(5, 58, 26, 0.1) 0%, rgba(85, 125, 0, 0) 100%);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .referral-content-main {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding: 60px 0 60px 100px;
+  position: relative;
+}
+
+.referral-card-container {
+  padding: 60px 100px 60px 0;
 }
 
 .referral-content-main > h2 {
   font-weight: 700;
   font-size: 60px;
   line-height: 130%;
+  color: #c38c5c;
 }
 
 .referral-content-info {
@@ -54,8 +95,248 @@
   padding-top: 30px;
 }
 
-.referral-content-info p {
-  color: rgb(255, 255, 255, 0.6);
+.referral-button-icon > path {
+  stroke: #fff;
+}
+
+.referral-content-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.referral-inner-table-more {
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #10282b;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  gap: 10px;
+}
+
+.referral-table-more-svg {
+  padding: 4px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  border-radius: 45px;
+  border: none;
+  border: 1px solid #10282b;
+}
+
+.referral-table-more-svg:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.referral-table-more-svg_active {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #0e2225;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.referral-table-more-svg_active:hover {
+  background: #0e2225;
+}
+
+.referral-binary-wrapper {
+  padding: 20px 20px 36px 20px;
+  background: #0e2225;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-bottom: none;
+}
+
+.referral-table-container {
+  position: relative;
+}
+
+.referral-table-bg-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.08;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.referral-tree-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  max-height: 0px;
+  overflow: hidden;
+  transition-delay: .8s;
+}
+.referral-tree-main.active .referral-tree-btn {
+  max-height: 500px;
+  transition-delay: 0s;
+}
+.referral-tree-btn-img {
+  display: flex;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(134deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255,255,255,.1);
+  align-items: center;
+  justify-content: center;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.referral-tree-btn:hover .referral-tree-btn-img {
+  border-color: rgba(195, 140, 92, 0.60);
+}
+.referral-tree-btn-img img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.referral-tree-btn:hover img {
+  transform: scale(1.05);
+}
+.referral-tree-btn-img-sm.referral-tree-btn-img {
+  width: 60px;
+  height: 60px;
+}
+.referral-tree-btn-img-sm.referral-tree-btn-img img{
+  width: 40px;
+  height: 40px;
+}
+.referral-tree-btn-img-sm ~ .referral-tree-btn-hash {
+  font-size: 12px;
+}
+.referral-tree-btn-hash {
+  border-radius: 45px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0px 12px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 6px;
+  overflow: hidden;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.referral-tree-btn:hover .referral-tree-btn-hash {
+  border-color: rgba(195, 140, 92, 0.60);
+}
+.referral-tree-btn-hash span {
+  max-width: 85px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: inherit;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.referral-tree-btn:hover .referral-tree-btn-hash span{
+  color: #C38C5C;
+}
+.referral-tree-item-level {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+.referral-tree-item {
+  display: flex;
+  justify-content: center;
+}
+.referral-tree-items {
+  width: 100%;
+  display: flex;
+}
+.referral-tree-lines {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  max-height: 0px;
+  overflow: hidden;
+  transition-delay: .8s;
+}
+.referral-tree-main.active .referral-tree-lines {
+  max-height: 500px;
+  transition-delay: 0s;
+}
+.referral-tree-btn-add svg{
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.referral-tree-btn-add:hover svg{
+  transform: scale(1.05);
+}
+.referral-tree-btn-add .referral-tree-btn-hash span{
+  color: #C38C5C;
+}
+.referral-tree-lines > svg {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transform: scale(.6);
+  opacity: 0;
+}
+.referral-tree-main.active .referral-tree-lines > svg {
+  transform: scale(1);
+  opacity: 1;
+}
+.referral-tree-main .referral-tree-item-level:nth-child(1) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(1) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(1) .referral-tree-btn-hash-out {
+  transition-delay: .4s;
+}
+.referral-tree-main .referral-tree-item-level:nth-child(2) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(2) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(2) .referral-tree-btn-hash-out {
+  transition-delay: .3s;
+}
+.referral-tree-main .referral-tree-item-level:nth-child(3) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(3) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(3) .referral-tree-btn-hash-out {
+  transition-delay: .2s;
+}
+.referral-tree-main .referral-tree-item-level:nth-child(4) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(4) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(4) .referral-tree-btn-hash-out {
+  transition-delay: .1s;
+}
+
+
+.referral-tree-main.active .referral-tree-item-level:nth-child(1) .referral-tree-lines > svg,.referral-tree-main.active .referral-tree-item-level:nth-child(1) .referral-tree-btn-out,.referral-tree-main.active .referral-tree-item-level:nth-child(1) .referral-tree-btn-hash-out {
+  transition-delay: .1s;
+}
+.referral-tree-main.active .referral-tree-item-level:nth-child(2) .referral-tree-lines > svg,.referral-tree-main.active .referral-tree-item-level:nth-child(2) .referral-tree-btn-out,.referral-tree-main.active .referral-tree-item-level:nth-child(2) .referral-tree-btn-hash-out {
+  transition-delay: .2s;
+}
+.referral-tree-main.active .referral-tree-item-level:nth-child(3) .referral-tree-lines > svg,.referral-tree-main.active .referral-tree-item-level:nth-child(3) .referral-tree-btn-out,.referral-tree-main.active .referral-tree-item-level:nth-child(3) .referral-tree-btn-hash-out {
+  transition-delay: .3s;
+}
+.referral-tree-main.active .referral-tree-item-level:nth-child(4) .referral-tree-lines > svg,.referral-tree-main.active .referral-tree-item-level:nth-child(4) .referral-tree-btn-out,.referral-tree-main.active .referral-tree-item-level:nth-child(4) .referral-tree-btn-hash-out {
+  transition-delay: .4s;
+}
+.referral-tree-btn-out {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transform: scale(.9);
+  opacity: 0;
+}
+.referral-tree-main.active .referral-tree-btn-out {
+  transform: scale(1);
+  opacity: 1;
+}
+.referral-tree-btn-hash-out {
+  transform: translateY(5px);
+  opacity: 0;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.referral-tree-main.active .referral-tree-btn-hash-out {
+  transform: translateY(0px);
+  opacity: 1;
 }
 @media only screen and (max-width: 1025px) {
   .referral-cards-container {
@@ -66,12 +347,24 @@
     align-items: center;
     gap: 4px;
   }
-  .referral-content {
+  .referral-content-container {
     display: flex;
     flex-direction: column;
-    padding: 60px 20px;
+    gap: 0;
+  }
+  .referral-content-main {
+    padding: 60px 20px 120px 20px;
+  }
+  .referral-card-container {
+    padding: 0 20px 60px 20px;
   }
   .referral-tables-container {
     padding: 70px 20px;
+  }
+  .referral-content-svg {
+    height: 500px;
+    width: 60%;
+    right: unset;
+    bottom: unset;
   }
 }

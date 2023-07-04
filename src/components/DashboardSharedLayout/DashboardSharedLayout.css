@@ -1,0 +1,223 @@
+.dashboard-content-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 70px;
+  height: 100%;
+  background-color: #10282b;
+}
+
+.dashboard-sidebar-container {
+  height: 100vh;
+  background-color: #10282b;
+  width: 100%;
+  width: 255px;
+  padding: 39px 20px 100px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+}
+
+.dashboard-main-container {
+  flex: 1;
+  min-height: 100%;
+  width: calc(100% - 255px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px 0px 0px 0px;
+  background: #0e2225;
+  padding: 30px 20px 30px 30px;
+  margin-left: 255px;
+  position: relative;
+  background-clip: padding-box;
+  border-right: none;
+  border-bottom: none;
+  border-top: none;
+}
+
+.dashboard-layout-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 106;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.dashboard-border-container {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 70px;
+  left: 254.38px;
+  background-color: #10282b;
+  border: none;
+  z-index: 108;
+}
+
+.dashboard-border {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 30px 0px 0px 0px;
+  border: none;
+  top: 0;
+  left: 0;
+  background: #0e2225;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: none;
+  border-bottom: none;
+}
+
+.dashboard-sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-sidebar-link {
+  padding: 14px 20px;
+  gap: 10px;
+  border-radius: 43px;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.dashboard-sidebar-link.active {
+  background: #c38c5c;
+}
+
+.dashboard-sidebar-link.active:hover {
+  border-radius: 46px;
+  opacity: 0.9;
+  background: #c38c5c;
+}
+
+.dashboard-sidebar-link.active:hover {
+  opacity: 0.9;
+}
+
+.dashboard-sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.sidebar-footer-support {
+  padding: 15px 10px;
+  gap: 10px;
+  width: 218px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255);
+  border-radius: 41px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #0e2225;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  cursor: pointer;
+}
+
+.sidebar-footer-support:hover {
+  border-radius: 41px;
+  border: 1px solid #c38c5c;
+  background: #0e2225;
+  color: #c38c5c;
+}
+
+.sidebar-footer-support:hover > svg > path {
+  fill: #c38c5c;
+}
+
+.dashboard-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar-footer-copyright a {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.dashboard-layout-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.15;
+  z-index: 105;
+}
+
+.dashboard-layout-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: radial-gradient(53.84% 29.5% at 50% 50%, rgba(5, 58, 26, 0.1) 0%, rgba(85, 125, 0, 0) 100%);
+  width: 100%;
+  height: 826px;
+  top: 10%;
+}
+
+.dashboard-fixed-border {
+  height: 1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  position: fixed;
+  width: 100%;
+  top: 70px;
+  width: calc(100% - 255px);
+  right: 0;
+  z-index: 107;
+}
+
+@media only screen and (max-width: 1025px) {
+  .dashboard-border-container {
+    display: none;
+  }
+  .dashboard-sidebar-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+    padding: 5px 10px;
+    overflow-x: scroll;
+    z-index: 109;
+  }
+  .dashboard-sidebar-links {
+    flex-direction: row;
+  }
+  .dashboard-sidebar-link {
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-all;
+    text-align: center;
+  }
+  .dashboard-main-container {
+    padding: 30px 20px 140px 30px;
+    border-radius: 0px;
+    margin: 0px;
+    border: none;
+  }
+  .dashboard-fixed-border {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .dashboard-main-container {
+    padding: 30px 20px 120px;
+    border-radius: 0px;
+  }
+}

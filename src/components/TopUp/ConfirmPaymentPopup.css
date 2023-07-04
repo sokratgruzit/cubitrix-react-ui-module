@@ -1,0 +1,143 @@
+.confirm_payment_popup_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #272c57;
+}
+
+.confirm_payment_popup_body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  color: black;
+}
+
+.confirm_payment_popup_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.confirm_payment_popup_qr {
+  width: 150px;
+  height: 150px;
+  /* Add QR code background here */
+}
+
+.confirm_payment_popup_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: calc(100% - 150px);
+  padding-left: 20px;
+}
+
+.confitm_payment_title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.confirm_payment_popup_grayText {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.confirm_payment_speedup {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 140%;
+}
+
+.confirm_payment_timer {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.confirm_payment_popup_address {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  padding-right: 60px;
+  max-width: 400px;
+}
+
+.confirm_payment_popup_address p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.confirm_payment_popup_userAddress {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.confirm_payment_popup_input {
+  width: 100%;
+  padding-right: 65px !important;
+}
+
+.confirm_payment_copy {
+  position: absolute;
+  right: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+}
+
+.confirm_payment_popup_buttons {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.confirm_payment_popup_buttons button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm_payment_popup_buttons button:hover {
+  background-color: #45a049;
+}
+
+.payment_qrcode {
+  min-height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #262c5e;
+  border-radius: 14px;
+}

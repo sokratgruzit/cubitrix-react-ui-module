@@ -11,6 +11,8 @@ export const Signin = ({
   loginError,
   loading,
   successMessage,
+  title,
+  logo,
 }) => {
   const [cover, setCover] = useState(false);
   const [email, setEmail] = useState("");
@@ -23,10 +25,10 @@ export const Signin = ({
   return (
     <div className={`signin-container`}>
       <div className={`signin-logo`}>
-        <SigninLogo />
-        <h2>COMPLEND</h2>
+        {logo ?? <SigninLogo />}
+        <h2>{title ?? "COMPLEND"}</h2>
       </div>
-      <div className='signin-form-container'>
+      <div className="signin-form-container">
         <div className={`signin-header`}>
           <h2>Welcome</h2>
           <p className={"font-14"}>

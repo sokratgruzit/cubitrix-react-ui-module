@@ -1,4 +1,2 @@
-export { StartNow } from "./StartNow/StartNow";
-export { Meditation } from "./Meditation/Meditation";
-export { DashboardHeader } from "./DashboardHeader/DashboardHeader";
-export { TopCoins } from "./TopCoins/TopCoins";
+export { CardSlider } from "./CardSlider/CardSlider";
+export { DashboardTable } from "./DashboardTable/DashboardTable";

@@ -1,0 +1,237 @@
+.topupDashboard_main {
+  height: 100%;
+  width: 100%;
+}
+
+.topupDashboard_main > h1 {
+  padding-bottom: 10px;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 150%;
+  letter-spacing: 1px;
+  color: #c38c5c;
+  margin-bottom: 30px;
+}
+
+.topupDashboard_title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.topupDashboard_methodContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.topupDashboard_methodBox {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0d1e21;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 130%;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.topupDashboard_title-container {
+  background: #0d1e21;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  padding: 20px;
+}
+
+.topupDashboard_title-bottomContainer {
+  padding-top: 30px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 100px;
+}
+
+.topupDashboard_bottom-left {
+  width: 100%;
+  max-width: 600px;
+}
+
+.topupDashboard_bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 62px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.topupDashboard_bottom-row p:first-child {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.topupDashboard_bottom-row p {
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.topupDashboard_bottom-result {
+  width: 100%;
+  text-align: end;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 140%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.topupDashboard_info-exchangeRate {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  line-height: 140%;
+}
+
+.topupDashboard_bottom-right {
+  width: 100%;
+  max-width: 460px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #10282b;
+  padding: 20px;
+}
+
+.topupDashboard_inputContainer {
+  position: relative;
+}
+
+.topupDashboard_inputOverlay {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.topupDashboard_inputOverlay_text {
+  margin: 0;
+  font-size: 14px;
+  /* Add other styles as needed */
+}
+
+.topupDashboard_methodBox:hover {
+  /* border: 1px solid #45f4ea; */
+  /* background: rgba(69, 244, 234, 0.05); */
+}
+
+.topupDashboard_selected {
+  background: rgba(69, 244, 234, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+}
+
+.topupDashboard_info {
+  margin-bottom: 10px;
+}
+
+.topupDashboard_input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.topupDashboard_resultContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+}
+
+.topupDashboard_resultLeft,
+.topupDashboard_resultRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+}
+
+@media screen and (max-width: 1300px) {
+  .topupDashboard_title-bottomContainer {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .topupDashboard_title-bottomContainer {
+    flex-direction: column;
+  }
+  .topupDashboard_bottom-left {
+    max-width: 100%;
+  }
+
+  .topupDashboard_bottom-right {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topupDashboard_bottom-right {
+    background: #2f3674;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .topupDashboard_resultContainer {
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  .topupDashboard_resultLeft,
+  .topupDashboard_resultRight {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.topupDashboard_button {
+  width: 100%;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.pay-check-label:before {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  content: "";
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 1px solid #00050f;
+  background: transparent;
+  opacity: 0.1;
+}
+
+@media (max-width: 560px) {
+  .topupDashboard_methodBox {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .topupDashboard_methodContainer {
+    grid-template-columns: 1fr;
+  }
+}

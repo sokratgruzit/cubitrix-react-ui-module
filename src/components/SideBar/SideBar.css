@@ -4,7 +4,8 @@
   left: 100%;
   top: 0;
   width: 362px;
-  background: #2d3364;
+  border-left: 1px solid rgba(255, 255, 255, 0.20);
+  background:  #10282B;
   transition: 0.5s;
   font-size: 12px;
   line-height: 140%;

@@ -2,9 +2,10 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   border-radius: 32px;
   position: relative;
-  border: 1px solid #202431;
-  background-color: #141726;
-  border-radius: 8px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #0D1E21;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.14);
   padding: 13px 5px 13px 5px;
   /* width: 200px; */
   /* height: 210px; */
@@ -54,7 +55,7 @@
   text-transform: capitalize;
   font-size: 14px;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  color: #9c9da3;
+  color: rgba(255, 255, 255, 0.6);
 }
 .dropdown-item:hover p {
   color: #ffffff;

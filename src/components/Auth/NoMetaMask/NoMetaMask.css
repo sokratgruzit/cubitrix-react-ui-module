@@ -6,7 +6,7 @@
   border-bottom: 1px solid rgb(32, 36, 49);
   border-right: 1px solid rgb(32, 36, 49);
   border-left: 1px solid rgb(32, 36, 49);
-  background: rgb(20, 23, 38);
+  background: #2f3674;
   border-radius: 0px 0px 8px 8px;
   gap: 20px;
   width: 100%;
@@ -48,6 +48,6 @@
   align-items: center;
   width: 258px;
   height: 52px;
-  background: #3d5afe;
+  background: #45f4ea;
   border-radius: 32px;
 }

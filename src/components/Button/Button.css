@@ -70,17 +70,17 @@
   display: none;
 }
 .btn-primary {
-  background: #45f4ea;
+  background: #c38c5c;
 }
 .btn-secondary {
-  border: 1px solid #45f4ea;
+  border: 1px solid #c38c5c;
 }
 .btn-primary span {
-  color: #191a42;
+  color: #fff;
   font-weight: 700;
 }
 .btn-secondary span {
-  color: #45f4ea;
+  color: #c38c5c;
   font-weight: 700;
 }
 .btn-primary:hover,
@@ -105,6 +105,59 @@
 .btn-tertiary:hover path {
   fill: rgba(255, 255, 255, 0.7);
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.btn-secondary-white span {
+  color: #2a305e;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  font-weight: 700;
+}
+.btn.btn-secondary-white {
+  padding: 16px 30px;
+  border: none;
+  border-radius: 32px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  background-color: #fff;
+}
+
+.btn-gray span {
+  color: rgba(255, 255, 255, 0.6);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  font-weight: 700;
+  line-height: 140%;
+}
+.btn.btn-gray {
+  padding: 16px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 32px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.btn-gray:hover span {
+  color: #fff;
+}
+
+.btn-gray:hover {
+  border: 1px solid #fff;
+}
+
+.btn-darkBlue-secondary span {
+  color: #2a305e;
+  font-weight: 700;
+}
+
+.btn-darkBlue-secondary {
+  padding: 16px 30px;
+  border: none;
+  border-radius: 32px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  border: 1px solid #2a305e;
+}
+.btn-darkBlue-secondary:hover {
+  opacity: 0.7;
+}
+
+.btn-secondary-white:hover {
+  opacity: 0.7;
 }
 .btn-phospore span {
   color: #45f4ea;
@@ -196,7 +249,7 @@
   cursor: pointer;
 }
 .side-btn:after {
-  content: "";
+  content: '';
   position: absolute;
   width: calc(100% + 24px);
   height: 100%;
@@ -213,7 +266,7 @@
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   width: 2px;
   height: 100%;
-  content: "";
+  content: '';
   background: #3d5afe;
   border-radius: 2px;
   position: absolute;
@@ -346,12 +399,12 @@
 .calculator-button {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
   overflow: hidden;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   cursor: pointer;
   height: 44px;
-  color: #6a6d76;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,12 +412,19 @@
 }
 
 .calculator-button:hover {
-  opacity: 0.7;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
 }
 
 .calculator-button-active {
-  background: #00c6ff;
-  color: #fff;
+  border: 1px solid #c38c5c;
+  color: #c38c5c;
+}
+
+.calculator-button-active:hover {
+  opacity: 0.9;
+  border: 1px solid #c38c5c;
+  color: #c38c5c;
 }
 
 .staking-button {
@@ -397,17 +457,21 @@
   padding: 10px 0;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   justify-content: center;
+  border: 1px solid #c38c5c;
+  border-radius: 32px;
+  padding: 9px 20px; 
 }
 
 .referral-button-active {
+  padding: 14px 30px;
   min-width: 157px;
-  padding: 10px 30px 10px 16px;
-  background: #00c6ff;
+  background: #c38c5c;
   border-radius: 32px;
+  border: none;
 }
 
 .referral-button span {
-  color: #00c6ff;
+  color: #c38c5c;
 }
 
 .referral-button-active span {
@@ -415,7 +479,7 @@
 }
 
 .referral-button:hover {
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .btn-grey {

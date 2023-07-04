@@ -1,38 +1,110 @@
-import React, { useEffect } from "react";
+import React from 'react'
 
-import "./Dashboard.css";
-
-import { Footer } from "../Footer";
-import { DashboardHeader, Meditation, StartNow, TopCoins } from "./components";
+import { CardSlider } from './components/CardSlider/CardSlider'
+import { DashboardTable } from './components/DashboardTable/DashboardTable'
+import './Dashboard.css'
+// import { Account, AccountType } from '../../assets/svgs'
 
 export const Dashboard = ({
-  handleGetStarted,
-  handleConnect,
-  account,
-  startTrade,
-  allImages,
-  info,
+  transactionsData,
+  transactionHeader,
+  referralCodeHeader,
+  referralHistoryHeader,
+  referralCardsData,
+  codesTableData,
+  rebatesTableData,
+  totalTransactions,
+  referralCodeTableEmpty,
+  referralHistoryTableEmpty,
+  transactionsTableEmpty,
+  referralCodeTableLoading,
+  referralHistoryTableLoading,
+  transactionsTableLoading,
+  accountsData,
+  handleDeposit,
+  handleExchange,
+  handleWithdraw,
+  handleTransfer,
+  cardImgs,
 }) => {
+  const tables = [
+    {
+      type: 'transactions',
+      header: 'Transactions',
+      description: <p className='font-14'>Total number of operations: <span className='dashboard-transactions-span'>{totalTransactions?.total_transaction}</span></p>,
+      rightPanelData: [
+        {
+          title: 'Recieved',
+          value: totalTransactions?.received,
+        },
+        {
+          title: 'Spent',
+          value: totalTransactions?.spent,
+        },
+      ],
+      footer: {
+        link: '/transactions',
+        label: 'All Transactions',
+      },
+      tableHeader: transactionHeader,
+      data: transactionsData?.transactions,
+      tableEmpty: transactionsTableEmpty,
+      loading: transactionsTableLoading,
+    },
+    {
+      type: 'referral-code',
+      header: 'Referral Code',
+      description: `You can create multiple referral codes to attract traders`,
+      footer: {
+        link: '/referral',
+        label: 'All Code',
+      },
+      tableHeader: referralCodeHeader,
+      referralCardsData: referralCardsData,
+      data: codesTableData,
+      tableEmpty: referralCodeTableEmpty,
+      loading: referralCodeTableLoading,
+    },
+    {
+      type: 'referral-history',
+      header: 'Referral Revates History',
+      description: `The airdrop history of your weekly referral rebates.`,
+      footer: {
+        link: '/referral',
+        label: 'All History',
+      },
+      tableHeader: referralHistoryHeader,
+      data: rebatesTableData,
+      tableEmpty: referralHistoryTableEmpty,
+      loading: referralHistoryTableLoading,
+    },
+  ]
+
   return (
-    <div style={{ paddingTop: "70px" }}>
-      <div className="dashboard-overflow">
-        <main className="dashboard-main">
-          <DashboardHeader
-            handleGetStarted={handleGetStarted}
-            handleConnect={handleConnect}
-            account={account}
-            dashboardHeaderImages={allImages?.dashboardHeader}
-          />
-          <TopCoins startTrade={startTrade} topCoinsImages={allImages?.topcoins} />
-          <Meditation meditationImages={allImages?.meditation} info={info} />
-          <StartNow
-            handleConnect={handleConnect}
-            account={account}
-            startNowImages={allImages?.startNow}
-          />
-          <Footer />
-        </main>
-      </div>
-    </div>
-  );
-};
+    <>
+      <CardSlider
+        accounts={accountsData}
+        cardImgs={cardImgs}
+        handleDeposit={handleDeposit}
+        handleExchange={handleExchange}
+        handleWithdraw={handleWithdraw}
+        handleTransfer={handleTransfer}
+      />
+      {tables?.map((item, index) => (
+        <DashboardTable
+          key={index}
+          type={item?.type}
+          header={item?.header}
+          description={item?.description}
+          footer={item?.footer}
+          rightPanelData={item?.rightPanelData}
+          tableHeader={item?.tableHeader}
+          referralCardsData={item?.referralCardsData}
+          data={item?.data}
+          tableEmpty={item?.tableEmpty}
+          loading={item?.loading}
+        />
+      ))}
+    </>
+  )
+}

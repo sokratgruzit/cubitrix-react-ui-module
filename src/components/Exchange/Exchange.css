@@ -1,0 +1,170 @@
+.sidebar-body {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.exchange-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.exchange-card {
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  width: 100%;
+  min-height: 175px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  /* background: linear-gradient(180deg, rgba(43, 50, 107, 0) 0%, #2b326b 100%); */
+}
+
+.exchange-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.exchange-card_header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.exchange-card_content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.exchange-card_content h4,
+.exchange-card_content span {
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+
+.exchange-card_content p {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 150%;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.exchange-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.exchange-input-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.exchange-input-right {
+  position: absolute;
+  top: 33px;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.exchange-accounts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exchange-accounts-container > h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.exchange-accounts-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  flex-wrap: wrap;
+  min-height: 52px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.exchange-accounts-card:hover {
+  opacity: 0.8;
+}
+
+.exchange-account-titles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exchange-account-titles > p {
+  color: #fff;
+  font-weight: 700;
+}
+
+.exchange-account-values {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+}
+.exchange-account-values > span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.exchange-account-values-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.exchange-accounts-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exchange-inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exchange-inputs-wrapper > h3 {
+  font-weight: 700;
+  color: #fff;
+}
+
+.exchange-rate-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  flex-wrap: wrap;
+  background: #2b326b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  min-height: 52px;
+  padding: 16px;
+}
+
+.exchange-rate-card > h4 {
+  color: rgba(255, 255, 255, 0.6);
+}

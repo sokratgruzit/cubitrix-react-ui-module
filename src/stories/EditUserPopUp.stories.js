@@ -114,6 +114,17 @@ stories.add("EditUserPopUp", () => {
         })),
     },
     {
+      title: "Website",
+      name: "website",
+      required: true,
+      placeholder: "Website",
+      onChange: (e) =>
+        setCreateCodeObject((prev) => ({
+          ...prev,
+          website: e.target.value,
+        })),
+    },
+    {
       title: "Image",
       name: "image",
       required: false,

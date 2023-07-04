@@ -1,0 +1,199 @@
+.dashboard-table-header-container {
+  border-radius: 20px 20px 0px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #10282b;
+  min-height: 88px;
+  padding: 20px;
+}
+
+.dashboard-table-head-wrap {
+  display: flex;
+  min-width: 260px;
+  min-height: 69px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(134deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 16px;
+  border-radius: 20px;
+  padding: 10px 0;
+}
+
+.dashboard-table-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 30px 0 20px;
+}
+
+.dashboard-table-head:nth-child(odd) {
+  border-right: 1px solid rgb(255, 255, 255, 0.1);
+}
+
+.dashboard-table-head > p {
+  color: rgb(255, 255, 255, 0.6);
+}
+
+.dashboard-table-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.dashboard-table-footer a {
+  display: flex;
+  gap: 6px;
+}
+
+.dashboard-table-footer > a > p {
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+
+.dashboard-table-footer > a > p {
+  color: #c38c5c;
+}
+
+.dashboard-table-footer > a:hover p,
+.dashboard-table-footer > a:hover svg path {
+  fill: white;
+  color: white;
+}
+
+.dashboard-table-parent > .table {
+  padding: 0 20px 16px;
+}
+
+.dashboard-table-parent {
+  padding: 16px 0 0 0;
+  background-color: transparent !important;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.05);
+}
+
+.dashboard-table-parent .dashboard-td {
+  height: 40px;
+}
+
+.dashboard-table-button > svg > path {
+  stroke: #45f4ea;
+}
+
+.dashboard-table-header-title {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 150%;
+  letter-spacing: 1px;
+  color: #c38c5c;
+  font-size: 30px;
+}
+
+.dashboard-table-referral-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.05);
+}
+
+.dashboard-table-referral-card-container {
+  display: flex;
+  gap: 20px;
+  /* flex-wrap: wrap; */
+  width: 100%;
+}
+
+.dashboard-table-referral-card-wrap {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(194, 126, 96, 0.1);
+  /* max-width: 555px; */
+  min-height: 90px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  gap: 20px;
+}
+
+.dashboard-table-referral-card-wrap__active {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(202, 192, 99, 0.1);
+}
+
+.dashboard-table-referral-card-wrap > h3 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.dashboard-table-referral-card {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.dashboard-table-referral-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-table-referral-card-content h4 {
+  color: rgb(255, 255, 255, 0.6);
+}
+
+.dashboard-table-referral-card-content p {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 130%;
+  color: #ffffff;
+}
+
+.dashboard-transactions-span {
+  color: #fff;
+}
+
+@media only screen and (max-width: 1025px) {
+  .dashboard-table-referral-card-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .dashboard-table-referral-card-wrap {
+    flex-wrap: wrap;
+  }
+  .dashboard-table-head-wrap {
+    flex-direction: column;
+    min-width: unset;
+    width: 100%;
+    padding: 10px 20px;
+  }
+  .dashboard-table-head {
+    padding: 10px 0;
+    word-wrap: break-word;
+  }
+  .dashboard-table-head:nth-child(odd) {
+    border-right: none;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+  }
+  .dashboard-table-header-container > .tb-head {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .dashboard-table-header-container .right-panel {
+    max-width: 100%;
+    width: 100%;
+  }
+  .dashboard-table-header-container > .left-panel > h1 {
+    word-break: break-all;
+  }
+  .dashboard-table-header-container > .left-panel > p {
+    max-width: 100%;
+  }
+}
