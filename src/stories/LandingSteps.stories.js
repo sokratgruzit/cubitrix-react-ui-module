@@ -16,7 +16,7 @@ const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(4);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database
@@ -158,7 +158,6 @@ stories.add("LandingSteps", () => {
       type: "default",
       placeholder: "0",
       onChange: (e) => {
-        console.log(e, "sdddd");
         setCurrentObejct((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,

@@ -8,6 +8,7 @@ import PaymentPopup from "../TopUp/PaymentPopup";
 import { HelpText } from "../HelpText";
 import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
 import { HelpCard } from "../HelpCard";
+import { useValidation } from "../../hooks/useValidation";
 
 export const LandingSteps = ({
   handleMetamaskConnect,
@@ -41,6 +42,9 @@ export const LandingSteps = ({
   buttonLabel,
   handleSubmit,
   currentObject,
+  stakingLoading,
+  isAllowance,
+  approveResonse,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -115,6 +119,21 @@ export const LandingSteps = ({
       Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
     );
   };
+
+  let helpTexts = {
+    amount: {
+      validationType: "number",
+      success: "amount is valid",
+      failure: "must be a number",
+    },
+  };
+
+  const validationErrors = useValidation(
+    {
+      amount: currentObject["amount"] || "",
+    },
+    helpTexts,
+  );
 
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);
@@ -391,6 +410,21 @@ export const LandingSteps = ({
                           border: "1px solid rgba(255, 255, 255, 0.1)",
                         }}
                         svg={params?.svg}
+                        statusCard={
+                          validationErrors?.amount && (
+                            <HelpText
+                              status={
+                                validationErrors.amount.failure ? "error" : "success"
+                              }
+                              title={
+                                validationErrors.amount.failure ||
+                                validationErrors.amount.success
+                              }
+                              fontSize={"font-12"}
+                              icon={true}
+                            />
+                          )
+                        }
                       />
                     ))}
                   </div>
@@ -427,6 +461,24 @@ export const LandingSteps = ({
                     color="#6A6D76"
                     icon={true}
                   />
+                  {isAllowance && (
+                    <HelpText
+                      title={
+                        "Staking token is unapproved, please approve token before staking"
+                      }
+                      status="info"
+                      color="#6A6D76"
+                      icon={true}
+                    />
+                  )}
+                  {approveResonse && (
+                    <HelpText
+                      status={approveResonse?.status}
+                      title={approveResonse?.message}
+                      fontSize={"font-12"}
+                      icon={true}
+                    />
+                  )}
                 </div>
                 <Button
                   label={buttonLabel}
@@ -438,6 +490,9 @@ export const LandingSteps = ({
                     width: "100%",
                   }}
                   onClick={handleSubmit}
+                  disabled={
+                    validationErrors?.amount?.failure ? true : stakingLoading ?? false
+                  }
                 />
                 <Button
                   label={"Disconnect"}
