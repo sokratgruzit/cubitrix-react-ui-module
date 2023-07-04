@@ -57,9 +57,9 @@ export const Staking = ({
             mobileExpandFunc(index);
           }}
         >
-          {tableHead?.slice(0, 4).map((i, index) => (
+          {tableHead?.slice(0, 4).map((i, index1) => (
             <div
-              key={index}
+              key={index1}
               className={`td col ${i.mobileWidth ? true : false}`}
               style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
             >
@@ -105,12 +105,12 @@ export const Staking = ({
           <div className="table-mobile-content">
             {width <= 1300 && (
               <>
-                {[0, 1].map((index) => (
-                  <div className="td" key={index}>
-                    <div className="mobile-ttl">{tableHead[index].name}</div>
+                {[0, 1].map((index1) => (
+                  <div className="td" key={index1}>
+                    <div className="mobile-ttl">{tableHead[index1].name}</div>
                     <span>
-                      {index === 1 && item.staketime}
-                      {index === 2 && item.unstaketime}
+                      {index1 === 1 && item.staketime}
+                      {index1 === 2 && item.unstaketime}
                     </span>
                   </div>
                 ))}
@@ -118,8 +118,8 @@ export const Staking = ({
             )}
             {width <= 400 && (
               <>
-                {[2].map((index) => (
-                  <div className="td" key={index}>
+                {[2].map((index1) => (
+                  <div className="td" key={index1}>
                     <div className="mobile-ttl">{tableHead[index].name}</div>
                     <span>{parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}</span>
                   </div>
@@ -127,23 +127,23 @@ export const Staking = ({
               </>
             )}
             <>
-              {[3].map((index) => (
-                <div className="td" key={index}>
+              {[3].map((index1) => (
+                <div className="td" key={index1}>
                   <div className="mobile-ttl">Earn Reward</div>
                   <span>ATR</span>
                 </div>
               ))}
             </>
             <div className="table-buttons">
-              {[4, 5].map((index) => (
-                <div className="td" key={index}>
+              {[4, 5].map((index1) => (
+                <div className="td" key={index1}>
                   <Button
                     element="staking-button"
-                    label={index === 4 ? "Unstake" : "Harvest"}
-                    active={index === 4}
+                    label={index1 === 4 ? "Unstake" : "Harvest"}
+                    active={index1 === 4}
                     customStyles={{ borderRadius: "32px" }}
                     onClick={() => tableHead[index].onClick(index)}
-                    disabled={index === 4 ? item.unstaked : item.withdrawan}
+                    disabled={index1 === 4 ? item.unstaked : item.withdrawan}
                   />
                 </div>
               ))}
