@@ -28,6 +28,8 @@ export const Staking = ({
   isFetching,
   hasMoreData,
   infiniteScrollRef,
+  unstakeLoading,
+  harvestLoading,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const { width, mobile } = useMobileWidth();
@@ -139,11 +141,27 @@ export const Staking = ({
                 <div className="td" key={index1}>
                   <Button
                     element="staking-button"
-                    label={index1 === 4 ? "Unstake" : "Harvest"}
+                    label={
+                      index1 === 4
+                        ? unstakeLoading
+                          ? "Loading..."
+                          : "Unstake"
+                        : harvestLoading
+                        ? "Loading..."
+                        : "Harvest"
+                    }
                     active={index1 === 4}
                     customStyles={{ borderRadius: "32px" }}
                     onClick={() => tableHead[index1].onClick(index)}
-                    disabled={index1 === 4 ? item.unstaked : item.withdrawan}
+                    disabled={
+                      index1 === 4
+                        ? item.unstaked ||
+                          (item.unstaketime < Math.floor(new Date().getTime() / 1000)
+                            ? true
+                            : false) ||
+                          unstakeLoading
+                        : harvestLoading || item.reward == 0
+                    }
                   />
                 </div>
               ))}
