@@ -156,7 +156,7 @@ export const Staking = ({
                     disabled={
                       index1 === 4
                         ? item.unstaked ||
-                          Number(item?.[0]) < Math.floor(new Date().getTime() / 1000) ||
+                          Number(item?.[0]) > Math.floor(new Date().getTime() / 1000) ||
                           unstakeLoading
                         : harvestLoading || item.realtimeRewardPerBlock == 0
                     }
