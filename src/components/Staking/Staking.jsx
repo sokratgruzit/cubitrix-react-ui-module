@@ -57,9 +57,9 @@ export const Staking = ({
             mobileExpandFunc(index);
           }}
         >
-          {tableHead?.slice(0, 4).map((i, index1) => (
+          {tableHead?.slice(0, 4).map((i, index) => (
             <div
-              key={index1}
+              key={index}
               className={`td col ${i.mobileWidth ? true : false}`}
               style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
             >
@@ -105,12 +105,12 @@ export const Staking = ({
           <div className="table-mobile-content">
             {width <= 1300 && (
               <>
-                {[0, 1].map((index1) => (
-                  <div className="td" key={index1}>
-                    <div className="mobile-ttl">{tableHead[index1].name}</div>
+                {[0, 1].map((index) => (
+                  <div className="td" key={index}>
+                    <div className="mobile-ttl">{tableHead[index].name}</div>
                     <span>
-                      {index1 === 1 && item.staketime}
-                      {index1 === 2 && item.unstaketime}
+                      {index === 1 && item.staketime}
+                      {index === 2 && item.unstaketime}
                     </span>
                   </div>
                 ))}
@@ -118,8 +118,8 @@ export const Staking = ({
             )}
             {width <= 400 && (
               <>
-                {[2].map((index1) => (
-                  <div className="td" key={index1}>
+                {[2].map((index) => (
+                  <div className="td" key={index}>
                     <div className="mobile-ttl">{tableHead[index].name}</div>
                     <span>{parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}</span>
                   </div>
@@ -127,8 +127,8 @@ export const Staking = ({
               </>
             )}
             <>
-              {[3].map((index1) => (
-                <div className="td" key={index1}>
+              {[3].map((index) => (
+                <div className="td" key={index}>
                   <div className="mobile-ttl">Earn Reward</div>
                   <span>ATR</span>
                 </div>
@@ -142,7 +142,7 @@ export const Staking = ({
                     label={index1 === 4 ? "Unstake" : "Harvest"}
                     active={index1 === 4}
                     customStyles={{ borderRadius: "32px" }}
-                    onClick={() => tableHead[index].onClick(index)}
+                    onClick={() => tableHead[index1].onClick(index)}
                     disabled={index1 === 4 ? item.unstaked : item.withdrawan}
                   />
                 </div>
