@@ -125,6 +125,14 @@ export const Calculator = ({
           icon={true}
         />
       )}
+      {isAllowance && (
+        <HelpText
+          title={"Staking token is unapproved, please approve token before staking"}
+          status="info"
+          color="#6A6D76"
+          icon={true}
+        />
+      )}
       <Button
         element={"button"}
         label={
