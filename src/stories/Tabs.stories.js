@@ -17,7 +17,26 @@ const stories = storiesOf("Tabs", module);
 //   },
 // ];
 
+let data = [
+  {
+    title: 'your text',
+    onClick: () => console.log('hi ')
+  },
+  {
+    title: 'your tex2t',
+    onClick: () => console.log('hi2')
+  },
+  {
+    title: 'your tex3t',
+    onClick: () => console.log('hi3')
+  },
+];
+
 stories.add("Tabs", () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const activeTabHandler = (index) => {
+    setActiveTab(index)
+  }
   return (
     <>
       <Tabs type={"tabs"} />
@@ -27,6 +46,15 @@ stories.add("Tabs", () => {
       <Tabs type={"text-tabs"} />
 
       <Tabs type={"button-variant"} />
+
+      <Tabs
+        type={'simple'}
+        tabsData={data}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        onTabClick={activeTabHandler}
+        customStyles={{width: '100%'}}
+      />
     </>
   );
 });
