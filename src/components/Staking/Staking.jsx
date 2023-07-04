@@ -156,11 +156,9 @@ export const Staking = ({
                     disabled={
                       index1 === 4
                         ? item.unstaked ||
-                          (item.unstaketime < Math.floor(new Date().getTime() / 1000)
-                            ? true
-                            : false) ||
+                          Number(item?.[0]) < Math.floor(new Date().getTime() / 1000) ||
                           unstakeLoading
-                        : harvestLoading || item.reward == 0
+                        : harvestLoading || item.realtimeRewardPerBlock == 0
                     }
                   />
                 </div>
