@@ -247,7 +247,7 @@ export const CardSlider = ({
                         } else if (item.title === "Transfer") {
                           handleTransfer(mainAcc);
                         } else if (item.title === "Exchange") {
-                          handleExchange(mainAcc);
+                          handleExchange(mainAcc, "ATAR");
                         }
                       }}
                     >
@@ -286,7 +286,7 @@ export const CardSlider = ({
                               } else if (item.title === "Withdraw") {
                                 handleWithdraw(accountsData[index]);
                               } else if (item.title === "Exchange") {
-                                handleExchange(accountsData[index]);
+                                handleExchange(accountsData[index], key);
                               } else if (item.title === "Transfer") {
                                 handleTransfer(accountsData[index]);
                               }
