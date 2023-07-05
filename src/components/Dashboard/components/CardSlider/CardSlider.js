@@ -280,7 +280,7 @@ export const CardSlider = ({
                     </div>
                     <div className="card-slider-card_footer">
                       {cardFooterData?.map((item, footerIndex) => {
-                        if (item.title === "Deposit") return;
+                        if (item.title === "Deposit" || item.title === "Transfer") return;
 
                         return (
                           <div
