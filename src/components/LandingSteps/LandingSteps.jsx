@@ -45,6 +45,7 @@ export const LandingSteps = ({
   stakingLoading,
   isAllowance,
   approveResonse,
+  tokenBalance,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -229,7 +230,7 @@ export const LandingSteps = ({
                 <HelpText
                   status={"error"}
                   title={registrationState?.fullNameError}
-                  color={"#EF5350"}
+                  color={"#FF0C46"}
                 />
               )}
               <Input
@@ -247,7 +248,7 @@ export const LandingSteps = ({
                 <HelpText
                   status={"error"}
                   title={registrationState?.emailError}
-                  color={"#EF5350"}
+                  color={"#FF0C46"}
                 />
               )}
               <Input
@@ -265,7 +266,7 @@ export const LandingSteps = ({
                 <HelpText
                   status={"error"}
                   title={registrationState?.referralError}
-                  color={"#EF5350"}
+                  color={"#FF0C46"}
                 />
               )}
             </div>
@@ -273,7 +274,7 @@ export const LandingSteps = ({
               <HelpText
                 status={"error"}
                 title={registrationState?.error}
-                color={"#EF5350"}
+                color={"#FF0C46"}
               />
             )}
             <div className="LandingSteps__buttonsWrap">
@@ -325,6 +326,13 @@ export const LandingSteps = ({
                   </div>
                 ))}
               </div>
+              <HelpText
+                status={"error"}
+                title={`Your currently possess ${tokenBalance} tokens. You need at least 100 tokens to stake.`}
+                color={"#6A6D76"}
+                icon={true}
+                customStyles={{ marginBottom: "5px" }}
+              />
               <p>Set amount of CMCX tokens you would like to purchase</p>
 
               <p className="LandingSteps__topUpLabel">Payment Amount</p>
@@ -348,7 +356,7 @@ export const LandingSteps = ({
               </p>
 
               {tokenError && (
-                <HelpText status={"error"} title={tokenError} color={"#EF5350"} />
+                <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
               )}
               <div className="topupDashboard_bottom-row topup_bottom-padding">
                 <p>Token Amount:</p>

@@ -69,7 +69,7 @@ export const ResetPassword = ({
           <HelpText
             status={"error"}
             title={resetPasswordState.error}
-            color={"#EF5350"}
+            color={"#FF0C46"}
             icon={true}
           />
         )}

@@ -97,7 +97,7 @@ export const TopUp = ({
         </div>
       </div>
       <p className="topupDashboard_info-exchangeRate">1 CPL = {exchangeRate} USDT</p>
-      {tokenError && <HelpText status={"error"} title={tokenError} color={"#EF5350"} />}
+      {tokenError && <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />}
       <div className="topupDashboard_bottom-row topup_bottom-padding">
         <p>Token Amount:</p>
         <p>

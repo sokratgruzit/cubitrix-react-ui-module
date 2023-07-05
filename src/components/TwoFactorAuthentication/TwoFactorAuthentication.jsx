@@ -348,7 +348,7 @@ export const TwoFactorAuthentication = ({
               <HelpText
                 status={"error"}
                 title={twoFactorSetUpState.error}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}

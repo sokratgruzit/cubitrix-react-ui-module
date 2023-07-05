@@ -60,7 +60,7 @@ export const ResetPasswordForm = ({ handleNewPassword, passwordSetUpState }) => 
             className="margin-top-negative"
             status={"error"}
             title={passwordErrors.newPassword}
-            color={"#EF5350"}
+            color={"#FF0C46"}
             icon={true}
           />
         )}
@@ -79,7 +79,7 @@ export const ResetPasswordForm = ({ handleNewPassword, passwordSetUpState }) => 
             className="margin-top-negative"
             status={"error"}
             title={passwordErrors.confirmPassword}
-            color={"#EF5350"}
+            color={"#FF0C46"}
             icon={true}
           />
         )}
@@ -95,7 +95,7 @@ export const ResetPasswordForm = ({ handleNewPassword, passwordSetUpState }) => 
           <HelpText
             status={"error"}
             title={passwordSetUpState.error}
-            color={"#EF5350"}
+            color={"#FF0C46"}
             icon={true}
           />
         )}
