@@ -222,7 +222,10 @@ export const CardSlider = ({
               <div className="card-slider-card_header-container">
                 <div className="card-slider-card_header">
                   <Account type={"cpl"} />
-                  <h4 className="font-16">ATAR account</h4>
+                  <h4 className="font-16">ATAR</h4>
+                  <h4 className="font-16">
+                    {accountType === "main" ? "ATAR" : accountType.toUpperCase()}
+                  </h4>
                 </div>
                 <p className="card-slider-card_content">{mainAcc?.balance?.toFixed(2)}</p>
               </div>
@@ -269,12 +272,16 @@ export const CardSlider = ({
             Object.entries(assets)?.map(([key, value], index) => {
               return (
                 <SwiperSlide key={index}>
-                  <div className="card-slider-card">
+                  <div
+                    className={`card-slider-card ${
+                      value === 0 ? "card-slider-faded" : ""
+                    }`}
+                  >
                     <img src={cardImgs[key]} className="card-slider-bg-img" />
                     <div className="card-slider-card_header-container">
                       <div className="card-slider-card_header">
                         <Account type={key} />
-                        <h4 className="font-16">{key.toUpperCase()} account</h4>
+                        <h4 className="font-16">{key.toUpperCase()}</h4>
                       </div>
                       <p className="card-slider-card_content">{value?.toFixed(2)}</p>
                     </div>

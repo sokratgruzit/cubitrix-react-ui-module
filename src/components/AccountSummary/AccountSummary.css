@@ -1,11 +1,10 @@
 .total-summary-info {
   width: 100%;
-  background: #ffaa00;
+  /* background: #ffaa00; */
   gap: 16px;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  font-family: "Uber Move";
   line-height: 140%;
   color: #272c57;
   padding: 40px 20px;
@@ -20,14 +19,15 @@
 }
 
 .account-summary-data {
-  background: #272c57;
-  border-radius: 0px 0px 16px 16px;
+  background: #10282b;
+  border-radius: 16px;
   padding: 45px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   position: relative;
   bottom: 15px;
+  margin-top: 90px;
 }
 
 .total-account-info {
@@ -60,16 +60,16 @@
 }
 
 .account-summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .account-summary > p:first-child {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 @media only screen and (max-width: 667px) {

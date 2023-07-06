@@ -571,6 +571,7 @@ stories.add("Dashboard", () => {
           handleExchange={() => console.log("hi")}
           handleWithdraw={() => console.log("hi")}
           handleTransfer={() => console.log("hi")}
+          accountType={"main"}
         />
       </DashboardSharedLayout>
     </BrowserRouter>
