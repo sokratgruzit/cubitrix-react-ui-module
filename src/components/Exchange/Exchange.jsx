@@ -22,8 +22,9 @@ export const Exchange = ({
   accountBalanceSecond,
   label,
   exchangeAccountType,
+  card,
+  setCard,
 }) => {
-  const [card, setCard] = useState({});
   const [cardsSelectOpen, setCardsSelectOpen] = useState(true);
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
