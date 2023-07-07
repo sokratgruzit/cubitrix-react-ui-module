@@ -222,7 +222,6 @@ export const CardSlider = ({
               <div className="card-slider-card_header-container">
                 <div className="card-slider-card_header">
                   <Account type={"cpl"} />
-                  <h4 className="font-16">ATAR</h4>
                   <h4 className="font-16">
                     {accountType === "main" ? "ATAR" : accountType.toUpperCase()}
                   </h4>

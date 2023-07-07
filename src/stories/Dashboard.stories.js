@@ -404,7 +404,7 @@ stories.add("Dashboard", () => {
     eth: "dsadsadsa",
     usdt: "dsadsadsa",
     gold: "dsadsadsa",
-    platinium: "dsadsadsa",
+    platinum: "dsadsadsa",
   };
 
   return (
