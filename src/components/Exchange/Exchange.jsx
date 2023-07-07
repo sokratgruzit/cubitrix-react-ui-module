@@ -179,7 +179,11 @@ export const Exchange = ({
               </div>
               <div className="exchange-rate-card">
                 <h4 className="font-14">Rate</h4>
-                <p className="font-14">1 CPL = 0.3403.43 BTC</p>
+                <p className="font-14">
+                  1 {accountType === "ATAR" ? "ATR" : accountType} ={" "}
+                  {Math.round(ratedExchange * 10000) / 10000}
+                  {card.title}
+                </p>
               </div>
             </div>
           )}
