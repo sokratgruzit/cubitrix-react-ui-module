@@ -25,7 +25,6 @@ export const Exchange = ({
   setCard,
   ratedExchange,
 }) => {
-  const [cardsSelectOpen, setCardsSelectOpen] = useState(true);
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
 
@@ -65,13 +64,13 @@ export const Exchange = ({
             </div>
           </div>
 
-          {!cardsSelectOpen && (
+          {card && (
             <div className="exchange-accounts-card-container">
               <p className="font-12">Account</p>
               <div
                 className="exchange-accounts-card"
                 onClick={() => {
-                  setCardsSelectOpen(true);
+                  setCard(null);
                 }}
               >
                 <div className="exchange-account-titles">
@@ -100,7 +99,7 @@ export const Exchange = ({
             </div>
           )}
 
-          {cardsSelectOpen && (
+          {!card && (
             <div className="exchange-accounts-container">
               <h2>Choose the Account</h2>
               {accounts?.map((item, index) => (
@@ -109,7 +108,6 @@ export const Exchange = ({
                   key={index}
                   onClick={() => {
                     setCard(item);
-                    setCardsSelectOpen(false);
                   }}
                 >
                   <div className="exchange-account-titles">
@@ -125,7 +123,7 @@ export const Exchange = ({
             </div>
           )}
 
-          {!cardsSelectOpen && (
+          {card && (
             <div className="exchange-inputs-wrapper">
               <h3 className="font-20">Transfer Amount</h3>
               <div className="exchange-inputs">
@@ -180,7 +178,7 @@ export const Exchange = ({
               <div className="exchange-rate-card">
                 <h4 className="font-14">Rate</h4>
                 <p className="font-14">
-                  1 {accountType === "ATAR" ? "ATR" : accountType} ={" "}
+                  1 {accountType === "ATAR" ? "ATR" : accountType.toUpperCase()} ={" "}
                   {ratedExchange
                     ? Math.round((1 / ratedExchange) * 100000) / 100000
                     : "... "}
