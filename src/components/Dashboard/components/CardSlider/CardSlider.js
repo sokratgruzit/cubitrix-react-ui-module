@@ -218,7 +218,7 @@ export const CardSlider = ({
         >
           <SwiperSlide>
             <div className="card-slider-card">
-              <img src={cardImgs["cpl"]} className="card-slider-bg-img" />
+              <img src={cardImgs["atar"]} className="card-slider-bg-img" />
               <div className="card-slider-card_header-container">
                 <div className="card-slider-card_header">
                   <Account type={"atar"} />
