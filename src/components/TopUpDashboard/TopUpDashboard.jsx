@@ -82,7 +82,7 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            2. Set amount of CPL tokens you would like to purchase
+            2. Set amount of ATR tokens you would like to purchase
           </p>
           <p className="topupDashboard_info">
             Enter the amount you would like to contribute in order to calculate the amount
@@ -101,11 +101,11 @@ export const TopUpDashboard = ({
               customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
             />
             <div className="topupDashboard_inputOverlay">
-              <p className="topupDashboard_inputOverlay_text">CPL</p>
+              <p className="topupDashboard_inputOverlay_text">ATR</p>
             </div>
           </div>
 
-          <p className="topupDashboard_info-exchangeRate">1 CPL = {exchangeRate} USDT</p>
+          <p className="topupDashboard_info-exchangeRate">1 ATR = {exchangeRate} USDT</p>
           {tokenError && (
             <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
           )}
@@ -115,7 +115,7 @@ export const TopUpDashboard = ({
           <div className="topupDashboard_bottom-row">
             <p>Token Amount:</p>
             <p>
-              {tokenAmount} CPL = {tokenAmount * exchangeRate} USDT
+              {tokenAmount} ATR = {tokenAmount * exchangeRate} USDT
             </p>
           </div>
           <div className="topupDashboard_bottom-row">

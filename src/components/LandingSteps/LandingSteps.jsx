@@ -348,11 +348,11 @@ export const LandingSteps = ({
                   name={"referral"}
                 />
                 <div className="topupDashboard_inputOverlay">
-                  <p className="topupDashboard_inputOverlay_text">CPL</p>
+                  <p className="topupDashboard_inputOverlay_text">ATR</p>
                 </div>
               </div>
               <p className="topupDashboard_info-exchangeRate">
-                1 CPL = {exchangeRate} USDT
+                1 ATR = {exchangeRate} USDT
               </p>
 
               {tokenError && (
@@ -361,7 +361,7 @@ export const LandingSteps = ({
               <div className="topupDashboard_bottom-row topup_bottom-padding">
                 <p>Token Amount:</p>
                 <p>
-                  {tokenAmount} CPL = {tokenAmount * exchangeRate} USDT
+                  {tokenAmount} ATR = {tokenAmount * exchangeRate} USDT
                 </p>
               </div>
               <div className="topupDashboard_bottom-row">
