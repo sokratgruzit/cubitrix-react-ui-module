@@ -181,7 +181,9 @@ export const Exchange = ({
                 <h4 className="font-14">Rate</h4>
                 <p className="font-14">
                   1 {accountType === "ATAR" ? "ATR" : accountType} ={" "}
-                  {ratedExchange ? Math.round(ratedExchange * 10000) / 10000 : "..."}
+                  {ratedExchange
+                    ? Math.round((1 / ratedExchange) * 100000) / 100000
+                    : "... "}
                   {card.title}
                 </p>
               </div>
