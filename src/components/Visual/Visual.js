@@ -115,7 +115,12 @@ export const Visual = (props) => {
   }
   if (props.element === 'table-header') {
     element = (
-      <div style={props.customStyles} className="tb-head">
+      <div style={props.customStyles} className={`tb-head ${props.centerButtons ? 'tb-head-center' : ''}`}>
+          {props.centerButtons == true && (
+              <div className="left-panel-btns">
+                  {props.buttonsLeft}
+              </div>
+          )}
         <div className="left-panel">
           <h1 className={props.fontSize} style={props?.labelCustomStyles}>{props.label}</h1>
           {props.description && <p className="font-14">{props.description}</p>}

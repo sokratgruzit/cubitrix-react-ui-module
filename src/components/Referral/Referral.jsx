@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // components
 import { Visual } from '../Visual'
@@ -17,6 +17,8 @@ import './Referral.css'
 import { Button } from '../Button'
 import { ReferralCard } from '../ReferralCard'
 import { Footer } from '../Footer'
+import {InfoBox} from "../InfoBox";
+
 
 export const Referral = ({
   handleCreateCode,
@@ -39,11 +41,57 @@ export const Referral = ({
   referralCodePaginationTotal,
   referralCodePaginationEvent,
   referralTreeData,
+  referralTreeAddClick,
+  referralBinaryType,
+  referralTreeBtnsLeft,
+  referralTreeBtnsRight,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
-  const [referralBinaryType, setReferralBinaryType] = useState('table');
+  const [treeInfo, setTreeInfo] = useState(null);
+  const [animateTree, setAnimateTree] = useState(false);
+  const [activeTreeInfo, setActiveTreeInfo] = useState(null);
+
 
   const { width } = useMobileWidth()
+
+  let openTreeInfo = (item) => {
+    if(item.user_address !== null) {
+      setActiveTreeInfo(item.user_address);
+      let infoObject = [
+        {
+          title: "Name",
+          amount: item?.joinedAccountMetas[0].name,
+          icon: false
+        },
+        {
+          title: "Address",
+          amount: item?.joinedAccountMetas[0].address,
+          icon: false
+        },
+        {
+          title: "Level / Position",
+          amount: 'Lvl ' + item.lvl + '/' + item.side,
+          icon: false
+        },
+      ]
+      console.log(item.user_address)
+      console.log(activeTreeInfo)
+      setTreeInfo(infoObject);
+    }
+    if(item == null) {
+      setActiveTreeInfo(null);
+      setTreeInfo(null);
+    }
+  }
+
+  useEffect(() => {
+    if (referralBinaryType == 'visual') {
+      setAnimateTree(true)
+    }
+    else {
+      setAnimateTree(false)
+    }
+  }, [referralBinaryType])
 
   let mobileExpandFunc = id => {
     if (width <= 1300) {
@@ -56,52 +104,7 @@ export const Referral = ({
   }
 
 
-  const tableVisualMore = (
-    <div className={`referral-inner-table-more`}>
-      <div
-        className={`referral-table-more-svg ${referralBinaryType === 'visual' ? 'referral-table-more-svg_active' : ''}`}
-        onClick={() => setReferralBinaryType('visual')}
-      >
-        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path
-            d='M11.25 19C11.25 19.41 11.59 19.75 12 19.75C12.41 19.75 12.75 19.41 12.75 19L12.75 11.75L17 11.75C18.58 11.75 19.25 12.42 19.25 14L19.25 19C19.25 19.41 19.59 19.75 20 19.75C20.41 19.75 20.75 19.41 20.75 19L20.75 14C20.75 11.58 19.42 10.25 17 10.25L12.75 10.25L12.75 5C12.75 4.59 12.41 4.25 12 4.25C11.59 4.25 11.25 4.59 11.25 5L11.25 10.25L7 10.25C4.58 10.25 3.25 11.58 3.25 14L3.25 19C3.25 19.41 3.59 19.75 4 19.75C4.41 19.75 4.75 19.41 4.75 19L4.75 14C4.75 12.42 5.42 11.75 7 11.75L11.25 11.75L11.25 19Z'
-            fill='#B3B3B3'
-          />
-          <path
-            d='M9.75 20C9.75 20.5967 9.98705 21.169 10.409 21.591C10.831 22.0129 11.4033 22.25 12 22.25C12.5967 22.25 13.169 22.0129 13.591 21.591C14.0129 21.169 14.25 20.5967 14.25 20C14.25 19.4033 14.0129 18.831 13.591 18.409C13.169 17.9871 12.5967 17.75 12 17.75C11.4033 17.75 10.831 17.9871 10.409 18.409C9.98705 18.831 9.75 19.4033 9.75 20Z'
-            fill='white'
-          />
-          <path
-            d='M17.75 20C17.75 20.5967 17.9871 21.169 18.409 21.591C18.831 22.0129 19.4033 22.25 20 22.25C20.5967 22.25 21.169 22.0129 21.591 21.591C22.0129 21.169 22.25 20.5967 22.25 20C22.25 19.4033 22.0129 18.831 21.591 18.409C21.169 17.9871 20.5967 17.75 20 17.75C19.4033 17.75 18.831 17.9871 18.409 18.409C17.9871 18.831 17.75 19.4033 17.75 20Z'
-            fill='white'
-          />
-          <path
-            d='M1.75 20C1.75 20.2955 1.8082 20.5881 1.92127 20.861C2.03434 21.134 2.20008 21.3821 2.40901 21.591C2.61794 21.7999 2.86598 21.9657 3.13896 22.0787C3.41194 22.1918 3.70453 22.25 4 22.25C4.29547 22.25 4.58806 22.1918 4.86104 22.0787C5.13402 21.9657 5.38206 21.7999 5.59099 21.591C5.79992 21.3821 5.96566 21.134 6.07873 20.861C6.1918 20.5881 6.25 20.2955 6.25 20C6.25 19.4033 6.01295 18.831 5.59099 18.409C5.16903 17.9871 4.59674 17.75 4 17.75C3.40326 17.75 2.83097 17.9871 2.40901 18.409C1.98705 18.831 1.75 19.4033 1.75 20Z'
-            fill='white'
-          />
-          <path
-            d='M9.75 4C9.75 4.59674 9.98705 5.16903 10.409 5.59099C10.831 6.01295 11.4033 6.25 12 6.25C12.5967 6.25 13.169 6.01295 13.591 5.59099C14.0129 5.16903 14.25 4.59674 14.25 4C14.25 3.40326 14.0129 2.83097 13.591 2.40901C13.169 1.98705 12.5967 1.75 12 1.75C11.4033 1.75 10.831 1.98705 10.409 2.40901C9.98705 2.83097 9.75 3.40326 9.75 4Z'
-            fill='white'
-          />
-        </svg>
-      </div>
-      <div
-        className={`referral-table-more-svg ${referralBinaryType === 'table' ? 'referral-table-more-svg_active' : ''}`}
-        onClick={() => setReferralBinaryType('table')}
-      >
-        <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path
-            d='M19.9 13.5H4.1C2.6 13.5 2 14.14 2 15.73V19.77C2 21.36 2.6 22 4.1 22H19.9C21.4 22 22 21.36 22 19.77V15.73C22 14.14 21.4 13.5 19.9 13.5Z'
-            fill='#C38C5C'
-          />
-          <path
-            d='M19.9 2H4.1C2.6 2 2 2.64 2 4.23V8.27C2 9.86 2.6 10.5 4.1 10.5H19.9C21.4 10.5 22 9.86 22 8.27V4.23C22 2.64 21.4 2 19.9 2Z'
-            fill='white'
-          />
-        </svg>
-      </div>
-    </div>
-  )
+
 
   let mobile = width <= 1300
 
@@ -318,7 +321,23 @@ export const Referral = ({
       />
     </div>
   )
-
+  const rewardBox = [
+    {
+      title: "Current Stake",
+      amount: "1,220.2 CML",
+      icon: false
+    },
+    {
+      title: "Earn",
+      amount: "1,020 CML",
+      icon: false
+    },
+    {
+      title: "Claimed Reward",
+      amount: "1,132.1 CML",
+      icon: false
+    }
+  ]
   return (
     <div className='referral-main-wrap'>
       <div className={'referral-main'}>
@@ -356,119 +375,27 @@ export const Referral = ({
           </div>
           <div className='referral-content-bg' />
         </div>
-        <div className="referral-tree">
-          <h3>Binary Tree</h3>
-          <div className="referral-tree-main active">
-            <div className="referral-tree-item-level referral-tree-item-level-active">
-              <div className={`referral-tree-item`} style={{width: 100 + '%'}}>
-                <div className="referral-tree-btn">
-                  <div className="referral-tree-btn-out">
-                    <div className={`referral-tree-btn-img`}>
-                      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="hi"/>
-                    </div>
-                  </div>
-                  <div className={`referral-tree-btn-hash-out`}>
-                    <div className="referral-tree-btn-hash">
-                      <span>jkashdasd89asd80</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {referralTreeData?.map(item => {
-              return(
-                  <div className="referral-tree-item-level">
-                    <div className="referral-tree-lines">
-                      {item.documents.map((suItem, index) => {
-                        return(
-                            <>
-                              {index % 2 == 0 && (
-                                  <svg style={{width:  `calc(${100 / item.documents.length}% + 20px)`}} xmlns="http://www.w3.org/2000/svg" width="367" height="55" viewBox="0 0 367 55" fill="none">
-                                    <path d="M183.5 2V8C183.5 19.0457 174.546 28 163.5 28H128.25H26C14.9543 28 6 36.9543 6 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                    <path d="M183.5 2V8C183.5 19.0457 192.454 28 203.5 28H238.75H341C352.046 28 361 36.9543 361 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                    <circle cx="183.5" cy="4.5" r="4.5" fill="#C38C5C"/>
-                                    <line x1="1" y1="54" x2="11" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                    <line x1="356" y1="54" x2="366" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                  </svg>
-                              )}
-                            </>
-                        )
-                      })}
-                    </div>
-                    <div className="referral-tree-items">
-                      {item.documents.map((suItem,index) => {
-                        return(
-                            <>
-
-                              {suItem.position == 3 ? (
-                                  <div className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
-                                    <div className="referral-tree-btn referral-tree-btn-add">
-                                      <div className="referral-tree-btn-out">
-                                        <div className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
-                                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12.8947 5.89474H8.10526V1.10526C8.10526 0.501053 7.60421 0 7 0C6.39579 0 5.89474 0.501053 5.89474 1.10526V5.89474H1.10526C0.501053 5.89474 0 6.39579 0 7C0 7.60421 0.501053 8.10526 1.10526 8.10526H5.89474V12.8947C5.89474 13.4989 6.39579 14 7 14C7.60421 14 8.10526 13.4989 8.10526 12.8947V8.10526H12.8947C13.4989 8.10526 14 7.60421 14 7C14 6.39579 13.4989 5.89474 12.8947 5.89474Z" fill="#C38C5C"/>
-                                          </svg>
-                                        </div>
-                                      </div>
-                                      <div className={`referral-tree-btn-hash-out`}>
-                                        <div className="referral-tree-btn-hash">
-                                          <span>Add {index}</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                              ) : (
-                                  <div className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
-                                    <div className="referral-tree-btn">
-                                      <div className="referral-tree-btn-out">
-                                        <div className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
-                                          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="hi"/>
-                                        </div>
-                                      </div>
-                                      <div className={`referral-tree-btn-hash-out`}>
-                                        <div className="referral-tree-btn-hash">
-                                          <span>{index}jkashdasd89asd80</span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                              )}
-                            </>
-                        )
-                      })}
-                    </div>
-                  </div>
-              )
-            })}
-          </div>
-        </div>
         <div className='referral-binary-wrapper'>
-          {referralBinaryType === 'table' && (
-            <div className='referral-table-container'>
-              <Root className={'referral-table-bg-svg'} />
-              <Table
+          <div className='referral-table-container'>
+            <Table
                 tableHeadMore={
                   <div className='dashboard-table-header-container'>
                     <Visual
-                      element={'table-header'}
-                      label={'Binary Tree'}
-                      description={`Total Downline Members: ${totalBinaryMembers}`}
-                      fontSize={'font-20'}
-                      customStyles={{ border: 'none', padding: '0' }}
-                      buttons={tableVisualMore}
-                      labelCustomStyles={{ color: '#C38C5C' }}
+                        element={'table-header'}
+                        label={'Binary Tree'}
+                        description={`Total Downline Members: ${totalBinaryMembers}`}
+                        fontSize={'font-20'}
+                        customStyles={{ border: 'none', padding: '0' }}
+                        buttons={referralTreeBtnsRight}
+                        labelCustomStyles={{ color: '#C38C5C' }}
+                        centerButtons={true}
+                        buttonsLeft={referralTreeBtnsLeft}
                     />
                   </div>
                 }
                 tableData={codesTableData?.length ? referralCodeTableData : false}
                 tableFooter={tableFooterPagination}
                 tableHead={referralCodeTableHead}
-                customStyles={{
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '20px',
-                  zIndex: '1',
-                  position: 'relative',
-                }}
                 customHeadStyles={{
                   background: 'none',
                   padding: '10px 20px',
@@ -480,10 +407,125 @@ export const Referral = ({
                 }}
                 tableEmptyData={referralBinaryTableEmpty}
                 loading={false}
-              />
-            </div>
-          )}
-          {referralBinaryType === 'visual' && <div>hi</div>}
+                tableEmulator={
+                  referralBinaryType === 'visual' ?  (
+                      <div className="referral-tree">
+                        <div className={`referral-tree-main ${animateTree ? 'active' : ''}`}>
+                          <div className="referral-tree-item-level referral-tree-item-level-active">
+                            <div className={`referral-tree-item`} style={{width: 100 + '%'}}>
+                              <div className="referral-tree-btn">
+                                <div className="referral-tree-item-level-active-back">
+                                   <span>
+                                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.4527 5.64648H3.54603C2.98603 5.64648 2.70603 6.32315 3.1027 6.71982L6.12436 9.74148C6.60853 10.2257 7.39603 10.2257 7.8802 9.74148L9.02937 8.59232L10.9019 6.71982C11.2927 6.32315 11.0127 5.64648 10.4527 5.64648Z" fill="#C38C5C"/>
+                                      </svg>
+                                    Back
+                                   </span>
+                                </div>
+                                <div className="referral-tree-btn-out">
+                                  <div className={`referral-tree-btn-img`}>
+                                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="hi"/>
+                                  </div>
+                                </div>
+                                <div className={`referral-tree-btn-hash-out`}>
+                                  <div className="referral-tree-btn-hash">
+                                    <span>jkashdasd89asd80</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {referralTreeData?.map((item,index) => {
+                            return(
+                                <div className="referral-tree-item-level" key={item}>
+                                  <div className="referral-tree-lines">
+                                    {item.documents.map((suItem, index) => {
+                                      return(
+                                          <>
+                                            {index % 2 == 0 && (
+                                                <svg key={suItem} className={suItem.type == 'nothing' ? 'hide' : ''} style={{width:  `calc(${100 / item.documents.length}% + 20px)`}} xmlns="http://www.w3.org/2000/svg" width="367" height="55" viewBox="0 0 367 55" fill="none">
+                                                  <path d="M183.5 2V8C183.5 19.0457 174.546 28 163.5 28H128.25H26C14.9543 28 6 36.9543 6 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                  <path d="M183.5 2V8C183.5 19.0457 192.454 28 203.5 28H238.75H341C352.046 28 361 36.9543 361 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                  <circle cx="183.5" cy="4.5" r="4.5" fill="#C38C5C"/>
+                                                  <line x1="1" y1="54" x2="11" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                  <line x1="356" y1="54" x2="366" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                </svg>
+                                            )}
+                                          </>
+                                      )
+                                    })}
+                                  </div>
+                                  <div className="referral-tree-items">
+                                    {item.documents.map((suItem,index) => {
+                                      return(
+                                          <>
+                                            {suItem.type == 'missing' && (
+                                                <div className={`referral-tree-item`}
+                                                     style={{width: 100 / item.documents.length + '%'}}>
+                                                  <div className="referral-tree-btn referral-tree-btn-add">
+                                                    <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl,suItem.lvl)}}>
+                                                      <div
+                                                          className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
+                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                          <path
+                                                              d="M12.8947 5.89474H8.10526V1.10526C8.10526 0.501053 7.60421 0 7 0C6.39579 0 5.89474 0.501053 5.89474 1.10526V5.89474H1.10526C0.501053 5.89474 0 6.39579 0 7C0 7.60421 0.501053 8.10526 1.10526 8.10526H5.89474V12.8947C5.89474 13.4989 6.39579 14 7 14C7.60421 14 8.10526 13.4989 8.10526 12.8947V8.10526H12.8947C13.4989 8.10526 14 7.60421 14 7C14 6.39579 13.4989 5.89474 12.8947 5.89474Z"
+                                                              fill="#C38C5C"/>
+                                                        </svg>
+                                                      </div>
+                                                    </div>
+                                                    <div className={`referral-tree-btn-hash-out`}>
+                                                      <div className="referral-tree-btn-hash">
+                                                        <span>Add {index}</span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            )}
+                                            {!suItem.type && (
+                                                <div className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
+                                                  <div className={`referral-tree-btn`} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(false)}}>
+                                                    {treeInfo !== null && (
+                                                        <div className="referral-tree-info" style={suItem.side == 'left' ? {left: '120px'} : {right: '120px'}}>
+                                                          <InfoBox
+                                                              type="reward-box"
+                                                              active={activeTreeInfo == suItem.user_address ? true : false}
+                                                              cardBody={treeInfo}
+                                                              customStyle={{width: '100%'}}
+                                                          />
+                                                        </div>
+                                                    )}
+
+                                                    <div className="referral-tree-btn-out">
+                                                      <div className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
+                                                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="hi"/>
+                                                      </div>
+                                                    </div>
+                                                    <div className={`referral-tree-btn-hash-out`}>
+                                                      <div className="referral-tree-btn-hash">
+                                                        <span>{index}jkashdasd89asd80</span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            )}
+                                            {suItem.type == 'nothing' && (
+                                                <div className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
+                                                </div>
+                                            )}
+                                          </>
+                                      )
+                                    })}
+                                  </div>
+                                </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                  ) : false
+                }
+            />
+          </div>
         </div>
         <div className='referral-tables-container'>
           {tables?.map((item, index) => (

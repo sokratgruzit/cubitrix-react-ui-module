@@ -130,22 +130,17 @@
   cursor: pointer;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   border-radius: 45px;
-  border: none;
   border: 1px solid #10282b;
 }
 
 .referral-table-more-svg:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.referral-table-more-svg_active {
   border: 1px solid rgba(255, 255, 255, 0.05);
-  background: #0e2225;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  background: #C38C5C;
 }
 
-.referral-table-more-svg_active:hover {
-  background: #0e2225;
+.referral-table-more-svg_active,.referral-table-more-svg_active:hover {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #C38C5C;
 }
 
 .referral-binary-wrapper {
@@ -177,14 +172,15 @@
   position: relative;
   cursor: pointer;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  max-height: 0px;
-  overflow: hidden;
-  transition-delay: .8s;
+  /*max-height: 0px;*/
+  /*overflow: hidden;*/
+  transition-delay: 1.2s;
+  justify-content: center;
 }
-.referral-tree-main.active .referral-tree-btn {
-  max-height: 500px;
-  transition-delay: 0s;
-}
+/*.referral-tree-main.active .referral-tree-btn {*/
+/*  max-height: 500px;*/
+/*  transition-delay: 0s;*/
+/*}*/
 .referral-tree-btn-img {
   display: flex;
   width: 70px;
@@ -264,14 +260,14 @@
   width: 100%;
   justify-content: space-around;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  max-height: 0px;
-  overflow: hidden;
-  transition-delay: .8s;
+  /*max-height: 0px;*/
+  /*overflow: hidden;*/
+  transition-delay: 1.2s;
 }
-.referral-tree-main.active .referral-tree-lines {
-  max-height: 500px;
-  transition-delay: 0s;
-}
+/*.referral-tree-main.active .referral-tree-lines {*/
+/*  max-height: 500px;*/
+/*  transition-delay: 0s;*/
+/*}*/
 .referral-tree-btn-add svg{
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
@@ -295,13 +291,13 @@
   opacity: 1;
 }
 .referral-tree-main .referral-tree-item-level:nth-child(1) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(1) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(1) .referral-tree-btn-hash-out {
-  transition-delay: .4s;
+  transition-delay: 1s;
 }
 .referral-tree-main .referral-tree-item-level:nth-child(2) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(2) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(2) .referral-tree-btn-hash-out {
-  transition-delay: .3s;
+  transition-delay: .7s;
 }
 .referral-tree-main .referral-tree-item-level:nth-child(3) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(3) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(3) .referral-tree-btn-hash-out {
-  transition-delay: .2s;
+  transition-delay: .4s;
 }
 .referral-tree-main .referral-tree-item-level:nth-child(4) .referral-tree-lines > svg,.referral-tree-main .referral-tree-item-level:nth-child(4) .referral-tree-btn-out,.referral-tree-main .referral-tree-item-level:nth-child(4) .referral-tree-btn-hash-out {
   transition-delay: .1s;
@@ -312,13 +308,13 @@
   transition-delay: .1s;
 }
 .referral-tree-main.active .referral-tree-item-level:nth-child(2) .referral-tree-lines > svg,.referral-tree-main.active .referral-tree-item-level:nth-child(2) .referral-tree-btn-out,.referral-tree-main.active .referral-tree-item-level:nth-child(2) .referral-tree-btn-hash-out {
-  transition-delay: .2s;
+  transition-delay: .4s;
 }
 .referral-tree-main.active .referral-tree-item-level:nth-child(3) .referral-tree-lines > svg,.referral-tree-main.active .referral-tree-item-level:nth-child(3) .referral-tree-btn-out,.referral-tree-main.active .referral-tree-item-level:nth-child(3) .referral-tree-btn-hash-out {
-  transition-delay: .3s;
+  transition-delay: .7s;
 }
 .referral-tree-main.active .referral-tree-item-level:nth-child(4) .referral-tree-lines > svg,.referral-tree-main.active .referral-tree-item-level:nth-child(4) .referral-tree-btn-out,.referral-tree-main.active .referral-tree-item-level:nth-child(4) .referral-tree-btn-hash-out {
-  transition-delay: .4s;
+  transition-delay: 1s;
 }
 .referral-tree-btn-out {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
@@ -337,6 +333,44 @@
 .referral-tree-main.active .referral-tree-btn-hash-out {
   transform: translateY(0px);
   opacity: 1;
+}
+svg.hide {
+  opacity: 0!important;
+}
+.referral-tree-item-level-active-back {
+  display: flex;
+  align-items: center;
+  border-radius: 45px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0px 6px;
+  margin-bottom: 5px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  opacity: 0;
+}
+.referral-tree-item-level-active-back svg {
+  transform: rotate(90deg) translateX(2px);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.referral-tree-item-level-active .referral-tree-btn:hover .referral-tree-item-level-active-back{
+  border-color: rgba(195, 140, 92, 0.60);
+  opacity: 1;
+}
+.referral-tree-item-level-active .referral-tree-btn:hover .referral-tree-item-level-active-back svg{
+  border-color: rgba(195, 140, 92, 0.60);
+  transform: rotate(90deg) translateX(2px) translateY(2px)!important;
+}
+.referral-tree-info {
+  position: absolute;
+  width: 380px;
+  z-index: 5;
+  pointer-events: none;
+}
+.referral-table-container {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  z-index: 1;
+  position: relative;
 }
 @media only screen and (max-width: 1025px) {
   .referral-cards-container {

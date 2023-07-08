@@ -28,6 +28,7 @@ stories.add('Referral', () => {
   const [codesPaginationTotal, setCodesPaginationTotal] = useState(1)
   const [rebatesPaginationTotal, setRebatesPaginationTotal] = useState(1)
   const [referralType, setReferralType] = useState('binary')
+  const [referralBinaryType, setReferralBinaryType] = useState('visual');
 
   const [referralTotal, setReferralTotal] = useState({
     rebatesUniLevel: 0,
@@ -41,7 +42,63 @@ stories.add('Referral', () => {
 
   const handleCreateCode = () => setCreateCodePopupActive(true)
   const handleLevelSystem = () => setLevelSystemPopupActive(true)
+  let tableVisualType = (
+      <div className={`referral-inner-table-more`}>
+        <div
+            className={`referral-table-more-svg ${referralBinaryType === 'visual' ? 'referral-table-more-svg_active' : ''}`}
+            onClick={() => setReferralBinaryType('visual')}
+        >
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path
+                d='M11.25 19C11.25 19.41 11.59 19.75 12 19.75C12.41 19.75 12.75 19.41 12.75 19L12.75 11.75L17 11.75C18.58 11.75 19.25 12.42 19.25 14L19.25 19C19.25 19.41 19.59 19.75 20 19.75C20.41 19.75 20.75 19.41 20.75 19L20.75 14C20.75 11.58 19.42 10.25 17 10.25L12.75 10.25L12.75 5C12.75 4.59 12.41 4.25 12 4.25C11.59 4.25 11.25 4.59 11.25 5L11.25 10.25L7 10.25C4.58 10.25 3.25 11.58 3.25 14L3.25 19C3.25 19.41 3.59 19.75 4 19.75C4.41 19.75 4.75 19.41 4.75 19L4.75 14C4.75 12.42 5.42 11.75 7 11.75L11.25 11.75L11.25 19Z'
+                fill='#B3B3B3'
+            />
+            <path
+                d='M9.75 20C9.75 20.5967 9.98705 21.169 10.409 21.591C10.831 22.0129 11.4033 22.25 12 22.25C12.5967 22.25 13.169 22.0129 13.591 21.591C14.0129 21.169 14.25 20.5967 14.25 20C14.25 19.4033 14.0129 18.831 13.591 18.409C13.169 17.9871 12.5967 17.75 12 17.75C11.4033 17.75 10.831 17.9871 10.409 18.409C9.98705 18.831 9.75 19.4033 9.75 20Z'
+                fill='white'
+            />
+            <path
+                d='M17.75 20C17.75 20.5967 17.9871 21.169 18.409 21.591C18.831 22.0129 19.4033 22.25 20 22.25C20.5967 22.25 21.169 22.0129 21.591 21.591C22.0129 21.169 22.25 20.5967 22.25 20C22.25 19.4033 22.0129 18.831 21.591 18.409C21.169 17.9871 20.5967 17.75 20 17.75C19.4033 17.75 18.831 17.9871 18.409 18.409C17.9871 18.831 17.75 19.4033 17.75 20Z'
+                fill='white'
+            />
+            <path
+                d='M1.75 20C1.75 20.2955 1.8082 20.5881 1.92127 20.861C2.03434 21.134 2.20008 21.3821 2.40901 21.591C2.61794 21.7999 2.86598 21.9657 3.13896 22.0787C3.41194 22.1918 3.70453 22.25 4 22.25C4.29547 22.25 4.58806 22.1918 4.86104 22.0787C5.13402 21.9657 5.38206 21.7999 5.59099 21.591C5.79992 21.3821 5.96566 21.134 6.07873 20.861C6.1918 20.5881 6.25 20.2955 6.25 20C6.25 19.4033 6.01295 18.831 5.59099 18.409C5.16903 17.9871 4.59674 17.75 4 17.75C3.40326 17.75 2.83097 17.9871 2.40901 18.409C1.98705 18.831 1.75 19.4033 1.75 20Z'
+                fill='white'
+            />
+            <path
+                d='M9.75 4C9.75 4.59674 9.98705 5.16903 10.409 5.59099C10.831 6.01295 11.4033 6.25 12 6.25C12.5967 6.25 13.169 6.01295 13.591 5.59099C14.0129 5.16903 14.25 4.59674 14.25 4C14.25 3.40326 14.0129 2.83097 13.591 2.40901C13.169 1.98705 12.5967 1.75 12 1.75C11.4033 1.75 10.831 1.98705 10.409 2.40901C9.98705 2.83097 9.75 3.40326 9.75 4Z'
+                fill='white'
+            />
+          </svg>
+        </div>
+        <div
+            className={`referral-table-more-svg ${referralBinaryType === 'table' ? 'referral-table-more-svg_active' : ''}`}
+            onClick={() => setReferralBinaryType('table')}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.9 13.5H4.1C2.6 13.5 2 14.14 2 15.73V19.77C2 21.36 2.6 22 4.1 22H19.9C21.4 22 22 21.36 22 19.77V15.73C22 14.14 21.4 13.5 19.9 13.5Z" fill="#B3B3B3"/>
+            <path d="M19.9 2H4.1C2.6 2 2 2.64 2 4.23V8.27C2 9.86 2.6 10.5 4.1 10.5H19.9C21.4 10.5 22 9.86 22 8.27V4.23C22 2.64 21.4 2 19.9 2Z" fill="white"/>
+          </svg>
 
+        </div>
+      </div>
+  )
+  let tableType = (
+      <div className={`referral-inner-table-more`}>
+        <div
+            className={`referral-table-more-svg ${referralBinaryType === 'visual' ? 'referral-table-more-svg_active' : ''}`}
+            onClick={() => setReferralBinaryType('visual')}
+        >
+          Uni
+        </div>
+        <div
+            className={`referral-table-more-svg ${referralBinaryType === 'table' ? 'referral-table-more-svg_active' : ''}`}
+            onClick={() => setReferralBinaryType('table')}
+        >
+          Binary
+        </div>
+      </div>
+  )
   const referralCards = [
     {
       id: '001231',
@@ -436,7 +493,7 @@ stories.add('Referral', () => {
 
   const referralTree = [
     {
-      "_id": 1,
+      "lvl": 1,
       "documents": [
         {
           "_id": "649ede8a6060d3a02f6fe7a7",
@@ -450,10 +507,11 @@ stories.add('Referral', () => {
           "__v": 0,
           "joinedAccounts": [
             {
-              "_id": "649ff133bd94c3cbc97c5e32",
+              "_id": "64a68d7f5d26597e1e8aff99",
               "address": "2",
-              "account_category": "system",
-              "account_owner": "0xa3403975861b601ae111b4eeafba94060a58d0ca",
+              "balance": 0,
+              "account_category": "main",
+              "account_owner": "0x6b5c302b9b0d3d58739b79e660dde784e3bbb603",
               "active": false,
               "assets": {
                 "btc": 0,
@@ -462,13 +520,14 @@ stories.add('Referral', () => {
                 "gold": 0,
                 "platinium": 0
               },
-              "createdAt": "2023-06-30T10:17:03.477Z",
-              "updatedAt": "2023-06-30T10:17:03.477Z",
+              "step": 4,
+              "createdAt": "2023-07-05T08:29:39.642Z",
+              "updatedAt": "2023-07-05T15:06:30.708Z",
               "extensions": {
                 "trade": "false",
                 "loan": "false",
                 "notify": "false",
-                "staking": "false",
+                "staking": "true",
                 "referral": "false",
                 "connect": "false"
               },
@@ -477,13 +536,13 @@ stories.add('Referral', () => {
           ],
           "joinedAccountMetas": [
             {
-              "_id": "649d85f1ee625f28d10b6a2f",
-              "address": "0xa3403975861b601ae111b4eeafba94060a58d0ca",
-              "createdAt": "2023-06-29T13:24:01.951Z",
-              "updatedAt": "2023-06-29T13:24:42.699Z",
+              "_id": "64a529f3f93bbcd9379f39c3",
+              "address": "0x6b5c302b9b0d3d58739b79e660dde784e3bbb603",
+              "createdAt": "2023-07-05T08:29:39.736Z",
+              "updatedAt": "2023-07-05T12:26:17.849Z",
               "__v": 0,
-              "email": "okradze@gmail.com",
-              "name": "goga"
+              "email": "api.websocket@gmail.com",
+              "name": "websocket_api"
             }
           ]
         },
@@ -497,13 +556,51 @@ stories.add('Referral', () => {
           "createdAt": "2023-06-30T13:54:22.391Z",
           "updatedAt": "2023-06-30T13:54:22.391Z",
           "__v": 0,
-          "joinedAccounts": [],
-          "joinedAccountMetas": []
+          "joinedAccounts": [
+            {
+              "_id": "64a68d7f5d26597e1e8aff99",
+              "address": "2",
+              "balance": 0,
+              "account_category": "main",
+              "account_owner": "0x6b5c302b9b0d3d58739b79e660dde784e3bbb603",
+              "active": false,
+              "assets": {
+                "btc": 0,
+                "eth": 0,
+                "usdt": 0,
+                "gold": 0,
+                "platinium": 0
+              },
+              "step": 4,
+              "createdAt": "2023-07-05T08:29:39.642Z",
+              "updatedAt": "2023-07-05T15:06:30.708Z",
+              "extensions": {
+                "trade": "false",
+                "loan": "false",
+                "notify": "false",
+                "staking": "true",
+                "referral": "false",
+                "connect": "false"
+              },
+              "__v": 0
+            }
+          ],
+          "joinedAccountMetas": [
+            {
+              "_id": "64a529f3f93bbcd9379f39c3",
+              "address": "0x6b5c302b9b0d3d58739b79e660dde784e3bbb603",
+              "createdAt": "2023-07-05T08:29:39.736Z",
+              "updatedAt": "2023-07-05T12:26:17.849Z",
+              "__v": 0,
+              "email": "api.websocket@gmail.com",
+              "name": "websocket_api"
+            }
+          ]
         }
       ]
     },
     {
-      "_id": 2,
+      "lvl": 2,
       "documents": [
         {
           "_id": "649ede956060d3a02f6fe7b6",
@@ -515,8 +612,46 @@ stories.add('Referral', () => {
           "createdAt": "2023-06-30T13:54:29.638Z",
           "updatedAt": "2023-06-30T13:54:29.638Z",
           "__v": 0,
-          "joinedAccounts": [],
-          "joinedAccountMetas": []
+          "joinedAccounts": [
+            {
+              "_id": "64a68d7f5d26597e1e8aff99",
+              "address": "2",
+              "balance": 0,
+              "account_category": "main",
+              "account_owner": "0x6b5c302b9b0d3d58739b79e660dde784e3bbb603",
+              "active": false,
+              "assets": {
+                "btc": 0,
+                "eth": 0,
+                "usdt": 0,
+                "gold": 0,
+                "platinium": 0
+              },
+              "step": 4,
+              "createdAt": "2023-07-05T08:29:39.642Z",
+              "updatedAt": "2023-07-05T15:06:30.708Z",
+              "extensions": {
+                "trade": "false",
+                "loan": "false",
+                "notify": "false",
+                "staking": "true",
+                "referral": "false",
+                "connect": "false"
+              },
+              "__v": 0
+            }
+          ],
+          "joinedAccountMetas": [
+            {
+              "_id": "64a529f3f93bbcd9379f39c3",
+              "address": "0x6b5c302b9b0d3d58739b79e660dde784e3bbb603",
+              "createdAt": "2023-07-05T08:29:39.736Z",
+              "updatedAt": "2023-07-05T12:26:17.849Z",
+              "__v": 0,
+              "email": "api.websocket@gmail.com",
+              "name": "websocket_api"
+            }
+          ]
         },
         {
           "_id": "649ede9b6060d3a02f6fe7c0",
@@ -531,19 +666,11 @@ stories.add('Referral', () => {
           "joinedAccounts": [],
           "joinedAccountMetas": []
         },
-        // {
-        //   "_id": "649edea16060d3a02f6fe7ca",
-        //   "referral_address": "1",
-        //   "lvl": 2,
-        //   "side": "right",
-        //   "user_address": "6",
-        //   "position": 3,
-        //   "createdAt": "2023-06-30T13:54:41.767Z",
-        //   "updatedAt": "2023-06-30T13:54:41.767Z",
-        //   "__v": 0,
-        //   "joinedAccounts": [],
-        //   "joinedAccountMetas": []
-        // },
+        {
+          "lvl": 2,
+          "position": 3,
+          "type": "missing"
+        },
         {
           "_id": "649edea56060d3a02f6fe7d4",
           "referral_address": "1",
@@ -560,7 +687,7 @@ stories.add('Referral', () => {
       ]
     },
     {
-      "_id": 3,
+      "lvl": 3,
       "documents": [
         {
           "_id": "649edeac6060d3a02f6fe7e2",
@@ -614,32 +741,16 @@ stories.add('Referral', () => {
           "joinedAccounts": [],
           "joinedAccountMetas": []
         },
-        // {
-        //   "_id": "649edecd6060d3a02f6fe81a",
-        //   "referral_address": "1",
-        //   "lvl": 3,
-        //   "side": "right",
-        //   "user_address": "12",
-        //   "position": 5,
-        //   "createdAt": "2023-06-30T13:55:25.186Z",
-        //   "updatedAt": "2023-06-30T13:55:25.186Z",
-        //   "__v": 0,
-        //   "joinedAccounts": [],
-        //   "joinedAccountMetas": []
-        // },
-        // {
-        //   "_id": "649eded36060d3a02f6fe828",
-        //   "referral_address": "1",
-        //   "lvl": 3,
-        //   "side": "right",
-        //   "user_address": "13",
-        //   "position": 6,
-        //   "createdAt": "2023-06-30T13:55:31.124Z",
-        //   "updatedAt": "2023-06-30T13:55:31.124Z",
-        //   "__v": 0,
-        //   "joinedAccounts": [],
-        //   "joinedAccountMetas": []
-        // },
+        {
+          "lvl": 3,
+          "position": 5,
+          "type": "nothing"
+        },
+        {
+          "lvl": 3,
+          "position": 6,
+          "type": "nothing"
+        },
         {
           "_id": "649eded96060d3a02f6fe836",
           "referral_address": "1",
@@ -669,6 +780,10 @@ stories.add('Referral', () => {
       ]
     }
   ]
+  let referralTreeAdd = (address,lvl) => {
+    console.log(address)
+    console.log(lvl)
+  }
   return (
     <BrowserRouter>
       <Header
@@ -807,7 +922,11 @@ stories.add('Referral', () => {
       <Referral
         cards={referralCards}
         handleCreateCode={handleCreateCode}
+        referralBinaryType={referralBinaryType}
+        referralTreeBtnsLeft={tableVisualType}
+        referralTreeBtnsRight={tableType}
         referralTreeData={referralTree}
+        referralTreeAddClick={referralTreeAdd}
         referralHistoryTableHead={referralHistoryTh}
         rebatesTableData={rebatesTableData}
         referralCodeTableHead={referralCodeTh}

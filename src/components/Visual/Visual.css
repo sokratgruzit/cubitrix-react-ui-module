@@ -104,3 +104,6 @@
   color: #9c9da3;
   max-width: 500px;
 }
+.tb-head-center .left-panel {
+  text-align: center;
+}
