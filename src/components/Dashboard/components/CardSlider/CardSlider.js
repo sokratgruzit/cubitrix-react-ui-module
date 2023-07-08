@@ -218,18 +218,26 @@ export const CardSlider = ({
         >
           <SwiperSlide>
             <div className="card-slider-card">
-              <img src={cardImgs["cpl"]} className="card-slider-bg-img" />
+              <img src={cardImgs["atar"]} className="card-slider-bg-img" />
               <div className="card-slider-card_header-container">
                 <div className="card-slider-card_header">
-                  <Account type={"cpl"} />
-                  <h4 className="font-16">ATAR account</h4>
+                  <Account type={"atar"} />
+                  <h4 className="font-16">
+                    {accountType === "main" ? "ATAR" : accountType.toUpperCase()}
+                  </h4>
                 </div>
                 <p className="card-slider-card_content">{mainAcc?.balance?.toFixed(2)}</p>
               </div>
               <div className="card-slider-card_footer">
                 {cardFooterData?.map((item, index) => {
                   if (accountType === "main" && item.title === "Withdraw") return;
-                  if (accountType !== "main" && item.title === "Deposit") return;
+                  if (
+                    accountType !== "main" &&
+                    (item.title === "Deposit" ||
+                      item.title === "Withdraw" ||
+                      item.title === "Exchange")
+                  )
+                    return;
 
                   return (
                     <div
@@ -247,7 +255,7 @@ export const CardSlider = ({
                         } else if (item.title === "Transfer") {
                           handleTransfer(mainAcc);
                         } else if (item.title === "Exchange") {
-                          handleExchange(mainAcc);
+                          handleExchange(mainAcc, "ATAR");
                         }
                       }}
                     >
@@ -263,18 +271,22 @@ export const CardSlider = ({
             Object.entries(assets)?.map(([key, value], index) => {
               return (
                 <SwiperSlide key={index}>
-                  <div className="card-slider-card">
+                  <div
+                    className={`card-slider-card ${
+                      value === 0 ? "card-slider-faded" : ""
+                    }`}
+                  >
                     <img src={cardImgs[key]} className="card-slider-bg-img" />
                     <div className="card-slider-card_header-container">
                       <div className="card-slider-card_header">
                         <Account type={key} />
-                        <h4 className="font-16">{key.toUpperCase()} account</h4>
+                        <h4 className="font-16">{key.toUpperCase()}</h4>
                       </div>
                       <p className="card-slider-card_content">{value?.toFixed(2)}</p>
                     </div>
                     <div className="card-slider-card_footer">
                       {cardFooterData?.map((item, footerIndex) => {
-                        if (item.title === "Deposit") return;
+                        if (item.title === "Deposit" || item.title === "Transfer") return;
 
                         return (
                           <div
@@ -286,7 +298,7 @@ export const CardSlider = ({
                               } else if (item.title === "Withdraw") {
                                 handleWithdraw(accountsData[index]);
                               } else if (item.title === "Exchange") {
-                                handleExchange(accountsData[index]);
+                                handleExchange(accountsData[index], key);
                               } else if (item.title === "Transfer") {
                                 handleTransfer(accountsData[index]);
                               }

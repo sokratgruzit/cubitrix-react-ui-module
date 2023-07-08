@@ -20,18 +20,14 @@ stories.add("HelpCard", (props) => {
         body={"normal"}
         onClick={closeHandler}
         active={active}
-        content={
-          "your text your text your text your text your text your text your text"
-        }
+        content={"your text your text your text your text your text your text your text"}
         title={"Help Text"}
       />
       <HelpCard
         status={"warning"}
         color={"#FFA726"}
         title={"Help Text"}
-        content={
-          "your text your text your text your text your text your text your text"
-        }
+        content={"your text your text your text your text your text your text your text"}
         body={"normal"}
         active={active}
         onClick={closeHandler}
@@ -39,10 +35,8 @@ stories.add("HelpCard", (props) => {
       <HelpCard
         status={"error"}
         title={"Help Text"}
-        color={"#EF5350"}
-        content={
-          "your text your text your text your text your text your text your text"
-        }
+        color={"#FF0C46"}
+        content={"your text your text your text your text your text your text your text"}
         body={"normal"}
         active={active}
         onClick={closeHandler}
@@ -53,9 +47,7 @@ stories.add("HelpCard", (props) => {
         body={"normal"}
         onClick={closeHandler}
         active={active}
-        content={
-          "your text your text your text your text your text your text your text"
-        }
+        content={"your text your text your text your text your text your text your text"}
         title={"Help Text"}
       />
       {/* without text  */}
@@ -77,7 +69,7 @@ stories.add("HelpCard", (props) => {
       />
       <HelpCard
         status={"error"}
-        color={"#EF5350"}
+        color={"#FF0C46"}
         body={false}
         onClick={closeHandler}
         active={active}
@@ -110,7 +102,7 @@ stories.add("HelpCard", (props) => {
       />
       <HelpCard
         status={"error"}
-        color={"#EF5350"}
+        color={"#FF0C46"}
         body={"long"}
         onClick={closeHandler}
         active={active}

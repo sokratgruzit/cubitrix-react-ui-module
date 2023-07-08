@@ -176,7 +176,7 @@ export const UserAccount = ({
             editable={true}
           />
           {emailError && (
-            <HelpText status={"error"} title={emailError} color={"#EF5350"} icon={true} />
+            <HelpText status={"error"} title={emailError} color={"#FF0C46"} icon={true} />
           )}
           <HelpText
             className="margin-top-negative"
@@ -255,7 +255,7 @@ export const UserAccount = ({
             <HelpText
               status={"error"}
               title={personalDataState?.error}
-              color={"#EF5350"}
+              color={"#FF0C46"}
               icon={true}
             />
           )}
@@ -291,7 +291,7 @@ export const UserAccount = ({
                 className="margin-top-negative"
                 status={"error"}
                 title={securityFormErrors.newPassword}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}
@@ -310,7 +310,7 @@ export const UserAccount = ({
                 className="margin-top-negative"
                 status={"error"}
                 title={securityFormErrors.confirmPassword}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}
@@ -361,7 +361,7 @@ export const UserAccount = ({
               <HelpText
                 status={"error"}
                 title={securityDataState.error}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}

@@ -350,14 +350,14 @@ stories.add("Input", (props) => {
         // onChange={(e) => console.log(e.target.value)}
         // value={'sad'}
         // readOnly={true}
-        name={'textarea input'}
+        name={"textarea input"}
         rows={10}
         cols={20}
         // disabled={true}
-        placeholder={'nice textarea ?'}
+        placeholder={"nice textarea ?"}
         // autoFocus={true}
         // emptyFieldErr={true}
-        resize={'both'}
+        resize={"both"}
         // maxLength={2}
         statusCard={
           <HelpText
@@ -408,7 +408,7 @@ stories.add("Input", (props) => {
         btns={btnArr}
         icon={false}
         status={"error"}
-        color={"#EF5350"}
+        color={"#FF0C46"}
         customStyles={{ width: "320px" }}
       /> */}
       {/* <Input

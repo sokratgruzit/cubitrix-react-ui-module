@@ -367,6 +367,7 @@ stories.add("LandingSteps", () => {
             handleSubmit={() => console.log(currentObject.amount, timeperiodDate)}
             inputs={inputs}
             currentObject={currentObject}
+            isAllowance={true}
           />
         </div>
         <SideBar open={toggle}>

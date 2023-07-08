@@ -404,7 +404,7 @@ stories.add("Dashboard", () => {
     eth: "dsadsadsa",
     usdt: "dsadsadsa",
     gold: "dsadsadsa",
-    platinium: "dsadsadsa",
+    platinum: "dsadsadsa",
   };
 
   return (
@@ -571,6 +571,7 @@ stories.add("Dashboard", () => {
           handleExchange={() => console.log("hi")}
           handleWithdraw={() => console.log("hi")}
           handleTransfer={() => console.log("hi")}
+          accountType={"main"}
         />
       </DashboardSharedLayout>
     </BrowserRouter>
