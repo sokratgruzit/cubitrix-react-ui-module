@@ -50,7 +50,7 @@ svg path {
 }
 
 .tabs {
-  width: 745px;
+  width: fit-content;
   background: #070b1a;
   border-radius: 8px;
   height: 44px;
