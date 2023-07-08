@@ -55,17 +55,22 @@ export const Referral = ({
   const { width } = useMobileWidth()
 
   let openTreeInfo = (item) => {
+    if(item == null) {
+      setActiveTreeInfo(null);
+      setTreeInfo(null);
+      return false
+    }
     if(item.user_address !== null) {
       setActiveTreeInfo(item.user_address);
       let infoObject = [
         {
           title: "Name",
-          amount: item?.joinedAccountMetas[0].name,
+          amount: item.joinedAccountMetas.length > 0 ? item.joinedAccountMetas[0].name : 'no name',
           icon: false
         },
         {
           title: "Address",
-          amount: item?.joinedAccountMetas[0].address,
+          amount: item.joinedAccountMetas.length > 0  ? item.joinedAccountMetas[0].address : 'no address',
           icon: false
         },
         {
@@ -78,10 +83,7 @@ export const Referral = ({
       console.log(activeTreeInfo)
       setTreeInfo(infoObject);
     }
-    if(item == null) {
-      setActiveTreeInfo(null);
-      setTreeInfo(null);
-    }
+
   }
 
   useEffect(() => {
@@ -436,13 +438,13 @@ export const Referral = ({
                           </div>
                           {referralTreeData?.map((item,index) => {
                             return(
-                                <div className="referral-tree-item-level" key={item}>
+                                <div className="referral-tree-item-level" key={item + index}>
                                   <div className="referral-tree-lines">
                                     {item.documents.map((suItem, index) => {
                                       return(
                                           <>
                                             {index % 2 == 0 && (
-                                                <svg key={suItem} className={suItem.type == 'nothing' ? 'hide' : ''} style={{width:  `calc(${100 / item.documents.length}% + 20px)`}} xmlns="http://www.w3.org/2000/svg" width="367" height="55" viewBox="0 0 367 55" fill="none">
+                                                <svg key={suItem + index} className={suItem.type == 'nothing' ? 'hide' : ''} style={{width:  `calc(${100 / item.documents.length}% + 20px)`}} xmlns="http://www.w3.org/2000/svg" width="367" height="55" viewBox="0 0 367 55" fill="none">
                                                   <path d="M183.5 2V8C183.5 19.0457 174.546 28 163.5 28H128.25H26C14.9543 28 6 36.9543 6 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
                                                   <path d="M183.5 2V8C183.5 19.0457 192.454 28 203.5 28H238.75H341C352.046 28 361 36.9543 361 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
                                                   <circle cx="183.5" cy="4.5" r="4.5" fill="#C38C5C"/>
@@ -460,6 +462,7 @@ export const Referral = ({
                                           <>
                                             {suItem.type == 'missing' && (
                                                 <div className={`referral-tree-item`}
+                                                     key={suItem.type}
                                                      style={{width: 100 / item.documents.length + '%'}}>
                                                   <div className="referral-tree-btn referral-tree-btn-add">
                                                     <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl,suItem.lvl)}}>
@@ -482,8 +485,8 @@ export const Referral = ({
                                                 </div>
                                             )}
                                             {!suItem.type && (
-                                                <div className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
-                                                  <div className={`referral-tree-btn`} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(false)}}>
+                                                <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
+                                                  <div className={`referral-tree-btn`} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(null)}}>
                                                     {treeInfo !== null && (
                                                         <div className="referral-tree-info" style={suItem.side == 'left' ? {left: '120px'} : {right: '120px'}}>
                                                           <InfoBox
@@ -509,7 +512,7 @@ export const Referral = ({
                                                 </div>
                                             )}
                                             {suItem.type == 'nothing' && (
-                                                <div className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
+                                                <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
                                                 </div>
                                             )}
                                           </>
