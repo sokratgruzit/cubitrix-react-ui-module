@@ -296,11 +296,11 @@ export const CardSlider = ({
                               if (item.title === "Deposit") {
                                 handleDeposit(accountsData[index]);
                               } else if (item.title === "Withdraw") {
-                                handleWithdraw(accountsData[index]);
+                                handleWithdraw(accountsData[index], key);
                               } else if (item.title === "Exchange") {
                                 handleExchange(accountsData[index], key);
                               } else if (item.title === "Transfer") {
-                                handleTransfer(accountsData[index], key);
+                                handleTransfer(accountsData[index]);
                               }
                             }}
                           >
