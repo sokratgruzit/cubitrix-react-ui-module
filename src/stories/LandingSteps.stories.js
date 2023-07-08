@@ -158,7 +158,6 @@ stories.add("LandingSteps", () => {
       type: "default",
       placeholder: "0",
       onChange: (e) => {
-        console.log(e, "sdddd");
         setCurrentObejct((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,

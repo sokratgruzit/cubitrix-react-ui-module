@@ -8,6 +8,12 @@ export const Tabs = (props) => {
     setToggle(num);
   };
 
+  const handleTabClick = (index) => {
+    props.setActiveTab(index);
+    if (props.onTabClick) {
+      props.onTabClick(index);
+    }
+  };
   let tabs = null;
 
   if (props.type === "tabs") {
@@ -191,6 +197,25 @@ export const Tabs = (props) => {
         >
           Deposit
         </div>
+      </div>
+    );
+  }
+  if (props.type === 'simple') {
+    tabs = (
+      <div style={props.customStyles} className='tabs'>
+        {props.tabsData.map((item, index) => (
+          <div
+            key={index}
+            onClick={() => {
+              handleTabClick(index);
+              if (item.onClick) {
+                item.onClick();
+              }
+            }} className={`tab ${index === props.activeTab ? 'active-tab' : ''}`}
+          >
+            {item.title}
+          </div>
+        ))}
       </div>
     );
   }

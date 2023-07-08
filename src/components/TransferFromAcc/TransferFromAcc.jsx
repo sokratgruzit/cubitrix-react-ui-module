@@ -79,7 +79,9 @@ export const TransferFromAcc = ({
                         ? selectedOption?.name ||
                           params?.defaultAny ||
                           params?.options[0]?.value
-                        : currentObject[params?.name] || params?.defaultAny
+                        : currentObject[params?.name] === undefined
+                        ? params?.defaultAny
+                        : currentObject[params?.name]
                     }
                     customStyles={{ width: "100%" }}
                     selectHandler={(opt) => {

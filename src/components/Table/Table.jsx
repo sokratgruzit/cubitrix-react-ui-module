@@ -1,6 +1,6 @@
-import './Table.css'
-import { useMobileWidth } from '../../hooks/useMobileWidth'
-import { NoApplicationsIcon } from '../../assets/svgs'
+import "./Table.css";
+import { useMobileWidth } from "../../hooks/useMobileWidth";
+import { NoApplicationsIcon } from "../../assets/svgs";
 
 export const Table = ({
   type,
@@ -18,9 +18,9 @@ export const Table = ({
   tableFooter,
   tableEmulator
 }) => {
-  const { mobile } = useMobileWidth()
+  const { mobile } = useMobileWidth();
   return (
-    <div className={`${type}`} style={customStyles} id={'table-version'}>
+    <div className={`${type}`} style={customStyles} id={"table-version"}>
       {tableHeadMore}
       {tableData && (
           <>
@@ -60,13 +60,13 @@ export const Table = ({
           <div className='table-empty'>
             <>
               {tableEmptyData?.icon ? tableEmptyData?.icon : <NoApplicationsIcon />}
-              <p className='font-14' style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-                {tableEmptyData?.label || 'You have no pending KYC applications'}
+              <p className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
+                {tableEmptyData?.label || "You have no pending KYC applications"}
               </p>
               {handleViewAll && (
-                  <p className='table-empty__view-all font-14' onClick={handleViewAll}>
-                    View All Transactions
-                  </p>
+                <p className='table-empty__view-all font-14' onClick={handleViewAll}>
+                  View All Transactions
+                </p>
               )}
             </>
           </div>
@@ -77,5 +77,5 @@ export const Table = ({
           </div>
       ) : ''}
     </div>
-  )
-}
+  );
+};
