@@ -18,6 +18,7 @@ export const TransferFromAcc = ({
   accountBalanceSecond,
   label,
   transferSubmitLoading,
+  withdrawSubmitLoading,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
@@ -115,7 +116,7 @@ export const TransferFromAcc = ({
               backgroundColor: "#C38C5C",
             }}
             onClick={handleSubmit}
-            disabled={transferSubmitLoading}
+            disabled={transferSubmitLoading || withdrawSubmitLoading}
           />
         </div>
       </div>
