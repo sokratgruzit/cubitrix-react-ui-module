@@ -46,6 +46,7 @@ export const LandingSteps = ({
   isAllowance,
   approveResonse,
   tokenBalance,
+  depositAmount,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -402,80 +403,84 @@ export const LandingSteps = ({
             <div className="LandingSteps__topUp-box">
               <div className="deposit-container">
                 <div className="deposit-inputs-wrapper">
-                  <div className="deposit-inputs">
-                    {inputs?.map((params, index) => (
-                      <Input
-                        key={index}
-                        type={params?.type}
-                        label={params.title}
-                        name={params.name}
-                        value={currentObject[params?.name] || params?.defaultAny}
-                        customStyles={{ width: "100%" }}
-                        placeholder={params?.placeholder}
-                        onChange={params?.onChange}
-                        defaultData={params?.options}
-                        customInputStyles={{
-                          border: "1px solid rgba(255, 255, 255, 0.1)",
-                        }}
-                        svg={params?.svg}
-                        statusCard={
-                          validationErrors?.amount && (
-                            <HelpText
-                              status={
-                                validationErrors.amount.failure ? "error" : "success"
-                              }
-                              title={
-                                validationErrors.amount.failure ||
-                                validationErrors.amount.success
-                              }
-                              fontSize={"font-12"}
-                              icon={true}
-                            />
-                          )
+                  {!isAllowance && depositAmount === "" && (
+                    <>
+                      <div className="deposit-inputs">
+                        {inputs?.map((params, index) => (
+                          <Input
+                            key={index}
+                            type={params?.type}
+                            label={params.title}
+                            name={params.name}
+                            value={currentObject[params?.name] || params?.defaultAny}
+                            customStyles={{ width: "100%" }}
+                            placeholder={params?.placeholder}
+                            onChange={params?.onChange}
+                            defaultData={params?.options}
+                            customInputStyles={{
+                              border: "1px solid rgba(255, 255, 255, 0.1)",
+                            }}
+                            svg={params?.svg}
+                            statusCard={
+                              validationErrors?.amount && (
+                                <HelpText
+                                  status={
+                                    validationErrors.amount.failure ? "error" : "success"
+                                  }
+                                  title={
+                                    validationErrors.amount.failure ||
+                                    validationErrors.amount.success
+                                  }
+                                  fontSize={"font-12"}
+                                  icon={true}
+                                />
+                              )
+                            }
+                          />
+                        ))}
+                      </div>
+                      <div className="deposit__buttons">
+                        {durationOptions.map((item, index) => (
+                          <Button
+                            key={index}
+                            label={item.title}
+                            element={"calculator-button"}
+                            onClick={() => {
+                              handleTimePeriod(item.time);
+                              handleTimeperiodDate(item.period);
+                            }}
+                            customStyles={{
+                              width: "100%",
+                            }}
+                            active={item.time === timeperiod}
+                          />
+                        ))}
+                      </div>
+                      <HelpText
+                        title={
+                          timeperiod === 0
+                            ? "15 % APY On 30 Days. Locked until " + timeperiodDate
+                            : timeperiod === 1
+                            ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
+                            : timeperiod === 2
+                            ? "29% APY On 90 Days. Locked until " + timeperiodDate
+                            : timeperiod === 3
+                            ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
+                            : "50.0% APY On 360 Days. Locked until " + timeperiodDate
                         }
+                        status="info"
+                        color="#6A6D76"
+                        icon={true}
                       />
-                    ))}
-                  </div>
-                  <div className="deposit__buttons">
-                    {durationOptions.map((item, index) => (
-                      <Button
-                        key={index}
-                        label={item.title}
-                        element={"calculator-button"}
-                        onClick={() => {
-                          handleTimePeriod(item.time);
-                          handleTimeperiodDate(item.period);
-                        }}
-                        customStyles={{
-                          width: "100%",
-                        }}
-                        active={item.time === timeperiod}
-                      />
-                    ))}
-                  </div>
-                  <HelpText
-                    title={
-                      timeperiod === 0
-                        ? "15 % APY On 30 Days. Locked until " + timeperiodDate
-                        : timeperiod === 1
-                        ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
-                        : timeperiod === 2
-                        ? "29% APY On 90 Days. Locked until " + timeperiodDate
-                        : timeperiod === 3
-                        ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
-                        : "50.0% APY On 360 Days. Locked until " + timeperiodDate
-                    }
-                    status="info"
-                    color="#6A6D76"
-                    icon={true}
-                  />
+                    </>
+                  )}
+
                   {isAllowance && (
                     <HelpText
                       title={
-                        "Staking token is unapproved, please approve token before staking"
+                        "Staking token is unapproved, please approve the token before staking"
                       }
-                      status="info"
-                      color="#6A6D76"
+                      status="error"
                       icon={true}
                     />
                   )}

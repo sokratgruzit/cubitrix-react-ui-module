@@ -16,7 +16,7 @@ const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(4);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database
@@ -367,6 +367,7 @@ stories.add("LandingSteps", () => {
             handleSubmit={() => console.log(currentObject.amount, timeperiodDate)}
             inputs={inputs}
             currentObject={currentObject}
+            isAllowance={true}
           />
         </div>
         <SideBar open={toggle}>
