@@ -403,7 +403,7 @@ export const LandingSteps = ({
             <div className="LandingSteps__topUp-box">
               <div className="deposit-container">
                 <div className="deposit-inputs-wrapper">
-                  {!isAllowance && depositAmount === "" && (
+                  {!isAllowance && depositAmount === "" ? (
                     <>
                       <div className="deposit-inputs">
                         {inputs?.map((params, index) => (
@@ -473,7 +473,7 @@ export const LandingSteps = ({
                         icon={true}
                       />
                     </>
-                  )}
+                  ) : null}
 
                   {isAllowance && (
                     <HelpText
