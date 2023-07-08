@@ -803,9 +803,12 @@ stories.add('Referral', () => {
       ]
     }
   ]
-  let referralTreeAdd = (address,lvl) => {
-    console.log(address)
+  let referralTreeAdd = (lvl,position) => {
     console.log(lvl)
+    console.log(position)
+  }
+  let referralTreeUserClick = (address) => {
+    console.log(address)
   }
   return (
     <BrowserRouter>
@@ -946,10 +949,12 @@ stories.add('Referral', () => {
         cards={referralCards}
         handleCreateCode={handleCreateCode}
         referralBinaryType={referralBinaryType}
+        referralTreeActive={true}
         referralTreeBtnsLeft={tableVisualType}
         referralTreeBtnsRight={tableType}
         referralTreeData={referralTree}
         referralTreeAddClick={referralTreeAdd}
+        referralTreeUserClick={referralTreeUserClick}
         referralHistoryTableHead={referralHistoryTh}
         rebatesTableData={rebatesTableData}
         referralCodeTableHead={referralCodeTh}

@@ -165,6 +165,9 @@
   right: 0;
   bottom: 0;
 }
+.referral-tree {
+  padding: 60px;
+}
 .referral-tree-btn {
   display: flex;
   flex-direction: column;

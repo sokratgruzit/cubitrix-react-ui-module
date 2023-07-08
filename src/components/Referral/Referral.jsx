@@ -42,9 +42,11 @@ export const Referral = ({
   referralCodePaginationEvent,
   referralTreeData,
   referralTreeAddClick,
+  referralTreeUserClick,
   referralBinaryType,
   referralTreeBtnsLeft,
   referralTreeBtnsRight,
+  referralTreeActive
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -411,7 +413,7 @@ export const Referral = ({
                 tableEmulator={
                   referralBinaryType === 'visual' ?  (
                       <div className="referral-tree">
-                        <div className={`referral-tree-main ${animateTree ? 'active' : ''}`}>
+                        <div className={`referral-tree-main ${animateTree && referralTreeActive ? 'active' : ''}`}>
                           <div className="referral-tree-item-level referral-tree-item-level-active">
                             <div className={`referral-tree-item`} style={{width: 100 + '%'}}>
                               <div className="referral-tree-btn">
@@ -465,7 +467,7 @@ export const Referral = ({
                                                      key={suItem.type}
                                                      style={{width: 100 / item.documents.length + '%'}}>
                                                   <div className="referral-tree-btn referral-tree-btn-add">
-                                                    <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl,suItem.lvl)}}>
+                                                    <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl, suItem.position)}}>
                                                       <div
                                                           className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
                                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
@@ -478,7 +480,7 @@ export const Referral = ({
                                                     </div>
                                                     <div className={`referral-tree-btn-hash-out`}>
                                                       <div className="referral-tree-btn-hash">
-                                                        <span>Add {index}</span>
+                                                        <span>Add</span>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -486,7 +488,7 @@ export const Referral = ({
                                             )}
                                             {!suItem.type && (
                                                 <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
-                                                  <div className={`referral-tree-btn`} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(null)}}>
+                                                  <div className={`referral-tree-btn`} onClick={() => {referralTreeUserClick(suItem.referral_address)}} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(null)}}>
                                                     {treeInfo !== null && (
                                                         <div className="referral-tree-info" style={suItem.side == 'left' ? {left: '120px'} : {right: '120px'}}>
                                                           <InfoBox
@@ -505,7 +507,7 @@ export const Referral = ({
                                                     </div>
                                                     <div className={`referral-tree-btn-hash-out`}>
                                                       <div className="referral-tree-btn-hash">
-                                                        <span>{index}jkashdasd89asd80</span>
+                                                        <span>jkashdasd89asd80</span>
                                                       </div>
                                                     </div>
                                                   </div>
