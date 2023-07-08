@@ -300,7 +300,7 @@ export const CardSlider = ({
                               } else if (item.title === "Exchange") {
                                 handleExchange(accountsData[index], key);
                               } else if (item.title === "Transfer") {
-                                handleTransfer(accountsData[index]);
+                                handleTransfer(accountsData[index], key);
                               }
                             }}
                           >

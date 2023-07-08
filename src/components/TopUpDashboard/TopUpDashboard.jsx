@@ -19,6 +19,7 @@ export const TopUpDashboard = ({
   paymentTypes,
   exchangeRate = 0,
   handlePurchaseEvent,
+  coinbaseLoading,
 }) => {
   const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
@@ -128,7 +129,7 @@ export const TopUpDashboard = ({
           </h3>
           <Button
             element="button"
-            label={`Purchase token`}
+            label={coinbaseLoading ? "Loading..." : `Purchase token`}
             type="btn-secondary"
             size="btn-lg"
             customStyles={{
