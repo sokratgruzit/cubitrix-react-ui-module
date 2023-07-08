@@ -175,18 +175,6 @@ stories.add("LandingSteps", () => {
             transition: "0.5s",
           }}
         >
-          {/* <button
-            onClick={() => setToggle((prev) => !prev)}
-            style={{
-              marginTop: "100px",
-              position: "absolute",
-              left: "400px",
-              top: "100px",
-              zIndex: "1000",
-            }}
-          >
-            open
-          </button> */}
           <Header
             modules={[]}
             account={"0x0000000"}

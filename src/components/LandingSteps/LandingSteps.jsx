@@ -47,6 +47,7 @@ export const LandingSteps = ({
   approveResonse,
   tokenBalance,
   depositAmount,
+  coinbaseLoading,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -376,7 +377,7 @@ export const LandingSteps = ({
               </h3>
               <Button
                 element="button"
-                label={`Purchase token`}
+                label={coinbaseLoading ? "Loading..." : `Purchase token`}
                 type="btn-primary"
                 size="btn-lg"
                 customStyles={{
@@ -384,6 +385,7 @@ export const LandingSteps = ({
                   margin: "0",
                 }}
                 onClick={handlePurchase}
+                disabled={coinbaseLoading}
               />
               <Button
                 label={"Disconnect"}

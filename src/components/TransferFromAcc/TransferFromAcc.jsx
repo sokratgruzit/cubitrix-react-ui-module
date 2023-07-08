@@ -14,12 +14,10 @@ export const TransferFromAcc = ({
   cardImg,
   handleSubmit,
   buttonLabel,
-  showHelpText,
-  helpText,
-  success,
   accountBalance,
   accountBalanceSecond,
   label,
+  transferSubmitLoading,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
@@ -117,16 +115,9 @@ export const TransferFromAcc = ({
               backgroundColor: "#C38C5C",
             }}
             onClick={handleSubmit}
+            disabled={transferSubmitLoading}
           />
         </div>
-        {showHelpText && (
-          <HelpText
-            status={success ? "success" : "error"}
-            title={helpText}
-            fontSize={"font-12"}
-            icon={true}
-          />
-        )}
       </div>
     </>
   );
