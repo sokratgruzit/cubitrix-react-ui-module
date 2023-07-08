@@ -15,15 +15,13 @@ export const Exchange = ({
   accounts,
   handleSubmit,
   buttonLabel,
-  showHelpText,
-  helpText,
-  success,
   accountBalance,
   accountBalanceSecond,
   label,
   card,
   setCard,
   ratedExchange,
+  exchangeLoading,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
@@ -199,16 +197,9 @@ export const Exchange = ({
               backgroundColor: "#C38C5C",
             }}
             onClick={handleSubmit}
+            disabled={exchangeLoading}
           />
         </div>
-        {showHelpText && (
-          <HelpText
-            status={success ? "success" : "error"}
-            title={helpText}
-            fontSize={"font-12"}
-            icon={true}
-          />
-        )}
       </div>
     </>
   );
