@@ -39,9 +39,9 @@ export const Calculator = ({
 
   let helpTexts = {
     amount: {
-      validationType: "number",
+      validationType: "multipleOf5000",
       success: "amount is valid",
-      failure: "must be a number",
+      failure: "must be a number and multiple of 5000 (e.g 5000, 10000, 15000))",
     },
   };
 

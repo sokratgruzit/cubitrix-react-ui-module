@@ -10,23 +10,34 @@ export const useValidation = (formData, helpTexts) => {
     number: /^\d+(?:\.\d+)?$/,
     text: /^[-_a-zA-Z0-9]*[a-zA-Z]+[-_a-zA-Z0-9]*$/,
     address: /^0x[a-fA-F0-9]{40}$/,
+    multipleOf5000: (num) => !isNaN(num) && num > 0 && num % 5000 === 0,
   };
 
   Object.keys(formData).map((key) => {
-    if (
-      !validation[helpTexts[key].validationType].test(formData[key]) &&
-      formData[key].length > 0
-    ) {
-      errors[key] = {
-        failure: helpTexts[key].failure,
-      };
-    } else if (
-      validation[helpTexts[key].validationType].test(formData[key]) &&
-      formData[key].length > 0
-    ) {
-      errors[key] = {
-        success: helpTexts[key].success,
-      };
+    const validationType = helpTexts[key].validationType;
+    const validationRule = validation[validationType];
+    const value = formData[key];
+
+    if (typeof validationRule === "function") {
+      if (!validationRule(value) && value.length > 0) {
+        errors[key] = {
+          failure: helpTexts[key].failure,
+        };
+      } else if (validationRule(value) && value.length > 0) {
+        errors[key] = {
+          success: helpTexts[key].success,
+        };
+      }
+    } else {
+      if (!validationRule.test(value) && value.length > 0) {
+        errors[key] = {
+          failure: helpTexts[key].failure,
+        };
+      } else if (validationRule.test(value) && value.length > 0) {
+        errors[key] = {
+          success: helpTexts[key].success,
+        };
+      }
     }
   });
 

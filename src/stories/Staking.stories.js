@@ -464,7 +464,6 @@ stories.add("Staking", () => {
         verified={false}
       />
       <button onClick={handleButtonClick}>Show Toasts</button>
-      <ToastContainer />
       <Staking
         account={true}
         durationOptions={durationOptions}
