@@ -21,6 +21,7 @@ import { Deposit } from "../components/Deposit";
 import { LevelSystem } from "../components/LevelSystem";
 import { ReferralCode } from "../components/ReferralCode";
 import { useMobileWidth } from "../hooks/useMobileWidth";
+import { FeeWarning } from "../components/Auth/FeeWarning";
 
 const stories = storiesOf("SideBar", module);
 
@@ -306,7 +307,7 @@ stories.add("SideBar", () => {
           handleNewPassword={(e) => console.log(e)}
         />
       </div> */}
-      <Popup
+      {/* <Popup
         popUpElement={
           <ChangeNetwork
             disconnect={() => console.log("disconnect")}
@@ -314,6 +315,17 @@ stories.add("SideBar", () => {
           />
         }
         label={"Check Your Network"}
+      /> */}
+
+      <Popup
+        popUpElement={
+          <FeeWarning />
+          // <ChangeNetwork
+          //   disconnect={() => console.log("disconnect")}
+          //   handleNetworkChange={() => console.log("handle network change")}
+          // />
+        }
+        label={"Opening account fee"}
       />
 
       <SideBar open={toggle}>
