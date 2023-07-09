@@ -43,6 +43,7 @@ export const Referral = ({
   referralTreeData,
   referralTreeAddClick,
   referralTreeUserClick,
+  referralTreeUserBackClick,
   referralBinaryType,
   referralTreeBtnsLeft,
   referralTreeBtnsRight,
@@ -429,7 +430,7 @@ export const Referral = ({
                         <div className={`referral-tree-main ${animateTree && referralTreeActive ? 'active' : ''}`}>
                           <div className="referral-tree-item-level referral-tree-item-level-active">
                             <div className={`referral-tree-item`} style={{width: 100 + '%'}}>
-                              <div className="referral-tree-btn">
+                              <div className="referral-tree-btn" onClick={() => {referralTreeUserBackClick()}}>
                                 <div className="referral-tree-item-level-active-back">
                                    <span>
                                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
