@@ -52,6 +52,7 @@ export const Referral = ({
   const [treeInfo, setTreeInfo] = useState(null);
   const [animateTree, setAnimateTree] = useState(false);
   const [activeTreeInfo, setActiveTreeInfo] = useState(null);
+  const [activeAddCopy, setActiveAddCopy] = useState(null);
 
 
   const { width } = useMobileWidth()
@@ -85,9 +86,20 @@ export const Referral = ({
       console.log(activeTreeInfo)
       setTreeInfo(infoObject);
     }
-
   }
-
+  let addCopy = (item) => {
+    if(item == null) {
+      setActiveAddCopy(null);
+      return false
+    }
+    if(item.lvl !== null) {
+      setActiveAddCopy(item.lvl + '_' + item.position);
+      console.log(item.lvl + '_' + item.position)
+      setTimeout(() => {
+        setActiveAddCopy(null);
+      },1500)
+    }
+  }
   useEffect(() => {
     if (referralBinaryType == 'visual') {
       setAnimateTree(true)
@@ -467,9 +479,10 @@ export const Referral = ({
                                                      key={suItem.type}
                                                      style={{width: 100 / item.documents.length + '%'}}>
                                                   <div className="referral-tree-btn referral-tree-btn-add">
-                                                    <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl, suItem.position)}}>
+                                                    <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl, suItem.position),addCopy(suItem)}}>
                                                       <div
                                                           className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
+                                                        <div className={`copied ${activeAddCopy == suItem.lvl + '_' + suItem.position ? 'active' : ''}`}>Copied</div>
                                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                                              xmlns="http://www.w3.org/2000/svg">
                                                           <path
