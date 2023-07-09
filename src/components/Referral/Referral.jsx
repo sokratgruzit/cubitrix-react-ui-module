@@ -46,7 +46,8 @@ export const Referral = ({
   referralBinaryType,
   referralTreeBtnsLeft,
   referralTreeBtnsRight,
-  referralTreeActive
+  referralTreeActive,
+  referralTreeActiveAddress,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -444,7 +445,7 @@ export const Referral = ({
                                 </div>
                                 <div className={`referral-tree-btn-hash-out`}>
                                   <div className="referral-tree-btn-hash">
-                                    <span>jkashdasd89asd80</span>
+                                    <span>{referralTreeActiveAddress.user_address}</span>
                                   </div>
                                 </div>
                               </div>
@@ -520,7 +521,7 @@ export const Referral = ({
                                                     </div>
                                                     <div className={`referral-tree-btn-hash-out`}>
                                                       <div className="referral-tree-btn-hash">
-                                                        <span>jkashdasd89asd80</span>
+                                                        <span>{suItem.user_address}</span>
                                                       </div>
                                                     </div>
                                                   </div>
