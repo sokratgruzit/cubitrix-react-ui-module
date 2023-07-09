@@ -42,6 +42,30 @@ stories.add('Referral', () => {
 
   const handleCreateCode = () => setCreateCodePopupActive(true)
   const handleLevelSystem = () => setLevelSystemPopupActive(true)
+  let referralTreeActiveAddress =  {
+    "_id": "64aa96b60a99eabe44767f8c",
+    "referral_address": "0x10352539f0a10955c056e4a1775bad9873070728",
+    "lvl": 1,
+    "side": "left",
+    "user_address": "0xd5228300dd76ad014c2700ca401ee335c817e38e",
+    "position": 1,
+    "createdAt": "2023-07-09T11:15:02.581Z",
+    "updatedAt": "2023-07-09T11:15:02.581Z",
+    "__v": 0,
+    "joinedAccounts": [
+      {
+        "_id": "64aa96a60a99eabe44767f61",
+        "address": "0xd5228300dd76ad014c2700ca401ee335c817e38e",
+        "account_category": "external",
+        "account_owner": "",
+        "active": true,
+        "createdAt": "2023-07-09T11:14:46.320Z",
+        "updatedAt": "2023-07-09T11:14:46.320Z",
+        "__v": 0
+      }
+    ],
+    "joinedAccountMetas": []
+  };
   let tableVisualType = (
       <div className={`referral-inner-table-more`}>
         <div
@@ -803,9 +827,12 @@ stories.add('Referral', () => {
       ]
     }
   ]
-  let referralTreeAdd = (address,lvl) => {
-    console.log(address)
+  let referralTreeAdd = (lvl,position) => {
     console.log(lvl)
+    console.log(position)
+  }
+  let referralTreeUserClick = (address) => {
+    console.log(address)
   }
   return (
     <BrowserRouter>
@@ -946,10 +973,13 @@ stories.add('Referral', () => {
         cards={referralCards}
         handleCreateCode={handleCreateCode}
         referralBinaryType={referralBinaryType}
+        referralTreeActiveAddress={referralTreeActiveAddress}
+        referralTreeActive={true}
         referralTreeBtnsLeft={tableVisualType}
         referralTreeBtnsRight={tableType}
         referralTreeData={referralTree}
         referralTreeAddClick={referralTreeAdd}
+        referralTreeUserClick={referralTreeUserClick}
         referralHistoryTableHead={referralHistoryTh}
         rebatesTableData={rebatesTableData}
         referralCodeTableHead={referralCodeTh}
