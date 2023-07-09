@@ -454,89 +454,96 @@ export const Referral = ({
                           </div>
                           {referralTreeData?.map((item,index) => {
                             return(
-                                <div className="referral-tree-item-level" key={item + index}>
-                                  <div className="referral-tree-lines">
-                                    {item.documents.map((suItem, index) => {
-                                      return(
-                                          <>
-                                            {index % 2 == 0 && (
-                                                <svg key={suItem + index} className={suItem.type == 'nothing' ? 'hide' : ''} style={{width:  `calc(${100 / item.documents.length}% + 20px)`}} xmlns="http://www.w3.org/2000/svg" width="367" height="55" viewBox="0 0 367 55" fill="none">
-                                                  <path d="M183.5 2V8C183.5 19.0457 174.546 28 163.5 28H128.25H26C14.9543 28 6 36.9543 6 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                                  <path d="M183.5 2V8C183.5 19.0457 192.454 28 203.5 28H238.75H341C352.046 28 361 36.9543 361 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                                  <circle cx="183.5" cy="4.5" r="4.5" fill="#C38C5C"/>
-                                                  <line x1="1" y1="54" x2="11" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                                  <line x1="356" y1="54" x2="366" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
-                                                </svg>
-                                            )}
-                                          </>
-                                      )
-                                    })}
-                                  </div>
-                                  <div className="referral-tree-items">
-                                    {item.documents.map((suItem,index) => {
-                                      return(
-                                          <>
-                                            {suItem.type == 'missing' && (
-                                                <div className={`referral-tree-item`}
-                                                     key={suItem.type}
-                                                     style={{width: 100 / item.documents.length + '%'}}>
-                                                  <div className="referral-tree-btn referral-tree-btn-add">
-                                                    <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl, suItem.position),addCopy(suItem)}}>
-                                                      <div
-                                                          className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
-                                                        <div className={`copied ${activeAddCopy == suItem.lvl + '_' + suItem.position ? 'active' : ''}`}>Copied</div>
-                                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                          <path
-                                                              d="M12.8947 5.89474H8.10526V1.10526C8.10526 0.501053 7.60421 0 7 0C6.39579 0 5.89474 0.501053 5.89474 1.10526V5.89474H1.10526C0.501053 5.89474 0 6.39579 0 7C0 7.60421 0.501053 8.10526 1.10526 8.10526H5.89474V12.8947C5.89474 13.4989 6.39579 14 7 14C7.60421 14 8.10526 13.4989 8.10526 12.8947V8.10526H12.8947C13.4989 8.10526 14 7.60421 14 7C14 6.39579 13.4989 5.89474 12.8947 5.89474Z"
-                                                              fill="#C38C5C"/>
-                                                        </svg>
-                                                      </div>
-                                                    </div>
-                                                    <div className={`referral-tree-btn-hash-out`}>
-                                                      <div className="referral-tree-btn-hash">
-                                                        <span>Add</span>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                            )}
-                                            {!suItem.type && (
-                                                <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
-                                                  <div className={`referral-tree-btn`} onClick={() => {referralTreeUserClick(suItem.referral_address)}} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(null)}}>
-                                                    {treeInfo !== null && (
-                                                        <div className="referral-tree-info" style={suItem.side == 'left' ? {left: '120px'} : {right: '120px'}}>
-                                                          <InfoBox
-                                                              type="reward-box"
-                                                              active={activeTreeInfo == suItem.user_address ? true : false}
-                                                              cardBody={treeInfo}
-                                                              customStyle={{width: '100%'}}
-                                                          />
-                                                        </div>
-                                                    )}
+                                <>
+                                  {
+                                    index < 3 && (
+                                          <div className="referral-tree-item-level" key={item + index}>
+                                            <div className="referral-tree-lines">
+                                              {item.documents.map((suItem, index) => {
+                                                return(
+                                                    <>
+                                                      {index % 2 == 0 && (
+                                                          <svg key={suItem + index} className={suItem.type == 'nothing' ? 'hide' : ''} style={{width:  `calc(${100 / item.documents.length}% + 20px)`}} xmlns="http://www.w3.org/2000/svg" width="367" height="55" viewBox="0 0 367 55" fill="none">
+                                                            <path d="M183.5 2V8C183.5 19.0457 174.546 28 163.5 28H128.25H26C14.9543 28 6 36.9543 6 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                            <path d="M183.5 2V8C183.5 19.0457 192.454 28 203.5 28H238.75H341C352.046 28 361 36.9543 361 48V53.5" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                            <circle cx="183.5" cy="4.5" r="4.5" fill="#C38C5C"/>
+                                                            <line x1="1" y1="54" x2="11" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                            <line x1="356" y1="54" x2="366" y2="54" stroke="#C38C5C" strokeWidth="2" strokeLinecap="round"/>
+                                                          </svg>
+                                                      )}
+                                                    </>
+                                                )
+                                              })}
+                                            </div>
+                                            <div className="referral-tree-items">
+                                              {item.documents.map((suItem,index) => {
+                                                return(
+                                                    <>
+                                                      {suItem.type == 'missing' && (
+                                                          <div className={`referral-tree-item`}
+                                                               key={suItem.type}
+                                                               style={{width: 100 / item.documents.length + '%'}}>
+                                                            <div className="referral-tree-btn referral-tree-btn-add">
+                                                              <div className="referral-tree-btn-out" onClick={() => {referralTreeAddClick(suItem.lvl, suItem.position),addCopy(suItem)}}>
+                                                                <div
+                                                                    className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
+                                                                  <div className={`copied ${activeAddCopy == suItem.lvl + '_' + suItem.position ? 'active' : ''}`}>Copied</div>
+                                                                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                                       xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M12.8947 5.89474H8.10526V1.10526C8.10526 0.501053 7.60421 0 7 0C6.39579 0 5.89474 0.501053 5.89474 1.10526V5.89474H1.10526C0.501053 5.89474 0 6.39579 0 7C0 7.60421 0.501053 8.10526 1.10526 8.10526H5.89474V12.8947C5.89474 13.4989 6.39579 14 7 14C7.60421 14 8.10526 13.4989 8.10526 12.8947V8.10526H12.8947C13.4989 8.10526 14 7.60421 14 7C14 6.39579 13.4989 5.89474 12.8947 5.89474Z"
+                                                                        fill="#C38C5C"/>
+                                                                  </svg>
+                                                                </div>
+                                                              </div>
+                                                              <div className={`referral-tree-btn-hash-out`}>
+                                                                <div className="referral-tree-btn-hash">
+                                                                  <span>Add</span>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                      )}
+                                                      {!suItem.type && (
+                                                          <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
+                                                            <div className={`referral-tree-btn`} onClick={() => {referralTreeUserClick(suItem.user_address)}} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(null)}}>
+                                                              {treeInfo !== null && (
+                                                                  <div className="referral-tree-info" style={suItem.side == 'left' ? {left: '120px'} : {right: '120px'}}>
+                                                                    <InfoBox
+                                                                        type="reward-box"
+                                                                        active={activeTreeInfo == suItem.user_address ? true : false}
+                                                                        cardBody={treeInfo}
+                                                                        customStyle={{width: '100%'}}
+                                                                    />
+                                                                  </div>
+                                                              )}
 
-                                                    <div className="referral-tree-btn-out">
-                                                      <div className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
-                                                        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="hi"/>
-                                                      </div>
-                                                    </div>
-                                                    <div className={`referral-tree-btn-hash-out`}>
-                                                      <div className="referral-tree-btn-hash">
-                                                        <span>{suItem.user_address}</span>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                </div>
-                                            )}
-                                            {suItem.type == 'nothing' && (
-                                                <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
-                                                </div>
-                                            )}
-                                          </>
+                                                              <div className="referral-tree-btn-out">
+                                                                <div className={`referral-tree-btn-img ${suItem.lvl == 3 ? 'referral-tree-btn-img-sm' : ''}`}>
+                                                                  <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="hi"/>
+                                                                </div>
+                                                              </div>
+                                                              <div className={`referral-tree-btn-hash-out`}>
+                                                                <div className="referral-tree-btn-hash">
+                                                                  <span>{suItem.user_address}</span>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                      )}
+                                                      {suItem.type == 'nothing' && (
+                                                          <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
+                                                          </div>
+                                                      )}
+                                                    </>
+                                                )
+                                              })}
+                                            </div>
+                                          </div>
                                       )
-                                    })}
-                                  </div>
-                                </div>
+                                  }
+                                </>
+
                             )
                           })}
                         </div>

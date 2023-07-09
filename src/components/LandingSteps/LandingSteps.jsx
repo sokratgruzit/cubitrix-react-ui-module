@@ -122,12 +122,11 @@ export const LandingSteps = ({
       Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
     );
   };
-
   let helpTexts = {
     amount: {
-      validationType: "number",
+      validationType: "multipleOf5000",
       success: "amount is valid",
-      failure: "must be a number",
+      failure: "must be a number and multiple of 5000 (e.g 5000, 10000, 15000))",
     },
   };
 
@@ -330,7 +329,7 @@ export const LandingSteps = ({
               </div>
               <HelpText
                 status={"error"}
-                title={`Your currently possess ${tokenBalance} tokens. You need at least 100 tokens to stake.`}
+                title={`Your currently possess ${tokenBalance} tokens. To stake you need to possess multiple of 5000 tokens (5000, 10000, 15000, etc). You can purchase tokens by clicking on the button below)`}
                 color={"#6A6D76"}
                 icon={true}
                 customStyles={{ marginBottom: "5px" }}

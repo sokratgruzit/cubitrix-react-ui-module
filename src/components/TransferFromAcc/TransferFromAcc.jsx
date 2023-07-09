@@ -95,6 +95,7 @@ export const TransferFromAcc = ({
                         ? selectedOption?.svg
                         : params?.svg
                     }
+                    disabled={params?.disabled}
                   />
                   {params?.rightText && (
                     <span className="font-14 withdraw-to-acc-input-right">

@@ -136,7 +136,6 @@ stories.add("Input", (props) => {
       />
       <Input
         type={"lable-input-select"}
-        icon={false}
         selectData={selectData}
         emptyFieldErr={true}
         defaultData={defaultData}
@@ -156,6 +155,7 @@ stories.add("Input", (props) => {
         title={"your text"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
+        disabled={true}
       />
       <Input
         type={"default"}
