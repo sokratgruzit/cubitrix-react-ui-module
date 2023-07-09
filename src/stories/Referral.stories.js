@@ -834,6 +834,9 @@ stories.add('Referral', () => {
   let referralTreeUserClick = (address) => {
     console.log(address)
   }
+  let referralTreeUserBackClick = () => {
+    console.log('hii')
+  }
   return (
     <BrowserRouter>
       <Header
@@ -980,6 +983,7 @@ stories.add('Referral', () => {
         referralTreeData={referralTree}
         referralTreeAddClick={referralTreeAdd}
         referralTreeUserClick={referralTreeUserClick}
+        referralTreeUserBackClick={referralTreeUserBackClick}
         referralHistoryTableHead={referralHistoryTh}
         rebatesTableData={rebatesTableData}
         referralCodeTableHead={referralCodeTh}
