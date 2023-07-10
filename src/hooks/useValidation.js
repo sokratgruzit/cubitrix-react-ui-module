@@ -5,7 +5,7 @@ export const useValidation = (formData, helpTexts) => {
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     password: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
     numbers: /^[0-9\b]+$/,
-    limitedCharacters: /^.{16}$/,
+    limitedCharacters: /^.{42}$/,
     hash: /^[a-fA-F0-9]{32}/i,
     number: /^\d+(?:\.\d+)?$/,
     text: /^[-_a-zA-Z0-9]*[a-zA-Z]+[-_a-zA-Z0-9]*$/,

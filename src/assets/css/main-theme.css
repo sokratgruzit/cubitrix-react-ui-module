@@ -169,7 +169,7 @@ button {
   left: 0;
   top: 0;
   background: #2d3364;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 365px;
   padding: 70px 20px 0 20px;
 }
