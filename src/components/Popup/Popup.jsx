@@ -100,12 +100,12 @@ export const Popup = ({
     from: {
       validationType: "limitedCharacters",
       success: "It is valid",
-      failure: "must be exactly 16 characters",
+      failure: "must be exactly 42 characters",
     },
     to: {
       validationType: "limitedCharacters",
       success: "It is valid",
-      failure: "must be exactly 16 characters",
+      failure: "must be exactly 42 characters",
     },
     tx_hash: {
       validationType: "hash",
@@ -240,7 +240,7 @@ export const Popup = ({
 
         {type === "addTransaction" && (
           <div style={addTransactionCustomStyles} className="addTransaction-body">
-            {addTransactionSelects?.slice(0, 1).map((item, index) => (
+            {/* {addTransactionSelects?.slice(0, 1).map((item, index) => (
               <Input
                 key={index}
                 type={"lable-input-select"}
@@ -258,9 +258,8 @@ export const Popup = ({
                   />
                 }
               />
-            ))}
-            {}
-            <div className="addTransaction-inputs">
+            ))} */}
+            {/* <div className="addTransaction-inputs">
               <Input
                 type={"default"}
                 icon={true}
@@ -308,10 +307,10 @@ export const Popup = ({
                   />
                 }
                 onChange={(e) => handlePopUpInputChange(e, "to")}
-              />
-            </div>
+              /> */}
+            {/* </div> */}
             <div className="addTransaction-inputs addTransaction-inputs-row">
-              <Input
+              {/* <Input
                 type={"default"}
                 icon={true}
                 inputType={"text"}
@@ -334,7 +333,7 @@ export const Popup = ({
                   />
                 }
                 onChange={(e) => handlePopUpInputChange(e, "amount")}
-              />
+              /> */}
               {addTransactionSelects?.slice(1, 2).map((item, index) => (
                 <Input
                   key={index}
@@ -346,55 +345,55 @@ export const Popup = ({
                   customStyles={{ marginBottom: "12px" }}
                 />
               ))}
-              <div className="exchange-inputs">
-                {inputs?.map((params, index) => {
-                  let selectedOption;
-                  if (params.type === "lable-input-select") {
-                    selectedOption = params?.options.find(
-                      (option) => option.value === popUpData[params?.name],
-                    );
-                  }
-                  return (
-                    <div className="exchange-input-wrapper" key={index}>
-                      <Input
-                        key={index}
-                        type={params?.type}
-                        label={params.title}
-                        name={params.name}
-                        value={
-                          params?.type === "lable-input-select"
-                            ? selectedOption?.name ||
-                              params?.defaultAny ||
-                              params?.options[0]?.value
-                            : popUpData[params?.name] === undefined
-                            ? params?.defaultAny
-                            : popUpData[params?.name]
-                        }
-                        customStyles={{ width: "100%" }}
-                        selectHandler={(opt) => {
-                          handleInputChange(opt, params);
-                        }}
-                        placeholder={params?.placeholder}
-                        onChange={(e) => handleInputChange(e, params)}
-                        defaultData={params?.options}
-                        customInputStyles={{
-                          border: "1px solid rgba(255, 255, 255, 0.1)",
-                        }}
-                        svg={
-                          params?.type === "lable-input-select"
-                            ? selectedOption?.svg
-                            : params?.svg
-                        }
-                      />
-                      {params?.rightText && (
-                        <span className="font-14 exchange-input-right">
-                          {params?.rightText}
-                        </span>
-                      )}
-                    </div>
+            </div>
+            <div className="exchange-inputs">
+              {inputs?.map((params, index) => {
+                let selectedOption;
+                if (params.type === "lable-input-select") {
+                  selectedOption = params?.options.find(
+                    (option) => option.value === popUpData[params?.name],
                   );
-                })}
-              </div>
+                }
+                return (
+                  <div className="exchange-input-wrapper" key={index}>
+                    <Input
+                      key={index}
+                      type={params?.type}
+                      label={params.title}
+                      name={params.name}
+                      value={
+                        params?.type === "lable-input-select"
+                          ? selectedOption?.name ||
+                            params?.defaultAny ||
+                            params?.options[0]?.value
+                          : popUpData[params?.name] === undefined
+                          ? params?.defaultAny
+                          : popUpData[params?.name]
+                      }
+                      customStyles={{ width: "100%" }}
+                      selectHandler={(opt) => {
+                        handleInputChange(opt, params);
+                      }}
+                      placeholder={params?.placeholder}
+                      onChange={(e) => handleInputChange(e, params)}
+                      defaultData={params?.options}
+                      customInputStyles={{
+                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                      }}
+                      svg={
+                        params?.type === "lable-input-select"
+                          ? selectedOption?.svg
+                          : params?.svg
+                      }
+                    />
+                    {params?.rightText && (
+                      <span className="font-14 exchange-input-right">
+                        {params?.rightText}
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <Button
               label={"Save"}
