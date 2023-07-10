@@ -83,6 +83,11 @@ export const Referral = ({
           amount: 'Lvl ' + item.lvl + '/' + item.side,
           icon: false
         },
+        {
+          title: "Total Staked",
+          amount: item.joinedAccounts.length && item.joinedAccounts[0].stakedTotal > 0  ? item.joinedAccounts[0].stakedTotal : 0,
+          icon: false
+        },
       ]
       console.log(item.user_address)
       console.log(activeTreeInfo)
