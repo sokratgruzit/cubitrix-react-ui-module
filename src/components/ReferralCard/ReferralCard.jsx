@@ -134,7 +134,7 @@ export const ReferralCard = ({ type, label, item, customStyles, labelTwo, totalD
           <h2 className='font-20'>{labelTwo}</h2>
           {totalData.map((item, index) => (
             <div key={index}>
-              <span style={{ display: 'block' }}>${item.value}</span>
+              <span style={{ display: 'block' }}>{item.value}</span>
               <p className='font-16'>{item.title}</p>
             </div>
           ))}

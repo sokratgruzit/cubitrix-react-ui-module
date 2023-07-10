@@ -75,7 +75,7 @@ export const Referral = ({
         },
         {
           title: "Address",
-          amount: item.joinedAccountMetas.length > 0  ? item.joinedAccountMetas[0].address : 'no address',
+          amount: item.user_address  ? item.user_address : 'no address',
           icon: false
         },
         {

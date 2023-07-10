@@ -351,7 +351,7 @@ export const Popup = ({
                   let selectedOption;
                   if (params.type === "lable-input-select") {
                     selectedOption = params?.options.find(
-                      (option) => option.value === currentObject[params?.name],
+                      (option) => option.value === popUpData[params?.name],
                     );
                   }
                   return (
@@ -366,9 +366,9 @@ export const Popup = ({
                             ? selectedOption?.name ||
                               params?.defaultAny ||
                               params?.options[0]?.value
-                            : currentObject[params?.name] === undefined
+                            : popUpData[params?.name] === undefined
                             ? params?.defaultAny
-                            : currentObject[params?.name]
+                            : popUpData[params?.name]
                         }
                         customStyles={{ width: "100%" }}
                         selectHandler={(opt) => {
