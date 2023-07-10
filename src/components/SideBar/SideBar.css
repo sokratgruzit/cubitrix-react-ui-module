@@ -4,12 +4,12 @@
   left: 100%;
   top: 0;
   width: 362px;
-  border-left: 1px solid rgba(255, 255, 255, 0.20);
-  background:  #10282B;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  background: #10282b;
   transition: 0.5s;
   font-size: 12px;
   line-height: 140%;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 20px;
 }
 
