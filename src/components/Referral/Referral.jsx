@@ -506,12 +506,12 @@ export const Referral = ({
                                                       )}
                                                       {!suItem.type && (
                                                           <div key={suItem.type + index} className={`referral-tree-item`} style={{width: 100 / item.documents.length + '%'}}>
-                                                            <div className={`referral-tree-btn`} onClick={() => {referralTreeUserClick(suItem.user_address)}} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(null)}}>
+                                                            <div className={`referral-tree-btn`} onClick={() => {referralTreeUserClick(suItem)}} onMouseOver={() => {openTreeInfo(suItem )}} onMouseLeave={() => {openTreeInfo(null)}}>
                                                               {treeInfo !== null && (
                                                                   <div className="referral-tree-info" style={suItem.side == 'left' ? {left: '120px'} : {right: '120px'}}>
                                                                     <InfoBox
                                                                         type="reward-box"
-                                                                        active={activeTreeInfo == suItem.user_address ? true : false}
+                                                                        active={activeTreeInfo == suItem.user_address && animateTree ? true : false}
                                                                         cardBody={treeInfo}
                                                                         customStyle={{width: '100%'}}
                                                                     />
