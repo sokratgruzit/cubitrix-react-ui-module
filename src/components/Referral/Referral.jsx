@@ -49,7 +49,9 @@ export const Referral = ({
   referralTreeBtnsRight,
   referralTreeActive,
   referralTreeActiveAddress,
-  referralAddress
+  referralAddress,
+  referralTreeTableData,
+  referralTreeTableHead
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -416,9 +418,9 @@ export const Referral = ({
                     />
                   </div>
                 }
-                tableData={codesTableData?.length ? referralCodeTableData : false}
+                tableData={referralTreeTableData}
                 tableFooter={tableFooterPagination}
-                tableHead={referralCodeTableHead}
+                tableHead={referralTreeTableHead}
                 customHeadStyles={{
                   background: 'none',
                   padding: '10px 20px',

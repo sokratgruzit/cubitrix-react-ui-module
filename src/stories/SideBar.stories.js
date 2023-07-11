@@ -317,7 +317,7 @@ stories.add("SideBar", () => {
         label={"Check Your Network"}
       /> */}
 
-      <Popup
+      {/* <Popup
         popUpElement={
           <FeeWarning />
           // <ChangeNetwork
@@ -326,10 +326,10 @@ stories.add("SideBar", () => {
           // />
         }
         label={"Opening account fee"}
-      />
+      /> */}
 
       <SideBar open={toggle}>
-        <TransferFromAcc
+        {/* <TransferFromAcc
           sideBarClose={() => setToggle((prev) => !prev)}
           inputs={inputs}
           currentObject={currentObject}
@@ -344,7 +344,7 @@ stories.add("SideBar", () => {
           accountBalanceSecond={"$2,034.04"}
           label={"hi"}
           info={"info"}
-        />{" "}
+        />{" "} */}
         {/* <Connect
           ConnectOptions={[
             {
@@ -413,7 +413,7 @@ stories.add("SideBar", () => {
           }}
           handleResetPassword={(e) => console.log(e)}
         /> */}
-        {/* <UserOptions
+        <UserOptions
           type={"Metamask"}
           warning={true}
           completeAccount={() => console.log("complete")}
@@ -421,7 +421,8 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
           account={"ahaha"}
-        /> */}
+          mainAccount={"ahaha2"}
+        />
         {/* <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
