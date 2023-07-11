@@ -49,6 +49,7 @@ export const Referral = ({
   referralTreeBtnsRight,
   referralTreeActive,
   referralTreeActiveAddress,
+  referralAddress
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -388,7 +389,7 @@ export const Referral = ({
             <div className='referral-card-container'>
               <ReferralCard
                 type={'total-info'}
-                referral={'0xae0cf2498c1A1zP1eP5QGefi2DMPTfTL5SLm'}
+                referral={referralAddress}
                 totalData={referralRebatesTotal}
                 label={'Your Referral Code'}
                 labelTwo={'Total Referral Rebates'}

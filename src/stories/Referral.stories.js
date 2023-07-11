@@ -827,6 +827,7 @@ stories.add('Referral', () => {
       ]
     }
   ]
+  let referralAddress = 'asdasdsad'
   let referralTreeAdd = (lvl,position) => {
     console.log(lvl)
     console.log(position)
@@ -976,6 +977,7 @@ stories.add('Referral', () => {
         cards={referralCards}
         handleCreateCode={handleCreateCode}
         referralBinaryType={referralBinaryType}
+        referralAddress={referralAddress}
         referralTreeActiveAddress={referralTreeActiveAddress}
         referralTreeActive={true}
         referralTreeBtnsLeft={tableVisualType}
