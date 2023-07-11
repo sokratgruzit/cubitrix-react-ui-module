@@ -51,7 +51,8 @@ export const Referral = ({
   referralTreeActiveAddress,
   referralAddress,
   referralTreeTableData,
-  referralTreeTableHead
+  referralTreeTableHead,
+  referralTableType
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -110,6 +111,7 @@ export const Referral = ({
       },1500)
     }
   }
+
   useEffect(() => {
     if (referralBinaryType == 'visual') {
       setAnimateTree(true)
@@ -134,91 +136,179 @@ export const Referral = ({
 
   let mobile = width <= 1300
 
-  let referralCodeTableData
-  referralCodeTableData = codesTableData?.map((item, index) => {
-    return (
-      <div
-        className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
-        key={index}
-        onClick={() => {
-          mobileExpandFunc(item._id)
-        }}
-      >
-        <div className='table'>
+  let referralTreeTableDataBinaryBody
+  if(referralTableType == 'binary') {
+    referralTreeTableDataBinaryBody = referralTreeTableData?.map((item, index) => {
+      return (
           <div
-            className={`td col ${referralCodeTableHead[0].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? referralCodeTableHead[0].mobileWidth : referralCodeTableHead[0].width}%`,
-            }}
+              className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
+              key={index}
+              onClick={() => {
+                mobileExpandFunc(item._id)
+              }}
           >
-            <span>{item._id.referrral}</span>
-          </div>
-          <div
-            className={`td ${referralCodeTableHead[1].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? referralCodeTableHead[1].mobileWidth : referralCodeTableHead[1].width}%`,
-            }}
-          >
-            <span>{item._id.from}</span>
-          </div>
-          <div
-            className={`td ${referralCodeTableHead[2].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? referralCodeTableHead[2].mobileWidth : referralCodeTableHead[2].width}%`,
-            }}
-          >
-            <span>{item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}</span>
-          </div>
-          <div
-            className={`td ${referralCodeTableHead[3].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? referralCodeTableHead[3].mobileWidth : referralCodeTableHead[3].width}%`,
-            }}
-          >
-            <span>{item._id.percent}</span>
-          </div>
-          <div
-            className={`td col ${referralCodeTableHead[4].mobileWidth ? true : false} dashboard-td`}
-            style={{
-              width: `${mobile ? referralCodeTableHead[4].mobileWidth : referralCodeTableHead[4].width}%`,
-            }}
-          >
-            <span>{item.amount}</span>
-          </div>
-        </div>
-        <div className='table-more' />
-        <div className='icon-place' style={{ height: '40px' }}>
-          <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path
-              d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
-              stroke='white'
-              strokeWidth='1.5'
-              strokeMiterlimit='10'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
-        </div>
-        <div className='table-mobile'>
-          <div className='table-mobile-content'>
-            <div className='td'>
-              <div className='mobile-ttl'>{referralCodeTableHead[0].name}</div>
-              <span>{item._id.referrral}</span>
+            <div className='table'>
+              <div
+                  className={`td col ${referralTreeTableHead[0].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[0].mobileWidth : referralTreeTableHead[0].width}%`,
+                  }}
+              >
+                <span>{item.joinedAccountMetas.length > 0 ? item.joinedAccountMetas[0].name : 'No Name'}</span>
+                <span>{item?.user_address}</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[1].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[1].mobileWidth : referralTreeTableHead[1].width}%`,
+                  }}
+              >
+                <span>{'Lvl ' + item.lvl + '/' + item.side}</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[2].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[2].mobileWidth : referralTreeTableHead[2].width}%`,
+                  }}
+              >
+                <span>{item.joinedAccounts.length > 0 && item.joinedAccounts[0].stakedTotal > 0  ? item.joinedAccounts[0].stakedTotal : 0}</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[3].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[3].mobileWidth : referralTreeTableHead[3].width}%`,
+                  }}
+              >
+                <span>{item?.createdAt}</span>
+              </div>
             </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>
-              {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}
+            <div className='table-more' />
+            <div className='icon-place' style={{ height: '40px' }}>
+              <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path
+                    d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
+                    stroke='white'
+                    strokeWidth='1.5'
+                    strokeMiterlimit='10'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                />
+              </svg>
             </div>
-            <div className='td'>
-              <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>
-              <span>{item._id.percent}</span>
+            <div className='table-mobile'>
+              <div className='table-mobile-content'>
+                {/*<div className='td'>*/}
+                {/*  <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>*/}
+                {/*  <span>{item._id.referrral}</span>*/}
+                {/*</div>*/}
+                {/*<div className='td'>*/}
+                {/*  <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>*/}
+                {/*  {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}*/}
+                {/*</div>*/}
+                {/*<div className='td'>*/}
+                {/*  <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>*/}
+                {/*  <span>{item._id.percent}</span>*/}
+                {/*</div>*/}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    )
-  })
-
+      )
+    })
+  }
+  if(referralTableType == 'uni') {
+    referralTreeTableDataBinaryBody = referralTreeTableData?.map((item, index) => {
+      return (
+          <div
+              className={`table-parent ${mobileExpand == item._id ? 'active' : ''} dashboard-table-parent`}
+              key={index}
+              onClick={() => {
+                mobileExpandFunc(item._id)
+              }}
+          >
+            <div className='table'>
+              <div
+                  className={`td col ${referralTreeTableHead[0].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[0].mobileWidth : referralTreeTableHead[0].width}%`,
+                  }}
+              >
+                <span>{item.joinedAccountMetas.length > 0 ? item.joinedAccountMetas[0].name : 'No Name'}</span>
+                <span>{item?.user_address}</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[1].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[1].mobileWidth : referralTreeTableHead[1].width}%`,
+                  }}
+              >
+                <span>{'Lvl ' + item.lvl + '/' + item.side}</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[2].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[2].mobileWidth : referralTreeTableHead[2].width}%`,
+                  }}
+              >
+                <span>0%</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[3].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[3].mobileWidth : referralTreeTableHead[3].width}%`,
+                  }}
+              >
+                <span>{item.joinedAccounts.length > 0 && item.joinedAccounts[0].stakedTotal > 0  ? item.joinedAccounts[0].stakedTotal : 0}</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[4].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[4].mobileWidth : referralTreeTableHead[4].width}%`,
+                  }}
+              >
+                <span>{item?.joinedTransactions ? item.joinedTransactions[0].totalAmount : 0}</span>
+              </div>
+              <div
+                  className={`td ${referralTreeTableHead[5].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? referralTreeTableHead[5].mobileWidth : referralTreeTableHead[5].width}%`,
+                  }}
+              >
+                <span>{item?.createdAt}</span>
+              </div>
+            </div>
+            <div className='table-more' />
+            <div className='icon-place' style={{ height: '40px' }}>
+              <svg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path
+                    d='M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325'
+                    stroke='white'
+                    strokeWidth='1.5'
+                    strokeMiterlimit='10'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                />
+              </svg>
+            </div>
+            <div className='table-mobile'>
+              <div className='table-mobile-content'>
+                {/*<div className='td'>*/}
+                {/*  <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>*/}
+                {/*  <span>{item._id.referrral}</span>*/}
+                {/*</div>*/}
+                {/*<div className='td'>*/}
+                {/*  <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>*/}
+                {/*  {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}*/}
+                {/*</div>*/}
+                {/*<div className='td'>*/}
+                {/*  <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>*/}
+                {/*  <span>{item._id.percent}</span>*/}
+                {/*</div>*/}
+              </div>
+            </div>
+          </div>
+      )
+    })
+  }
   let referralHistoryTableData
   referralHistoryTableData = rebatesTableData?.map((item, index) => {
     return (
@@ -418,7 +508,7 @@ export const Referral = ({
                     />
                   </div>
                 }
-                tableData={referralTreeTableData}
+                tableData={referralBinaryType === 'uni' ? referralTreeTableDataBinaryBody : ''}
                 tableFooter={tableFooterPagination}
                 tableHead={referralTreeTableHead}
                 customHeadStyles={{
