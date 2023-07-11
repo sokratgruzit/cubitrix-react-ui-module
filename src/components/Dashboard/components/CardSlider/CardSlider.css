@@ -125,6 +125,8 @@
   line-height: 150%;
   letter-spacing: 1px;
   color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .card-slider-card_footer {
