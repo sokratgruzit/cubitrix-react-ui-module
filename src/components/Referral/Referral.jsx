@@ -48,6 +48,7 @@ export const Referral = ({
   referralTreePaginationTotal,
   referralTreePaginationEvent,
   referralHistoryButtonsRight,
+  referralHistoryTableType,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -402,7 +403,7 @@ export const Referral = ({
 
   const tables = [
     {
-      type: "referral-history",
+      type: referralHistoryTableType,
       header: "Referral Revates History",
       description: `The airdrop history of your weekly referral rebates.`,
       tableHeader: referralHistoryTableHead,
