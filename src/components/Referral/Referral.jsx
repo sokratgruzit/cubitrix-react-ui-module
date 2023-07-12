@@ -57,7 +57,6 @@ export const Referral = ({
   const [activeAddCopy, setActiveAddCopy] = useState(null);
 
   const { width } = useMobileWidth();
-
   let openTreeInfo = (item) => {
     if (item == null) {
       setActiveTreeInfo(null);
@@ -428,13 +427,13 @@ export const Referral = ({
         }
       }
     >
-      <TableElement
-        color={"#C38C5C"}
-        type={"pagination"}
-        currentPage={referralTreePaginationCurrent}
-        totalCount={referralTreePaginationTotal}
-        onPageChange={referralTreePaginationEvent}
-      />
+      {/*<TableElement*/}
+      {/*  color={"#C38C5C"}*/}
+      {/*  type={"pagination"}*/}
+      {/*  currentPage={referralTreePaginationCurrent}*/}
+      {/*  totalCount={referralTreePaginationTotal}*/}
+      {/*  onPageChange={referralTreePaginationEvent}*/}
+      {/*/>*/}
     </div>
   );
   const rewardBox = [
