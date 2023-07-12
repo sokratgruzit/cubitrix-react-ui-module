@@ -27,8 +27,8 @@ stories.add('Referral', () => {
   const [codesCurrentPage, setCodesCurrentPage] = useState(1)
   const [codesPaginationTotal, setCodesPaginationTotal] = useState(1)
   const [rebatesPaginationTotal, setRebatesPaginationTotal] = useState(1)
-  const [referralType, setReferralType] = useState('binary')
-  const [referralBinaryType, setReferralBinaryType] = useState('uni');
+  const [referralBinaryType, setReferralBinaryType] = useState("visual");
+  const [referralTableType, setReferralTableType] = useState("binary");
 
   const [referralTotal, setReferralTotal] = useState({
     rebatesUniLevel: 0,
@@ -110,14 +110,14 @@ stories.add('Referral', () => {
   let tableType = (
       <div className={`referral-inner-table-more`}>
         <div
-            className={`referral-table-more-svg ${referralBinaryType === 'visual' ? 'referral-table-more-svg_active' : ''}`}
-            onClick={() => setReferralBinaryType('visual')}
+            className={`referral-table-more-svg ${referralTableType == 'uni' ? 'referral-table-more-svg_active' : ''}`}
+            onClick={() => setReferralTableType('uni')}
         >
           Uni
         </div>
         <div
-            className={`referral-table-more-svg ${referralBinaryType === 'uni' ? 'referral-table-more-svg_active' : ''}`}
-            onClick={() => setReferralBinaryType('uni')}
+            className={`referral-table-more-svg ${referralTableType == 'binary' ? 'referral-table-more-svg_active' : ''}`}
+            onClick={() => setReferralTableType('binary')}
         >
           Binary
         </div>
@@ -838,530 +838,536 @@ stories.add('Referral', () => {
   let referralTreeUserBackClick = () => {
     console.log('hii')
   }
-  let referralTreeTableTh = [
-    {
-      name: "Member Name",
-      width: 15,
-      id: 0,
-    },
-    {
-      name: "User Level / Position",
-      width: 15,
-      mobileWidth: 45,
-      id: 1,
-    },
-    {
-      name: "Total Staked",
-      width: 15,
-      id: 2,
-    },
-    {
-      name: "Date Joined",
-      width: 15,
-      id: 3,
-    },
-  ];
-  let referralTreeTableUniTh = [
-    {
-      name: "Member Name",
-      width: 15,
-      id: 0,
-    },
-    {
-      name: "User Level / Position",
-      width: 15,
-      id: 1,
-    },
-    {
-      name: "Rate",
-      width: 15,
-      id: 2,
-    },
-    {
-      name: "Total Staked",
-      width: 15,
-      id: 3,
-    },
-    {
-      name: "Total Earned",
-      width: 15,
-      id: 4,
-    },
-    {
-      name: "Date Joined",
-      width: 15,
-      mobileWidth: 45,
-      id: 5,
-    },
-  ];
-  let refferalBody = [
-    {
-      "_id": "64abfb3625deed575c940b5f",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "lvl": 1,
-      "side": "left",
-      "user_address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
-      "position": 1,
-      "createdAt": "2023-07-10T12:36:06.436Z",
-      "updatedAt": "2023-07-10T12:36:06.436Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64abfb2925deed575c940b4d",
-          "address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
-          "balance": 23500,
-          "account_category": "main",
-          "account_owner": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
-          "active": false,
-          "step": 4,
-          "createdAt": "2023-07-10T12:35:53.401Z",
-          "updatedAt": "2023-07-11T11:05:11.404Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "false",
-            "referral": "false",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 16000,
-          "stakedToday": 16000,
-          "stakedTotal": 16000,
-          "flush_out": {
+
+
+  let uni = {
+    referralTreeTableUniTh :[
+      {
+        name: "Member Name",
+        width: 15,
+        id: 0,
+      },
+      {
+        name: "User Level / Position",
+        width: 15,
+        id: 1,
+      },
+      {
+        name: "Rate",
+        width: 15,
+        id: 2,
+      },
+      {
+        name: "Total Staked",
+        width: 15,
+        id: 3,
+      },
+      {
+        name: "Total Earned",
+        width: 15,
+        id: 4,
+      },
+      {
+        name: "Date Joined",
+        width: 15,
+        mobileWidth: 45,
+        id: 5,
+      },
+    ],
+    refferalUniBody: [
+      {
+        "_id": "64abfb3825deed575c940b6a",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "user_address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
+        "lvl": 1,
+        "createdAt": "2023-07-10T12:36:08.065Z",
+        "updatedAt": "2023-07-10T12:36:08.065Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64abfb2925deed575c940b4d",
+            "address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
+            "balance": 23500,
+            "account_category": "main",
+            "account_owner": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
             "active": false,
-            "number": 3,
-            "left": 0,
-            "right": 300
+            "step": 4,
+            "createdAt": "2023-07-10T12:35:53.401Z",
+            "updatedAt": "2023-07-11T11:05:11.404Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "false",
+              "referral": "false",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 16000,
+            "stakedToday": 16000,
+            "stakedTotal": 16000,
+            "flush_out": {
+              "active": false,
+              "number": 3,
+              "left": 0,
+              "right": 300
+            }
           }
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64abfb2925deed575c940b52",
-          "address": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
-          "createdAt": "2023-07-10T12:35:53.675Z",
-          "updatedAt": "2023-07-11T15:28:08.464Z",
-          "__v": 0,
-          "email": "asd@ad.com",
-          "name": "jonnjoli1",
-          "date_of_birth": "2023-07-11T15:28:04.939Z",
-          "nationality": ""
-        }
-      ]
-    },
-    {
-      "_id": "64ac1850ff9202b98adf9085",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "lvl": 1,
-      "side": "right",
-      "user_address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
-      "position": 2,
-      "createdAt": "2023-07-10T14:40:16.437Z",
-      "updatedAt": "2023-07-10T14:40:16.437Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64ac182dff9202b98adf906d",
-          "address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
-          "balance": 5000,
-          "account_category": "main",
-          "account_owner": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
-          "active": true,
-          "step": 5,
-          "createdAt": "2023-07-10T14:39:41.513Z",
-          "updatedAt": "2023-07-10T14:41:16.948Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "true",
-            "referral": "true",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 5000,
-          "stakedToday": 5000,
-          "stakedTotal": 5000
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64ac182dff9202b98adf9073",
-          "address": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
-          "createdAt": "2023-07-10T14:39:41.840Z",
-          "updatedAt": "2023-07-10T14:40:23.518Z",
-          "__v": 0,
-          "email": "asdasd@sda.com",
-          "name": "oadfnojadnfnojadnf"
-        }
-      ]
-    },
-    {
-      "_id": "64ac1657ff9202b98adf8f94",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "lvl": 2,
-      "side": "left",
-      "user_address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
-      "position": 1,
-      "createdAt": "2023-07-10T14:31:51.840Z",
-      "updatedAt": "2023-07-10T14:31:51.840Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64ac1621ff9202b98adf8f3f",
-          "address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
-          "balance": 5000,
-          "account_category": "main",
-          "account_owner": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
-          "active": true,
-          "step": 5,
-          "createdAt": "2023-07-10T14:30:57.616Z",
-          "updatedAt": "2023-07-10T14:32:40.718Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "true",
-            "referral": "true",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 5000,
-          "stakedToday": 5000,
-          "stakedTotal": 5000
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64ac1621ff9202b98adf8f47",
-          "address": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
-          "createdAt": "2023-07-10T14:30:57.879Z",
-          "updatedAt": "2023-07-10T14:31:53.478Z",
-          "__v": 0,
-          "email": "asd@ads.cad",
-          "name": "koki"
-        }
-      ]
-    },
-    {
-      "_id": "64abfc3e25deed575c940bef",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "lvl": 2,
-      "side": "left",
-      "user_address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
-      "position": 2,
-      "createdAt": "2023-07-10T12:40:30.091Z",
-      "updatedAt": "2023-07-10T12:40:30.091Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64abfbc925deed575c940b88",
-          "address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
-          "balance": 5100,
-          "account_category": "main",
-          "account_owner": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
-          "active": true,
-          "step": 5,
-          "createdAt": "2023-07-10T12:38:33.784Z",
-          "updatedAt": "2023-07-10T12:41:20.534Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "true",
-            "referral": "true",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 5100,
-          "stakedToday": 5100,
-          "stakedTotal": 5100
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64abfbca25deed575c940b8d",
-          "address": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
-          "createdAt": "2023-07-10T12:38:34.024Z",
-          "updatedAt": "2023-07-11T15:27:02.502Z",
-          "__v": 0,
-          "email": "sad@asd.com",
-          "name": "samjoli3",
-          "date_of_birth": "2023-07-11T15:07:13.581Z",
-          "nationality": ""
-        }
-      ]
-    }
-  ]
-  let refferalUniBody = [
-    {
-      "_id": "64abfb3825deed575c940b6a",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "user_address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
-      "lvl": 1,
-      "createdAt": "2023-07-10T12:36:08.065Z",
-      "updatedAt": "2023-07-10T12:36:08.065Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64abfb2925deed575c940b4d",
-          "address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
-          "balance": 23500,
-          "account_category": "main",
-          "account_owner": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
-          "active": false,
-          "step": 4,
-          "createdAt": "2023-07-10T12:35:53.401Z",
-          "updatedAt": "2023-07-11T11:05:11.404Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "false",
-            "referral": "false",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 16000,
-          "stakedToday": 16000,
-          "stakedTotal": 16000,
-          "flush_out": {
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64abfb2925deed575c940b52",
+            "address": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
+            "createdAt": "2023-07-10T12:35:53.675Z",
+            "updatedAt": "2023-07-11T15:28:08.464Z",
+            "__v": 0,
+            "email": "asd@ad.com",
+            "name": "jonnjoli1",
+            "date_of_birth": "2023-07-11T15:28:04.939Z",
+            "nationality": ""
+          }
+        ],
+        "joinedTransactions": [
+          {
+            "totalAmount": 12020000
+          }
+        ]
+      },
+      {
+        "_id": "64abfc3f25deed575c940bfa",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "user_address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
+        "lvl": 1,
+        "createdAt": "2023-07-10T12:40:31.024Z",
+        "updatedAt": "2023-07-10T12:40:31.024Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64abfbc925deed575c940b88",
+            "address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
+            "balance": 5100,
+            "account_category": "main",
+            "account_owner": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
+            "active": true,
+            "step": 5,
+            "createdAt": "2023-07-10T12:38:33.784Z",
+            "updatedAt": "2023-07-10T12:41:20.534Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "true",
+              "referral": "true",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 5100,
+            "stakedToday": 5100,
+            "stakedTotal": 5100
+          }
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64abfbca25deed575c940b8d",
+            "address": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
+            "createdAt": "2023-07-10T12:38:34.024Z",
+            "updatedAt": "2023-07-11T15:27:02.502Z",
+            "__v": 0,
+            "email": "sad@asd.com",
+            "name": "samjoli3",
+            "date_of_birth": "2023-07-11T15:07:13.581Z",
+            "nationality": ""
+          }
+        ],
+        "joinedTransactions": [
+          {
+            "totalAmount": 12007355
+          }
+        ]
+      },
+      {
+        "_id": "64ac1659ff9202b98adf8f9f",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "user_address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
+        "lvl": 1,
+        "createdAt": "2023-07-10T14:31:53.040Z",
+        "updatedAt": "2023-07-10T14:31:53.040Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64ac1621ff9202b98adf8f3f",
+            "address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
+            "balance": 5000,
+            "account_category": "main",
+            "account_owner": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
+            "active": true,
+            "step": 5,
+            "createdAt": "2023-07-10T14:30:57.616Z",
+            "updatedAt": "2023-07-10T14:32:40.718Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "true",
+              "referral": "true",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 5000,
+            "stakedToday": 5000,
+            "stakedTotal": 5000
+          }
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64ac1621ff9202b98adf8f47",
+            "address": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
+            "createdAt": "2023-07-10T14:30:57.879Z",
+            "updatedAt": "2023-07-10T14:31:53.478Z",
+            "__v": 0,
+            "email": "asd@ads.cad",
+            "name": "koki"
+          }
+        ],
+        "joinedTransactions": [
+          {
+            "totalAmount": 12005750
+          }
+        ]
+      },
+      {
+        "_id": "64ac1855ff9202b98adf9091",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "user_address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
+        "lvl": 1,
+        "createdAt": "2023-07-10T14:40:21.760Z",
+        "updatedAt": "2023-07-10T14:40:21.760Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64ac182dff9202b98adf906d",
+            "address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
+            "balance": 5000,
+            "account_category": "main",
+            "account_owner": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
+            "active": true,
+            "step": 5,
+            "createdAt": "2023-07-10T14:39:41.513Z",
+            "updatedAt": "2023-07-10T14:41:16.948Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "true",
+              "referral": "true",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 5000,
+            "stakedToday": 5000,
+            "stakedTotal": 5000
+          }
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64ac182dff9202b98adf9073",
+            "address": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
+            "createdAt": "2023-07-10T14:39:41.840Z",
+            "updatedAt": "2023-07-10T14:40:23.518Z",
+            "__v": 0,
+            "email": "asdasd@sda.com",
+            "name": "oadfnojadnfnojadnf"
+          }
+        ],
+        "joinedTransactions": [
+          {
+            "totalAmount": 12004750
+          }
+        ]
+      }
+    ]
+  }
+  let binnary = {
+     referralTreeTableTh: [
+      {
+        name: "Member Name",
+        width: 15,
+        id: 0,
+      },
+      {
+        name: "User Level / Position",
+        width: 15,
+        mobileWidth: 45,
+        id: 1,
+      },
+      {
+        name: "Total Staked",
+        width: 15,
+        id: 2,
+      },
+      {
+        name: "Date Joined",
+        width: 15,
+        id: 3,
+      },
+    ],
+      refferalBody :[
+      {
+        "_id": "64abfb3625deed575c940b5f",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "lvl": 1,
+        "side": "left",
+        "user_address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
+        "position": 1,
+        "createdAt": "2023-07-10T12:36:06.436Z",
+        "updatedAt": "2023-07-10T12:36:06.436Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64abfb2925deed575c940b4d",
+            "address": "0x2bb12bd6e8248d68d234d5d32caa570886b733b4",
+            "balance": 23500,
+            "account_category": "main",
+            "account_owner": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
             "active": false,
-            "number": 3,
-            "left": 0,
-            "right": 300
+            "step": 4,
+            "createdAt": "2023-07-10T12:35:53.401Z",
+            "updatedAt": "2023-07-11T11:05:11.404Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "false",
+              "referral": "false",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 16000,
+            "stakedToday": 16000,
+            "stakedTotal": 16000,
+            "flush_out": {
+              "active": false,
+              "number": 3,
+              "left": 0,
+              "right": 300
+            }
           }
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64abfb2925deed575c940b52",
-          "address": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
-          "createdAt": "2023-07-10T12:35:53.675Z",
-          "updatedAt": "2023-07-11T15:28:08.464Z",
-          "__v": 0,
-          "email": "asd@ad.com",
-          "name": "jonnjoli1",
-          "date_of_birth": "2023-07-11T15:28:04.939Z",
-          "nationality": ""
-        }
-      ],
-      "joinedTransactions": [
-        {
-          "totalAmount": 12020000
-        }
-      ]
-    },
-    {
-      "_id": "64abfc3f25deed575c940bfa",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "user_address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
-      "lvl": 1,
-      "createdAt": "2023-07-10T12:40:31.024Z",
-      "updatedAt": "2023-07-10T12:40:31.024Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64abfbc925deed575c940b88",
-          "address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
-          "balance": 5100,
-          "account_category": "main",
-          "account_owner": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
-          "active": true,
-          "step": 5,
-          "createdAt": "2023-07-10T12:38:33.784Z",
-          "updatedAt": "2023-07-10T12:41:20.534Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "true",
-            "referral": "true",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 5100,
-          "stakedToday": 5100,
-          "stakedTotal": 5100
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64abfbca25deed575c940b8d",
-          "address": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
-          "createdAt": "2023-07-10T12:38:34.024Z",
-          "updatedAt": "2023-07-11T15:27:02.502Z",
-          "__v": 0,
-          "email": "sad@asd.com",
-          "name": "samjoli3",
-          "date_of_birth": "2023-07-11T15:07:13.581Z",
-          "nationality": ""
-        }
-      ],
-      "joinedTransactions": [
-        {
-          "totalAmount": 12007355
-        }
-      ]
-    },
-    {
-      "_id": "64ac1659ff9202b98adf8f9f",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "user_address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
-      "lvl": 1,
-      "createdAt": "2023-07-10T14:31:53.040Z",
-      "updatedAt": "2023-07-10T14:31:53.040Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64ac1621ff9202b98adf8f3f",
-          "address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
-          "balance": 5000,
-          "account_category": "main",
-          "account_owner": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
-          "active": true,
-          "step": 5,
-          "createdAt": "2023-07-10T14:30:57.616Z",
-          "updatedAt": "2023-07-10T14:32:40.718Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "true",
-            "referral": "true",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 5000,
-          "stakedToday": 5000,
-          "stakedTotal": 5000
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64ac1621ff9202b98adf8f47",
-          "address": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
-          "createdAt": "2023-07-10T14:30:57.879Z",
-          "updatedAt": "2023-07-10T14:31:53.478Z",
-          "__v": 0,
-          "email": "asd@ads.cad",
-          "name": "koki"
-        }
-      ],
-      "joinedTransactions": [
-        {
-          "totalAmount": 12005750
-        }
-      ]
-    },
-    {
-      "_id": "64ac1855ff9202b98adf9091",
-      "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
-      "user_address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
-      "lvl": 1,
-      "createdAt": "2023-07-10T14:40:21.760Z",
-      "updatedAt": "2023-07-10T14:40:21.760Z",
-      "__v": 0,
-      "joinedAccounts": [
-        {
-          "_id": "64ac182dff9202b98adf906d",
-          "address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
-          "balance": 5000,
-          "account_category": "main",
-          "account_owner": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
-          "active": true,
-          "step": 5,
-          "createdAt": "2023-07-10T14:39:41.513Z",
-          "updatedAt": "2023-07-10T14:41:16.948Z",
-          "extensions": {
-            "trade": "false",
-            "loan": "false",
-            "notify": "false",
-            "staking": "true",
-            "referral": "true",
-            "connect": "false"
-          },
-          "assets": {
-            "btc": 0,
-            "eth": 0,
-            "usdt": 0,
-            "gold": 0,
-            "platinum": 0
-          },
-          "__v": 0,
-          "stakedThisMonth": 5000,
-          "stakedToday": 5000,
-          "stakedTotal": 5000
-        }
-      ],
-      "joinedAccountMetas": [
-        {
-          "_id": "64ac182dff9202b98adf9073",
-          "address": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
-          "createdAt": "2023-07-10T14:39:41.840Z",
-          "updatedAt": "2023-07-10T14:40:23.518Z",
-          "__v": 0,
-          "email": "asdasd@sda.com",
-          "name": "oadfnojadnfnojadnf"
-        }
-      ],
-      "joinedTransactions": [
-        {
-          "totalAmount": 12004750
-        }
-      ]
-    }
-  ]
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64abfb2925deed575c940b52",
+            "address": "0xa23f08aaf4d3aa507e771424ff4e5b6636a98dbb",
+            "createdAt": "2023-07-10T12:35:53.675Z",
+            "updatedAt": "2023-07-11T15:28:08.464Z",
+            "__v": 0,
+            "email": "asd@ad.com",
+            "name": "jonnjoli1",
+            "date_of_birth": "2023-07-11T15:28:04.939Z",
+            "nationality": ""
+          }
+        ]
+      },
+      {
+        "_id": "64ac1850ff9202b98adf9085",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "lvl": 1,
+        "side": "right",
+        "user_address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
+        "position": 2,
+        "createdAt": "2023-07-10T14:40:16.437Z",
+        "updatedAt": "2023-07-10T14:40:16.437Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64ac182dff9202b98adf906d",
+            "address": "0x18dad1068a6740d7942f569c7574e542451bab4d",
+            "balance": 5000,
+            "account_category": "main",
+            "account_owner": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
+            "active": true,
+            "step": 5,
+            "createdAt": "2023-07-10T14:39:41.513Z",
+            "updatedAt": "2023-07-10T14:41:16.948Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "true",
+              "referral": "true",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 5000,
+            "stakedToday": 5000,
+            "stakedTotal": 5000
+          }
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64ac182dff9202b98adf9073",
+            "address": "0xfccceb000af7305bfd33f20cece4e3f9a348bd6d",
+            "createdAt": "2023-07-10T14:39:41.840Z",
+            "updatedAt": "2023-07-10T14:40:23.518Z",
+            "__v": 0,
+            "email": "asdasd@sda.com",
+            "name": "oadfnojadnfnojadnf"
+          }
+        ]
+      },
+      {
+        "_id": "64ac1657ff9202b98adf8f94",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "lvl": 2,
+        "side": "left",
+        "user_address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
+        "position": 1,
+        "createdAt": "2023-07-10T14:31:51.840Z",
+        "updatedAt": "2023-07-10T14:31:51.840Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64ac1621ff9202b98adf8f3f",
+            "address": "0x9a0ad04251b4d5e33f7b64e8650770e8e74bb28a",
+            "balance": 5000,
+            "account_category": "main",
+            "account_owner": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
+            "active": true,
+            "step": 5,
+            "createdAt": "2023-07-10T14:30:57.616Z",
+            "updatedAt": "2023-07-10T14:32:40.718Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "true",
+              "referral": "true",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 5000,
+            "stakedToday": 5000,
+            "stakedTotal": 5000
+          }
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64ac1621ff9202b98adf8f47",
+            "address": "0x8f6cd9d1bc0586036a9f3bc5cc27b27ca72a37ef",
+            "createdAt": "2023-07-10T14:30:57.879Z",
+            "updatedAt": "2023-07-10T14:31:53.478Z",
+            "__v": 0,
+            "email": "asd@ads.cad",
+            "name": "koki"
+          }
+        ]
+      },
+      {
+        "_id": "64abfc3e25deed575c940bef",
+        "referral_address": "0x101101f183f52f6126bf3b8138e0b9dee9a0fd38",
+        "lvl": 2,
+        "side": "left",
+        "user_address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
+        "position": 2,
+        "createdAt": "2023-07-10T12:40:30.091Z",
+        "updatedAt": "2023-07-10T12:40:30.091Z",
+        "__v": 0,
+        "joinedAccounts": [
+          {
+            "_id": "64abfbc925deed575c940b88",
+            "address": "0xc152a2811f8cef373bd268e4d9d7a9614afbbb60",
+            "balance": 5100,
+            "account_category": "main",
+            "account_owner": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
+            "active": true,
+            "step": 5,
+            "createdAt": "2023-07-10T12:38:33.784Z",
+            "updatedAt": "2023-07-10T12:41:20.534Z",
+            "extensions": {
+              "trade": "false",
+              "loan": "false",
+              "notify": "false",
+              "staking": "true",
+              "referral": "true",
+              "connect": "false"
+            },
+            "assets": {
+              "btc": 0,
+              "eth": 0,
+              "usdt": 0,
+              "gold": 0,
+              "platinum": 0
+            },
+            "__v": 0,
+            "stakedThisMonth": 5100,
+            "stakedToday": 5100,
+            "stakedTotal": 5100
+          }
+        ],
+        "joinedAccountMetas": [
+          {
+            "_id": "64abfbca25deed575c940b8d",
+            "address": "0x06b8789294c901bb54cfd8b26d5d03f863a68373",
+            "createdAt": "2023-07-10T12:38:34.024Z",
+            "updatedAt": "2023-07-11T15:27:02.502Z",
+            "__v": 0,
+            "email": "sad@asd.com",
+            "name": "samjoli3",
+            "date_of_birth": "2023-07-11T15:07:13.581Z",
+            "nationality": ""
+          }
+        ]
+      }
+    ]
+  }
   return (
     <BrowserRouter>
       <Header
@@ -1501,9 +1507,9 @@ stories.add('Referral', () => {
         cards={referralCards}
         handleCreateCode={handleCreateCode}
         referralBinaryType={referralBinaryType}
-        referralTableType={'uni'}
-        referralTreeTableData={refferalUniBody}
-        referralTreeTableHead={referralTreeTableUniTh}
+        referralTableType={referralTableType}
+        referralTreeTableData={referralTableType == 'uni' ? uni.refferalUniBody : uni.refferalBody}
+        referralTreeTableHead={referralTableType == 'uni' ? binnary.referralTreeTableUniTh : binnary.referralTreeTableTh}
         referralAddress={referralAddress}
         referralTreeActiveAddress={referralTreeActiveAddress}
         referralTreeActive={true}

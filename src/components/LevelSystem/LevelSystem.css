@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  background: rgba(16, 40, 43, 1);
+  padding: 20px;
 }
 
 .level-system-container p {
@@ -39,4 +42,9 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  max-height: 40vh;
+  overflow: auto;
+}
+.level-system-td,.level-system-th {
+  width: 33%;
 }

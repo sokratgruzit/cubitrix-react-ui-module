@@ -56,21 +56,21 @@ export const Table = ({
             {tableFooter}
           </>
       )}
-      {!tableData && !tableEmulator && (
-          <div className='table-empty'>
-            <>
-              {tableEmptyData?.icon ? tableEmptyData?.icon : <NoApplicationsIcon />}
-              <p className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
-                {tableEmptyData?.label || "You have no pending KYC applications"}
-              </p>
-              {handleViewAll && (
-                <p className='table-empty__view-all font-14' onClick={handleViewAll}>
-                  View All Transactions
-                </p>
-              )}
-            </>
-          </div>
-      )}
+      {/*{!tableData && !tableEmulator && (*/}
+      {/*    <div className='table-empty'>*/}
+      {/*      <>*/}
+      {/*        {tableEmptyData?.icon ? tableEmptyData?.icon : <NoApplicationsIcon />}*/}
+      {/*        <p className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>*/}
+      {/*          {tableEmptyData?.label || "You have no pending KYC applications"}*/}
+      {/*        </p>*/}
+      {/*        {handleViewAll && (*/}
+      {/*          <p className='table-empty__view-all font-14' onClick={handleViewAll}>*/}
+      {/*            View All Transactions*/}
+      {/*          </p>*/}
+      {/*        )}*/}
+      {/*      </>*/}
+      {/*    </div>*/}
+      {/*)}*/}
       {tableEmulator !== false ? (
           <div className='table-emulator-container'>
             {tableEmulator}
