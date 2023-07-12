@@ -483,7 +483,7 @@ export const DashboardTable = ({
                 width: `${mobile ? tableHeader[1].mobileWidth : tableHeader[1].width}%`,
               }}
             >
-              <span>{item?.percent ?? 0}%</span>
+              <span>Lvl: {item?.tx_options?.lvl}</span>
             </div>
             <div
               className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
@@ -492,9 +492,7 @@ export const DashboardTable = ({
               }}
             >
               <span>
-                {item?.tx_options?.referral_module === "uni"
-                  ? "UNI LVL"
-                  : `LVL ${item?.tx_options?.lvl}`}
+                {item?.amount}
               </span>
             </div>
             <div
@@ -503,7 +501,7 @@ export const DashboardTable = ({
                 width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
               }}
             >
-              <span>{item?.amount?.toFixed(2)}</span>
+              <span>{item?.createdAt}</span>
             </div>
           </div>
           <div className="table-more" />
@@ -586,6 +584,117 @@ export const DashboardTable = ({
           loading={loading}
         />
       </>
+    ));
+  }
+  if (type === "referral-history-binary") {
+    tableData = data?.map((item, index) => {
+      return (
+          <div
+              className={`table-parent ${
+                  mobileExpand == item._id ? "active" : ""
+              } dashboard-table-parent`}
+              key={index}
+              onClick={() => {
+                mobileExpandFunc(item._id);
+              }}
+          >
+            <div className="table">
+              <div
+                  className={`td col ${
+                      tableHeader[0].mobileWidth ? true : false
+                  } dashboard-td table-coin-row`}
+                  style={{
+                    width: `${mobile ? tableHeader[0].mobileWidth : tableHeader[0].width}%`,
+                  }}
+              >
+                <span>{item?.amount}</span>
+              </div>
+              <div
+                  className={`td ${
+                      tableHeader[1].mobileWidth ? true : false
+                  } dashboard-td table-coin-row dashboard-table-button`}
+                  style={{
+                    width: `${mobile ? tableHeader[1].mobileWidth : tableHeader[1].width}%`,
+                  }}
+              >
+                <span>{item?.from}</span>
+              </div>
+              <div
+                  className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
+                  }}
+              >
+              <span>
+                {item?.createdAt}
+              </span>
+              </div>
+            </div>
+            <div className="table-more" />
+            <div className="icon-place" style={{ height: "40px" }}>
+              <svg
+                  width="12"
+                  height="7"
+                  viewBox="0 0 12 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                    d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="table-mobile">
+              <div className="table-mobile-content">
+
+              </div>
+            </div>
+          </div>
+      );
+    });
+    return (element = (
+        <>
+          <Table
+              tableHeadMore={
+                <div className="dashboard-table-header-container">
+                  <Visual
+                      element={"table-header"}
+                      label={header}
+                      description={description}
+                      fontSize={"font-20"}
+                      customStyles={{ border: "none", padding: "0" }}
+                      labelCustomStyles={{ color: "#C38C5C" }}
+                      buttons={tableButtons}
+                  />
+                </div>
+              }
+              tableData={data.length ? tableData : false}
+              tableFooter={tablePagination ? tableFooterPagination : tableFooter}
+              tableHead={tableHeader}
+              customStyles={{
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "20px",
+                background: "rgba(255, 255, 255, 0.01)",
+                backdropFilter: "blur(5px)",
+              }}
+              customHeadStyles={{
+                padding: "10px 20px",
+                borderBottom: "px solid rgba(255, 255, 255, 0.1)",
+                width: "100%",
+                background: "none",
+              }}
+              customTableMoreStyles={{
+                display: "none",
+              }}
+              tableEmptyData={tableEmpty}
+              loading={loading}
+          />
+        </>
     ));
   }
 

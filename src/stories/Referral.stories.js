@@ -1587,6 +1587,7 @@ stories.add("Referral", () => {
             referralBinaryTableEmpty={referralBinaryTableEmpty}
             referralHistoryButtonsRight={tableType}
             totalBinaryMembers={5}
+            referralHistoryTableType={'referral-history'}
         />
         {createCodePopupActive && (
             <Popup
