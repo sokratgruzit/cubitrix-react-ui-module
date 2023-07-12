@@ -52,6 +52,9 @@ export const Referral = ({
   referralTreeTableData,
   referralTreeTableHead,
   referralTableType,
+  referralTreePaginationCurrent,
+  referralTreePaginationTotal,
+  referralTreePaginationEvent,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -552,9 +555,9 @@ export const Referral = ({
       <TableElement
         color={"#C38C5C"}
         type={"pagination"}
-        currentPage={1}
-        totalCount={3}
-        onPageChange={() => console.log("hi")}
+        currentPage={paginationCurrent}
+        totalCount={paginationTotal}
+        onPageChange={paginationEvent}
       />
     </div>
   );
