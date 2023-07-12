@@ -555,9 +555,9 @@ export const Referral = ({
       <TableElement
         color={"#C38C5C"}
         type={"pagination"}
-        currentPage={paginationCurrent}
-        totalCount={paginationTotal}
-        onPageChange={paginationEvent}
+        currentPage={referralTreePaginationCurrent}
+        totalCount={referralTreePaginationTotal}
+        onPageChange={referralTreePaginationEvent}
       />
     </div>
   );
