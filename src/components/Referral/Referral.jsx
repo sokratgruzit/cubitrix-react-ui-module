@@ -57,7 +57,6 @@ export const Referral = ({
   const [activeAddCopy, setActiveAddCopy] = useState(null);
 
   const { width } = useMobileWidth();
-
   let openTreeInfo = (item) => {
     if (item == null) {
       setActiveTreeInfo(null);
