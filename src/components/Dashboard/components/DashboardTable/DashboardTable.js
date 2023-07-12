@@ -559,6 +559,7 @@ export const DashboardTable = ({
                 fontSize={"font-20"}
                 customStyles={{ border: "none", padding: "0" }}
                 labelCustomStyles={{ color: "#C38C5C" }}
+                buttons={tableButtons}
               />
             </div>
           }
