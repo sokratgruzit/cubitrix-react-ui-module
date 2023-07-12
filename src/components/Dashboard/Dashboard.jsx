@@ -24,10 +24,11 @@ export const Dashboard = ({
   accountType,
   setAccountType,
   referralHistoryButtonsRight,
+  referralHistoryTableType,
 }) => {
   const tables = [
     {
-      type: "transactions",
+      type: referralHistoryTableType,
       header: "Transactions",
       description: (
         <p className="font-14">
