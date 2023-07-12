@@ -20,8 +20,6 @@ import { Footer } from "../Footer";
 import { InfoBox } from "../InfoBox";
 
 export const Referral = ({
-  handleCreateCode,
-  codesTableData,
   referralHistoryTableHead,
   rebatesTableData,
   referralHistoryTableEmpty,
@@ -49,6 +47,7 @@ export const Referral = ({
   referralTreePaginationCurrent,
   referralTreePaginationTotal,
   referralTreePaginationEvent,
+  referralHistoryButtonsRight,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -400,106 +399,6 @@ export const Referral = ({
       );
     });
   }
-  let referralHistoryTableData;
-  referralHistoryTableData = rebatesTableData?.map((item, index) => {
-    return (
-      <div
-        className={`table-parent ${mobileExpand == item._id ? "active" : ""}`}
-        key={index}
-        onClick={() => {
-          mobileExpandFunc(item._id);
-        }}
-      >
-        <div className="table">
-          <div
-            className={`td col ${referralHistoryTableHead[0].mobileWidth ? true : false}`}
-            style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[0].mobileWidth
-                  : referralHistoryTableHead[0].width
-              }%`,
-            }}
-          >
-            <span>{item.from.address}</span>
-          </div>
-          <div
-            className={`td ${referralHistoryTableHead[1].mobileWidth ? true : false}`}
-            style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[1].mobileWidth
-                  : referralHistoryTableHead[1].width
-              }%`,
-            }}
-          >
-            <span>{item?.tx_options?.referral}</span>
-          </div>
-          <div
-            className={`td ${referralHistoryTableHead[2].mobileWidth ? true : false}`}
-            style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[2].mobileWidth
-                  : referralHistoryTableHead[2].width
-              }%`,
-            }}
-          >
-            <span>
-              {item?.tx_options?.referral_module === "uni"
-                ? "UNI LVL"
-                : `VIP ${item?.tx_options?.lvl}`}
-            </span>
-          </div>
-          <div
-            className={`td col ${referralHistoryTableHead[3].mobileWidth ? true : false}`}
-            style={{
-              width: `${
-                mobile
-                  ? referralHistoryTableHead[3].mobileWidth
-                  : referralHistoryTableHead[3].width
-              }%`,
-            }}
-          >
-            <span>{item.amount}</span>
-          </div>
-        </div>
-        <div className="table-more" />
-        <div className="icon-place">
-          <svg
-            width="12"
-            height="7"
-            viewBox="0 0 12 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <div className="table-mobile">
-          <div className="table-mobile-content">
-            <div className="td">
-              <div className="mobile-ttl">{referralHistoryTableHead[1].name}</div>
-              {item?.tx_options?.referral}
-            </div>
-            <div className="td">
-              <div className="mobile-ttl">{referralHistoryTableHead[2].name}</div>
-              {item?.tx_options?.referral_module === "uni"
-                ? "UNI LVL"
-                : `VIP ${item?.tx_options?.lvl}`}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  });
 
   const tables = [
     {
@@ -511,6 +410,7 @@ export const Referral = ({
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
       tablePagination: true,
+      tableButtons: referralHistoryButtonsRight,
       paginationCurrent: referralHistoryPaginationCurrent,
       paginationTotal: referralHistoryPaginationTotal,
       paginationEvent: referralHistoryPaginationEvent,
@@ -519,19 +419,21 @@ export const Referral = ({
 
   const tableFooterPagination = (
     <div
-      className={"dashboard-table-footer"}
-      style={{
-        display: `${codesTableData?.length ? "flex" : "none"}`,
-        padding: `${codesTableData?.length ? "20px" : "0px"}`,
-      }}
+      className={"dashboard-table-footer alo"}
+      style={
+        {
+          // display: `${codesTableData?.length ? "flex" : "none"}`,
+          // padding: `${codesTableData?.length ? "20px" : "0px"}`,
+        }
+      }
     >
-      <TableElement
-        color={"#C38C5C"}
-        type={"pagination"}
-        currentPage={referralTreePaginationCurrent}
-        totalCount={referralTreePaginationTotal}
-        onPageChange={referralTreePaginationEvent}
-      />
+      {/*<TableElement*/}
+      {/*  color={"#C38C5C"}*/}
+      {/*  type={"pagination"}*/}
+      {/*  currentPage={referralTreePaginationCurrent}*/}
+      {/*  totalCount={referralTreePaginationTotal}*/}
+      {/*  onPageChange={referralTreePaginationEvent}*/}
+      {/*/>*/}
     </div>
   );
   const rewardBox = [

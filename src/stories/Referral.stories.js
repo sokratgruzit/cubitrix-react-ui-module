@@ -1585,6 +1585,7 @@ stories.add("Referral", () => {
             referralCodesCardData={referralCodesCardData}
             handleLevelSystem={handleLevelSystem}
             referralBinaryTableEmpty={referralBinaryTableEmpty}
+            referralHistoryButtonsRight={tableType}
             totalBinaryMembers={5}
         />
         {createCodePopupActive && (
