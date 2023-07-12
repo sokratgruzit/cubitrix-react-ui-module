@@ -8,16 +8,11 @@ import "./Dashboard.css";
 export const Dashboard = ({
   transactionsData,
   transactionHeader,
-  referralCodeHeader,
   referralHistoryHeader,
-  referralCardsData,
-  codesTableData,
   rebatesTableData,
   totalTransactions,
-  referralCodeTableEmpty,
   referralHistoryTableEmpty,
   transactionsTableEmpty,
-  referralCodeTableLoading,
   referralHistoryTableLoading,
   transactionsTableLoading,
   accountsData,
@@ -68,11 +63,6 @@ export const Dashboard = ({
         link: "/referral",
         label: "All Code",
       },
-      tableHeader: referralCodeHeader,
-      referralCardsData: referralCardsData,
-      data: codesTableData,
-      tableEmpty: referralCodeTableEmpty,
-      loading: referralCodeTableLoading,
     },
     {
       type: "referral-history",
@@ -110,7 +100,6 @@ export const Dashboard = ({
           footer={item?.footer}
           rightPanelData={item?.rightPanelData}
           tableHeader={item?.tableHeader}
-          referralCardsData={item?.referralCardsData}
           data={item?.data}
           tableEmpty={item?.tableEmpty}
           loading={item?.loading}
