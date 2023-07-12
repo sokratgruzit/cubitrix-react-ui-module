@@ -56,15 +56,6 @@ export const Dashboard = ({
       loading: transactionsTableLoading,
     },
     {
-      type: "referral-code",
-      header: "Referral Code",
-      description: `You can create multiple referral codes to attract traders`,
-      footer: {
-        link: "/referral",
-        label: "All Code",
-      },
-    },
-    {
       type: "referral-history",
       header: "Referral Revates History",
       description: `The airdrop history of your weekly referral rebates.`,
