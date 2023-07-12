@@ -67,6 +67,7 @@ export const Dashboard = ({
       data: rebatesTableData,
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
+      tableButtons: <div>finally</div>,
     },
   ];
 
@@ -94,6 +95,7 @@ export const Dashboard = ({
           data={item?.data}
           tableEmpty={item?.tableEmpty}
           loading={item?.loading}
+          tableButtons={item?.tableButtons}
         />
       ))}
     </>
