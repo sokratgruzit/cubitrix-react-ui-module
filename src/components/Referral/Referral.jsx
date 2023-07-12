@@ -526,19 +526,19 @@ export const Referral = ({
       paginationTotal: referralCodePaginationTotal,
       paginationEvent: referralCodePaginationEvent,
     },
-    {
-      type: "referral-history",
-      header: "Referral Revates History",
-      description: `The airdrop history of your weekly referral rebates.`,
-      tableHeader: referralHistoryTableHead,
-      data: rebatesTableData,
-      tableEmpty: referralHistoryTableEmpty,
-      loading: referralHistoryTableLoading,
-      tablePagination: true,
-      paginationCurrent: referralHistoryPaginationCurrent,
-      paginationTotal: referralHistoryPaginationTotal,
-      paginationEvent: referralHistoryPaginationEvent,
-    },
+    // {
+    //   type: "referral-history",
+    //   header: "Referral Revates History",
+    //   description: `The airdrop history of your weekly referral rebates.`,
+    //   tableHeader: referralHistoryTableHead,
+    //   data: rebatesTableData,
+    //   tableEmpty: referralHistoryTableEmpty,
+    //   loading: referralHistoryTableLoading,
+    //   tablePagination: true,
+    //   paginationCurrent: referralHistoryPaginationCurrent,
+    //   paginationTotal: referralHistoryPaginationTotal,
+    //   paginationEvent: referralHistoryPaginationEvent,
+    // },
   ];
 
   const tableFooterPagination = (
