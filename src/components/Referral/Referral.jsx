@@ -21,24 +21,18 @@ import { InfoBox } from "../InfoBox";
 
 export const Referral = ({
   handleCreateCode,
-  referralCodeTableHead,
   codesTableData,
   referralHistoryTableHead,
   rebatesTableData,
-  referralCodeTableEmpty,
   referralHistoryTableEmpty,
   referralRebatesTotal,
   referralHistoryTableLoading,
-  referralCodeTableLoading,
   handleLevelSystem,
   referralBinaryTableEmpty,
   totalBinaryMembers,
   referralHistoryPaginationCurrent,
   referralHistoryPaginationTotal,
   referralHistoryPaginationEvent,
-  referralCodePaginationCurrent,
-  referralCodePaginationTotal,
-  referralCodePaginationEvent,
   referralTreeData,
   referralTreeAddClick,
   referralTreeUserClick,
@@ -509,39 +503,18 @@ export const Referral = ({
 
   const tables = [
     {
-      type: "referral-code",
-      header: "Referral Code",
-      description: `You can create multiple referral codes to attract traders`,
-      tableHeader: referralCodeTableHead,
-      data: codesTableData,
-      tableEmpty: referralCodeTableEmpty,
-      loading: referralCodeTableLoading,
-      tableButtons: [
-        <Button
-          element={"referral-button"}
-          label={"Create Code"}
-          icon={<AddSquareIcon color={"#C38C5C"} />}
-          onClick={handleCreateCode}
-        />,
-      ],
+      type: "referral-history",
+      header: "Referral Revates History",
+      description: `The airdrop history of your weekly referral rebates.`,
+      tableHeader: referralHistoryTableHead,
+      data: rebatesTableData,
+      tableEmpty: referralHistoryTableEmpty,
+      loading: referralHistoryTableLoading,
       tablePagination: true,
-      paginationCurrent: referralCodePaginationCurrent,
-      paginationTotal: referralCodePaginationTotal,
-      paginationEvent: referralCodePaginationEvent,
+      paginationCurrent: referralHistoryPaginationCurrent,
+      paginationTotal: referralHistoryPaginationTotal,
+      paginationEvent: referralHistoryPaginationEvent,
     },
-    // {
-    //   type: "referral-history",
-    //   header: "Referral Revates History",
-    //   description: `The airdrop history of your weekly referral rebates.`,
-    //   tableHeader: referralHistoryTableHead,
-    //   data: rebatesTableData,
-    //   tableEmpty: referralHistoryTableEmpty,
-    //   loading: referralHistoryTableLoading,
-    //   tablePagination: true,
-    //   paginationCurrent: referralHistoryPaginationCurrent,
-    //   paginationTotal: referralHistoryPaginationTotal,
-    //   paginationEvent: referralHistoryPaginationEvent,
-    // },
   ];
 
   const tableFooterPagination = (
