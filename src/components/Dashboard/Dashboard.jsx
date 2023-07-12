@@ -28,7 +28,7 @@ export const Dashboard = ({
 }) => {
   const tables = [
     {
-      type: referralHistoryTableType,
+      type: "transactions",
       header: "Transactions",
       description: (
         <p className="font-14">
@@ -58,7 +58,7 @@ export const Dashboard = ({
       loading: transactionsTableLoading,
     },
     {
-      type: "referral-history",
+      type: referralHistoryTableType,
       header: "Referral Revates History",
       description: `The airdrop history of your weekly referral rebates.`,
       footer: {
