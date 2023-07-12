@@ -410,7 +410,7 @@ export const Referral = ({
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
       tablePagination: true,
-      buttonsRight: referralHistoryButtonsRight,
+      tableButtons: referralHistoryButtonsRight,
       paginationCurrent: referralHistoryPaginationCurrent,
       paginationTotal: referralHistoryPaginationTotal,
       paginationEvent: referralHistoryPaginationEvent,
@@ -829,7 +829,6 @@ export const Referral = ({
               paginationCurrent={item?.paginationCurrent}
               paginationTotal={item?.paginationTotal}
               paginationEvent={item?.paginationEvent}
-              buttons={item?.buttonsRight}
             />
           ))}
         </div>
