@@ -23,6 +23,7 @@ export const Dashboard = ({
   cardImgs,
   accountType,
   setAccountType,
+  referralHistoryButtonsRight,
 }) => {
   const tables = [
     {
@@ -67,7 +68,7 @@ export const Dashboard = ({
       data: rebatesTableData,
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
-      tableButtons: <div>finally</div>,
+      tableButtons: referralHistoryButtonsRight,
     },
   ];
 
