@@ -26,6 +26,7 @@ export const DashboardTable = ({
   paginationCurrent,
   paginationTotal,
   paginationEvent,
+  buttons,
 }) => {
   let element = null;
 
@@ -44,7 +45,9 @@ export const DashboardTable = ({
 
   let mobile = width <= 1300;
 
-  const tableVisualMore = (
+  const tableVisualMore = buttons ? (
+    buttons
+  ) : (
     <div className={"dashboard-table-head-wrap"}>
       {rightPanelData?.map((item, index) => (
         <div key={index} className={"dashboard-table-head"}>

@@ -47,6 +47,7 @@ export const Referral = ({
   referralTreePaginationCurrent,
   referralTreePaginationTotal,
   referralTreePaginationEvent,
+  referralHistoryButtonsRight,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -409,6 +410,7 @@ export const Referral = ({
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
       tablePagination: true,
+      buttonsRight: referralHistoryButtonsRight,
       paginationCurrent: referralHistoryPaginationCurrent,
       paginationTotal: referralHistoryPaginationTotal,
       paginationEvent: referralHistoryPaginationEvent,
@@ -827,6 +829,7 @@ export const Referral = ({
               paginationCurrent={item?.paginationCurrent}
               paginationTotal={item?.paginationTotal}
               paginationEvent={item?.paginationEvent}
+              buttons={item?.buttonsRight}
             />
           ))}
         </div>
