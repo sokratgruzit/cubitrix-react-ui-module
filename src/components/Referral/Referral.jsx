@@ -633,7 +633,9 @@ export const Referral = ({
                 </div>
               }
               tableData={
-                referralBinaryType === "uni" ? referralTreeTableDataBinaryBody : ""
+                referralTreeTableDataBinaryBody?.length > 0
+                  ? referralTreeTableDataBinaryBody
+                  : false
               }
               tableFooter={tableFooterPagination}
               tableHead={referralTreeTableHead}
