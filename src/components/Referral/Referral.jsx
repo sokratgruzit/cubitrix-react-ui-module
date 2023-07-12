@@ -20,8 +20,6 @@ import { Footer } from "../Footer";
 import { InfoBox } from "../InfoBox";
 
 export const Referral = ({
-  handleCreateCode,
-  codesTableData,
   referralHistoryTableHead,
   rebatesTableData,
   referralHistoryTableEmpty,
@@ -419,11 +417,13 @@ export const Referral = ({
 
   const tableFooterPagination = (
     <div
-      className={"dashboard-table-footer"}
-      style={{
-        display: `${codesTableData?.length ? "flex" : "none"}`,
-        padding: `${codesTableData?.length ? "20px" : "0px"}`,
-      }}
+      className={"dashboard-table-footer alo"}
+      style={
+        {
+          // display: `${codesTableData?.length ? "flex" : "none"}`,
+          // padding: `${codesTableData?.length ? "20px" : "0px"}`,
+        }
+      }
     >
       <TableElement
         color={"#C38C5C"}
