@@ -292,7 +292,7 @@ export const DashboardTable = ({
               <span>
                 {item?._id?.referral_module === "uni"
                   ? "UNI LVL"
-                  : `VIP ${item?._id?.lvl}`}
+                  : `LVL ${item?._id?.lvl}`}
               </span>
             </div>
             <div
@@ -343,7 +343,7 @@ export const DashboardTable = ({
               </div>
               <div className="td">
                 <div className="mobile-ttl">{tableHeader[2].name}</div>
-                {item._id.referral_module === "uni" ? "UNI LVL" : `VIP ${item._id.lvl}`}
+                {item._id.referral_module === "uni" ? "UNI LVL" : `LVL ${item._id.lvl}`}
               </div>
               <div className="td">
                 <div className="mobile-ttl">{tableHeader[3].name}</div>
@@ -493,7 +493,7 @@ export const DashboardTable = ({
               <span>
                 {item?.tx_options?.referral_module === "uni"
                   ? "UNI LVL"
-                  : `VIP ${item?.tx_options?.lvl}`}
+                  : `LVL ${item?.tx_options?.lvl}`}
               </span>
             </div>
             <div
@@ -534,7 +534,7 @@ export const DashboardTable = ({
                 <div className="mobile-ttl">{tableHeader[2].name}</div>
                 {item?.tx_options?.referral_module === "uni"
                   ? "UNI LVL"
-                  : `VIP ${item?.tx_options?.lvl}`}
+                  : `LVL ${item?.tx_options?.lvl}`}
               </div>
               {width < 500 && (
                 <div className="td">
