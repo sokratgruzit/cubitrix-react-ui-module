@@ -24,7 +24,13 @@ export const AccountSummary = ({ data, stackContractInfo, label }) => {
                   {item?.icon}
                   {item.title}
                 </p>
-                <p>{parseFloat(item.value)?.toFixed(5)} ATR</p>
+                <p>
+                  {item.value?.toLocaleString("en-US", {
+                    minimumFractionDigits: 5,
+                    maximumFractionDigits: 5,
+                  })}{" "}
+                  ATR
+                </p>
               </div>
             ))}
           </div>

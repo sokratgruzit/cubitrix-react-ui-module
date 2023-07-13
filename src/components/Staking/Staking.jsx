@@ -70,7 +70,10 @@ export const Staking = ({
                 <span>
                   {
                     [
-                      item.amount / 10 ** 18,
+                      (item.amount / 10 ** 18)?.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      }),
                       item.staketime,
                       item.unstaketime,
                       parseFloat(item.realtimeRewardPerBlock).toFixed(10),

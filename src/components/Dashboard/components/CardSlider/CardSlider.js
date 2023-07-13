@@ -226,7 +226,12 @@ export const CardSlider = ({
                     {accountType === "main" ? "ATAR" : accountType.toUpperCase()}
                   </h4>
                 </div>
-                <p className="card-slider-card_content">{mainAcc?.balance?.toFixed(2)}</p>
+                <p className="card-slider-card_content">
+                  {mainAcc?.balance?.toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </p>
               </div>
               <div className="card-slider-card_footer">
                 {cardFooterData?.map((item, index) => {
@@ -282,7 +287,12 @@ export const CardSlider = ({
                         <Account type={key} />
                         <h4 className="font-16">{key.toUpperCase()}</h4>
                       </div>
-                      <p className="card-slider-card_content">{value?.toFixed(2)}</p>
+                      <p className="card-slider-card_content">
+                        {value?.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                      </p>
                     </div>
                     <div className="card-slider-card_footer">
                       {cardFooterData?.map((item, footerIndex) => {
