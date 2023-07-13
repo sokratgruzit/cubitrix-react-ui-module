@@ -186,14 +186,14 @@ export const UserAccount = ({
             fontSize={"font-12"}
             icon={true}
           />
-          <Input
+          {/* <Input
             type={"label-input-phone-number"}
             label={"Mobile Number"}
             onChange={(e) => handleUserUpdate(e, "mobile")}
             value={userData.mobile}
             customStyles={{ width: "100%" }}
             editable={true}
-          />
+          /> */}
           <Input
             type={"date-picker-input"}
             onChange={(e) => handleUserUpdate(e, "date_of_birth")}
@@ -202,7 +202,7 @@ export const UserAccount = ({
             customStyles={{ width: "100$" }}
             editable={true}
           />
-          <Input
+          {/* <Input
             type={"lable-input-select"}
             icon={false}
             selectType={"country"}
@@ -212,7 +212,7 @@ export const UserAccount = ({
             customStyles={{ width: "100%" }}
             editable={true}
             selectLabel={"Select Country"}
-          />
+          /> */}
           {/* <Input
             type={"label-input-upload"}
             customStyles={{ width: "100%" }}
