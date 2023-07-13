@@ -403,7 +403,7 @@ export const Referral = ({
   const tables = [
     {
       type: referralHistoryTableType,
-      header: "Referral Revates History",
+      header: "Referral History",
       description: `The airdrop history of your weekly referral rebates.`,
       tableHeader: referralHistoryTableHead,
       data: rebatesTableData,

@@ -22,7 +22,6 @@
   background-color: rgba(69, 244, 234, 0.1);
   /* background-color: rgba(69, 244, 234, 0.1); */
   border-radius: 8px;
-  margin-top: 59px;
 }
 
 .LandingSteps__progress-bar__fill {
@@ -167,4 +166,18 @@
   .LandingSteps__topUpOptions {
     flex-direction: column;
   }
+}
+
+.LandingSteps_progress-bar-wrapper {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+  margin-top: 59px;
+}
+
+.LandingSteps_progress-bar-wrapper span {
+  font-size: 14px;
+  line-height: 140%;
+  color: #ffffff;
 }

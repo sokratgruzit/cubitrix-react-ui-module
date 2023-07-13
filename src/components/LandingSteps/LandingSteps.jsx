@@ -170,12 +170,16 @@ export const LandingSteps = ({
           onClick={closeLandingSteps}
           customStyles={{ margin: "0", minHeight: "52px" }}
         />
-        <div className="LandingSteps__progress-bar">
-          <div
-            className="LandingSteps__progress-bar__fill"
-            style={{ width: `${(step / 5) * 100}%` }}
-          />
+        <div className="LandingSteps_progress-bar-wrapper">
+          <div className="LandingSteps__progress-bar">
+            <div
+              className="LandingSteps__progress-bar__fill"
+              style={{ width: `${(step / 5) * 100}%` }}
+            />
+          </div>
+          <span>{step}/4</span>
         </div>
+
         {step === 1 && (
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title">Connect Wallet</div>

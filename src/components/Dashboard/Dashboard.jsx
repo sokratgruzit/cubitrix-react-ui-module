@@ -40,11 +40,11 @@ export const Dashboard = ({
       ),
       rightPanelData: [
         {
-          title: "Recieved",
+          title: "Incoming",
           value: totalTransactions?.received,
         },
         {
-          title: "Spent",
+          title: "Outgoing",
           value: totalTransactions?.spent,
         },
       ],
@@ -59,7 +59,7 @@ export const Dashboard = ({
     },
     {
       type: referralHistoryTableType,
-      header: "Referral Revates History",
+      header: "Referral History",
       description: `The airdrop history of your weekly referral rebates.`,
       footer: {
         link: "/referral",

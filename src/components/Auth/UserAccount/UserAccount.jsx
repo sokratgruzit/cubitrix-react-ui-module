@@ -213,12 +213,12 @@ export const UserAccount = ({
             editable={true}
             selectLabel={"Select Country"}
           />
-          <Input
+          {/* <Input
             type={"label-input-upload"}
             customStyles={{ width: "100%" }}
             onChange={(e) => handleUserUpdate(e, "avatar")}
             value={imgValue}
-          />
+          /> */}
           <Button
             element="button"
             label={
