@@ -48,6 +48,8 @@ export const LandingSteps = ({
   tokenBalance,
   depositAmount,
   coinbaseLoading,
+  referralState,
+  setReferralState,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -91,6 +93,15 @@ export const LandingSteps = ({
       [name]: value,
     });
   };
+
+  function handleReferralChange(event) {
+    let value = event.target.value;
+    let name = event.target.name;
+    setReferralState({
+      ...formData,
+      [name]: value,
+    });
+  }
 
   const handleTokenAmountChange = (event) => {
     const value = event.target.value;
@@ -303,7 +314,6 @@ export const LandingSteps = ({
               <HelpText
                 status={"error"}
                 title={`Your currently possess ${tokenBalance} ATR. To stake you need to possess minimum of 100 ATR. Maximu you cans take during registration is 500,000 ATR.`}
-                //  multiple of 5000 ATR (5000, 10000, 15000, etc). You can purchase ATR by clicking on the button below)`}
                 color={"#6A6D76"}
                 icon={true}
                 customStyles={{ marginBottom: "5px" }}
@@ -325,6 +335,29 @@ export const LandingSteps = ({
                   <p className="topupDashboard_inputOverlay_text">ATR</p>
                 </div>
               </div>
+              {1000 > 500 && (
+                <div>
+                  <Input
+                    type={"default"}
+                    icon={false}
+                    inputType={"default"}
+                    placeholder={"Enter"}
+                    label={"Refferal Code"}
+                    value={referralState.value}
+                    onChange={handleReferralChange}
+                    customStyles={{ width: "100%", marginTop: "5px" }}
+                    name={"referral"}
+                  />
+                  {registrationState?.status && (
+                    <HelpText
+                      status={registrationState?.status}
+                      title={registrationState?.message}
+                      color={"#FF0C46"}
+                    />
+                  )}
+                </div>
+              )}
+              <div></div>
               <p className="topupDashboard_info-exchangeRate">
                 1 ATR = {exchangeRate} USDT
               </p>

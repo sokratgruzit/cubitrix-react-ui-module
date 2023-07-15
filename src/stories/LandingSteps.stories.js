@@ -108,6 +108,13 @@ stories.add("LandingSteps", () => {
     referral: "",
   });
 
+  const [referralState, setReferralState] = useState({
+    value: "",
+    loading: false,
+    message: "",
+    status: false,
+  });
+
   const [timeperiod, setTimeperiod] = useState(4);
   const [timeperiodDate, setTimeperiodDate] = useState(0);
 
@@ -356,6 +363,8 @@ stories.add("LandingSteps", () => {
             inputs={inputs}
             currentObject={currentObject}
             isAllowance={true}
+            referralState={referralState}
+            setReferralState={setReferralState}
           />
         </div>
         <SideBar open={toggle}>
