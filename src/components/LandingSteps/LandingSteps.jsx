@@ -302,7 +302,8 @@ export const LandingSteps = ({
               </div>
               <HelpText
                 status={"error"}
-                title={`Your currently possess ${tokenBalance} ATR. To stake you need to possess multiple of 5000 ATR (5000, 10000, 15000, etc). You can purchase ATR by clicking on the button below)`}
+                title={`Your currently possess ${tokenBalance} ATR. To stake you need to possess minimum of 100 ATR. Maximu you cans take during registration is 500,000 ATR.`}
+                //  multiple of 5000 ATR (5000, 10000, 15000, etc). You can purchase ATR by clicking on the button below)`}
                 color={"#6A6D76"}
                 icon={true}
                 customStyles={{ marginBottom: "5px" }}
