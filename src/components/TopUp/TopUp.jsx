@@ -55,9 +55,7 @@ export const TopUp = ({
 
   return (
     <div className="topup_main">
-      <p className="topup_title">
-        1. Select the payment method and calculate token price
-      </p>
+      <p className="topup_title">1. Select the payment method and calculate ATR price</p>
       <div className="topup_methodContainer">
         {methods.map((method) => (
           <div
@@ -72,15 +70,13 @@ export const TopUp = ({
           </div>
         ))}
       </div>
-      <p className="topup_title">
-        2. Set amount of CMCX tokens you would like to purchase
-      </p>
+      <p className="topup_title">2. Set amount of ATR you would like to purchase</p>
       <p className="topup_info">
         Enter the amount you would like to contribute in order to calculate the amount of
-        tokens you will receive. The calculator below helps to convert the required
-        quantity of tokens into the amount of your selected currency.
+        ATR you will receive. The calculator below helps to convert the required quantity
+        of ATR into the amount of your selected currency.
       </p>
-      <p>Token Amount</p>
+      <p>ATR Amount</p>
       <div className="topupDashboard_inputContainer">
         <Input
           type={"default"}
@@ -114,7 +110,7 @@ export const TopUp = ({
       </h3>
       <Button
         element="button"
-        label={`Purchase token`}
+        label={`Purchase ATR`}
         type="btn-secondary"
         size="btn-lg"
         customStyles={{

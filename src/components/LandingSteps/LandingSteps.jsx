@@ -86,17 +86,6 @@ export const LandingSteps = ({
       });
     }
 
-    if (name === "referral") {
-      let error = "";
-      if (!value) {
-        error = "Referral code is required";
-      }
-      setRegistrationState({
-        ...registrationState,
-        referralError: error,
-      });
-    }
-
     setFormData({
       ...formData,
       [name]: value,
@@ -256,24 +245,6 @@ export const LandingSteps = ({
                   color={"#FF0C46"}
                 />
               )}
-              <Input
-                type={"default"}
-                icon={false}
-                inputType={"default"}
-                placeholder={"Enter"}
-                label={"Refferal Code"}
-                value={formData.referral}
-                onChange={handleInputChange}
-                customStyles={{ width: "100%" }}
-                name={"referral"}
-              />
-              {registrationState?.referralError && (
-                <HelpText
-                  status={"error"}
-                  title={registrationState?.referralError}
-                  color={"#FF0C46"}
-                />
-              )}
             </div>
             {registrationState?.error && (
               <HelpText
@@ -303,8 +274,7 @@ export const LandingSteps = ({
                 disabled={
                   !!registrationState?.loading ||
                   !!registrationState?.emailError ||
-                  !!registrationState?.fullNameError ||
-                  !!registrationState?.referralError
+                  !!registrationState?.fullNameError
                 }
               />
             </div>
@@ -315,8 +285,7 @@ export const LandingSteps = ({
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title">Top Up</div>
             <div className="LandingSteps__topUp-box">
-              <p>Select the payment method and calculate token price</p>
-
+              <p>Select the payment method and calculate ATR price</p>
               <div className="LandingSteps__topUpOptions">
                 {methods.map((method) => (
                   <div
@@ -333,12 +302,12 @@ export const LandingSteps = ({
               </div>
               <HelpText
                 status={"error"}
-                title={`Your currently possess ${tokenBalance} tokens. To stake you need to possess multiple of 5000 tokens (5000, 10000, 15000, etc). You can purchase tokens by clicking on the button below)`}
+                title={`Your currently possess ${tokenBalance} ATR. To stake you need to possess multiple of 5000 ATR (5000, 10000, 15000, etc). You can purchase ATR by clicking on the button below)`}
                 color={"#6A6D76"}
                 icon={true}
                 customStyles={{ marginBottom: "5px" }}
               />
-              <p>Set amount of CMCX tokens you would like to purchase</p>
+              <p>Set amount of ATR you would like to purchase</p>
 
               <p className="LandingSteps__topUpLabel">Payment Amount</p>
               <div className="topupDashboard_inputContainer">
@@ -350,7 +319,6 @@ export const LandingSteps = ({
                   value={tokenAmount}
                   onChange={handleTokenAmountChange}
                   customStyles={{ width: "100%" }}
-                  name={"referral"}
                 />
                 <div className="topupDashboard_inputOverlay">
                   <p className="topupDashboard_inputOverlay_text">ATR</p>
@@ -380,7 +348,7 @@ export const LandingSteps = ({
               </h3>
               <Button
                 element="button"
-                label={coinbaseLoading ? "Loading..." : `Purchase token`}
+                label={coinbaseLoading ? "Loading..." : `Purchase ATR`}
                 type="btn-primary"
                 size="btn-lg"
                 customStyles={{
@@ -485,7 +453,7 @@ export const LandingSteps = ({
                   {isAllowance && (
                     <HelpText
                       title={
-                        "Staking token is unapproved, please approve the token before staking"
+                        "Staking ATR is unapproved, please approve the ATR before staking"
                       }
                       status="error"
                       icon={true}

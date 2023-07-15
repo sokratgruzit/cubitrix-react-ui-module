@@ -120,7 +120,7 @@ export const Calculator = ({
       />
       {isAllowance && (
         <HelpText
-          title={"Staking token is unapproved, please approve token before staking"}
+          title={"Staking ATR is unapproved, please approve ATR before staking"}
           status="info"
           color="#6A6D76"
           icon={true}
