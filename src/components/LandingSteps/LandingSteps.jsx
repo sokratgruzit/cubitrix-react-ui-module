@@ -124,9 +124,9 @@ export const LandingSteps = ({
   };
   let helpTexts = {
     amount: {
-      validationType: "multipleOf5000",
+      validationType: "numbers",
       success: "amount is valid",
-      failure: "must be a number and multiple of 5000 (e.g 5000, 10000, 15000))",
+      failure: "must be a number",
     },
   };
 
@@ -460,28 +460,6 @@ export const LandingSteps = ({
                         color="#6A6D76"
                         icon={true}
                       />
-                      {currentObject[inputs?.[0]?.name] > 500 && (
-                        <div>
-                          <Input
-                            type={"default"}
-                            icon={false}
-                            inputType={"default"}
-                            placeholder={"Enter"}
-                            label={"Refferal Code"}
-                            value={referralState.value}
-                            onChange={handleReferralChange}
-                            customStyles={{ width: "100%", marginTop: "5px" }}
-                            name={"referral"}
-                          />
-                          {registrationState?.status && (
-                            <HelpText
-                              status={registrationState?.status}
-                              title={registrationState?.message}
-                              color={"#FF0C46"}
-                            />
-                          )}
-                        </div>
-                      )}
                     </>
                   )}
 
@@ -493,6 +471,28 @@ export const LandingSteps = ({
                       status="error"
                       icon={true}
                     />
+                  )}
+                  {currentObject[inputs?.[0]?.name] > 500 && !isAllowance && (
+                    <div>
+                      <Input
+                        type={"default"}
+                        icon={false}
+                        inputType={"default"}
+                        placeholder={"Enter"}
+                        label={"Refferal Code"}
+                        value={referralState.value}
+                        onChange={handleReferralChange}
+                        customStyles={{ width: "100%", marginTop: "5px" }}
+                        name={"referral"}
+                      />
+                      {registrationState?.status && (
+                        <HelpText
+                          status={registrationState?.status}
+                          title={registrationState?.message}
+                          color={"#FF0C46"}
+                        />
+                      )}
+                    </div>
                   )}
                   {approveResonse && (
                     <HelpText
