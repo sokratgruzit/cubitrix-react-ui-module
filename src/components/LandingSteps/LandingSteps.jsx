@@ -335,28 +335,7 @@ export const LandingSteps = ({
                   <p className="topupDashboard_inputOverlay_text">ATR</p>
                 </div>
               </div>
-              {1000 > 500 && (
-                <div>
-                  <Input
-                    type={"default"}
-                    icon={false}
-                    inputType={"default"}
-                    placeholder={"Enter"}
-                    label={"Refferal Code"}
-                    value={referralState.value}
-                    onChange={handleReferralChange}
-                    customStyles={{ width: "100%", marginTop: "5px" }}
-                    name={"referral"}
-                  />
-                  {registrationState?.status && (
-                    <HelpText
-                      status={registrationState?.status}
-                      title={registrationState?.message}
-                      color={"#FF0C46"}
-                    />
-                  )}
-                </div>
-              )}
+
               <div></div>
               <p className="topupDashboard_info-exchangeRate">
                 1 ATR = {exchangeRate} USDT
@@ -481,6 +460,28 @@ export const LandingSteps = ({
                         color="#6A6D76"
                         icon={true}
                       />
+                      {currentObject[inputs?.[0]?.name] > 500 && (
+                        <div>
+                          <Input
+                            type={"default"}
+                            icon={false}
+                            inputType={"default"}
+                            placeholder={"Enter"}
+                            label={"Refferal Code"}
+                            value={referralState.value}
+                            onChange={handleReferralChange}
+                            customStyles={{ width: "100%", marginTop: "5px" }}
+                            name={"referral"}
+                          />
+                          {registrationState?.status && (
+                            <HelpText
+                              status={registrationState?.status}
+                              title={registrationState?.message}
+                              color={"#FF0C46"}
+                            />
+                          )}
+                        </div>
+                      )}
                     </>
                   )}
 
