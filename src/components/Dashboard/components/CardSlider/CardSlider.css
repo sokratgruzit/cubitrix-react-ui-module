@@ -1,6 +1,6 @@
 .card-slider-navigation {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .card-slider-faded {

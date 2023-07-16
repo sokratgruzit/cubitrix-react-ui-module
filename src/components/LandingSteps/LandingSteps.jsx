@@ -97,6 +97,8 @@ export const LandingSteps = ({
   function handleReferralChange(event) {
     let value = event.target.value;
     let name = event.target.name;
+
+    console.log(value, name);
     setReferralState({
       ...formData,
       [name]: value,
