@@ -17,6 +17,7 @@ export const CardSlider = ({
   handleTransfer,
   accountType,
   setAccountType,
+  tier,
 }) => {
   const swiperRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
@@ -222,8 +223,21 @@ export const CardSlider = ({
               <div className="card-slider-card_header-container">
                 <div className="card-slider-card_header">
                   <Account type={"atar"} />
-                  <h4 className="font-16">
-                    {accountType === "main" ? "ATAR" : accountType.toUpperCase()}
+                  <h4 className="font-16 title_wrapper_card">
+                    <span className="font-16">
+                      {accountType === "main" ? "ATAR" : accountType.toUpperCase()}
+                    </span>
+                    {tier && (
+                      <span
+                        className={`tier-card ${tier === "gold" ? "gold-tier" : ""} ${
+                          tier === "diamond" ? "diamond-tier" : ""
+                        } ${tier === "vip" ? "vip-tier" : ""} ${
+                          tier === "basic" ? "basic-tier" : ""
+                        }`}
+                      >
+                        {tier?.toUpperCase()}
+                      </span>
+                    )}
                   </h4>
                 </div>
                 <p className="card-slider-card_content">

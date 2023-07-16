@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./LandingSteps.css";
 import { MetaMask, WalletConnect, WalletMoneyIcon } from "../../assets/svgs";
 import { Button } from "../Button";
@@ -96,7 +96,13 @@ export const LandingSteps = ({
 
   function handleReferralChange(event) {
     let value = event.target.value;
-    setReferralState((prev) => ({ ...prev, value: value }));
+    let spread = {};
+    if (referralState.message === "empty" && value.length > 0) {
+      spread = {
+        message: "",
+      };
+    }
+    setReferralState((prev) => ({ ...prev, value: value, ...spread }));
   }
 
   const handleTokenAmountChange = (event) => {
@@ -120,18 +126,28 @@ export const LandingSteps = ({
   };
   let helpTexts = {
     amount: {
-      validationType: "numbers",
+      validationType: "between100and500",
       success: "amount is valid",
-      failure: "must be a number",
+      failure: "must be at least 100",
     },
   };
 
-  const validationErrors = useValidation(
-    {
-      amount: currentObject["amount"] || "",
-    },
-    helpTexts,
-  );
+  const validationErrors = useMemo(() => {
+    return useValidation(
+      {
+        amount: currentObject["amount"] || "",
+      },
+      currentObject["amount"] <= 500
+        ? helpTexts
+        : {
+            amount: {
+              validationType: "multipleOf5000",
+              success: "amount is valid",
+              failure: "amount above 500 must be of multiple 5000",
+            },
+          },
+    );
+  }, [currentObject["amount"]]);
 
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);

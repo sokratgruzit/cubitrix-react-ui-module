@@ -21,6 +21,38 @@
   border: none;
 }
 
+.title_wrapper_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.tier-card {
+  border-radius: 8px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.gold-tier {
+  background-color: #c38c5c;
+}
+
+.diamond-tier {
+  background-color: #c0c0c0;
+}
+
+.vip-tier {
+  background-color: #dabae5;
+}
+
+.basic-tier {
+  background-color: #3e412a;
+}
+
 .card-slider-navigation_item > p {
   color: rgba(255, 255, 255, 0.6);
   transition: 0.4s cubic-bezier(0.79, 0.01, 0.15, 0.99);
