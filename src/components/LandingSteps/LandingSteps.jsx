@@ -96,9 +96,7 @@ export const LandingSteps = ({
 
   function handleReferralChange(event) {
     let value = event.target.value;
-    let name = event.target.name;
-
-    setReferralState((prev) => ({ ...prev, [name]: value }));
+    setReferralState((prev) => ({ ...prev, value: value }));
   }
 
   const handleTokenAmountChange = (event) => {
@@ -482,11 +480,12 @@ export const LandingSteps = ({
                         onChange={(e) => handleReferralChange(e)}
                         customStyles={{ width: "100%", marginTop: "5px" }}
                         name={"referral"}
+                        emptyFieldErr={referralState.message === "empty"}
                       />
-                      {registrationState?.status && (
+                      {referralState?.status && (
                         <HelpText
-                          status={registrationState?.status}
-                          title={registrationState?.message}
+                          status={referralState?.status}
+                          title={referralState?.message}
                           color={"#FF0C46"}
                         />
                       )}
