@@ -99,10 +99,10 @@ export const LandingSteps = ({
     let name = event.target.name;
 
     console.log(value, name);
-    setReferralState({
-      ...formData,
-      [name]: value,
-    });
+    // setReferralState({
+    //   ...formData,
+    //   [name]: value,
+    // });
   }
 
   const handleTokenAmountChange = (event) => {
