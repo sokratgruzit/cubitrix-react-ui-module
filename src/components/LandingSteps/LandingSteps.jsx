@@ -480,7 +480,7 @@ export const LandingSteps = ({
                         onChange={(e) => handleReferralChange(e)}
                         customStyles={{ width: "100%", marginTop: "5px" }}
                         name={"referral"}
-                        emptyFieldErr={referralState.message === "empty"}
+                        emptyFieldErr={referralState.message === "empty" ? true : false}
                       />
                       {referralState?.status && (
                         <HelpText
