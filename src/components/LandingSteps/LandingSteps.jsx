@@ -481,7 +481,7 @@ export const LandingSteps = ({
                         placeholder={"Enter"}
                         label={"Refferal Code"}
                         value={referralState.value}
-                        onChange={handleReferralChange}
+                        onChange={(e) => handleReferralChange(e)}
                         customStyles={{ width: "100%", marginTop: "5px" }}
                         name={"referral"}
                       />
