@@ -751,7 +751,6 @@ export const Input = (props) => {
      
       input-group`}
         >
-          {props.value} / {props.step}
           <input
               onChange={(e) => {
                 props.onChange(e);

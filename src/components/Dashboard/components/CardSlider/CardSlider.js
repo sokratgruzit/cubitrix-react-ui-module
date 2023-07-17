@@ -18,6 +18,7 @@ export const CardSlider = ({
   accountType,
   setAccountType,
   tier,
+  extensions,
 }) => {
   const swiperRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
@@ -90,11 +91,15 @@ export const CardSlider = ({
   const accountsData = useMemo(() => {
     const data = accounts?.filter(
       (item) =>
-        item?.account_category !== "external" && item?.account_category !== "system",
+        item?.account_category !== "external" &&
+        item?.account_category !== "system" &&
+        (item?.account_category === "main"
+          ? extensions["dashboard"] === "true"
+          : extensions[item?.account_category] === "true"),
     );
 
     return data;
-  }, [accounts, accountType]);
+  }, [accounts, accountType, extensions]);
 
   // const accountsData = [
   //   {

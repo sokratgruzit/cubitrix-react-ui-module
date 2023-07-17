@@ -83,7 +83,7 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            2. Set amount of ATR ATR you would like to purchase
+            2. Set amount of ATR you would like to purchase
           </p>
           <p className="topupDashboard_info">
             Enter the amount you would like to contribute in order to calculate the amount
@@ -114,7 +114,7 @@ export const TopUpDashboard = ({
         <div className="topupDashboard_bottom-right">
           <h3>Purchase Information</h3>
           <div className="topupDashboard_bottom-row">
-            <p>Token Amount:</p>
+            <p>Amount:</p>
             <p>
               {tokenAmount} ATR = {tokenAmount * exchangeRate} USDT
             </p>
@@ -129,7 +129,7 @@ export const TopUpDashboard = ({
           </h3>
           <Button
             element="button"
-            label={coinbaseLoading ? "Loading..." : `Purchase ATR`}
+            label={coinbaseLoading ? "Loading..." : `Purchase`}
             type="btn-secondary"
             size="btn-lg"
             customStyles={{

@@ -50,6 +50,9 @@ export const LandingSteps = ({
   coinbaseLoading,
   referralState,
   setReferralState,
+  amountProgressOnchange,
+  amountProgressBtnClick,
+  amountProgressValue,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -439,6 +442,19 @@ export const LandingSteps = ({
                           />
                         ))}
                       </div>
+                      <div className="deposit-amount-btns">
+                        <div className={`deposit-amount-btn ${amountProgressValue == 100 ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(100)}}>100 ATR</div>
+                        <div className={`deposit-amount-btn ${amountProgressValue == 500 ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(500)}}>500 ATR</div>
+                        <Input
+                            type={"range"}
+                            customStyles={{ width: "100%" }}
+                            min={500}
+                            max={500000}
+                            step={500}
+                            value={amountProgressValue}
+                            onChange={amountProgressOnchange}
+                        />
+                      </div>
                       <div className="deposit__buttons">
                         {durationOptions.map((item, index) => (
                           <Button
@@ -474,7 +490,6 @@ export const LandingSteps = ({
                       />
                     </>
                   )}
-
                   {isAllowance && (
                     <HelpText
                       title={
