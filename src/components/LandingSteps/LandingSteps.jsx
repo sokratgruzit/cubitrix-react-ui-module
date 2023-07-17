@@ -182,7 +182,7 @@ export const LandingSteps = ({
           onClick={closeLandingSteps}
           customStyles={{ margin: "0", minHeight: "52px" }}
         />
-        <div className="LandingSteps_progress-bar-wrapper">
+        {/* <div className="LandingSteps_progress-bar-wrapper">
           <div className="LandingSteps__progress-bar">
             <div
               className="LandingSteps__progress-bar__fill"
@@ -190,6 +190,16 @@ export const LandingSteps = ({
             />
           </div>
           <span>{step}/4</span>
+        </div> */}
+
+        <div className="LandingSteps_progress-bar-wrapper">
+          <div className="LandingSteps__progress-bar">
+            <span className={`step-number ${step >= 1 ? "colored-step" : ""}`}>1</span>
+            <span className={`step-number ${step >= 2 ? "colored-step" : ""}`}>2</span>
+            <span className={`step-number ${step >= 3 ? "colored-step" : ""}`}>3</span>
+            <span className={`step-number ${step >= 4 ? "colored-step" : ""}`}>4</span>
+            <span className={`step-number ${step >= 5 ? "colored-step" : ""}`}>5</span>
+          </div>
         </div>
 
         {step === 1 && (
