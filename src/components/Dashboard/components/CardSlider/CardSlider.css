@@ -1,6 +1,6 @@
 .card-slider-navigation {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .card-slider-faded {
@@ -19,6 +19,38 @@
   background: #0e2225;
   border-radius: 20px 20px 0px 0px;
   border: none;
+}
+
+.title_wrapper_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.tier-card {
+  border-radius: 8px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.gold-tier {
+  background-color: #c38c5c;
+}
+
+.diamond-tier {
+  background-color: #c0c0c0;
+}
+
+.vip-tier {
+  background-color: #dabae5;
+}
+
+.basic-tier {
+  background-color: #3e412a;
 }
 
 .card-slider-navigation_item > p {

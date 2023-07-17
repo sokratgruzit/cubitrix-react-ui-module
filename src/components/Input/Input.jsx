@@ -743,6 +743,31 @@ export const Input = (props) => {
       </div>
     );
   }
+  if (props.type === "range") {
+    element = (
+        <div
+            style={props.customStyles}
+            className={`${props.className} 
+     
+      input-group`}
+        >
+          {props.value} / {props.step}
+          <input
+              onChange={(e) => {
+                props.onChange(e);
+              }}
+              value={props.value}
+              name={props.name}
+              min={props.min}
+              max={props.max}
+              step={props.step}
+              className={`input-range`}
+              type="range"
+              placeholder={props.placeholder}
+          />
+        </div>
+    );
+  }
 
   return element;
 };

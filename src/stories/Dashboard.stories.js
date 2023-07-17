@@ -572,6 +572,7 @@ stories.add("Dashboard", () => {
           handleWithdraw={() => console.log("hi")}
           handleTransfer={() => console.log("hi")}
           accountType={"main"}
+          tier={"vip"}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

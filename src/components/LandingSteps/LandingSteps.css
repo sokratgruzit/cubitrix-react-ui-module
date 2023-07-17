@@ -73,7 +73,7 @@
   flex-direction: column;
   width: 440px;
   max-width: 100%;
-  min-height: 299px;
+  min-height: 200px;
   background: rgba(69, 244, 234, 0.05);
   border-radius: 20px;
   border: 1px solid rgba(69, 244, 234, 0.05);

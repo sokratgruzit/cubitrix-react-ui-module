@@ -60,10 +60,10 @@ export const TopUpDashboard = ({
 
   return (
     <div className="topupDashboard_main">
-      <h1>Payment Method</h1>
+      <h1>Purchase</h1>
       <div className="topupDashboard_title-container">
         <p className="topupDashboard_title">
-          1. Select the payment method and calculate token price
+          1. Select the payment method and calculate ATR price
         </p>
         <div className="topupDashboard_methodContainer">
           {methods.map((method) => (
@@ -83,12 +83,12 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            2. Set amount of ATR tokens you would like to purchase
+            2. Set amount of ATR ATR you would like to purchase
           </p>
           <p className="topupDashboard_info">
             Enter the amount you would like to contribute in order to calculate the amount
-            of tokens you will receive. The calculator below helps to convert the required
-            quantity of tokens into the amount of your selected currency.
+            of ATR you will receive. The calculator below helps to convert the required
+            quantity of ATR into the amount of your selected currency.
           </p>
           <div className="topupDashboard_inputContainer">
             <Input
@@ -129,7 +129,7 @@ export const TopUpDashboard = ({
           </h3>
           <Button
             element="button"
-            label={coinbaseLoading ? "Loading..." : `Purchase token`}
+            label={coinbaseLoading ? "Loading..." : `Purchase ATR`}
             type="btn-secondary"
             size="btn-lg"
             customStyles={{

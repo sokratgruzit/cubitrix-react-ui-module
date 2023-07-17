@@ -33,7 +33,7 @@ export const FeeWarning = ({ handleProceed, handleCancel, fee }) => {
             fill="#FF0C46"
           />
         </svg>
-        <p>This action involves spending ATR tokens. This is one time thing.</p>
+        <p>This action involves spending ATR. This is one time thing.</p>
       </div>
       <Button
         element="button"
