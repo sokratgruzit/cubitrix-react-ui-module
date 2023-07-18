@@ -53,6 +53,7 @@ export const LandingSteps = ({
   amountProgressOnchange,
   amountProgressBtnClick,
   amountProgressValue,
+  handleFinish,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -453,16 +454,34 @@ export const LandingSteps = ({
                         ))}
                       </div>
                       <div className="deposit-amount-btns">
-                        <div className={`deposit-amount-btn ${amountProgressValue == 100 ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(100)}}>100 ATR</div>
-                        <div className={`deposit-amount-btn ${amountProgressValue == 500 ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(500)}}>500 ATR</div>
+                        <div
+                          className={`deposit-amount-btn ${
+                            amountProgressValue == 100 ? "deposit-amount-btn-active" : ""
+                          }`}
+                          onClick={() => {
+                            amountProgressBtnClick(100);
+                          }}
+                        >
+                          100 ATR
+                        </div>
+                        <div
+                          className={`deposit-amount-btn ${
+                            amountProgressValue == 500 ? "deposit-amount-btn-active" : ""
+                          }`}
+                          onClick={() => {
+                            amountProgressBtnClick(500);
+                          }}
+                        >
+                          500 ATR
+                        </div>
                         <Input
-                            type={"range"}
-                            customStyles={{ width: "100%" }}
-                            min={500}
-                            max={500000}
-                            step={500}
-                            value={amountProgressValue}
-                            onChange={amountProgressOnchange}
+                          type={"range"}
+                          customStyles={{ width: "100%" }}
+                          min={500}
+                          max={500000}
+                          step={500}
+                          value={amountProgressValue}
+                          onChange={amountProgressOnchange}
                         />
                       </div>
                       <div className="deposit__buttons">
@@ -565,6 +584,24 @@ export const LandingSteps = ({
                   customStyles={{ margin: "0", width: "100%" }}
                 />
               </div>
+            </div>
+          </div>
+        )}
+        {step === 5 && (
+          <div className="LandingSteps__step">
+            <div className="LandingSteps__step__title">Successfully registered!</div>
+            <div className="LandingSteps__topUp-box">
+              <Button
+                label={"Finish"}
+                size={"btn-lg"}
+                type={"btn-primary"}
+                element={"button"}
+                customStyles={{
+                  margin: "0",
+                  width: "100%",
+                }}
+                onClick={handleFinish}
+              />
             </div>
           </div>
         )}
