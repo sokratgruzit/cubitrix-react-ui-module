@@ -222,6 +222,12 @@ export const DashboardTable = ({
                   <span>{item?.amount?.toFixed(2)}</span>
                 </div>
               )}
+               <div className="td">
+                  <div className="mobile-ttl">
+                    {tableHeader[5].name} {tableHeader[5]?.icon}
+                  </div>
+                  <span>{item?.tx_status}</span>
+                </div>
             </div>
           </div>
         </div>
@@ -464,7 +470,6 @@ export const DashboardTable = ({
       </div>
     ));
   }
-
   if (type === "referral-history") {
     tableData = data?.map((item, index) => {
       return (
