@@ -465,7 +465,7 @@ export const Referral = ({
         <div className="referral-content">
           <div className="referral-content-container">
             <div className={"referral-content-main"}>
-              <h2>Referral</h2>
+              <h2 className="main_ttl">Referral</h2>
               <div className="referral-content-info">
                 <span className="font-20">
                   You can earn rebates by inviting traders to trade on Complend

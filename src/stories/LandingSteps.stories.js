@@ -16,7 +16,7 @@ const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(5);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database
