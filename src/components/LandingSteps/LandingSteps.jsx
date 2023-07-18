@@ -53,6 +53,7 @@ export const LandingSteps = ({
   amountProgressOnchange,
   amountProgressBtnClick,
   amountProgressValue,
+  amountProgressBtns
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -453,17 +454,20 @@ export const LandingSteps = ({
                         ))}
                       </div>
                       <div className="deposit-amount-btns">
-                        <div className={`deposit-amount-btn ${amountProgressValue == 100 ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(100)}}>100 ATR</div>
-                        <div className={`deposit-amount-btn ${amountProgressValue == 500 ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(500)}}>500 ATR</div>
-                        <Input
-                            type={"range"}
-                            customStyles={{ width: "100%" }}
-                            min={500}
-                            max={500000}
-                            step={500}
-                            value={amountProgressValue}
-                            onChange={amountProgressOnchange}
-                        />
+                        <div className={`deposit-amount-btn ${amountProgressValue == 100 && amountProgressBtns ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(100)}}>100 ATR</div>
+                        <div className={`deposit-amount-btn ${amountProgressValue == 500 && amountProgressBtns ? 'deposit-amount-btn-active' : ''}`} onClick={() => {amountProgressBtnClick(500)}}>500 ATR</div>
+
+                        <div className={`deposit-amount-progress ${amountProgressBtns ? 'deposit-amount-progress-disable' : ''}`}>
+                          <Input
+                              type={"range"}
+                              customStyles={{ width: "100%" }}
+                              min={500}
+                              max={500000}
+                              step={5000}
+                              value={amountProgressValue}
+                              onChange={amountProgressOnchange}
+                          />
+                        </div>
                       </div>
                       <div className="deposit__buttons">
                         {durationOptions.map((item, index) => (

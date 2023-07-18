@@ -833,11 +833,9 @@ select input
   gap: 5px;
 }
 input.input-range[type=range] {
-  height: 32px;
   -webkit-appearance: none;
-  margin: 10px 0;
+  margin: 2px 0;
   width: 100%;
-  background: transparent;
 }
 input.input-range[type=range]:focus {
   outline: none;
@@ -921,4 +919,12 @@ input.input-range[type=range]:focus::-ms-fill-lower {
 }
 input.input-range[type=range]:focus::-ms-fill-upper {
   background: #C38C5C;
+}
+.range-ttls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.range-ttls div {
+  font-size: 10px;
 }

@@ -764,6 +764,10 @@ export const Input = (props) => {
               type="range"
               placeholder={props.placeholder}
           />
+          <div className="range-ttls">
+            <div>{props.min} ATR</div>
+            <div>{props.max} ATR</div>
+          </div>
         </div>
     );
   }
