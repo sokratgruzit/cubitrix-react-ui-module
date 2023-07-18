@@ -51,7 +51,7 @@ const ConfirmPaymentPopup = ({
       <div className="confirm_payment_popup_body">
         <p>Your transaction {hash} has been placed successfully.</p>
         <p>
-          Please send {amount} USDT to the address below. The ATR balance will appear in
+          Please send {amount} USDC to the address below. The ATR balance will appear in
           your account only after transaction gets 3 confirmation and approved by our
           team.
         </p>
@@ -65,8 +65,8 @@ const ConfirmPaymentPopup = ({
             <h3 className="confitm_payment_title">
               Payment to the following Tether Wallet Address
             </h3>
-            <p className="confirm_payment_popup_grayText">Transaction Fee: {fee} USDT</p>
-            <p className="confirm_payment_popup_grayText">Send Amount: {amount} USDT</p>
+            <p className="confirm_payment_popup_grayText">Transaction Fee: {fee} USDC</p>
+            <p className="confirm_payment_popup_grayText">Send Amount: {amount} USDC</p>
             <div className="confirm_payment_popup_address">
               <p>{receivePaymentAddress}</p>
               <button onClick={handleCopy} className="confirm_payment_copy">
