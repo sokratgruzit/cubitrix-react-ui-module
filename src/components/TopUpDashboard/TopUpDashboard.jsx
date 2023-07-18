@@ -106,7 +106,7 @@ export const TopUpDashboard = ({
             </div>
           </div>
 
-          <p className="topupDashboard_info-exchangeRate">1 ATR = {exchangeRate} USDT</p>
+          <p className="topupDashboard_info-exchangeRate">1 ATR = {exchangeRate} USDC</p>
           {tokenError && (
             <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
           )}
@@ -116,16 +116,16 @@ export const TopUpDashboard = ({
           <div className="topupDashboard_bottom-row">
             <p>Amount:</p>
             <p>
-              {tokenAmount} ATR = {tokenAmount * exchangeRate} USDT
+              {tokenAmount} ATR = {tokenAmount * exchangeRate} USDC
             </p>
           </div>
           <div className="topupDashboard_bottom-row">
             <p>Transaction Fee: </p>
-            <p> {tranasctionFee} USDT</p>
+            <p> {tranasctionFee} USDC</p>
           </div>
           <h3 className="topupDashboard_bottom-result">
             TOTAL: {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
-            USDT
+            USDC
           </h3>
           <Button
             element="button"
