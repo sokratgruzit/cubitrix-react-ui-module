@@ -148,6 +148,14 @@
   padding: 0px 10px;
   margin-right: 15px;
 }
+.deposit-amount-btn.deposit-amount-btn-active,.deposit-amount-btn:hover {
+  border: 1px solid #c38c5c;
+  color: #c38c5c;
+}
+.deposit-amount-progress {
+  margin-top: 16px;
+  width: 100%;
+}
 @media (max-width: 680px) {
   .LandingSteps__step__content--wallet {
     flex-direction: column;
