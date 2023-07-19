@@ -551,9 +551,7 @@ export const LandingSteps = ({
                     width: "100%",
                   }}
                   onClick={handleSubmit}
-                  disabled={
-                    validationErrors?.amount?.failure ? true : stakingLoading ?? false
-                  }
+                  disabled={stakingLoading}
                 />
                 <Button
                   label={"Disconnect"}
