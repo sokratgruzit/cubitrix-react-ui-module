@@ -41,7 +41,6 @@ export const LandingSteps = ({
   timeperiodDate,
   buttonLabel,
   handleSubmit,
-  currentObject,
   stakingLoading,
   isAllowance,
   approveResonse,
@@ -134,23 +133,6 @@ export const LandingSteps = ({
       failure: "must be at least 100",
     },
   };
-
-  const validationErrors = useMemo(() => {
-    return useValidation(
-      {
-        amount: currentObject["amount"] || "",
-      },
-      currentObject["amount"] <= 500
-        ? helpTexts
-        : {
-            amount: {
-              validationType: "multipleOf5000",
-              success: "amount is valid",
-              failure: "amount above 500 must be of multiple 5000",
-            },
-          },
-    );
-  }, [currentObject["amount"]]);
 
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);
