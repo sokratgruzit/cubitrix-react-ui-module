@@ -96,7 +96,7 @@ export const CardSlider = ({
         (item?.account_category === "main"
           ? extensions["dashboard"] === "true"
           : extensions[item?.account_category] === "true" &&
-            extensions[`${item?.account_category}Admin}`] === "true"),
+            extensions[`${item?.account_category}Admin`] === "true"),
     );
 
     return data;
