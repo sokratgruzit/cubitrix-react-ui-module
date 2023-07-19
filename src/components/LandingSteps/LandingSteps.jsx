@@ -230,7 +230,7 @@ export const LandingSteps = ({
 
         {step === 1 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title">Connect Wallet</div>
+            <div className="LandingSteps__step__title main_ttl">Connect Wallet</div>
             <div className="LandingSteps__step__content LandingSteps__step__content--wallet">
               <div
                 className="LandingSteps__wallet-option"
@@ -253,7 +253,7 @@ export const LandingSteps = ({
 
         {step === 2 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title">Registration</div>
+            <div className="LandingSteps__step__title main_ttl">Registration</div>
             <div className="LandingSteps__step__content LandingSteps__step__content--register">
               <div className={`email_sent ${emailResend ? "email_active" : ""}`}>
                 <HelpCard
@@ -342,7 +342,7 @@ export const LandingSteps = ({
 
         {step === 3 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title">Top Up</div>
+            <div className="LandingSteps__step__title main_ttl">Top Up</div>
             <div className="LandingSteps__topUp-box">
               <p>Select the payment method and calculate ATR price</p>
               <div className="LandingSteps__topUpOptions">
@@ -433,7 +433,7 @@ export const LandingSteps = ({
         )}
         {step === 4 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title">Stake your investment</div>
+            <div className="LandingSteps__step__title main_ttl">Stake your investment</div>
             <div className="LandingSteps__topUp-box">
               <div className="deposit-container">
                 <div className="deposit-inputs-wrapper">
@@ -606,7 +606,7 @@ export const LandingSteps = ({
         )}
         {step === 5 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title">Successfully registered!</div>
+            <div className="LandingSteps__step__title main_ttl">Successfully registered!</div>
             <div className="LandingSteps__topUp-box">
               <p>
                 Congratulations on successfully purchasing and staking your tokens! You're
