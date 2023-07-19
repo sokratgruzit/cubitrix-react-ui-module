@@ -404,8 +404,8 @@ export const Loan = ({
                 ]}
                 mobile={width < 1280}
                 tableData={
-                  allLoanOffers.length > 0 ? (
-                    allLoanOffers.map((item, index) => {
+                  allLoanOffers?.length > 0 ? (
+                    allLoanOffers?.map((item, index) => {
                       return (
                         <LoanRow
                           key={index}
