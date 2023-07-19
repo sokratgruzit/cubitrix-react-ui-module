@@ -26,7 +26,7 @@ export const UserOptions = ({
         {warning && (
           <>
             <div className="complete">
-              <p>Complete the onboarding flow to start trading on COMPLEND</p>
+              <p>Complete the onboarding flow to start trading on ATAR</p>
               <Button
                 element="button"
                 label="Complete Account"
