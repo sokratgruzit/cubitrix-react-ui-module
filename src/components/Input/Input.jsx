@@ -760,7 +760,7 @@ export const Input = (props) => {
               min={props.min}
               max={props.max}
               step={props.step}
-              className={`input-range`}
+              className={`input-range ${props.disabled ? 'disabled-range' : ''}`}
               type="range"
               placeholder={props.placeholder}
           />

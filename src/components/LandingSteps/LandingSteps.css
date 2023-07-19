@@ -133,28 +133,27 @@
 .deposit-amount-btns {
   display: flex;
 }
-.deposit-amount-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
-  border-radius: 14px;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  cursor: pointer;
-  height: 44px;
+.deposit-amount-inputs {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  padding: 0px 10px;
-  margin-right: 15px;
+  justify-content: space-between;
 }
-.deposit-amount-btn.deposit-amount-btn-active,.deposit-amount-btn:hover {
-  border: 1px solid #c38c5c;
-  color: #c38c5c;
+.deposit-amount-input:nth-child(1) {
+  width: calc(50% - 100px);
 }
-.deposit-amount-progress {
-  margin-top: 16px;
-  width: 100%;
+.deposit-amount-input:nth-child(2) {
+  width: 50%;
+}
+.deposit-amount-input {
+  position: relative;
+}
+.deposit-amount-input:nth-child(1):after {
+  content: '';
+  height: 4px;
+  background: rgba(255,255,255,.3);
+  position: absolute;
+  right: -100px;
+  width: 100px;
+  top: 2px;
 }
 @media (max-width: 680px) {
   .LandingSteps__step__content--wallet {

@@ -16,7 +16,8 @@ const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
-  const [step, setStep] = useState(5);
+  const [step, setStep] = useState(4);
+  const [progressValue, setProgressValue] = useState(4);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database
@@ -26,6 +27,10 @@ stories.add("LandingSteps", () => {
   //     setLoading(false);
   //   }, 100);
   // }, []);
+  const handleProgress = (e) => {
+    console.log(e)
+    setProgressValue(e.target.value)
+  };
 
   const methods = [
     // {
@@ -324,6 +329,8 @@ stories.add("LandingSteps", () => {
           />
 
           <LandingSteps
+            amountProgressValue={progressValue}
+            amountProgressOnchange={handleProgress}
             receivePaymentAddress={"0x43f59F41518903A274c7897dfFB24DB86a0dd23a"}
             handleMetamaskConnect={() => {
               console.log("metamask");
