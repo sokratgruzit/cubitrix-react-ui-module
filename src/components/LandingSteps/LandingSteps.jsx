@@ -177,15 +177,38 @@ export const LandingSteps = ({
   return (
     <div className="LandingSteps__container">
       <div className="LandingSteps_main-body">
-        <Button
-          label={"Close"}
-          size={"btn-lg"}
-          type={"btn-secondary"}
-          arrow={"arrow-none"}
-          element={"button"}
-          onClick={closeLandingSteps}
-          customStyles={{ margin: "0", minHeight: "52px" }}
-        />
+        <span onClick={closeLandingSteps} className="closeButton">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ display: "flex" }}
+          >
+            <path
+              d="M14.9999 29.1663C22.7916 29.1663 29.1666 22.7913 29.1666 14.9997C29.1666 7.20801 22.7916 0.833008 14.9999 0.833008C7.20825 0.833008 0.833252 7.20801 0.833252 14.9997C0.833252 22.7913 7.20825 29.1663 14.9999 29.1663Z"
+              stroke="#c38c5c"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M10.9907 19.0086L19.0091 10.9902"
+              stroke="#c38c5c"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M19.0091 19.0086L10.9907 10.9902"
+              stroke="#c38c5c"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
         {/* <div className="LandingSteps_progress-bar-wrapper">
           <div className="LandingSteps__progress-bar">
             <div
@@ -590,6 +613,13 @@ export const LandingSteps = ({
         {step === 5 && (
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title">Successfully registered!</div>
+            <div className="LandingSteps__topUp-box">
+              <p>
+                Congratulations on successfully purchasing and staking your tokens! You're
+                just one step away from completing your registration and gaining access to
+                our crypto banking services.
+              </p>
+            </div>
             <div className="LandingSteps__topUp-box">
               <Button
                 label={"Finish"}
