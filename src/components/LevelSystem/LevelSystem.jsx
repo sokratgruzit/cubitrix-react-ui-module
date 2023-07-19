@@ -47,7 +47,7 @@ export const LevelSystem = ({ tableHead, tableData, bv, typeBns, type }) => {
                                 {tableData.map((item, index) => (
                                     <div className='level-system-table' key={index}>
                                         <div className={`level-system-td`}>
-                                            <span>Lvl: {index}</span>
+                                            <span>Lvl: {index + 1}</span>
                                         </div>
                                         <div key={index} className={`level-system-td`}>
                                             <span>{item}%</span>
