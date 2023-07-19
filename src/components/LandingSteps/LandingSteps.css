@@ -178,7 +178,7 @@
 }
 @-moz-document url-prefix() {
   .deposit-amount-input:nth-child(1):after{
-    height: 19px;
+    top: 9.5px;
   }
 }
 @media (max-width: 680px) {
