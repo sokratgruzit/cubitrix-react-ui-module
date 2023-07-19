@@ -220,11 +220,21 @@ export const LandingSteps = ({
 
         <div className="LandingSteps_progress-bar-wrapper">
           <div className="LandingSteps__progress-bar">
-            <span className={`step-number ${step >= 1 ? "colored-step" : ""}`}><num>1</num></span>
-            <span className={`step-number ${step >= 2 ? "colored-step" : ""}`}><num>2</num></span>
-            <span className={`step-number ${step >= 3 ? "colored-step" : ""}`}><num>3</num></span>
-            <span className={`step-number ${step >= 4 ? "colored-step" : ""}`}><num>4</num></span>
-            <span className={`step-number ${step >= 5 ? "colored-step" : ""}`}><num>5</num></span>
+            <span className={`step-number ${step >= 1 ? "colored-step" : ""}`}>
+              <num>1</num>
+            </span>
+            <span className={`step-number ${step >= 2 ? "colored-step" : ""}`}>
+              <num>2</num>
+            </span>
+            <span className={`step-number ${step >= 3 ? "colored-step" : ""}`}>
+              <num>3</num>
+            </span>
+            <span className={`step-number ${step >= 4 ? "colored-step" : ""}`}>
+              <num>4</num>
+            </span>
+            <span className={`step-number ${step >= 5 ? "colored-step" : ""}`}>
+              <num>5</num>
+            </span>
           </div>
         </div>
 
@@ -442,64 +452,36 @@ export const LandingSteps = ({
                   ) : (
                     <>
                       <div className="deposit-inputs">
-                        {inputs?.map((params, index) => (
-                          <Input
-                            key={index}
-                            type={params?.type}
-                            label={params.title}
-                            name={params.name}
-                            value={currentObject[params?.name] || params?.defaultAny}
-                            customStyles={{ width: "100%" }}
-                            placeholder={params?.placeholder}
-                            onChange={params?.onChange}
-                            defaultData={params?.options}
-                            customInputStyles={{
-                              border: "1px solid rgba(255, 255, 255, 0.1)",
-                            }}
-                            svg={params?.svg}
-                            statusCard={
-                              validationErrors?.amount && (
-                                <HelpText
-                                  status={
-                                    validationErrors.amount.failure ? "error" : "success"
-                                  }
-                                  title={
-                                    validationErrors.amount.failure ||
-                                    validationErrors.amount.success
-                                  }
-                                  fontSize={"font-12"}
-                                  icon={true}
-                                />
-                              )
-                            }
-                          />
-                        ))}
+                        <div>
+                          <p className="onlyReadInputTitle font-12">Amount</p>
+                          <div className="onlyReadInput">{amountProgressValue ?? 0}</div>
+                        </div>
                       </div>
                       <div className="deposit-amount-inputs">
                         <div className="deposit-amount-input">
                           <Input
-                              type={"range"}
-                              customStyles={{ width: "100%" }}
-                              min={100}
-                              max={499}
-                              step={1}
-                              disabled={amountProgressValue > 499}
-                              value={amountProgressValue}
-                              onChange={amountProgressOnchange}
+                            type={"range"}
+                            customStyles={{ width: "100%" }}
+                            min={100}
+                            max={500}
+                            step={1}
+                            disabled={amountProgressValue > 500}
+                            value={amountProgressValue}
+                            onChange={amountProgressOnchange}
                           />
                         </div>
                         <div className="deposit-amount-input">
-                         <Input
-                             type={"range"}
-                             customStyles={{ width: "100%" }}
-                             min={500}
-                             max={500000}
-                             step={5000}
-                             disabled={amountProgressValue < 500}
-                             value={amountProgressValue}
-                             onChange={amountProgressOnchange}
-                         />
-                       </div>
+                          <Input
+                            type={"range"}
+                            customStyles={{ width: "100%" }}
+                            min={5000}
+                            max={500000}
+                            step={5000}
+                            disabled={amountProgressValue < 5000}
+                            value={amountProgressValue}
+                            onChange={amountProgressOnchange}
+                          />
+                        </div>
                       </div>
                       <div className="deposit__buttons">
                         {durationOptions.map((item, index) => (
@@ -545,7 +527,7 @@ export const LandingSteps = ({
                       icon={true}
                     />
                   )}
-                  {currentObject[inputs?.[0]?.name] > 500 && !isAllowance && (
+                  {amountProgressValue > 500 && !isAllowance && (
                     <div>
                       <Input
                         type={"default"}
