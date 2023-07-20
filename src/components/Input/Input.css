@@ -836,6 +836,7 @@ input.input-range[type=range] {
   -webkit-appearance: none;
   margin: 2px 0;
   width: 100%;
+  background-color: transparent;
 }
 input.input-range[type=range]:focus {
   outline: none;
@@ -890,6 +891,11 @@ input.input-range[type=range]::-moz-range-thumb {
   border-radius: 50px;
   background: #C38C5C;
   cursor: pointer;
+}
+input.input-range.input-range.disabled-range[type=range]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  margin-top: -6px;
 }
 input.input-range[type=range]::-ms-track {
   width: 100%;

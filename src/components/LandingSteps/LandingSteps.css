@@ -176,6 +176,11 @@
   width: 100px;
   top: 2px;
 }
+@-moz-document url-prefix() {
+  .deposit-amount-input:nth-child(1):after{
+    top: 9.5px;
+  }
+}
 @media (max-width: 680px) {
   .LandingSteps__step__content--wallet {
     flex-direction: column;
