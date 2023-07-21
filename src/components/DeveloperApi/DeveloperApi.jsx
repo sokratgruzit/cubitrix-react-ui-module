@@ -132,6 +132,7 @@ export const DeveloperApi = ({
                       <div
                         className={"api-item-top"}
                         onClick={() => {
+                          setActive(apiItem.link)
                           handleSetFields(apiItem);
                         }}
                       >
