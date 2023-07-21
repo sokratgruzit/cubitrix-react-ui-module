@@ -229,7 +229,7 @@ export const DeveloperApi = ({
                                   name={params.name}
                                   value={
                                     params.type === "select"
-                                      ? "Any"
+                                      ? currentArray[params?.name] || "Any"
                                       : currentArray[params?.name] || ""
                                   }
                                   onChange={(e) =>

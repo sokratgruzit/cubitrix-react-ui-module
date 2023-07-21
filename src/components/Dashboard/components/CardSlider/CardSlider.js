@@ -167,43 +167,46 @@ export const CardSlider = ({
 
   return (
     <div className="card-slider-wrapper">
-      <div className="card-slider-navigation">
-        {accountsData?.map((item, index) => {
-          const activeIndex = accountsData.findIndex(
-            (acc) => accountType === acc.account_category,
-          );
-          const isLeftOfActive = index === activeIndex - 1;
-          const isRightOfActive = index === activeIndex + 1;
-          const borderRadiusClass = isLeftOfActive
-            ? "left-border-radius"
-            : isRightOfActive
-            ? "right-border-radius"
-            : "";
+      <div className="card-slider-navigation-wrapper">
+        <div className="card-slider-navigation">
+          {accountsData?.map((item, index) => {
+            const activeIndex = accountsData.findIndex(
+              (acc) => accountType === acc.account_category,
+            );
+            const isLeftOfActive = index === activeIndex - 1;
+            const isRightOfActive = index === activeIndex + 1;
+            const borderRadiusClass = isLeftOfActive
+              ? "left-border-radius"
+              : isRightOfActive
+              ? "right-border-radius"
+              : "";
 
-          return (
-            <div
-              className={`${
-                accountType !== item?.account_category
-                  ? "card-slider-navigation_item_container"
-                  : ""
-              }`}
-              key={index}
-            >
+            return (
               <div
-                className={`card-slider-navigation_item ${
-                  accountType === item?.account_category ? "active" : ""
-                } ${width >= 767 && borderRadiusClass}`}
-                onClick={() => setAccountType(item?.account_category)}
+                className={`${
+                  accountType !== item?.account_category
+                    ? "card-slider-navigation_item_container"
+                    : ""
+                }`}
+                key={index}
               >
-                <p className="font-16">
-                  {item?.account_category === "main" ? "main" : item?.account_category}{" "}
-                  {width > 767 ? "account" : ""}
-                </p>
+                <div
+                  className={`card-slider-navigation_item ${
+                    accountType === item?.account_category ? "active" : ""
+                  } ${width >= 767 && borderRadiusClass}`}
+                  onClick={() => setAccountType(item?.account_category)}
+                >
+                  <p className="font-16">
+                    {item?.account_category === "main" ? "main" : item?.account_category}{" "}
+                    {width > 767 ? "account" : ""}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
+
       <div
         className={`card-slider-content ${
           isAccountTypeFirstItem && width > 767 ? "card-slider-content-wrap" : ""
