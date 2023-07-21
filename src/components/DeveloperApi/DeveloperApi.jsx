@@ -132,7 +132,7 @@ export const DeveloperApi = ({
                       <div
                         className={"api-item-top"}
                         onClick={() => {
-                          setActive(apiItem.link)
+                          setActive((prevActive) => prevActive ? false : apiItem.route)
                           handleSetFields(apiItem);
                         }}
                       >
