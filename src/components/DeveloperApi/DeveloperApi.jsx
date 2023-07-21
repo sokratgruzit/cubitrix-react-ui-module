@@ -169,7 +169,7 @@ export const DeveloperApi = ({
                                     apiItem.inputs,
                                   );
                                 }}
-                                disabled={false}
+                                disabled={notValidated}
                               />
                             </div>
                           )}
