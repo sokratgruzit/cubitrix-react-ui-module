@@ -169,7 +169,7 @@ export const DeveloperApi = ({
                                     apiItem.inputs,
                                   );
                                 }}
-                                disabled={notValidated}
+                                disabled={false}
                               />
                             </div>
                           )}
@@ -197,7 +197,7 @@ export const DeveloperApi = ({
                             onClick={() => {
                               handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs);
                             }}
-                            disabled={notValidated}
+                            disabled={false}
                           />
                         </div>
                         <div className={"api-item-params-subTtls double"}>
