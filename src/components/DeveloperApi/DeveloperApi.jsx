@@ -132,8 +132,8 @@ export const DeveloperApi = ({
                       <div
                         className={"api-item-top"}
                         onClick={() => {
-                          setActive((prevActive) => prevActive ? false : apiItem.route)
                           handleSetFields(apiItem);
+                          setActive(apiItem.route);
                         }}
                       >
                         <h3>{apiItem.description}</h3>
@@ -170,7 +170,7 @@ export const DeveloperApi = ({
                                     apiItem.inputs,
                                   );
                                 }}
-                                disabled={false}
+                                disabled={notValidated}
                               />
                             </div>
                           )}
@@ -198,7 +198,7 @@ export const DeveloperApi = ({
                             onClick={() => {
                               handleTryItOut(apiItem.route, apiItem.type, apiItem.inputs);
                             }}
-                            disabled={false}
+                            disabled={notValidated}
                           />
                         </div>
                         <div className={"api-item-params-subTtls double"}>
@@ -229,7 +229,7 @@ export const DeveloperApi = ({
                                   name={params.name}
                                   value={
                                     params.type === "select"
-                                      ? "Any"
+                                      ? currentArray[params?.name] || "Any"
                                       : currentArray[params?.name] || ""
                                   }
                                   onChange={(e) =>
