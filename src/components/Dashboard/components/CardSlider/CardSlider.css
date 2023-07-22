@@ -23,6 +23,10 @@
   transition: .6;
 }
 
+.card-slider-navigation_item-deposit svg {
+  transition: .6s;
+}
+
 .card-slider-navigation_item-deposit:hover svg path {
   stroke: #fff;
 }
