@@ -202,24 +202,24 @@ export const CardSlider = ({
               </div>
             );
           })}
-          <div onClick={handleDeposit} className="card-slider-navigation_item-deposit">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="#C38C5C"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                d="M6 12h12M12 18V6"
-              ></path>
-            </svg>
-            <p className="font-16">Deposit</p>
-          </div>
+        </div>
+        <div onClick={handleDeposit} className="card-slider-navigation_item-deposit">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="#fff"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="#C38C5C"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1.5"
+              d="M6 12h12M12 18V6"
+            ></path>
+          </svg>
+          <p className="font-16">Deposit</p>
         </div>
 
       </div>
@@ -275,9 +275,7 @@ export const CardSlider = ({
                   if (accountType === "main" && item.title === "Deposit") return;
                   if (
                     accountType !== "main" &&
-                    (item.title === "Deposit" ||
-                      item.title === "Withdraw" ||
-                      item.title === "Exchange")
+                    (item.title === "Withdraw" || item.title === "Exchange")
                   )
                     return;
 
@@ -289,9 +287,7 @@ export const CardSlider = ({
                         }`}
                       key={index}
                       onClick={() => {
-                        if (item.title === "Deposit") {
-                          handleDeposit(mainAcc);
-                        } else if (item.title === "Withdraw") {
+                        if (item.title === "Withdraw") {
                           handleWithdraw(mainAcc);
                         } else if (item.title === "Transfer") {
                           handleTransfer(mainAcc);

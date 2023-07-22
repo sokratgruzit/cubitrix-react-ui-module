@@ -7,14 +7,33 @@
 .card-slider-navigation {
   display: flex;
   overflow-x: auto;
-  width: 100%;
-  justify-content: space-between;
+  /* width: 100%; */
+  /* justify-content: space-between;  */
 }
 
 .card-slider-navigation_item-deposit {
   display: flex;
   align-items: center;
   gap: 5px;
+  /* color: ; */
+}
+
+.card-slider-navigation_item-deposit svg path {
+  transition: .6;
+}
+
+.card-slider-navigation_item-deposit:hover svg path {
+  stroke: #fff;
+}
+
+.card-slider-navigation_item-deposit:hover p {
+  color: #fff;
+}
+
+.card-slider-navigation_item-deposit p {
+  color: #c38c5c;
+  cursor: pointer;
+  transition: .6s;
 }
 
 .card-slider-faded {
