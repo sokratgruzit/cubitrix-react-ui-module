@@ -229,8 +229,8 @@ export const DeveloperApi = ({
                                   name={params.name}
                                   value={
                                     params.type === "select"
-                                      ? currentArray[params?.name] || "Any"
-                                      : currentArray[params?.name] || "Daily"
+                                      ? currentArray[params?.name] || "Daily"
+                                      : currentArray[params?.name] || "Any"
                                   }
                                   onChange={(e) =>
                                     !params.type
