@@ -272,7 +272,7 @@ export const CardSlider = ({
               </div>
               <div className="card-slider-card_footer">
                 {cardFooterData?.map((item, index) => {
-                  if (accountType === "main" && item.title === "Withdraw") return;
+                  if (accountType === "main" && item.title === "Deposit") return;
                   if (
                     accountType !== "main" &&
                     (item.title === "Deposit" ||
@@ -338,7 +338,9 @@ export const CardSlider = ({
                             className="card-slider-card_footer-item"
                             key={footerIndex}
                             onClick={() => {
-                              if (item.title === "Withdraw") {
+                              if (item.title === "Deposit") {
+                                handleDeposit(accountsData[index]);
+                              } else if (item.title === "Withdraw") {
                                 handleWithdraw(accountsData[index], key);
                               } else if (item.title === "Exchange") {
                                 handleExchange(accountsData[index], key);
