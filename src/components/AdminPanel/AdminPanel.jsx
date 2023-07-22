@@ -54,9 +54,9 @@ export const AdminPanel = props => {
                     {props.coinCards && props.coinCards.map((item, index) => {
                         console.log(item)
                         return (
-                            <>
+                            <div>
                             <DashboardCard
-                                key={index}
+                                coinKeyey={index}
                                 type={item?.type}
                                 balance={item.balance}
                                 coin={item.currency}
@@ -65,7 +65,7 @@ export const AdminPanel = props => {
                                 outcoming={item.outcoming}
                                 customStyles={{ width: '372px' }}
                             />
-                            </>
+                            </div>
                         )
 
                     })}

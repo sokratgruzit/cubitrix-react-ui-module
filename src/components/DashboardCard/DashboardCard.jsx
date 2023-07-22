@@ -18,7 +18,8 @@ export const DashboardCard = ({
   coinIcon,
   balance,
   incoming,
-  outcoming
+  outcoming,
+  coinKey
 }) => {
   const [activeId, setActiveId] = useState(1);
 
@@ -132,7 +133,7 @@ export const DashboardCard = ({
 
   if (type === "coin") {
     element = (
-      <div className={"card-container amount-card"} style={customStyles}>
+      <div key={coinKey} className={"card-container amount-card"} style={customStyles}>
         <div className={"sale-card-body"}>
           <p className={"sale-card__saleNumber"}>{balance}</p>
           <span className={"sale-card__saleIcon"}  style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
