@@ -49,6 +49,13 @@
     line-height: 130%;
 }
 
+.sale-card__saleIcon {
+    width: 25px;
+    height: 25px;
+}
+
+
+
 .sale-card__salePercentage {
     border: 1px solid rgba(61, 90, 254, 0.2);
     border-radius: 32px;

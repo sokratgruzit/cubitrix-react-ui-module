@@ -14,6 +14,11 @@ export const DashboardCard = ({
   onViewClick,
   usdtNumber,
   customStyles,
+  coin,
+  coinIcon,
+  balance,
+  incoming,
+  outcoming
 }) => {
   const [activeId, setActiveId] = useState(1);
 
@@ -28,9 +33,8 @@ export const DashboardCard = ({
             {cardHeaderButtons?.map((item, index) => (
               <div
                 key={index}
-                className={`card-header__btn ${
-                  activeId === index && "card-header__btn-active"
-                } font-12`}
+                className={`card-header__btn ${activeId === index && "card-header__btn-active"
+                  } font-12`}
                 onClick={() => {
                   setActiveId(index);
                   handleHeaderBtnClick(item.name);
@@ -64,9 +68,8 @@ export const DashboardCard = ({
             {cardHeaderButtons?.map((item, index) => (
               <div
                 key={index}
-                className={`card-header__btn ${
-                  activeId === index && "card-header__btn-active"
-                } font-12`}
+                className={`card-header__btn ${activeId === index && "card-header__btn-active"
+                  } font-12`}
                 onClick={() => {
                   setActiveId(index);
                   handleHeaderBtnClick(item.name);
@@ -122,6 +125,24 @@ export const DashboardCard = ({
             <p className={"font-14"}>0</p>
             <p className={"font-12"}>LTC</p>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "coin") {
+    element = (
+      <div className={"card-container amount-card"} style={customStyles}>
+        <div className={"sale-card-body"}>
+          <p className={"sale-card__saleNumber"}>{balance}</p>
+          <span className={"sale-card__saleIcon"}  style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
+        </div>
+        <div>
+          <p>Incoming <span>{incoming}</span></p>
+          <p>Outcoming <span>{outcoming}</span></p>
+        </div>
+        <div className={"sale-card-info"}>
+          <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>{coin}</h1>
         </div>
       </div>
     );

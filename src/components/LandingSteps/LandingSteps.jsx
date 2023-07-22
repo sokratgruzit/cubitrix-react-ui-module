@@ -170,23 +170,23 @@ export const LandingSteps = ({
             <path
               d="M14.9999 29.1663C22.7916 29.1663 29.1666 22.7913 29.1666 14.9997C29.1666 7.20801 22.7916 0.833008 14.9999 0.833008C7.20825 0.833008 0.833252 7.20801 0.833252 14.9997C0.833252 22.7913 7.20825 29.1663 14.9999 29.1663Z"
               stroke="#c38c5c"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M10.9907 19.0086L19.0091 10.9902"
               stroke="#c38c5c"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M19.0091 19.0086L10.9907 10.9902"
               stroke="#c38c5c"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </span>
