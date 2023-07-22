@@ -163,7 +163,6 @@ stories.add("Test", () => {
     ]
     return (
         <div>
-            hi
             <AdminPanel coinCards={coinCards} adminPage={"dashboard"} animate={animate} />
         </div>
     );

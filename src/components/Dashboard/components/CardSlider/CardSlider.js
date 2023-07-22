@@ -96,7 +96,7 @@ export const CardSlider = ({
         (item?.account_category === "main"
           ? extensions["dashboard"] === "true"
           : extensions[item?.account_category] === "true" &&
-            extensions[`${item?.account_category}Admin`] === "true"),
+          extensions[`${item?.account_category}Admin`] === "true"),
     );
 
     return data;
@@ -178,22 +178,20 @@ export const CardSlider = ({
             const borderRadiusClass = isLeftOfActive
               ? "left-border-radius"
               : isRightOfActive
-              ? "right-border-radius"
-              : "";
+                ? "right-border-radius"
+                : "";
 
             return (
               <div
-                className={`${
-                  accountType !== item?.account_category
-                    ? "card-slider-navigation_item_container"
-                    : ""
-                }`}
+                className={`${accountType !== item?.account_category
+                  ? "card-slider-navigation_item_container"
+                  : ""
+                  }`}
                 key={index}
               >
                 <div
-                  className={`card-slider-navigation_item ${
-                    accountType === item?.account_category ? "active" : ""
-                  } ${width >= 767 && borderRadiusClass}`}
+                  className={`card-slider-navigation_item ${accountType === item?.account_category ? "active" : ""
+                    } ${width >= 767 && borderRadiusClass}`}
                   onClick={() => setAccountType(item?.account_category)}
                 >
                   <p className="font-16">
@@ -204,13 +202,31 @@ export const CardSlider = ({
               </div>
             );
           })}
+          <div onClick={handleDeposit} className="card-slider-navigation_item-deposit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="#C38C5C"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M6 12h12M12 18V6"
+              ></path>
+            </svg>
+            <p className="font-16">Deposit</p>
+          </div>
         </div>
+
       </div>
 
       <div
-        className={`card-slider-content ${
-          isAccountTypeFirstItem && width > 767 ? "card-slider-content-wrap" : ""
-        }`}
+        className={`card-slider-content ${isAccountTypeFirstItem && width > 767 ? "card-slider-content-wrap" : ""
+          }`}
       >
         <Swiper
           ref={swiperRef}
@@ -238,11 +254,9 @@ export const CardSlider = ({
                     </span>
                     {tier && (
                       <span
-                        className={`tier-card ${tier === "gold" ? "gold-tier" : ""} ${
-                          tier === "diamond" ? "diamond-tier" : ""
-                        } ${tier === "vip" ? "vip-tier" : ""} ${
-                          tier === "basic" ? "basic-tier" : ""
-                        }`}
+                        className={`tier-card ${tier === "gold" ? "gold-tier" : ""} ${tier === "diamond" ? "diamond-tier" : ""
+                          } ${tier === "vip" ? "vip-tier" : ""} ${tier === "basic" ? "basic-tier" : ""
+                          }`}
                       >
                         {tier?.toUpperCase()}
                       </span>
@@ -269,11 +283,10 @@ export const CardSlider = ({
 
                   return (
                     <div
-                      className={`${
-                        item?.title === "Deposit"
-                          ? "card-slider-card_footer-item active"
-                          : "card-slider-card_footer-item"
-                      }`}
+                      className={`${item?.title === "Deposit"
+                        ? "card-slider-card_footer-item active"
+                        : "card-slider-card_footer-item"
+                        }`}
                       key={index}
                       onClick={() => {
                         if (item.title === "Deposit") {
@@ -300,9 +313,8 @@ export const CardSlider = ({
               return (
                 <SwiperSlide key={index}>
                   <div
-                    className={`card-slider-card ${
-                      value === 0 ? "card-slider-faded" : ""
-                    }`}
+                    className={`card-slider-card ${value === 0 ? "card-slider-faded" : ""
+                      }`}
                   >
                     <img src={cardImgs[key]} className="card-slider-bg-img" />
                     <div className="card-slider-card_header-container">
@@ -326,9 +338,7 @@ export const CardSlider = ({
                             className="card-slider-card_footer-item"
                             key={footerIndex}
                             onClick={() => {
-                              if (item.title === "Deposit") {
-                                handleDeposit(accountsData[index]);
-                              } else if (item.title === "Withdraw") {
+                              if (item.title === "Withdraw") {
                                 handleWithdraw(accountsData[index], key);
                               } else if (item.title === "Exchange") {
                                 handleExchange(accountsData[index], key);

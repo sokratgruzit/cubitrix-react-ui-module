@@ -3,9 +3,18 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .card-slider-navigation {
   display: flex;
   overflow-x: auto;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.card-slider-navigation_item-deposit {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .card-slider-faded {
