@@ -314,7 +314,6 @@ export const CardSlider = ({
                         height: "34px",
                         fontSize: "12px",
                       }}
-                      // disabled={accountUpdateLoading}
                     />
                   )}
                 </div>
@@ -324,7 +323,9 @@ export const CardSlider = ({
                   if (accountType === "main" && item.title === "Deposit") return;
                   if (
                     accountType !== "main" &&
-                    (item.title === "Withdraw" || item.title === "Exchange")
+                    (item.title === "Withdraw" ||
+                      item.title === "Exchange" ||
+                      item.title === "Deposit")
                   )
                     return;
 
