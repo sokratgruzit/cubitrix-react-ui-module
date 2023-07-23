@@ -135,7 +135,7 @@ export const DashboardCard = ({
 
   if (type === "coin") {
     element = (
-      <div key={coinKey} className={"card-container sale-card"} style={customStyles}>
+      <div key={coinKey} className={`${"card-container"} ${coin === "Atar" ? "amount-card" : ""}`} style={customStyles}>
         <div className={"sale-card-body"}>
           <p className={"sale-card__saleNumber"}>{balance}</p>
           <span className={"sale-card__saleIcon"} style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
