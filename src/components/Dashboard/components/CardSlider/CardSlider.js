@@ -210,6 +210,7 @@ export const CardSlider = ({
         </div>
         <div onClick={handleDeposit} className="card-slider-navigation_item-deposit">
           <svg
+            className="card-slider-navigation_item-deposit-icon"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
