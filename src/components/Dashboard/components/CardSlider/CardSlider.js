@@ -20,6 +20,7 @@ export const CardSlider = ({
   setAccountType,
   tier,
   extensions,
+  stakedTotal,
 }) => {
   const swiperRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
@@ -162,17 +163,6 @@ export const CardSlider = ({
     };
   }, [accounts, accountType]);
 
-  const mainAcc = useMemo(() => {
-    const item =
-      accountsData && accountsData?.find((item) => item?.account_category === "main");
-    return {
-      address: item?.address,
-      balance: item?.balance,
-      account_category: item?.account_category,
-      totalStaked: item?.totalStaked,
-    };
-  }, [accounts, accountType]);
-
   const isAccountTypeFirstItem = useMemo(
     () => accountsData?.[0]?.account_category !== accountType,
     [accounts, accountType],
@@ -290,13 +280,10 @@ export const CardSlider = ({
                           >
                             Locked:
                           </span>{" "}
-                          {(chosenAcc?.balance - mainAcc?.totalStaked)?.toLocaleString(
-                            "en-US",
-                            {
-                              minimumFractionDigits: 2,
-                              maximumFractionDigits: 2,
-                            },
-                          )}
+                          {stakedTotal?.toLocaleString("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
                         </>
                       ) : (
                         chosenAcc?.balance?.toLocaleString("en-US", {
