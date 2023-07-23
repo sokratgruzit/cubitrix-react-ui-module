@@ -7,6 +7,7 @@ import { Account, AccountType } from "../../../../assets/svgs";
 import { useMobileWidth } from "../../../../hooks/useMobileWidth";
 
 import { Pagination, Navigation } from "swiper";
+import { Button } from "../../../Button";
 
 export const CardSlider = ({
   accounts,
@@ -19,11 +20,13 @@ export const CardSlider = ({
   setAccountType,
   tier,
   extensions,
+  stakedTotal,
 }) => {
   const swiperRef = useRef(null);
   const [isPrevDisabled, setIsPrevDisabled] = useState(true);
   const [isNextDisabled, setIsNextDisabled] = useState(false);
   const [slidePercentage, setSlidePercentage] = useState(0);
+  const [showLockedAmount, setShowLockedAmount] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
   const { width } = useMobileWidth();
 
@@ -96,7 +99,7 @@ export const CardSlider = ({
         (item?.account_category === "main"
           ? extensions["dashboard"] === "true"
           : extensions[item?.account_category] === "true" &&
-          extensions[`${item?.account_category}Admin`] === "true"),
+            extensions[`${item?.account_category}Admin`] === "true"),
     );
 
     return data;
@@ -149,7 +152,7 @@ export const CardSlider = ({
     }
   }, [accounts, accountType]);
 
-  const mainAcc = useMemo(() => {
+  const chosenAcc = useMemo(() => {
     const item =
       accountsData &&
       accountsData?.find((item) => item?.account_category === accountType);
@@ -178,20 +181,22 @@ export const CardSlider = ({
             const borderRadiusClass = isLeftOfActive
               ? "left-border-radius"
               : isRightOfActive
-                ? "right-border-radius"
-                : "";
+              ? "right-border-radius"
+              : "";
 
             return (
               <div
-                className={`${accountType !== item?.account_category
-                  ? "card-slider-navigation_item_container"
-                  : ""
-                  }`}
+                className={`${
+                  accountType !== item?.account_category
+                    ? "card-slider-navigation_item_container"
+                    : ""
+                }`}
                 key={index}
               >
                 <div
-                  className={`card-slider-navigation_item ${accountType === item?.account_category ? "active" : ""
-                    } ${width >= 767 && borderRadiusClass}`}
+                  className={`card-slider-navigation_item ${
+                    accountType === item?.account_category ? "active" : ""
+                  } ${width >= 767 && borderRadiusClass}`}
                   onClick={() => setAccountType(item?.account_category)}
                 >
                   <p className="font-16">
@@ -222,12 +227,12 @@ export const CardSlider = ({
           </svg>
           <p className="font-16">Deposit</p>
         </div>
-
       </div>
 
       <div
-        className={`card-slider-content ${isAccountTypeFirstItem && width > 767 ? "card-slider-content-wrap" : ""
-          }`}
+        className={`card-slider-content ${
+          isAccountTypeFirstItem && width > 767 ? "card-slider-content-wrap" : ""
+        }`}
       >
         <Swiper
           ref={swiperRef}
@@ -255,21 +260,64 @@ export const CardSlider = ({
                     </span>
                     {tier && (
                       <span
-                        className={`tier-card ${tier === "gold" ? "gold-tier" : ""} ${tier === "diamond" ? "diamond-tier" : ""
-                          } ${tier === "vip" ? "vip-tier" : ""} ${tier === "basic" ? "basic-tier" : ""
-                          }`}
+                        className={`tier-card ${tier === "gold" ? "gold-tier" : ""} ${
+                          tier === "diamond" ? "diamond-tier" : ""
+                        } ${tier === "vip" ? "vip-tier" : ""} ${
+                          tier === "basic" ? "basic-tier" : ""
+                        }`}
                       >
                         {tier?.toUpperCase()}
                       </span>
                     )}
                   </h4>
                 </div>
-                <p className="card-slider-card_content">
-                  {mainAcc?.balance?.toLocaleString("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
-                </p>
+                <div className="main-card-content-wrapper">
+                  <p className="card-slider-card_content">
+                    {accountType === "trade" ? (
+                      showLockedAmount ? (
+                        <>
+                          <span
+                            style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)" }}
+                          >
+                            Locked:
+                          </span>{" "}
+                          {stakedTotal?.toLocaleString("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </>
+                      ) : (
+                        chosenAcc?.balance?.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                      )
+                    ) : (
+                      chosenAcc?.balance?.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })
+                    )}
+                  </p>
+                  {accountType === "trade" && (
+                    <Button
+                      label={showLockedAmount ? "Amount" : "Locked"}
+                      size={"btn-sm"}
+                      type={"btn-primary"}
+                      element={"button"}
+                      onClick={() => setShowLockedAmount((prev) => !prev)}
+                      customStyles={{
+                        width: "70px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "34px",
+                        fontSize: "12px",
+                      }}
+                      // disabled={accountUpdateLoading}
+                    />
+                  )}
+                </div>
               </div>
               <div className="card-slider-card_footer">
                 {cardFooterData?.map((item, index) => {
@@ -282,18 +330,19 @@ export const CardSlider = ({
 
                   return (
                     <div
-                      className={`${item?.title === "Deposit"
-                        ? "card-slider-card_footer-item active"
-                        : "card-slider-card_footer-item"
-                        }`}
+                      className={`${
+                        item?.title === "Deposit"
+                          ? "card-slider-card_footer-item active"
+                          : "card-slider-card_footer-item"
+                      }`}
                       key={index}
                       onClick={() => {
                         if (item.title === "Withdraw") {
-                          handleWithdraw(mainAcc);
+                          handleWithdraw(chosenAcc);
                         } else if (item.title === "Transfer") {
-                          handleTransfer(mainAcc);
+                          handleTransfer(chosenAcc);
                         } else if (item.title === "Exchange") {
-                          handleExchange(mainAcc, "ATAR");
+                          handleExchange(chosenAcc, "ATAR");
                         }
                       }}
                     >
@@ -310,8 +359,9 @@ export const CardSlider = ({
               return (
                 <SwiperSlide key={index}>
                   <div
-                    className={`card-slider-card ${value === 0 ? "card-slider-faded" : ""
-                      }`}
+                    className={`card-slider-card ${
+                      value === 0 ? "card-slider-faded" : ""
+                    }`}
                   >
                     <img src={cardImgs[key]} className="card-slider-bg-img" />
                     <div className="card-slider-card_header-container">

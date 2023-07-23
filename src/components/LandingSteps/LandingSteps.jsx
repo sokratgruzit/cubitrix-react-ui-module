@@ -425,7 +425,9 @@ export const LandingSteps = ({
         )}
         {step === 4 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">Stake your investment</div>
+            <div className="LandingSteps__step__title main_ttl">
+              Stake your investment
+            </div>
             <div className="LandingSteps__topUp-box">
               <div className="deposit-container">
                 <div className="deposit-inputs-wrapper">
@@ -568,9 +570,11 @@ export const LandingSteps = ({
         )}
         {step === 5 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">Successfully registered!</div>
+            <div className="LandingSteps__step__title main_ttl">
+              Successfully registered!
+            </div>
             <div className="LandingSteps__topUp-box">
-              <p>
+              <p style={{ textAlign: "center" }}>
                 Congratulations on successfully purchasing and staking your tokens! You're
                 just one step away from completing your registration and gaining access to
                 our crypto banking services.

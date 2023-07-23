@@ -20,9 +20,6 @@
   /* color: ; */
 }
 
-/* .card-slider-navigation_item-deposit svg { */
-/* transition: .6s; */
-/* } */
 
 .card-slider-navigation_item-deposit:hover .card-slider-navigation_item-deposit-icon path {
   stroke: #fff;
@@ -35,7 +32,6 @@
 .card-slider-navigation_item-deposit p {
   color: #c38c5c;
   cursor: pointer;
-
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)
 }
 
@@ -189,6 +185,14 @@
   text-transform: capitalize;
 }
 
+.main-card-content-wrapper {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
 .card-slider-card_content {
   font-weight: 700;
   font-size: 26px;
@@ -199,6 +203,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .card-slider-card_footer {

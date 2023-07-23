@@ -27,6 +27,7 @@ export const Dashboard = ({
   referralHistoryTableType,
   tier,
   extensions,
+  stakedTotal,
 }) => {
   const tables = [
     {
@@ -88,6 +89,7 @@ export const Dashboard = ({
         handleTransfer={handleTransfer}
         tier={tier}
         extensions={extensions}
+        stakedTotal={stakedTotal}
       />
       {tables?.map((item, index) => (
         <DashboardTable
