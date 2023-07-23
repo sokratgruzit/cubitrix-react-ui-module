@@ -151,7 +151,7 @@ export const CardSlider = ({
     }
   }, [accounts, accountType]);
 
-  const mainAcc = useMemo(() => {
+  const chosenAcc = useMemo(() => {
     const item =
       accountsData &&
       accountsData?.find((item) => item?.account_category === accountType);
@@ -159,6 +159,17 @@ export const CardSlider = ({
       address: item?.address,
       balance: item?.balance,
       account_category: item?.account_category,
+    };
+  }, [accounts, accountType]);
+
+  const mainAcc = useMemo(() => {
+    const item =
+      accountsData && accountsData?.find((item) => item?.account_category === "main");
+    return {
+      address: item?.address,
+      balance: item?.balance,
+      account_category: item?.account_category,
+      totalStaked: item?.totalStaked,
     };
   }, [accounts, accountType]);
 
@@ -271,10 +282,30 @@ export const CardSlider = ({
                 </div>
                 <div className="main-card-content-wrapper">
                   <p className="card-slider-card_content">
-                    {mainAcc?.balance?.toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
+                    {accountType === "trade" ? (
+                      showLockedAmount ? (
+                        <>
+                          Locked:{" "}
+                          {(chosenAcc?.balance - mainAcc?.totalStaked)?.toLocaleString(
+                            "en-US",
+                            {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            },
+                          )}
+                        </>
+                      ) : (
+                        chosenAcc?.balance?.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })
+                      )
+                    ) : (
+                      chosenAcc?.balance?.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })
+                    )}
                   </p>
                   {accountType === "trade" && (
                     <Button
@@ -282,7 +313,7 @@ export const CardSlider = ({
                       size={"btn-sm"}
                       type={"btn-primary"}
                       element={"button"}
-                      onClick={() => setShowLockedAmount(true)}
+                      onClick={() => setShowLockedAmount((prev) => !prev)}
                       customStyles={{
                         width: "70px",
                         display: "flex",
@@ -315,11 +346,11 @@ export const CardSlider = ({
                       key={index}
                       onClick={() => {
                         if (item.title === "Withdraw") {
-                          handleWithdraw(mainAcc);
+                          handleWithdraw(chosenAcc);
                         } else if (item.title === "Transfer") {
-                          handleTransfer(mainAcc);
+                          handleTransfer(chosenAcc);
                         } else if (item.title === "Exchange") {
-                          handleExchange(mainAcc, "ATAR");
+                          handleExchange(chosenAcc, "ATAR");
                         }
                       }}
                     >
