@@ -285,7 +285,11 @@ export const CardSlider = ({
                     {accountType === "trade" ? (
                       showLockedAmount ? (
                         <>
-                          Locked:{" "}
+                          <span
+                            style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)" }}
+                          >
+                            Locked:
+                          </span>{" "}
                           {(chosenAcc?.balance - mainAcc?.totalStaked)?.toLocaleString(
                             "en-US",
                             {
