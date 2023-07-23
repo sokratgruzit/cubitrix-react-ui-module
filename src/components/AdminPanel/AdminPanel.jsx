@@ -8,7 +8,6 @@ import { DashboardCard } from "../DashboardCard";
 import { DeveloperApi } from "../DeveloperApi";
 
 export const AdminPanel = props => {
-    console.log(props.coinCards)
     let filter;
     if (props.tableFilter === true) {
         filter = <FilterBox
@@ -52,7 +51,6 @@ export const AdminPanel = props => {
                         customStyles={{ width: '372px' }}
                     />
                     {props.coinCards && props.coinCards.map((item, index) => {
-                        console.log(item)
                         return (
                             <div>
                             <DashboardCard
