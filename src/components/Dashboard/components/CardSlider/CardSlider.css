@@ -21,11 +21,11 @@
 }
 
 .card-slider-navigation_item-deposit svg path {
-  transition: .6;
+  transition: 0.6;
 }
 
 .card-slider-navigation_item-deposit svg {
-  transition: .6s;
+  transition: 0.6s;
 }
 
 .card-slider-navigation_item-deposit:hover svg path {
@@ -39,7 +39,7 @@
 .card-slider-navigation_item-deposit p {
   color: #c38c5c;
   cursor: pointer;
-  transition: .6s;
+  transition: 0.6s;
 }
 
 .card-slider-faded {
@@ -188,6 +188,14 @@
 
 .card-slider-card_header h4 {
   text-transform: capitalize;
+}
+
+.main-card-content-wrapper {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  height: fit-content;
 }
 
 .card-slider-card_content {
