@@ -158,12 +158,30 @@ stories.add("Test", () => {
             outcoming: "1.212",
             customStyles: {},
         },
+    ];
 
+    const balanceCards = [
+        {
+            id: 1,
+            type: "balance-card",
+            account: "Loan",
+            totalbalance: "200",
+            icon: 'atr',
+            info: 'Token'
+        },
+        {
+            id: 2,
+            type: "balance-card",
+            account: "trade",
+            totalbalance: "200",
+            icon: 'atr',
+            info: 'Token'
+        }
+    ];
 
-    ]
     return (
         <div>
-            <AdminPanel coinCards={coinCards} adminPage={"dashboard"} animate={animate} />
+            <AdminPanel balanceCards={balanceCards} coinCards={coinCards} adminPage={"dashboard"} animate={animate} />
         </div>
     );
 });
