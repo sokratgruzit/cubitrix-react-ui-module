@@ -278,12 +278,19 @@ export const CardSlider = ({
                   </p>
                   {accountType === "trade" && (
                     <Button
-                      label={"Locked/Amount"}
+                      label={showLockedAmount ? "Amount" : "Locked"}
                       size={"btn-sm"}
                       type={"btn-primary"}
                       element={"button"}
                       onClick={() => setShowLockedAmount(true)}
-                      // customStyles={{ width: "100%" }}
+                      customStyles={{
+                        width: "70px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "34px",
+                        fontSize: "12px",
+                      }}
                       // disabled={accountUpdateLoading}
                     />
                   )}
