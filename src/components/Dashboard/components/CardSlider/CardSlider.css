@@ -195,8 +195,8 @@
 
 .card-slider-card_content {
   font-weight: 700;
-  font-size: 21px;
-  line-height: 130%;
+  font-size: 28px;
+  line-height: 150%;
   letter-spacing: 1px;
   color: #fff;
   max-width: 100%;
@@ -206,6 +206,11 @@
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.card-slider-trade_content {
+  font-size: 22px;
+  line-height: 130%;
 }
 
 .card-slider-card_footer {

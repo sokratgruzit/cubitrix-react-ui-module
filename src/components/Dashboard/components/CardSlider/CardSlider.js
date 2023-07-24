@@ -223,24 +223,30 @@ export const CardSlider = ({
                   </h4>
                 </div>
                 <div className="main-card-content-wrapper">
-                  <p className="card-slider-card_content">
+                  <p
+                    className={`card-slider-card_content ${
+                      accountType === "trade" ? "card-slider-trade_content" : ""
+                    }`}
+                  >
                     {chosenAcc?.balance?.toLocaleString("en-US", {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })}
                   </p>
-                  <span
-                    style={{
-                      fontSize: "12px",
-                      lineHeight: "130%",
-                      color: "rgba(255,255,255,0.3)",
-                    }}
-                  >
-                    {stakedTotal?.toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </span>
+                  {accountType === "trade" && (
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        lineHeight: "130%",
+                        color: "rgba(255,255,255,0.3)",
+                      }}
+                    >
+                      {stakedTotal?.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="card-slider-card_footer">
