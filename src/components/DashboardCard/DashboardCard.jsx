@@ -19,7 +19,9 @@ export const DashboardCard = ({
   balance,
   incoming,
   outcoming,
-  coinKey
+  coinKey,
+  info,
+  account
 }) => {
   const [activeId, setActiveId] = useState(1);
 
@@ -133,10 +135,10 @@ export const DashboardCard = ({
 
   if (type === "coin") {
     element = (
-      <div key={coinKey} className={"card-container amount-card"} style={customStyles}>
+      <div key={coinKey} className={`${"card-container"} ${coin === "Atar" ? "sale-card" : "amount-card"}`} style={customStyles}>
         <div className={"sale-card-body"}>
           <p className={"sale-card__saleNumber"}>{balance}</p>
-          <span className={"sale-card__saleIcon"}  style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
+          <span className={"sale-card__saleIcon"} style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
         </div>
         <div>
           <p>Incoming <span>{incoming}</span></p>
@@ -147,7 +149,58 @@ export const DashboardCard = ({
         </div>
       </div>
     );
+
+    if (type === 'balanceCard') {
+      element = (
+        <div className={"card-container sale-card"} style={customStyles}>
+          <div className={"card-header"}>
+            <p className={"font-12"}>{cardHeader}</p>
+            <div className={"card-header__buttons"}>
+              {cardHeaderButtons?.map((item, index) => (
+                <div
+                  key={index}
+                  className={`card-header__btn ${activeId === index && "card-header__btn-active"
+                    } font-12`}
+                  onClick={() => {
+                    setActiveId(index);
+                    handleHeaderBtnClick(item.name);
+                  }}
+                >
+                  {item.name}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className={"sale-card-body"}>
+            <p className={"sale-card__saleNumber"}>{saleNumber}</p>
+            <p className={"sale-card__salePercentage font-14"}>{salePercentage}%</p>
+          </div>
+          <div className={"sale-card-info"}>
+            <p className={"sale-card__lastSaleInfo font-12"}>{lastSaleInfo}</p>
+            <p onClick={onViewClick} className={"sale-card__view font-14"}>
+              View
+            </p>
+          </div>
+        </div>
+      );
+    }
   }
 
+  if (type === "balance-card") {
+    element = (
+      <div className={"card-container sale-card"} style={customStyles}>
+        <div className={"card-header"}>
+          <p className={""}>{account}</p>
+        </div>
+        <div className={"sale-card-body"}>
+          <p className={"sale-card__saleNumber"}>{balance}</p>
+          <span className={"sale-card__saleIcon"} style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
+        </div>
+        <div className={"sale-card-info"}>
+          <p className={"sale-card__lastSaleInfo font-12"}>{info}</p>
+        </div>
+      </div>
+    );
+  }
   return element;
 };

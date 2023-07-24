@@ -8,7 +8,6 @@ import { DashboardCard } from "../DashboardCard";
 import { DeveloperApi } from "../DeveloperApi";
 
 export const AdminPanel = props => {
-    console.log(props.coinCards)
     let filter;
     if (props.tableFilter === true) {
         filter = <FilterBox
@@ -23,7 +22,22 @@ export const AdminPanel = props => {
         <div className={`admin-content  animate-translateX ${props.animate ? 'animate' : ''}`} style={{ transitionDelay: '.2s' }}>
             {props.adminPage === 'dashboard' && (
                 <div style={{ display: 'flex', gap: '20px', paddingTop: '40px', flexWrap: 'wrap' }}>
-                    <DashboardCard
+                    {props.balanceCards && props.balanceCards.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <DashboardCard
+                                    cardKey={item?.id}
+                                    type={item?.type}
+                                    account={item?.account}
+                                    coinIcon={item?.coinIcon}
+                                    balance={item?.totalbalance}
+                                    info={item?.info}
+                                    customStyles={{ width: '372px' }}
+                                />
+                            </div>
+                        )
+                    })}
+                    {/* <DashboardCard
                         type={'sale-card'}
                         cardHeader={'TOKEN SALE - DEMO STAGE 2'}
                         saleNumber={'850,000'}
@@ -42,29 +56,28 @@ export const AdminPanel = props => {
                         cardHeaderButtons={[{ name: 'KYC' }, { name: 'Users' }]}
                         // handleHeaderBtnClick={(item) => console.log(item)}
                         customStyles={{ width: '372px' }}
-                    />
-                    <DashboardCard
+                    /> */}
+                    {/* <DashboardCard
                         type={'amount-card'}
                         cardHeader={'AMOUNT COLLECTED'}
                         cardHeaderButtons={[{ name: 'FIAT' }, { name: 'Crypto' }]}
                         usdtNumber={'255'}
                         handleHeaderBtnClick={(item) => console.log(item)}
                         customStyles={{ width: '372px' }}
-                    />
+                    /> */}
                     {props.coinCards && props.coinCards.map((item, index) => {
-                        console.log(item)
                         return (
-                            <div>
-                            <DashboardCard
-                                coinKeyey={index}
-                                type={item?.type}
-                                balance={item.balance}
-                                coin={item.currency}
-                                coinIcon={item.icon}
-                                incoming={item.incoming}
-                                outcoming={item.outcoming}
-                                customStyles={{ width: '372px' }}
-                            />
+                            <div key={index}>
+                                <DashboardCard
+                                    coinKeyey={item?.id}
+                                    type={item?.type}
+                                    balance={item?.balance}
+                                    coin={item?.currency}
+                                    coinIcon={item?.icon}
+                                    incoming={item?.incoming}
+                                    outcoming={item?.outcoming}
+                                    customStyles={{ width: '372px' }}
+                                />
                             </div>
                         )
 
