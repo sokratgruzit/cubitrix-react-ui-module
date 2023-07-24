@@ -22,55 +22,7 @@ export const CardSlider = ({
   extensions,
   stakedTotal,
 }) => {
-  const swiperRef = useRef(null);
-  const [isPrevDisabled, setIsPrevDisabled] = useState(true);
-  const [isNextDisabled, setIsNextDisabled] = useState(false);
-  const [slidePercentage, setSlidePercentage] = useState(0);
-  const [showLockedAmount, setShowLockedAmount] = useState(false);
-  const [isEnd, setIsEnd] = useState(false);
   const { width } = useMobileWidth();
-
-  useEffect(() => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      const swiperInstance = swiperRef.current.swiper;
-
-      const updateNavigation = () => {
-        setIsPrevDisabled(swiperInstance.isBeginning);
-        setIsNextDisabled(swiperInstance.isEnd);
-
-        const activeSlideIndex = swiperInstance.activeIndex;
-
-        const percentage = (activeSlideIndex / (swiperInstance.slides.length - 1)) * 100;
-        setSlidePercentage(percentage);
-
-        setIsEnd(swiperInstance.isEnd);
-      };
-
-      swiperInstance.on("slideChange", updateNavigation);
-
-      return () => {
-        swiperInstance.off("slideChange", updateNavigation);
-      };
-    }
-  }, [swiperRef]);
-
-  useEffect(() => {
-    if (isEnd) {
-      setSlidePercentage(100);
-    }
-  }, [isEnd]);
-
-  const moveNext = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideNext();
-    }
-  };
-
-  const movePrev = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slidePrev();
-    }
-  };
 
   const cardFooterData = [
     {
@@ -235,7 +187,6 @@ export const CardSlider = ({
         }`}
       >
         <Swiper
-          ref={swiperRef}
           spaceBetween={10}
           slidesPerView={"auto"}
           className="card-slider-cards-container"
@@ -260,11 +211,11 @@ export const CardSlider = ({
                     </span>
                     {tier && (
                       <span
-                        className={`tier-card ${tier === "gold" ? "gold-tier" : ""} ${
-                          tier === "diamond" ? "diamond-tier" : ""
-                        } ${tier === "vip" ? "vip-tier" : ""} ${
-                          tier === "basic" ? "basic-tier" : ""
-                        }`}
+                        className={`tier-card ${
+                          tier === "Stellar Standard" ? "gold-tier" : ""
+                        } ${tier === "Expert Edge" ? "diamond-tier" : ""} ${
+                          tier === "Platinum Privilege" ? "vip-tier" : ""
+                        } ${tier === "Novice Navigator" ? "basic-tier" : ""}`}
                       >
                         {tier?.toUpperCase()}
                       </span>
@@ -272,49 +223,29 @@ export const CardSlider = ({
                   </h4>
                 </div>
                 <div className="main-card-content-wrapper">
-                  <p className="card-slider-card_content">
-                    {accountType === "trade" ? (
-                      showLockedAmount ? (
-                        <>
-                          <span
-                            style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)" }}
-                          >
-                            Locked:
-                          </span>{" "}
-                          {stakedTotal?.toLocaleString("en-US", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })}
-                        </>
-                      ) : (
-                        chosenAcc?.balance?.toLocaleString("en-US", {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })
-                      )
-                    ) : (
-                      chosenAcc?.balance?.toLocaleString("en-US", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })
-                    )}
+                  <p
+                    className={`card-slider-card_content ${
+                      accountType === "trade" ? "card-slider-trade_content" : ""
+                    }`}
+                  >
+                    {chosenAcc?.balance?.toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </p>
                   {accountType === "trade" && (
-                    <Button
-                      label={showLockedAmount ? "Amount" : "Locked"}
-                      size={"btn-sm"}
-                      type={"btn-primary"}
-                      element={"button"}
-                      onClick={() => setShowLockedAmount((prev) => !prev)}
-                      customStyles={{
-                        width: "70px",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "34px",
+                    <span
+                      style={{
                         fontSize: "12px",
+                        lineHeight: "130%",
+                        color: "rgba(255,255,255,0.3)",
                       }}
-                    />
+                    >
+                      {stakedTotal?.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </span>
                   )}
                 </div>
               </div>
@@ -339,7 +270,7 @@ export const CardSlider = ({
                       key={index}
                       onClick={() => {
                         if (item.title === "Withdraw") {
-                          handleWithdraw(chosenAcc);
+                          handleWithdraw(chosenAcc, "ATAR");
                         } else if (item.title === "Transfer") {
                           handleTransfer(chosenAcc);
                         } else if (item.title === "Exchange") {
@@ -416,8 +347,6 @@ export const CardSlider = ({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={movePrev}
-              // className={isPrevDisabled ? "card-slider-cards-mover-icons_active" : ""}
               className="card-slider-cards-mover-icons_prev"
             >
               <path
@@ -443,8 +372,6 @@ export const CardSlider = ({
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={moveNext}
-              // className={isNextDisabled ? "card-slider-cards-mover-icons_active" : ""}
               className="card-slider-cards-mover-icons_next"
             >
               <path
