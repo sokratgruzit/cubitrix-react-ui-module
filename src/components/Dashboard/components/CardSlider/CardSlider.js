@@ -339,7 +339,7 @@ export const CardSlider = ({
                       key={index}
                       onClick={() => {
                         if (item.title === "Withdraw") {
-                          handleWithdraw(chosenAcc);
+                          handleWithdraw(chosenAcc, "ATAR");
                         } else if (item.title === "Transfer") {
                           handleTransfer(chosenAcc);
                         } else if (item.title === "Exchange") {
