@@ -80,7 +80,8 @@ export const Referral = ({
           icon: false,
         },
         {
-          title: "Level / Position",
+          title: "Level", 
+          // / Position",
           amount: "Lvl " + item.lvl + "/" + item.side,
           icon: false,
         },
@@ -107,8 +108,10 @@ export const Referral = ({
       return false;
     }
     if (item.lvl !== null) {
-      setActiveAddCopy(item.lvl + "_" + item.position);
-      console.log(item.lvl + "_" + item.position);
+      setActiveAddCopy(item.lvl + "_")
+      //  + item.position);
+      console.log(item.lvl + "_")
+      //  + item.position);
       setTimeout(() => {
         setActiveAddCopy(null);
       }, 1500);
@@ -506,7 +509,7 @@ export const Referral = ({
                   <Visual
                     element={"table-header"}
                     label={"Binary Tree"}
-                    description={`Total Downline Members: ${totalBinaryMembers}`}
+                    // description={`Total Downline Members: ${totalBinaryMembers}`}
                     fontSize={"font-20"}
                     customStyles={{ border: "none", padding: "0" }}
                     buttons={referralTreeBtnsRight}
@@ -675,7 +678,7 @@ export const Referral = ({
                                                 onClick={() => {
                                                   referralTreeAddClick(
                                                     suItem.lvl,
-                                                    suItem.position,
+                                                    // suItem.position,
                                                   ),
                                                     addCopy(suItem);
                                                 }}
@@ -690,7 +693,8 @@ export const Referral = ({
                                                   <div
                                                     className={`copied ${
                                                       activeAddCopy ==
-                                                      suItem.lvl + "_" + suItem.position
+                                                      suItem.lvl + "_" 
+                                                      // + suItem.position
                                                         ? "active"
                                                         : ""
                                                     }`}
