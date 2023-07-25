@@ -17,6 +17,7 @@ stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
   const [step, setStep] = useState(4);
+  const [progressValue, setProgressValue] = useState(300);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database
@@ -26,6 +27,10 @@ stories.add("LandingSteps", () => {
   //     setLoading(false);
   //   }, 100);
   // }, []);
+  const handleProgress = (e) => {
+    console.log(e);
+    setProgressValue(e.target.value);
+  };
 
   const methods = [
     // {
@@ -108,6 +113,13 @@ stories.add("LandingSteps", () => {
     referral: "",
   });
 
+  const [referralState, setReferralState] = useState({
+    value: "",
+    loading: false,
+    message: "empty",
+    status: "",
+  });
+
   const [timeperiod, setTimeperiod] = useState(4);
   const [timeperiodDate, setTimeperiodDate] = useState(0);
 
@@ -175,18 +187,6 @@ stories.add("LandingSteps", () => {
             transition: "0.5s",
           }}
         >
-          {/* <button
-            onClick={() => setToggle((prev) => !prev)}
-            style={{
-              marginTop: "100px",
-              position: "absolute",
-              left: "400px",
-              top: "100px",
-              zIndex: "1000",
-            }}
-          >
-            open
-          </button> */}
           <Header
             modules={[]}
             account={"0x0000000"}
@@ -329,6 +329,8 @@ stories.add("LandingSteps", () => {
           />
 
           <LandingSteps
+            amountProgressValue={progressValue}
+            amountProgressOnchange={handleProgress}
             receivePaymentAddress={"0x43f59F41518903A274c7897dfFB24DB86a0dd23a"}
             handleMetamaskConnect={() => {
               console.log("metamask");
@@ -367,6 +369,9 @@ stories.add("LandingSteps", () => {
             handleSubmit={() => console.log(currentObject.amount, timeperiodDate)}
             inputs={inputs}
             currentObject={currentObject}
+            isAllowance={false}
+            referralState={referralState}
+            setReferralState={setReferralState}
           />
         </div>
         <SideBar open={toggle}>

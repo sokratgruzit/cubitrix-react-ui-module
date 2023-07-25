@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-
 import './Landing.css'
 
 import { Footer } from '../Footer'

@@ -31,17 +31,17 @@ const PaymentPopup = ({
     <div className="payment_popup_container">
       <div className="payment_popup_body">
         <p>
-          Please make payment of {payment} to receive {receiveTokens}token.
+          Please make payment of {payment} to receive {receiveTokens}ATR.
         </p>
         <p>Transaction Fee: {fee}</p>
         <p>
           You can choose any of the following payment methods to make your payment. The
-          token balance will appear in your account after successful payment.
+          ATR balance will appear in your account after successful payment.
         </p>
         <h3>Select payment method:</h3>
         <div className="payment_methods_container">
           {paymentTypes.map((method) => {
-            if (selectedMethod === "USDT" && method.id === 2) return null;
+            if (selectedMethod === "USDC" && method.id === 2) return null;
             return (
               <div
                 key={method.id}
@@ -71,7 +71,7 @@ const PaymentPopup = ({
             onChange={handleAgreement}
           />
           <span className="confirm_payment_popup_checkmark"></span>I hereby agree to the
-          token purchase agreement and token sale term.
+          ATR purchase agreement and ATR sale term.
         </label>
         <Button
           element="button"

@@ -66,6 +66,12 @@ stories.add("Input", (props) => {
   const [cover, setCover] = useState(false);
   const [active, setActive] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [inputRange, setInputRange] = useState({
+      min: 100,
+      max: 500000,
+      value: 100,
+      step: 400
+  });
 
   function handlerClick(i) {
     setInputValue(i);
@@ -73,6 +79,12 @@ stories.add("Input", (props) => {
   const changeHandler = (i, e) => {
     console.log(i.target.value);
   };
+    const changeRangeHandler = (i, e) => {
+        let newObj = {...inputRange};
+        newObj.value = i.target.value
+        console.log(i.target.value);
+        setInputRange(newObj)
+    };
   const changeCountry = (data) => {
     console.log(data);
   };
@@ -107,6 +119,15 @@ stories.add("Input", (props) => {
         marginTop: "30px",
       }}
     >
+        <Input
+            type={"range"}
+            customStyles={{ width: "520px" }}
+            min={inputRange.min}
+            max={inputRange.max}
+            step={inputRange.step}
+            value={inputRange.value}
+            onChange={changeRangeHandler}
+        />
       <Input
         type={"lable-input-multi-select"}
         icon={false}
@@ -136,7 +157,6 @@ stories.add("Input", (props) => {
       />
       <Input
         type={"lable-input-select"}
-        icon={false}
         selectData={selectData}
         emptyFieldErr={true}
         defaultData={defaultData}
@@ -156,6 +176,7 @@ stories.add("Input", (props) => {
         title={"your text"}
         color={"#FFA726"}
         customStyles={{ width: "320px" }}
+        disabled={true}
       />
       <Input
         type={"default"}
@@ -350,14 +371,14 @@ stories.add("Input", (props) => {
         // onChange={(e) => console.log(e.target.value)}
         // value={'sad'}
         // readOnly={true}
-        name={'textarea input'}
+        name={"textarea input"}
         rows={10}
         cols={20}
         // disabled={true}
-        placeholder={'nice textarea ?'}
+        placeholder={"nice textarea ?"}
         // autoFocus={true}
         // emptyFieldErr={true}
-        resize={'both'}
+        resize={"both"}
         // maxLength={2}
         statusCard={
           <HelpText
@@ -408,7 +429,7 @@ stories.add("Input", (props) => {
         btns={btnArr}
         icon={false}
         status={"error"}
-        color={"#EF5350"}
+        color={"#FF0C46"}
         customStyles={{ width: "320px" }}
       /> */}
       {/* <Input

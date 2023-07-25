@@ -21,6 +21,7 @@ import { Deposit } from "../components/Deposit";
 import { LevelSystem } from "../components/LevelSystem";
 import { ReferralCode } from "../components/ReferralCode";
 import { useMobileWidth } from "../hooks/useMobileWidth";
+import { FeeWarning } from "../components/Auth/FeeWarning";
 
 const stories = storiesOf("SideBar", module);
 
@@ -104,9 +105,9 @@ stories.add("SideBar", () => {
               <path
                 d="M2 15C2 18.87 5.13 22 9 22L7.95 20.25"
                 stroke="#C38C5C"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M12.4229 11.2258H12.2584C11.5808 11.2053 10.9381 10.9205 10.4678 10.4321C9.99758 9.94379 9.73715 9.29081 9.74226 8.61289C9.74226 7.17096 10.9132 6 12.3552 6C13.0386 6.00331 13.6937 6.27422 14.1798 6.75466C14.666 7.23511 14.9446 7.88687 14.956 8.57027C14.9674 9.25368 14.7106 9.91436 14.2407 10.4107C13.7709 10.9071 13.1253 11.1997 12.4423 11.2258H12.4229ZM12.3552 7.45161C11.7164 7.45161 11.1939 7.97419 11.1939 8.61289C11.1939 9.24192 11.6874 9.75483 12.3068 9.77418C12.3068 9.7645 12.3648 9.7645 12.4326 9.77418C13.0422 9.73547 13.5164 9.23225 13.5164 8.61289C13.5164 7.97419 12.9939 7.45161 12.3552 7.45161Z"
@@ -119,9 +120,9 @@ stories.add("SideBar", () => {
               <path
                 d="M22 9C22 5.13 18.87 2 15 2L16.05 3.75"
                 stroke="#C38C5C"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           ),
@@ -144,7 +145,7 @@ stories.add("SideBar", () => {
       price: "$0.00",
     },
     {
-      svg: <Account type={"usdt"} />,
+      svg: <Account type={"usdc"} />,
       title: "USDT",
       value: "0.000000 USDT",
       price: "$0.00",
@@ -162,7 +163,7 @@ stories.add("SideBar", () => {
       price: "$0.00",
     },
     {
-      svg: <Account type={"platinium"} />,
+      svg: <Account type={"platinum"} />,
       title: "PLATINUM",
       value: "0.000000 P",
       price: "$0.00",
@@ -306,7 +307,7 @@ stories.add("SideBar", () => {
           handleNewPassword={(e) => console.log(e)}
         />
       </div> */}
-      <Popup
+      {/* <Popup
         popUpElement={
           <ChangeNetwork
             disconnect={() => console.log("disconnect")}
@@ -314,10 +315,21 @@ stories.add("SideBar", () => {
           />
         }
         label={"Check Your Network"}
-      />
+      /> */}
+
+      {/* <Popup
+        popUpElement={
+          <FeeWarning />
+          // <ChangeNetwork
+          //   disconnect={() => console.log("disconnect")}
+          //   handleNetworkChange={() => console.log("handle network change")}
+          // />
+        }
+        label={"Opening account fee"}
+      /> */}
 
       <SideBar open={toggle}>
-        <TransferFromAcc
+        {/* <TransferFromAcc
           sideBarClose={() => setToggle((prev) => !prev)}
           inputs={inputs}
           currentObject={currentObject}
@@ -332,7 +344,7 @@ stories.add("SideBar", () => {
           accountBalanceSecond={"$2,034.04"}
           label={"hi"}
           info={"info"}
-        />{" "}
+        />{" "} */}
         {/* <Connect
           ConnectOptions={[
             {
@@ -401,7 +413,7 @@ stories.add("SideBar", () => {
           }}
           handleResetPassword={(e) => console.log(e)}
         /> */}
-        {/* <UserOptions
+        <UserOptions
           type={"Metamask"}
           warning={true}
           completeAccount={() => console.log("complete")}
@@ -409,7 +421,8 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
           account={"ahaha"}
-        /> */}
+          mainAccount={"ahaha2"}
+        />
         {/* <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}

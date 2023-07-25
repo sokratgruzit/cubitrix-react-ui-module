@@ -17,6 +17,7 @@ export * from "./components/Auth/SignIn";
 export * from "./components/Auth/ResetPasswordForm";
 export * from "./components/Auth/ResetPassword";
 export * from "./components/Auth/ChangeNetwork";
+export * from "./components/Auth/FeeWarning";
 export * from "./components/Auth/NoMetaMask";
 export * from "./components/Header";
 export * from "./components/DashboardBalance";

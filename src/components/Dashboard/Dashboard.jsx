@@ -8,16 +8,11 @@ import "./Dashboard.css";
 export const Dashboard = ({
   transactionsData,
   transactionHeader,
-  referralCodeHeader,
   referralHistoryHeader,
-  referralCardsData,
-  codesTableData,
   rebatesTableData,
   totalTransactions,
-  referralCodeTableEmpty,
   referralHistoryTableEmpty,
   transactionsTableEmpty,
-  referralCodeTableLoading,
   referralHistoryTableLoading,
   transactionsTableLoading,
   accountsData,
@@ -28,6 +23,11 @@ export const Dashboard = ({
   cardImgs,
   accountType,
   setAccountType,
+  referralHistoryButtonsRight,
+  referralHistoryTableType,
+  tier,
+  extensions,
+  stakedTotal,
 }) => {
   const tables = [
     {
@@ -43,11 +43,11 @@ export const Dashboard = ({
       ),
       rightPanelData: [
         {
-          title: "Recieved",
+          title: "Incoming",
           value: totalTransactions?.received,
         },
         {
-          title: "Spent",
+          title: "Outgoing",
           value: totalTransactions?.spent,
         },
       ],
@@ -61,22 +61,8 @@ export const Dashboard = ({
       loading: transactionsTableLoading,
     },
     {
-      type: "referral-code",
-      header: "Referral Code",
-      description: `You can create multiple referral codes to attract traders`,
-      footer: {
-        link: "/referral",
-        label: "All Code",
-      },
-      tableHeader: referralCodeHeader,
-      referralCardsData: referralCardsData,
-      data: codesTableData,
-      tableEmpty: referralCodeTableEmpty,
-      loading: referralCodeTableLoading,
-    },
-    {
-      type: "referral-history",
-      header: "Referral Revates History",
+      type: referralHistoryTableType,
+      header: "Referral History",
       description: `The airdrop history of your weekly referral rebates.`,
       footer: {
         link: "/referral",
@@ -86,6 +72,7 @@ export const Dashboard = ({
       data: rebatesTableData,
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
+      tableButtons: referralHistoryButtonsRight,
     },
   ];
 
@@ -100,6 +87,9 @@ export const Dashboard = ({
         handleExchange={handleExchange}
         handleWithdraw={handleWithdraw}
         handleTransfer={handleTransfer}
+        tier={tier}
+        extensions={extensions}
+        stakedTotal={stakedTotal}
       />
       {tables?.map((item, index) => (
         <DashboardTable
@@ -110,10 +100,10 @@ export const Dashboard = ({
           footer={item?.footer}
           rightPanelData={item?.rightPanelData}
           tableHeader={item?.tableHeader}
-          referralCardsData={item?.referralCardsData}
           data={item?.data}
           tableEmpty={item?.tableEmpty}
           loading={item?.loading}
+          tableButtons={item?.tableButtons}
         />
       ))}
     </>

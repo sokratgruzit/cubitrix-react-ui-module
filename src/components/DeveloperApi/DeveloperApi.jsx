@@ -133,6 +133,7 @@ export const DeveloperApi = ({
                         className={"api-item-top"}
                         onClick={() => {
                           handleSetFields(apiItem);
+                          setActive(apiItem.route);
                         }}
                       >
                         <h3>{apiItem.description}</h3>
@@ -228,8 +229,8 @@ export const DeveloperApi = ({
                                   name={params.name}
                                   value={
                                     params.type === "select"
-                                      ? "Any"
-                                      : currentArray[params?.name] || ""
+                                      ? currentArray[params?.name] || "Daily"
+                                      : currentArray[params?.name] || "Any"
                                   }
                                   onChange={(e) =>
                                     !params.type

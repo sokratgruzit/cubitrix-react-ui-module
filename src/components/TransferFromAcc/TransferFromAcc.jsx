@@ -14,12 +14,11 @@ export const TransferFromAcc = ({
   cardImg,
   handleSubmit,
   buttonLabel,
-  showHelpText,
-  helpText,
-  success,
   accountBalance,
   accountBalanceSecond,
   label,
+  transferSubmitLoading,
+  withdrawSubmitLoading,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
@@ -96,6 +95,7 @@ export const TransferFromAcc = ({
                         ? selectedOption?.svg
                         : params?.svg
                     }
+                    disabled={params?.disabled}
                   />
                   {params?.rightText && (
                     <span className="font-14 withdraw-to-acc-input-right">
@@ -117,16 +117,9 @@ export const TransferFromAcc = ({
               backgroundColor: "#C38C5C",
             }}
             onClick={handleSubmit}
+            disabled={transferSubmitLoading || withdrawSubmitLoading}
           />
         </div>
-        {showHelpText && (
-          <HelpText
-            status={success ? "success" : "error"}
-            title={helpText}
-            fontSize={"font-12"}
-            icon={true}
-          />
-        )}
       </div>
     </>
   );

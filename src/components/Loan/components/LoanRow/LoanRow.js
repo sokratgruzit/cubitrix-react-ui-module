@@ -114,7 +114,7 @@ const LoanRow = ({ loan, account, setMakeOfferLoanId, rescindOffer }) => {
             <p>Expiration</p>
             <p>Status</p>
           </div>
-          {loan.allOffers.length > 0 ? (
+          {loan?.allOffers?.length > 0 ? (
             loan.allOffers.map((offer, index) => (
               <div key={index} className="allOffers-row">
                 <div className="offers-borrower">

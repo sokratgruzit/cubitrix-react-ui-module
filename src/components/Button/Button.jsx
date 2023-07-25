@@ -19,7 +19,12 @@ export const Button = (props) => {
         className={`btn ${props.size} ${props.type} ${props.arrow} ${
           props.labelSetting
         } ${props.disabled === true ? "disabled" : ""} ${props.className}`}
-        onClick={props.onClick}
+        onClick={(e) => {
+          if (props.disabled) {
+            return;
+          }
+          props.onClick(e);
+        }}
         style={props.customStyles}
         disabled={props.disabled}
       >

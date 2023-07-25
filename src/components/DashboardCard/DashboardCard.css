@@ -47,7 +47,17 @@
     font-weight: 700;
     font-size: 32px;
     line-height: 130%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+.sale-card__saleIcon {
+    width: 25px;
+    height: 25px;
+}
+
+
 
 .sale-card__salePercentage {
     border: 1px solid rgba(61, 90, 254, 0.2);
@@ -99,6 +109,6 @@
     justify-content: space-between;
 }
 
-.amount-card__info p:nth-child(2){
+.amount-card__info p:nth-child(2) {
     color: #6A6D76;
 }

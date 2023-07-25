@@ -9,33 +9,34 @@
 /*  font-weight: normal;*/
 /*  font-style: normal;*/
 /*}*/
-/* @font-face {*/
-/*  font-family: "UberMove-Regular";*/
-/*  src: url("../fonts/UberMove/UberMove-Regular.eot");*/
-/*  src: url("../fonts/UberMove/UberMove-Regular.eot?#iefix") format("embedded-opentype"),*/
-/*  url("../fonts/UberMove/UberMove-Regular.svg#Lack-Regular") format("svg"),*/
-/*  url("../fonts/UberMove/UberMove-Regular.ttf") format("truetype"),*/
-/*  url("../fonts/UberMove/UberMove-Regular.woff") format("woff"),*/
-/*  url("../fonts/UberMove/UberMove-Regular.woff2") format("woff2");*/
-/*  font-weight: normal;*/
-/*  font-style: normal;*/
-/* } */
+@font-face {
+  font-family: 'Marcellus';
+  src: url('../fonts/Marcellus/Marcellus-Regular.eot');
+  src: url('../fonts/Marcellus/Marcellus-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Marcellus/Marcellus-Regular.woff2') format('woff2'),
+  url('../fonts/Marcellus/Marcellus-Regular.woff') format('woff'),
+  url('../fonts/Marcellus/Marcellus-Regular.ttf') format('truetype'),
+  url('../fonts/Marcellus/Marcellus-Regular.svg#Marcellus-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
-  font-family: "Lack-Regular";
-  src: url("../fonts/LackRegular/Lack-Regular.eot");
-  src: url("../fonts/LackRegular/Lack-Regular.eot?#iefix")
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/Poppins-Regular.eot");
+  src: url("../fonts/Poppins/Poppins-Regular.eot?#iefix")
       format("embedded-opentype"),
-    url("../fonts/LackRegular/Lack-Regular.svg#Lack-Regular") format("svg"),
-    url("../fonts/LackRegular/Lack-Regular.ttf") format("truetype"),
-    url("../fonts/LackRegular/Lack-Regular.woff") format("woff"),
-    url("../fonts/LackRegular/Lack-Regular.woff2") format("woff2");
+    url("../fonts/Poppins/Poppins-Regular.svg#Lack-Regular") format("svg"),
+    url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype"),
+    url("../fonts/Poppins/Poppins-Regular.woff") format("woff"),
+    url("../fonts/Poppins/Poppins-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: "Lack-Regular";
+  font-family: "Poppins";
   font-size: 14px;
   line-height: 24px;
   color: rgba(255, 255, 255, 1);
@@ -43,7 +44,9 @@
   outline-color: none;
   box-sizing: border-box;
 }
-
+.main_ttl {
+  font-family: 'Marcellus';
+}
 html {
   overflow-x: hidden;
   -webkit-text-size-adjust: none;
@@ -169,7 +172,7 @@ button {
   left: 0;
   top: 0;
   background: #2d3364;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 365px;
   padding: 70px 20px 0 20px;
 }

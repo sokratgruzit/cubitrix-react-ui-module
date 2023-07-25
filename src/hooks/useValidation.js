@@ -5,28 +5,40 @@ export const useValidation = (formData, helpTexts) => {
     email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     password: /(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
     numbers: /^[0-9\b]+$/,
-    limitedCharacters: /^.{16}$/,
+    limitedCharacters: /^.{42}$/,
     hash: /^[a-fA-F0-9]{32}/i,
     number: /^\d+(?:\.\d+)?$/,
     text: /^[-_a-zA-Z0-9]*[a-zA-Z]+[-_a-zA-Z0-9]*$/,
     address: /^0x[a-fA-F0-9]{40}$/,
+    multipleOf5000: (num) => !isNaN(num) && num > 0 && num % 5000 === 0,
+    between100and500: (num) => !isNaN(num) && num >= 100 && num <= 500, // new validation rule
   };
 
   Object.keys(formData).map((key) => {
-    if (
-      !validation[helpTexts[key].validationType].test(formData[key]) &&
-      formData[key].length > 0
-    ) {
-      errors[key] = {
-        failure: helpTexts[key].failure,
-      };
-    } else if (
-      validation[helpTexts[key].validationType].test(formData[key]) &&
-      formData[key].length > 0
-    ) {
-      errors[key] = {
-        success: helpTexts[key].success,
-      };
+    const validationType = helpTexts[key].validationType;
+    const validationRule = validation[validationType];
+    const value = formData[key];
+
+    if (typeof validationRule === "function") {
+      if (!validationRule(value) && value.length > 0) {
+        errors[key] = {
+          failure: helpTexts[key].failure,
+        };
+      } else if (validationRule(value) && value.length > 0) {
+        errors[key] = {
+          success: helpTexts[key].success,
+        };
+      }
+    } else {
+      if (!validationRule.test(value) && value.length > 0) {
+        errors[key] = {
+          failure: helpTexts[key].failure,
+        };
+      } else if (validationRule.test(value) && value.length > 0) {
+        errors[key] = {
+          success: helpTexts[key].success,
+        };
+      }
     }
   });
 

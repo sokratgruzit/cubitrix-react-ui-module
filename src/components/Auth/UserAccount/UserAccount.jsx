@@ -176,7 +176,7 @@ export const UserAccount = ({
             editable={true}
           />
           {emailError && (
-            <HelpText status={"error"} title={emailError} color={"#EF5350"} icon={true} />
+            <HelpText status={"error"} title={emailError} color={"#FF0C46"} icon={true} />
           )}
           <HelpText
             className="margin-top-negative"
@@ -186,14 +186,14 @@ export const UserAccount = ({
             fontSize={"font-12"}
             icon={true}
           />
-          <Input
+          {/* <Input
             type={"label-input-phone-number"}
             label={"Mobile Number"}
             onChange={(e) => handleUserUpdate(e, "mobile")}
             value={userData.mobile}
             customStyles={{ width: "100%" }}
             editable={true}
-          />
+          /> */}
           <Input
             type={"date-picker-input"}
             onChange={(e) => handleUserUpdate(e, "date_of_birth")}
@@ -202,7 +202,7 @@ export const UserAccount = ({
             customStyles={{ width: "100$" }}
             editable={true}
           />
-          <Input
+          {/* <Input
             type={"lable-input-select"}
             icon={false}
             selectType={"country"}
@@ -212,13 +212,13 @@ export const UserAccount = ({
             customStyles={{ width: "100%" }}
             editable={true}
             selectLabel={"Select Country"}
-          />
-          <Input
+          /> */}
+          {/* <Input
             type={"label-input-upload"}
             customStyles={{ width: "100%" }}
             onChange={(e) => handleUserUpdate(e, "avatar")}
             value={imgValue}
-          />
+          /> */}
           <Button
             element="button"
             label={
@@ -255,7 +255,7 @@ export const UserAccount = ({
             <HelpText
               status={"error"}
               title={personalDataState?.error}
-              color={"#EF5350"}
+              color={"#FF0C46"}
               icon={true}
             />
           )}
@@ -291,7 +291,7 @@ export const UserAccount = ({
                 className="margin-top-negative"
                 status={"error"}
                 title={securityFormErrors.newPassword}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}
@@ -310,7 +310,7 @@ export const UserAccount = ({
                 className="margin-top-negative"
                 status={"error"}
                 title={securityFormErrors.confirmPassword}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}
@@ -361,7 +361,7 @@ export const UserAccount = ({
               <HelpText
                 status={"error"}
                 title={securityDataState.error}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}

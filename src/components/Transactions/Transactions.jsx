@@ -132,6 +132,15 @@ export const Transactions = ({
           >
             <span>{item?.amount?.toFixed(2)}</span>
           </div>
+          <div
+            className={`td ${tableHead[5].mobileWidth ? true : false} dashboard-td`}
+            style={{
+              width: `${mobile ? tableHead[5].mobileWidth : tableHead[5].width}%`,
+            }}
+          >
+            <span>{item?.tx_status}</span>
+          </div>
+
         </div>
         <div className='table-more' />
         <div className='icon-place' style={{ height: '40px' }}>

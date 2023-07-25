@@ -55,9 +55,7 @@ export const TopUp = ({
 
   return (
     <div className="topup_main">
-      <p className="topup_title">
-        1. Select the payment method and calculate token price
-      </p>
+      <p className="topup_title">1. Select the payment method and calculate ATR price</p>
       <div className="topup_methodContainer">
         {methods.map((method) => (
           <div
@@ -72,15 +70,13 @@ export const TopUp = ({
           </div>
         ))}
       </div>
-      <p className="topup_title">
-        2. Set amount of CMCX tokens you would like to purchase
-      </p>
+      <p className="topup_title">2. Set amount of ATR you would like to purchase</p>
       <p className="topup_info">
         Enter the amount you would like to contribute in order to calculate the amount of
-        tokens you will receive. The calculator below helps to convert the required
-        quantity of tokens into the amount of your selected currency.
+        ATR you will receive. The calculator below helps to convert the required quantity
+        of ATR into the amount of your selected currency.
       </p>
-      <p>Token Amount</p>
+      <p>ATR Amount</p>
       <div className="topupDashboard_inputContainer">
         <Input
           type={"default"}
@@ -93,28 +89,28 @@ export const TopUp = ({
           editable={true}
         />
         <div className="topupDashboard_inputOverlay">
-          <p className="topupDashboard_inputOverlay_text">CPL</p>
+          <p className="topupDashboard_inputOverlay_text">ATR</p>
         </div>
       </div>
-      <p className="topupDashboard_info-exchangeRate">1 CPL = {exchangeRate} USDT</p>
-      {tokenError && <HelpText status={"error"} title={tokenError} color={"#EF5350"} />}
+      <p className="topupDashboard_info-exchangeRate">1 ATR = {exchangeRate} USDC</p>
+      {tokenError && <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />}
       <div className="topupDashboard_bottom-row topup_bottom-padding">
         <p>Token Amount:</p>
         <p>
-          {tokenAmount} CPL = {tokenAmount * exchangeRate} USDT
+          {tokenAmount} ATR = {tokenAmount * exchangeRate} USDC
         </p>
       </div>
       <div className="topupDashboard_bottom-row">
         <p>Transaction Fee: </p>
-        <p> {tranasctionFee} USDT</p>
+        <p> {tranasctionFee} USDC</p>
       </div>
       <h3 className="topupDashboard_bottom-result">
         TOTAL: {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
-        USDT
+        USDC
       </h3>
       <Button
         element="button"
-        label={`Purchase token`}
+        label={`Purchase ATR`}
         type="btn-secondary"
         size="btn-lg"
         customStyles={{

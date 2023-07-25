@@ -316,7 +316,11 @@ stories.add("Staking", () => {
     }
   }, [isLoadMoreButtonOnScreen]);
 
-  console.log(isFetching);
+  const handleButtonClick = () => {
+    toast.success("Success message");
+    toast.error("Error message");
+    toast.warning("Warning message");
+  };
 
   return (
     <BrowserRouter>
@@ -459,6 +463,7 @@ stories.add("Staking", () => {
         }
         verified={false}
       />
+      <button onClick={handleButtonClick}>Show Toasts</button>
       <Staking
         account={true}
         durationOptions={durationOptions}

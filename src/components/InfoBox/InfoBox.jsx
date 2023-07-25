@@ -43,12 +43,12 @@ export const InfoBox = ({ type, cardBody, active, customStyle, header,cardBtn, i
                     return (
                         <div className={`card-body card-body-active active`} key={index}>
                             <div className='display-flex'>
-                                <div className={`card-header-active active`}>
+                                <div className={`card-header-active active ${item.icon == false ? 'hidden' : ''}`}>
                                     <img src={item.icon} alt='#' />
                                 </div>
                                 <div className={`list-group-item font-16 card-body-active active`}>{item.title}</div>
                             </div>
-                            <p className={`list-group-item font-16 card-footer-active active`}>{item.amount}</p>
+                            <p className={`list-group-item font-16 card-footer-active active reward-box__width`}><span>{item.amount}</span></p>
                         </div>
                     )
                 })

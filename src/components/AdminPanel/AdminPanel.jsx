@@ -9,27 +9,42 @@ import { DeveloperApi } from "../DeveloperApi";
 
 export const AdminPanel = props => {
     let filter;
-    if(props.tableFilter === true) {
-        filter =  <FilterBox
+    if (props.tableFilter === true) {
+        filter = <FilterBox
             tableFilterData={props.tableFilterData}
             setTableFilterOutcomingData={props.setTableFilterOutcomingData}
             tableSearchSelect={props.tableSearchSelect}
             tableHeader={props.tableHeader}
-            customStyles={{marginBottom: '20px'}}
+            customStyles={{ marginBottom: '20px' }}
         />
     }
     return (
-        <div className={`admin-content  animate-translateX ${props.animate ? 'animate' : ''}`} style={{transitionDelay: '.2s'}}>
+        <div className={`admin-content  animate-translateX ${props.animate ? 'animate' : ''}`} style={{ transitionDelay: '.2s' }}>
             {props.adminPage === 'dashboard' && (
-                <div style={{ display: 'flex', gap: '20px', paddingTop: '40px', flexWrap: 'wrap'}}>
-                    <DashboardCard
+                <div style={{ display: 'flex', gap: '20px', paddingTop: '40px', flexWrap: 'wrap' }}>
+                    {props.balanceCards && props.balanceCards.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <DashboardCard
+                                    cardKey={item?.id}
+                                    type={item?.type}
+                                    account={item?.account}
+                                    coinIcon={item?.coinIcon}
+                                    balance={item?.totalbalance}
+                                    info={item?.info}
+                                    customStyles={{ width: '372px' }}
+                                />
+                            </div>
+                        )
+                    })}
+                    {/* <DashboardCard
                         type={'sale-card'}
                         cardHeader={'TOKEN SALE - DEMO STAGE 2'}
                         saleNumber={'850,000'}
                         salePercentage={'1.6'}
                         lastSaleInfo={'0 since last week'}
-                        onViewClick={() => console.log('view')}
-                        customStyles={{ width: '372px'}}
+                        // onViewClick={() => console.log('view')}
+                        customStyles={{ width: '372px' }}
                     />
                     <DashboardCard
                         type={'sale-card'}
@@ -38,18 +53,35 @@ export const AdminPanel = props => {
                         salePercentage={'100'}
                         lastSaleInfo={'0 since last week'}
                         onViewClick={() => console.log('view')}
-                        cardHeaderButtons={[ { name: 'KYC' }, { name: 'Users' }]}
-                        handleHeaderBtnClick={(item) => console.log(item)}
-                        customStyles={{ width: '372px'}}
-                    />
-                    <DashboardCard
+                        cardHeaderButtons={[{ name: 'KYC' }, { name: 'Users' }]}
+                        // handleHeaderBtnClick={(item) => console.log(item)}
+                        customStyles={{ width: '372px' }}
+                    /> */}
+                    {/* <DashboardCard
                         type={'amount-card'}
                         cardHeader={'AMOUNT COLLECTED'}
-                        cardHeaderButtons={[ { name: 'FIAT' }, { name: 'Crypto' }]}
+                        cardHeaderButtons={[{ name: 'FIAT' }, { name: 'Crypto' }]}
                         usdtNumber={'255'}
                         handleHeaderBtnClick={(item) => console.log(item)}
-                        customStyles={{ width: '372px'}}
-                    />
+                        customStyles={{ width: '372px' }}
+                    /> */}
+                    {props.coinCards && props.coinCards.map((item, index) => {
+                        return (
+                            <div key={index}>
+                                <DashboardCard
+                                    coinKeyey={item?.id}
+                                    type={item?.type}
+                                    balance={item?.balance}
+                                    coin={item?.currency}
+                                    coinIcon={item?.icon}
+                                    incoming={item?.incoming}
+                                    outcoming={item?.outcoming}
+                                    customStyles={{ width: '372px' }}
+                                />
+                            </div>
+                        )
+
+                    })}
                 </div>
             )}
             {props.adminPage === 'table' && (
@@ -59,7 +91,7 @@ export const AdminPanel = props => {
                         label={props.pageLabel}
                         buttons={props.tableHeaderButtons}
                         fontSize={'font-20'}
-                        customStyles={{marginBottom: '20px'}}
+                        customStyles={{ marginBottom: '20px' }}
                     />
                     {filter}
                     <Table
@@ -70,7 +102,7 @@ export const AdminPanel = props => {
                         handleViewAll={props.handleViewAll}
                     />
                     <TableElement
-                        customStyle={{marginTop: '30px', paddingBottom: '100px'}}
+                        customStyle={{ marginTop: '30px', paddingBottom: '100px' }}
                         type={'pagination'}
                         currentPage={props.paginationCurrent}
                         totalCount={props.paginationTotal}

@@ -58,7 +58,7 @@ export const SignIn = ({
               <HelpText
                 status={"error"}
                 title={resetPasswordState.error}
-                color={"#EF5350"}
+                color={"#FF0C46"}
                 icon={true}
               />
             )}
@@ -103,7 +103,7 @@ export const SignIn = ({
                   <HelpText
                     status={"error"}
                     title={otpState.error}
-                    color={"#EF5350"}
+                    color={"#FF0C46"}
                     icon={true}
                   />
                 )}
@@ -158,7 +158,7 @@ export const SignIn = ({
                   <HelpText
                     status={"error"}
                     title={signInState.error}
-                    color={"#EF5350"}
+                    color={"#FF0C46"}
                     icon={true}
                   />
                 )}

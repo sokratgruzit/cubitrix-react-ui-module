@@ -14,13 +14,11 @@ export const Deposit = ({
   cardImg,
   handleSubmit,
   buttonLabel,
-  showHelpText,
-  helpText,
-  success,
   accountBalance,
   accountBalanceSecond,
   info,
   label,
+  depositLoading,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
@@ -113,16 +111,9 @@ export const Deposit = ({
               backgroundColor: "#C38C5C",
             }}
             onClick={handleSubmit}
+            disabled={depositLoading}
           />
         </div>
-        {showHelpText && (
-          <HelpText
-            status={success ? "success" : "error"}
-            title={helpText}
-            fontSize={"font-12"}
-            icon={true}
-          />
-        )}
       </div>
     </>
   );
