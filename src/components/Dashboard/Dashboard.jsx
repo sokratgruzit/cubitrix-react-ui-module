@@ -27,7 +27,10 @@ export const Dashboard = ({
   referralHistoryTableType,
   tier,
   extensions,
+  stakedTotal,
 }) => {
+  let referralItem = {};
+
   const tables = [
     {
       type: "transactions",
@@ -59,7 +62,10 @@ export const Dashboard = ({
       tableEmpty: transactionsTableEmpty,
       loading: transactionsTableLoading,
     },
-    {
+  ];
+
+  if (rebatesTableData && rebatesTableData.lenght > 0) {
+    referralItem = {
       type: referralHistoryTableType,
       header: "Referral History",
       description: `The airdrop history of your weekly referral rebates.`,
@@ -72,8 +78,10 @@ export const Dashboard = ({
       tableEmpty: referralHistoryTableEmpty,
       loading: referralHistoryTableLoading,
       tableButtons: referralHistoryButtonsRight,
-    },
-  ];
+    };
+
+    tables.push(referralItem);
+  }
 
   return (
     <>
@@ -88,6 +96,7 @@ export const Dashboard = ({
         handleTransfer={handleTransfer}
         tier={tier}
         extensions={extensions}
+        stakedTotal={stakedTotal}
       />
       {tables?.map((item, index) => (
         <DashboardTable

@@ -244,7 +244,7 @@ stories.add("Transactions", () => {
         { name: "Deposit", value: "deposit" },
         { name: "Transfer", value: "transfer" },
         { name: "Internal Transaction", value: "internal_transaction" },
-        { name: "Withdrawal", value: "withdrawal" },
+        { name: "Withdraw", value: "withdraw" },
         { name: "Referral Bonus", value: "referral_bonus" },
       ],
       defaultAny: "Any Type",
