@@ -1545,6 +1545,7 @@ stories.add("Referral", () => {
             verified={false}
         />
         <Referral
+            referralTableTitle={"your title"}
             cards={referralCards}
             handleCreateCode={handleCreateCode}
             referralBinaryType={referralBinaryType}
