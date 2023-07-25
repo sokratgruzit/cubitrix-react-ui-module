@@ -81,7 +81,7 @@ export const Referral = ({
           icon: false,
         },
         {
-          title: "Level", 
+          title: "Level",
           // / Position",
           amount: "Lvl " + item.lvl + "/" + item.side,
           icon: false,
@@ -184,7 +184,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>{"Lvl " + item.lvl + "/" + item.side}</span>
+              <span>{"Lvl " + item.lvl}</span>
             </div>
             <div
               className={`td ${
