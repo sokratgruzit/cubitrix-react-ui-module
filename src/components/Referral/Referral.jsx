@@ -49,6 +49,7 @@ export const Referral = ({
   referralTreePaginationEvent,
   referralHistoryButtonsRight,
   referralHistoryTableType,
+  referralTableTitle,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -508,7 +509,7 @@ export const Referral = ({
                 <div className="dashboard-table-header-container">
                   <Visual
                     element={"table-header"}
-                    label={"Binary Tree"}
+                    label={referralTableTitle}
                     // description={`Total Downline Members: ${totalBinaryMembers}`}
                     fontSize={"font-20"}
                     customStyles={{ border: "none", padding: "0" }}
