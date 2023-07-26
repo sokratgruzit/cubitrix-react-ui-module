@@ -184,7 +184,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>{"Lvl " + item.lvl}</span>
+              <span>{"Lvl " + item.lvl + "/" + item.side}</span>
             </div>
             <div
               className={`td ${
@@ -305,7 +305,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>{"Lvl " + item.lvl + "/" + item.side}</span>
+              <span>{"Lvl " + item.lvl}</span>
             </div>
             <div
               className={`td ${
