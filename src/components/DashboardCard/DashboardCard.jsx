@@ -137,14 +137,12 @@ export const DashboardCard = ({
     element = (
       <div key={coinKey} className={`${"card-container"} ${coin === "Atar" ? "sale-card" : "amount-card"}`} style={customStyles}>
         <div className={"sale-card-body"}>
-          <p className={"sale-card__saleNumber"}>{balance}</p>
-          <span className={"sale-card__saleIcon"} style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
-        </div>
-        <div>
-          <p>Incoming <span>{incoming}</span></p>
-          <p>Outcoming <span>{outcoming}</span></p>
+          <p className={"sale-card__saleNumber"}>Incoming: <span>{incoming}</span></p>
+          <p className={"sale-card__saleNumber"}>Withdrawals: <span>{outcoming}</span></p>
+          <p className={"sale-card__saleNumber"}>Pending: <span>{balance}</span></p>
         </div>
         <div className={"sale-card-info"}>
+          <span className={"sale-card__saleIcon"} style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
           <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>{coin}</h1>
         </div>
       </div>

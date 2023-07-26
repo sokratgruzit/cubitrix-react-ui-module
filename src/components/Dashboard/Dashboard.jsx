@@ -64,7 +64,7 @@ export const Dashboard = ({
     },
   ];
 
-  if (rebatesTableData && rebatesTableData.lenght > 0) {
+  if (tier && tier !== "Novice Navigator") {
     referralItem = {
       type: referralHistoryTableType,
       header: "Referral History",
