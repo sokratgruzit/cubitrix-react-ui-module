@@ -1561,6 +1561,7 @@ stories.add("Referral", () => {
             referralTreeAddClick={referralTreeAdd}
             referralTreeUserClick={referralTreeUserClick}
             referralTreeUserBackClick={referralTreeUserBackClick}
+            referralBackActive={true}
             referralHistoryTableHead={referralHistoryTh}
             rebatesTableData={rebatesTableData}
             referralCodeTableHead={referralCodeTh}
