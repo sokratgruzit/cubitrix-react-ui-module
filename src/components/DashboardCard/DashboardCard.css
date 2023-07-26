@@ -54,8 +54,9 @@
 }
 
 .sale-card__saleIcon {
-    width: 25px;
-    height: 25px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .sale-card__salePercentage {

@@ -8,6 +8,7 @@ import { DashboardCard } from "../DashboardCard";
 import { DeveloperApi } from "../DeveloperApi";
 
 export const AdminPanel = props => {
+
     let filter;
     if (props.tableFilter === true) {
         filter = <FilterBox
@@ -18,6 +19,7 @@ export const AdminPanel = props => {
             customStyles={{ marginBottom: '20px' }}
         />
     }
+
     return (
         <div className={`admin-content  animate-translateX ${props.animate ? 'animate' : ''}`} style={{ transitionDelay: '.2s' }}>
             {props.adminPage === 'dashboard' && (
@@ -82,6 +84,17 @@ export const AdminPanel = props => {
                         )
 
                     })}
+                    {props.rewardsCard && (
+                        <DashboardCard
+                            type={'rewards-card'}
+                            account={props.rewardsCard.account}
+                            thisMonthSum={props.rewardsCard.thisMonthSum}
+                            todaySum={props.rewardsCard.todaySum}
+                            thisYearSum={props.rewardsCard.thisYearSum}
+                            info={props.rewardsCard.info}
+                            customStyles={{ width: '372px' }}
+                        />
+                    )}
                 </div>
             )}
             {props.adminPage === 'table' && (

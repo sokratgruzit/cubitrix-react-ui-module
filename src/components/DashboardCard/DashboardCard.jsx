@@ -21,7 +21,10 @@ export const DashboardCard = ({
   outcoming,
   coinKey,
   info,
-  account
+  account,
+  todaySum,
+  thisYearSum,
+  thisMonthSum,
 }) => {
   const [activeId, setActiveId] = useState(1);
 
@@ -188,15 +191,48 @@ export const DashboardCard = ({
     element = (
       <div className={"card-container sale-card"} style={customStyles}>
         <div className={"card-header"}>
-          <p className={""}>{account}</p>
+          <p style={{ textTransform: "uppercase" }} className={"font-16"}>{account}</p>
         </div>
-        <div className={"sale-card-body"}>
+        <div style={{ flexDirection: 'row' }} className={"sale-card-body"}>
           <p className={"sale-card__saleNumber"}>{balance}</p>
-          <span className={"sale-card__saleIcon"} style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
         </div>
         <div className={"sale-card-info"}>
-          <p className={"sale-card__lastSaleInfo font-12"}>{info}</p>
+          <span style={{ width: "23px", height: "23px", marginBottom: '3px' }}>
+            {coinIcon}
+          </span>
+          <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>
+            ATR
+          </h1>
+
         </div>
+      </div>
+    );
+  }
+
+  if (type === "rewards-card") {
+    element = (
+      <div className={"card-container sale-card"} style={customStyles}>
+        <div className={"sale-card-body"}>
+          <p className={"sale-card__saleNumber"}>
+            Todays:
+            <span style={{ paddingLeft: "5px" }} className="font-14">
+              {todaySum}
+            </span>
+          </p>
+          <p className={"sale-card__saleNumber"}>
+            This Month:
+            <span style={{ paddingLeft: "5px" }} className="font-14">
+              {thisMonthSum}
+            </span>
+          </p>
+          <p className={"sale-card__saleNumber"}>
+            This Year:
+            <span style={{ paddingLeft: "5px" }} className="font-14">{thisYearSum}</span>
+          </p>
+        </div>
+        <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>
+          {info}
+        </h1>
       </div>
     );
   }
