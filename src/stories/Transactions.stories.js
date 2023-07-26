@@ -199,7 +199,7 @@ stories.add("Transactions", () => {
     },
   ];
 
-  console.log(filterObject);
+  // console.log(filterObject);
 
   const footer = {
     link: "/referral",

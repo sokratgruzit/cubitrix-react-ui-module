@@ -99,7 +99,9 @@ export const AdminPanel = props => {
                         tableHead={props.tableHead}
                         mobile={props.mobile}
                         tableData={props.tableData}
+                        loading={props.dataLoading}
                         handleViewAll={props.handleViewAll}
+                        tableEmulator={props.tableEmulator}
                     />
                     <TableElement
                         customStyle={{ marginTop: '30px', paddingBottom: '100px' }}
