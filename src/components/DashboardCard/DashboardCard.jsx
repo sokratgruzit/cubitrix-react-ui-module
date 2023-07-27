@@ -202,7 +202,7 @@ export const DashboardCard = ({
             {coinIcon}
           </span>
           <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>
-            ATR
+            ATAR
           </h1>
 
         </div>
