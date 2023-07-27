@@ -194,6 +194,7 @@ stories.add("Test", () => {
         thisMonthSum: "100",
         thisYearSum: "100", 
         info: "Rewards",
+        totalStaked: "3000"
 
     }
 

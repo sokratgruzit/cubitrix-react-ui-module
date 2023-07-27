@@ -25,6 +25,7 @@ export const DashboardCard = ({
   todaySum,
   thisYearSum,
   thisMonthSum,
+  totalStaked
 }) => {
   const [activeId, setActiveId] = useState(1);
 
@@ -229,8 +230,12 @@ export const DashboardCard = ({
             This Year:
             <span style={{ paddingLeft: "5px" }} className="font-14">{thisYearSum}</span>
           </p>
+          <p className={"sale-card__saleNumber font-20"}>
+            Tottal <Staked></Staked>:
+            <span style={{ paddingLeft: "5px" }} className="font-16">{totalStaked}</span>
+          </p>
         </div>
-        <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>
+        <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo sale-card__rotate"}>
           {info}
         </h1>
       </div>

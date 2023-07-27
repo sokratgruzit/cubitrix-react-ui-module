@@ -39,6 +39,18 @@ export const AdminPanel = props => {
                             </div>
                         )
                     })}
+                    {props.rewardsCard && (
+                        <DashboardCard
+                            type={'rewards-card'}
+                            account={props.rewardsCard.account}
+                            thisMonthSum={props.rewardsCard.thisMonthSum}
+                            todaySum={props.rewardsCard.todaySum}
+                            thisYearSum={props.rewardsCard.thisYearSum}
+                            totalStaked={props.rewardsCard.totalStaked}
+                            info={props.rewardsCard.info}
+                            customStyles={{ width: '372px' }}
+                        />
+                    )}
                     {/* <DashboardCard
                         type={'sale-card'}
                         cardHeader={'TOKEN SALE - DEMO STAGE 2'}
@@ -84,17 +96,6 @@ export const AdminPanel = props => {
                         )
 
                     })}
-                    {props.rewardsCard && (
-                        <DashboardCard
-                            type={'rewards-card'}
-                            account={props.rewardsCard.account}
-                            thisMonthSum={props.rewardsCard.thisMonthSum}
-                            todaySum={props.rewardsCard.todaySum}
-                            thisYearSum={props.rewardsCard.thisYearSum}
-                            info={props.rewardsCard.info}
-                            customStyles={{ width: '372px' }}
-                        />
-                    )}
                 </div>
             )}
             {props.adminPage === 'table' && (
