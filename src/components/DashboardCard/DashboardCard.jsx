@@ -231,7 +231,7 @@ export const DashboardCard = ({
             <span style={{ paddingLeft: "5px" }} className="font-14">{thisYearSum}</span>
           </p>
           <p className={"sale-card__saleNumber font-20"}>
-            Tottal <Staked></Staked>:
+            Total Staked:
             <span style={{ paddingLeft: "5px" }} className="font-16">{totalStaked}</span>
           </p>
         </div>
