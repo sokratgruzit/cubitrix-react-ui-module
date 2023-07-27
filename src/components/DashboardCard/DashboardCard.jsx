@@ -204,7 +204,6 @@ export const DashboardCard = ({
           <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>
             ATAR
           </h1>
-
         </div>
       </div>
     );
