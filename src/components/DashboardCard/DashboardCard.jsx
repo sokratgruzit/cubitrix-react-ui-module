@@ -214,7 +214,7 @@ export const DashboardCard = ({
       <div className={"card-container sale-card"} style={customStyles}>
         <div className={"sale-card-body"}>
           <p className={"sale-card__saleNumber"}>
-            Todays:
+            Today:
             <span style={{ paddingLeft: "5px" }} className="font-14">
               {todaySum}
             </span>
