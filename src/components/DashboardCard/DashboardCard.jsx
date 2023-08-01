@@ -25,7 +25,8 @@ export const DashboardCard = ({
   todaySum,
   thisYearSum,
   thisMonthSum,
-  totalStaked
+  totalStaked,
+  pendingWithdrawals,
 }) => {
   const [activeId, setActiveId] = useState(1);
 
@@ -40,8 +41,9 @@ export const DashboardCard = ({
             {cardHeaderButtons?.map((item, index) => (
               <div
                 key={index}
-                className={`card-header__btn ${activeId === index && "card-header__btn-active"
-                  } font-12`}
+                className={`card-header__btn ${
+                  activeId === index && "card-header__btn-active"
+                } font-12`}
                 onClick={() => {
                   setActiveId(index);
                   handleHeaderBtnClick(item.name);
@@ -75,8 +77,9 @@ export const DashboardCard = ({
             {cardHeaderButtons?.map((item, index) => (
               <div
                 key={index}
-                className={`card-header__btn ${activeId === index && "card-header__btn-active"
-                  } font-12`}
+                className={`card-header__btn ${
+                  activeId === index && "card-header__btn-active"
+                } font-12`}
                 onClick={() => {
                   setActiveId(index);
                   handleHeaderBtnClick(item.name);
@@ -139,20 +142,45 @@ export const DashboardCard = ({
 
   if (type === "coin") {
     element = (
-      <div key={coinKey} className={`${"card-container"} ${coin === "Atar" ? "sale-card" : "amount-card"}`} style={customStyles}>
-        <div className={"sale-card-body"}>
-          <p className={"sale-card__saleNumber"}>Incoming: <span>{incoming}</span></p>
-          <p className={"sale-card__saleNumber"}>Withdrawals: <span>{outcoming}</span></p>
-          <p className={"sale-card__saleNumber"}>Pending: <span>{balance}</span></p>
+      <div
+        key={coinKey}
+        className={`${"card-container"} ${
+          coin === "Atar" ? "sale-card" : "amount-card"
+        } coin-card-container`}
+        style={customStyles}
+      >
+        <div className={"sale-card-body coin-card-body"}>
+          <p className={"sale-card__saleNumber"}>
+            Incoming: <span>{incoming}</span>
+          </p>
+          <p className={"sale-card__saleNumber"}>
+            Pending withdrawals: <span>{pendingWithdrawals}</span>
+          </p>
+          <p className={"sale-card__saleNumber"}>
+            Withdrawals: <span>{outcoming}</span>
+          </p>
+          <p className={"sale-card__saleNumber"}>
+            Pending: <span>{balance}</span>
+          </p>
         </div>
         <div className={"sale-card-info"}>
-          <span className={"sale-card__saleIcon"} style={{ width: "25px", height: "25px", }}>{coinIcon}</span>
-          <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>{coin}</h1>
+          <span
+            className={"sale-card__saleIcon"}
+            style={{ width: "25px", height: "25px" }}
+          >
+            {coinIcon}
+          </span>
+          <h1
+            style={{ fontSize: "20px", textTransform: "uppercase" }}
+            className={"sale-card__lastSaleInfo"}
+          >
+            {coin}
+          </h1>
         </div>
       </div>
     );
 
-    if (type === 'balanceCard') {
+    if (type === "balanceCard") {
       element = (
         <div className={"card-container sale-card"} style={customStyles}>
           <div className={"card-header"}>
@@ -161,8 +189,9 @@ export const DashboardCard = ({
               {cardHeaderButtons?.map((item, index) => (
                 <div
                   key={index}
-                  className={`card-header__btn ${activeId === index && "card-header__btn-active"
-                    } font-12`}
+                  className={`card-header__btn ${
+                    activeId === index && "card-header__btn-active"
+                  } font-12`}
                   onClick={() => {
                     setActiveId(index);
                     handleHeaderBtnClick(item.name);
@@ -192,16 +221,21 @@ export const DashboardCard = ({
     element = (
       <div className={"card-container sale-card"} style={customStyles}>
         <div className={"card-header"}>
-          <p style={{ textTransform: "uppercase" }} className={"font-16"}>{account}</p>
+          <p style={{ textTransform: "uppercase" }} className={"font-16"}>
+            {account}
+          </p>
         </div>
-        <div style={{ flexDirection: 'row' }} className={"sale-card-body"}>
+        <div style={{ flexDirection: "row" }} className={"sale-card-body"}>
           <p className={"sale-card__saleNumber"}>{balance}</p>
         </div>
         <div className={"sale-card-info"}>
-          <span style={{ width: "23px", height: "23px", marginBottom: '3px' }}>
+          <span style={{ width: "23px", height: "23px", marginBottom: "3px" }}>
             {coinIcon}
           </span>
-          <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo"}>
+          <h1
+            style={{ fontSize: "20px", textTransform: "uppercase" }}
+            className={"sale-card__lastSaleInfo"}
+          >
             ATAR
           </h1>
         </div>
@@ -227,14 +261,21 @@ export const DashboardCard = ({
           </p>
           <p className={"sale-card__saleNumber"}>
             This Year:
-            <span style={{ paddingLeft: "5px" }} className="font-14">{thisYearSum}</span>
+            <span style={{ paddingLeft: "5px" }} className="font-14">
+              {thisYearSum}
+            </span>
           </p>
           <p className={"sale-card__saleNumber font-20"}>
             Total Staked:
-            <span style={{ paddingLeft: "5px" }} className="font-16">{totalStaked}</span>
+            <span style={{ paddingLeft: "5px" }} className="font-16">
+              {totalStaked}
+            </span>
           </p>
         </div>
-        <h1 style={{ fontSize: '20px', textTransform: "uppercase" }} className={"sale-card__lastSaleInfo sale-card__rotate"}>
+        <h1
+          style={{ fontSize: "20px", textTransform: "uppercase" }}
+          className={"sale-card__lastSaleInfo sale-card__rotate"}
+        >
           {info}
         </h1>
       </div>
