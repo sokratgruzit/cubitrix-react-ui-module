@@ -2,7 +2,7 @@
 .card-container {
   position: relative;
   border-radius: 8px;
-  padding: 20px;
+  padding: 15px;
   height: 169px;
 }
 
@@ -43,7 +43,6 @@
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-  margin-bottom: 15px;
 }
 
 .sale-card__saleNumber {
