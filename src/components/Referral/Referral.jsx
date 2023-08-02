@@ -51,6 +51,7 @@ export const Referral = ({
   referralHistoryTableType,
   referralTableTitle,
   referralBackActive,
+  isActive,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
