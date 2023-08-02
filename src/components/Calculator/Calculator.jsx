@@ -27,6 +27,7 @@ export const Calculator = ({
   handleTimeperiodDate,
   approveResonse,
   stakingLoading,
+  isActive,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -157,7 +158,9 @@ export const Calculator = ({
         onClick={
           !account || (account && isAllowance) ? handleCalculatorSubmit : handleSubmit
         }
-        disabled={(validationErrors?.amount?.failure && account) || stakingLoading}
+        disabled={
+          (validationErrors?.amount?.failure && account) || stakingLoading || !isActive
+        }
       />
     </div>
   );
