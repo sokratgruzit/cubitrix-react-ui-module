@@ -30,6 +30,7 @@ export const Staking = ({
   infiniteScrollRef,
   unstakeLoading,
   harvestLoading,
+  isActive,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const { width, mobile } = useMobileWidth();
@@ -159,7 +160,7 @@ export const Staking = ({
                       customStyles={{ borderRadius: "32px" }}
                       onClick={() => tableHead[index1].onClick(index)}
                       disabled={
-                        index1 === 4
+                        !isActive || index1 === 4
                           ? item.unstaked ||
                             Number(item?.[0]) > Math.floor(new Date().getTime() / 1000) ||
                             unstakeLoading
