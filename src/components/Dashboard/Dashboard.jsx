@@ -36,12 +36,12 @@ export const Dashboard = ({
       type: "transactions",
       header: "Transactions",
       description: (
-        <p className="font-14">
+        <>
           Total number of operations:{" "}
           <span className="dashboard-transactions-span">
             {totalTransactions?.total_transaction}
           </span>
-        </p>
+        </>
       ),
       rightPanelData: [
         {
