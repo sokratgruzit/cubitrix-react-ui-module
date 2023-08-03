@@ -1,5 +1,5 @@
 import "./Deposit.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Visual } from "../Visual";
 import { Account } from "../../assets/svgs";
 import { Button } from "../Button";
@@ -19,7 +19,29 @@ export const Deposit = ({
   info,
   label,
   depositLoading,
+  library,
+  account,
+  getBalance,
 }) => {
+  const [tokenBalance, setTokenBalance] = useState("");
+  useEffect(() => {
+    const fetchBalance = () => {
+      if (library && account) {
+        getBalance()
+          .then((res) => {
+            setTokenBalance(res);
+            console.log(res);
+          })
+          .catch((err) => {
+            console.error(`Error fetching balance: ${err}`);
+          });
+      }
+    };
+    fetchBalance();
+    const intervalId = setInterval(fetchBalance, 10000);
+    return () => clearInterval(intervalId);
+  }, [library, account]);
+
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
 
@@ -36,6 +58,7 @@ export const Deposit = ({
 
     onChange(e);
   };
+
   return (
     <>
       <Visual
@@ -59,6 +82,11 @@ export const Deposit = ({
             </div>
           </div>
           <div className="deposit-inputs-wrapper">
+            <HelpText
+              status={"warning"}
+              title={`You have ${tokenBalance} ATR in your wallet. `}
+              color={"#FF0C46"}
+            />
             <div className="deposit-inputs">
               {inputs?.map((params, index) => {
                 let selectedOption;
