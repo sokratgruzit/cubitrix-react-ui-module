@@ -689,7 +689,7 @@ export const Referral = ({
                                                 onClick={() => {
                                                   referralTreeAddClick(
                                                     suItem.lvl,
-                                                    // suItem.position,
+                                                    suItem.position,
                                                   ),
                                                     addCopy(suItem);
                                                 }}
