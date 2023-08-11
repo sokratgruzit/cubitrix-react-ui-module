@@ -354,9 +354,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>
-                {item?.joinedTransactions ? item.joinedTransactions?.[0]?.totalAmount : 0}
-              </span>
+              <span>{item?.joinedTransactions?.[0]?.totalAmount ?? 0}</span>
             </div>
             <div
               className={`td ${

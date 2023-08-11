@@ -62,9 +62,23 @@ export const Calculator = ({
     }
   };
 
+  // const [stakeType, setStakeType] = useState("Wallet");
+
   return (
     <div className={`calculator-container`} style={customStyles}>
       <div className={"calculator-input"}>
+        {/* <Input
+          type={"lable-input-select"}
+          defaultData={[
+            { name: "Wallet", value: "Wallet" },
+            { name: "ATR Balance", value: "ATR Balance" },
+          ]}
+          icon={false}
+          emptyFieldErr={false}
+          value={stakeType}
+          label={"Calculated"}
+          selectHandler={(type) => setStakeType(type)}
+        /> */}
         <Input
           type={"default"}
           inputType={"text"}
