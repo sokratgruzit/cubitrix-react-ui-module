@@ -52,6 +52,7 @@ export const Referral = ({
   referralTableTitle,
   referralBackActive,
   isActive,
+  uniLVLData,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -321,7 +322,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>0%</span>
+              <span>{uniLVLData?.[item?.lvl - 1] ?? 0}%</span>
             </div>
             <div
               className={`td ${

@@ -1,0 +1,111 @@
+.trade-content-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-color: #0e2225;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  background-clip: padding-box;
+  border-radius: 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-main-bg {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 70px;
+  height: 100%;
+  background-color: #10282b;
+  position: relative;
+}
+
+.trade-top-info-row {
+  display: flex;
+  width: 100%;
+  min-height: 60px;
+  height: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.trade-top-info-title {
+  padding-left: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  grid-area: 5px;
+  width: 363px;
+}
+
+.trade-top-info-prices {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.trade-top-info-block {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.trade-top-info-block p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.trade-top-info-data {
+  display: flex;
+  align-items: center;
+}
+
+.positive-change {
+  color: #67be7a;
+}
+
+.negative-change {
+  color: #e87450;
+}
+
+.trade-type-change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 45px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card-slider-navigation_item_container {
+  background: #0d1e21;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.card-slider-navigation_item .left-border-radius {
+  border-radius: 0px 0px 20px 0px;
+}
+
+.card-slider-navigation_item .right-border-radius {
+  border-radius: 0px 0px 0px 20px;
+}
+
+.card-slider-navigation_item.active {
+  background-color: #10282b;
+}
+
+.trade-left-side {
+  width: 335px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.trade-left-side-body {
+  width: 100%;
+  height: 100%;
+  background-color: #10282b;
+}
