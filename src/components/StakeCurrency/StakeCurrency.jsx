@@ -18,8 +18,10 @@ export const StakeCurrency = ({
   accountBalanceSecond,
   info,
   label,
-  depositLoading,
+  stakeLoading,
+  durationOptions,
 }) => {
+  const [selectedDuration, setSelectedDuration] = useState("360 D");
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
 
@@ -97,6 +99,18 @@ export const StakeCurrency = ({
                   />
                 );
               })}
+              {durationOptions.map((item, index) => (
+                <Button
+                  key={index}
+                  label={item}
+                  element={"calculator-button"}
+                  onClick={() => {
+                    setSelectedDuration(item);
+                  }}
+                  customStyles={{ width: "100%" }}
+                  active={item === selectedDuration}
+                />
+              ))}
             </div>
             {info && <HelpText title={info} status="info" color="#6A6D76" icon={true} />}
           </div>
@@ -110,8 +124,8 @@ export const StakeCurrency = ({
               width: "100%",
               backgroundColor: "#C38C5C",
             }}
-            onClick={handleSubmit}
-            disabled={depositLoading}
+            onClick={() => handleSubmit(selectedDuration)}
+            disabled={stakeLoading}
           />
         </div>
       </div>
