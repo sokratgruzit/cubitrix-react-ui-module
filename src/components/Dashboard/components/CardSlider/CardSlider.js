@@ -21,6 +21,7 @@ export const CardSlider = ({
   tier,
   extensions,
   stakedTotal,
+  handleStake,
 }) => {
   const { width } = useMobileWidth();
 
@@ -39,7 +40,9 @@ export const CardSlider = ({
     },
     {
       title: "Stake",
-      svg: <AccountType type={"stake"} className="card-slider-card_footer-item-svg" />,
+      svg: (
+        <AccountType type={"stake"} className="card-slider-card_footer-item-svg-stake" />
+      ),
     },
   ];
 
@@ -323,6 +326,8 @@ export const CardSlider = ({
                                 handleExchange(accountsData[index], key);
                               } else if (item.title === "Transfer") {
                                 handleTransfer(accountsData[index]);
+                              } else if (item.title === "Stake") {
+                                handleStake(accountsData[index], key);
                               }
                             }}
                           >

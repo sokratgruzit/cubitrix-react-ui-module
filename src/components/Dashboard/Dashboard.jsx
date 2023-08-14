@@ -28,6 +28,7 @@ export const Dashboard = ({
   tier,
   extensions,
   stakedTotal,
+  handleStake,
 }) => {
   let referralItem = {};
 
@@ -97,6 +98,7 @@ export const Dashboard = ({
         tier={tier}
         extensions={extensions}
         stakedTotal={stakedTotal}
+        handleStake={handleStake}
       />
       {tables?.map((item, index) => (
         <DashboardTable
