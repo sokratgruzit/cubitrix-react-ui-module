@@ -17,7 +17,7 @@ stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
   const [step, setStep] = useState(4);
-  const [progressValue, setProgressValue] = useState(300);
+  const [progressValue, setProgressValue] = useState(5000);
   const [loading, setLoading] = useState(true);
 
   // Simulate fetching data from the database

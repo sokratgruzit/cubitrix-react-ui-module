@@ -26,10 +26,6 @@ export const CardSlider = ({
 
   const cardFooterData = [
     {
-      title: "Deposit",
-      svg: <AccountType type={"top-up"} className="card-slider-card_footer-item-svg" />,
-    },
-    {
       title: "Transfer",
       svg: <AccountType type={"transfer"} className="card-slider-card_footer-item-svg" />,
     },
@@ -40,6 +36,10 @@ export const CardSlider = ({
     {
       title: "Exchange",
       svg: <AccountType type={"exchange"} className="card-slider-card_footer-item-svg" />,
+    },
+    {
+      title: "Stake",
+      svg: <AccountType type={"stake"} className="card-slider-card_footer-item-svg" />,
     },
   ];
 
@@ -251,7 +251,7 @@ export const CardSlider = ({
               </div>
               <div className="card-slider-card_footer">
                 {cardFooterData?.map((item, index) => {
-                  if (accountType === "main" && item.title === "Deposit") return;
+                  if (accountType === "main" && item.title === "Stake") return;
                   if (
                     accountType !== "main" &&
                     (item.title === "Withdraw" ||
@@ -310,16 +310,14 @@ export const CardSlider = ({
                     </div>
                     <div className="card-slider-card_footer">
                       {cardFooterData?.map((item, footerIndex) => {
-                        if (item.title === "Deposit" || item.title === "Transfer") return;
+                        if (item.title === "Transfer") return;
 
                         return (
                           <div
                             className="card-slider-card_footer-item"
                             key={footerIndex}
                             onClick={() => {
-                              if (item.title === "Deposit") {
-                                handleDeposit(accountsData[index]);
-                              } else if (item.title === "Withdraw") {
+                              if (item.title === "Withdraw") {
                                 handleWithdraw(accountsData[index], key);
                               } else if (item.title === "Exchange") {
                                 handleExchange(accountsData[index], key);

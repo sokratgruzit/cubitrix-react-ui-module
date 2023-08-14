@@ -155,6 +155,9 @@ export const LandingSteps = ({
     setEmailResend(registrationState.emailSent);
   }, [registrationState.emailSent]);
 
+  const [accpetedTerms, setAcceptedTerms] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
+
   return (
     <div className="LandingSteps__container">
       <div className="LandingSteps_main-body">
@@ -532,6 +535,16 @@ export const LandingSteps = ({
                           color={"#FF0C46"}
                         />
                       )}
+                      <Input
+                        type={"checkbox"}
+                        label={"I agree to the terms and conditions"}
+                        onChange={(e) =>
+                          e.target.checked ? setShowTerms(true) : setAcceptedTerms(false)
+                        }
+                        value={accpetedTerms}
+                        customStyles={{ width: "100%", marginTop: "5px" }}
+                        name={"checkbox"}
+                      />
                     </div>
                   )}
                   {approveResonse && (
@@ -553,7 +566,7 @@ export const LandingSteps = ({
                     width: "100%",
                   }}
                   onClick={handleSubmit}
-                  disabled={stakingLoading}
+                  disabled={stakingLoading || !accpetedTerms}
                 />
                 <Button
                   label={"Disconnect"}
@@ -596,6 +609,34 @@ export const LandingSteps = ({
           </div>
         )}
       </div>
+
+      {showTerms && (
+        <Popup
+          popUpElement={
+            <div className="change-network-body">
+              By using this website, you agree to the following terms and conditions.
+              <br />
+              Binary referral position can not be changed once selected.
+              <Button
+                label={"Accept"}
+                size={"btn-lg"}
+                type={"btn-primary"}
+                arrow={"arrow-none"}
+                element={"button"}
+                onClick={() => {
+                  setAcceptedTerms(true);
+                  setShowTerms(false);
+                }}
+                customStyles={{ margin: "0", width: "100%" }}
+              />
+            </div>
+          }
+          label={"Terms and Conditions"}
+          handlePopUpClose={() => {
+            setShowTerms(false);
+          }}
+        />
+      )}
 
       {openPopup && (
         <Popup

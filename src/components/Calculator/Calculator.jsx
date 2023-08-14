@@ -15,6 +15,7 @@ export const Calculator = ({
   handleCalculatorSubmit,
   durationOptions,
   handleMaxClick,
+  handleMaxClickBallance,
   customStyles,
   loading,
   isAllowance,
@@ -62,12 +63,12 @@ export const Calculator = ({
     }
   };
 
-  // const [stakeType, setStakeType] = useState("Wallet");
+  const [stakeType, setStakeType] = useState("Wallet");
 
   return (
     <div className={`calculator-container`} style={customStyles}>
-      <div className={"calculator-input"}>
-        {/* <Input
+      <div className="calculator-type-wrapper">
+        <Input
           type={"lable-input-select"}
           defaultData={[
             { name: "Wallet", value: "Wallet" },
@@ -78,7 +79,20 @@ export const Calculator = ({
           value={stakeType}
           label={"Calculated"}
           selectHandler={(type) => setStakeType(type)}
-        /> */}
+        />
+        <HelpText
+          status="info"
+          title={
+            stakeType === "Wallet"
+              ? "Stake from your wallet"
+              : "Stake from your ATR balance"
+          }
+          fontSize={"font-12"}
+          icon={true}
+        />
+      </div>
+
+      <div className={"calculator-input"}>
         <Input
           type={"default"}
           inputType={"text"}
@@ -98,7 +112,10 @@ export const Calculator = ({
             )
           }
         />
-        <span className={"font-12"} onClick={handleMaxClick}>
+        <span
+          className={"font-12"}
+          onClick={stakeType === "Wallet" ? handleMaxClick : handleMaxClickBallance}
+        >
           MAX
         </span>
       </div>

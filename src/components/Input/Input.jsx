@@ -745,30 +745,48 @@ export const Input = (props) => {
   }
   if (props.type === "range") {
     element = (
-        <div
-            style={props.customStyles}
-            className={`${props.className} 
+      <div
+        style={props.customStyles}
+        className={`${props.className} 
      
       input-group`}
-        >
-          <input
-              onChange={(e) => {
-                props.onChange(e);
-              }}
-              value={props.value}
-              name={props.name}
-              min={props.min}
-              max={props.max}
-              step={props.step}
-              className={`input-range ${props.disabled ? 'disabled-range' : ''}`}
-              type="range"
-              placeholder={props.placeholder}
-          />
-          <div className="range-ttls">
-            <div>{props.min} ATR</div>
-            <div>{props.max} ATR</div>
-          </div>
+      >
+        <input
+          onChange={(e) => {
+            props.onChange(e);
+          }}
+          value={props.value}
+          name={props.name}
+          min={props.min}
+          max={props.max}
+          step={props.step}
+          className={`input-range ${props.disabled ? "disabled-range" : ""}`}
+          type="range"
+          placeholder={props.placeholder}
+        />
+        <div className="range-ttls">
+          <div>{props.min} ATR</div>
+          <div>{props.max} ATR</div>
         </div>
+      </div>
+    );
+  }
+  if (props.type === "checkbox") {
+    element = (
+      <div className={`checkbox-input-container ${props.className}`}>
+        <label htmlFor={props.name} className={`checkbox-label`}>
+          <input
+            id={props.name}
+            onChange={props.onChange}
+            checked={props.value}
+            name={props.name}
+            className={`input-checkbox ${props.disabled ? "disabled-checkbox" : ""}`}
+            type="checkbox"
+          />
+          <span className="custom-checkbox"></span>
+          {props.label}
+        </label>
+      </div>
     );
   }
 
