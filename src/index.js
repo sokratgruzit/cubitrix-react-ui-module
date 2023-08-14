@@ -48,3 +48,4 @@ export * from "./components/TransferFromAcc";
 export * from "./components/Exchange";
 export * from "./components/Deposit";
 export * from "./components/Tabs";
+export * from "./components/StakeCurrency";

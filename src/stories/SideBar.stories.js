@@ -18,6 +18,7 @@ import { Account, MetaMask } from "../assets/svgs";
 import { TransferFromAcc } from "../components/TransferFromAcc";
 import { Exchange } from "../components/Exchange";
 import { Deposit } from "../components/Deposit";
+import { StakeCurrency } from "../components/StakeCurrency";
 import { LevelSystem } from "../components/LevelSystem";
 import { ReferralCode } from "../components/ReferralCode";
 import { useMobileWidth } from "../hooks/useMobileWidth";
@@ -413,7 +414,7 @@ stories.add("SideBar", () => {
           }}
           handleResetPassword={(e) => console.log(e)}
         /> */}
-        <UserOptions
+        {/* <UserOptions
           type={"Metamask"}
           warning={true}
           completeAccount={() => console.log("complete")}
@@ -422,7 +423,8 @@ stories.add("SideBar", () => {
           userAccount={() => console.log("userAccount")}
           account={"ahaha"}
           mainAccount={"ahaha2"}
-        />
+        /> */}
+        {/* <StakeCurrency /> */}
         {/* <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
