@@ -90,6 +90,11 @@ export const Referral = ({
           icon: false,
         },
         {
+          title: "Staked this month",
+          amount: stakedThisMonth ?? 0,
+          icon: false,
+        },
+        {
           title: "Total Staked",
           amount:
             item.joinedAccounts.length && item.joinedAccounts[0].stakedTotal > 0
@@ -101,8 +106,6 @@ export const Referral = ({
           icon: false,
         },
       ];
-      console.log(item.user_address);
-      console.log(activeTreeInfo);
       setTreeInfo(infoObject);
     }
   };
@@ -114,7 +117,6 @@ export const Referral = ({
     if (item.lvl !== null) {
       setActiveAddCopy(item.lvl + "_");
       //  + item.position);
-      console.log(item.lvl + "_");
       //  + item.position);
       setTimeout(() => {
         setActiveAddCopy(null);
