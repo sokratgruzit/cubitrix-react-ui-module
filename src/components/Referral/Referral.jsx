@@ -53,6 +53,7 @@ export const Referral = ({
   referralBackActive,
   isActive,
   uniLVLData,
+  disabledAccount,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
