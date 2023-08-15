@@ -1,0 +1,22 @@
+.dashboard-total-referral-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.dashboard-total-referral-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 30px;
+  flex-wrap: wrap;
+  background: linear-gradient(134deg, hsla(0, 0%, 100%, 0.1), hsla(0, 0%, 100%, 0.02));
+  border: 1px solid hsla(0, 0%, 100%, 0.05);
+  border-radius: 16px;
+  border-radius: 20px;
+}
+
+.dashboard-total-referral-item p:first-child {
+  color: rgba(255, 255, 255, 0.6);
+}

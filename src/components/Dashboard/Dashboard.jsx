@@ -29,6 +29,7 @@ export const Dashboard = ({
   extensions,
   stakedTotal,
   handleStake,
+  referralTotal,
 }) => {
   let referralItem = {};
 
@@ -100,6 +101,20 @@ export const Dashboard = ({
         stakedTotal={stakedTotal}
         handleStake={handleStake}
       />
+      <div className="dashboard-total-referral-row">
+        <div className="dashboard-total-referral-item">
+          <p>New Volume</p>
+          <p>{referralTotal?.all_amount_sum ?? 0}</p>
+        </div>
+        <div className="dashboard-total-referral-item">
+          <p>Total Left</p>
+          <p>{referralTotal?.left_total ?? 0}</p>
+        </div>
+        <div className="dashboard-total-referral-item">
+          <p>Total Right</p>
+          <p>{referralTotal?.total_right ?? 0}</p>
+        </div>
+      </div>
       {tables?.map((item, index) => (
         <DashboardTable
           key={index}

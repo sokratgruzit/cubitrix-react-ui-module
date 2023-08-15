@@ -573,6 +573,7 @@ stories.add("Dashboard", () => {
           handleTransfer={() => console.log("hi")}
           accountType={"main"}
           tier={"vip"}
+          referralTotal={{ all_amount_sum: 0, left_total: 0, total_right: 0 }}
         />
       </DashboardSharedLayout>
     </BrowserRouter>
