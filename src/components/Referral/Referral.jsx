@@ -53,7 +53,6 @@ export const Referral = ({
   referralBackActive,
   isActive,
   uniLVLData,
-  stakedThisMonth,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -92,7 +91,7 @@ export const Referral = ({
         },
         {
           title: "Staked this month",
-          amount: stakedThisMonth ?? 0,
+          amount: item?.joinedAccounts?.[0]?.stakedThisMonth ?? 0,
           icon: false,
         },
         {
