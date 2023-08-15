@@ -306,7 +306,13 @@ export const CardSlider = ({
                         <h4 className="font-16">{key.toUpperCase()}</h4>
                       </div>
                       <div className="main-card-content-wrapper">
-                        <p className="card-slider-card_content">
+                        <p
+                          className={`card-slider-card_content ${
+                            assets?.[`${key}Staked`] > 0
+                              ? "card-slider-trade_content"
+                              : ""
+                          }`}
+                        >
                           {value?.toLocaleString("en-US", {
                             minimumFractionDigits: 2,
                             maximumFractionDigits: 2,

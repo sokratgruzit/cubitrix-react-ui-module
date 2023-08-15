@@ -339,6 +339,7 @@
 
 .card-slider-card_footer-item-svg-stake {
   opacity: 0.6;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
 .card-slider-card_footer-item:hover .card-slider-card_footer-item-svg-stake {
