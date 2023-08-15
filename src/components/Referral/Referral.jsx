@@ -91,7 +91,11 @@ export const Referral = ({
         },
         {
           title: "Staked this month",
-          amount: item?.joinedAccounts?.[0]?.stakedThisMonth ?? 0,
+          amount:
+            item?.joinedAccounts?.[0]?.stakedThisMonth?.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }) ?? 0,
           icon: false,
         },
         {
