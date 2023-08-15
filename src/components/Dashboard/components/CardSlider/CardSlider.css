@@ -341,6 +341,10 @@
   opacity: 0.6;
 }
 
+.card-slider-card_footer-item:hover .card-slider-card_footer-item-svg-stake {
+  opacity: 1;
+}
+
 @media only screen and (max-width: 767px) {
   .card-slider-wrapper {
     display: flex;

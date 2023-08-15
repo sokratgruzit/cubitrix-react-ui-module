@@ -291,6 +291,7 @@ export const CardSlider = ({
           </SwiperSlide>
           {assets &&
             Object.entries(assets)?.map(([key, value], index) => {
+              if (key?.includes("Staked")) return;
               return (
                 <SwiperSlide key={index}>
                   <div
@@ -304,12 +305,28 @@ export const CardSlider = ({
                         <Account type={key} />
                         <h4 className="font-16">{key.toUpperCase()}</h4>
                       </div>
-                      <p className="card-slider-card_content">
-                        {value?.toLocaleString("en-US", {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })}
-                      </p>
+                      <div className="main-card-content-wrapper">
+                        <p className="card-slider-card_content">
+                          {value?.toLocaleString("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </p>
+                        {assets?.[`${key}Staked`] > 0 && (
+                          <span
+                            style={{
+                              fontSize: "12px",
+                              lineHeight: "130%",
+                              color: "rgba(255,255,255,0.3)",
+                            }}
+                          >
+                            {assets?.[`${key}Staked`]?.toLocaleString("en-US", {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <div className="card-slider-card_footer">
                       {cardFooterData?.map((item, footerIndex) => {

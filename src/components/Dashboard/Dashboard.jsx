@@ -104,15 +104,30 @@ export const Dashboard = ({
       <div className="dashboard-total-referral-row">
         <div className="dashboard-total-referral-item">
           <p>New Volume</p>
-          <p>{referralTotal?.all_amount_sum ?? 0}</p>
+          <p>
+            {referralTotal?.all_amount_sum?.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }) ?? 0}
+          </p>
         </div>
         <div className="dashboard-total-referral-item">
           <p>Total Left</p>
-          <p>{referralTotal?.left_total ?? 0}</p>
+          <p>
+            {referralTotal?.left_total?.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }) ?? 0}
+          </p>
         </div>
         <div className="dashboard-total-referral-item">
           <p>Total Right</p>
-          <p>{referralTotal?.total_right ?? 0}</p>
+          <p>
+            {referralTotal?.total_right?.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }) ?? 0}
+          </p>
         </div>
       </div>
       {tables?.map((item, index) => (
