@@ -61,7 +61,7 @@
 .deposit-inputs {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .deposit-input-wrapper {

@@ -123,6 +123,7 @@ export const StakeCurrency = ({
               margin: "0",
               width: "100%",
               backgroundColor: "#C38C5C",
+              marginTop: "-10px",
             }}
             onClick={() => handleSubmit(selectedDuration)}
             disabled={stakeLoading}
