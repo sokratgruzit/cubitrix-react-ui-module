@@ -13,12 +13,14 @@ import "swiper/swiper-bundle.css";
 import { ExtensionsPattern } from "../../assets/svgs";
 // import { ReferralPattern } from "../../assets/svgs";
 import { FreeMode, Mousewheel } from "swiper";
+import DisabledPage from "../DisabledPage/DisabledPage";
 
-export const Extensions = ({ extensionsCardsData }) => {
+export const Extensions = ({ extensionsCardsData, disabledAccount }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={"extensions-main"}>
+    <div className={`extensions-main ${disabledAccount ? "disabled-page" : ""}`}>
+      {disabledAccount && <DisabledPage />}
       <header>
         <h1>Extensions</h1>
         <p>

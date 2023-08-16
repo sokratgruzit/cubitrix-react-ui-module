@@ -549,7 +549,7 @@ stories.add("Dashboard", () => {
         }
         verified={false}
       />
-      <DashboardSharedLayout links={links}>
+      <DashboardSharedLayout links={links} disabledAccount={true}>
         <Dashboard
           transactionsData={transactionsData}
           transactionHeader={transactionHeader}

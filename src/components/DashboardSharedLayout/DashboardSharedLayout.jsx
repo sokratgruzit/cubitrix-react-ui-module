@@ -4,6 +4,7 @@ import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { LoadingScreen } from "../LoadingScreen";
 
 import "./DashboardSharedLayout.css";
+import DisabledPage from "../DisabledPage/DisabledPage";
 
 export const DashboardSharedLayout = ({ links, children, loading, disabledAccount }) => {
   const { width } = useMobileWidth();
@@ -69,6 +70,7 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
             }`}
             style={{ width: `${width <= 1025 ? "100%" : "calc(100% - 255px)"}` }}
           >
+            {disabledAccount && <DisabledPage />}
             <div className="dashboard-fixed-border" />
             <div className="dashboard-border-container">
               <div className="dashboard-border" />

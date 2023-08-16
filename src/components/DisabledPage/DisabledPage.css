@@ -1,0 +1,7 @@
+.message {
+  position: sticky;
+  top: calc(50% - 12px);
+  margin: auto;
+  width: fit-content;
+  z-index: 1000;
+}

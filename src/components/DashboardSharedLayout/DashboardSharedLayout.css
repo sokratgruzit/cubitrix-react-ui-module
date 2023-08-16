@@ -236,4 +236,5 @@
 .disabled-page {
   opacity: 0.5 !important;
   pointer-events: none !important;
+  overflow: initial !important;
 }
