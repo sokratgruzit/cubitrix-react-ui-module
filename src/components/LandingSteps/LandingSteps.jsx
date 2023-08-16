@@ -566,7 +566,10 @@ export const LandingSteps = ({
                     width: "100%",
                   }}
                   onClick={handleSubmit}
-                  disabled={stakingLoading || !accpetedTerms}
+                  disabled={
+                    stakingLoading ||
+                    (!accpetedTerms && amountProgressValue > 500 && !isAllowance)
+                  }
                 />
                 <Button
                   label={"Disconnect"}
