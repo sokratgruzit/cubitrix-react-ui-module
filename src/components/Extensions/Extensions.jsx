@@ -13,7 +13,7 @@ import "swiper/swiper-bundle.css";
 import { ExtensionsPattern } from "../../assets/svgs";
 // import { ReferralPattern } from "../../assets/svgs";
 import { FreeMode, Mousewheel } from "swiper";
-import DisabledPage from "../DisabledPage/DisabledPage";
+import DisabledPage from "../DisabledPage";
 
 export const Extensions = ({ extensionsCardsData, disabledAccount }) => {
   const navigate = useNavigate();

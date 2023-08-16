@@ -18,7 +18,7 @@ import { Button } from "../Button";
 import { ReferralCard } from "../ReferralCard";
 import { Footer } from "../Footer";
 import { InfoBox } from "../InfoBox";
-import DisabledPage from "../DisabledPage/DisabledPage";
+import DisabledPage from "../DisabledPage";
 
 export const Referral = ({
   referralHistoryTableHead,

@@ -2,7 +2,7 @@ import React from "react";
 import "./DisabledPage.css";
 import { HelpText } from "../HelpText";
 
-const DisabledPage = () => {
+export const DisabledPage = () => {
   return (
     <>
       <HelpText
@@ -16,5 +16,3 @@ const DisabledPage = () => {
     </>
   );
 };
-
-export default DisabledPage;

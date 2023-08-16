@@ -4,7 +4,7 @@ import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { LoadingScreen } from "../LoadingScreen";
 
 import "./DashboardSharedLayout.css";
-import DisabledPage from "../DisabledPage/DisabledPage";
+import DisabledPage from "../DisabledPage";
 
 export const DashboardSharedLayout = ({ links, children, loading, disabledAccount }) => {
   const { width } = useMobileWidth();
