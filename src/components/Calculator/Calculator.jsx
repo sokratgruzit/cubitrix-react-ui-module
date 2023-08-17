@@ -172,11 +172,13 @@ export const Calculator = ({
           account
             ? loading
               ? "Please wait, Loading.."
-              : stakingLoading
-              ? "Loading..."
-              : isAllowance
-              ? "Enable"
-              : "Stake"
+              : stakeType === "Wallet"
+              ? stakingLoading
+                ? "Loading..."
+                : isAllowance
+                ? "Enable"
+                : "Stake"
+              : "shit"
             : "Connect Wallet"
         }
         size={"btn-lg"}

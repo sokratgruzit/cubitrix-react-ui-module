@@ -178,6 +178,24 @@ stories.add("LandingSteps", () => {
     },
   ];
 
+  function checkReferralCode() {
+    // setCheckReferralCodeState((prev) => ({ ...prev, loading: true }));
+    setCheckReferralCodeState((prev) => ({
+      ...prev,
+      loading: false,
+      status: "success",
+      message: "This referral code is available.",
+    }));
+    setReferralCodeChecked(true);
+  }
+
+  const [referralCodeChecked, setReferralCodeChecked] = useState(false);
+  const [checkReferralCodeState, setCheckReferralCodeState] = useState({
+    loading: false,
+    message: "Referral code is required, please check referral code before staking",
+    status: "warning",
+  });
+
   return (
     <BrowserRouter>
       <div className="test-animation-w">
@@ -329,6 +347,9 @@ stories.add("LandingSteps", () => {
           />
 
           <LandingSteps
+            checkReferralCode={checkReferralCode}
+            referralCodeChecked={referralCodeChecked}
+            checkReferralCodeState={checkReferralCodeState}
             amountProgressValue={progressValue}
             amountProgressOnchange={handleProgress}
             receivePaymentAddress={"0x43f59F41518903A274c7897dfFB24DB86a0dd23a"}

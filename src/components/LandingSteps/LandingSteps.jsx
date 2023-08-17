@@ -52,6 +52,8 @@ export const LandingSteps = ({
   amountProgressValue,
   amountProgressOnchange,
   handleFinish,
+  referralCodeChecked,
+  checkReferralCodeState,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -535,6 +537,15 @@ export const LandingSteps = ({
                           color={"#FF0C46"}
                         />
                       )}
+                      {checkReferralCodeState?.status && (
+                        <HelpText
+                          status={checkReferralCodeState?.status}
+                          title={checkReferralCodeState?.message}
+                          color={"#FF0C46"}
+                          icon={true}
+                          customStyles={{ marginBottom: "5px" }}
+                        />
+                      )}
                       <Input
                         type={"checkbox"}
                         label={"I agree to the terms and conditions"}
@@ -542,7 +553,6 @@ export const LandingSteps = ({
                           e.target.checked ? setShowTerms(true) : setAcceptedTerms(false)
                         }
                         value={accpetedTerms}
-                        customStyles={{ width: "100%", marginTop: "5px" }}
                         name={"checkbox"}
                       />
                     </div>
@@ -568,7 +578,11 @@ export const LandingSteps = ({
                   onClick={handleSubmit}
                   disabled={
                     stakingLoading ||
-                    (!accpetedTerms && amountProgressValue > 500 && !isAllowance)
+                    (amountProgressValue > 500 &&
+                      !isAllowance &&
+                      (!accpetedTerms ||
+                        !referralCodeChecked ||
+                        checkReferralCodeState?.loading))
                   }
                 />
                 <Button
