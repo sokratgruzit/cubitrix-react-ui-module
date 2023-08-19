@@ -1,4 +1,4 @@
-import "./Table.css";
+  import "./Table.css";
 import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { NoApplicationsIcon } from "../../assets/svgs";
 

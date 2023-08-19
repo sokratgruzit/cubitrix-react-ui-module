@@ -121,7 +121,7 @@ export const Referral = ({
       return false;
     }
     if (item.lvl !== null) {
-      setActiveAddCopy(item.lvl + "_");
+      setActiveAddCopy(item.lvl + "_" + item.position);
       //  + item.position);
       //  + item.position);
       setTimeout(() => {
@@ -711,7 +711,8 @@ export const Referral = ({
                                                 >
                                                   <div
                                                     className={`copied ${
-                                                      activeAddCopy == suItem.lvl + "_"
+                                                      activeAddCopy ==
+                                                      suItem.lvl + "_" + suItem.position
                                                         ? // + suItem.position
                                                           "active"
                                                         : ""

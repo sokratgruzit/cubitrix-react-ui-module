@@ -347,7 +347,6 @@ stories.add("LandingSteps", () => {
           />
 
           <LandingSteps
-            checkReferralCode={checkReferralCode}
             referralCodeChecked={referralCodeChecked}
             checkReferralCodeState={checkReferralCodeState}
             amountProgressValue={progressValue}
