@@ -54,6 +54,7 @@ export const LandingSteps = ({
   handleFinish,
   referralCodeChecked,
   checkReferralCodeState,
+  amountError
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -459,6 +460,13 @@ export const LandingSteps = ({
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
                       />
+                      {amountError && (
+                        <HelpText
+                          status={"error"}
+                          title={amountError}
+                          color={"#FF0C46"}
+                        />
+                      )}
                       <div className="deposit-amount-inputs">
                         <div className="deposit-amount-input">
                           <Input
@@ -590,6 +598,7 @@ export const LandingSteps = ({
                   }}
                   onClick={handleSubmit}
                   disabled={
+                    amountError ||
                     stakingLoading ||
                     (amountProgressValue > 500 &&
                       !isAllowance &&
