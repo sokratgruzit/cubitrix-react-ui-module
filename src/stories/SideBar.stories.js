@@ -369,7 +369,7 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        {/* <UserAccount
+        <UserAccount
           type={"Metamask"}
           personalData={{
             name: "",
@@ -387,10 +387,11 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
           handlePersonalData={(e) => console.log(e)}
+          handleVerifyEmail={() => console.log("handleVerifyEmail")}
           handleSecurityData={(e) => console.log(e)}
           personalDataState={{ loading: false, saved: false, emailSent: false }}
           securityDataState={{ loading: false, saved: false }}
-          emailVerified={true}
+          emailVerified={false}
           userDataError={"error while saving"}
           securityError={"password is incorrect"}
           resendEmail={() => console.log("aahah")}
@@ -403,7 +404,7 @@ stories.add("SideBar", () => {
             setTwoFactorAuth(val);
           }}
           handleForgetPassword={() => console.log("forget password")}
-        /> */}
+        />
         {/* <ResetPassword
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
