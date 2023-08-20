@@ -440,12 +440,25 @@ export const LandingSteps = ({
                     <></>
                   ) : (
                     <>
-                      <div className="deposit-inputs">
-                        <div>
-                          <p className="onlyReadInputTitle font-12">Amount</p>
-                          <div className="onlyReadInput">{amountProgressValue ?? 0}</div>
-                        </div>
-                      </div>
+                      <Input
+                        type={"staking_amount"}
+                        customStyles={{
+                          width: "100%",
+                          padding: "11.5px 16px 11.5px 16px",
+                          backgroundColor: "transparent",
+                          border: "1px solid rgba(255, 255, 255, 0.1)",
+                          borderRadius: "6px",
+                          color: "rgb(106, 109, 118)",
+                          transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
+                          height: "44px"
+                        }}
+                        min={5000}
+                        max={500000}
+                        step={5000}
+                        label={"Amount"}
+                        value={amountProgressValue}
+                        onChange={amountProgressOnchange}
+                      />
                       <div className="deposit-amount-inputs">
                         <div className="deposit-amount-input">
                           <Input

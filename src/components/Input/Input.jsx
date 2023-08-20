@@ -771,6 +771,28 @@ export const Input = (props) => {
       </div>
     );
   }
+  if (props.type === "staking_amount") {
+    element = (
+      <div
+        className={`input-group`}
+      >
+        <p className={`font-12`}>{props.label}</p>
+        <input
+          onChange={(e) => {
+            props.onChange(e);
+          }}
+          value={props.value}
+          name={props.name}
+          min={props.min}
+          max={props.max}
+          step={props.step}
+          style={props.customStyles}
+          type="number"
+          placeholder={props.placeholder}
+        />
+      </div>
+    );
+  }
   if (props.type === "checkbox") {
     element = (
       <div className={`checkbox-input-container ${props.className}`}>
