@@ -598,7 +598,7 @@ export const LandingSteps = ({
                   }}
                   onClick={handleSubmit}
                   disabled={
-                    amountError === "" ||
+                    amountError !== "" ||
                     stakingLoading ||
                     (amountProgressValue > 500 &&
                       !isAllowance &&
