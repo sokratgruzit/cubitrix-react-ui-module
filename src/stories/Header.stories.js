@@ -151,7 +151,7 @@ stories.add("Header", () => {
             </defs>
           </svg>
         }
-        verified={false}
+        verified={true}
       />
     </BrowserRouter>
   );

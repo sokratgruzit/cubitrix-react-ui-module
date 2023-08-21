@@ -27,6 +27,7 @@ export const NavbarHelper = ({
   modules,
   initialRegister,
   setInitialRegister,
+  loginWithEmail
 }) => {
   let element = null;
 
@@ -125,6 +126,7 @@ export const NavbarHelper = ({
           />
         ) : (
           <>
+            {verified && <div onClick={loginWithEmail}>Login with email</div>}
             <Button
               element="button"
               label="Connect"
