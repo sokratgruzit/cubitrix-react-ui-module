@@ -46,6 +46,7 @@ export const UserAccount = ({
   });
 
   const [emailResend, setEmailResend] = useState(false);
+  const [emailChanged, setEmailChanged] = useState(false);
 
   useEffect(() => {
     setEmailResend(personalDataState.emailSent);
@@ -66,11 +67,15 @@ export const UserAccount = ({
   };
 
   const handleUserUpdate = (value, field) => {
+    if (field === "email") setEmailChanged(true);
+
     setUserData((prevState) => ({ ...prevState, [field]: value }));
   };
 
   const beforePersonalData = (userData) => {
     if (emailError) return;
+    
+    setEmailChanged(false);
     handlePersonalData(userData);
   };
 
@@ -220,7 +225,7 @@ export const UserAccount = ({
             onChange={(e) => handleUserUpdate(e, "avatar")}
             value={imgValue}
           /> */}
-          {!emailVerified && !emailError && personalDataState.saved && <Button
+          {!emailVerified && !emailError && !emailChanged && <Button
             element="button"
             label={
               personalDataState.loading ? (
