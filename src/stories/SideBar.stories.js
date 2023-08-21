@@ -369,7 +369,7 @@ stories.add("SideBar", () => {
           }}
           sideBarClose={() => setToggle((prev) => !prev)}
         /> */}
-        <UserAccount
+        {/* <UserAccount
           type={"Metamask"}
           personalData={{
             name: "",
@@ -404,7 +404,7 @@ stories.add("SideBar", () => {
             setTwoFactorAuth(val);
           }}
           handleForgetPassword={() => console.log("forget password")}
-        />
+        /> */}
         {/* <ResetPassword
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
@@ -426,7 +426,7 @@ stories.add("SideBar", () => {
           mainAccount={"ahaha2"}
         /> */}
         {/* <StakeCurrency /> */}
-        {/* <SignIn
+        <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
@@ -440,7 +440,7 @@ stories.add("SideBar", () => {
             success: "success",
           }}
           handleResetPassword={(e) => console.log(e)}
-        /> */}
+        />
       </SideBar>
     </div>
   );

@@ -24,6 +24,7 @@ export const SignIn = ({
   const handlerDataUpdate = (value, field) => {
     setData((prevState) => ({ ...prevState, [field]: value }));
   };
+  
   return (
     <div className="sign-in-module">
       {resetPassword ? (

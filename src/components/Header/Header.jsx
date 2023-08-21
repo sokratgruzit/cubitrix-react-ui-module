@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 // hooks
-import { useMobileWidth } from '../../hooks/useMobileWidth'
+import { useMobileWidth } from '../../hooks/useMobileWidth';
 
 // helpers
-import { NavbarHelper } from './NavbarHelper'
+import { NavbarHelper } from './NavbarHelper';
+import { SignIn } from '../Auth/SignIn/SignIn';
 
 // svg
-import { Menu } from '../../assets/svgs'
+import { Menu } from '../../assets/svgs';
 
 // styles
-import './Header.css'
+import './Header.css';
 
 export const Header = ({
   modules,
@@ -26,19 +27,38 @@ export const Header = ({
   onLogoClick,
   initialRegister,
   setInitialRegister,
+  loginWithEmail,
+  showSignIn
 }) => {
-  const [navbarActive, setNavbarActive] = useState(false)
-  const [animate, setAnimate] = useState(false)
-  const { width } = useMobileWidth()
+  const [navbarActive, setNavbarActive] = useState(false);
+  const [animate, setAnimate] = useState(false);
+  const { width } = useMobileWidth();
 
   useEffect(() => {
-    setAnimate(true)
-  }, [])
+    setAnimate(true);
+  }, []);
 
-  let mobile = width <= 970
+  let mobile = width <= 970;
 
   return (
     <div className={`header ${mobile && navbarActive ? 'header-active' : ''} ${animate ? 'animate' : ''}`}>
+      {showSignIn && <div className='signInContainer'>
+        <SignIn
+          onClick={(e) => console.log(e)}
+          sideBarClose={() => loginWithEmail(false)}
+          // goBack={() => console.log("go back")}
+          signInState={{ loading: true, error: false }}
+          otpEnabled={false}
+          otpState={{ loading: false, error: "" }}
+          handleTFA={(e) => console.log(e)}
+          resetPasswordState={{
+            loading: false,
+            error: "wrong ",
+            success: "success",
+          }}
+          handleResetPassword={(e) => console.log(e)}
+        />
+      </div>}
       <div className='modulesWrapper'>
         <div className='logoWrapper' onClick={onLogoClick}>
           {logoSvg}
@@ -63,6 +83,7 @@ export const Header = ({
               verified={verified}
               initialRegister={initialRegister}
               setInitialRegister={setInitialRegister}
+              loginWithEmail={loginWithEmail}
             />
           )}
           {mobile && (
@@ -91,6 +112,7 @@ export const Header = ({
             verified={verified}
             initialRegister={initialRegister}
             setInitialRegister={setInitialRegister}
+            loginWithEmail={loginWithEmail}
           />
         )}
         {mobile && <NavbarHelper type={'navbar'} modules={modules} />}
@@ -102,6 +124,7 @@ export const Header = ({
             verified={verified}
             initialRegister={initialRegister}
             setInitialRegister={setInitialRegister}
+            loginWithEmail={loginWithEmail}
           />
         )}
       </div>

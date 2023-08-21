@@ -125,8 +125,15 @@ export const NavbarHelper = ({
             arrow="arrow-right"
           />
         ) : (
-          <>
-            {verified && <div onClick={loginWithEmail}>Login with email</div>}
+          <div className="withEmailContainer">
+            <Button
+              element="button"
+              label="Login"
+              onClick={() => loginWithEmail(true)}
+              type="btn-secondary"
+              size="btn-sm"
+              customStyles={{ marginRight: "10px"}}
+            />
             <Button
               element="button"
               label="Connect"
@@ -134,7 +141,7 @@ export const NavbarHelper = ({
               type="btn-primary"
               size="btn-sm"
             />
-          </>
+          </div>
         )}
       </div>
     );

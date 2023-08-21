@@ -1,10 +1,17 @@
 import { storiesOf } from "@storybook/react";
+import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Header } from "../components/Header";
 
 const stories = storiesOf("Header", module);
 
 stories.add("Header", () => {
+  const [showSignIn, setShowSignIn] = useState(false);
+
+  const loginWithEmail = (show) => {
+    setShowSignIn(show);
+  };
+
   return (
     <BrowserRouter>
       <Header
@@ -16,7 +23,7 @@ stories.add("Header", () => {
           extensions: "true",
           notify: "true",
         }}
-        account={"0xtest"}
+        account={""}
         location={{ pathName: "" }}
         title={"COMPLEND"}
         logoSvg={
@@ -152,6 +159,8 @@ stories.add("Header", () => {
           </svg>
         }
         verified={true}
+        loginWithEmail={loginWithEmail}
+        showSignIn={showSignIn}
       />
     </BrowserRouter>
   );

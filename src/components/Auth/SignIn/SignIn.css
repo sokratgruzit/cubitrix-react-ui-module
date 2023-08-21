@@ -4,6 +4,9 @@
   width: 100%;
   height: 100%;
   gap: 30px;
+  border: 1px solid #c38c5c;
+  border-radius: 10px;
+  padding-bottom: 20px;
 }
 .form-group {
   display: flex;
