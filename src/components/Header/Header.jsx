@@ -5,7 +5,6 @@ import { useMobileWidth } from '../../hooks/useMobileWidth';
 
 // helpers
 import { NavbarHelper } from './NavbarHelper';
-import { SignIn } from '../Auth/SignIn/SignIn';
 
 // svg
 import { Menu } from '../../assets/svgs';
@@ -42,23 +41,6 @@ export const Header = ({
 
   return (
     <div className={`header ${mobile && navbarActive ? 'header-active' : ''} ${animate ? 'animate' : ''}`}>
-      {showSignIn && <div className='signInContainer'>
-        <SignIn
-          onClick={(e) => console.log(e)}
-          sideBarClose={() => loginWithEmail(false)}
-          // goBack={() => console.log("go back")}
-          signInState={{ loading: true, error: false }}
-          otpEnabled={false}
-          otpState={{ loading: false, error: "" }}
-          handleTFA={(e) => console.log(e)}
-          resetPasswordState={{
-            loading: false,
-            error: "wrong ",
-            success: "success",
-          }}
-          handleResetPassword={(e) => console.log(e)}
-        />
-      </div>}
       <div className='modulesWrapper'>
         <div className='logoWrapper' onClick={onLogoClick}>
           {logoSvg}
