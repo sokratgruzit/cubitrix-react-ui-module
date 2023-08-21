@@ -220,7 +220,7 @@ export const UserAccount = ({
             onChange={(e) => handleUserUpdate(e, "avatar")}
             value={imgValue}
           /> */}
-          {!emailVerified && !emailError && <Button
+          {!emailVerified && !emailError && personalDataState.saved && <Button
             element="button"
             label={
               personalDataState.loading ? (
