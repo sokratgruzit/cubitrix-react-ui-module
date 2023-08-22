@@ -291,6 +291,10 @@ stories.add("SideBar", () => {
     },
   ];
 
+  const handleSignInData = data => {
+    console.log(data);
+  };
+
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
@@ -439,6 +443,7 @@ stories.add("SideBar", () => {
             error: "wrong ",
             success: "success",
           }}
+          handleDataChange={handleSignInData}
           handleResetPassword={(e) => console.log(e)}
         />
       </SideBar>

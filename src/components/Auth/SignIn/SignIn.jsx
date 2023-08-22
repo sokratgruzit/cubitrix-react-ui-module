@@ -15,6 +15,7 @@ export const SignIn = ({
   handleTFA,
   resetPasswordState,
   handleResetPassword,
+  handleDataChange
 }) => {
   const [data, setData] = useState({ email: "", password: "" });
   const [code, setCode] = useState("");
@@ -23,6 +24,8 @@ export const SignIn = ({
 
   const handlerDataUpdate = (value, field) => {
     setData((prevState) => ({ ...prevState, [field]: value }));
+
+    return handleDataChange({ target: { name: field, value: value }});
   };
   
   return (
@@ -139,12 +142,6 @@ export const SignIn = ({
                   onChange={(e) => handlerDataUpdate(e.target.value, "password")}
                   customStyles={{ width: "auto" }}
                 />
-                <p
-                  className="forgot-password-opt margin-top-negative"
-                  onClick={() => setResetPassword(true)}
-                >
-                  Forgot your password?
-                </p>
               </div>
               <div className="form-group-btn">
                 <Button
@@ -155,6 +152,12 @@ export const SignIn = ({
                   customStyles={{ width: "100%" }}
                   onClick={() => onClick(data)}
                 />
+                <p
+                  className="forgot-password-opt margin-top-negative"
+                  onClick={() => setResetPassword(true)}
+                >
+                  Forgot your password?
+                </p>
                 {signInState.error && (
                   <HelpText
                     status={"error"}
