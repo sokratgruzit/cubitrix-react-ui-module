@@ -27,6 +27,7 @@ export const Header = ({
   initialRegister,
   setInitialRegister,
   loginWithEmail,
+  loggedWithEmail,
   showSignIn
 }) => {
   const [navbarActive, setNavbarActive] = useState(false);
@@ -66,6 +67,7 @@ export const Header = ({
               initialRegister={initialRegister}
               setInitialRegister={setInitialRegister}
               loginWithEmail={loginWithEmail}
+              loggedWithEmail={loggedWithEmail}
             />
           )}
           {mobile && (
@@ -95,6 +97,7 @@ export const Header = ({
             initialRegister={initialRegister}
             setInitialRegister={setInitialRegister}
             loginWithEmail={loginWithEmail}
+            loggedWithEmail={loggedWithEmail}
           />
         )}
         {mobile && <NavbarHelper type={'navbar'} modules={modules} />}
@@ -107,6 +110,7 @@ export const Header = ({
             initialRegister={initialRegister}
             setInitialRegister={setInitialRegister}
             loginWithEmail={loginWithEmail}
+            loggedWithEmail={loggedWithEmail}
           />
         )}
       </div>
