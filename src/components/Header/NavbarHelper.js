@@ -126,14 +126,14 @@ export const NavbarHelper = ({
           />
         ) : (
           <div className="withEmailContainer">
-            <Button
+            {!verified && <Button
               element="button"
               label="Login"
               onClick={() => loginWithEmail(true)}
               type="btn-secondary"
               size="btn-sm"
               customStyles={{ marginRight: "10px"}}
-            />
+            />}
             <Button
               element="button"
               label="Connect"
