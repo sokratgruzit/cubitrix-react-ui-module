@@ -4,9 +4,6 @@ import { Button } from "../../Button";
 import { MetaMask } from "../../../assets/svgs";
 
 export const NoMetaMask = ({ url }) => {
-  const installMetamask = () => {
-    console.log("install metamask");
-  };
   return (
     <div className="no-metamask-wrap">
       <p className="no-metamask">Metamask is not installed</p>
