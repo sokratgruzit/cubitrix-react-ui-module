@@ -299,6 +299,22 @@
   opacity: 1;
 }
 
+.withEmailContainer {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signInContainer {
+  position: fixed;
+  width: 500px;
+  height: auto;
+  left: calc(50% - 250px);
+  top: 10%;
+  z-index: 10000;
+}
+
 @media only screen and (max-width: 1100px) {
   .logoWrapper {
     width: 10%;

@@ -27,6 +27,8 @@ export const NavbarHelper = ({
   modules,
   initialRegister,
   setInitialRegister,
+  loginWithEmail,
+  loggedWithEmail
 }) => {
   let element = null;
 
@@ -124,15 +126,23 @@ export const NavbarHelper = ({
             arrow="arrow-right"
           />
         ) : (
-          <>
+          <div className="withEmailContainer">
+            {!loggedWithEmail && <Button
+              element="button"
+              label="Login"
+              onClick={() => loginWithEmail(true)}
+              type="btn-secondary"
+              size="btn-sm"
+              customStyles={{ marginRight: "10px"}}
+            />}
             <Button
               element="button"
-              label="Connect"
-              onClick={initialRegister ? () => setInitialRegister(true) : onClick}
+              label={loggedWithEmail ? "Check Account" : "Connect"}
+              onClick={initialRegister && !loggedWithEmail ? () => setInitialRegister(true) : onClick}
               type="btn-primary"
               size="btn-sm"
             />
-          </>
+          </div>
         )}
       </div>
     );

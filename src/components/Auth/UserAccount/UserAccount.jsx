@@ -12,6 +12,7 @@ export const UserAccount = ({
   goBack,
   personalData,
   handlePersonalData,
+  handleVerifyEmail,
   handleSecurityData,
   emailVerified,
   personalDataState,
@@ -45,6 +46,7 @@ export const UserAccount = ({
   });
 
   const [emailResend, setEmailResend] = useState(false);
+  const [emailChanged, setEmailChanged] = useState(false);
 
   useEffect(() => {
     setEmailResend(personalDataState.emailSent);
@@ -65,11 +67,15 @@ export const UserAccount = ({
   };
 
   const handleUserUpdate = (value, field) => {
+    if (field === "email") setEmailChanged(true);
+
     setUserData((prevState) => ({ ...prevState, [field]: value }));
   };
 
   const beforePersonalData = (userData) => {
     if (emailError) return;
+    
+    setEmailChanged(false);
     handlePersonalData(userData);
   };
 
@@ -178,14 +184,14 @@ export const UserAccount = ({
           {emailError && (
             <HelpText status={"error"} title={emailError} color={"#FF0C46"} icon={true} />
           )}
-          <HelpText
+          {!emailVerified && <HelpText
             className="margin-top-negative"
             status={"info"}
             title={`A verification link will be sent to your email`}
             color={"#6A6D76"}
             fontSize={"font-12"}
             icon={true}
-          />
+          />}
           {/* <Input
             type={"label-input-phone-number"}
             label={"Mobile Number"}
@@ -219,6 +225,27 @@ export const UserAccount = ({
             onChange={(e) => handleUserUpdate(e, "avatar")}
             value={imgValue}
           /> */}
+          {!emailVerified && !emailError && !emailChanged && <Button
+            element="button"
+            label={
+              personalDataState.loading ? (
+                "Loading .."
+              ) : (
+                <span className="save-wrapper">
+                  Verify Email
+                </span>
+              )
+            }
+            type="btn-secondary"
+            size="btn-lg"
+            customStyles={{
+              width: "100%",
+              margin: "0",
+              marginTop: "20px",
+              transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
+            }}
+            onClick={() => handleVerifyEmail()}
+          />}
           <Button
             element="button"
             label={

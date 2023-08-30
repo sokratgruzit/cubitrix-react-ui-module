@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 // hooks
-import { useMobileWidth } from '../../hooks/useMobileWidth'
+import { useMobileWidth } from '../../hooks/useMobileWidth';
 
 // helpers
-import { NavbarHelper } from './NavbarHelper'
+import { NavbarHelper } from './NavbarHelper';
 
 // svg
-import { Menu } from '../../assets/svgs'
+import { Menu } from '../../assets/svgs';
 
 // styles
-import './Header.css'
+import './Header.css';
 
 export const Header = ({
   modules,
@@ -26,16 +26,19 @@ export const Header = ({
   onLogoClick,
   initialRegister,
   setInitialRegister,
+  loginWithEmail,
+  loggedWithEmail,
+  showSignIn
 }) => {
-  const [navbarActive, setNavbarActive] = useState(false)
-  const [animate, setAnimate] = useState(false)
-  const { width } = useMobileWidth()
+  const [navbarActive, setNavbarActive] = useState(false);
+  const [animate, setAnimate] = useState(false);
+  const { width } = useMobileWidth();
 
   useEffect(() => {
-    setAnimate(true)
-  }, [])
+    setAnimate(true);
+  }, []);
 
-  let mobile = width <= 970
+  let mobile = width <= 970;
 
   return (
     <div className={`header ${mobile && navbarActive ? 'header-active' : ''} ${animate ? 'animate' : ''}`}>
@@ -63,6 +66,8 @@ export const Header = ({
               verified={verified}
               initialRegister={initialRegister}
               setInitialRegister={setInitialRegister}
+              loginWithEmail={loginWithEmail}
+              loggedWithEmail={loggedWithEmail}
             />
           )}
           {mobile && (
@@ -91,6 +96,8 @@ export const Header = ({
             verified={verified}
             initialRegister={initialRegister}
             setInitialRegister={setInitialRegister}
+            loginWithEmail={loginWithEmail}
+            loggedWithEmail={loggedWithEmail}
           />
         )}
         {mobile && <NavbarHelper type={'navbar'} modules={modules} />}
@@ -102,6 +109,8 @@ export const Header = ({
             verified={verified}
             initialRegister={initialRegister}
             setInitialRegister={setInitialRegister}
+            loginWithEmail={loginWithEmail}
+            loggedWithEmail={loggedWithEmail}
           />
         )}
       </div>

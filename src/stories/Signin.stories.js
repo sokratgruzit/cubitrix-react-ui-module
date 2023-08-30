@@ -5,9 +5,5 @@ import { Signin } from "../components/Signin";
 const stories = storiesOf("Signin", module);
 
 stories.add("Signin", () => {
-    return (
-        <div>
-            <Signin />
-        </div>
-    );
+    return <Signin />;
 });

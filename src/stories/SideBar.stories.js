@@ -291,6 +291,10 @@ stories.add("SideBar", () => {
     },
   ];
 
+  const handleSignInData = data => {
+    console.log(data);
+  };
+
   return (
     <div>
       <button onClick={() => setToggle((prev) => !prev)}>toggle</button>
@@ -387,10 +391,11 @@ stories.add("SideBar", () => {
           disconnect={() => console.log("disconnect")}
           userAccount={() => console.log("userAccount")}
           handlePersonalData={(e) => console.log(e)}
+          handleVerifyEmail={() => console.log("handleVerifyEmail")}
           handleSecurityData={(e) => console.log(e)}
           personalDataState={{ loading: false, saved: false, emailSent: false }}
           securityDataState={{ loading: false, saved: false }}
-          emailVerified={true}
+          emailVerified={false}
           userDataError={"error while saving"}
           securityError={"password is incorrect"}
           resendEmail={() => console.log("aahah")}
@@ -425,7 +430,7 @@ stories.add("SideBar", () => {
           mainAccount={"ahaha2"}
         /> */}
         {/* <StakeCurrency /> */}
-        {/* <SignIn
+        <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
@@ -438,8 +443,9 @@ stories.add("SideBar", () => {
             error: "wrong ",
             success: "success",
           }}
+          handleDataChange={handleSignInData}
           handleResetPassword={(e) => console.log(e)}
-        /> */}
+        />
       </SideBar>
     </div>
   );
