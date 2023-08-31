@@ -28,7 +28,7 @@ export const NavbarHelper = ({
   initialRegister,
   setInitialRegister,
   loginWithEmail,
-  loggedWithEmail
+  loggedWithEmail,
 }) => {
   let element = null;
 
@@ -127,18 +127,24 @@ export const NavbarHelper = ({
           />
         ) : (
           <div className="withEmailContainer">
-            {!loggedWithEmail && <Button
-              element="button"
-              label="Login"
-              onClick={() => loginWithEmail(true)}
-              type="btn-secondary"
-              size="btn-sm"
-              customStyles={{ marginRight: "10px"}}
-            />}
+            {!loggedWithEmail && (
+              <Button
+                element="button"
+                label="Login"
+                onClick={() => loginWithEmail(true)}
+                type="btn-secondary"
+                size="btn-sm"
+                customStyles={{ marginRight: "10px" }}
+              />
+            )}
             <Button
               element="button"
-              label={loggedWithEmail ? "Check Account" : "Connect"}
-              onClick={initialRegister && !loggedWithEmail ? () => setInitialRegister(true) : onClick}
+              label={loggedWithEmail ? "My Account" : "Connect"}
+              onClick={
+                initialRegister && !loggedWithEmail
+                  ? () => setInitialRegister(true)
+                  : onClick
+              }
               type="btn-primary"
               size="btn-sm"
             />
