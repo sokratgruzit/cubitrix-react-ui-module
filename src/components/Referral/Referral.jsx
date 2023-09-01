@@ -609,6 +609,29 @@ export const Referral = ({
                               openTreeInfo(null);
                             }}
                           >
+                            {treeInfo !== null && (
+                              <div
+                                className="referral-tree-info"
+                                style={
+                                  suItem.side == "left"
+                                    ? { left: "120px" }
+                                    : { right: "120px" }
+                                }
+                              >
+                                <InfoBox
+                                  type="reward-box"
+                                  active={
+                                    activeTreeInfo ==
+                                      referralTreeActiveAddress.user_address &&
+                                    animateTree
+                                      ? true
+                                      : false
+                                  }
+                                  cardBody={treeInfo}
+                                  customStyle={{ width: "100%" }}
+                                />
+                              </div>
+                            )}
                             {referralBackActive && (
                               <div className="referral-tree-item-level-active-back">
                                 <span>
