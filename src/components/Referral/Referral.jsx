@@ -45,9 +45,6 @@ export const Referral = ({
   referralTreeTableData,
   referralTreeTableHead,
   referralTableType,
-  referralTreePaginationCurrent,
-  referralTreePaginationTotal,
-  referralTreePaginationEvent,
   referralHistoryButtonsRight,
   referralHistoryTableType,
   referralTableTitle,
@@ -55,6 +52,7 @@ export const Referral = ({
   isActive,
   uniLVLData,
   disabledAccount,
+  referralTreeMainAddressData,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [treeInfo, setTreeInfo] = useState(null);
@@ -63,7 +61,7 @@ export const Referral = ({
   const [activeAddCopy, setActiveAddCopy] = useState(null);
 
   const { width } = useMobileWidth();
-  let openTreeInfo = (item) => {
+  let openTreeInfo = (item, noBack) => {
     if (item == null) {
       setActiveTreeInfo(null);
       setTreeInfo(null);
@@ -147,6 +145,10 @@ export const Referral = ({
           icon: false,
         },
       ];
+
+      if (noBack) {
+        infoObject.splice(2, 1);
+      }
 
       setTreeInfo(infoObject);
     }
@@ -603,7 +605,12 @@ export const Referral = ({
                               referralTreeUserBackClick();
                             }}
                             onMouseOver={() => {
-                              openTreeInfo(referralTreeActiveAddress);
+                              openTreeInfo(
+                                referralBackActive
+                                  ? referralTreeActiveAddress
+                                  : referralTreeMainAddressData,
+                                !referralBackActive && true,
+                              );
                             }}
                             onMouseLeave={() => {
                               openTreeInfo(null);
