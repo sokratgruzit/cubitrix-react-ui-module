@@ -70,88 +70,152 @@ export const Referral = ({
     if (item.user_address !== null) {
       console.log(item);
       setActiveTreeInfo(item.user_address);
-      let infoObject = [
-        {
-          title: "Name",
-          amount:
-            item?.joinedAccountMetas?.length > 0
-              ? item.joinedAccountMetas[0].name
-              : "no name",
-          icon: false,
-        },
-        {
-          title: "Address",
-          amount: item.user_address ? item.user_address : "no address",
-          icon: false,
-        },
-        {
-          title: "Level",
-          amount: "Lvl " + item.lvl + "/" + item.side,
-          icon: false,
-        },
-        {
-          title: "Staked this month",
-          amount:
-            item?.joinedAccounts?.[0]?.stakedThisMonth?.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }) ?? 0,
-          icon: false,
-        },
-        {
-          title: "Total Staked",
-          amount:
-            item?.joinedAccounts?.length && item?.joinedAccounts?.[0]?.stakedTotal > 0
-              ? item?.joinedAccounts?.[0]?.stakedTotal?.toLocaleString("en-US", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })
-              : 0,
-          icon: false,
-        },
-        {
-          title: "Expected Bonus",
-          amount:
-            item?.all_amount_sum?.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }) ?? 0,
-          icon: false,
-        },
-        {
-          title: "Total Right",
-          amount:
-            item?.total_right?.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }) ?? 0,
-          icon: false,
-        },
-        {
-          title: "Total Left",
-          amount:
-            item?.total_left?.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }) ?? 0,
-          icon: false,
-        },
-        {
-          title: "Uni",
-          amount:
-            item?.amount?.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }) ?? 0,
-          icon: false,
-        },
-      ];
-
-      if (!noBack) {
-        infoObject.splice(2, 1);
+      let infoObject = [];
+      if (noBack) {
+        infoObject = [
+          {
+            title: "Name",
+            amount: item?.name ?? "no name",
+            icon: false,
+          },
+          {
+            title: "Address",
+            amount: item.user_address ?? "no address",
+            icon: false,
+          },
+          {
+            title: "Staked this month",
+            amount:
+              item?.stakedThisMonth?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Total Staked",
+            amount:
+              item?.stakedTotal?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Expected Bonus",
+            amount:
+              item?.all_amount_sum?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Total Right",
+            amount:
+              item?.total_right?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Total Left",
+            amount:
+              item?.total_left?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Uni",
+            amount:
+              item?.uni?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+        ];
+      } else {
+        infoObject = [
+          {
+            title: "Name",
+            amount:
+              item?.joinedAccountMetas?.length > 0
+                ? item.joinedAccountMetas[0].name
+                : "no name",
+            icon: false,
+          },
+          {
+            title: "Address",
+            amount: item.user_address ? item.user_address : "no address",
+            icon: false,
+          },
+          {
+            title: "Level",
+            amount: "Lvl " + item.lvl + "/" + item.side,
+            icon: false,
+          },
+          {
+            title: "Staked this month",
+            amount:
+              item?.joinedAccounts?.[0]?.stakedThisMonth?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Total Staked",
+            amount:
+              item?.joinedAccounts?.length && item?.joinedAccounts?.[0]?.stakedTotal > 0
+                ? item?.joinedAccounts?.[0]?.stakedTotal?.toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })
+                : 0,
+            icon: false,
+          },
+          {
+            title: "Expected Bonus",
+            amount:
+              item?.all_amount_sum?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Total Right",
+            amount:
+              item?.total_right?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Total Left",
+            amount:
+              item?.total_left?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+          {
+            title: "Uni",
+            amount:
+              item?.amount?.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }) ?? 0,
+            icon: false,
+          },
+        ];
       }
-
-      console.log(infoObject);
 
       setTreeInfo(infoObject);
     }
@@ -612,7 +676,7 @@ export const Referral = ({
                                 referralBackActive
                                   ? referralTreeActiveAddress
                                   : referralTreeMainAddressData,
-                                referralBackActive,
+                                !referralBackActive,
                               );
                             }}
                             onMouseLeave={() => {
