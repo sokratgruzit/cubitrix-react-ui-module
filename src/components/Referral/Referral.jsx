@@ -68,6 +68,7 @@ export const Referral = ({
       return false;
     }
     if (item.user_address !== null) {
+      console.log(item);
       setActiveTreeInfo(item.user_address);
       let infoObject = [
         {
@@ -146,9 +147,11 @@ export const Referral = ({
         },
       ];
 
-      if (noBack) {
+      if (!noBack) {
         infoObject.splice(2, 1);
       }
+
+      console.log(infoObject);
 
       setTreeInfo(infoObject);
     }
@@ -609,7 +612,7 @@ export const Referral = ({
                                 referralBackActive
                                   ? referralTreeActiveAddress
                                   : referralTreeMainAddressData,
-                                !referralBackActive && true,
+                                referralBackActive,
                               );
                             }}
                             onMouseLeave={() => {
@@ -619,7 +622,7 @@ export const Referral = ({
                             {treeInfo !== null && (
                               <div
                                 className="referral-tree-info"
-                                style={{ left: "120px" }}
+                                style={{ right: "120px" }}
                               >
                                 <InfoBox
                                   type="reward-box"
