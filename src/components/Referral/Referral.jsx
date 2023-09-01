@@ -102,8 +102,8 @@ export const Referral = ({
         {
           title: "Total Staked",
           amount:
-            item.joinedAccounts.length && item.joinedAccounts[0].stakedTotal > 0
-              ? item.joinedAccounts[0].stakedTotal?.toLocaleString("en-US", {
+            item?.joinedAccounts?.length && item?.joinedAccounts?.[0]?.stakedTotal > 0
+              ? item?.joinedAccounts?.[0]?.stakedTotal?.toLocaleString("en-US", {
                   minimumFractionDigits: 2,
                   maximumFractionDigits: 2,
                 })
