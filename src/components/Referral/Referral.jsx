@@ -68,9 +68,16 @@ export const Referral = ({
       return false;
     }
     if (item.user_address !== null) {
-      console.log(item);
       setActiveTreeInfo(item.user_address);
       let infoObject = [];
+
+      const toLocaleStringForNumber = (num) => {
+        return (num ?? 0).toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+      };
+
       if (noBack) {
         infoObject = [
           {
@@ -85,56 +92,32 @@ export const Referral = ({
           },
           {
             title: "Staked this month",
-            amount:
-              item?.stakedThisMonth?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.stakedThisMonth),
             icon: false,
           },
           {
             title: "Total Staked",
-            amount:
-              item?.stakedTotal?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.stakedTotal),
             icon: false,
           },
           {
             title: "Expected Bonus",
-            amount:
-              item?.all_amount_sum?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.all_amount_sum),
             icon: false,
           },
           {
             title: "Total Right",
-            amount:
-              item?.total_right?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.total_right),
             icon: false,
           },
           {
             title: "Total Left",
-            amount:
-              item?.total_left?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.total_left),
             icon: false,
           },
           {
             title: "Uni",
-            amount:
-              item?.uni?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.uni),
             icon: false,
           },
         ];
@@ -150,7 +133,7 @@ export const Referral = ({
           },
           {
             title: "Address",
-            amount: item.user_address ? item.user_address : "no address",
+            amount: item.user_address ?? "no address",
             icon: false,
           },
           {
@@ -160,58 +143,32 @@ export const Referral = ({
           },
           {
             title: "Staked this month",
-            amount:
-              item?.joinedAccounts?.[0]?.stakedThisMonth?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.joinedAccounts?.[0]?.stakedThisMonth),
             icon: false,
           },
           {
             title: "Total Staked",
-            amount:
-              item?.joinedAccounts?.length && item?.joinedAccounts?.[0]?.stakedTotal > 0
-                ? item?.joinedAccounts?.[0]?.stakedTotal?.toLocaleString("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })
-                : 0,
+            amount: toLocaleStringForNumber(item?.joinedAccounts?.[0]?.stakedTotal),
             icon: false,
           },
           {
             title: "Expected Bonus",
-            amount:
-              item?.all_amount_sum?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.all_amount_sum),
             icon: false,
           },
           {
             title: "Total Right",
-            amount:
-              item?.total_right?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.total_right),
             icon: false,
           },
           {
             title: "Total Left",
-            amount:
-              item?.total_left?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.total_left),
             icon: false,
           },
           {
             title: "Uni",
-            amount:
-              item?.amount?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0,
+            amount: toLocaleStringForNumber(item?.amount),
             icon: false,
           },
         ];
@@ -220,6 +177,7 @@ export const Referral = ({
       setTreeInfo(infoObject);
     }
   };
+
   let addCopy = (item) => {
     if (item == null) {
       setActiveAddCopy(null);
