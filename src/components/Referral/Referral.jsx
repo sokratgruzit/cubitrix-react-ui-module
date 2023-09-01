@@ -612,11 +612,7 @@ export const Referral = ({
                             {treeInfo !== null && (
                               <div
                                 className="referral-tree-info"
-                                style={
-                                  suItem.side == "left"
-                                    ? { left: "120px" }
-                                    : { right: "120px" }
-                                }
+                                style={{ left: "120px" }}
                               >
                                 <InfoBox
                                   type="reward-box"
