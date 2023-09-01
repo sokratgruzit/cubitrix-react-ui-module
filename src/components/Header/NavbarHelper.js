@@ -147,6 +147,7 @@ export const NavbarHelper = ({
               }
               type="btn-primary"
               size="btn-sm"
+              customStyles={{ whiteSpace: "nowrap" }}
             />
           </div>
         )}

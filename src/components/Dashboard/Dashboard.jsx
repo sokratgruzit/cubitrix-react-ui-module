@@ -103,7 +103,7 @@ export const Dashboard = ({
       />
       <div className="dashboard-total-referral-row">
         <div className="dashboard-total-referral-item">
-          <p>New Volume</p>
+          <p>Expected Bonus</p>
           <p>
             {referralTotal?.all_amount_sum?.toLocaleString("en-US", {
               minimumFractionDigits: 2,

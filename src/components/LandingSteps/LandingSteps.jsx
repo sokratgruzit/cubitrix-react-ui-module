@@ -54,7 +54,7 @@ export const LandingSteps = ({
   handleFinish,
   referralCodeChecked,
   checkReferralCodeState,
-  amountError
+  amountError,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -231,7 +231,9 @@ export const LandingSteps = ({
             <div className="LandingSteps__step__title main_ttl">Connect Wallet</div>
             <div className="LandingSteps__step__content LandingSteps__step__content--wallet">
               <div
-                className="LandingSteps__wallet-option"
+                className={`${
+                  connectionLoading ? "LandingSteps__wallet-option-disabled" : ""
+                } LandingSteps__wallet-option`}
                 onClick={handleMetamaskConnect}
               >
                 {connectionLoading ? (
@@ -451,7 +453,7 @@ export const LandingSteps = ({
                           borderRadius: "6px",
                           color: "rgb(106, 109, 118)",
                           transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
-                          height: "44px"
+                          height: "44px",
                         }}
                         min={5000}
                         max={500000}
