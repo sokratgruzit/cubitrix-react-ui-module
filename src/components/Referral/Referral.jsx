@@ -75,7 +75,7 @@ export const Referral = ({
         {
           title: "Name",
           amount:
-            item.joinedAccountMetas.length > 0
+            item?.joinedAccountMetas?.length > 0
               ? item.joinedAccountMetas[0].name
               : "no name",
           icon: false,
