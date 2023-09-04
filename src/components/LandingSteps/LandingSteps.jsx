@@ -209,19 +209,19 @@ export const LandingSteps = ({
         <div className="LandingSteps_progress-bar-wrapper">
           <div className="LandingSteps__progress-bar">
             <span className={`step-number ${step >= 1 ? "colored-step" : ""}`}>
-              <num>1</num>
+              <span>1</span>
             </span>
             <span className={`step-number ${step >= 2 ? "colored-step" : ""}`}>
-              <num>2</num>
+              <span>2</span>
             </span>
             <span className={`step-number ${step >= 3 ? "colored-step" : ""}`}>
-              <num>3</num>
+              <span>3</span>
             </span>
             <span className={`step-number ${step >= 4 ? "colored-step" : ""}`}>
-              <num>4</num>
+              <span>4</span>
             </span>
             <span className={`step-number ${step >= 5 ? "colored-step" : ""}`}>
-              <num>5</num>
+              <span>5</span>
             </span>
           </div>
         </div>
@@ -443,6 +443,13 @@ export const LandingSteps = ({
                     <></>
                   ) : (
                     <>
+                      <HelpText
+                        status={"warning"}
+                        title={`Your currently possess ${tokenBalance} ATR.`}
+                        color={"#6A6D76"}
+                        icon={true}
+                        customStyles={{ marginBottom: "5px" }}
+                      />
                       <Input
                         type={"staking_amount"}
                         customStyles={{
@@ -539,6 +546,15 @@ export const LandingSteps = ({
                       icon={true}
                     />
                   )}
+                  {tokenBalance < amountProgressValue && (
+                    <HelpText
+                      status={"error"}
+                      title={`You can not enable more than ${tokenBalance} ATR.`}
+                      color={"#6A6D76"}
+                      icon={true}
+                      customStyles={{ marginBottom: "5px" }}
+                    />
+                  )}
                   {amountProgressValue > 500 && !isAllowance && (
                     <div>
                       <Input
@@ -606,7 +622,8 @@ export const LandingSteps = ({
                       !isAllowance &&
                       (!accpetedTerms ||
                         !referralCodeChecked ||
-                        checkReferralCodeState?.loading))
+                        checkReferralCodeState?.loading)) ||
+                    tokenBalance < amountProgressValue
                   }
                 />
                 <Button

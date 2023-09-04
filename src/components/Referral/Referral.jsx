@@ -139,6 +139,7 @@ export const Referral = ({
           {
             title: "Wallet Address",
             amount: item.joinedAccounts?.[0]?.account_owner ?? "no address",
+            icon: false,
           },
           {
             title: "Address",
