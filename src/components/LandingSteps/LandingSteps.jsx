@@ -443,6 +443,13 @@ export const LandingSteps = ({
                     <></>
                   ) : (
                     <>
+                      <HelpText
+                        status={"error"}
+                        title={`Your currently possess ${tokenBalance} ATR. You can only stake or enable staking for the amount you possess.`}
+                        color={"#6A6D76"}
+                        icon={true}
+                        customStyles={{ marginBottom: "5px" }}
+                      />
                       <Input
                         type={"staking_amount"}
                         customStyles={{
@@ -606,7 +613,8 @@ export const LandingSteps = ({
                       !isAllowance &&
                       (!accpetedTerms ||
                         !referralCodeChecked ||
-                        checkReferralCodeState?.loading))
+                        checkReferralCodeState?.loading)) ||
+                    tokenBalance < amountProgressValue
                   }
                 />
                 <Button
