@@ -19,6 +19,7 @@ export const TransferFromAcc = ({
   label,
   transferSubmitLoading,
   withdrawSubmitLoading,
+  helpTitle,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
@@ -106,6 +107,15 @@ export const TransferFromAcc = ({
               );
             })}
           </div>
+          {helpTitle && (
+            <HelpText
+              status={"warning"}
+              title={helpTitle}
+              color={"#6A6D76"}
+              icon={true}
+              customStyles={{ marginBottom: "5px" }}
+            />
+          )}
           <Button
             label={buttonLabel}
             size={"btn-lg"}
