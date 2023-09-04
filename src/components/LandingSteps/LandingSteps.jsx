@@ -209,19 +209,19 @@ export const LandingSteps = ({
         <div className="LandingSteps_progress-bar-wrapper">
           <div className="LandingSteps__progress-bar">
             <span className={`step-number ${step >= 1 ? "colored-step" : ""}`}>
-              <num>1</num>
+              <span>1</span>
             </span>
             <span className={`step-number ${step >= 2 ? "colored-step" : ""}`}>
-              <num>2</num>
+              <span>2</span>
             </span>
             <span className={`step-number ${step >= 3 ? "colored-step" : ""}`}>
-              <num>3</num>
+              <span>3</span>
             </span>
             <span className={`step-number ${step >= 4 ? "colored-step" : ""}`}>
-              <num>4</num>
+              <span>4</span>
             </span>
             <span className={`step-number ${step >= 5 ? "colored-step" : ""}`}>
-              <num>5</num>
+              <span>5</span>
             </span>
           </div>
         </div>
