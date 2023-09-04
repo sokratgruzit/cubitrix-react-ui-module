@@ -444,8 +444,8 @@ export const LandingSteps = ({
                   ) : (
                     <>
                       <HelpText
-                        status={"error"}
-                        title={`Your currently possess ${tokenBalance} ATR. You can only stake or enable staking for the amount you possess.`}
+                        status={"warning"}
+                        title={`Your currently possess ${tokenBalance} ATR.`}
                         color={"#6A6D76"}
                         icon={true}
                         customStyles={{ marginBottom: "5px" }}
@@ -544,6 +544,15 @@ export const LandingSteps = ({
                       }
                       status="error"
                       icon={true}
+                    />
+                  )}
+                  {tokenBalance < amountProgressValue && (
+                    <HelpText
+                      status={"error"}
+                      title={`You can not enable more than ${tokenBalance} ATR.`}
+                      color={"#6A6D76"}
+                      icon={true}
+                      customStyles={{ marginBottom: "5px" }}
                     />
                   )}
                   {amountProgressValue > 500 && !isAllowance && (
