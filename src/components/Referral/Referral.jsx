@@ -86,6 +86,11 @@ export const Referral = ({
             icon: false,
           },
           {
+            title: "Wallet Address",
+            amount: item.external_address ?? "no address",
+            icon: false,
+          },
+          {
             title: "Address",
             amount: item.user_address ?? "no address",
             icon: false,
@@ -130,6 +135,10 @@ export const Referral = ({
                 ? item.joinedAccountMetas[0].name
                 : "no name",
             icon: false,
+          },
+          {
+            title: "Wallet Address",
+            amount: item.joinedAccounts?.[0]?.account_owner ?? "no address",
           },
           {
             title: "Address",
