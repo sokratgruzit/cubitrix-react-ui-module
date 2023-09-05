@@ -91,13 +91,8 @@ export const Referral = ({
             icon: false,
           },
           {
-            title: "Staked this month",
-            amount: toLocaleStringForNumber(item?.stakedThisMonth),
-            icon: false,
-          },
-          {
             title: "Total Staked",
-            amount: toLocaleStringForNumber(item?.stakedTotal),
+            amount: toLocaleStringForNumber(item?.total_staked),
             icon: false,
           },
           {
@@ -106,8 +101,18 @@ export const Referral = ({
             icon: false,
           },
           {
+            title: "Users Right",
+            amount: item?.users_right,
+            icon: false,
+          },
+          {
             title: "Total Right",
             amount: toLocaleStringForNumber(item?.total_right),
+            icon: false,
+          },
+          {
+            title: "Users Left",
+            amount: item?.users_left,
             icon: false,
           },
           {
@@ -142,13 +147,8 @@ export const Referral = ({
             icon: false,
           },
           {
-            title: "Staked this month",
-            amount: toLocaleStringForNumber(item?.joinedAccounts?.[0]?.stakedThisMonth),
-            icon: false,
-          },
-          {
             title: "Total Staked",
-            amount: toLocaleStringForNumber(item?.joinedAccounts?.[0]?.stakedTotal),
+            amount: toLocaleStringForNumber(item?.total_staked_amount),
             icon: false,
           },
           {
@@ -157,13 +157,23 @@ export const Referral = ({
             icon: false,
           },
           {
+            title: "Users Right",
+            amount: item?.users_right,
+            icon: false,
+          },
+          {
             title: "Total Right",
             amount: toLocaleStringForNumber(item?.total_right),
             icon: false,
           },
           {
+            title: "Users Left",
+            amount: item?.users_left,
+            icon: false,
+          },
+          {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.left_total),
+            amount: toLocaleStringForNumber(item?.total_left),
             icon: false,
           },
           {
