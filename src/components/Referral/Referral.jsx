@@ -91,11 +91,6 @@ export const Referral = ({
             icon: false,
           },
           {
-            title: "Address",
-            amount: item.user_address ?? "no address",
-            icon: false,
-          },
-          {
             title: "Staked this month",
             amount: toLocaleStringForNumber(item?.stakedThisMonth),
             icon: false,
@@ -142,11 +137,6 @@ export const Referral = ({
             icon: false,
           },
           {
-            title: "Address",
-            amount: item.user_address ?? "no address",
-            icon: false,
-          },
-          {
             title: "Level",
             amount: "Lvl " + item.lvl + "/" + item.side,
             icon: false,
@@ -173,7 +163,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.total_left),
+            amount: toLocaleStringForNumber(item?.left_total),
             icon: false,
           },
           {
