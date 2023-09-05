@@ -173,7 +173,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.total_left),
+            amount: toLocaleStringForNumber(item?.left_total),
             icon: false,
           },
           {
