@@ -102,7 +102,7 @@ export const Referral = ({
           },
           {
             title: "Users Right",
-            amount: item?.users_right,
+            amount: item?.users_sum_right ?? 0,
             icon: false,
           },
           {
@@ -112,7 +112,7 @@ export const Referral = ({
           },
           {
             title: "Users Left",
-            amount: item?.users_left,
+            amount: item?.users_sum_left ?? 0,
             icon: false,
           },
           {
@@ -158,7 +158,7 @@ export const Referral = ({
           },
           {
             title: "Users Right",
-            amount: item?.users_right,
+            amount: item?.users_sum_right ?? 0,
             icon: false,
           },
           {
@@ -168,7 +168,7 @@ export const Referral = ({
           },
           {
             title: "Users Left",
-            amount: item?.users_left,
+            amount: item?.users_sum_left ?? 0,
             icon: false,
           },
           {
