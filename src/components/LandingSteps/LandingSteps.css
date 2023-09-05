@@ -246,7 +246,7 @@
   background-color: #c38c5c;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
-.step-number num {
+.step-number span {
   color: #c38c5c;
   height: 25px;
   width: 25px;
