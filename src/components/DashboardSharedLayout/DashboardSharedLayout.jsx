@@ -70,7 +70,7 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
             }`}
             style={{ width: `${width <= 1025 ? "100%" : "calc(100% - 255px)"}` }}
           >
-            {disabledAccount && <DisabledPage />}
+            {disabledAccount && <DisabledPage order={'dashboard'} />}
             <div className="dashboard-fixed-border" />
             <div className="dashboard-border-container">
               <div className="dashboard-border" />
