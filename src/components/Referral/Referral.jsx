@@ -783,7 +783,7 @@ export const Referral = ({
                                         {suItem.type == "missing" && (
                                           <div
                                             className={`referral-tree-item`}
-                                            key={suItem.type}
+                                            key={`${suItem.type}${index}`}
                                             style={{
                                               width: 100 / item.documents.length + "%",
                                             }}
