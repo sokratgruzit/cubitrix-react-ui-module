@@ -1,5 +1,5 @@
 .sign-in-module-overlay {
-  background-color: rgba(16, 40, 43, .6);
+  background-color: rgba(16, 40, 43, 0.6);
   left: 0;
   width: 100%;
   min-height: 100vh;
@@ -14,10 +14,11 @@
 .sign-in-module {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 100%;
+  max-width: 600px;
   height: fit-content;
   gap: 30px;
-  border: 1px solid hsla(0, 0%, 100%, .1);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
   border-radius: 20px;
   padding: 20px;
   background-color: #10282b;
@@ -76,11 +77,4 @@
 
 .forgot-password-opt:hover {
   color: #ef5350;
-}
-
-
-@media(max-width: 768px) {
-  .sign-in-module {
-    width: 100%;
-  }
 }
