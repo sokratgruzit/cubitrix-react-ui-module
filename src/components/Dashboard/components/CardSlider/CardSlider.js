@@ -275,7 +275,7 @@ export const CardSlider = ({
                         if (item.title === "Withdraw") {
                           handleWithdraw(chosenAcc, "ATAR");
                         } else if (item.title === "Transfer") {
-                          handleTransfer(chosenAcc);
+                          handleTransfer(chosenAcc, "ATAR");
                         } else if (item.title === "Exchange") {
                           handleExchange(chosenAcc, "ATAR");
                         }
@@ -334,7 +334,7 @@ export const CardSlider = ({
                         )}
                       </div>
                     </div>
-                    <div className="card-slider-card_footer">
+                    <div className="card-slider-card_footer card-slider-card_footer-currency">
                       {cardFooterData?.map((item, footerIndex) => {
                         return (
                           <div
