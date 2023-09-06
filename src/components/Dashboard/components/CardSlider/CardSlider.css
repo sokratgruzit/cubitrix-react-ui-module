@@ -232,6 +232,9 @@
   cursor: pointer;
   padding: 0 20px;
 }
+.card-slider-card_footer-item-currency {
+  padding: 0 10px;
+}
 
 .card-slider-card_footer-item p,
 .card-slider-card_footer-item-svg {
