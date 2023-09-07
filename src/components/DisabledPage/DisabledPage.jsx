@@ -2,9 +2,14 @@ import React from "react";
 import "./DisabledPage.css";
 import { HelpText } from "../HelpText";
 
-export const DisabledPage = ({order}) => {
+export const DisabledPage = ({ order }) => {
   return (
-    <div className={`${"disabled-account-overlay"} ${order === 'dashboard' ? "disabled-account-overlay-dashboard" : ""}`}>
+    <>
+      <div
+        className={`${"disabled-account-overlay"} ${
+          order === "dashboard" ? "disabled-account-overlay-dashboard" : ""
+        }`}
+      ></div>
       <HelpText
         className="message"
         status="warning"
@@ -13,6 +18,6 @@ export const DisabledPage = ({order}) => {
           " This account is disabled. Try to contact support. Note: disabled user can still use onchain activites like staking."
         }
       />
-    </div>
+    </>
   );
 };

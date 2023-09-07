@@ -29,6 +29,7 @@ export const Calculator = ({
   approveResonse,
   stakingLoading,
   isActive,
+  handleWalletSubmit,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -178,7 +179,7 @@ export const Calculator = ({
                 : isAllowance
                 ? "Enable"
                 : "Stake"
-              : "shit"
+              : "Stake Balance"
             : "Connect Wallet"
         }
         size={"btn-lg"}
@@ -189,7 +190,11 @@ export const Calculator = ({
           margin: "10px 0 0 0",
         }}
         onClick={
-          !account || (account && isAllowance) ? handleCalculatorSubmit : handleSubmit
+          stakeType === "Wallet"
+            ? !account || (account && isAllowance)
+              ? handleCalculatorSubmit
+              : handleSubmit
+            : handleWalletSubmit
         }
         disabled={
           (validationErrors?.amount?.failure && account) || stakingLoading || !isActive

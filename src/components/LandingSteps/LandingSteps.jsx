@@ -55,6 +55,7 @@ export const LandingSteps = ({
   referralCodeChecked,
   checkReferralCodeState,
   amountError,
+  validEmailProviders,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [openPopup, setOpenPopup] = useState(false);
@@ -302,6 +303,17 @@ export const LandingSteps = ({
                   status={"error"}
                   title={registrationState?.emailError}
                   color={"#FF0C46"}
+                />
+              )}
+              {validEmailProviders?.length > 0 && (
+                <HelpText
+                  status={"warning"}
+                  title={`Please use one of the following email providers: ${validEmailProviders.join(
+                    ", ",
+                  )}`}
+                  color={"#FFA726"}
+                  icon={true}
+                  customStyles={{ marginTop: "2px" }}
                 />
               )}
             </div>

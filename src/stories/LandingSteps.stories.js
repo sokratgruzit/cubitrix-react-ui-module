@@ -16,7 +16,7 @@ const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
 
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(2);
   const [progressValue, setProgressValue] = useState(5000);
   const [loading, setLoading] = useState(true);
 
@@ -347,6 +347,7 @@ stories.add("LandingSteps", () => {
           />
 
           <LandingSteps
+            validEmailProviders={["gmail.com", "company2.com", "examplecorp.com"]}
             referralCodeChecked={referralCodeChecked}
             checkReferralCodeState={checkReferralCodeState}
             amountProgressValue={progressValue}
