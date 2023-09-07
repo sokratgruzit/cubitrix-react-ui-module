@@ -233,8 +233,9 @@ export const LandingSteps = ({
             <div className="LandingSteps__step__title main_ttl">Connect Wallet</div>
             <div className="LandingSteps__step__content LandingSteps__step__content--wallet">
               <div
-                className={`${connectionLoading ? "LandingSteps__wallet-option-disabled" : ""
-                  } LandingSteps__wallet-option`}
+                className={`${
+                  connectionLoading ? "LandingSteps__wallet-option-disabled" : ""
+                } LandingSteps__wallet-option`}
                 onClick={handleMetamaskConnect}
               >
                 {connectionLoading ? (
@@ -361,8 +362,9 @@ export const LandingSteps = ({
                 {methods.map((method) => (
                   <div
                     key={method.id}
-                    className={`topup_methodBox ${selectedMethod === method.id ? "topup_selected" : ""
-                      }`}
+                    className={`topup_methodBox ${
+                      selectedMethod === method.id ? "topup_selected" : ""
+                    }`}
                     onClick={() => handleMethodSelect(method.id)}
                   >
                     {method.title}
@@ -479,8 +481,12 @@ export const LandingSteps = ({
                         label={"Amount"}
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
-                        incriment={() => setAmountProgressValue((prevValue) => prevValue + 5000)}
-                        decriment={() => setAmountProgressValue((prevValue) => prevValue - 5000)}
+                        incriment={() =>
+                          setAmountProgressValue(amountProgressValue + 5000)
+                        }
+                        decriment={() =>
+                          setAmountProgressValue(amountProgressValue - 5000)
+                        }
                       />
                       {amountError && (
                         <HelpText
@@ -537,12 +543,12 @@ export const LandingSteps = ({
                           timeperiod === 0
                             ? "15 % APY On 30 Days. Locked until " + timeperiodDate
                             : timeperiod === 1
-                              ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
-                              : timeperiod === 2
-                                ? "29% APY On 90 Days. Locked until " + timeperiodDate
-                                : timeperiod === 3
-                                  ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
-                                  : "50.0% APY On 360 Days. Locked until " + timeperiodDate
+                            ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
+                            : timeperiod === 2
+                            ? "29% APY On 90 Days. Locked until " + timeperiodDate
+                            : timeperiod === 3
+                            ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
+                            : "50.0% APY On 360 Days. Locked until " + timeperiodDate
                         }
                         status="info"
                         color="#6A6D76"
