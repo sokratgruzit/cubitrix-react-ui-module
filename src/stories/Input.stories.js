@@ -67,10 +67,10 @@ stories.add("Input", (props) => {
   const [active, setActive] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [inputRange, setInputRange] = useState({
-      min: 100,
-      max: 500000,
-      value: 100,
-      step: 400
+    min: 100,
+    max: 500000,
+    value: 100,
+    step: 400
   });
 
   function handlerClick(i) {
@@ -79,12 +79,12 @@ stories.add("Input", (props) => {
   const changeHandler = (i, e) => {
     console.log(i.target.value);
   };
-    const changeRangeHandler = (i, e) => {
-        let newObj = {...inputRange};
-        newObj.value = i.target.value
-        console.log(i.target.value);
-        setInputRange(newObj)
-    };
+  const changeRangeHandler = (i, e) => {
+    let newObj = { ...inputRange };
+    newObj.value = i.target.value
+    console.log(i.target.value);
+    setInputRange(newObj)
+  };
   const changeCountry = (data) => {
     console.log(data);
   };
@@ -119,15 +119,15 @@ stories.add("Input", (props) => {
         marginTop: "30px",
       }}
     >
-        <Input
-            type={"range"}
-            customStyles={{ width: "520px" }}
-            min={inputRange.min}
-            max={inputRange.max}
-            step={inputRange.step}
-            value={inputRange.value}
-            onChange={changeRangeHandler}
-        />
+      <Input
+        type={"range"}
+        customStyles={{ width: "520px" }}
+        min={inputRange.min}
+        max={inputRange.max}
+        step={inputRange.step}
+        value={inputRange.value}
+        onChange={changeRangeHandler}
+      />
       <Input
         type={"lable-input-multi-select"}
         icon={false}
