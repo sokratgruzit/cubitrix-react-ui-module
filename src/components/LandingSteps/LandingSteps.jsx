@@ -50,6 +50,7 @@ export const LandingSteps = ({
   referralState,
   setReferralState,
   amountProgressValue,
+  setAmountProgressValue,
   amountProgressOnchange,
   handleFinish,
   referralCodeChecked,
