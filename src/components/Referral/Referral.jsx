@@ -120,11 +120,6 @@ export const Referral = ({
             amount: toLocaleStringForNumber(item?.total_left),
             icon: false,
           },
-          {
-            title: "Uni",
-            amount: toLocaleStringForNumber(item?.uni),
-            icon: false,
-          },
         ];
       } else {
         infoObject = [
@@ -174,11 +169,6 @@ export const Referral = ({
           {
             title: "Total Left",
             amount: toLocaleStringForNumber(item?.left_total),
-            icon: false,
-          },
-          {
-            title: "Uni",
-            amount: toLocaleStringForNumber(item?.amount),
             icon: false,
           },
         ];
