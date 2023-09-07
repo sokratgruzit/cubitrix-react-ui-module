@@ -222,6 +222,9 @@
   align-items: center;
   gap: 5px;
 }
+.card-slider-card_footer-currency {
+  gap: 4px;
+}
 
 .card-slider-card_footer-item {
   display: flex;
@@ -231,6 +234,9 @@
   gap: 2px;
   cursor: pointer;
   padding: 0 20px;
+}
+.card-slider-card_footer-item-currency {
+  padding: 0 10px;
 }
 
 .card-slider-card_footer-item p,
