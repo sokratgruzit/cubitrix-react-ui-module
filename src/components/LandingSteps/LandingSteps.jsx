@@ -482,10 +482,10 @@ export const LandingSteps = ({
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
                         incriment={() =>
-                          setAmountProgressValue(amountProgressValue + 5000)
+                          setAmountProgressValue(amountProgressValue - 5000)
                         }
                         decriment={() =>
-                          setAmountProgressValue(amountProgressValue - 5000)
+                          setAmountProgressValue(amountProgressValue + 5000)
                         }
                       />
                       {amountError && (
