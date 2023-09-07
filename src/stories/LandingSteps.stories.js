@@ -351,6 +351,7 @@ stories.add("LandingSteps", () => {
             referralCodeChecked={referralCodeChecked}
             checkReferralCodeState={checkReferralCodeState}
             amountProgressValue={progressValue}
+            setAmountProgressValue={setProgressValue}
             amountProgressOnchange={handleProgress}
             receivePaymentAddress={"0x43f59F41518903A274c7897dfFB24DB86a0dd23a"}
             handleMetamaskConnect={() => {
