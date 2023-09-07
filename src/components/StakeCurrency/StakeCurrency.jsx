@@ -99,20 +99,24 @@ export const StakeCurrency = ({
                   />
                 );
               })}
-              {durationOptions.map((item, index) => (
-                <Button
-                  key={index}
-                  label={item}
-                  element={"calculator-button"}
-                  onClick={() => {
-                    setSelectedDuration(item);
-                  }}
-                  customStyles={{ width: "100%" }}
-                  active={item === selectedDuration}
-                />
-              ))}
+              <div className="calculator__buttons">
+                {durationOptions.map((item, index) => (
+                  <Button
+                    key={index}
+                    label={item}
+                    element={"calculator-button"}
+                    onClick={() => {
+                      setSelectedDuration(item);
+                    }}
+                    customStyles={{ width: "100%" }}
+                    active={item === selectedDuration}
+                  />
+                ))}
+              </div>
             </div>
-            {info && <HelpText title={info} status="info" color="#6A6D76" icon={true} />}
+            {info && (
+              <HelpText title={info} status="warning" color="#6A6D76" icon={true} />
+            )}
           </div>
           <Button
             label={buttonLabel}
