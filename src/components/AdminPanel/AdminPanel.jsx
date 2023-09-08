@@ -58,34 +58,6 @@ export const AdminPanel = (props) => {
               customStyles={{ width: "372px" }}
             />
           )}
-          {/* <DashboardCard
-                        type={'sale-card'}
-                        cardHeader={'TOKEN SALE - DEMO STAGE 2'}
-                        saleNumber={'850,000'}
-                        salePercentage={'1.6'}
-                        lastSaleInfo={'0 since last week'}
-                        // onViewClick={() => console.log('view')}
-                        customStyles={{ width: '372px' }}
-                    />
-                    <DashboardCard
-                        type={'sale-card'}
-                        cardHeader={'TOKEN SALE - DEMO STAGE 2'}
-                        saleNumber={'7'}
-                        salePercentage={'100'}
-                        lastSaleInfo={'0 since last week'}
-                        onViewClick={() => console.log('view')}
-                        cardHeaderButtons={[{ name: 'KYC' }, { name: 'Users' }]}
-                        // handleHeaderBtnClick={(item) => console.log(item)}
-                        customStyles={{ width: '372px' }}
-                    /> */}
-          {/* <DashboardCard
-                        type={'amount-card'}
-                        cardHeader={'AMOUNT COLLECTED'}
-                        cardHeaderButtons={[{ name: 'FIAT' }, { name: 'Crypto' }]}
-                        usdtNumber={'255'}
-                        handleHeaderBtnClick={(item) => console.log(item)}
-                        customStyles={{ width: '372px' }}
-                    /> */}
           {props.coinCards &&
             props.coinCards.map((item, index) => {
               return (

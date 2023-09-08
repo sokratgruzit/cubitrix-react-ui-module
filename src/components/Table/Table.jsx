@@ -1,4 +1,4 @@
-  import "./Table.css";
+import "./Table.css";
 import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { NoApplicationsIcon } from "../../assets/svgs";
 
@@ -61,7 +61,7 @@ export const Table = ({
           <>
             {tableEmptyData?.icon ? tableEmptyData?.icon : <NoApplicationsIcon />}
             <p className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
-              {tableEmptyData?.label || "You have no pending KYC applications"}
+              {tableEmptyData?.label || "No Data Available"}
             </p>
             {handleViewAll && (
               <p className="table-empty__view-all font-14" onClick={handleViewAll}>

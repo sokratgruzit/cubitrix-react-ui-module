@@ -163,6 +163,10 @@ export const LandingSteps = ({
   const [accpetedTerms, setAcceptedTerms] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
 
+  function getClosestLesser5kMultiple(tokenBalance) {
+    return Math.max(5000, Math.min(5000000, Math.floor(tokenBalance / 5000) * 5000));
+  }
+
   return (
     <div className="LandingSteps__container">
       <div className="LandingSteps_main-body">
