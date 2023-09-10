@@ -545,7 +545,7 @@ export const Referral = ({
               <h2 className="main_ttl">Referral</h2>
               <div className="referral-content-info">
                 <span className="font-20">
-                  You can earn rebates by inviting traders to trade on Complend
+                  You can earn rebates by inviting traders to trade on Atar
                 </span>
                 <p className="font-16">
                   After creating your first code, you will receive a Casual status to
