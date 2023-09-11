@@ -188,7 +188,7 @@ export const Staking = ({
           <Visual
             element={"table-header"}
             label={"Stake"}
-            description={"You can stake and then earn complend reward"}
+            description={"You can stake and then earn atar reward"}
             fontSize={"font-20"}
             customStyles={{ border: "none", padding: "0" }}
             buttons={
