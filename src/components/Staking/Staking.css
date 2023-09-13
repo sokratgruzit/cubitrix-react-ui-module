@@ -61,6 +61,13 @@
   display: none !important;
 }
 
+.staking_table_top_wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  max-height: 47px;
+}
+
 @media only screen and (max-width: 1025px) {
   .staking-content {
     display: flex;

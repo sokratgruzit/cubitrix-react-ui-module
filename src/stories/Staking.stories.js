@@ -292,7 +292,7 @@ stories.add("Staking", () => {
   const handleMaxClick = () => console.log("max!");
 
   const tableEmptyData = {
-    label: "Stake to earn Complend reward",
+    label: "Stake to earn Atar reward",
     button: (
       <Button
         element={"referral-button"}

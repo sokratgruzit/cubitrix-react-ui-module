@@ -31,9 +31,155 @@ export const Staking = ({
   unstakeLoading,
   harvestLoading,
   isActive,
+  currencyStakes = [],
+  currencyStakesLoading,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const { width, mobile } = useMobileWidth();
+
+  const [selectedTab, setSelectedTab] = useState("staking");
+
+  let tableData = null;
+
+  let dataToMap = selectedTab === "staking" ? stakersRecord : currencyStakes;
+
+  if (dataToMap?.length > 0) {
+    tableData =
+      stakersRecord?.length > 0 &&
+      stakersRecord.map((item, index) => {
+        if (item.unstaked) return false;
+        return (
+          <div
+            className={`table-parent ${mobileExpand === index ? "active" : ""}`}
+            key={index}
+          >
+            <div
+              className={"table"}
+              style={{
+                width: "calc(100% - 50px)",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                mobileExpandFunc(index);
+              }}
+            >
+              {tableHead?.slice(0, 4).map((i, index) => (
+                <div
+                  key={index}
+                  className={`td col ${i.mobileWidth ? true : false}`}
+                  style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+                >
+                  <span>
+                    {
+                      [
+                        (item.amount / 10 ** 18)?.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        }),
+                        item.staketime,
+                        item.unstaketime,
+                        parseFloat(item.realtimeRewardPerBlock).toFixed(10),
+                      ][index]
+                    }
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="table-more" />
+            <div
+              className="icon-place"
+              style={{ display: "flex", cursor: "pointer" }}
+              onClick={() => {
+                mobileExpandFunc(index);
+              }}
+            >
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="table-mobile" style={{ display: "block", cursor: "initial" }}>
+              <div className="table-mobile-content">
+                {width <= 1300 && (
+                  <>
+                    {[0, 1].map((index) => (
+                      <div className="td" key={index}>
+                        <div className="mobile-ttl">{tableHead[index].name}</div>
+                        <span>
+                          {index === 1 && item.staketime}
+                          {index === 2 && item.unstaketime}
+                        </span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {width <= 400 && (
+                  <>
+                    {[2].map((index) => (
+                      <div className="td" key={index}>
+                        <div className="mobile-ttl">{tableHead[index].name}</div>
+                        <span>
+                          {parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}
+                        </span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                <>
+                  {[3].map((index) => (
+                    <div className="td" key={index}>
+                      <div className="mobile-ttl">Earn Reward</div>
+                      <span>ATR</span>
+                    </div>
+                  ))}
+                </>
+                <div className="table-buttons">
+                  {[4, 5].map((index1) => (
+                    <div className="td" key={index1}>
+                      <Button
+                        element="staking-button"
+                        label={
+                          index1 === 4
+                            ? unstakeLoading
+                              ? "Loading..."
+                              : "Unstake"
+                            : harvestLoading
+                            ? "Loading..."
+                            : "Harvest"
+                        }
+                        active={index1 === 4}
+                        customStyles={{ borderRadius: "32px" }}
+                        onClick={() => tableHead[index1].onClick(index)}
+                        disabled={
+                          !isActive || index1 === 4
+                            ? item.unstaked ||
+                              Number(item?.[0]) >
+                                Math.floor(new Date().getTime() / 1000) ||
+                              unstakeLoading
+                            : harvestLoading || item.realtimeRewardPerBlock == 0
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      });
+  }
 
   let mobileExpandFunc = (id) => {
     if (id !== mobileExpand) {
@@ -43,169 +189,62 @@ export const Staking = ({
     }
   };
 
-  let tableData =
-    stakersRecord?.length > 0 &&
-    stakersRecord.map((item, index) => {
-      if (item.unstaked) return false;
-      return (
-        <div
-          className={`table-parent ${mobileExpand === index ? "active" : ""}`}
-          key={index}
-        >
-          <div
-            className={"table"}
-            style={{
-              width: "calc(100% - 50px)",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              mobileExpandFunc(index);
-            }}
-          >
-            {tableHead?.slice(0, 4).map((i, index) => (
-              <div
-                key={index}
-                className={`td col ${i.mobileWidth ? true : false}`}
-                style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
-              >
-                <span>
-                  {
-                    [
-                      (item.amount / 10 ** 18)?.toLocaleString("en-US", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      }),
-                      item.staketime,
-                      item.unstaketime,
-                      parseFloat(item.realtimeRewardPerBlock).toFixed(10),
-                    ][index]
-                  }
-                </span>
-              </div>
-            ))}
-          </div>
-          <div className="table-more" />
-          <div
-            className="icon-place"
-            style={{ display: "flex", cursor: "pointer" }}
-            onClick={() => {
-              mobileExpandFunc(index);
-            }}
-          >
-            <svg
-              width="12"
-              height="7"
-              viewBox="0 0 12 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="table-mobile" style={{ display: "block", cursor: "initial" }}>
-            <div className="table-mobile-content">
-              {width <= 1300 && (
-                <>
-                  {[0, 1].map((index) => (
-                    <div className="td" key={index}>
-                      <div className="mobile-ttl">{tableHead[index].name}</div>
-                      <span>
-                        {index === 1 && item.staketime}
-                        {index === 2 && item.unstaketime}
-                      </span>
-                    </div>
-                  ))}
-                </>
-              )}
-              {width <= 400 && (
-                <>
-                  {[2].map((index) => (
-                    <div className="td" key={index}>
-                      <div className="mobile-ttl">{tableHead[index].name}</div>
-                      <span>{parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}</span>
-                    </div>
-                  ))}
-                </>
-              )}
-              <>
-                {[3].map((index) => (
-                  <div className="td" key={index}>
-                    <div className="mobile-ttl">Earn Reward</div>
-                    <span>ATR</span>
-                  </div>
-                ))}
-              </>
-              <div className="table-buttons">
-                {[4, 5].map((index1) => (
-                  <div className="td" key={index1}>
-                    <Button
-                      element="staking-button"
-                      label={
-                        index1 === 4
-                          ? unstakeLoading
-                            ? "Loading..."
-                            : "Unstake"
-                          : harvestLoading
-                          ? "Loading..."
-                          : "Harvest"
-                      }
-                      active={index1 === 4}
-                      customStyles={{ borderRadius: "32px" }}
-                      onClick={() => tableHead[index1].onClick(index)}
-                      disabled={
-                        !isActive || index1 === 4
-                          ? item.unstaked ||
-                            Number(item?.[0]) > Math.floor(new Date().getTime() / 1000) ||
-                            unstakeLoading
-                          : harvestLoading || item.realtimeRewardPerBlock == 0
-                      }
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    });
-
   return (
     <div className="staking-main">
       <div className="staking-content">
-        <AccountSummary
-          data={accountSummaryData}
-          stackContractInfo={stackContractInfo}
-          label={"Total Stake"}
-        />
-        <div className={"staking-content-main"}>
+        <div>
           <Visual
             element={"table-header"}
             label={"Stake"}
             description={"You can stake and then earn atar reward"}
             fontSize={"font-20"}
             customStyles={{ border: "none", padding: "0" }}
-            buttons={
-              <Button
-                element={"referral-button"}
-                label={"Create Staking"}
-                icon={<AddSquareIcon />}
-                onClick={handlePopUpOpen}
-              />
-            }
           />
+          <AccountSummary
+            data={accountSummaryData}
+            stackContractInfo={stackContractInfo}
+            label={"Total Stake"}
+          />
+        </div>
+        <div className={"staking-content-main"}>
+          <div className="staking_table_top_wrapper">
+            <div className="tabsWrap">
+              <div
+                className={`${selectedTab === "staking" ? "selected" : ""}`}
+                onClick={() => setSelectedTab("staking")}
+              >
+                Staking
+              </div>
+              <div
+                className={selectedTab === "currency stakes" ? "selected" : ""}
+                onClick={() => setSelectedTab("currency stakes")}
+              >
+                Currency Staking
+              </div>
+              <span
+                className={`highlight-selected ${
+                  selectedTab === "staking" ? "selected-data" : "selected-security"
+                }`}
+              ></span>
+            </div>
+            <Button
+              element={"referral-button"}
+              label={"Create Staking"}
+              icon={<AddSquareIcon />}
+              onClick={handlePopUpOpen}
+            />
+          </div>
+
           <Table
             type={"table-version"}
             tableHead={tableHead}
             mobile={true}
             tableData={
-              stakersRecord.length ? (
+              selectedTab === "stakes" && stakersRecord.length < 1 ? (
+                false
+              ) : selectedTab === "currency stakes" && currencyStakes.length < 1 ? (
+                false
+              ) : (
                 <>
                   {tableData}
                   {isFetching && (
@@ -220,13 +259,14 @@ export const Staking = ({
                     <div style={{ minHeight: "1px" }} ref={infiniteScrollRef} />
                   )}
                 </>
-              ) : (
-                false
               )
             }
             tableEmpty={true}
             tableEmptyData={tableEmptyData}
-            loading={loading}
+            loading={
+              (selectedTab === "stakes" && loading) ||
+              (selectedTab === "currency stakes" && currencyStakesLoading)
+            }
             customTableMoreStyles={{
               height: "80px",
               display: "flex",
