@@ -322,6 +322,81 @@ stories.add("Staking", () => {
     toast.warning("Warning message");
   };
 
+  const currencyStakesTableHead = [
+    {
+      name: "Staked Amount",
+      width: 25,
+      mobileWidth: width > 400 ? 45 : 100,
+      id: 0,
+    },
+    {
+      name: "Stake Date",
+      width: 25,
+      id: 1,
+    },
+    {
+      name: "Unstake Date",
+      width: 25,
+      id: 2,
+    },
+    {
+      name: "Percentage",
+      width: 25,
+      mobileWidth: width > 400 ? 45 : false,
+      id: 4,
+    },
+    {
+      name: "",
+      width: 10,
+      id: 5,
+      mobileWidth: 35,
+      className: "table-button-none",
+      onClick: (index) => {
+        setUnstakeLoading(true);
+        unstake(
+          index,
+          () => {
+            setUnstakeLoading(false);
+            axios
+              .post("api/transactions/unstake_transaction", {
+                address: account,
+                index,
+              })
+              .then((res) => {
+                refetchStakersRecord();
+              })
+              .catch((e) => {
+                console.log(e);
+              });
+          },
+          () => {
+            setUnstakeLoading(false);
+          },
+        );
+      },
+    },
+    {
+      name: "",
+      width: 7,
+      id: 6,
+      mobileWidth: 20,
+      className: "table-button-none",
+      onClick: (index) => {
+        setHarvestLoading(true);
+        harvest(
+          index,
+          () => {
+            setHarvestLoading(false);
+            refetchStakersRecord();
+          },
+          () => {
+            setHarvestLoading(false);
+          },
+        );
+      },
+    },
+  ];
+
   return (
     <BrowserRouter>
       <Header
@@ -498,6 +573,8 @@ stories.add("Staking", () => {
             updatedAt: "2023-09-08T20:36:06.196Z",
           },
         ]}
+        currencyStakesLoading={false}
+        currencyStakesTableHead={currencyStakesTableHead}
       />
       {createStakingPopUpActive && (
         <Popup

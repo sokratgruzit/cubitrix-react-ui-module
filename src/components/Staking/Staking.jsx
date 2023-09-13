@@ -200,13 +200,13 @@ export const Staking = ({
                 <span>
                   {
                     [
-                      item.amount?.toLocaleString("en-US", {
+                      `${item.amount?.toLocaleString("en-US", {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
-                      }),
-                      item.staketime,
-                      item.unstaketime,
-                      item.percentage.toFixed(2),
+                      })} ${item.currency?.toUpperCase()}`,
+                      item.createdAt,
+                      item.expires,
+                      `${item.percentage.toFixed(2)} %`,
                     ][index]
                   }
                 </span>
@@ -275,7 +275,7 @@ export const Staking = ({
 
           <Table
             type={"table-version"}
-            tableHead={tableHead}
+            tableHead={selectedTab === "staking" ? tableHead : currencyStakesTableHead}
             mobile={true}
             tableData={
               selectedTab === "stakes" && stakersRecord.length < 1 ? (
