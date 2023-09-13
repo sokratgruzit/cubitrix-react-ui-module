@@ -486,6 +486,18 @@ stories.add("Staking", () => {
         hasMoreData={false}
         infiniteScrollRef={infiniteScrollRef}
         isFetching={isFetching}
+        currencyStakes={[
+          {
+            __v: 0,
+            _id: "64fb85b6f428ddf3b22f41f9",
+            address: "0x928875073504464f466c5ec4cd81db991b80f175",
+            amount: 0.1,
+            createdAt: "2023-09-08T20:36:06.196Z",
+            currency: "btc",
+            percentage: 0,
+            updatedAt: "2023-09-08T20:36:06.196Z",
+          },
+        ]}
       />
       {createStakingPopUpActive && (
         <Popup
