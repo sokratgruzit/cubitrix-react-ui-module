@@ -81,17 +81,14 @@ export const Calculator = ({
           label={"Calculated"}
           selectHandler={(type) => setStakeType(type)}
         />
-        <HelpText
-          status="info"
-          title={
-            stakeType === "Wallet"
-              ? "Stake from your wallet"
-              : "Stake from your ATR balance"
-          }
-          fontSize={"font-12"}
-          icon={true}
-        />
-        {stakeType === "ATR Balance" && (
+        {stakeType === "Wallet" ? (
+          <HelpText
+            status="info"
+            title={"Stake from your wallet"}
+            fontSize={"font-12"}
+            icon={true}
+          />
+        ) : (
           <HelpText
             status="warning"
             title={
