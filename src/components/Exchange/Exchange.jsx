@@ -22,6 +22,7 @@ export const Exchange = ({
   setCard,
   ratedExchange,
   exchangeLoading,
+  rates,
 }) => {
   const handleInputChange = (e, params) => {
     const { name, onChange } = params;
@@ -173,16 +174,29 @@ export const Exchange = ({
                   );
                 })}
               </div>
-              <div className="exchange-rate-card">
-                <h4 className="font-14">Rate</h4>
-                <p className="font-14">
-                  1 {accountType === "ATAR" ? "ATR" : accountType.toUpperCase()} ={" "}
-                  {ratedExchange
-                    ? Math.round((1 / ratedExchange) * 100000) / 100000
-                    : "... "}
-                  {card.title}
-                </p>
-              </div>
+              {rates?.atr ? (
+                <div className="exchange-rate-card">
+                  <h4 className="font-14">Rate</h4>
+                  <p className="font-14">
+                    1 {accountType === "ATAR" ? "ATR" : accountType.toUpperCase()} ={" "}
+                    {ratedExchange
+                      ? Math.round((1 / ratedExchange) * 100000) / 100000
+                      : "... "}
+                    {card.title}
+                  </p>
+                </div>
+              ) : (
+                <div className="exchange-rate-card">
+                  <h4 className="font-14">Rate</h4>
+                  <p className="font-14">
+                    1 {accountType === "ATAR" ? "ATR" : accountType.toUpperCase()} ={" "}
+                    {ratedExchange
+                      ? Math.round((1 / ratedExchange) * 100000) / 100000
+                      : "... "}
+                    {card.title}
+                  </p>
+                </div>
+              )}
             </div>
           )}
 

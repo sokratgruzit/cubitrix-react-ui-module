@@ -91,8 +91,17 @@ export const Calculator = ({
           fontSize={"font-12"}
           icon={true}
         />
+        {stakeType === "ATR Balance" && (
+          <HelpText
+            status="warning"
+            title={
+              "ATR tokens will be deducted from your ATR balance and a 2 ATR transaction fee will apply. If you reject the transaction, the ATR tokens will be available in your wallet where they are available for staking."
+            }
+            fontSize={"font-12"}
+            icon={true}
+          />
+        )}
       </div>
-
       <div className={"calculator-input"}>
         <Input
           type={"default"}
