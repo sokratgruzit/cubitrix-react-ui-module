@@ -74,7 +74,7 @@ export const Exchange = ({
               >
                 <div className="exchange-account-titles">
                   {card?.svg}
-                  <p className="font-14">{card?.title}</p>
+                  <p className="font-14">{card?.title === "ATAR" ? "A1" : card?.title}</p>
                 </div>
                 <div className="exchange-account-values-container">
                   <div className="exchange-account-values">
@@ -182,7 +182,7 @@ export const Exchange = ({
                     {ratedExchange
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}
-                    {card.title}
+                    {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
               ) : (
@@ -193,7 +193,7 @@ export const Exchange = ({
                     {ratedExchange
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}
-                    {card.title}
+                    {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
               )}

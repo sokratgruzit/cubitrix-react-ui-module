@@ -210,7 +210,7 @@ export const CardSlider = ({
                   <Account type={"atar"} />
                   <h4 className="font-16 title_wrapper_card">
                     <span className="font-16">
-                      {accountType === "main" ? "ATAR" : accountType.toUpperCase()}
+                      {accountType === "main" ? "A1" : accountType.toUpperCase()}
                     </span>
                     {tier && (
                       <span

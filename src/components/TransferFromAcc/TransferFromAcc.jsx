@@ -51,10 +51,14 @@ export const TransferFromAcc = ({
             <img src={cardImg} className="withdraw-to-acc-card-img" />
             <div className="withdraw-to-acc-card_header">
               <Account type={accountType.toLowerCase()} />
-              <h4 className="font-16">{accountType.toUpperCase()} account</h4>
+              <h4 className="font-16">
+                {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} account
+              </h4>
             </div>
             <div className="withdraw-to-acc-card_content">
-              <h4 className="font-14">{accountType.toUpperCase()} Balance</h4>
+              <h4 className="font-14">
+                {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} Balance
+              </h4>
               <p>{accountBalance}</p>
               <span className="font-14">{accountBalanceSecond}</span>
             </div>
