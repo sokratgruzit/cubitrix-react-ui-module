@@ -31,12 +31,12 @@ const PaymentPopup = ({
     <div className="payment_popup_container">
       <div className="payment_popup_body">
         <p>
-          Please make payment of {payment} to receive {receiveTokens}ATR.
+          Please make payment of {payment} to receive {receiveTokens}A1.
         </p>
         <p>Transaction Fee: {fee}</p>
         <p>
-          You can choose any of the following payment methods to make your payment. The
-          ATR balance will appear in your account after successful payment.
+          You can choose any of the following payment methods to make your payment. The A1
+          balance will appear in your account after successful payment.
         </p>
         <h3>Select payment method:</h3>
         <div className="payment_methods_container">
@@ -71,7 +71,7 @@ const PaymentPopup = ({
             onChange={handleAgreement}
           />
           <span className="confirm_payment_popup_checkmark"></span>I hereby agree to the
-          ATR purchase agreement and ATR sale term.
+          A1 purchase agreement and A1 sale term.
         </label>
         <Button
           element="button"

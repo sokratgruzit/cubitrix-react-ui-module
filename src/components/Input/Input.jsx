@@ -99,8 +99,9 @@ export const Input = (props) => {
               ? { paddingRight: "43px", ...props?.customInputStyles }
               : { paddingRight: "16px", ...props?.customInputStyles }
           }
-          className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${!edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
-            } ${props?.inputClassName ? props.inputClassName : ""}`}
+          className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
+            !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
+          } ${props?.inputClassName ? props.inputClassName : ""}`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
         />
@@ -267,9 +268,11 @@ export const Input = (props) => {
           <div
             onClick={activeHandler}
             style={props.customInputStyles}
-            className={`${"form-select-item"} ${"form-control"} ${props.emptyFieldErr ? "error-border" : ""
-              } ${!edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
-              } ${props.disabled ? "disabled-input" : ""}`}
+            className={`${"form-select-item"} ${"form-control"} ${
+              props.emptyFieldErr ? "error-border" : ""
+            } ${
+              !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
+            } ${props.disabled ? "disabled-input" : ""}`}
           >
             <div className="flag-wrapper">
               {value ? (
@@ -281,10 +284,11 @@ export const Input = (props) => {
               )}
             </div>
             <svg
-              className={`${active ? "rotate" : ""} ${"arrow"} ${props?.value?.length > 0 && !edit && props.editable
-                ? "arrow-none"
-                : "arrow-show"
-                } `}
+              className={`${active ? "rotate" : ""} ${"arrow"} ${
+                props?.value?.length > 0 && !edit && props.editable
+                  ? "arrow-none"
+                  : "arrow-show"
+              } `}
               width="20"
               height="21"
               viewBox="0 0 20 21"
@@ -302,8 +306,9 @@ export const Input = (props) => {
             </svg>
           </div>
           <div
-            className={`${"hidden"} ${active ? "select-modal-sc" : ""} ${props.selectPosition === "top" ? "select-position-top" : ""
-              }`}
+            className={`${"hidden"} ${active ? "select-modal-sc" : ""} ${
+              props.selectPosition === "top" ? "select-position-top" : ""
+            }`}
           >
             {props.selectType === "country" ? (
               <Dropdown
@@ -358,9 +363,11 @@ export const Input = (props) => {
         <p className="input-group-title font-12">{props.label}</p>
         <div ref={ref} className="form-select-sc relative">
           <div
-            className={`${"form-select-item"} ${"form-control"} ${"form-multiply"} ${props.emptyFieldErr ? "error-border" : ""
-              } ${!edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
-              }`}
+            className={`${"form-select-item"} ${"form-control"} ${"form-multiply"} ${
+              props.emptyFieldErr ? "error-border" : ""
+            } ${
+              !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
+            }`}
           >
             <div className="form-multiply-clicker" onClick={activeHandler}></div>
             <div className="flag-wrapper">
@@ -402,10 +409,11 @@ export const Input = (props) => {
               })}
             </div>
             <svg
-              className={`${active ? "rotate" : ""} ${"arrow"} ${props?.value?.length > 0 && !edit && props.editable
-                ? "arrow-none"
-                : "arrow-show"
-                } `}
+              className={`${active ? "rotate" : ""} ${"arrow"} ${
+                props?.value?.length > 0 && !edit && props.editable
+                  ? "arrow-none"
+                  : "arrow-show"
+              } `}
               width="20"
               height="21"
               viewBox="0 0 20 21"
@@ -424,8 +432,9 @@ export const Input = (props) => {
             </svg>
           </div>
           <div
-            className={`${"hidden"} ${active ? "select-modal-sc" : ""} ${props.selectPosition === "top" ? "select-position-top" : ""
-              }`}
+            className={`${"hidden"} ${active ? "select-modal-sc" : ""} ${
+              props.selectPosition === "top" ? "select-position-top" : ""
+            }`}
           >
             <Dropdown
               type={"search-dropdown"}
@@ -451,11 +460,13 @@ export const Input = (props) => {
       <div style={props.customStyles} className="input-group-item phone-numbers relative">
         <p className="font-12">{props.label}</p>
         <div
-          className={`${"form-control"} ${"select-control"} ${props.emptyFieldErr ? "error-border" : ""
-            } ${!edit && props.editable && props.value?.number?.length > 0
+          className={`${"form-control"} ${"select-control"} ${
+            props.emptyFieldErr ? "error-border" : ""
+          } ${
+            !edit && props.editable && props.value?.number?.length > 0
               ? "disabled-input"
               : ""
-            }`}
+          }`}
         >
           <div
             onClick={() => {
@@ -491,8 +502,9 @@ export const Input = (props) => {
                 setMobileData((prev) => ({ ...prev, number: onlyNumbers }));
               }}
               value={mobileData.number}
-              className={`${"number-control"} ${props.emptyFieldErr ? "error-border" : ""
-                }`}
+              className={`${"number-control"} ${
+                props.emptyFieldErr ? "error-border" : ""
+              }`}
               type="text"
             />
           </div>
@@ -537,8 +549,9 @@ export const Input = (props) => {
           </p>
         </div>
         <div
-          className={`${"upload-group-inner"} ${props.emptyFieldErr ? "error-border" : ""
-            }`}
+          className={`${"upload-group-inner"} ${
+            props.emptyFieldErr ? "error-border" : ""
+          }`}
         >
           <div className="upload-group-placeholder">
             {!file ? (
@@ -579,8 +592,9 @@ export const Input = (props) => {
             {/* <p className='upload-btn'>Browse</p> */}
             <input
               id="upload_img"
-              className={`${"upload-control"} ${props.emptyFieldErr ? "error-border" : ""
-                }`}
+              className={`${"upload-control"} ${
+                props.emptyFieldErr ? "error-border" : ""
+              }`}
               type="file"
               onChange={handleChange}
             />
@@ -751,18 +765,16 @@ export const Input = (props) => {
           placeholder={props.placeholder}
         />
         <div className="range-ttls">
-          <div>{props.min} ATR</div>
-          <div>{props.max} ATR</div>
+          <div>{props.min} A1</div>
+          <div>{props.max} A1</div>
         </div>
       </div>
     );
   }
-  
+
   if (props.type === "staking_amount") {
     element = (
-      <div
-        className={`input-group custom-arrow`}
-      >
+      <div className={`input-group custom-arrow`}>
         <p className={`font-12`}>{props.label}</p>
         <input
           onChange={(e) => {

@@ -5,7 +5,7 @@ import "./FeeWarning.css";
 export const FeeWarning = ({ handleProceed, handleCancel, fee }) => {
   return (
     <div className="change-network-body">
-      <p>Please note that opening new account costs {fee ?? 2} ATR. </p>
+      <p>Please note that opening new account costs {fee ?? 2} A1. </p>
       <div className="network-warning">
         <svg
           width="24"
@@ -33,7 +33,7 @@ export const FeeWarning = ({ handleProceed, handleCancel, fee }) => {
             fill="#FF0C46"
           />
         </svg>
-        <p>This action involves spending ATR. This is one time thing.</p>
+        <p>This action involves spending A1. This is one time thing.</p>
       </div>
       <Button
         element="button"

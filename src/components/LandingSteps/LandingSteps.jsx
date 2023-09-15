@@ -361,7 +361,7 @@ export const LandingSteps = ({
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title main_ttl">Top Up</div>
             <div className="LandingSteps__topUp-box">
-              <p>Select the payment method and calculate ATR price</p>
+              <p>Select the payment method and calculate A1 price</p>
               <div className="LandingSteps__topUpOptions">
                 {methods.map((method) => (
                   <div
@@ -378,12 +378,12 @@ export const LandingSteps = ({
               </div>
               <HelpText
                 status={"error"}
-                title={`Your currently possess ${tokenBalance} ATR. To stake you need to possess minimum of 100 ATR. Maximu you cans take during registration is 500,000 ATR.`}
+                title={`Your currently possess ${tokenBalance} A1. To stake you need to possess minimum of 100 A1. Maximu you cans take during registration is 500,000 A1.`}
                 color={"#6A6D76"}
                 icon={true}
                 customStyles={{ marginBottom: "5px" }}
               />
-              <p>Set amount of ATR you would like to purchase</p>
+              <p>Set amount of A1 you would like to purchase</p>
 
               <p className="LandingSteps__topUpLabel">Payment Amount</p>
               <div className="topupDashboard_inputContainer">
@@ -397,13 +397,13 @@ export const LandingSteps = ({
                   customStyles={{ width: "100%" }}
                 />
                 <div className="topupDashboard_inputOverlay">
-                  <p className="topupDashboard_inputOverlay_text">ATR</p>
+                  <p className="topupDashboard_inputOverlay_text">A1</p>
                 </div>
               </div>
 
               <div></div>
               <p className="topupDashboard_info-exchangeRate">
-                1 ATR = {exchangeRate} USDC
+                1 A1 = {exchangeRate} USDC
               </p>
 
               {tokenError && (
@@ -412,7 +412,7 @@ export const LandingSteps = ({
               <div className="topupDashboard_bottom-row topup_bottom-padding">
                 <p>Token Amount:</p>
                 <p>
-                  {tokenAmount} ATR = {tokenAmount * exchangeRate} USDC
+                  {tokenAmount} A1 = {tokenAmount * exchangeRate} USDC
                 </p>
               </div>
               <div className="topupDashboard_bottom-row">
@@ -426,7 +426,7 @@ export const LandingSteps = ({
               </h3>
               <Button
                 element="button"
-                label={coinbaseLoading ? "Loading..." : `Purchase ATR`}
+                label={coinbaseLoading ? "Loading..." : `Purchase A1`}
                 type="btn-primary"
                 size="btn-lg"
                 customStyles={{
@@ -462,7 +462,7 @@ export const LandingSteps = ({
                     <>
                       <HelpText
                         status={"warning"}
-                        title={`Your currently possess ${tokenBalance} ATR.`}
+                        title={`Your currently possess ${tokenBalance} A1.`}
                         color={"#6A6D76"}
                         icon={true}
                         customStyles={{ marginBottom: "5px" }}
@@ -563,7 +563,7 @@ export const LandingSteps = ({
                   {isAllowance && (
                     <HelpText
                       title={
-                        "Staking ATR is unapproved, please approve the ATR before staking"
+                        "Staking A1 is unapproved, please approve the A1 before staking"
                       }
                       status="error"
                       icon={true}
@@ -572,7 +572,7 @@ export const LandingSteps = ({
                   {tokenBalance < amountProgressValue && (
                     <HelpText
                       status={"error"}
-                      title={`You can not enable more than ${tokenBalance} ATR.`}
+                      title={`You can not enable more than ${tokenBalance} A1.`}
                       color={"#6A6D76"}
                       icon={true}
                       customStyles={{ marginBottom: "5px" }}

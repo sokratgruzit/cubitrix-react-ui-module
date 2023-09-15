@@ -51,7 +51,7 @@ const ConfirmPaymentPopup = ({
       <div className="confirm_payment_popup_body">
         <p>Your transaction {hash} has been placed successfully.</p>
         <p>
-          Please send {amount} USDC to the address below. The ATR balance will appear in
+          Please send {amount} USDC to the address below. The A1 balance will appear in
           your account only after transaction gets 3 confirmation and approved by our
           team.
         </p>

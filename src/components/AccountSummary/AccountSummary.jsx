@@ -16,7 +16,7 @@ export const AccountSummary = ({ data, stackContractInfo, label }) => {
                   minimumFractionDigits: 5,
                   maximumFractionDigits: 5,
                 })}{" "}
-                ATR
+                A1
               </p>
             </div>
           ))}

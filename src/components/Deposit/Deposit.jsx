@@ -84,7 +84,7 @@ export const Deposit = ({
           <div className="deposit-inputs-wrapper">
             <HelpText
               status={"warning"}
-              title={`You have ${tokenBalance} ATR in your wallet. `}
+              title={`You have ${tokenBalance} A1 in your wallet. `}
               color={"#FF0C46"}
             />
             <div className="deposit-inputs">

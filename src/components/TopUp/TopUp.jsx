@@ -55,7 +55,7 @@ export const TopUp = ({
 
   return (
     <div className="topup_main">
-      <p className="topup_title">1. Select the payment method and calculate ATR price</p>
+      <p className="topup_title">1. Select the payment method and calculate A1 price</p>
       <div className="topup_methodContainer">
         {methods.map((method) => (
           <div
@@ -70,13 +70,13 @@ export const TopUp = ({
           </div>
         ))}
       </div>
-      <p className="topup_title">2. Set amount of ATR you would like to purchase</p>
+      <p className="topup_title">2. Set amount of A1 you would like to purchase</p>
       <p className="topup_info">
         Enter the amount you would like to contribute in order to calculate the amount of
-        ATR you will receive. The calculator below helps to convert the required quantity
-        of ATR into the amount of your selected currency.
+        A1 you will receive. The calculator below helps to convert the required quantity
+        of A1 into the amount of your selected currency.
       </p>
-      <p>ATR Amount</p>
+      <p>A1 Amount</p>
       <div className="topupDashboard_inputContainer">
         <Input
           type={"default"}
@@ -89,15 +89,15 @@ export const TopUp = ({
           editable={true}
         />
         <div className="topupDashboard_inputOverlay">
-          <p className="topupDashboard_inputOverlay_text">ATR</p>
+          <p className="topupDashboard_inputOverlay_text">A1</p>
         </div>
       </div>
-      <p className="topupDashboard_info-exchangeRate">1 ATR = {exchangeRate} USDC</p>
+      <p className="topupDashboard_info-exchangeRate">1 A1 = {exchangeRate} USDC</p>
       {tokenError && <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />}
       <div className="topupDashboard_bottom-row topup_bottom-padding">
         <p>Token Amount:</p>
         <p>
-          {tokenAmount} ATR = {tokenAmount * exchangeRate} USDC
+          {tokenAmount} A1 = {tokenAmount * exchangeRate} USDC
         </p>
       </div>
       <div className="topupDashboard_bottom-row">
@@ -110,7 +110,7 @@ export const TopUp = ({
       </h3>
       <Button
         element="button"
-        label={`Purchase ATR`}
+        label={`Purchase A1`}
         type="btn-secondary"
         size="btn-lg"
         customStyles={{

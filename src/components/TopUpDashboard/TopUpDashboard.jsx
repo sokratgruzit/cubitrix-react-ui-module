@@ -63,7 +63,7 @@ export const TopUpDashboard = ({
       <h1>Purchase</h1>
       <div className="topupDashboard_title-container">
         <p className="topupDashboard_title">
-          1. Select the payment method and calculate ATR price
+          1. Select the payment method and calculate A1 price
         </p>
         <div className="topupDashboard_methodContainer">
           {methods.map((method) => (
@@ -83,12 +83,12 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            2. Set amount of ATR you would like to purchase
+            2. Set amount of A1 you would like to purchase
           </p>
           <p className="topupDashboard_info">
             Enter the amount you would like to contribute in order to calculate the amount
-            of ATR you will receive. The calculator below helps to convert the required
-            quantity of ATR into the amount of your selected currency.
+            of A1 you will receive. The calculator below helps to convert the required
+            quantity of A1 into the amount of your selected currency.
           </p>
           <div className="topupDashboard_inputContainer">
             <Input
@@ -102,11 +102,11 @@ export const TopUpDashboard = ({
               customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
             />
             <div className="topupDashboard_inputOverlay">
-              <p className="topupDashboard_inputOverlay_text">ATR</p>
+              <p className="topupDashboard_inputOverlay_text">A1</p>
             </div>
           </div>
 
-          <p className="topupDashboard_info-exchangeRate">1 ATR = {exchangeRate} USDC</p>
+          <p className="topupDashboard_info-exchangeRate">1 A1 = {exchangeRate} USDC</p>
           {tokenError && (
             <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
           )}
@@ -116,7 +116,7 @@ export const TopUpDashboard = ({
           <div className="topupDashboard_bottom-row">
             <p>Amount:</p>
             <p>
-              {tokenAmount} ATR = {tokenAmount * exchangeRate} USDC
+              {tokenAmount} A1 = {tokenAmount * exchangeRate} USDC
             </p>
           </div>
           <div className="topupDashboard_bottom-row">

@@ -136,7 +136,7 @@ export const Staking = ({
                 {[3].map((index) => (
                   <div className="td" key={index}>
                     <div className="mobile-ttl">Earn Reward</div>
-                    <span>ATR</span>
+                    <span>A1</span>
                   </div>
                 ))}
               </>
@@ -234,7 +234,7 @@ export const Staking = ({
           <Visual
             element={"table-header"}
             label={"Stake"}
-            description={"You can stake and then earn atar reward"}
+            description={"You can stake and then earn A1 reward"}
             fontSize={"font-20"}
             customStyles={{ border: "none", padding: "0" }}
           />

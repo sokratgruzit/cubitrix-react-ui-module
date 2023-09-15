@@ -178,7 +178,7 @@ export const Exchange = ({
                 <div className="exchange-rate-card">
                   <h4 className="font-14">Rate</h4>
                   <p className="font-14">
-                    1 {accountType === "ATAR" ? "ATR" : accountType.toUpperCase()} ={" "}
+                    1 {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} ={" "}
                     {ratedExchange
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}
@@ -189,7 +189,7 @@ export const Exchange = ({
                 <div className="exchange-rate-card">
                   <h4 className="font-14">Rate</h4>
                   <p className="font-14">
-                    1 {accountType === "ATAR" ? "ATR" : accountType.toUpperCase()} ={" "}
+                    1 {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} ={" "}
                     {ratedExchange
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}

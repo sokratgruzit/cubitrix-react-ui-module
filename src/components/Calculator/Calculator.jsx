@@ -92,7 +92,7 @@ export const Calculator = ({
           <HelpText
             status="warning"
             title={
-              "ATR tokens will be deducted from your ATR balance and a 2 ATR transaction fee will apply. If you reject the transaction, the ATR tokens will be available in your wallet where they are available for staking."
+              "A1 tokens will be deducted from your A1 balance and a 2 A1 transaction fee will apply. If you reject the transaction, the A1 tokens will be available in your wallet where they are available for staking."
             }
             fontSize={"font-12"}
             icon={true}
@@ -159,7 +159,7 @@ export const Calculator = ({
       />
       {isAllowance && (
         <HelpText
-          title={"Staking ATR is unapproved, please approve ATR before staking"}
+          title={"Staking A1 is unapproved, please approve A1 before staking"}
           status="info"
           color="#6A6D76"
           icon={true}
