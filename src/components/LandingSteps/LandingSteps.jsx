@@ -403,7 +403,7 @@ export const LandingSteps = ({
 
               <div></div>
               <p className="topupDashboard_info-exchangeRate">
-                1 A1 = {exchangeRate} USDC
+                1 A1 = {exchangeRate} USD
               </p>
 
               {tokenError && (
@@ -412,17 +412,17 @@ export const LandingSteps = ({
               <div className="topupDashboard_bottom-row topup_bottom-padding">
                 <p>Token Amount:</p>
                 <p>
-                  {tokenAmount} A1 = {tokenAmount * exchangeRate} USDC
+                  {tokenAmount} A1 = {tokenAmount * exchangeRate} USD
                 </p>
               </div>
               <div className="topupDashboard_bottom-row">
                 <p>Transaction Fee: </p>
-                <p> {tranasctionFee} USDC</p>
+                <p> {tranasctionFee} USD</p>
               </div>
               <h3 className="topupDashboard_bottom-result">
                 TOTAL:{" "}
                 {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
-                USDC
+                USD
               </h3>
               <Button
                 element="button"
