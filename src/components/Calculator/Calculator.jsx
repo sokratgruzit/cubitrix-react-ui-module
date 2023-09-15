@@ -185,7 +185,7 @@ export const Calculator = ({
                 : isAllowance
                 ? "Enable"
                 : "Stake"
-              : "Stake Balance"
+              : "Withdraw and Stake"
             : "Connect Wallet"
         }
         size={"btn-lg"}
