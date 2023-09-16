@@ -16,7 +16,7 @@ export const StakeCurrency = ({
   buttonLabel,
   accountBalance,
   accountBalanceSecond,
-  info,
+  stakingAPY,
   label,
   stakeLoading,
   durationOptions,
@@ -114,8 +114,17 @@ export const StakeCurrency = ({
                 ))}
               </div>
             </div>
-            {info && (
-              <HelpText title={info} status="warning" color="#6A6D76" icon={true} />
+            {stakingAPY ? (
+              <HelpText
+                title={`${
+                  stakingAPY[parseInt(selectedDuration.split(" ")[0], 10)]
+                }% APY On ${parseInt(selectedDuration.split(" ")[0], 10)} days.`}
+                status="warning"
+                color="#6A6D76"
+                icon={true}
+              />
+            ) : (
+              <HelpText title="No APY available" status="error" icon={true} />
             )}
           </div>
           <Button
