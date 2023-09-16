@@ -478,3 +478,30 @@ svg.hide {
     bottom: unset;
   }
 }
+@media only screen and (max-width: 767px) {
+  .referral-tree {
+    padding: 15px;
+  }
+  .referral-tree-btn-img {
+    height: 40px;
+    width: 40px;
+  }
+  .referral-tree-btn-img img {
+    height: 35px;
+    width: 35px;
+  }
+  .referral-tree-btn-hash span {
+    font-size: 12px;
+    max-width: 45px;
+  }
+  .referral-tree-btn-hash {
+    padding: 0px 6px;
+  }
+  .referral-tree-info {
+    width: 240px;
+    bottom: 85px;
+  }
+  .card .list-group-item {
+    font-size: 12px;
+  }
+}

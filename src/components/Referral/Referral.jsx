@@ -55,6 +55,7 @@ export const Referral = ({
   referralTreeMainAddressData,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
+  const [refItemsCount, setRefItemsCount] = useState(3);
   const [treeInfo, setTreeInfo] = useState(null);
   const [animateTree, setAnimateTree] = useState(false);
   const [activeTreeInfo, setActiveTreeInfo] = useState(null);
@@ -212,6 +213,7 @@ export const Referral = ({
   };
 
   let mobile = width <= 1300;
+
 
   let referralTreeTableDataBinaryBody;
   if (referralTableType == "binary") {
@@ -535,6 +537,13 @@ export const Referral = ({
       icon: false,
     },
   ];
+
+  useEffect(() => {
+    if(mobile) {
+      setRefItemsCount(2);
+    }
+  })
+
   return (
     <div className={`referral-main-wrap ${disabledAccount ? "disabled-page" : ""}`}>
       {disabledAccount && <DisabledPage />}
@@ -698,7 +707,7 @@ export const Referral = ({
                       {referralTreeData?.map((item, index) => {
                         return (
                           <>
-                            {index < 3 && (
+                            {index < refItemsCount && (
                               <div
                                 className="referral-tree-item-level"
                                 key={item + index}
@@ -862,8 +871,8 @@ export const Referral = ({
                                                   className="referral-tree-info"
                                                   style={
                                                     suItem.side == "left"
-                                                      ? { left: "120px" }
-                                                      : { right: "120px" }
+                                                      ? { left: mobile ? "0px" : "120px" }
+                                                      : { right: mobile ? "0px" : "120px" }
                                                   }
                                                 >
                                                   <InfoBox
