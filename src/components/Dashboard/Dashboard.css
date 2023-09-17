@@ -20,3 +20,17 @@
 .dashboard-total-referral-item p:first-child {
   color: rgba(255, 255, 255, 0.6);
 }
+@media only screen and (max-width: 1024px) {
+  .dashboard-total-referral-row {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .dashboard-total-referral-item {
+    width: 47%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .dashboard-total-referral-item {
+    flex-direction: column;
+  }
+}
