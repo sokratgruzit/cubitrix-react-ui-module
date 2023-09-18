@@ -96,7 +96,6 @@
 }
 
 .dashboard-sidebar-link.active:hover {
-  border-radius: 46px;
   opacity: 0.9;
   background: #c38c5c;
 }

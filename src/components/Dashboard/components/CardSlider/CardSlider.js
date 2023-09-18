@@ -53,11 +53,17 @@ export const CardSlider = ({
         item?.account_category !== "system" &&
         (item?.account_category === "main"
           ? extensions["dashboard"] === "true"
+          : item?.account_category === "trade"
+          ? extensions[`${item?.account_category}Admin`] === "true"
           : extensions[item?.account_category] === "true" &&
             extensions[`${item?.account_category}Admin`] === "true"),
     );
 
-    return data;
+    const sortedData = data?.sort((a, b) =>
+      a?.account_category === "main" ? -1 : b?.account_category === "main" ? 1 : 0,
+    );
+
+    return sortedData;
   }, [accounts, accountType, extensions]);
 
   // const accountsData = [
