@@ -676,7 +676,7 @@ export const LandingSteps = ({
             </div>
             <div className="LandingSteps__topUp-box">
               <Button
-                label={"Finish"}
+                label={finishLoading ? "Loading..." : "Finish"}
                 size={"btn-lg"}
                 type={"btn-primary"}
                 element={"button"}
