@@ -46,7 +46,7 @@ export const InnerExtensions = ({ extensionsCardsData, id }) => {
   return (
     <div className={"inner-extensions-wrapper"}>
       <main className="inner-extensions-wrapper-main">
-        <p>
+        <p onClick={() => navigate("/extensions")}>
           <svg
             width="20"
             height="20"
