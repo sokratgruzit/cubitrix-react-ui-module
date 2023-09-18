@@ -686,6 +686,7 @@ export const LandingSteps = ({
                   width: "100%",
                 }}
                 onClick={handleFinish}
+                disabled={finishLoading}
               />
             </div>
           </div>
