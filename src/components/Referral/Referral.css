@@ -504,4 +504,7 @@ svg.hide {
   .card .list-group-item {
     font-size: 12px;
   }
+  .referral-tree-info-main {
+    transform: translateX(40%);
+  }
 }

@@ -652,8 +652,8 @@ export const Referral = ({
                           >
                             {treeInfo !== null && (
                               <div
-                                className="referral-tree-info"
-                                style={{ right: "120px" }}
+                                className="referral-tree-info referral-tree-info-main"
+                                style={{ right: mobile ? "0" : "120px"}}
                               >
                                 <InfoBox
                                   type="reward-box"
