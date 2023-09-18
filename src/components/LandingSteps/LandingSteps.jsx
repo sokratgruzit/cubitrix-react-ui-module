@@ -56,6 +56,7 @@ export const LandingSteps = ({
   referralCodeChecked,
   checkReferralCodeState,
   amountError,
+  finishLoading,
   validEmailProviders,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
