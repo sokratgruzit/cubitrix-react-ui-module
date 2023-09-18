@@ -318,18 +318,30 @@ export const Referral = ({
           </div>
           <div className="table-mobile">
             <div className="table-mobile-content">
-              {/*<div className='td'>*/}
-              {/*  <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>*/}
-              {/*  <span>{item._id.referrral}</span>*/}
-              {/*</div>*/}
-              {/*<div className='td'>*/}
-              {/*  <div className='mobile-ttl'>{referralCodeTableHead[2].name}</div>*/}
-              {/*  {item._id.referral_module === 'uni' ? 'UNI LVL' : `VIP ${item._id.lvl}`}*/}
-              {/*</div>*/}
-              {/*<div className='td'>*/}
-              {/*  <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>*/}
-              {/*  <span>{item._id.percent}</span>*/}
-              {/*</div>*/}
+              <div className="td">
+                <div className="mobile-ttl">Member Name</div>
+                <span>
+                  {item.joinedAccountMetas.length > 0
+                    ? item.joinedAccountMetas[0].name
+                    : "No Name"}
+                </span>
+              </div>
+              <div className="td">
+                <div className="mobile-ttl">Total Staked</div>
+                <span>
+                  {item.joinedAccounts.length > 0 &&
+                  item.joinedAccounts[0].stakedTotal > 0
+                    ? item.joinedAccounts[0].stakedTotal?.toLocaleString("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })
+                    : 0}
+                </span>
+              </div>
+              <div className="td">
+                <div className="mobile-ttl">Date Joined</div>
+                <span>{item?.createdAt}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -465,7 +477,7 @@ export const Referral = ({
           <div className="table-mobile">
             <div className="table-mobile-content">
               <div className="td">
-                <div className="mobile-ttl">Name</div>
+                <div className="mobile-ttl">Member Name</div>
                 <span>
                   {item.joinedAccountMetas.length > 0
                     ? item.joinedAccountMetas[0].name

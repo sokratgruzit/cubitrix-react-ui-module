@@ -528,20 +528,14 @@ export const DashboardTable = ({
             <div className="table-mobile-content">
               <div className="td">
                 <div className="mobile-ttl">{tableHeader[1].name}</div>
-                {item?.tx_options?.referral}
-              </div>
-              <div className="td">
-                <div className="mobile-ttl">{tableHeader[2].name}</div>
                 {item?.tx_options?.referral_module === "uni"
                   ? "UNI LVL"
                   : `LVL ${item?.tx_options?.lvl}`}
               </div>
-              {width < 500 && (
-                <div className="td">
-                  <div className="mobile-ttl">{tableHeader[3].name}</div>
-                  <span>{item?.amount?.toFixed(2)}</span>
-                </div>
-              )}
+              <div className="td">
+                <div className="mobile-ttl">{tableHeader[2].name}</div>
+                <span>{item?.amount?.toFixed(2)}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -649,7 +643,16 @@ export const DashboardTable = ({
             </svg>
           </div>
           <div className="table-mobile">
-            <div className="table-mobile-content"></div>
+            <div className="table-mobile-content">
+              <div className="td">
+                <div className="mobile-ttl">Position</div>
+                <span>{item?.from}</span>
+              </div>
+              <div className="td">
+                <div className="mobile-ttl">Date</div>
+                <span>{item?.createdAt}</span>
+              </div>
+            </div>
           </div>
         </div>
       );
