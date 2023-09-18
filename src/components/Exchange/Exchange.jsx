@@ -111,7 +111,9 @@ export const Exchange = ({
                 >
                   <div className="exchange-account-titles">
                     {item?.svg}
-                    <p className="font-14">{item?.title}</p>
+                    <p className="font-14">
+                      {item?.title === "ATAR" ? "A1" : item?.title}
+                    </p>
                   </div>
                   <div className="exchange-account-values">
                     <p className="font-12">{item?.value}</p>

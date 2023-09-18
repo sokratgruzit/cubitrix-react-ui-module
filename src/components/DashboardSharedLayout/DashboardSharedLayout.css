@@ -197,7 +197,7 @@
     height: fit-content;
     padding: 0;
     padding: 5px 10px;
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
     z-index: 9;
   }
   .dashboard-sidebar-links {
@@ -205,9 +205,13 @@
   }
   .dashboard-sidebar-link {
     flex-direction: column;
-    padding: 10px;
+    padding: 5px;
     word-wrap: break-all;
     text-align: center;
+    min-width: auto;
+    font-size: 10px;
+    border-radius: 12px;
+    gap: 2px;
   }
   .dashboard-main-container {
     padding: 30px 20px 140px 30px;
@@ -224,12 +228,6 @@
   .dashboard-main-container {
     padding: 30px 20px 120px;
     border-radius: 0px;
-  }
-}
-
-@media (max-width: 400px) {
-  .dashboard-sidebar-link {
-    max-width: 110px;
   }
 }
 
