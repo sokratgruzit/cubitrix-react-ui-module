@@ -53,6 +53,8 @@ export const CardSlider = ({
         item?.account_category !== "system" &&
         (item?.account_category === "main"
           ? extensions["dashboard"] === "true"
+          : item?.account_category === "trade"
+          ? extensions[`${item?.account_category}Admin`] === "true"
           : extensions[item?.account_category] === "true" &&
             extensions[`${item?.account_category}Admin`] === "true"),
     );
