@@ -9,6 +9,7 @@ import { HelpText } from "../HelpText";
 import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
 import { HelpCard } from "../HelpCard";
 import { useValidation } from "../../hooks/useValidation";
+import { exchange } from "../../../../cubitrix-node-transactions-module/controllers/transactions_controller";
 
 export const LandingSteps = ({
   handleMetamaskConnect,
@@ -168,8 +169,8 @@ export const LandingSteps = ({
   const [showTerms, setShowTerms] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(walletAddress);
-    setCopyButtonText("Copied!"); // Change button text to "Copied!"
+    navigator.clipboard.writeText(exchangeDetails?.address);
+    setCopyButtonText("Copied!");
 
     setTimeout(() => {
       setCopyButtonText("Copy");
@@ -395,7 +396,7 @@ export const LandingSteps = ({
                         Send Amount: {tokenAmount} USDC
                       </p>
                       <div className="confirm_payment_popup_address">
-                        <p>{receivePaymentAddress}</p>
+                        <p>{exchangeDetails?.address}</p>
                         <button onClick={handleCopy} className="confirm_payment_copy">
                           {copyButtonText}
                         </button>
