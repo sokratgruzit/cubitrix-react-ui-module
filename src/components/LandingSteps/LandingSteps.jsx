@@ -58,14 +58,17 @@ export const LandingSteps = ({
   amountError,
   finishLoading,
   validEmailProviders,
+  exchangeDetails,
+  handleCancelPayment,
 }) => {
-  const [selectedMethod, setSelectedMethod] = useState("Coinbase");
+  const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [openPopup, setOpenPopup] = useState(false);
   const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
 
   const [tokenAmount, setTokenAmount] = useState(0);
   const [tokenError, setTokenError] = useState(null);
+  const [copyButtonText, setCopyButtonText] = useState("Copy"); // New state variable
 
   const handleInputChange = (event) => {
     let value = event.target.value;
@@ -164,9 +167,14 @@ export const LandingSteps = ({
   const [accpetedTerms, setAcceptedTerms] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
 
-  function getClosestLesser5kMultiple(tokenBalance) {
-    return Math.max(5000, Math.min(5000000, Math.floor(tokenBalance / 5000) * 5000));
-  }
+  const handleCopy = () => {
+    navigator.clipboard.writeText(walletAddress);
+    setCopyButtonText("Copied!"); // Change button text to "Copied!"
+
+    setTimeout(() => {
+      setCopyButtonText("Copy");
+    }, 3000);
+  };
 
   return (
     <div className="LandingSteps__container">
@@ -361,92 +369,154 @@ export const LandingSteps = ({
         {step === 3 && (
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title main_ttl">Top Up</div>
-            <div className="LandingSteps__topUp-box">
-              <p>Select the payment method and calculate A1 price</p>
-              <div className="LandingSteps__topUpOptions">
-                {methods.map((method) => (
-                  <div
-                    key={method.id}
-                    className={`topup_methodBox ${
-                      selectedMethod === method.id ? "topup_selected" : ""
-                    }`}
-                    onClick={() => handleMethodSelect(method.id)}
-                  >
-                    {method.title}
-                    <img src={method.logo} className="topup_method_logo" alt="" />
+            {exchangeDetails?.exchangeId ? (
+              <div className="confirm_payment_popup_container">
+                <div className="confirm_payment_popup_body">
+                  <p>Your transaction has been placed successfully.</p>
+                  <p>
+                    Please send {tokenAmount} USDT to the address below. The A1 balance
+                    will appear in your account after system approves it. This might take
+                    up to 1 minute.
+                  </p>
+                  <div className="confirm_payment_popup_content">
+                    <div className="confirm_payment_popup_qr">
+                      <div className="payment_qrcode">
+                        <img src={qrcode} alt=" " />
+                      </div>
+                    </div>
+                    <div className="confirm_payment_popup_info">
+                      <h3 className="confitm_payment_title">
+                        Payment to the following Wallet Address
+                      </h3>
+                      <p className="confirm_payment_popup_grayText">
+                        Transaction Fee: 1 USDT
+                      </p>
+                      <p className="confirm_payment_popup_grayText">
+                        Send Amount: {tokenAmount} USDC
+                      </p>
+                      <div className="confirm_payment_popup_address">
+                        <p>{receivePaymentAddress}</p>
+                        <button onClick={handleCopy} className="confirm_payment_copy">
+                          {copyButtonText}
+                        </button>
+                      </div>
+                      {/* <p className="confirm_payment_timer">
+                          {Math.floor(timeLeft / 60)}:{timeLeft % 60}
+                        </p> */}
+                    </div>
                   </div>
-                ))}
-              </div>
-              <HelpText
-                status={"error"}
-                title={`Your currently possess ${tokenBalance} A1. To stake you need to possess minimum of 100 A1. Maximu you cans take during registration is 500,000 A1.`}
-                color={"#6A6D76"}
-                icon={true}
-                customStyles={{ marginBottom: "5px" }}
-              />
-              <p>Set amount of A1 you would like to purchase</p>
-
-              <p className="LandingSteps__topUpLabel">Payment Amount</p>
-              <div className="topupDashboard_inputContainer">
-                <Input
-                  type={"default"}
-                  icon={false}
-                  inputType={"default"}
-                  placeholder={"Enter"}
-                  value={tokenAmount}
-                  onChange={handleTokenAmountChange}
-                  customStyles={{ width: "100%" }}
-                />
-                <div className="topupDashboard_inputOverlay">
-                  <p className="topupDashboard_inputOverlay_text">A1</p>
+                  <HelpText
+                    status={"warning"}
+                    title={
+                      "Please send inputed amount to the address above. Once system detects A1 in your wallet you will be on the next step."
+                    }
+                    icon={true}
+                    customStyles={{ marginTop: "10px" }}
+                  />
+                  <div className="confirm_payment_popup_buttons">
+                    <Button
+                      element="button"
+                      label={`Cancel`}
+                      type="btn-gray"
+                      size="btn-lg"
+                      customStyles={{
+                        width: "100%",
+                        margin: "0",
+                      }}
+                      onClick={() => handleCancelPayment()}
+                    />
+                  </div>
                 </div>
               </div>
+            ) : (
+              <div className="LandingSteps__topUp-box">
+                <p>Select the payment method and calculate A1 price</p>
+                <div className="LandingSteps__topUpOptions">
+                  {methods.map((method) => (
+                    <div
+                      key={method.id}
+                      className={`topup_steps_methodBox ${
+                        selectedMethod === method.id ? "topup_steps_selected" : ""
+                      }`}
+                      onClick={() => handleMethodSelect(method.id)}
+                    >
+                      {method.title}
+                      <img src={method.logo} className="topup_method_logo" alt="" />
+                      {method.svg}
+                    </div>
+                  ))}
+                </div>
+                <HelpText
+                  status={"error"}
+                  title={`Your currently possess ${tokenBalance} A1. To stake you need to possess minimum of 100 A1. Maximu you cans take during registration is 500,000 A1.`}
+                  color={"#6A6D76"}
+                  icon={true}
+                  customStyles={{ marginBottom: "5px" }}
+                />
+                <p>Set amount of A1 you would like to purchase</p>
 
-              <div></div>
-              <p className="topupDashboard_info-exchangeRate">
-                1 A1 = {exchangeRate} USD
-              </p>
+                <p className="LandingSteps__topUpLabel">Payment Amount</p>
+                <div className="topupDashboard_inputContainer">
+                  <Input
+                    type={"default"}
+                    icon={false}
+                    inputType={"default"}
+                    placeholder={"Enter"}
+                    value={tokenAmount}
+                    onChange={handleTokenAmountChange}
+                    customStyles={{ width: "100%" }}
+                  />
+                  <div className="topupDashboard_inputOverlay">
+                    <p className="topupDashboard_inputOverlay_text">A1</p>
+                  </div>
+                </div>
 
-              {tokenError && (
-                <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
-              )}
-              <div className="topupDashboard_bottom-row topup_bottom-padding">
-                <p>Token Amount:</p>
-                <p>
-                  {tokenAmount} A1 = {tokenAmount * exchangeRate} USD
+                <div></div>
+                <p className="topupDashboard_info-exchangeRate">
+                  1 A1 = {exchangeRate} USD
                 </p>
+
+                {tokenError && (
+                  <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
+                )}
+                <div className="topupDashboard_bottom-row topup_bottom-padding">
+                  <p>Token Amount:</p>
+                  <p>
+                    {tokenAmount} A1 = {tokenAmount * exchangeRate} USD
+                  </p>
+                </div>
+                <div className="topupDashboard_bottom-row">
+                  <p>Transaction Fee: </p>
+                  <p> {tranasctionFee} USD</p>
+                </div>
+                <h3 className="topupDashboard_bottom-result">
+                  TOTAL:{" "}
+                  {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
+                  USD
+                </h3>
+                <Button
+                  element="button"
+                  label={coinbaseLoading ? "Loading..." : `Purchase A1`}
+                  type="btn-primary"
+                  size="btn-lg"
+                  customStyles={{
+                    width: "100%",
+                    margin: "0",
+                  }}
+                  onClick={handlePurchase}
+                  disabled={coinbaseLoading}
+                />
+                <Button
+                  label={"Disconnect"}
+                  size={"btn-lg"}
+                  type={"btn-secondary"}
+                  arrow={"arrow-none"}
+                  element={"button"}
+                  onClick={disconnect}
+                  customStyles={{ margin: "0", width: "100%", marginTop: "20px" }}
+                />
               </div>
-              <div className="topupDashboard_bottom-row">
-                <p>Transaction Fee: </p>
-                <p> {tranasctionFee} USD</p>
-              </div>
-              <h3 className="topupDashboard_bottom-result">
-                TOTAL:{" "}
-                {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
-                USD
-              </h3>
-              <Button
-                element="button"
-                label={coinbaseLoading ? "Loading..." : `Purchase A1`}
-                type="btn-primary"
-                size="btn-lg"
-                customStyles={{
-                  width: "100%",
-                  margin: "0",
-                }}
-                onClick={handlePurchase}
-                disabled={coinbaseLoading}
-              />
-              <Button
-                label={"Disconnect"}
-                size={"btn-lg"}
-                type={"btn-secondary"}
-                arrow={"arrow-none"}
-                element={"button"}
-                onClick={disconnect}
-                customStyles={{ margin: "0", width: "100%", marginTop: "20px" }}
-              />
-            </div>
+            )}
           </div>
         )}
         {step === 4 && (

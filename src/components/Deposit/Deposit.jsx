@@ -30,7 +30,6 @@ export const Deposit = ({
         getBalance()
           .then((res) => {
             setTokenBalance(res);
-            console.log(res);
           })
           .catch((err) => {
             console.error(`Error fetching balance: ${err}`);
