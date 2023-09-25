@@ -483,7 +483,7 @@ export const LandingSteps = ({
                           ? "topup_steps_disabled"
                           : ""
                       } ${
-                        selectedMEthod === "USDT" && chain.id !== "ETH"
+                        selectedMethod === "USDT" && chain.id !== "ETH"
                           ? "topup_steps_disabled"
                           : ""
                       }
