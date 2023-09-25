@@ -104,8 +104,13 @@
 .LandingSteps__topUpOptions {
   display: flex;
   gap: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.topup_steps_disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .LandingSteps__topUpLabel {
@@ -317,9 +322,7 @@
   justify-content: center;
   cursor: pointer;
   width: fit-content;
-  padding: 10px 20px;
-  /* width: 100%; */
-  /* height: 180px; */
+  padding: 8px 15px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: #0e2225;
   border-radius: 32px;

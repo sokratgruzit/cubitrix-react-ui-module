@@ -9,7 +9,6 @@ import { HelpText } from "../HelpText";
 import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
 import { HelpCard } from "../HelpCard";
 import { useValidation } from "../../hooks/useValidation";
-import { exchange } from "../../../../cubitrix-node-transactions-module/controllers/transactions_controller";
 
 export const LandingSteps = ({
   handleMetamaskConnect,
@@ -61,8 +60,11 @@ export const LandingSteps = ({
   validEmailProviders,
   exchangeDetails,
   handleCancelPayment,
+  rpcs,
+  createChargeLoading,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
+  const [selectedChain, setSelectedChain] = useState("ETH");
   const [openPopup, setOpenPopup] = useState(false);
   const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
@@ -133,6 +135,7 @@ export const LandingSteps = ({
     setTokenError(null);
     handlePurchaseEvent(
       selectedMethod,
+      selectedChain,
       Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
     );
   };
@@ -147,6 +150,10 @@ export const LandingSteps = ({
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);
   };
+
+  function handleChainSelect(chain) {
+    setSelectedChain(chain);
+  }
 
   const handleNextStep = () => {
     if (step === 2) {
@@ -370,7 +377,13 @@ export const LandingSteps = ({
         {step === 3 && (
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title main_ttl">Top Up</div>
-            {exchangeDetails?.exchangeId ? (
+            {createChargeLoading ? (
+              <div>
+                <div className="table-loading-container">
+                  <div className="table-loading" />
+                </div>
+              </div>
+            ) : exchangeDetails?.exchangeId ? (
               <div className="confirm_payment_popup_container">
                 <div className="confirm_payment_popup_body">
                   <p>Your transaction has been placed successfully.</p>
@@ -412,26 +425,28 @@ export const LandingSteps = ({
                       "Please send inputed amount to the address above. Once system detects A1 in your wallet you will be on the next step."
                     }
                     icon={true}
-                    customStyles={{ marginTop: "10px" }}
+                    customStyles={{ marginTop: "15px" }}
                   />
-                  <div className="confirm_payment_popup_buttons">
-                    <Button
-                      element="button"
-                      label={`Cancel`}
-                      type="btn-gray"
-                      size="btn-lg"
-                      customStyles={{
-                        width: "100%",
-                        margin: "0",
-                      }}
-                      onClick={() => handleCancelPayment()}
-                    />
-                  </div>
+                  <Button
+                    element="button"
+                    label={`Cancel`}
+                    type="btn-gray"
+                    size="btn-lg"
+                    customStyles={{
+                      width: "100%",
+                      margin: "0",
+                      marginTop: "15px",
+                    }}
+                    onClick={() => handleCancelPayment()}
+                  />
                 </div>
               </div>
             ) : (
               <div className="LandingSteps__topUp-box">
-                <p>Select the payment method and calculate A1 price</p>
+                <p>
+                  Please choose the payment currency in which you intend to purchase A1
+                  tokens.
+                </p>
                 <div className="LandingSteps__topUpOptions">
                   {methods.map((method) => (
                     <div
@@ -439,11 +454,46 @@ export const LandingSteps = ({
                       className={`topup_steps_methodBox ${
                         selectedMethod === method.id ? "topup_steps_selected" : ""
                       }`}
-                      onClick={() => handleMethodSelect(method.id)}
+                      onClick={() => {
+                        if (method.id === "ETH") {
+                          setSelectedChain("ETH");
+                        }
+                        handleMethodSelect(method.id);
+                      }}
                     >
                       {method.title}
                       <img src={method.logo} className="topup_method_logo" alt="" />
                       {method.svg}
+                    </div>
+                  ))}
+                </div>
+                <p>
+                  Please choose a network chain through which you will transfer the
+                  selected currency.
+                </p>
+                <div className="LandingSteps__topUpOptions">
+                  {rpcs.map((chain) => (
+                    <div
+                      key={chain.id}
+                      className={`topup_steps_methodBox ${
+                        selectedChain === chain.id ? "topup_steps_selected" : ""
+                      }
+                      ${
+                        selectedMethod === "ETH" && chain.id !== "ETH"
+                          ? "topup_steps_disabled"
+                          : ""
+                      }
+                      `}
+                      onClick={() => {
+                        if (selectedMethod === "ETH") {
+                          return;
+                        }
+                        handleChainSelect(chain.id);
+                      }}
+                    >
+                      {chain.title}
+                      <img src={chain.logo} className="topup_method_logo" alt="" />
+                      {chain.svg}
                     </div>
                   ))}
                 </div>

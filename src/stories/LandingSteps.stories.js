@@ -37,18 +37,14 @@ stories.add("LandingSteps", () => {
       id: "USDT",
       title: "USDT",
       svg: (
-        <svg
-          width="34"
-          height="34"
-          viewBox="0 0 34 34"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg viewBox="0 0 2000 2000" width="34px" height="34px">
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M0.00012207 17.0001C0.00012207 7.61162 7.61174 0 17.0002 0C26.3897 0 34.0003 7.60958 34.0003 17.0001C34.0003 26.3906 26.3883 34.0002 17.0002 34.0002C7.61208 34.0002 0.00012207 26.3885 0.00012207 17.0001ZM14.9022 12.2063V14.7352L14.9008 14.7359C10.2088 14.9525 6.68161 15.8827 6.68161 16.9969C6.68161 18.1111 10.2088 19.0413 14.9008 19.2579V27.3591H19.0828V19.2586C23.7817 19.0413 27.3177 18.1104 27.3177 16.9952C27.3177 15.88 23.7833 14.9491 19.0828 14.7332V12.2063H24.8666V8.35303H9.11908V12.2063H14.9022ZM14.9008 18.5697V18.5718L14.9001 18.5701C10.7569 18.3855 7.66285 17.6613 7.66285 16.799C7.66285 15.9368 10.7555 15.2129 14.9001 15.0283V17.852C15.0191 17.8629 15.6675 17.9166 16.9571 17.9166C18.0309 17.9166 18.8088 17.8707 19.0808 17.852V15.0283C23.2332 15.2126 26.3334 15.9347 26.3334 16.8C26.3334 17.6653 23.2336 18.3885 19.0808 18.5725V18.5691C18.8132 18.583 18.054 18.6136 16.9748 18.6136C15.625 18.6136 15.0188 18.5772 14.9008 18.5697Z"
-            fill="white"
+            d="M1000,0c552.26,0,1000,447.74,1000,1000S1552.24,2000,1000,2000,0,1552.38,0,1000,447.68,0,1000,0"
+            fill="#53ae94"
+          />
+          <path
+            d="M1123.42,866.76V718H1463.6V491.34H537.28V718H877.5V866.64C601,879.34,393.1,934.1,393.1,999.7s208,120.36,484.4,133.14v476.5h246V1132.8c276-12.74,483.48-67.46,483.48-133s-207.48-120.26-483.48-133m0,225.64v-0.12c-6.94.44-42.6,2.58-122,2.58-63.48,0-108.14-1.8-123.88-2.62v0.2C633.34,1081.66,451,1039.12,451,988.22S633.36,894.84,877.62,884V1050.1c16,1.1,61.76,3.8,124.92,3.8,75.86,0,114-3.16,121-3.8V884c243.8,10.86,425.72,53.44,425.72,104.16s-182,93.32-425.72,104.18"
+            fill="#fff"
           />
         </svg>
       ),
@@ -56,10 +52,197 @@ stories.add("LandingSteps", () => {
     {
       id: "BNB",
       title: "BNB",
+      svg: (
+        <svg
+          version="1.1"
+          id="Layer_1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 2496 2496"
+          width="34px"
+          height="34px"
+          style={{ enableBackground: "new 0 0 2496 2496" }}
+        >
+          <g>
+            <path
+              style={{ fillRule: "evenodd", clipRule: "evenodd", fill: "#F0B90B" }}
+              d="M1248,0c689.3,0,1248,558.7,1248,1248s-558.7,1248-1248,1248   S0,1937.3,0,1248S558.7,0,1248,0L1248,0z"
+            />
+            <path
+              style={{ fill: "#FFFFFF" }}
+              d="M685.9,1248l0.9,330l280.4,165v193.2l-444.5-260.7v-524L685.9,1248L685.9,1248z M685.9,918v192.3   l-163.3-96.6V821.4l163.3-96.6l164.1,96.6L685.9,918L685.9,918z M1084.3,821.4l163.3-96.6l164.1,96.6L1247.6,918L1084.3,821.4   L1084.3,821.4z"
+            />
+            <path
+              style={{ fill: "#FFFFFF" }}
+              d="M803.9,1509.6v-193.2l163.3,96.6v192.3L803.9,1509.6L803.9,1509.6z M1084.3,1812.2l163.3,96.6   l164.1-96.6v192.3l-164.1,96.6l-163.3-96.6V1812.2L1084.3,1812.2z M1645.9,821.4l163.3-96.6l164.1,96.6v192.3l-164.1,96.6V918   L1645.9,821.4L1645.9,821.4L1645.9,821.4z M1809.2,1578l0.9-330l163.3-96.6v524l-444.5,260.7v-193.2L1809.2,1578L1809.2,1578   L1809.2,1578z"
+            />
+            <polygon
+              style={{ fill: "#FFFFFF" }}
+              points="1692.1,1509.6 1528.8,1605.3 1528.8,1413 1692.1,1316.4 1692.1,1509.6  "
+            />
+            <path
+              style={{ fill: "#FFFFFF" }}
+              d="M1692.1,986.4l0.9,193.2l-281.2,165v330.8l-163.3,95.7l-163.3-95.7v-330.8l-281.2-165V986.4   L968,889.8l279.5,165.8l281.2-165.8l164.1,96.6H1692.1L1692.1,986.4z M803.9,656.5l443.7-261.6l444.5,261.6l-163.3,96.6   l-281.2-165.8L967.2,753.1L803.9,656.5L803.9,656.5z"
+            />
+          </g>
+        </svg>
+      ),
     },
     {
       id: "ETH",
       title: "ETH",
+      svg: (
+        <svg
+          width="34px"
+          height="34px"
+          version="1.1"
+          shape-rendering="geometricPrecision"
+          text-rendering="geometricPrecision"
+          image-rendering="optimizeQuality"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          viewBox="0 0 784.37 1277.39"
+        >
+          <g id="Layer_x0020_1">
+            <metadata id="CorelCorpID_0Corel-Layer" />
+            <g id="_1421394342400">
+              <g>
+                <polygon
+                  fill="#343434"
+                  fill-rule="nonzero"
+                  points="392.07,0 383.5,29.11 383.5,873.74 392.07,882.29 784.13,650.54 "
+                />
+                <polygon
+                  fill="#8C8C8C"
+                  fill-rule="nonzero"
+                  points="392.07,0 -0,650.54 392.07,882.29 392.07,472.33 "
+                />
+                <polygon
+                  fill="#3C3C3B"
+                  fill-rule="nonzero"
+                  points="392.07,956.52 387.24,962.41 387.24,1263.28 392.07,1277.38 784.37,724.89 "
+                />
+                <polygon
+                  fill="#8C8C8C"
+                  fill-rule="nonzero"
+                  points="392.07,1277.38 392.07,956.52 -0,724.89 "
+                />
+                <polygon
+                  fill="#141414"
+                  fill-rule="nonzero"
+                  points="392.07,882.29 784.13,650.54 392.07,472.33 "
+                />
+                <polygon
+                  fill="#393939"
+                  fill-rule="nonzero"
+                  points="0,650.54 392.07,882.29 392.07,472.33 "
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+      ),
+    },
+  ];
+
+  const rpcs = [
+    {
+      id: "BSC",
+      title: "BSC",
+      svg: (
+        <svg
+          version="1.1"
+          id="Layer_1"
+          x="0px"
+          y="0px"
+          viewBox="0 0 2496 2496"
+          width="34px"
+          height="34px"
+          style={{ enableBackground: "new 0 0 2496 2496" }}
+        >
+          <g>
+            <path
+              style={{ fillRule: "evenodd", clipRule: "evenodd", fill: "#F0B90B" }}
+              d="M1248,0c689.3,0,1248,558.7,1248,1248s-558.7,1248-1248,1248   S0,1937.3,0,1248S558.7,0,1248,0L1248,0z"
+            />
+            <path
+              style={{ fill: "#FFFFFF" }}
+              d="M685.9,1248l0.9,330l280.4,165v193.2l-444.5-260.7v-524L685.9,1248L685.9,1248z M685.9,918v192.3   l-163.3-96.6V821.4l163.3-96.6l164.1,96.6L685.9,918L685.9,918z M1084.3,821.4l163.3-96.6l164.1,96.6L1247.6,918L1084.3,821.4   L1084.3,821.4z"
+            />
+            <path
+              style={{ fill: "#FFFFFF" }}
+              d="M803.9,1509.6v-193.2l163.3,96.6v192.3L803.9,1509.6L803.9,1509.6z M1084.3,1812.2l163.3,96.6   l164.1-96.6v192.3l-164.1,96.6l-163.3-96.6V1812.2L1084.3,1812.2z M1645.9,821.4l163.3-96.6l164.1,96.6v192.3l-164.1,96.6V918   L1645.9,821.4L1645.9,821.4L1645.9,821.4z M1809.2,1578l0.9-330l163.3-96.6v524l-444.5,260.7v-193.2L1809.2,1578L1809.2,1578   L1809.2,1578z"
+            />
+            <polygon
+              style={{ fill: "#FFFFFF" }}
+              points="1692.1,1509.6 1528.8,1605.3 1528.8,1413 1692.1,1316.4 1692.1,1509.6  "
+            />
+            <path
+              style={{ fill: "#FFFFFF" }}
+              d="M1692.1,986.4l0.9,193.2l-281.2,165v330.8l-163.3,95.7l-163.3-95.7v-330.8l-281.2-165V986.4   L968,889.8l279.5,165.8l281.2-165.8l164.1,96.6H1692.1L1692.1,986.4z M803.9,656.5l443.7-261.6l444.5,261.6l-163.3,96.6   l-281.2-165.8L967.2,753.1L803.9,656.5L803.9,656.5z"
+            />
+          </g>
+        </svg>
+      ),
+      rpc1: "https://bsc-dataseed.binance.org",
+      rpc2: "	https://binance.nodereal.io",
+    },
+    {
+      id: "ETH",
+      title: "ETH",
+      svg: (
+        <svg
+          width="34px"
+          height="34px"
+          version="1.1"
+          shape-rendering="geometricPrecision"
+          text-rendering="geometricPrecision"
+          image-rendering="optimizeQuality"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          viewBox="0 0 784.37 1277.39"
+        >
+          <g id="Layer_x0020_1">
+            <metadata id="CorelCorpID_0Corel-Layer" />
+            <g id="_1421394342400">
+              <g>
+                <polygon
+                  fill="#343434"
+                  fill-rule="nonzero"
+                  points="392.07,0 383.5,29.11 383.5,873.74 392.07,882.29 784.13,650.54 "
+                />
+                <polygon
+                  fill="#8C8C8C"
+                  fill-rule="nonzero"
+                  points="392.07,0 -0,650.54 392.07,882.29 392.07,472.33 "
+                />
+                <polygon
+                  fill="#3C3C3B"
+                  fill-rule="nonzero"
+                  points="392.07,956.52 387.24,962.41 387.24,1263.28 392.07,1277.38 784.37,724.89 "
+                />
+                <polygon
+                  fill="#8C8C8C"
+                  fill-rule="nonzero"
+                  points="392.07,1277.38 392.07,956.52 -0,724.89 "
+                />
+                <polygon
+                  fill="#141414"
+                  fill-rule="nonzero"
+                  points="392.07,882.29 784.13,650.54 392.07,472.33 "
+                />
+                <polygon
+                  fill="#393939"
+                  fill-rule="nonzero"
+                  points="0,650.54 392.07,882.29 392.07,472.33 "
+                />
+              </g>
+            </g>
+          </g>
+        </svg>
+      ),
+      rpc1: "https://eth.drpc.org",
+      rpc2: "https://eth.meowrpc.com",
     },
   ];
 
@@ -216,8 +399,12 @@ stories.add("LandingSteps", () => {
 
   const [exchangeDetails, setExchangeDetails] = useState({});
   const [createChargeLoading, setCreateChargeLoading] = useState(false);
-  async function handleCreateCharge(token, amount) {
-    console.log(token, amount);
+  async function handleCreateCharge(token, rpc, amount) {
+    console.log(
+      token,
+      rpcs?.find((item) => item.id === rpc),
+      amount,
+    );
 
     setExchangeDetails({ exchangeId: "123", address: "0x123" });
   }
@@ -392,6 +579,7 @@ stories.add("LandingSteps", () => {
             setStep={setStep}
             initialLoading={loading}
             methods={methods}
+            rpcs={rpcs}
             paymentTypes={paymentTypes}
             handleRegistration={handleRegistration}
             registrationState={registrationState}
@@ -407,7 +595,7 @@ stories.add("LandingSteps", () => {
             disconnect={() => console.log("ds")}
             exchangeRate={2}
             tranasctionFee={1}
-            handlePurchaseEvent={(e, sd) => handleCreateCharge(e, sd)}
+            handlePurchaseEvent={(a, b, c) => handleCreateCharge(a, b, c)}
             timeperiod={timeperiod}
             timeperiodDate={timeperiodDate}
             handleTimePeriod={handleTimePeriod}
@@ -421,6 +609,7 @@ stories.add("LandingSteps", () => {
             referralState={referralState}
             setReferralState={setReferralState}
             exchangeDetails={exchangeDetails}
+            createChargeLoading={createChargeLoading}
           />
         </div>
         <SideBar open={toggle}>
