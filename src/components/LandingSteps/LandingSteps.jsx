@@ -455,7 +455,7 @@ export const LandingSteps = ({
                         selectedMethod === method.id ? "topup_steps_selected" : ""
                       }`}
                       onClick={() => {
-                        if (method.id === "ETH") {
+                        if (method.id === "ETH" || method.id === "USDT") {
                           setSelectedChain("ETH");
                         }
                         handleMethodSelect(method.id);
@@ -482,10 +482,14 @@ export const LandingSteps = ({
                         selectedMethod === "ETH" && chain.id !== "ETH"
                           ? "topup_steps_disabled"
                           : ""
+                      } ${
+                        selectedMEthod === "USDT" && chain.id !== "ETH"
+                          ? "topup_steps_disabled"
+                          : ""
                       }
                       `}
                       onClick={() => {
-                        if (selectedMethod === "ETH") {
+                        if (selectedMethod === "ETH" || selectedMethod === "USDT") {
                           return;
                         }
                         handleChainSelect(chain.id);
