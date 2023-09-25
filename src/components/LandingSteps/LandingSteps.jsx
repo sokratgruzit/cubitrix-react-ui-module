@@ -137,8 +137,8 @@ export const LandingSteps = ({
     handlePurchaseEvent(
       selectedMethod,
       selectedChain,
-      Number(tokenAmount) * Number(exchangeRate) +
-        Number(tranasctionFee) / rates?.[selectedMethod?.toLowerCase()]?.usd,
+      (Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
+        rates?.[selectedMethod?.toLowerCase()]?.usd,
     );
   };
   let helpTexts = {
@@ -391,9 +391,9 @@ export const LandingSteps = ({
                   <p>Your transaction has been placed successfully.</p>
                   <p>
                     Please send{" "}
-                    {Number(tokenAmount) * Number(exchangeRate) +
-                      Number(tranasctionFee) /
-                        rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
+                    {(Number(tokenAmount) * Number(exchangeRate) +
+                      Number(tranasctionFee)) /
+                      rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
                     {selectedMethod} to the address below. The A1 balance will appear in
                     your account after system approves it. This might take up to 1 minute.
                   </p>
@@ -412,9 +412,9 @@ export const LandingSteps = ({
                       </p>
                       <p className="confirm_payment_popup_grayText">
                         Send Amount:{" "}
-                        {Number(tokenAmount) * Number(exchangeRate) +
-                          Number(tranasctionFee) /
-                            rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
+                        {(Number(tokenAmount) * Number(exchangeRate) +
+                          Number(tranasctionFee)) /
+                          rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
                         {selectedMethod}
                       </p>
                       <div className="confirm_payment_popup_address">
