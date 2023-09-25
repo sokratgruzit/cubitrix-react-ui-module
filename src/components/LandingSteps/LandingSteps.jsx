@@ -8,7 +8,6 @@ import PaymentPopup from "../TopUp/PaymentPopup";
 import { HelpText } from "../HelpText";
 import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
 import { HelpCard } from "../HelpCard";
-import { useValidation } from "../../hooks/useValidation";
 
 export const LandingSteps = ({
   handleMetamaskConnect,
@@ -139,6 +138,7 @@ export const LandingSteps = ({
       selectedChain,
       (Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
         rates?.[selectedMethod?.toLowerCase()]?.usd,
+      Number(tokenAmount) * Number(exchangeRate),
     );
   };
   let helpTexts = {
@@ -379,13 +379,7 @@ export const LandingSteps = ({
         {step === 3 && (
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title main_ttl">Top Up</div>
-            {createChargeLoading ? (
-              <div>
-                <div className="table-loading-container">
-                  <div className="table-loading" />
-                </div>
-              </div>
-            ) : exchangeDetails?.exchangeId ? (
+            {exchangeDetails?.exchangeId ? (
               <div className="confirm_payment_popup_container">
                 <div className="confirm_payment_popup_body">
                   <p>Your transaction has been placed successfully.</p>
@@ -560,7 +554,7 @@ export const LandingSteps = ({
                 </h3>
                 <Button
                   element="button"
-                  label={coinbaseLoading ? "Loading..." : `Purchase A1`}
+                  label={createChargeLoading ? "Loading..." : `Purchase A1`}
                   type="btn-primary"
                   size="btn-lg"
                   customStyles={{
@@ -568,7 +562,7 @@ export const LandingSteps = ({
                     margin: "0",
                   }}
                   onClick={handlePurchase}
-                  disabled={coinbaseLoading}
+                  disabled={createChargeLoading}
                 />
                 <Button
                   label={"Disconnect"}
