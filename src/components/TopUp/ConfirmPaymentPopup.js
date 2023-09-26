@@ -14,11 +14,11 @@ const ConfirmPaymentPopup = ({
   selectedMethod,
   handlePopUpClose,
   tokenAmount,
-  setOpenConfirmPaymentPopup,
   exchangeRate,
   tranasctionFee,
   rates,
   exchangeDetails,
+  setExhangeDetails,
 }) => {
   const [userWalletAddress, setUserWalletAddress] = useState("");
   const [timeLeft, setTimeLeft] = useState(10 * 60);
@@ -34,11 +34,11 @@ const ConfirmPaymentPopup = ({
     return () => clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    if (timeLeft <= 0) {
-      setOpenConfirmPaymentPopup(false);
-    }
-  }, [timeLeft, setOpenConfirmPaymentPopup]);
+  // useEffect(() => {
+  //   if (timeLeft <= 0) {
+  //     setOpenConfirmPaymentPopup(false);
+  //   }
+  // }, [timeLeft, setOpenConfirmPaymentPopup]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(walletAddress);

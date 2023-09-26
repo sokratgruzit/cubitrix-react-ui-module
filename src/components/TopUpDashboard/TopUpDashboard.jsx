@@ -19,14 +19,12 @@ export const TopUpDashboard = ({
   rates,
   exchangeDetails,
   createChargeLoading,
+  setExhangeDetails,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
   const [tokenAmount, setTokenAmount] = useState(0);
   const [tokenError, setTokenError] = useState(null);
-  const [openPopup, setOpenPopup] = useState(false);
-  const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
 
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);
@@ -188,7 +186,7 @@ export const TopUpDashboard = ({
             handlePopUpClose={() => setOpenPopup(false)}
           />
         )} */}
-        {openConfirmPaymentPopup && (
+        {exchangeDetails?.exchangeId && (
           <Popup
             popUpElement={
               <ConfirmPaymentPopup
@@ -199,14 +197,13 @@ export const TopUpDashboard = ({
                 handlePaymentConfirm={handlePaymentConfirm}
                 qrcode={qrcode}
                 selectedMethod={selectedMethod}
-                handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
                 tokenAmount={tokenAmount}
-                setOpenConfirmPaymentPopup={setOpenConfirmPaymentPopup}
+                setExhangeDetails={setExhangeDetails}
                 exchangeDetails={exchangeDetails}
               />
             }
             label={"Confirm Payment"}
-            handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
+            handlePopUpClose={() => setExhangeDetails(null)}
           />
         )}
       </div>
