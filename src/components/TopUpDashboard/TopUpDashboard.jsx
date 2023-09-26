@@ -8,30 +8,25 @@ import { Input } from "../Input";
 import { HelpText } from "../HelpText";
 
 export const TopUpDashboard = ({
-  address,
   handlePaymentConfirm,
   receivePaymentAddress,
   methods = [],
   qrcode,
-  handleCoindbasePayment,
   tranasctionFee,
-  paymentAmount,
-  paymentTypes,
   exchangeRate = 0,
   handlePurchaseEvent,
-  coinbaseLoading,
+  rpcs,
+  rates,
+  exchangeDetails,
+  createChargeLoading,
 }) => {
-  const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "USDC"]);
-  const [purchaseLimit, setPurchaseLimit] = useState(500000);
-  const [selectedMethod, setSelectedMethod] = useState("Coinbase");
+  const [selectedMethod, setSelectedMethod] = useState("USDT");
+  const [selectedChain, setSelectedChain] = useState("ETH");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
   const [tokenAmount, setTokenAmount] = useState(0);
   const [tokenError, setTokenError] = useState(null);
   const [openPopup, setOpenPopup] = useState(false);
   const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
-
-  const [selectedMethodPopup, setSelectedMethodPopup] = useState(null);
-  const [agreed, setAgreed] = useState(false);
 
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);
@@ -53,7 +48,10 @@ export const TopUpDashboard = ({
     setTokenError(null);
     handlePurchaseEvent(
       selectedMethod,
-      Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee),
+      selectedChain,
+      (Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
+        rates?.[selectedMethod?.toLowerCase()]?.usd,
+      Number(tokenAmount) * Number(exchangeRate),
     );
     // setOpenPopup(true);
   };
@@ -61,24 +59,56 @@ export const TopUpDashboard = ({
   return (
     <div className="topupDashboard_main">
       <h1>Purchase</h1>
-      <div className="topupDashboard_title-container">
-        <p className="topupDashboard_title">
-          1. Select the payment method and calculate A1 price
-        </p>
-        <div className="topupDashboard_methodContainer">
-          {methods.map((method) => (
-            <div
-              key={method.id}
-              className={`topupDashboard_methodBox ${
-                selectedMethod === method.id ? "topupDashboard_selected" : ""
-              }`}
-              onClick={() => handleMethodSelect(method.id)}
-            >
-              <img src={method.logo} className="topupDashboard_method_logo" alt="" />
-              {method.title}
-            </div>
-          ))}
-        </div>
+      <p>Please choose the payment currency in which you intend to purchase A1 tokens.</p>
+      <div className="LandingSteps__topUpOptions">
+        {methods.map((method) => (
+          <div
+            key={method.id}
+            className={`topup_steps_methodBox ${
+              selectedMethod === method.id ? "topup_steps_selected" : ""
+            }`}
+            onClick={() => {
+              if (method.id === "ETH" || method.id === "USDT") {
+                setSelectedChain("ETH");
+              }
+              handleMethodSelect(method.id);
+            }}
+          >
+            {method.title}
+            <img src={method.logo} className="topup_method_logo" alt="" />
+            {method.svg}
+          </div>
+        ))}
+      </div>
+      <p>
+        Please choose a network chain through which you will transfer the selected
+        currency.
+      </p>
+      <div className="LandingSteps__topUpOptions">
+        {rpcs.map((chain) => (
+          <div
+            key={chain.id}
+            className={`topup_steps_methodBox ${
+              selectedChain === chain.id ? "topup_steps_selected" : ""
+            } ${
+              selectedMethod === "ETH" && chain.id !== "ETH" ? "topup_steps_disabled" : ""
+            } ${
+              selectedMethod === "USDT" && chain.id !== "ETH"
+                ? "topup_steps_disabled"
+                : ""
+            }`}
+            onClick={() => {
+              if (selectedMethod === "ETH" || selectedMethod === "USDT") {
+                return;
+              }
+              handleChainSelect(chain.id);
+            }}
+          >
+            {chain.title}
+            <img src={chain.logo} className="topup_method_logo" alt="" />
+            {chain.svg}
+          </div>
+        ))}
       </div>
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
@@ -129,7 +159,7 @@ export const TopUpDashboard = ({
           </h3>
           <Button
             element="button"
-            label={coinbaseLoading ? "Loading..." : `Purchase`}
+            label={createChargeLoading ? "Loading..." : `Purchase`}
             type="btn-secondary"
             size="btn-lg"
             customStyles={{
@@ -137,10 +167,11 @@ export const TopUpDashboard = ({
               margin: "0",
             }}
             onClick={handlePurchase}
+            disabled={createChargeLoading}
           />
         </div>
-        {/* 
-        {openPopup && (
+
+        {/* {openPopup && (
           <Popup
             popUpElement={
               <PaymentPopup
@@ -151,18 +182,19 @@ export const TopUpDashboard = ({
                 setSelectedPaymentMethod={setSelectedPaymentMethod}
                 handleCoindbasePayment={handleCoindbasePayment}
                 tokenAmount={tokenAmount}
-                paymentTypes={paymentTypes}
               />
             }
             label={"Payment Process"}
             handlePopUpClose={() => setOpenPopup(false)}
           />
-        )}
+        )} */}
         {openConfirmPaymentPopup && (
           <Popup
             popUpElement={
               <ConfirmPaymentPopup
-                walletAddress={"0x123"}
+                exchangeRate={exchangeRate}
+                tranasctionFee={tranasctionFee}
+                rates={rates}
                 receivePaymentAddress={receivePaymentAddress}
                 handlePaymentConfirm={handlePaymentConfirm}
                 qrcode={qrcode}
@@ -170,12 +202,13 @@ export const TopUpDashboard = ({
                 handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
                 tokenAmount={tokenAmount}
                 setOpenConfirmPaymentPopup={setOpenConfirmPaymentPopup}
+                exchangeDetails={exchangeDetails}
               />
             }
             label={"Confirm Payment"}
             handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
           />
-        )} */}
+        )}
       </div>
     </div>
   );

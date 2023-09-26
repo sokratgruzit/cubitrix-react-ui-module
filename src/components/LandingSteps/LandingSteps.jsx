@@ -381,7 +381,7 @@ export const LandingSteps = ({
             <div className="LandingSteps__step__title main_ttl">Top Up</div>
             {exchangeDetails?.exchangeId ? (
               <div className="confirm_payment_popup_container">
-                <div className="confirm_payment_popup_body">
+                <div className="confirm_payment_popup_body-steps">
                   <p>Your transaction has been placed successfully.</p>
                   <p>
                     Please send{" "}
@@ -506,7 +506,10 @@ export const LandingSteps = ({
                 </div>
                 <HelpText
                   status={"error"}
-                  title={`Your currently possess ${tokenBalance} A1. To stake you need to possess minimum of 100 A1. Maximu you cans take during registration is 500,000 A1.`}
+                  // title={`Your currently possess ${tokenBalance} A1. To stake you need to possess minimum of 100 A1. Maximum you can stake during registration is 500,000 A1.`}
+                  title={`You currently hold ${tokenBalance} A1. To be eligible for staking, a minimum of 100 USD worth of A1 tokens is required, which amounts to ${
+                    exchangeRate * 100
+                  } A1. During the registration process, the maximum staking limit is set at 500,000 USD worth of A1 .`}
                   color={"#6A6D76"}
                   icon={true}
                   customStyles={{ marginBottom: "5px" }}
