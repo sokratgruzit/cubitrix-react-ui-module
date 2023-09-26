@@ -20,19 +20,18 @@ const ConfirmPaymentPopup = ({
   exchangeDetails,
   setExhangeDetails,
 }) => {
-  const [userWalletAddress, setUserWalletAddress] = useState("");
-  const [timeLeft, setTimeLeft] = useState(10 * 60);
-  const [startTime, setStartTime] = useState(null);
+  // const [timeLeft, setTimeLeft] = useState(10 * 60);
+  // const [startTime, setStartTime] = useState(null);
   const [copyButtonText, setCopyButtonText] = useState("Copy"); // New state variable
 
-  useEffect(() => {
-    setStartTime(new Date());
-    const timer = setInterval(() => {
-      setTimeLeft((timeLeft) => timeLeft - 1);
-    }, 1000);
+  // useEffect(() => {
+  //   setStartTime(new Date());
+  //   const timer = setInterval(() => {
+  //     setTimeLeft((timeLeft) => timeLeft - 1);
+  //   }, 1000);
 
-    return () => clearInterval(timer);
-  }, []);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   // useEffect(() => {
   //   if (timeLeft <= 0) {
@@ -104,7 +103,7 @@ const ConfirmPaymentPopup = ({
             margin: "0",
             marginTop: "15px",
           }}
-          onClick={() => handleCancelPayment()}
+          onClick={() => setExhangeDetails({})}
         />
       </div>
     </div>

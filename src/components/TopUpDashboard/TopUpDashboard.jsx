@@ -203,7 +203,7 @@ export const TopUpDashboard = ({
               />
             }
             label={"Confirm Payment"}
-            handlePopUpClose={() => setExhangeDetails(null)}
+            handlePopUpClose={() => setExhangeDetails({})}
           />
         )}
       </div>
