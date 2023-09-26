@@ -138,7 +138,7 @@ export const LandingSteps = ({
       selectedChain,
       (Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
         rates?.[selectedMethod?.toLowerCase()]?.usd,
-      Number(tokenAmount) * Number(exchangeRate),
+      Number(tokenAmount),
     );
   };
   let helpTexts = {

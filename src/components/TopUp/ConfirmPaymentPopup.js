@@ -39,10 +39,9 @@ const ConfirmPaymentPopup = ({
   // }, [timeLeft, setOpenConfirmPaymentPopup]);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(walletAddress);
+    navigator.clipboard.writeText(exchangeDetails?.address);
     setCopyButtonText("Copied!"); // Change button text to "Copied!"
 
-    // Change button text back to "Copy" after 3 seconds
     setTimeout(() => {
       setCopyButtonText("Copy");
     }, 3000);
