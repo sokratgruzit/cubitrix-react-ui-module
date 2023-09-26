@@ -74,12 +74,7 @@ export const LandingSteps = ({
   const [copyButtonText, setCopyButtonText] = useState("Copy"); // New state variable
 
   function countViaRate(amount) {
-    return Number(
-      (amount / exchangeRate)?.toLocaleString("en-US", {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2,
-      }),
-    );
+    return Number((amount / Number(exchangeRate))?.toFixed(2));
   }
 
   const handleInputChange = (event) => {

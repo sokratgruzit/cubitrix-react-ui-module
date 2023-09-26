@@ -593,7 +593,7 @@ stories.add("LandingSteps", () => {
             setFormData={setFormData}
             resendEmail={() => console.log("resend email")}
             disconnect={() => console.log("ds")}
-            exchangeRate={2}
+            exchangeRate={3}
             tranasctionFee={1}
             handlePurchaseEvent={(a, b, c) => handleCreateCharge(a, b, c)}
             timeperiod={timeperiod}
