@@ -73,6 +73,13 @@ export const LandingSteps = ({
   const [tokenError, setTokenError] = useState(null);
   const [copyButtonText, setCopyButtonText] = useState("Copy"); // New state variable
 
+  function countViaRate(amount) {
+    return (amount / exchangeRate)?.toLocaleString("en-US", {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
+  }
+
   const handleInputChange = (event) => {
     let value = event.target.value;
     let name = event.target.name;
@@ -500,7 +507,7 @@ export const LandingSteps = ({
                 <HelpText
                   status={"error"}
                   title={`You currently hold ${tokenBalance} A1. To be eligible for staking, a minimum of 100 USD worth of A1 tokens is required, which amounts to ${
-                    exchangeRate * 100
+                    100 / exchangeRate
                   } A1. During the registration process, the maximum staking limit is set at 500,000 USD worth of A1 .`}
                   color={"#6A6D76"}
                   icon={true}
@@ -605,21 +612,17 @@ export const LandingSteps = ({
                           transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
                           height: "44px",
                         }}
-                        min={5000 / exchangeRate}
-                        max={500000 / exchangeRate}
-                        step={5000 / exchangeRate}
+                        min={countViaRate(5000)}
+                        max={countViaRate(500000)}
+                        step={countViaRate(5000)}
                         label={"Amount"}
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
                         incriment={() =>
-                          setAmountProgressValue(
-                            amountProgressValue - 5000 / exchangeRate,
-                          )
+                          setAmountProgressValue(amountProgressValue - countViaRate(5000))
                         }
                         decriment={() =>
-                          setAmountProgressValue(
-                            amountProgressValue + 5000 / exchangeRate,
-                          )
+                          setAmountProgressValue(amountProgressValue + countViaRate(5000))
                         }
                       />
                       {amountError && (
@@ -634,10 +637,10 @@ export const LandingSteps = ({
                           <Input
                             type={"range"}
                             customStyles={{ width: "100%" }}
-                            min={100 / exchangeRate}
-                            max={500 / exchangeRate}
+                            min={countViaRate(100)}
+                            max={countViaRate(500)}
                             step={1}
-                            disabled={amountProgressValue > 500 / exchangeRate}
+                            disabled={amountProgressValue > countViaRate(500)}
                             value={amountProgressValue}
                             onChange={amountProgressOnchange}
                           />
@@ -646,10 +649,10 @@ export const LandingSteps = ({
                           <Input
                             type={"range"}
                             customStyles={{ width: "100%" }}
-                            min={5000 / exchangeRate}
-                            max={500000 / exchangeRate}
-                            step={5000 / exchangeRate}
-                            disabled={amountProgressValue < 5000 / exchangeRate}
+                            min={countViaRate(5000)}
+                            max={countViaRate(500000)}
+                            step={countViaRate(5000)}
+                            disabled={amountProgressValue < countViaRate(5000)}
                             value={amountProgressValue}
                             onChange={amountProgressOnchange}
                           />
@@ -708,7 +711,7 @@ export const LandingSteps = ({
                       customStyles={{ marginBottom: "5px" }}
                     />
                   )}
-                  {amountProgressValue > 500 / exchangeRate && !isAllowance && (
+                  {amountProgressValue > countViaRate(500) && !isAllowance && (
                     <div>
                       <Input
                         type={"default"}
@@ -771,7 +774,7 @@ export const LandingSteps = ({
                   disabled={
                     amountError !== "" ||
                     stakingLoading ||
-                    (amountProgressValue > 500 / exchangeRate &&
+                    (amountProgressValue > countViaRate(500) &&
                       !isAllowance &&
                       (!accpetedTerms ||
                         !referralCodeChecked ||
