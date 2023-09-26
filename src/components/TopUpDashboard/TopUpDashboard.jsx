@@ -19,7 +19,7 @@ export const TopUpDashboard = ({
   rates,
   exchangeDetails,
   createChargeLoading,
-  setExhangeDetails,
+  setExchangeDetails,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
@@ -198,12 +198,12 @@ export const TopUpDashboard = ({
                 qrcode={qrcode}
                 selectedMethod={selectedMethod}
                 tokenAmount={tokenAmount}
-                setExhangeDetails={setExhangeDetails}
+                setExchangeDetails={setExchangeDetails}
                 exchangeDetails={exchangeDetails}
               />
             }
             label={"Confirm Payment"}
-            handlePopUpClose={() => setExhangeDetails({})}
+            handlePopUpClose={() => setExchangeDetails({})}
           />
         )}
       </div>

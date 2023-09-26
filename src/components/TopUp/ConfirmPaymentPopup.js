@@ -12,13 +12,12 @@ const ConfirmPaymentPopup = ({
   handlePaymentConfirm,
   qrcode,
   selectedMethod,
-  handlePopUpClose,
   tokenAmount,
   exchangeRate,
   tranasctionFee,
   rates,
   exchangeDetails,
-  setExhangeDetails,
+  setExchangeDetails,
 }) => {
   // const [timeLeft, setTimeLeft] = useState(10 * 60);
   // const [startTime, setStartTime] = useState(null);
@@ -103,7 +102,7 @@ const ConfirmPaymentPopup = ({
             margin: "0",
             marginTop: "15px",
           }}
-          onClick={() => setExhangeDetails({})}
+          onClick={() => setExchangeDetails({})}
         />
       </div>
     </div>
