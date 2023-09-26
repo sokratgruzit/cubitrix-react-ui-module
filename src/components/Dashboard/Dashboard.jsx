@@ -30,6 +30,7 @@ export const Dashboard = ({
   stakedTotal,
   handleStake,
   referralTotal,
+  A1Price,
 }) => {
   let referralItem = {};
 
@@ -102,6 +103,15 @@ export const Dashboard = ({
         handleStake={handleStake}
       />
       <div className="dashboard-total-referral-row">
+        <div className="dashboard-total-referral-item">
+          <p>A1 price</p>
+          <p>
+            {A1Price?.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }) ?? 0}
+          </p>
+        </div>
         <div className="dashboard-total-referral-item">
           <p>Expected Bonus</p>
           <p>
