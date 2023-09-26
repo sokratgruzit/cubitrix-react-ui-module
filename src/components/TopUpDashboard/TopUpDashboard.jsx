@@ -30,6 +30,10 @@ export const TopUpDashboard = ({
     setSelectedMethod(method);
   };
 
+  function handleChainSelect(chain) {
+    setSelectedChain(chain);
+  }
+
   const handleTokenAmountChange = (event) => {
     const value = event.target.value;
     if (!isNaN(value) && value >= 0) {
@@ -51,7 +55,6 @@ export const TopUpDashboard = ({
         rates?.[selectedMethod?.toLowerCase()]?.usd,
       Number(tokenAmount) * Number(exchangeRate),
     );
-    // setOpenPopup(true);
   };
 
   return (
