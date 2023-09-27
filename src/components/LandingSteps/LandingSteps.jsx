@@ -183,6 +183,13 @@ export const LandingSteps = ({
     }, 3000);
   };
 
+  function getClosestLesserMultiple(tokenBalance, multiple, limit) {
+    return Math.max(
+      multiple,
+      Math.min(limit, Math.floor(tokenBalance / multiple) * multiple),
+    );
+  }
+
   return (
     <div className="LandingSteps__container">
       <div className="LandingSteps_main-body">
@@ -647,7 +654,11 @@ export const LandingSteps = ({
                             type={"range"}
                             customStyles={{ width: "100%" }}
                             min={countViaRate(5000)}
-                            max={countViaRate(500000)}
+                            max={getClosestLesserMultiple(
+                              Number(tokenAmount),
+                              countViaRate(5000),
+                              countViaRate(500000),
+                            )}
                             step={countViaRate(5000)}
                             disabled={amountProgressValue < countViaRate(5000)}
                             value={amountProgressValue}
