@@ -657,7 +657,7 @@ export const LandingSteps = ({
                             max={getClosestLesserMultiple(
                               Number(tokenAmount),
                               countViaRate(5000),
-                              countViaRate(500000),
+                              countViaRate(tokenAmount),
                             )}
                             step={countViaRate(5000)}
                             disabled={amountProgressValue < countViaRate(5000)}
