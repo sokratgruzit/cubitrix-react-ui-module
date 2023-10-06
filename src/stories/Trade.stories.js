@@ -7,12 +7,174 @@ import { Header } from "../components/Header";
 import "../assets/css/main-theme.css";
 import { useMobileWidth } from "../hooks/useMobileWidth";
 import Trade from "../components/Trade/Trade";
+import {useState} from "react";
 
 const stories = storiesOf("Trade", module);
 
 stories.add("Trade", () => {
+  const [tradeTypeForm, setTradeTypeForm] = useState(0);
+  const [myTradeType, setMyTradeType] = useState(0);
   const { width } = useMobileWidth();
-
+  const bottomSideElements = [
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    },
+    {
+      price: 123232345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: false
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    },
+    {
+      price: 123232345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: false
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    },
+    {
+      price: 123232345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: false
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: false
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: false
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: false
+    },
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    },
+    {
+      price: 992345.04,
+      amount: 0.03821,
+      time: '13:23:10',
+      rise: true
+    }
+  ]
+  const rightSideRedElements = [
+    {
+      price: 12345.04,
+      amount: 0.03821,
+      total: 1.1111,
+      percent: 10
+    },
+    {
+      price: 23456.04,
+      amount: 0.03821,
+      total: 2.33333,
+      percent: 20
+    },
+    {
+      price: 33456.04,
+      amount: 4.03821,
+      total: 3.33333,
+      percent: 30
+    },
+    {
+      price: 43456.04,
+      amount: 5.03821,
+      total: 4.33333,
+      percent: 10
+    },
+    {
+      price: 53456.04,
+      amount: 6.03821,
+      total: 6.33333,
+      percent: 90
+    },
+    {
+      price: 63456.04,
+      amount: 7.03821,
+      total: 8.33333,
+      percent: 60
+    },
+    {
+      price: 73456.04,
+      amount: 8.03821,
+      total: 9.33333,
+      percent: 30
+    },
+    {
+      price: 83456.04,
+      amount: 9.03821,
+      total: 10.33333,
+      percent: 100
+    },
+    {
+      price: 93456.04,
+      amount: 10.03821,
+      total: 12.33333,
+      percent: 46
+    },
+    {
+      price: 103456.04,
+      amount: 11.03821,
+      total: 13.33333,
+      percent: 10
+    },
+    {
+      price: 113456.04,
+      amount: 14.03821,
+      total: 16.33333,
+      percent: 100
+    },
+    {
+      price: 123456.04,
+      amount: 15.03821,
+      total: 17.33333,
+      percent: 90
+    }
+  ];
   const prices = [
     {
       title: "price",
@@ -28,6 +190,50 @@ stories.add("Trade", () => {
       title: "24h High",
       data: "0.000001 / 0.000001",
     },
+  ];
+
+  let tradeTypeFormTabs = [
+    {
+      title: 'Limit',
+      name:'limit',
+      onClick: () => setTradeTypeForm(0),
+    },
+    {
+      title: 'Market',
+      name: 'market',
+      onClick: () => setTradeTypeForm(1),
+    },
+    {
+      title: 'Stop-limit',
+      name: 'stop-limit',
+      onClick: () => setTradeTypeForm(2),
+      tabSelect: [
+        {
+          title: 'Stop-limit',
+          onClick: () => console.log('hi ')
+        },
+        {
+          title: 'Trailing-stop',
+          onClick: () => console.log('hi2')
+        },
+        {
+          title: 'OCO',
+          onClick: () => console.log('hi2')
+        }
+      ]
+    },
+  ];
+  let myTradeTypeTabs = [
+    {
+      title: 'Market Trade',
+      name:'market-trade',
+      onClick: () => setMyTradeType(0)
+    },
+    {
+      title: 'My Trade',
+      name: 'my-trade',
+      onClick: () => setMyTradeType(1)
+    }
   ];
 
   return (
@@ -172,7 +378,18 @@ stories.add("Trade", () => {
         }
         verified={false}
       />
-      <Trade prices={prices} />
+      <Trade
+          prices={prices}
+          rightSideRedElements={rightSideRedElements}
+          rightSideGreenElements={rightSideRedElements}
+          mainCurrency={'ETH'}
+          subCurrency={'USDT'}
+          tradeTypeFormTabs={tradeTypeFormTabs}
+          tradeTypeFormActive={tradeTypeForm}
+          myTradeTypeTabs={myTradeTypeTabs}
+          myTradeType={myTradeType}
+          bottomSideElements={bottomSideElements}
+      />
     </BrowserRouter>
   );
 });

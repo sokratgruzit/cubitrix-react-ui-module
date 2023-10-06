@@ -7,9 +7,10 @@
 
 .card-slider-navigation {
   display: flex;
-  overflow-x: auto;
+  /*overflow-x: auto;*/
   /* width: 100%; */
   /* justify-content: space-between;  */
+  padding: 0px 20px 0px 10px;
 }
 
 .card-slider-navigation_item-deposit {

@@ -101,6 +101,15 @@ export const Tabs = (props) => {
   if (props.type === "two-component-tabs") {
     tabs = (
       <div className={`${"two-component-tabs"}`} onClick={props.onClick}>
+          <div
+              onClick={() => {
+                  tabsHandler(2);
+              }}
+              className={`${"two-component-tab"}
+              ${toggle === 2 ? "active-two-component-tab bg-color" : ""}`}
+          >
+              Buy
+          </div>
         <div
           onClick={() => {
             tabsHandler(1);
@@ -110,21 +119,13 @@ export const Tabs = (props) => {
         >
           Sell
         </div>
-        <div
-          onClick={() => {
-            tabsHandler(2);
-          }}
-          className={`${"two-component-tab"}
-              ${toggle === 2 ? "active-two-component-tab bg-color" : ""}`}
-        >
-          Buy
-        </div>
+
       </div>
     );
   }
   if (props.type === "text-tabs") {
     tabs = (
-      <div className={`${"text-tabs"}`} onClick={props.onClick}>
+      <div className={`${"text-tabs"}`} style={props.customStyles} onClick={props.onClick}>
         <div
           onClick={() => {
             tabsHandler(1);
@@ -174,6 +175,39 @@ export const Tabs = (props) => {
         </div>
       </div>
     );
+      tabs = (
+          <div style={props.customStyles} className='text-tabs'>
+              {props.tabsData.map((item, index) => (
+                  <div
+                      key={index}
+                      onClick={() => {item.onClick()}}
+                      className={`text-tab ${index === props.activeTab ? 'active-text-tab' : ''}`}
+                  >
+                      {item.title}
+                      {item.tabSelect && (
+                          <svg
+                              className={`${"expend-i"} ${toggle === 3 ? "expend" : ""}`}
+                              width="12"
+                              height="7"
+                              viewBox="0 0 12 7"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                          >
+                              <path
+                                  d="M10.299 1.33337L6.47141 5.16101C6.01937 5.61305 5.27968 5.61305 4.82764 5.16101L1 1.33337"
+                                  stroke="#9C9DA3"
+                                  strokeWidth="1.5"
+                                  strokeMiterlimit="10"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                              />
+                          </svg>
+                      )}
+
+                  </div>
+              ))}
+          </div>
+      );
   }
   if (props.type === "button-variant") {
     tabs = (

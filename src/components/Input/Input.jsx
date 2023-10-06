@@ -210,7 +210,8 @@ export const Input = (props) => {
             <div className="input-group-frame">{props.inputFrame}</div>
           </div>
           {!props.btns ? (
-            <div className="input-form-frame">USD</div>
+            // <div className="input-form-frame">USD</div>
+              <></>
           ) : (
             <div className="input-form-frame-outer">
               {props.btns &&

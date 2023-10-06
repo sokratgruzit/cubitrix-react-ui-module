@@ -28,7 +28,17 @@ let data = [
   },
   {
     title: 'your tex3t',
-    onClick: () => console.log('hi3')
+    onClick: () => console.log('hi3'),
+    tabSelect: [
+        {
+            title: 'your text',
+            onClick: () => console.log('hi ')
+        },
+        {
+            title: 'your tex2t',
+            onClick: () => console.log('hi2')
+        }
+    ]
   },
 ];
 
@@ -43,7 +53,14 @@ stories.add("Tabs", () => {
 
       <Tabs type={"two-component-tabs"} />
 
-      <Tabs type={"text-tabs"} />
+      <Tabs
+          type={"text-tabs"}
+          customStyles={{marginTop: '18px'}}
+          tabsData={data}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          onTabClick={activeTabHandler}
+      />
 
       <Tabs type={"button-variant"} />
 

@@ -61,16 +61,16 @@
 .password-icon:hover .pass-icon path {
   stroke: #3d5afe;
 }
-.form-control {
-  width: 100%;
-  padding: 11.5px 16px 11.5px 16px;
-  background-color: transparent;
-  border: 1px solid #1f2330;
-  border-radius: 6px;
-  color: #fff;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  height: 44px;
-}
+/*.form-control {*/
+/*  width: 100%;*/
+/*  padding: 11.5px 16px 11.5px 16px;*/
+/*  background-color: transparent;*/
+/*  border: 1px solid #1f2330;*/
+/*  border-radius: 6px;*/
+/*  color: #fff;*/
+/*  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);*/
+/*  height: 44px;*/
+/*}*/
 .form-control:hover {
   border: 1px solid rgba(195, 140, 92, 0.6);
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
