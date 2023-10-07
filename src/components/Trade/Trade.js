@@ -461,6 +461,9 @@ const Trade = (
                 <input type="text"/>
 
               </div>
+              <div className="trade-search-slider">
+
+              </div>
               <div className="trade-bottom-side-ttl">
                 <div className="trade-right-th txt-left">
                   Price ({subCurrency})
