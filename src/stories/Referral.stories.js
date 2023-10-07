@@ -39,7 +39,81 @@ stories.add("Referral", () => {
     weeklyTotal: 0,
   });
   const { width } = useMobileWidth();
-
+  const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({});
+  const tableFilterData = {
+    search: {
+      options: [
+        {
+          name: "Account Owner",
+          value: "account_owner",
+        },
+        {
+          name: "Account Type Id",
+          value: "account_type_id",
+        },
+        {
+          name: "Address",
+          value: "address",
+        },
+      ],
+    },
+    selects: [
+      {
+        name: "Tranx Type",
+        value: "tx_type",
+        options: [
+          {
+            name: "Transaction",
+            value: "transaction",
+          },
+          {
+            name: "Hash",
+            value: "hash",
+          },
+        ],
+      },
+      {
+        name: "Date Within",
+        value: "createdAt",
+        options: [
+          {
+            name: "Transaction",
+            value: "transaction",
+          },
+          {
+            name: "Hash",
+            value: "hash",
+          },
+        ],
+      },
+      {
+        name: "Transaction Status",
+        value: "ts_status",
+        options: [
+          {
+            name: "Pending",
+            value: "pending",
+          },
+          {
+            name: "Cenceled",
+            value: "canceled",
+          },
+          {
+            name: "Approved",
+            value: "approved",
+          },
+          {
+            name: "Bonuses",
+            value: "bonuses",
+          },
+          {
+            name: "Claimed",
+            value: "claimed",
+          },
+        ],
+      },
+    ],
+  };
   const handleCreateCode = () => setCreateCodePopupActive(true);
   const handleLevelSystem = () => setLevelSystemPopupActive(true);
   let referralTreeActiveAddress = {
@@ -1602,6 +1676,8 @@ stories.add("Referral", () => {
         referralHistoryButtonsRight={tableType}
         totalBinaryMembers={5}
         referralHistoryTableType={"referral-history"}
+        tableFilterData={tableFilterData}
+        tableFilterOutcomingData={tableFilterOutcomingData}
       />
       {createCodePopupActive && (
         <Popup

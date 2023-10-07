@@ -19,6 +19,7 @@ import { ReferralCard } from "../ReferralCard";
 import { Footer } from "../Footer";
 import { InfoBox } from "../InfoBox";
 import { DisabledPage } from "../DisabledPage";
+import {FilterBox} from "../FilterBox";
 
 export const Referral = ({
   referralHistoryTableHead,
@@ -53,6 +54,9 @@ export const Referral = ({
   uniLVLData,
   disabledAccount,
   referralTreeMainAddressData,
+  tableFilterData,
+  setTableFilterOutcomingData,
+  tableSearchSelect
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [refItemsCount, setRefItemsCount] = useState(3);
@@ -215,6 +219,18 @@ export const Referral = ({
   let mobile = width <= 1300;
 
   let referralTreeTableDataBinaryBody;
+
+  let filter;
+  filter = (
+      <FilterBox
+          tableFilterData={tableFilterData}
+          setTableFilterOutcomingData={setTableFilterOutcomingData}
+          tableSearchSelect={tableSearchSelect}
+          tableHeader={2}
+          customStyles={{ marginBottom: "20px", marginTop: "20px" }}
+      />
+  );
+
   if (referralTableType == "binary") {
     referralTreeTableDataBinaryBody = referralTreeTableData?.map((item, index) => {
       return (
@@ -636,6 +652,9 @@ export const Referral = ({
                     centerButtons={true}
                     buttonsLeft={referralTreeBtnsLeft}
                   />
+                  {referralTableType == "uni" && (
+                      filter
+                  )}
                 </div>
               }
               tableData={

@@ -14,7 +14,7 @@ export const AdminPanel = (props) => {
       <FilterBox
         tableFilterData={props.tableFilterData}
         setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-        tableSearchSelect={props.tableSearchSelect}
+        tableSearchSelect={true}
         tableHeader={props.tableHeader}
         customStyles={{ marginBottom: "20px" }}
       />

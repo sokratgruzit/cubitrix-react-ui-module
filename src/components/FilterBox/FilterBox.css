@@ -29,7 +29,7 @@
 .list-item__active {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 6px;
-    color: #3D5AFE;
+    color: rgb(195, 140, 92);
 }
 
 .advanced-search-btn, .search-btn-active {
@@ -42,7 +42,7 @@
 }
 
 .search-btn-active {
-    background: #3D5AFE;
+    background: rgb(195, 140, 92);
     color: #FFFFFF;
 }
 
