@@ -2,6 +2,7 @@ import "./Button.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import {HelpText} from "../HelpText";
 
 export const Button = (props) => {
   const [expand, setExpand] = useState(null);
@@ -238,6 +239,30 @@ export const Button = (props) => {
         {props?.icon}
         <span>{props.label}</span>
       </div>
+    );
+  }
+  if (props.element === "help-button") {
+    element = (
+        <div
+            className={`btn-help ${props.size} ${props.type} ${
+                props.labelSetting
+            } ${props.disabled === true ? "disabled" : ""} ${props.className}`}
+            onClick={(e) => {
+              if (props.disabled) {
+                return;
+              }
+              props.onClick(e);
+            }}
+            style={props.customStyles}
+            disabled={props.disabled}
+        >
+          <HelpText
+              status={props.status}
+              title={props.label}
+              fontSize={'font-12'}
+              icon={props.icon}
+          />
+        </div>
     );
   }
   return element;

@@ -5,8 +5,10 @@ import { LoadingScreen } from "../LoadingScreen";
 
 import "./DashboardSharedLayout.css";
 import { DisabledPage } from "../DisabledPage";
+import {Button} from "../Button";
+import React from "react";
 
-export const DashboardSharedLayout = ({ links, children, loading, disabledAccount }) => {
+export const DashboardSharedLayout = ({ links, children, loading, disabledAccount, becomeEliteOnClick }) => {
   const { width } = useMobileWidth();
 
   return (
@@ -59,6 +61,16 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
                 </svg>
                 Help & Support
               </div>
+
+              <Button
+                  label={"Become Elite Member"}
+                  status={"warning"}
+                  element={"help-button"}
+                  icon={false}
+                  onClick={() => console.log('hi')}
+                  customStyles={{width: '100%'}}
+              />
+
               <div className="sidebar-footer-copyright font-14">
                 <Link to="#">&copy; 2023 All rights reserved</Link>
               </div>

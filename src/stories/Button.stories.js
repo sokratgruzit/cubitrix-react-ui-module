@@ -221,6 +221,13 @@ stories.add("Button", () => {
         element={"button"}
         onClick={() => setToggle((prevState) => !prevState)}
       />
+      <Button
+          label={"Become Elite Member"}
+          status={"warning"}
+          element={"help-button"}
+          icon={false}
+          onClick={() => setToggle((prevState) => !prevState)}
+      />
     </div>
   );
 });

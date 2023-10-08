@@ -497,3 +497,20 @@
 .btn-yellow:hover {
   opacity: 0.7;
 }
+.btn-help {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  border-radius: 41px;
+  border: 1px solid rgba(195, 140, 92, 1);
+  cursor: pointer;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  align-items: center;
+  height: 30px;
+}
+.btn-help:hover {
+  opacity: .8;
+}
+.btn-help > div > p {
+  text-align: center;
+}

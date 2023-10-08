@@ -11,6 +11,7 @@ import { Menu } from '../../assets/svgs';
 
 // styles
 import './Header.css';
+import {Button} from "../Button";
 
 export const Header = ({
   modules,
@@ -112,6 +113,16 @@ export const Header = ({
             loginWithEmail={loginWithEmail}
             loggedWithEmail={loggedWithEmail}
           />
+        )}
+        {mobile && (
+            <Button
+                label={"Become Elite Member"}
+                status={"warning"}
+                element={"help-button"}
+                icon={false}
+                onClick={() => console.log()}
+                customStyles={{width: '100%'}}
+            />
         )}
       </div>
     </div>
