@@ -6,59 +6,21 @@ import {Input} from "../Input";
 import {HelpText} from "../HelpText";
 import {Button} from "../Button";
 import {InfoBox} from "../InfoBox";
-import {CandlestickChart} from "../CandlestickChart";
 
-const accountsData = [
-  {
-    address: "0xc2e42a2338ad2ef5b247c4027b0b29ccfc672eb9",
-    balance: 688,
-    account_category: "spot",
-    assets: {
-      btc: 0,
-      eth: 0,
-      usdt: 0,
-      gold: 0,
-      platinum: 0,
-    },
-  },
-  {
-    address: "0xc2e42a2338ad2ef5b247c4027b0b29ccfc672eb9",
-    balance: 688,
-    account_category: "cross3x",
-    assets: {
-      btc: 0,
-      eth: 0,
-      usdt: 0,
-      gold: 0,
-      platinum: 0,
-    },
-  },
-  {
-    address: "0xc2e42a2338ad2ef5b247c4027b0b29ccfc672eb9",
-    balance: 688,
-    account_category: "cross10x",
-    assets: {
-      btc: 0,
-      eth: 0,
-      usdt: 0,
-      gold: 0,
-      platinum: 0,
-    },
-  },
-];
 
-const Trade = (
+
+export const TradeUi = (
     {
-      prices = [],
-      rightSideRedElements= [],
-      rightSideGreenElements= [],
-      bottomSideElements= [],
-      mainCurrency = '',
-      subCurrency = '',
-      tradeTypeFormTabs = [],
-      tradeTypeFormActive = '',
-      myTradeTypeTabs = [],
-      myTradeType = '',
+      prices,
+      rightSideRedElements,
+      rightSideGreenElements,
+      bottomSideElements,
+      mainCurrency,
+      subCurrency,
+      tradeTypeFormTabs,
+      tradeTypeFormActive ,
+      myTradeTypeTabs,
+      myTradeType,
     }) => {
   const [orderBookInfoArray, setOrderBookInfoArray] = useState([]);
   const [orderBookInfoStatus, setOrderBookInfoStatus] = useState(false);
@@ -69,6 +31,44 @@ const Trade = (
   const changeHandler = (i, e) => {
     console.log(i.target.value);
   };
+  const accountsData = [
+    {
+      address: "0xc2e42a2338ad2ef5b247c4027b0b29ccfc672eb9",
+      balance: 688,
+      account_category: "spot",
+      assets: {
+        btc: 0,
+        eth: 0,
+        usdt: 0,
+        gold: 0,
+        platinum: 0,
+      },
+    },
+    {
+      address: "0xc2e42a2338ad2ef5b247c4027b0b29ccfc672eb9",
+      balance: 688,
+      account_category: "cross3x",
+      assets: {
+        btc: 0,
+        eth: 0,
+        usdt: 0,
+        gold: 0,
+        platinum: 0,
+      },
+    },
+    {
+      address: "0xc2e42a2338ad2ef5b247c4027b0b29ccfc672eb9",
+      balance: 688,
+      account_category: "cross10x",
+      assets: {
+        btc: 0,
+        eth: 0,
+        usdt: 0,
+        gold: 0,
+        platinum: 0,
+      },
+    },
+  ];
   const handleRightElementHover = (event,index, color) => {
     setOrderBookInfoIndex(index);
     const element = event.target; // The element being hovered over
@@ -478,7 +478,7 @@ const Trade = (
               <div className="trade-middle-side-bottom-content scroll">
                 {bottomSideElements.map((item,index) => {
                   return(
-                      <div key={index} className={`trade-right-td-item trade-bottom-td-item ${item.rise ? 'green' : 'red'}`}>
+                      <div key={index + item} className={`trade-right-td-item trade-bottom-td-item ${item.rise ? 'green' : 'red'}`}>
                         <div className="trade-right-td txt-left">
                           {item.price}
                         </div>
@@ -512,7 +512,7 @@ const Trade = (
               <div className="trade-right-side-half-inner scroll">
                 {rightSideRedElements.map((item,index) => {
                   return(
-                      <div onMouseLeave={() => {setOrderBookInfoIndex(null),setOrderBookInfoStatus(false),setOrderBookInfoColor(null)}} onMouseEnter={(e) => {handleRightElementHover(e, index, 'red')}} className="trade-right-td-item red">
+                      <div key={item + index} onMouseLeave={() => {setOrderBookInfoIndex(null),setOrderBookInfoStatus(false),setOrderBookInfoColor(null)}} onMouseEnter={(e) => {handleRightElementHover(e, index, 'red')}} className="trade-right-td-item red">
                         <div className="trade-right-td-line" style={{width: `${item.percent}%`}}></div>
                         <div className={`trade-right-td-select ${orderBookInfoColor == 'red' && index >= orderBookInfoIndex ? 'active' : ''} ${orderBookInfoColor == 'red' && index == orderBookInfoIndex ? 'corner' : ''}`}></div>
                         <div className="trade-right-td txt-left">
@@ -541,7 +541,7 @@ const Trade = (
               <div className="trade-right-side-half-inner scroll">
                 {rightSideGreenElements.map((item,index) => {
                   return(
-                      <div onMouseLeave={() => {setOrderBookInfoIndex(null),setOrderBookInfoStatus(false),setOrderBookInfoColor(null)}} onMouseEnter={(e) => {handleRightElementHover(e, index, 'green')}} className="trade-right-td-item green">
+                      <div key={item + index} onMouseLeave={() => {setOrderBookInfoIndex(null),setOrderBookInfoStatus(false),setOrderBookInfoColor(null)}} onMouseEnter={(e) => {handleRightElementHover(e, index, 'green')}} className="trade-right-td-item green">
                         <div className="trade-right-td-line" style={{width: `${item.percent}%`}}></div>
                         <div className={`trade-right-td-select ${orderBookInfoColor == 'green' && index <= orderBookInfoIndex ? 'active' : ''} ${orderBookInfoColor == 'green' && index == orderBookInfoIndex ? 'corner' : ''}`}></div>
                         <div className="trade-right-td txt-left">
@@ -564,5 +564,3 @@ const Trade = (
     </div>
   );
 };
-
-export default Trade;

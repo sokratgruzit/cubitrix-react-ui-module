@@ -128,7 +128,15 @@ export const CardSlider = ({
     () => accountsData?.[0]?.account_category !== accountType,
     [accounts, accountType],
   );
-
+  function formatNumber(number) {
+    const parts = number.toString().split('.');
+    if (parts.length === 2) {
+      const decimalPart = parts[1].substring(0, 4); // Get up to four decimal places
+      return `${parts[0]}.${decimalPart}`;
+    } else {
+      return number.toString();
+    }
+  }
   return (
     <div className="card-slider-wrapper">
       <div className="card-slider-navigation-wrapper">
@@ -237,10 +245,15 @@ export const CardSlider = ({
                       accountType === "trade" ? "card-slider-trade_content" : ""
                     }`}
                   >
-                    {chosenAcc?.balance?.toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
+                    {/*{chosenAcc?.balance?.toLocaleString("en-US", {*/}
+                    {/*  minimumFractionDigits: 2,*/}
+                    {/*  maximumFractionDigits: 2,*/}
+                    {/*})}*/}
+                    {/*{(0.3444899).toLocaleString("en-US", {*/}
+                    {/*  minimumFractionDigits: 0,*/}
+                    {/*  maximumFractionDigits: 4,*/}
+                    {/*})}*/}
+                    { formatNumber(0.4343443100)}
                   </p>
                   {accountType === "trade" && (
                     <span

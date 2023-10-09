@@ -68,7 +68,7 @@ export const CoinInfoBar = ({
                       {item.value}
                     </span>
                   )}
-                  {item.name === '24h Trade' && `${item.value}`}
+                  {item.name === '24h TradeUi' && `${item.value}`}
                   {item.name === 'Next Funding' && `${item.value}`}
                 </p>
               </div>

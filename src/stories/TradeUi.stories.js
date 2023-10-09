@@ -6,12 +6,12 @@ import { Header } from "../components/Header";
 
 import "../assets/css/main-theme.css";
 import { useMobileWidth } from "../hooks/useMobileWidth";
-import Trade from "../components/Trade/Trade";
+import {TradeUi} from "../components/TradeUi/TradeUi";
 import {useState} from "react";
 
-const stories = storiesOf("Trade", module);
+const stories = storiesOf("TradeUi", module);
 
-stories.add("Trade", () => {
+stories.add("TradeUi", () => {
   const [tradeTypeForm, setTradeTypeForm] = useState(0);
   const [myTradeType, setMyTradeType] = useState(0);
   const { width } = useMobileWidth();
@@ -225,12 +225,12 @@ stories.add("Trade", () => {
   ];
   let myTradeTypeTabs = [
     {
-      title: 'Market Trade',
+      title: 'Market TradeUi',
       name:'market-trade',
       onClick: () => setMyTradeType(0)
     },
     {
-      title: 'My Trade',
+      title: 'My TradeUi',
       name: 'my-trade',
       onClick: () => setMyTradeType(1)
     }
@@ -378,7 +378,7 @@ stories.add("Trade", () => {
         }
         verified={false}
       />
-      <Trade
+      <TradeUi
           prices={prices}
           rightSideRedElements={rightSideRedElements}
           rightSideGreenElements={rightSideRedElements}

@@ -57,7 +57,7 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
       </div>
       <span className="btn-started-wrap fade-up">
         <Button
-          label={"Start Trade"}
+          label={"Start TradeUi"}
           size={"btn-lg"}
           type={"btn-secondary-white"}
           arrow={"arrow-none"}
