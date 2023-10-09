@@ -3,6 +3,7 @@ import { useState } from "react";
 
 export const Tabs = (props) => {
   const [toggle, setToggle] = useState(1);
+  const [select, setSelect] = useState(false);
 
   let tabsHandler = (num) => {
     setToggle(num);
@@ -124,84 +125,48 @@ export const Tabs = (props) => {
     );
   }
   if (props.type === "text-tabs") {
-    tabs = (
-      <div className={`${"text-tabs"}`} style={props.customStyles} onClick={props.onClick}>
-        <div
-          onClick={() => {
-            tabsHandler(1);
-          }}
-          className={`${"text-tab"}
-              ${toggle === 1 ? "active-text-tab" : ""}`}
-        >
-          Limit
-        </div>
-        <div
-          onClick={() => {
-            tabsHandler(2);
-          }}
-          className={`${"text-tab"}
-              ${toggle === 2 ? "active-text-tab" : ""}`}
-        >
-          Market
-        </div>
-        <div
-          onClick={() => {
-            tabsHandler(3);
-          }}
-          className={`${"text-tab"}
-              ${toggle === 3 ? "active-text-tab" : ""}`}
-        >
-          Stop
-          <svg
-            onClick={() => {
-              tabsHandler(3);
-            }}
-            className={`${"expend-i"} ${toggle === 3 ? "expend" : ""}`}
-            width="12"
-            height="7"
-            viewBox="0 0 12 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.299 1.33337L6.47141 5.16101C6.01937 5.61305 5.27968 5.61305 4.82764 5.16101L1 1.33337"
-              stroke="#9C9DA3"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-      </div>
-    );
       tabs = (
           <div style={props.customStyles} className='text-tabs'>
               {props.tabsData.map((item, index) => (
                   <div
-                      key={index}
-                      onClick={() => {item.onClick()}}
-                      className={`text-tab ${index === props.activeTab ? 'active-text-tab' : ''}`}
+                      key={index + item}
+                      onClick={() => {item.onClick && item.onClick(item.name)}}
+                      onMouseEnter={() => {!item.onClick && setSelect(item + index)}}
+                      onMouseLeave={() => {!item.onClick && setSelect(false)}}
+                      className={`text-tab ${((item.name === props.activeTab && !item.tabSelect) || (item?.tabSelect && item.tabSelect.some(obj => obj.name === props.activeTab))) ? 'active-text-tab' : ''} ${item + index == select ? 'active-select' : ''}`}
                   >
-                      {item.title}
+                      {item.tabSelect ? (item.tabSelect.some(obj => obj.name === props.activeTab) ? item.tabSelect.find(tab => tab.name === props.activeTab).title : item.tabSelect[0].title) : item.title}
                       {item.tabSelect && (
-                          <svg
-                              className={`${"expend-i"} ${toggle === 3 ? "expend" : ""}`}
-                              width="12"
-                              height="7"
-                              viewBox="0 0 12 7"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                          >
-                              <path
-                                  d="M10.299 1.33337L6.47141 5.16101C6.01937 5.61305 5.27968 5.61305 4.82764 5.16101L1 1.33337"
-                                  stroke="#9C9DA3"
-                                  strokeWidth="1.5"
-                                  strokeMiterlimit="10"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                              />
-                          </svg>
+                          <>
+                              <svg
+                                  className={`${"expend-i"} ${toggle === 3 ? "expend" : ""}`}
+                                  width="12"
+                                  height="7"
+                                  viewBox="0 0 12 7"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                              >
+                                  <path
+                                      d="M10.299 1.33337L6.47141 5.16101C6.01937 5.61305 5.27968 5.61305 4.82764 5.16101L1 1.33337"
+                                      stroke="#9C9DA3"
+                                      strokeWidth="1.5"
+                                      strokeMiterlimit="10"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                  />
+                              </svg>
+                              <div className="text-tab__tooltip">
+                                  {
+                                      item.tabSelect.map((option, index) => {
+                                          return (
+                                              <div className={`text-tab__tooltip-option ${option.name == props.activeTab ? 'active' : ''}`} key={index + option} onClick={() => {option.onClick(item.option)}}>
+                                                  {option.title}
+                                              </div>
+                                          )
+                                      })
+                                  }
+                              </div>
+                          </>
                       )}
 
                   </div>

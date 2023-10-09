@@ -6,6 +6,10 @@ import {Input} from "../Input";
 import {HelpText} from "../HelpText";
 import {Button} from "../Button";
 import {InfoBox} from "../InfoBox";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+import {Navigation} from "swiper";
 
 
 
@@ -21,6 +25,7 @@ export const TradeUi = (
       tradeTypeFormActive ,
       myTradeTypeTabs,
       myTradeType,
+      currencies
     }) => {
   const [orderBookInfoArray, setOrderBookInfoArray] = useState([]);
   const [orderBookInfoStatus, setOrderBookInfoStatus] = useState(false);
@@ -79,9 +84,7 @@ export const TradeUi = (
     let sumTotal = 0;
     let totalPrice = 0;
     if(color == 'red') {
-      console.log(rightSideRedElements.length)
       for(let i = rightSideRedElements.length; i > index; i--) {
-
         sumAmount = sumAmount + rightSideRedElements[i - 1].amount;
         sumTotal = sumTotal + rightSideRedElements[i - 1].total;
         totalPrice += rightSideRedElements[i - 1].price;
@@ -92,14 +95,10 @@ export const TradeUi = (
       setOrderBookInfoColor('red');
     }
     if(color == 'green') {
-      console.log(rightSideRedElements.length)
       for(let i = 0; i < index + 1; i++) {
-
         sumAmount = sumAmount + rightSideRedElements[i].amount;
         sumTotal = sumTotal + rightSideRedElements[i].total;
         totalPrice += rightSideRedElements[i].price;
-        console.log(rightSideRedElements[i])
-        console.log(index)
       }
       totalPrice = totalPrice / (index + 1);
       setOrderBookInfoColor('green');
@@ -462,17 +461,81 @@ export const TradeUi = (
 
               </div>
               <div className="trade-search-slider">
-
+                <div className="trade-search-slider_next-container">
+                  <div className="trade-search-slider_next">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g>
+                        <path d="M8.33337 5.70095L12.161 9.52859C12.613 9.98063 12.613 10.7203 12.161 11.1724L8.33337 15" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_153_924">
+                          <rect width="20" height="20" fill="white" transform="translate(0 20) rotate(-90)"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div className="trade-search-slider_btn">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path opacity="0.6" d="M13.9018 5.18508C13.7825 4.7927 13.5441 4.45041 13.2218 4.20883C12.8996 3.96724 12.5107 3.83919 12.1125 3.84361H9.56299L8.78938 1.35111C8.66763 0.958774 8.4284 0.616511 8.10618 0.373681C7.78396 0.13085 7.39541 0 6.99655 0C6.59768 0 6.20913 0.13085 5.88691 0.373681C5.56469 0.616511 5.32546 0.958774 5.20371 1.35111L4.42952 3.84361H1.88C1.48313 3.8442 1.09658 3.97431 0.775582 4.21538C0.45458 4.45645 0.215539 4.79613 0.0926026 5.18591C-0.0303341 5.57569 -0.0308783 5.99564 0.091048 6.38576C0.212974 6.77588 0.451134 7.11622 0.77151 7.35818L2.8473 8.92503L2.05852 11.4483C1.93099 11.8395 1.92929 12.2629 2.05366 12.6553C2.17804 13.0476 2.42183 13.388 2.7487 13.6256C3.07008 13.8707 3.45953 14.002 3.85903 14C4.25853 13.9979 4.64669 13.8626 4.96568 13.6141L6.99596 12.0702L9.028 13.6129C9.34883 13.8568 9.73626 13.9892 10.1346 13.9912C10.5329 13.9932 10.9216 13.8647 11.2447 13.6241C11.5678 13.3835 11.8087 13.0433 11.9328 12.6523C12.0569 12.2613 12.0577 11.8397 11.9352 11.4483L11.1464 8.92503L13.2233 7.35818C13.5474 7.11926 13.7883 6.77892 13.9105 6.38754C14.0327 5.99616 14.0297 5.57453 13.9018 5.18508ZM12.5349 6.38492L10.1172 8.2109C10.018 8.28569 9.94423 8.39091 9.90631 8.51155C9.86839 8.6322 9.8683 8.76213 9.90603 8.88284L10.8249 11.8177C10.8714 11.9665 10.871 12.1268 10.8238 12.2754C10.7765 12.424 10.6849 12.5533 10.562 12.6447C10.4392 12.7361 10.2914 12.785 10.14 12.7842C9.98857 12.7834 9.8413 12.733 9.71934 12.6403L7.34193 10.8324C7.24179 10.7564 7.12079 10.7154 6.99655 10.7154C6.8723 10.7154 6.7513 10.7564 6.65116 10.8324L4.27375 12.6403C4.15186 12.7342 4.00417 12.7856 3.85209 12.7871C3.70001 12.7885 3.55145 12.7399 3.42793 12.6482C3.30441 12.5565 3.21237 12.4266 3.16514 12.2773C3.11791 12.128 3.11795 11.967 3.16526 11.8177L4.08706 8.88284C4.12493 8.76205 4.1249 8.63199 4.08698 8.51122C4.04905 8.39044 3.97516 8.28513 3.87586 8.2103L1.45819 6.38492C1.33643 6.29284 1.24596 6.16336 1.1997 6.01499C1.15344 5.86662 1.15376 5.70694 1.2006 5.55877C1.24745 5.41059 1.33843 5.2815 1.46055 5.18993C1.58267 5.09836 1.72968 5.04899 1.88058 5.04888H4.856C4.97951 5.04888 5.09984 5.00838 5.19966 4.93322C5.29947 4.85806 5.37361 4.75212 5.41141 4.63065L6.3157 1.71993C6.36212 1.57095 6.4531 1.44102 6.57555 1.34885C6.69801 1.25669 6.84561 1.20703 6.99713 1.20703C7.14864 1.20703 7.29625 1.25669 7.4187 1.34885C7.54115 1.44102 7.63214 1.57095 7.67856 1.71993L8.58285 4.63065C8.62065 4.75212 8.69479 4.85806 8.7946 4.93322C8.89441 5.00838 9.01474 5.04888 9.13826 5.04888H12.1137C12.2646 5.04899 12.4116 5.09836 12.5337 5.18993C12.6558 5.2815 12.7468 5.41059 12.7937 5.55877C12.8405 5.70694 12.8408 5.86662 12.7946 6.01499C12.7483 6.16336 12.6578 6.29284 12.5361 6.38492H12.5349Z" fill="white"/>
+                    </svg>
+                  </div>
+                </div>
+                <div className="trade-search-slider_prev">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                      <path d="M8.33337 5.70095L12.161 9.52859C12.613 9.98063 12.613 10.7203 12.161 11.1724L8.33337 15" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_153_924">
+                        <rect width="20" height="20" fill="white" transform="translate(0 20) rotate(-90)"/>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <div className="trade-search-slider-in">
+                  <Swiper
+                      slidesPerView={'auto'}
+                      spaceBetween={3}
+                      className='mySwiper'
+                      freeMode={true}
+                      mousewheel={true}
+                      modules={[Navigation]}
+                      navigation={{
+                        prevEl: ".trade-search-slider_next",
+                        nextEl: ".trade-search-slider_prev",
+                      }}
+                  >
+                    {currencies.map((item, index) => (
+                        <SwiperSlide key={index}>
+                          <div className="trade-search-slider_btn">
+                            {item.name}
+                          </div>
+                        </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
               </div>
               <div className="trade-bottom-side-ttl">
                 <div className="trade-right-th txt-left">
-                  Price ({subCurrency})
+                  Pair
+                  <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.666626 3.66634L3.99996 0.333008L7.33329 3.66634H0.666626Z" fill="white"/>
+                    <path d="M0.666626 6.33268L3.99996 9.66602L7.33329 6.33268H0.666626Z" fill="white"/>
+                  </svg>
                 </div>
                 <div className="trade-right-th">
-                  Amount ({mainCurrency})
+                  Price
+                  <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.666626 3.66634L3.99996 0.333008L7.33329 3.66634H0.666626Z" fill="white"/>
+                    <path d="M0.666626 6.33268L3.99996 9.66602L7.33329 6.33268H0.666626Z" fill="white"/>
+                  </svg>
                 </div>
                 <div className="trade-right-th">
-                  Time
+                  Change
+                  <svg width="8" height="10" viewBox="0 0 8 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.666626 3.66634L3.99996 0.333008L7.33329 3.66634H0.666626Z" fill="white"/>
+                    <path d="M0.666626 6.33268L3.99996 9.66602L7.33329 6.33268H0.666626Z" fill="white"/>
+                  </svg>
                 </div>
               </div>
               <div className="trade-middle-side-bottom-content scroll">

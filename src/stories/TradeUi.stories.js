@@ -12,9 +12,56 @@ import {useState} from "react";
 const stories = storiesOf("TradeUi", module);
 
 stories.add("TradeUi", () => {
-  const [tradeTypeForm, setTradeTypeForm] = useState(0);
-  const [myTradeType, setMyTradeType] = useState(0);
+  const [tradeTypeForm, setTradeTypeForm] = useState('limit');
+  const [myTradeType, setMyTradeType] = useState('market-trade');
   const { width } = useMobileWidth();
+
+  const currencies = [
+    {
+      name: 'USDT'
+    },
+    {
+      name: 'FDUSD'
+    },
+    {
+      name: 'TUSD'
+    },
+    {
+      name: 'BUSD'
+    },
+    {
+      name: 'BNB'
+    },
+    {
+      name: 'ETH'
+    },
+    {
+      name: 'GOLD'
+    }
+  ];
+  const currenciesPrices = [
+    {
+      name: 'USDT'
+    },
+    {
+      name: 'FDUSD'
+    },
+    {
+      name: 'TUSD'
+    },
+    {
+      name: 'BUSD'
+    },
+    {
+      name: 'BNB'
+    },
+    {
+      name: 'ETH'
+    },
+    {
+      name: 'GOLD'
+    }
+  ]
   const bottomSideElements = [
     {
       price: 12345.04,
@@ -196,43 +243,45 @@ stories.add("TradeUi", () => {
     {
       title: 'Limit',
       name:'limit',
-      onClick: () => setTradeTypeForm(0),
+      onClick: (name) => setTradeTypeForm(name),
     },
     {
       title: 'Market',
       name: 'market',
-      onClick: () => setTradeTypeForm(1),
+      onClick: (name) => setTradeTypeForm(name),
     },
     {
-      title: 'Stop-limit',
       name: 'stop-limit',
-      onClick: () => setTradeTypeForm(2),
+      onClick: false,
       tabSelect: [
         {
           title: 'Stop-limit',
-          onClick: () => console.log('hi ')
+          name: 'stop-limit',
+          onClick: () => setTradeTypeForm('stop-limit')
         },
         {
           title: 'Trailing-stop',
-          onClick: () => console.log('hi2')
+          name: 'trailing-stop',
+          onClick: (name) => setTradeTypeForm('trailing-stop')
         },
         {
           title: 'OCO',
-          onClick: () => console.log('hi2')
+          name: 'oco',
+          onClick: (name) => setTradeTypeForm('oco')
         }
       ]
     },
   ];
   let myTradeTypeTabs = [
     {
-      title: 'Market TradeUi',
+      title: 'Market Trade',
       name:'market-trade',
-      onClick: () => setMyTradeType(0)
+      onClick: (name) => setMyTradeType(name)
     },
     {
-      title: 'My TradeUi',
+      title: 'My Trade',
       name: 'my-trade',
-      onClick: () => setMyTradeType(1)
+      onClick: (name) => setMyTradeType(name)
     }
   ];
 
@@ -380,6 +429,7 @@ stories.add("TradeUi", () => {
       />
       <TradeUi
           prices={prices}
+          currencies={currencies}
           rightSideRedElements={rightSideRedElements}
           rightSideGreenElements={rightSideRedElements}
           mainCurrency={'ETH'}
