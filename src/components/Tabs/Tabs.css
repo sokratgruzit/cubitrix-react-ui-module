@@ -99,19 +99,21 @@ svg path {
   display: flex;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   cursor: pointer;
   width: 100%;
   color: #9c9da3;
   border-bottom: 1px solid #3d5afe00;
   height: inherit;
+  position: relative;
 }
 .active-text-tab {
   color: #fff;
   border-bottom: 1px solid #FFFFFF;
 }
 .text-tab:hover {
-  opacity: 0.7;
+  color: rgba(255,255,255,.7);
 }
 .expend-i path {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
@@ -159,4 +161,32 @@ svg path {
 .active-variant-btn {
   background-color: #fff;
   color: #3d5afe;
+}
+.text-tab__tooltip {
+  position: absolute;
+  top: calc(100% + 2px);
+  min-width: 100%;
+  right: 0px;
+  background-color: #10282b;
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  transform: translateY(10px);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  opacity: 0;
+  pointer-events: none;
+}
+.active-select .text-tab__tooltip {
+  transform: translateY(0px);
+  opacity: 1;
+  pointer-events: all;
+}
+.text-tab__tooltip-option {
+  white-space: nowrap;
+  font-size: 12px;
+  color: rgba(255,255,255,.6);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+}
+.text-tab__tooltip-option:hover,.text-tab__tooltip-option.active {
+  color: rgba(195, 140, 92, 1);
 }
