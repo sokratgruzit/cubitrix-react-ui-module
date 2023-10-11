@@ -31,6 +31,7 @@ export const Calculator = ({
   isActive,
   handleWalletSubmit,
   hasRerferralActive,
+  rates,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -40,6 +41,9 @@ export const Calculator = ({
     }
     handleDepositAmount(e.target.value);
   };
+  function countViaRate(amount) {
+    return Number((amount / Number(rates?.["atr"]?.usd))?.toFixed(2));
+  }
 
   let helpTexts = useMemo(() => {
     if (hasRerferralActive) {
@@ -132,12 +136,12 @@ export const Calculator = ({
             )
           }
         />
-        <span
-          className={"font-12"}
-          onClick={stakeType === "Wallet" ? handleMaxClick : handleMaxClickBallance}
-        >
-          MAX
-        </span>
+        <span className={"font-12"}>$</span>
+      </div>
+      <div className="exchange-rate-card">
+        <p className="font-14">{`${depositAmount} $ = ${countViaRate(
+          depositAmount,
+        )} A1`}</p>
       </div>
       <div className="calculator__buttons">
         {durationOptions.map((item, index) => (
