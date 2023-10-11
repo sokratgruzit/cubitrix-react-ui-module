@@ -211,7 +211,7 @@ export const Input = (props) => {
           </div>
           {!props.btns ? (
             // <div className="input-form-frame">USD</div>
-              <></>
+            <></>
           ) : (
             <div className="input-form-frame-outer">
               {props.btns &&
@@ -766,8 +766,8 @@ export const Input = (props) => {
           placeholder={props.placeholder}
         />
         <div className="range-ttls">
-          <div>{props.min} A1</div>
-          <div>{props.max} A1</div>
+          <div>{props.min} $</div>
+          <div>{props.max} $</div>
         </div>
       </div>
     );

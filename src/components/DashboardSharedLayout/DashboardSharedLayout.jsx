@@ -5,10 +5,18 @@ import { LoadingScreen } from "../LoadingScreen";
 
 import "./DashboardSharedLayout.css";
 import { DisabledPage } from "../DisabledPage";
-import {Button} from "../Button";
+import { Button } from "../Button";
 import React from "react";
 
-export const DashboardSharedLayout = ({ links, children, loading, disabledAccount, becomeEliteOnClick }) => {
+export const DashboardSharedLayout = ({
+  links,
+  children,
+  loading,
+  disabledAccount,
+  becomeEliteOnClick,
+  eliteMemberBtnLabel,
+  eliteMemberBtnDisabled,
+}) => {
   const { width } = useMobileWidth();
 
   return (
@@ -63,12 +71,13 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
               </div>
 
               <Button
-                  label={"Become Elite Member"}
-                  status={"warning"}
-                  element={"help-button"}
-                  icon={false}
-                  onClick={() => console.log('hi')}
-                  customStyles={{width: '100%'}}
+                label={eliteMemberBtnLabel}
+                status={"warning"}
+                element={"help-button"}
+                icon={false}
+                onClick={becomeEliteOnClick}
+                customStyles={{ width: "100%" }}
+                disabled={eliteMemberBtnDisabled}
               />
 
               <div className="sidebar-footer-copyright font-14">
@@ -82,7 +91,7 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
             }`}
             style={{ width: `${width <= 1025 ? "100%" : "calc(100% - 255px)"}` }}
           >
-            {disabledAccount && <DisabledPage order={'dashboard'} />}
+            {disabledAccount && <DisabledPage order={"dashboard"} />}
             <div className="dashboard-fixed-border" />
             <div className="dashboard-border-container">
               <div className="dashboard-border" />

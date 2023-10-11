@@ -6,7 +6,7 @@ import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { HelpText } from "../HelpText";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 // styles
 import "./Calculator.css";
@@ -30,6 +30,7 @@ export const Calculator = ({
   stakingLoading,
   isActive,
   handleWalletSubmit,
+  hasRerferralActive,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -40,13 +41,25 @@ export const Calculator = ({
     handleDepositAmount(e.target.value);
   };
 
-  let helpTexts = {
-    amount: {
-      validationType: "multipleOf5000",
-      success: "amount is valid",
-      failure: "must be a number and multiple of 5000 (e.g 5000, 10000, 15000))",
-    },
-  };
+  let helpTexts = useMemo(() => {
+    if (hasRerferralActive) {
+      return {
+        amount: {
+          validationType: "min5000",
+          success: "amount is valid",
+          failure: "minimum amount you can stake is 5000 $ worth of A1",
+        },
+      };
+    } else {
+      return {
+        amount: {
+          validationType: "max500",
+          success: "amount is valid",
+          failure: "maximum amount you can stake is 500 $ worth of A1",
+        },
+      };
+    }
+  }, [hasRerferralActive]);
 
   const validationErrors = useValidation(
     {

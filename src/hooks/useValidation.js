@@ -11,7 +11,9 @@ export const useValidation = (formData, helpTexts) => {
     text: /^[-_a-zA-Z0-9]*[a-zA-Z]+[-_a-zA-Z0-9]*$/,
     address: /^0x[a-fA-F0-9]{40}$/,
     multipleOf5000: (num) => !isNaN(num) && num > 0 && num % 5000 === 0,
-    between100and500: (num) => !isNaN(num) && num >= 100 && num <= 500, // new validation rule
+    between100and500: (num) => !isNaN(num) && num >= 100 && num <= 500,
+    max500: (num) => !isNaN(num) && num <= 500,
+    min5000: (num) => !isNaN(num) && num >= 5000,
   };
 
   Object.keys(formData).map((key) => {
