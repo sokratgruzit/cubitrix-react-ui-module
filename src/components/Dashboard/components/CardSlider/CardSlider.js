@@ -129,12 +129,15 @@ export const CardSlider = ({
     [accounts, accountType],
   );
   function formatNumber(number) {
-    const parts = number.toString().split(".");
-    if (parts.length === 2) {
-      const decimalPart = parts[1].substring(0, 4); // Get up to four decimal places
+    const parts = number?.toString()?.split(".");
+
+    if (parts?.length === 2) {
+      const decimalPart = parts[1]?.substring(0, 4); // Get up to four decimal places
       return `${parts[0]}.${decimalPart}`;
-    } else {
+    } else if (typeof number === "number") {
       return number.toString();
+    } else {
+      return "";
     }
   }
   return (
