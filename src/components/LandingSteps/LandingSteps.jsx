@@ -534,7 +534,7 @@ export const LandingSteps = ({
                 <div className="topupDashboard_bottom-row topup_bottom-padding">
                   <p>Token Amount:</p>
                   <p>
-                    {amountUSD} USD = {countViaRate(amountUSD)} A1
+                    {amountUSD ?? 0} USD = {countViaRate(amountUSD)} A1
                   </p>
                 </div>
                 <div className="topupDashboard_bottom-row">
@@ -699,7 +699,7 @@ export const LandingSteps = ({
                   {tokenBalance < amountProgressValue && (
                     <HelpText
                       status={"error"}
-                      title={`You can not enable more than ${tokenBalance} A1.`}
+                      title={`You do not possess more than ${tokenBalance} A1 in your wallet.`}
                       color={"#6A6D76"}
                       icon={true}
                       customStyles={{ marginBottom: "5px" }}
@@ -756,7 +756,7 @@ export const LandingSteps = ({
                   )}
                   <div className="exchange-rate-card">
                     <p className="font-14">
-                      {`${amountProgressValue} $`} ={" "}
+                      {`${amountProgressValue ?? 0} $`} ={" "}
                       {`${countViaRate(amountProgressValue)} A1`}{" "}
                     </p>
                   </div>
@@ -779,7 +779,7 @@ export const LandingSteps = ({
                       (!accpetedTerms ||
                         !referralCodeChecked ||
                         checkReferralCodeState?.loading)) ||
-                    tokenBalance < amountProgressValue
+                    tokenBalance < +amountProgressValue
                   }
                 />
                 <Button
