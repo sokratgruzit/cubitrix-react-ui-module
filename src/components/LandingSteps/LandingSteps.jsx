@@ -503,9 +503,9 @@ export const LandingSteps = ({
                 </div>
                 <HelpText
                   status={"error"}
-                  title={`You currently hold ${tokenBalance} A1. To be eligible for staking, a minimum of 100 USD worth of A1 tokens is required, which amounts to ${
-                    100 / exchangeRate
-                  } A1. During the registration process, the maximum staking limit is set at 500,000 USD worth of A1 .`}
+                  title={`You currently hold ${tokenBalance} A1. To be eligible for staking, a minimum of 100 USD worth of A1 tokens is required, which amounts to ${countViaRate(
+                    100 / exchangeRate,
+                  )} A1. During the registration process, the maximum staking limit is set at 500,000 USD worth of A1 .`}
                   color={"#6A6D76"}
                   icon={true}
                   customStyles={{ marginBottom: "5px" }}
@@ -541,7 +541,7 @@ export const LandingSteps = ({
                 <div className="topupDashboard_bottom-row topup_bottom-padding">
                   <p>Token Amount:</p>
                   <p>
-                    {amountUSD ?? 0} USD = {countViaRate(amountUSD)} A1
+                    {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)} A1
                   </p>
                 </div>
                 <div className="topupDashboard_bottom-row">
