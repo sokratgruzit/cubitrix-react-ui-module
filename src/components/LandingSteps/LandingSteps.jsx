@@ -616,7 +616,11 @@ export const LandingSteps = ({
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
                         incriment={() =>
-                          setAmountProgressValue(+amountProgressValue - 5000)
+                          setAmountProgressValue(
+                            +amountProgressValue > 5000
+                              ? Math.max(0, +amountProgressValue - 5000)
+                              : amountProgressValue,
+                          )
                         }
                         decriment={() =>
                           setAmountProgressValue(+amountProgressValue + 5000)
@@ -763,7 +767,7 @@ export const LandingSteps = ({
                   )}
                   <div className="exchange-rate-card">
                     <p className="font-14">
-                      {`${amountProgressValue ?? 0} $`} ={" "}
+                      {`${amountProgressValue ? amountProgressValue : 0} $`} ={" "}
                       {`${countViaRate(amountProgressValue)} A1`}{" "}
                     </p>
                   </div>
