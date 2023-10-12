@@ -126,7 +126,7 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            2. Set amount of A1 you would like to purchase
+            Please enter the desired amount of USD you would like to purchase for A1.
           </p>
           <p className="topupDashboard_info">
             Enter the amount you would like to contribute in order to calculate the amount
@@ -149,7 +149,7 @@ export const TopUpDashboard = ({
             </div>
           </div>
 
-          <p className="topupDashboard_info-exchangeRate">1 A1 = {exchangeRate} USD</p>
+          <p className="topupDashboard_info-exchangeRate">1 USD = {countViaRate(1)} A1</p>
           {tokenError && (
             <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
           )}
@@ -159,7 +159,7 @@ export const TopUpDashboard = ({
           <div className="topupDashboard_bottom-row">
             <p>Amount:</p>
             <p>
-              {amountUSD} A1 = {amountUSD * exchangeRate} USD
+              {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)} A1
             </p>
           </div>
           <div className="topupDashboard_bottom-row">
@@ -167,8 +167,7 @@ export const TopUpDashboard = ({
             <p> {tranasctionFee} USD</p>
           </div>
           <h3 className="topupDashboard_bottom-result">
-            TOTAL: {Number(amountUSD) * Number(exchangeRate) + Number(tranasctionFee)}
-            USD
+            TOTAL: {`${amountUSD + Number(tranasctionFee)} USD`}
           </h3>
           <Button
             element="button"
