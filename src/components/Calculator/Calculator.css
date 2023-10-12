@@ -31,12 +31,6 @@
   top: 36px;
   right: 15px;
   cursor: pointer;
-  text-decoration: underline;
-  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-}
-
-.calculator-input span:hover {
-  opacity: 0.7;
 }
 
 .approveSuccess {

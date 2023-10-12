@@ -138,11 +138,7 @@ export const Calculator = ({
         />
         <span className={"font-12"}>$</span>
       </div>
-      <div className="exchange-rate-card">
-        <p className="font-14">{`${depositAmount} $ = ${countViaRate(
-          depositAmount,
-        )} A1`}</p>
-      </div>
+
       <div className="calculator__buttons">
         {durationOptions.map((item, index) => (
           <Button
@@ -157,6 +153,11 @@ export const Calculator = ({
             active={item.time === timeperiod}
           />
         ))}
+      </div>
+      <div className="exchange-rate-card">
+        <p className="font-14">{`${depositAmount ?? 0} $ = ${countViaRate(
+          depositAmount,
+        )} A1`}</p>
       </div>
       <HelpText
         title={
