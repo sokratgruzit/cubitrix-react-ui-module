@@ -129,10 +129,17 @@ export const LandingSteps = ({
     handlePurchaseEvent(
       selectedMethod,
       selectedChain,
-      (+amountUSD + +tranasctionFee) / rates?.[selectedMethod?.toLowerCase()]?.usd,
+      roundUpToTwoDecimals(
+        (+amountUSD + +tranasctionFee) / rates?.[selectedMethod?.toLowerCase()]?.usd,
+      ),
       countViaRate(amountUSD),
     );
   };
+
+  function roundUpToTwoDecimals(number) {
+    const roundedNumber = Math.ceil(number * 100) / 100;
+    return roundedNumber.toFixed(2);
+  }
 
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);
@@ -609,10 +616,10 @@ export const LandingSteps = ({
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
                         incriment={() =>
-                          setAmountProgressValue(amountProgressValue - 5000)
+                          setAmountProgressValue(+amountProgressValue - 5000)
                         }
                         decriment={() =>
-                          setAmountProgressValue(amountProgressValue + 5000)
+                          setAmountProgressValue(+amountProgressValue + 5000)
                         }
                       />
                       {amountError && (
