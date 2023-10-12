@@ -129,7 +129,7 @@ export const CardSlider = ({
     [accounts, accountType],
   );
   function formatNumber(number) {
-    const parts = number.toString().split('.');
+    const parts = number.toString().split(".");
     if (parts.length === 2) {
       const decimalPart = parts[1].substring(0, 4); // Get up to four decimal places
       return `${parts[0]}.${decimalPart}`;
@@ -245,15 +245,7 @@ export const CardSlider = ({
                       accountType === "trade" ? "card-slider-trade_content" : ""
                     }`}
                   >
-                    {/*{chosenAcc?.balance?.toLocaleString("en-US", {*/}
-                    {/*  minimumFractionDigits: 2,*/}
-                    {/*  maximumFractionDigits: 2,*/}
-                    {/*})}*/}
-                    {/*{(0.3444899).toLocaleString("en-US", {*/}
-                    {/*  minimumFractionDigits: 0,*/}
-                    {/*  maximumFractionDigits: 4,*/}
-                    {/*})}*/}
-                    { formatNumber(0.4343443100)}
+                    {formatNumber(chosenAcc?.balance)}
                   </p>
                   {accountType === "trade" && (
                     <span
@@ -263,10 +255,7 @@ export const CardSlider = ({
                         color: "rgba(255,255,255,0.3)",
                       }}
                     >
-                      {stakedTotal?.toLocaleString("en-US", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })}
+                      {formatNumber(stakedTotal)}
                     </span>
                   )}
                 </div>
@@ -332,10 +321,7 @@ export const CardSlider = ({
                               : ""
                           }`}
                         >
-                          {value?.toLocaleString("en-US", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })}
+                          {formatNumber(value)}
                         </p>
                         {assets?.[`${key}Staked`] > 0 && (
                           <span
@@ -345,10 +331,7 @@ export const CardSlider = ({
                               color: "rgba(255,255,255,0.3)",
                             }}
                           >
-                            {assets?.[`${key}Staked`]?.toLocaleString("en-US", {
-                              minimumFractionDigits: 2,
-                              maximumFractionDigits: 2,
-                            })}
+                            {formatNumber(assets?.[`${key}Staked`])}
                           </span>
                         )}
                       </div>

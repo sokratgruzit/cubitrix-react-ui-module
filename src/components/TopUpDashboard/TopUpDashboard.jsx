@@ -145,7 +145,7 @@ export const TopUpDashboard = ({
               customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
             />
             <div className="topupDashboard_inputOverlay">
-              <p className="topupDashboard_inputOverlay_text">A1</p>
+              <p className="topupDashboard_inputOverlay_text">$</p>
             </div>
           </div>
 
