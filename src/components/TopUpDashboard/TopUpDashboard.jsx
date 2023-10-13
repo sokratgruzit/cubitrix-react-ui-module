@@ -23,6 +23,8 @@ export const TopUpDashboard = ({
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
+  const [amountUSD, setAmountUSD] = useState(0);
+
   const [tokenAmount, setTokenAmount] = useState(0);
   const [tokenError, setTokenError] = useState(null);
 
@@ -34,16 +36,16 @@ export const TopUpDashboard = ({
     setSelectedChain(chain);
   }
 
-  const handleTokenAmountChange = (event) => {
+  const handleUSDAmountChange = (event) => {
     const value = event.target.value;
     if (!isNaN(value) && value >= 0) {
       if (value > 0) setTokenError(null);
-      setTokenAmount(Number(value));
+      setAmountUSD(Number(value));
     }
   };
 
   const handlePurchase = () => {
-    if (tokenAmount <= 0) {
+    if (amountUSD <= 0) {
       setTokenError("Amount has to be greater than 0");
       return;
     }
@@ -51,11 +53,21 @@ export const TopUpDashboard = ({
     handlePurchaseEvent(
       selectedMethod,
       selectedChain,
-      (Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
-        rates?.[selectedMethod?.toLowerCase()]?.usd,
-      Number(tokenAmount),
+      roundUpToTwoDecimals(
+        (+amountUSD + +tranasctionFee) / rates?.[selectedMethod?.toLowerCase()]?.usd,
+      ),
+      countViaRate(amountUSD),
     );
   };
+
+  function countViaRate(amount) {
+    return Number((amount / Number(exchangeRate))?.toFixed(2));
+  }
+
+  function roundUpToTwoDecimals(number) {
+    const roundedNumber = Math.ceil(number * 100) / 100;
+    return roundedNumber.toFixed(2);
+  }
 
   return (
     <div className="topupDashboard_main">
@@ -114,7 +126,7 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            2. Set amount of A1 you would like to purchase
+            Please enter the desired amount of USD you would like to purchase for A1.
           </p>
           <p className="topupDashboard_info">
             Enter the amount you would like to contribute in order to calculate the amount
@@ -124,20 +136,20 @@ export const TopUpDashboard = ({
           <div className="topupDashboard_inputContainer">
             <Input
               type={"default"}
-              value={tokenAmount}
+              value={amountUSD}
               inputType={"text"}
               placeholder="Enter amount"
-              onChange={handleTokenAmountChange}
+              onChange={handleUSDAmountChange}
               customStyles={{ width: "100%" }}
               editable={true}
               customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
             />
             <div className="topupDashboard_inputOverlay">
-              <p className="topupDashboard_inputOverlay_text">A1</p>
+              <p className="topupDashboard_inputOverlay_text">$</p>
             </div>
           </div>
 
-          <p className="topupDashboard_info-exchangeRate">1 A1 = {exchangeRate} USD</p>
+          <p className="topupDashboard_info-exchangeRate">1 USD = {countViaRate(1)} A1</p>
           {tokenError && (
             <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
           )}
@@ -147,7 +159,7 @@ export const TopUpDashboard = ({
           <div className="topupDashboard_bottom-row">
             <p>Amount:</p>
             <p>
-              {tokenAmount} A1 = {tokenAmount * exchangeRate} USD
+              {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)} A1
             </p>
           </div>
           <div className="topupDashboard_bottom-row">
@@ -155,8 +167,7 @@ export const TopUpDashboard = ({
             <p> {tranasctionFee} USD</p>
           </div>
           <h3 className="topupDashboard_bottom-result">
-            TOTAL: {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
-            USD
+            TOTAL: {`${amountUSD + Number(tranasctionFee)} USD`}
           </h3>
           <Button
             element="button"
@@ -172,23 +183,6 @@ export const TopUpDashboard = ({
           />
         </div>
 
-        {/* {openPopup && (
-          <Popup
-            popUpElement={
-              <PaymentPopup
-                setOpenConfirmPaymentPopup={setOpenConfirmPaymentPopup}
-                setOpenPopup={setOpenPopup}
-                selectedMethod={selectedMethod}
-                selectedPaymentMethod={selectedPaymentMethod}
-                setSelectedPaymentMethod={setSelectedPaymentMethod}
-                handleCoindbasePayment={handleCoindbasePayment}
-                tokenAmount={tokenAmount}
-              />
-            }
-            label={"Payment Process"}
-            handlePopUpClose={() => setOpenPopup(false)}
-          />
-        )} */}
         {exchangeDetails?.exchangeId && (
           <Popup
             popUpElement={

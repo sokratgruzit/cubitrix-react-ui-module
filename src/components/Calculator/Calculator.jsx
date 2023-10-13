@@ -155,7 +155,7 @@ export const Calculator = ({
         ))}
       </div>
       <div className="exchange-rate-card">
-        <p className="font-14">{`${depositAmount ?? 0} $ = ${countViaRate(
+        <p className="font-14">{`${depositAmount ? depositAmount : 0} $ = ${countViaRate(
           depositAmount,
         )} A1`}</p>
       </div>
