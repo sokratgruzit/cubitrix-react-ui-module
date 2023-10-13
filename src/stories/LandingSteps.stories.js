@@ -1,7 +1,6 @@
 import { storiesOf } from "@storybook/react";
 import React, { useState, useEffect } from "react";
 
-import { Landing } from "../components/Landing";
 import { Header } from "../components/Header";
 import { SideBar } from "../components/SideBar";
 
@@ -10,8 +9,6 @@ import { BrowserRouter } from "react-router-dom";
 import { LandingSteps } from "../components/LandingSteps";
 
 const stories = storiesOf("LandingSteps", module);
-
-const backgroundIMg = require("../assets/img/dashboard/startNowBG.png");
 
 stories.add("LandingSteps", () => {
   const [toggle, setToggle] = useState(false);
@@ -399,11 +396,12 @@ stories.add("LandingSteps", () => {
 
   const [exchangeDetails, setExchangeDetails] = useState({});
   const [createChargeLoading, setCreateChargeLoading] = useState(false);
-  async function handleCreateCharge(token, rpc, amount) {
+  async function handleCreateCharge(token, rpc, amount, tokenAmount) {
     console.log(
       token,
       rpcs?.find((item) => item.id === rpc),
       amount,
+      tokenAmount,
     );
 
     setExchangeDetails({ exchangeId: "123", address: "0x123" });
@@ -595,7 +593,7 @@ stories.add("LandingSteps", () => {
             disconnect={() => console.log("ds")}
             exchangeRate={3}
             tranasctionFee={1}
-            handlePurchaseEvent={(a, b, c) => handleCreateCharge(a, b, c)}
+            handlePurchaseEvent={handleCreateCharge}
             timeperiod={timeperiod}
             timeperiodDate={timeperiodDate}
             handleTimePeriod={handleTimePeriod}

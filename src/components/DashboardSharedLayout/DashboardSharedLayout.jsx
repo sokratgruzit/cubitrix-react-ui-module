@@ -5,19 +5,41 @@ import { LoadingScreen } from "../LoadingScreen";
 
 import "./DashboardSharedLayout.css";
 import { DisabledPage } from "../DisabledPage";
-import {Button} from "../Button";
-import React from "react";
+import { Button } from "../Button";
+import {React, useState} from "react";
 
-export const DashboardSharedLayout = ({ links, children, loading, disabledAccount, becomeEliteOnClick }) => {
+export const DashboardSharedLayout = ({
+  links,
+  children,
+  loading,
+  disabledAccount,
+  becomeEliteOnClick,
+  eliteMemberBtnLabel,
+  eliteMemberBtnDisabled,
+}) => {
+  const [navigation, setNavigation] = useState(false);
   const { width } = useMobileWidth();
 
+  let openMenu = (event) => {
+    if(width > 1025) {
+      if(event) {
+        setNavigation(true);
+      } else {
+        setNavigation(false);
+      }
+    }
+  }
   return (
     <>
       {loading ? (
         <LoadingScreen />
       ) : (
         <div className="dashboard-content-container">
-          <div className="dashboard-sidebar-container">
+          <div
+              className={`dashboard-sidebar-container ${navigation ? 'open' : ''}`}
+              onMouseEnter={() => {openMenu(true);}}
+              onMouseLeave={() => {openMenu(false);}}
+          >
             <div className="dashboard-sidebar-links">
               {links?.map((item, index) => (
                 <Link
@@ -30,7 +52,8 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
                   }`}
                 >
                   {item.svg}
-                  {item.label}
+                  <span className="dashboard-sidebar__horisontal-link">{item.label}</span>
+                  <span className="dashboard-sidebar__vertical-link">{item.label}</span>
                 </Link>
               ))}
             </div>
@@ -59,16 +82,18 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
                     fill="rgba(255, 255, 255)"
                   />
                 </svg>
-                Help & Support
+                <div className="dashboard-sidebar__vertical-link">Help & Support</div>
+                <div className="dashboard-sidebar__horisontal-link">Help & Support</div>
               </div>
 
               <Button
-                  label={"Become Elite Member"}
-                  status={"warning"}
-                  element={"help-button"}
-                  icon={false}
-                  onClick={() => console.log('hi')}
-                  customStyles={{width: '100%'}}
+                label={eliteMemberBtnLabel}
+                status={"warning"}
+                element={"help-button"}
+                icon={false}
+                onClick={becomeEliteOnClick}
+                customStyles={{ width: "100%" }}
+                disabled={eliteMemberBtnDisabled}
               />
 
               <div className="sidebar-footer-copyright font-14">
@@ -77,12 +102,11 @@ export const DashboardSharedLayout = ({ links, children, loading, disabledAccoun
             </div>
           </div>
           <div
-            className={`dashboard-main-container ${
+            className={`dashboard-main-container ${navigation ? 'open' : ''} ${
               disabledAccount ? "disabled-page" : ""
             }`}
-            style={{ width: `${width <= 1025 ? "100%" : "calc(100% - 255px)"}` }}
           >
-            {disabledAccount && <DisabledPage order={'dashboard'} />}
+            {disabledAccount && <DisabledPage order={"dashboard"} />}
             <div className="dashboard-fixed-border" />
             <div className="dashboard-border-container">
               <div className="dashboard-border" />

@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import "./LandingSteps.css";
-import { MetaMask, WalletConnect, WalletMoneyIcon } from "../../assets/svgs";
+import { MetaMask, WalletConnect } from "../../assets/svgs";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { Popup } from "../Popup";
-import PaymentPopup from "../TopUp/PaymentPopup";
 import { HelpText } from "../HelpText";
-import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
 import { HelpCard } from "../HelpCard";
 
 export const LandingSteps = ({
@@ -15,11 +13,7 @@ export const LandingSteps = ({
   step,
   setStep,
   methods = [],
-  paymentTypes,
   handleRegistration,
-  handleCoindbasePayment,
-  receivePaymentAddress,
-  handlePaymentConfirm,
   qrcode,
   registrationState,
   setRegistrationState,
@@ -32,7 +26,6 @@ export const LandingSteps = ({
   exchangeRate,
   tranasctionFee,
   handlePurchaseEvent,
-  inputs,
   durationOptions,
   handleTimePeriod,
   handleTimeperiodDate,
@@ -45,7 +38,6 @@ export const LandingSteps = ({
   approveResonse,
   tokenBalance,
   depositAmount,
-  coinbaseLoading,
   referralState,
   setReferralState,
   amountProgressValue,
@@ -65,11 +57,8 @@ export const LandingSteps = ({
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
-  const [openPopup, setOpenPopup] = useState(false);
-  const [openConfirmPaymentPopup, setOpenConfirmPaymentPopup] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
 
-  const [tokenAmount, setTokenAmount] = useState(0);
+  const [amountUSD, setAmountUSD] = useState(0);
   const [tokenError, setTokenError] = useState(null);
   const [copyButtonText, setCopyButtonText] = useState("Copy"); // New state variable
 
@@ -123,16 +112,16 @@ export const LandingSteps = ({
     setReferralState((prev) => ({ ...prev, value: value, ...spread }));
   }
 
-  const handleTokenAmountChange = (event) => {
+  const handleUSDAmountChange = (event) => {
     const value = event.target.value;
     if (!isNaN(value) && value >= 0) {
       if (value > 0) setTokenError(null);
-      setTokenAmount(Number(value));
+      setAmountUSD(Number(value));
     }
   };
 
   const handlePurchase = () => {
-    if (tokenAmount <= 0) {
+    if (amountUSD <= 0) {
       setTokenError("Amount has to be greater than 0");
       return;
     }
@@ -140,11 +129,17 @@ export const LandingSteps = ({
     handlePurchaseEvent(
       selectedMethod,
       selectedChain,
-      (Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
-        rates?.[selectedMethod?.toLowerCase()]?.usd,
-      Number(tokenAmount),
+      roundUpToTwoDecimals(
+        (+amountUSD + +tranasctionFee) / rates?.[selectedMethod?.toLowerCase()]?.usd,
+      ),
+      countViaRate(amountUSD),
     );
   };
+
+  function roundUpToTwoDecimals(number) {
+    const roundedNumber = Math.ceil(number * 100) / 100;
+    return roundedNumber.toFixed(2);
+  }
 
   const handleMethodSelect = (method) => {
     setSelectedMethod(method);
@@ -389,9 +384,8 @@ export const LandingSteps = ({
                   <p>Your transaction has been placed successfully.</p>
                   <p>
                     Please send{" "}
-                    {(Number(tokenAmount) * Number(exchangeRate) +
-                      Number(tranasctionFee)) /
-                      rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
+                    {(+amountUSD * Number(tranasctionFee)) /
+                      rates?.[selectedMethod?.toLowerCase()]?.usd}
                     {selectedMethod} to the address below. The A1 balance will appear in
                     your account after system approves it. This might take up to 1 minute.
                   </p>
@@ -410,9 +404,8 @@ export const LandingSteps = ({
                       </p>
                       <p className="confirm_payment_popup_grayText">
                         Send Amount:{" "}
-                        {(Number(tokenAmount) * Number(exchangeRate) +
-                          Number(tranasctionFee)) /
-                          rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
+                        {(+amountUSD * Number(tranasctionFee)) /
+                          rates?.[selectedMethod?.toLowerCase()]?.usd}
                         {selectedMethod}
                       </p>
                       <div className="confirm_payment_popup_address">
@@ -517,8 +510,10 @@ export const LandingSteps = ({
                   icon={true}
                   customStyles={{ marginBottom: "5px" }}
                 />
-                <p>Set amount of A1 you would like to purchase</p>
-
+                <p>
+                  Please enter the desired amount of USD you would like to purchase for
+                  A1.
+                </p>
                 <p className="LandingSteps__topUpLabel">Payment Amount</p>
                 <div className="topupDashboard_inputContainer">
                   <Input
@@ -526,18 +521,18 @@ export const LandingSteps = ({
                     icon={false}
                     inputType={"default"}
                     placeholder={"Enter"}
-                    value={tokenAmount}
-                    onChange={handleTokenAmountChange}
+                    value={amountUSD}
+                    onChange={handleUSDAmountChange}
                     customStyles={{ width: "100%" }}
                   />
                   <div className="topupDashboard_inputOverlay">
-                    <p className="topupDashboard_inputOverlay_text">A1</p>
+                    <p className="topupDashboard_inputOverlay_text">$</p>
                   </div>
                 </div>
 
                 <div></div>
                 <p className="topupDashboard_info-exchangeRate">
-                  1 A1 = {exchangeRate} USD
+                  1 USD = {countViaRate(1)} A1
                 </p>
 
                 {tokenError && (
@@ -546,7 +541,7 @@ export const LandingSteps = ({
                 <div className="topupDashboard_bottom-row topup_bottom-padding">
                   <p>Token Amount:</p>
                   <p>
-                    {tokenAmount} A1 = {tokenAmount * exchangeRate} USD
+                    {amountUSD ?? 0} USD = {countViaRate(amountUSD)} A1
                   </p>
                 </div>
                 <div className="topupDashboard_bottom-row">
@@ -554,9 +549,7 @@ export const LandingSteps = ({
                   <p> {tranasctionFee} USD</p>
                 </div>
                 <h3 className="topupDashboard_bottom-result">
-                  TOTAL:{" "}
-                  {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
-                  USD
+                  TOTAL: {`${amountUSD + Number(tranasctionFee)} USD`}
                 </h3>
                 <Button
                   element="button"
@@ -616,17 +609,21 @@ export const LandingSteps = ({
                           transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
                           height: "44px",
                         }}
-                        min={countViaRate(5000)}
-                        max={countViaRate(500000)}
-                        step={countViaRate(5000)}
-                        label={"Amount"}
+                        min={5000}
+                        max={500000}
+                        step={5000}
+                        label={"Amount in USD"}
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
                         incriment={() =>
-                          setAmountProgressValue(amountProgressValue - countViaRate(5000))
+                          setAmountProgressValue(
+                            +amountProgressValue > 5000
+                              ? Math.max(0, +amountProgressValue - 5000)
+                              : amountProgressValue,
+                          )
                         }
                         decriment={() =>
-                          setAmountProgressValue(amountProgressValue + countViaRate(5000))
+                          setAmountProgressValue(+amountProgressValue + 5000)
                         }
                       />
                       {amountError && (
@@ -641,10 +638,10 @@ export const LandingSteps = ({
                           <Input
                             type={"range"}
                             customStyles={{ width: "100%" }}
-                            min={countViaRate(100)}
-                            max={countViaRate(500)}
+                            min={100}
+                            max={500}
                             step={1}
-                            disabled={amountProgressValue > countViaRate(500)}
+                            disabled={amountProgressValue > 500}
                             value={amountProgressValue}
                             onChange={amountProgressOnchange}
                           />
@@ -653,14 +650,14 @@ export const LandingSteps = ({
                           <Input
                             type={"range"}
                             customStyles={{ width: "100%" }}
-                            min={countViaRate(5000)}
+                            min={5000}
                             max={getClosestLesserMultiple(
-                              Number(tokenAmount),
-                              countViaRate(5000),
-                              countViaRate(tokenAmount),
+                              Number(tokenBalance),
+                              5000,
+                              tokenBalance,
                             )}
-                            step={countViaRate(5000)}
-                            disabled={amountProgressValue < countViaRate(5000)}
+                            step={5000}
+                            disabled={amountProgressValue < 5000}
                             value={amountProgressValue}
                             onChange={amountProgressOnchange}
                           />
@@ -713,13 +710,13 @@ export const LandingSteps = ({
                   {tokenBalance < amountProgressValue && (
                     <HelpText
                       status={"error"}
-                      title={`You can not enable more than ${tokenBalance} A1.`}
+                      title={`You do not possess more than ${tokenBalance} A1 in your wallet.`}
                       color={"#6A6D76"}
                       icon={true}
                       customStyles={{ marginBottom: "5px" }}
                     />
                   )}
-                  {amountProgressValue > countViaRate(500) && !isAllowance && (
+                  {amountProgressValue > 500 && !isAllowance && (
                     <div>
                       <Input
                         type={"default"}
@@ -768,6 +765,12 @@ export const LandingSteps = ({
                       icon={true}
                     />
                   )}
+                  <div className="exchange-rate-card">
+                    <p className="font-14">
+                      {`${amountProgressValue ? amountProgressValue : 0} $`} ={" "}
+                      {`${countViaRate(amountProgressValue)} A1`}{" "}
+                    </p>
+                  </div>
                 </div>
                 <Button
                   label={buttonLabel}
@@ -782,12 +785,12 @@ export const LandingSteps = ({
                   disabled={
                     amountError !== "" ||
                     stakingLoading ||
-                    (amountProgressValue > countViaRate(500) &&
+                    (amountProgressValue > 500 &&
                       !isAllowance &&
                       (!accpetedTerms ||
                         !referralCodeChecked ||
                         checkReferralCodeState?.loading)) ||
-                    tokenBalance < amountProgressValue
+                    tokenBalance < +amountProgressValue
                   }
                 />
                 <Button
@@ -858,43 +861,6 @@ export const LandingSteps = ({
           handlePopUpClose={() => {
             setShowTerms(false);
           }}
-        />
-      )}
-
-      {openPopup && (
-        <Popup
-          popUpElement={
-            <PaymentPopup
-              setOpenConfirmPaymentPopup={setOpenConfirmPaymentPopup}
-              setOpenPopup={setOpenPopup}
-              selectedMethod={selectedMethod}
-              selectedPaymentMethod={selectedPaymentMethod}
-              setSelectedPaymentMethod={setSelectedPaymentMethod}
-              handleCoindbasePayment={handleCoindbasePayment}
-              tokenAmount={tokenAmount}
-              paymentTypes={paymentTypes}
-            />
-          }
-          label={"Payment Process"}
-          handlePopUpClose={() => setOpenPopup(false)}
-        />
-      )}
-      {openConfirmPaymentPopup && (
-        <Popup
-          popUpElement={
-            <ConfirmPaymentPopup
-              walletAddress={"0x123"}
-              receivePaymentAddress={receivePaymentAddress}
-              handlePaymentConfirm={handlePaymentConfirm}
-              qrcode={qrcode}
-              selectedMethod={selectedMethod}
-              handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
-              tokenAmount={tokenAmount}
-              setOpenConfirmPaymentPopup={setOpenConfirmPaymentPopup}
-            />
-          }
-          label={"Confirm Payment"}
-          handlePopUpClose={() => setOpenConfirmPaymentPopup(false)}
         />
       )}
     </div>

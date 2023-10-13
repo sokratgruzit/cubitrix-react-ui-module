@@ -6,7 +6,7 @@ import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { HelpText } from "../HelpText";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 // styles
 import "./Calculator.css";
@@ -30,6 +30,8 @@ export const Calculator = ({
   stakingLoading,
   isActive,
   handleWalletSubmit,
+  hasRerferralActive,
+  rates,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -39,14 +41,29 @@ export const Calculator = ({
     }
     handleDepositAmount(e.target.value);
   };
+  function countViaRate(amount) {
+    return Number((amount / Number(rates?.["atr"]?.usd))?.toFixed(2));
+  }
 
-  let helpTexts = {
-    amount: {
-      validationType: "multipleOf5000",
-      success: "amount is valid",
-      failure: "must be a number and multiple of 5000 (e.g 5000, 10000, 15000))",
-    },
-  };
+  let helpTexts = useMemo(() => {
+    if (hasRerferralActive) {
+      return {
+        amount: {
+          validationType: "min5000",
+          success: "amount is valid",
+          failure: "minimum amount you can stake is 5000 $ worth of A1",
+        },
+      };
+    } else {
+      return {
+        amount: {
+          validationType: "max500",
+          success: "amount is valid",
+          failure: "maximum amount you can stake is 500 $ worth of A1",
+        },
+      };
+    }
+  }, [hasRerferralActive]);
 
   const validationErrors = useValidation(
     {
@@ -119,13 +136,9 @@ export const Calculator = ({
             )
           }
         />
-        <span
-          className={"font-12"}
-          onClick={stakeType === "Wallet" ? handleMaxClick : handleMaxClickBallance}
-        >
-          MAX
-        </span>
+        <span className={"font-12"}>$</span>
       </div>
+
       <div className="calculator__buttons">
         {durationOptions.map((item, index) => (
           <Button
@@ -140,6 +153,11 @@ export const Calculator = ({
             active={item.time === timeperiod}
           />
         ))}
+      </div>
+      <div className="exchange-rate-card">
+        <p className="font-14">{`${depositAmount ?? 0} $ = ${countViaRate(
+          depositAmount,
+        )} A1`}</p>
       </div>
       <HelpText
         title={

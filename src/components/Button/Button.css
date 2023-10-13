@@ -506,11 +506,16 @@
   cursor: pointer;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   align-items: center;
-  height: 30px;
+  padding: 14px;
 }
 .btn-help:hover {
   opacity: .8;
 }
 .btn-help > div > p {
   text-align: center;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  font-size: 10px;
+}
+.dashboard-sidebar-container.open .btn-help > div > p {
+  font-size: 12px;
 }
