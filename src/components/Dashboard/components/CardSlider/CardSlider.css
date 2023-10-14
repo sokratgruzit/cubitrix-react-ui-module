@@ -10,7 +10,7 @@
   /*overflow-x: auto;*/
   /* width: 100%; */
   /* justify-content: space-between;  */
-  padding: 0px 20px 0px 10px;
+  padding: 0px 10px 0px 20px;
 }
 
 .card-slider-navigation_item-deposit {
@@ -48,7 +48,7 @@
 }
 
 .card-slider-navigation_item {
-  padding: 14px 28px;
+  padding: 7px 28px;
   cursor: pointer;
   background: #0e2225;
   border-radius: 20px 20px 0px 0px;

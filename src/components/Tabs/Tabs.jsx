@@ -107,18 +107,20 @@ export const Tabs = (props) => {
                   tabsHandler(2);
               }}
               className={`${"two-component-tab"}
-              ${toggle === 2 ? "active-two-component-tab bg-color" : ""}`}
+              ${toggle === 2 ? "active" : ""}`}
           >
-              Buy
+              <span>0.93801</span>
+              <span>Buy</span>
           </div>
         <div
           onClick={() => {
             tabsHandler(1);
           }}
           className={`${"two-component-tab"}
-              ${toggle === 1 ? "active-two-component-tab" : ""}`}
+              ${toggle === 1 ? "active" : ""}`}
         >
-          Sell
+            <span>0.93801</span>
+            <span>Sell</span>
         </div>
 
       </div>

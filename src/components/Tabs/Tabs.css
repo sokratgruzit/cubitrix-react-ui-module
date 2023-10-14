@@ -1,16 +1,14 @@
 /* two component tabs */
 .two-component-tabs {
-  background: #0d2226;
   border-radius: 32px;
   width: 100%;
-  height: 42px;
   display: flex;
   align-items: center;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  gap: 5px;
 }
 .two-component-tab {
   width: 50%;
-  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +16,30 @@
   cursor: pointer;
   border-radius: 32px;
   color: #9c9da3;
+  flex-direction: column;
+  padding: 5px;
+  opacity: .7;
+}
+.two-component-tab:nth-child(1) {
+  border: 1px solid rgba(103, 190, 122, 1);
+}
+.two-component-tab.active:nth-child(1),.two-component-tab:nth-child(1):hover {
+  background: rgba(103, 190, 122, 0.6);
+  opacity: 1;
+}
+
+.two-component-tab:nth-child(2) {
+  border: 1px solid rgba(232, 116, 80, 1);
+}
+.two-component-tab.active:nth-child(2),.two-component-tab:nth-child(2):hover {
+  background: rgba(232, 116, 80, 0.6);
+  opacity: 1;
+}
+.two-component-tab span:first-child {
+  font-size: 16px;
+}
+.two-component-tab span {
+  line-height: 130%;
 }
 .two-component-tab:hover {
   opacity: 0.7;

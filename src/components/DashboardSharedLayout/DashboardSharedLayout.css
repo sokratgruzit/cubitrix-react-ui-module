@@ -40,9 +40,11 @@
   border-bottom: none;
   border-top: none;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transition-delay: .4s;
 }
 .dashboard-main-container.open {
   width: calc(100% - 255px);
+  transition-delay: 0s;
 }
 .dashboard-layout-content {
   width: 100%;
@@ -57,9 +59,9 @@
 .dashboard-border-container {
   width: 30px;
   height: 30px;
-  position: fixed;
-  top: 70px;
-  left: 254.38px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   background-color: #10282b;
   border: none;
   z-index: 6;
@@ -191,10 +193,9 @@
 .dashboard-fixed-border {
   height: 1px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  position: fixed;
+  position: absolute;
   width: 100%;
-  top: 70px;
-  width: calc(100% - 255px);
+  top: 0px;
   right: 0;
   z-index: 5;
 }
@@ -267,6 +268,7 @@
     border-radius: 0px;
     margin: 0px;
     border: none;
+    width: 100%;
   }
   .dashboard-fixed-border {
     width: 100%;
