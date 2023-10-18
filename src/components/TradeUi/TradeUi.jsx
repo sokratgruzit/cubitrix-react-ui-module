@@ -301,101 +301,35 @@ export const TradeUi = ({
                   <div className="trade-left-side-body-inner scroll">
                     <div className="trade-left-side-item">
                       <Tabs type={"two-component-tabs"} />
-                      <div className="trade-avalible-status">
-                        <span>Avbl</span>
-                        0.00000 USDT
-                        <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 20 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                              d="M15.5 16.2497H17.5V17.9163H12.5V12.9163H14.1667V15.1913C15.6917 13.9663 16.6667 12.0997 16.6667 9.99967C16.6667 6.60801 14.1167 3.79967 10.8334 3.39134V1.70801C15.0417 2.12467 18.3334 5.67467 18.3334 9.99967C18.3334 12.4913 17.2334 14.7247 15.5 16.2497ZM3.33335 9.99967C3.33335 7.89967 4.30835 6.02467 5.83335 4.80801V7.08301H7.50002V2.08301H2.50002V3.74967H4.50002C3.60969 4.52941 2.8963 5.49044 2.40764 6.56835C1.91899 7.64627 1.66636 8.81617 1.66669 9.99967C1.66669 14.3247 4.95835 17.8747 9.16669 18.2913V16.608C5.88335 16.1997 3.33335 13.3913 3.33335 9.99967Z"
-                              fill="#C38C5C"
-                          />
-                          <path
-                              d="M10.5556 9.44379V6.66602H9.44446V9.44379H6.66669V10.5549H9.44446V13.3327H10.5556V10.5549H13.3334V9.44379H10.5556Z"
-                              fill="#C38C5C"
-                          />
-                        </svg>
-                      </div>
-
-                      <div className="exchange-input-wrapper" style={{ marginTop: "20px" }}>
+                      <div className="trade-flex-inputs">
                         <Input
-                            type={"default"}
-                            label={"Price"}
-                            subLabel={""}
-                            placeholder={"0.0000"}
-                            onChange={changeHandler}
-                            btns={false}
-                            icon={true}
-                            statusCard={
-                              <HelpText
-                                  status={"error"}
-                                  title={"your text"}
-                                  fontSize={"font-12"}
-                                  icon={true}
-                              />
-                            }
-                            customStyles={{ width: "100%" }}
-                        />
-                        {<span className="font-14 exchange-input-right">USDT</span>}
-                      </div>
-                      <div className="exchange-input-wrapper" style={{ marginTop: "20px" }}>
-                        <Input
-                            type={"default"}
-                            label={"Amount"}
-                            subLabel={""}
-                            placeholder={"0.0000"}
-                            onChange={changeHandler}
-                            btns={false}
-                            icon={true}
-                            statusCard={
-                              <HelpText
-                                  status={"error"}
-                                  title={"your text"}
-                                  fontSize={"font-12"}
-                                  icon={true}
-                              />
-                            }
-                            customStyles={{ width: "100%" }}
-                        />
-                        {<span className="font-14 exchange-input-right">A1</span>}
-                      </div>
-                      <div className="exchange-input-wrapper" style={{ marginTop: "20px" }}>
-                        <Input
-                            type={"range"}
-                            customStyles={{ width: "100%" }}
-                            min={0}
-                            max={100}
-                            step={1}
-                            disabled={false}
-                            value={0}
+                            type={"plus_minus"}
+                            customStyles={{
+                              width: "50%"
+                            }}
+                            min={5000}
+                            max={500000}
+                            step={5000}
+                            decrimnet={() => console.log('-')}
+                            incrimnet={() => console.log('+')}
+                            label={"Amount Lot"}
+                            // value={amountProgressValue}
                             // onChange={amountProgressOnchange}
                         />
-                      </div>
-                      <div className="exchange-input-wrapper" style={{ marginTop: "20px" }}>
                         <Input
-                            type={"default"}
-                            label={"Total"}
-                            subLabel={""}
-                            placeholder={"0.0000"}
-                            onChange={changeHandler}
-                            btns={false}
-                            icon={true}
-                            statusCard={
-                              <HelpText
-                                  status={"error"}
-                                  title={"your text"}
-                                  fontSize={"font-12"}
-                                  icon={true}
-                              />
-                            }
-                            customStyles={{ width: "100%" }}
+                            type={"plus_minus"}
+                            customStyles={{
+                              width: "50%"
+                            }}
+                            min={5000}
+                            max={500000}
+                            step={5000}
+                            decrimnet={() => console.log('-')}
+                            incrimnet={() => console.log('+')}
+                            label={"Lot"}
+                            // value={amountProgressValue}
+                            // onChange={amountProgressOnchange}
                         />
-                        {<span className="font-14 exchange-input-right">USDT</span>}
                       </div>
                       <Button
                           label={"Buy ATR"}

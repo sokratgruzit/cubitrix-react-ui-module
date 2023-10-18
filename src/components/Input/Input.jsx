@@ -815,6 +815,38 @@ export const Input = (props) => {
       </div>
     );
   }
+  if (props.type === "plus_minus") {
+    element = (
+        <div className={`input-group input__plus-minus custom-arrow`} style={props.customStyles}>
+          <p className={`font-12`}>{props.label}</p>
+          <input
+              onChange={(e) => {
+                props.onChange(e);
+              }}
+              value={props.value}
+              name={props.name}
+              min={props.min}
+              max={props.max}
+              step={props.step}
+              type="number"
+              placeholder={props.placeholder}
+              className={`${"form-control"}`}
+          />
+          <div className="input-input__plus-minus-btns">
+            <div>
+              <svg onClick={props.decriment} width="8" height="2" viewBox="0 0 8 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.312 0.52V1.752H0.928V0.52H7.312Z" fill="white"/>
+              </svg>
+            </div>
+            <div>
+              <svg onClick={props.incriment} width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.552 4.768H5.144V8.224H3.784V4.768H0.392V3.536H3.784V0.0639992H5.144V3.536H8.552V4.768Z" fill="white"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+    );
+  }
 
   if (props.type === "checkbox") {
     element = (

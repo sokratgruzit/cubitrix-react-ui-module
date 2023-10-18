@@ -56,7 +56,7 @@ input[type="number"] {
   padding: 11.5px 16px 11.5px 16px;
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
+  border-radius: 16px;
   color: #fff;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   height: 44px;
@@ -1125,4 +1125,26 @@ input.input-range[type="range"]:focus::-ms-fill-upper {
 .disabled-checkbox+.custom-checkbox {
   background: rgba(255, 255, 255, 0.5);
   cursor: not-allowed;
+}
+.input__plus-minus input{
+  width: 100%;
+  background: transparent;
+}
+.input-input__plus-minus-btns {
+  position: absolute;
+  right: 6px;
+  align-items: center;
+  bottom: 12px;
+  display: flex;
+}
+.input-input__plus-minus-btns > div:hover path{
+  fill: #c38c5c;
+}
+.input-input__plus-minus-btns > div {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }

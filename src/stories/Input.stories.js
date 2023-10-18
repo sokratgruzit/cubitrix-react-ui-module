@@ -488,7 +488,7 @@ stories.add("Input", (props) => {
           color: "rgb(106, 109, 118)",
           transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
           height: "44px",
-          marginBottom: "200px"
+          marginBottom: "20px"
         }}
         min={5000}
         max={500000}
@@ -499,6 +499,20 @@ stories.add("Input", (props) => {
         // value={amountProgressValue}
         // onChange={amountProgressOnchange}
       />
+        <Input
+            type={"plus_minus"}
+            customStyles={{
+                width: "200px"
+            }}
+            min={5000}
+            max={500000}
+            step={5000}
+            decrimnet={() => console.log('-')}
+            incrimnet={() => console.log('+')}
+            label={"Amount"}
+            // value={amountProgressValue}
+            // onChange={amountProgressOnchange}
+        />
     </div>
 
 
