@@ -549,7 +549,7 @@ stories.add("Dashboard", () => {
         }
         verified={false}
       />
-      <DashboardSharedLayout links={links} disabledAccount={true} eliteMemberBtnLabel={'Become Elite Member'}>
+      <DashboardSharedLayout links={links} disabledAccount={false} eliteMemberBtnLabel={'Become Elite Member'}>
         <Dashboard
           transactionsData={transactionsData}
           transactionHeader={transactionHeader}

@@ -59,7 +59,7 @@ export const Header = ({
               modules={modules}
             />
           )}
-          {mobile && !(width <= 440) && (
+          {mobile && (
             <NavbarHelper
               type={'connect'}
               onClick={handleConnect}
@@ -102,18 +102,6 @@ export const Header = ({
           />
         )}
         {mobile && <NavbarHelper type={'navbar'} modules={modules} />}
-        {width <= 440 && (
-          <NavbarHelper
-            type={'connect'}
-            onClick={handleConnect}
-            account={account}
-            verified={verified}
-            initialRegister={initialRegister}
-            setInitialRegister={setInitialRegister}
-            loginWithEmail={loginWithEmail}
-            loggedWithEmail={loggedWithEmail}
-          />
-        )}
         {mobile && (
             <Button
                 label={"Become Elite Member"}

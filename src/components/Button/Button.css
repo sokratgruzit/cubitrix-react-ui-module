@@ -519,3 +519,22 @@
 .dashboard-sidebar-container.open .btn-help > div > p {
   font-size: 12px;
 }
+@media only screen and (max-width: 1023px) {
+  .btn-sm {
+    height: 34px;
+    padding: 0px 10px;
+  }
+  .btn-sm .addressWrapper p{
+    font-size: 12px;
+  }
+  .btn-sm .addressWrapper svg{
+    width: 16px;
+    height: 16px;
+  }
+  .btn span {
+    font-size: 12px;
+  }
+  .btn-lg{
+    height: 42px;
+  }
+}

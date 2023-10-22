@@ -24,13 +24,24 @@
   .dashboard-total-referral-row {
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 20px;
   }
   .dashboard-total-referral-item {
-    width: 47%;
+    width: calc(50% - 10px);
   }
 }
 @media only screen and (max-width: 767px) {
   .dashboard-total-referral-item {
     flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    width: calc(50% - 5px);
+  }
+  .dashboard-total-referral-item p:first-child {
+    font-size: 12px;
+    line-height: 130%;
+  }
+  .dashboard-total-referral-row {
+    gap: 10px;
   }
 }

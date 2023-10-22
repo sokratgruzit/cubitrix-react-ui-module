@@ -3,6 +3,7 @@ import React from "react";
 const WalletConnect = ({ ...props }) => {
   return (
     <svg
+        className='LandingSteps__walletmetamaskIcon'
       width="72"
       height="72"
       viewBox="0 0 72 72"
