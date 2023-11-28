@@ -22,27 +22,45 @@ export const CardSlider = ({
   extensions,
   stakedTotal,
   handleStake,
-  translates
+  translates,
 }) => {
   const { width } = useMobileWidth();
 
   const cardFooterData = [
     {
       title: translates?.transfer.en,
-      svg: <AccountType type={"transfer"} className="card-slider-card_footer-item-svg" />,
+      svg: (
+        <AccountType
+          type={"transfer"}
+          className="card-slider-card_footer-item-svg"
+        />
+      ),
     },
     {
       title: translates?.withdraw.en,
-      svg: <AccountType type={"withraw"} className="card-slider-card_footer-item-svg" />,
+      svg: (
+        <AccountType
+          type={"withraw"}
+          className="card-slider-card_footer-item-svg"
+        />
+      ),
     },
     {
       title: translates?.exchange.en,
-      svg: <AccountType type={"exchange"} className="card-slider-card_footer-item-svg" />,
+      svg: (
+        <AccountType
+          type={"exchange"}
+          className="card-slider-card_footer-item-svg"
+        />
+      ),
     },
     {
       title: translates?.stake.en,
       svg: (
-        <AccountType type={"stake"} className="card-slider-card_footer-item-svg-stake" />
+        <AccountType
+          type={"stake"}
+          className="card-slider-card_footer-item-svg-stake"
+        />
       ),
     },
   ];
@@ -57,11 +75,15 @@ export const CardSlider = ({
           : item?.account_category === "trade"
           ? extensions[`${item?.account_category}Admin`] === "true"
           : extensions[item?.account_category] === "true" &&
-            extensions[`${item?.account_category}Admin`] === "true"),
+            extensions[`${item?.account_category}Admin`] === "true")
     );
 
     const sortedData = data?.sort((a, b) =>
-      a?.account_category === "main" ? -1 : b?.account_category === "main" ? 1 : 0,
+      a?.account_category === "main"
+        ? -1
+        : b?.account_category === "main"
+        ? 1
+        : 0
     );
 
     return sortedData;
@@ -108,7 +130,8 @@ export const CardSlider = ({
 
   const assets = useMemo(() => {
     if (accountType === "main") {
-      return accountsData?.find((item) => item?.account_category === "main")?.assets;
+      return accountsData?.find((item) => item?.account_category === "main")
+        ?.assets;
     } else {
       return [];
     }
@@ -127,7 +150,7 @@ export const CardSlider = ({
 
   const isAccountTypeFirstItem = useMemo(
     () => accountsData?.[0]?.account_category !== accountType,
-    [accounts, accountType],
+    [accounts, accountType]
   );
   function formatNumber(number) {
     const parts = number?.toString()?.split(".");
@@ -147,7 +170,7 @@ export const CardSlider = ({
         <div className="card-slider-navigation">
           {accountsData?.map((item, index) => {
             const activeIndex = accountsData.findIndex(
-              (acc) => accountType === acc.account_category,
+              (acc) => accountType === acc.account_category
             );
             const isLeftOfActive = index === activeIndex - 1;
             const isRightOfActive = index === activeIndex + 1;
@@ -159,19 +182,26 @@ export const CardSlider = ({
 
             return (
               <div
-                className={`card-slider-navigation_item_container ${accountType === item?.account_category ? "active" : ""}`}
+                className={`card-slider-navigation_item_container ${
+                  accountType === item?.account_category ? "active" : ""
+                }`}
                 onClick={() => setAccountType(item?.account_category)}
                 key={index}
               >
                 <p className="font-16">
-                  {item?.account_category === "main" ? "main" : item?.account_category}{" "}
+                  {item?.account_category === "main"
+                    ? "main"
+                    : item?.account_category}{" "}
                   {width > 767 ? "account" : ""}
                 </p>
               </div>
             );
           })}
         </div>
-        <div onClick={handleDeposit} className="card-slider-navigation_item-deposit">
+        <div
+          onClick={handleDeposit}
+          className="card-slider-navigation_item-deposit"
+        >
           <svg
             className="card-slider-navigation_item-deposit-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -194,7 +224,9 @@ export const CardSlider = ({
 
       <div
         className={`card-slider-content ${
-          isAccountTypeFirstItem && width > 767 ? "card-slider-content-wrap" : ""
+          isAccountTypeFirstItem && width > 767
+            ? "card-slider-content-wrap"
+            : ""
         }`}
       >
         <Swiper
@@ -218,7 +250,9 @@ export const CardSlider = ({
                   <Account type={"atar"} />
                   <h4 className="font-16 title_wrapper_card">
                     <span className="font-16">
-                      {accountType === "main" ? "A1" : accountType.toUpperCase()}
+                      {accountType === "main"
+                        ? "A1"
+                        : accountType.toUpperCase()}
                     </span>
                     {tier && (
                       <span
@@ -330,12 +364,19 @@ export const CardSlider = ({
                         )}
                       </div>
                     </div>
-                    <div className="card-slider-card_footer card-slider-card_footer-currency">
+                    <div
+                      className={`card-slider-card_footer card-slider-card_footer-currency`}
+                    >
                       {cardFooterData?.map((item, footerIndex) => {
                         return (
-                          <>
-                          {key !== "gold" || item.title !== "Withdraw" && <div
-                            className="card-slider-card_footer-item card-slider-card_footer-item-currency"
+                          <div
+                            style={
+                              (key === "gold" && item.title === "Withdraw") ||
+                              (key === "platinum" && item.title === "Withdraw")
+                                ? { display: "none" }
+                                : { display: "block" }
+                            }
+                            className={`card-slider-card_footer-item card-slider-card_footer-item-currency`}
                             key={footerIndex}
                             onClick={() => {
                               if (item.title === "Withdraw") {
@@ -351,8 +392,7 @@ export const CardSlider = ({
                           >
                             {item.svg}
                             <p className="font-10">{item.title}</p>
-                          </div>}
-                          </>
+                          </div>
                         );
                       })}
                     </div>
