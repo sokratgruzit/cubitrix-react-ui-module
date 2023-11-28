@@ -30,17 +30,17 @@ export const Dashboard = ({
   stakedTotal,
   handleStake,
   referralTotal,
-  A1Price,
+  translates
 }) => {
   let referralItem = {};
 
   const tables = [
     {
       type: "transactions",
-      header: "Transactions",
+      header: translates?.transactions.en,
       description: (
         <>
-          Total number of operations:{" "}
+          {translates?.total_number_of_operations.en}{" "}
           <span className="dashboard-transactions-span">
             {totalTransactions?.total_transaction}
           </span>
@@ -48,17 +48,17 @@ export const Dashboard = ({
       ),
       rightPanelData: [
         {
-          title: "Incoming",
+          title: translates?.incoming.en,
           value: totalTransactions?.received,
         },
         {
-          title: "Outgoing",
+          title: translates?.outgoing.en,
           value: totalTransactions?.spent,
         },
       ],
       footer: {
         link: "/transactions",
-        label: "All Transactions",
+        label: translates?.all_transactions.en,
       },
       tableHeader: transactionHeader,
       data: transactionsData?.transactions,
@@ -70,11 +70,11 @@ export const Dashboard = ({
   if (tier && tier !== "Novice Navigator") {
     referralItem = {
       type: referralHistoryTableType,
-      header: "Referral History",
-      description: `The airdrop history of your weekly referral rebates.`,
+      header: translates?.referral_history.en,
+      description: translates?.history_of.en,
       footer: {
         link: "/referral",
-        label: "All History",
+        label: translates?.all_records.en,
       },
       tableHeader: referralHistoryHeader,
       data: rebatesTableData,
@@ -89,6 +89,7 @@ export const Dashboard = ({
   return (
     <>
       <CardSlider
+        translates={translates}
         accountType={accountType}
         setAccountType={setAccountType}
         accounts={accountsData}
@@ -103,49 +104,49 @@ export const Dashboard = ({
         handleStake={handleStake}
       />
       <div className="dashboard-total-referral-row">
+        {/*<div className="dashboard-total-referral-item">*/}
+        {/*  <p>A1 Price</p>*/}
+        {/*  <p>*/}
+        {/*    {A1Price?.toLocaleString("en-US", {*/}
+        {/*      minimumFractionDigits: 2,*/}
+        {/*      maximumFractionDigits: 2,*/}
+        {/*    }) ?? 0}*/}
+        {/*  </p>*/}
+        {/*</div>*/}
         <div className="dashboard-total-referral-item">
-          <p>A1 price</p>
-          <p>
-            {A1Price?.toLocaleString("en-US", {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            }) ?? 0}
-          </p>
-        </div>
-        <div className="dashboard-total-referral-item">
-          <p>Expected Bonus</p>
+          <p>{translates?.expected_binary.en}</p>
           <p>
             {referralTotal?.all_amount_sum?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0}
+            }) ?? 0} A1
           </p>
         </div>
         <div className="dashboard-total-referral-item">
-          <p>Total Left</p>
+          <p>{translates?.total_left.en}</p>
           <p>
             {referralTotal?.left_total?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0}
+            }) ?? 0} A1
           </p>
         </div>
         <div className="dashboard-total-referral-item">
-          <p>Total Right</p>
+          <p>{translates?.total_right.en}</p>
           <p>
             {referralTotal?.total_right?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0}
+            }) ?? 0} A1
           </p>
         </div>
         <div className="dashboard-total-referral-item">
-          <p>Uni</p>
+          <p>{translates?.expected_uni.en}</p>
           <p>
             {referralTotal?.uni?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0}
+            }) ?? 0} A1
           </p>
         </div>
       </div>

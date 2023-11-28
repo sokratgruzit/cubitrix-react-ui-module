@@ -53,7 +53,7 @@
   height: 80px;
   display: flex;
   align-items: center;
-  padding-right: 40px;
+  padding-right: 20px;
 }
 .td.col {
   flex-direction: column;
@@ -64,11 +64,15 @@
   font-size: 12px;
   color: #cdced1;
 }
+.table-emulator-container {
+  width: 100%;
+}
 .td span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  text-transform: capitalize;
 }
 .table-mobile-content {
   display: flex;
@@ -104,7 +108,7 @@
 }
 .table-head ~ .icon-place,
 .table-head ~ .table-more {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.01);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .table-mobile {
@@ -396,8 +400,14 @@
   .table-head {
     width: calc(100% - 40px);
   }
+  .table-head {
+    padding-right: 0px;
+  }
   .table-mobile {
     display: block;
+  }
+  .td, .th {
+    padding-right: 15px;
   }
 }
 

@@ -20,6 +20,7 @@ export const TopUpDashboard = ({
   exchangeDetails,
   createChargeLoading,
   setExchangeDetails,
+  translates
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
@@ -38,6 +39,7 @@ export const TopUpDashboard = ({
 
   const handleUSDAmountChange = (event) => {
     const value = event.target.value;
+    console.log(value)
     if (!isNaN(value) && value >= 0) {
       if (value > 0) setTokenError(null);
       setAmountUSD(Number(value));
@@ -71,8 +73,8 @@ export const TopUpDashboard = ({
 
   return (
     <div className="topupDashboard_main">
-      <h1>Purchase</h1>
-      <p>Please choose the payment currency in which you intend to purchase A1 tokens.</p>
+      <h1>{translates?.purchase.en}</h1>
+      <p>{translates?.please_choose_the_payment_currency.en}</p>
       <div className="LandingSteps__topUpOptions">
         {methods.map((method) => (
           <div
@@ -94,8 +96,7 @@ export const TopUpDashboard = ({
         ))}
       </div>
       <p>
-        Please choose a network chain through which you will transfer the selected
-        currency.
+        {translates?.please_choose_a_network.en}
       </p>
       <div className="LandingSteps__topUpOptions">
         {rpcs.map((chain) => (
@@ -126,12 +127,10 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            Please enter the desired amount of USD you would like to purchase for A1.
+            {translates?.please_enter_desired_amount.en}
           </p>
           <p className="topupDashboard_info">
-            Enter the amount you would like to contribute in order to calculate the amount
-            of A1 you will receive. The calculator below helps to convert the required
-            quantity of A1 into the amount of your selected currency.
+            {translates?.enter_the_amount_you_would.en}
           </p>
           <div className="topupDashboard_inputContainer">
             <Input
@@ -155,15 +154,15 @@ export const TopUpDashboard = ({
           )}
         </div>
         <div className="topupDashboard_bottom-right">
-          <h3>Purchase Information</h3>
+          <h3>{translates?.purchase_information.en}</h3>
           <div className="topupDashboard_bottom-row">
-            <p>Amount:</p>
+            <p>{translates?.amount.en}:</p>
             <p>
               {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)} A1
             </p>
           </div>
           <div className="topupDashboard_bottom-row">
-            <p>Transaction Fee: </p>
+            <p>{translates?.transaction_fee.en}: </p>
             <p> {tranasctionFee} USD</p>
           </div>
           <h3 className="topupDashboard_bottom-result">
@@ -194,7 +193,7 @@ export const TopUpDashboard = ({
                 handlePaymentConfirm={handlePaymentConfirm}
                 qrcode={qrcode}
                 selectedMethod={selectedMethod}
-                tokenAmount={tokenAmount}
+                tokenAmount={amountUSD}
                 setExchangeDetails={setExchangeDetails}
                 exchangeDetails={exchangeDetails}
               />

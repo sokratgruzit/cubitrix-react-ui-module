@@ -12,6 +12,8 @@ import { Popup } from "../components/Popup";
 import { PopupElement } from "../components/PopupElement";
 import { LevelSystem } from "../components/LevelSystem";
 import { Footer } from "../components/Footer";
+import translates from "../translates.json";
+
 
 const stories = storiesOf("Referral", module);
 
@@ -1619,6 +1621,7 @@ stories.add("Referral", () => {
         verified={false}
       />
       <Referral
+        translates={translates}
         referralTableTitle={"your title"}
         referralTreeMainAddressData={{
           all_amount_sum: 0,

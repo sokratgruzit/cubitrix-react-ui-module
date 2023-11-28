@@ -2,6 +2,7 @@ import { useState } from "react";
 import { storiesOf } from "@storybook/react";
 import "../assets/css/main-theme.css";
 import { Calculator } from "../components/Calculator";
+import translates from "../translates.json";
 
 const stories = storiesOf("Calculator", module);
 
@@ -45,6 +46,10 @@ stories.add("Calculator", () => {
                 handleCalculatorSubmit={() => console.log('submit')}
                 setStakeData={setStakeData}
                 stakeData={stakeData}
+                translates={translates}
+                tokenBalance={4000}
+                walletBalance={10000}
+                exchangeRate={2}
             />
         </div>
     );

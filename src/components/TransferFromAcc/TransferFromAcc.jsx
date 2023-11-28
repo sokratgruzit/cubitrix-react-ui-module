@@ -92,6 +92,7 @@ export const TransferFromAcc = ({
                       handleInputChange(opt, params);
                     }}
                     placeholder={params?.placeholder}
+                    disabled={params?.disabled}
                     onChange={(e) => handleInputChange(e, params)}
                     defaultData={params?.options}
                     customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}

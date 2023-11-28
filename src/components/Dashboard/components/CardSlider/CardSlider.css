@@ -7,10 +7,9 @@
 
 .card-slider-navigation {
   display: flex;
-  /*overflow-x: auto;*/
-  /* width: 100%; */
-  /* justify-content: space-between;  */
-  padding: 0px 10px 0px 20px;
+  bottom: -2px;
+  position: relative;
+  padding: 0px 15px;
 }
 
 .card-slider-navigation_item-deposit {
@@ -43,14 +42,32 @@
 }
 
 .card-slider-navigation_item_container {
-  background: #0d1e21;
   border-radius: 20px 20px 0px 0px;
+  display: flex;
+  align-items: center;
+  padding: 0px 30px;
+  height: 50px;
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-bottom: none!important;
+  cursor: pointer;
 }
-
+.card-slider-navigation_item_container.active {
+  background: rgba(13, 30, 33, 1);
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+.card-slider-navigation_item_container p {
+  color: rgba(255, 255, 255, .6);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  text-transform: capitalize;
+}
+.card-slider-navigation_item_container.active p,.card-slider-navigation_item_container:hover p {
+  color: rgba(195, 140, 92, 1);
+}
 .card-slider-navigation_item {
   padding: 7px 28px;
   cursor: pointer;
-  background: #0e2225;
+  /*background: #0e2225;*/
   border-radius: 20px 20px 0px 0px;
   border: none;
 }
@@ -113,7 +130,7 @@
   height: 280px;
   left: 424px;
   top: 160px;
-  border-radius: 0px 0px 0px 20px;
+  border-radius: 20px;
   border-top: none;
   background: #0d1e21;
   padding: 20px 20px 30px;
@@ -121,6 +138,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-slider-content-wrap {
@@ -354,10 +372,19 @@
 }
 
 @media only screen and (max-width: 767px) {
+  .card-slider-navigation_item-deposit p {
+    font-size: 12px;
+  }
+  .card-slider-navigation_item_container {
+    height: 35px;
+    padding: 0px 15px;
+  }
+  .card-slider-navigation_item_container p{
+    font-size: 12px;
+  }
   .card-slider-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 10px;
   }
 
   .card-slider-navigation_item.active {

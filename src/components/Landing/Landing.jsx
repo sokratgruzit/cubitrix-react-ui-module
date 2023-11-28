@@ -14,6 +14,7 @@ export const Landing = ({
   whyComplendData,
   overviewProjectsData,
   animate,
+  translates
 }) => {
   return (
     <div style={{ paddingTop: '70px' }}>

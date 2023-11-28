@@ -30,13 +30,13 @@ export const LevelSystem = ({ tableHead, tableData, bv, typeBns, type }) => {
                                 {tableData.map((item, index) => (
                                     <div className='level-system-table' key={index}>
                                         <div className={`level-system-td`}>
-                                            <span>{item?.from || '-'}</span>
+                                            <span>{item?.from + ' $' || '-'}</span>
                                         </div>
                                         <div key={index} className={`level-system-td`}>
-                                            <span>{item?.to || '-'}</span>
+                                            <span>{item?.to + ' $' || '-'}</span>
                                         </div>
                                         <div key={index} className={`level-system-td`}>
-                                            <span>{item?.price || '-'}</span>
+                                            <span>{item?.price + ' $' || '-'}</span>
                                         </div>
                                     </div>
                                 ))}

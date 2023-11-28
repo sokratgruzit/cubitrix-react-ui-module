@@ -146,11 +146,18 @@ button {
   font-size: 20px;
   line-height: 130%;
 }
+.font-60 {
+  font-size: 60px;
+  line-height: 130%;
+}
 .font-regular {
   font-family: "UberMove-Regular";
 }
 .font-medium {
   font-family: "UberMove-Medium";
+}
+.colorGold {
+  color: #c38c5c;
 }
 .plus-market {
   color: #9ccc65;

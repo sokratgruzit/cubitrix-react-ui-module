@@ -21,13 +21,10 @@
 .account-summary-data {
   background: #10282b;
   border-radius: 16px;
-  padding: 45px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   position: relative;
-  bottom: 15px;
-  margin-top: 43px;
 }
 
 .total-account-info {
@@ -57,8 +54,11 @@
   gap: 10px;
   width: 100%;
   border: 1px solid rgb(0, 255, 208, 0.2);
+  padding: 15px;
 }
-
+.stake-content-main {
+  margin-bottom: 75px;
+}
 .account-summary {
   display: flex;
   align-items: center;

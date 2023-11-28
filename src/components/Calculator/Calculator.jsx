@@ -6,7 +6,7 @@ import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { HelpText } from "../HelpText";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 
 // styles
 import "./Calculator.css";
@@ -32,6 +32,11 @@ export const Calculator = ({
   handleWalletSubmit,
   hasRerferralActive,
   rates,
+  apyPercent,
+  translates,
+  tokenBalance,
+  walletBalance,
+  exchangeRate
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -51,7 +56,7 @@ export const Calculator = ({
         amount: {
           validationType: "min5000",
           success: "amount is valid",
-          failure: "minimum amount you can stake is 5000 $ worth of A1",
+          failure: translates?.minimum_amount_you_can_stake.en,
         },
       };
     } else {
@@ -90,18 +95,18 @@ export const Calculator = ({
           type={"lable-input-select"}
           defaultData={[
             { name: "Wallet", value: "Wallet" },
-            { name: "ATR Balance", value: "ATR Balance" },
+            { name: "A1 Balance", value: "ATR Balance" },
           ]}
           icon={false}
           emptyFieldErr={false}
           value={stakeType}
-          label={"Calculated"}
+          label={translates?.choose_balance.en}
           selectHandler={(type) => setStakeType(type)}
         />
         {stakeType === "Wallet" ? (
           <HelpText
             status="info"
-            title={"Stake from your wallet"}
+            title={translates?.stake_from_your_wallet.en}
             fontSize={"font-12"}
             icon={true}
           />
@@ -109,19 +114,32 @@ export const Calculator = ({
           <HelpText
             status="warning"
             title={
-              "A1 tokens will be deducted from your A1 balance and a 2 A1 transaction fee will apply. If you reject the transaction, the A1 tokens will be available in your wallet where they are available for staking."
+              translates?.tokens_will_be_deducted.en
             }
             fontSize={"font-12"}
             icon={true}
           />
         )}
       </div>
+        {isAllowance && depositAmount === "" ? (
+            <></>
+        ) : (
+            <>
+            <HelpText
+                status={"warning"}
+                title={`${translates?.your_currently_possess.en} ${stakeType === "Wallet" ? tokenBalance : walletBalance} ${translates?.a_worth.en} ${stakeType === "Wallet" ? tokenBalance * exchangeRate : walletBalance * exchangeRate} USD.`}
+                color={"#6A6D76"}
+                icon={true}
+                customStyles={{ marginBottom: "5px" }}
+            />
+            </>)}
       <div className={"calculator-input"}>
         <Input
           type={"default"}
           inputType={"text"}
           placeholder={"0000"}
-          label={"Amount"}
+          label={"Amount (USD)"}
+          disabled={stakingLoading}
           onChange={handleChange}
           emptyFieldErr={emptyField}
           value={depositAmount}
@@ -160,17 +178,21 @@ export const Calculator = ({
         )} A1`}</p>
       </div>
       <HelpText
-        title={
-          timeperiod === 0
-            ? "15 % APY On 30 Days. Locked until " + timeperiodDate
-            : timeperiod === 1
-            ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
-            : timeperiod === 2
-            ? "29% APY On 90 Days. Locked until " + timeperiodDate
-            : timeperiod === 3
-            ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
-            : "50.0% APY On 360 Days. Locked until " + timeperiodDate
-        }
+          title={
+            timeperiod === 0
+                ? apyPercent + "% APY. Locked until " + timeperiodDate
+                : timeperiod === 1
+                    ? apyPercent + "% APY. Locked until " + timeperiodDate
+                    : timeperiod === 2
+                        ? apyPercent + "% APY. Locked until " + timeperiodDate
+                        : timeperiod === 3
+                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            : timeperiod === 4
+                                ? apyPercent + "% APY. Locked until " + timeperiodDate
+                                : timeperiod === 5
+                                    ? apyPercent + "% APY. Locked until " + timeperiodDate
+                                    : apyPercent + "% APY. Locked until " + timeperiodDate
+          }
         status="info"
         color="#6A6D76"
         icon={true}
@@ -202,9 +224,9 @@ export const Calculator = ({
                 ? "Loading..."
                 : isAllowance
                 ? "Enable"
-                : "Stake"
-              : "Withdraw and Stake"
-            : "Connect Wallet"
+                : translates?.stake.en
+              : translates?.withdraw_and_stake.en
+            : translates?.connect_wallet.en
         }
         size={"btn-lg"}
         type={"btn-primary"}

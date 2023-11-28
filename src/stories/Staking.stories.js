@@ -12,6 +12,7 @@ import { Popup } from "../components/Popup";
 import { Calculator } from "../components/Calculator";
 import { useMobileWidth } from "../hooks/useMobileWidth";
 import { useOnScreen } from "../hooks/useOnScreen";
+import translates from "../translates.json";
 
 stories.add("Staking", () => {
   const [depositAmount, setDepositAmount] = useState("10");
@@ -149,116 +150,13 @@ stories.add("Staking", () => {
   let stakersRecord = [
     {
       id: 12123,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
+      amount: "10,220,000.2",
+      staketime: "14/02/2022 10:00 AM",
+      unstaketime: "01/11/2023 3:12 PM",
+      // unstaketime: "06/11/2023 3:12 PM",
       CML: "CML",
       realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 2121234,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 12123,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 2121234,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 12123,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 2121234,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
-    {
-      id: 1221235,
-      amount: "1,220,000.2",
-      staketime: "01.02.2023 10:00AM",
-      unstaketime: "01.02.2023 08:15PM",
-      CML: "CML",
-      realtimeRewardPerBlock: "1,132,000.1",
-    },
+    }
   ];
 
   let account = false;
@@ -541,6 +439,7 @@ stories.add("Staking", () => {
       <button onClick={handleButtonClick}>Show Toasts</button>
       <Staking
         account={true}
+        translates={translates}
         durationOptions={durationOptions}
         stackContractInfo={stackContractInfo}
         loading={loading}

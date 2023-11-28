@@ -22,24 +22,25 @@ export const CardSlider = ({
   extensions,
   stakedTotal,
   handleStake,
+  translates
 }) => {
   const { width } = useMobileWidth();
 
   const cardFooterData = [
     {
-      title: "Transfer",
+      title: translates?.transfer.en,
       svg: <AccountType type={"transfer"} className="card-slider-card_footer-item-svg" />,
     },
     {
-      title: "Withdraw",
+      title: translates?.withdraw.en,
       svg: <AccountType type={"withraw"} className="card-slider-card_footer-item-svg" />,
     },
     {
-      title: "Exchange",
+      title: translates?.exchange.en,
       svg: <AccountType type={"exchange"} className="card-slider-card_footer-item-svg" />,
     },
     {
-      title: "Stake",
+      title: translates?.stake.en,
       svg: (
         <AccountType type={"stake"} className="card-slider-card_footer-item-svg-stake" />
       ),
@@ -133,9 +134,9 @@ export const CardSlider = ({
 
     if (parts?.length === 2) {
       const decimalPart = parts[1]?.substring(0, 4); // Get up to four decimal places
-      return `${parts[0]}.${decimalPart}`;
+      return `${parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.${decimalPart}`;
     } else if (typeof number === "number") {
-      return number.toString();
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     } else {
       return "";
     }
@@ -158,24 +159,14 @@ export const CardSlider = ({
 
             return (
               <div
-                className={`${
-                  accountType !== item?.account_category
-                    ? "card-slider-navigation_item_container"
-                    : ""
-                }`}
+                className={`card-slider-navigation_item_container ${accountType === item?.account_category ? "active" : ""}`}
+                onClick={() => setAccountType(item?.account_category)}
                 key={index}
               >
-                <div
-                  className={`card-slider-navigation_item ${
-                    accountType === item?.account_category ? "active" : ""
-                  } ${width >= 767 && borderRadiusClass}`}
-                  onClick={() => setAccountType(item?.account_category)}
-                >
-                  <p className="font-16">
-                    {item?.account_category === "main" ? "main" : item?.account_category}{" "}
-                    {width > 767 ? "account" : ""}
-                  </p>
-                </div>
+                <p className="font-16">
+                  {item?.account_category === "main" ? "main" : item?.account_category}{" "}
+                  {width > 767 ? "account" : ""}
+                </p>
               </div>
             );
           })}
@@ -244,7 +235,7 @@ export const CardSlider = ({
                 </div>
                 <div className="main-card-content-wrapper">
                   <p
-                    className={`card-slider-card_content ${
+                    className={`card-slider-card_content  ${
                       accountType === "trade" ? "card-slider-trade_content" : ""
                     }`}
                   >

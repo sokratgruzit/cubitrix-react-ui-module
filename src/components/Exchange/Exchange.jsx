@@ -142,6 +142,7 @@ export const Exchange = ({
                         type={params?.type}
                         label={params.title}
                         name={params.name}
+                        disabled={params.disabled}
                         value={
                           params?.type === "lable-input-select"
                             ? selectedOption?.name ||

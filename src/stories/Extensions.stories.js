@@ -4,6 +4,7 @@ import { InnerExtensions } from "../components/Extensions/InnerExtensions.jsx";
 import { Header } from "../components/Header";
 import "../assets/css/main-theme.css";
 import { BrowserRouter } from "react-router-dom";
+import translates from "../translates.json";
 
 // svg
 import { Staking } from "../assets/svgs";
@@ -228,7 +229,7 @@ stories.add("Extensions", () => {
         }
         verified={false}
       />
-      <Extensions extensionsCardsData={extensionsCardsData} disabledAccount={true} />
+      <Extensions translates={translates} extensionsCardsData={extensionsCardsData} disabledAccount={true} />
       {/* <InnerExtensions
         extensionsCardsData={extensionsCardsData}
         id={"trade"}

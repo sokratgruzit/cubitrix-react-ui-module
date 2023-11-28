@@ -53,7 +53,7 @@ const ConfirmPaymentPopup = ({
         <p>Your transaction has been placed successfully.</p>
         <p>
           Please send{" "}
-          {(Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
+          {(Number(tokenAmount) + Number(tranasctionFee)) /
             rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
           {selectedMethod} to the address below. The A1 balance will appear in your
           account after system approves it. This might take up to 1 minute.
@@ -68,10 +68,10 @@ const ConfirmPaymentPopup = ({
             <h3 className="confitm_payment_title">
               Payment to the following Wallet Address
             </h3>
-            <p className="confirm_payment_popup_grayText">Transaction Fee: 1 USD</p>
+            <p className="confirm_payment_popup_grayText">Transaction Fee: {Number(tranasctionFee)} USD</p>
             <p className="confirm_payment_popup_grayText">
               Send Amount:{" "}
-              {(Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)) /
+              {(Number(tokenAmount) + Number(tranasctionFee)) /
                 rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
               {selectedMethod}
             </p>

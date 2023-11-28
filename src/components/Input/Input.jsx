@@ -101,7 +101,7 @@ export const Input = (props) => {
           }
           className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
             !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
-          } ${props?.inputClassName ? props.inputClassName : ""}`}
+          } ${props?.disabled ? "disabled-input" : ""} ${props?.inputClassName ? props.inputClassName : ""}`}
           type={!cover && props.inputType === "password" ? "password" : "text"}
           placeholder={props.placeholder}
         />
@@ -174,6 +174,111 @@ export const Input = (props) => {
         </span>
         {props.statusCard}
       </div>
+    );
+  }
+  if (props.type === "number") {
+    element = (
+        <div
+            style={props.customStyles}
+            className={`${props.className} 
+     
+      input-group`}
+        >
+          {props.label || props.subLabel ? (
+              <p className="input-group-title font-12">
+                {props.label}
+                <span className="font-12">{props.subLabel}</span>
+              </p>
+          ) : (
+              ""
+          )}
+          <input
+              onChange={(e) => {
+                setEdit(true);
+                props.onChange(e);
+              }}
+              value={props.value}
+              name={props.name}
+              style={
+                props.icon
+                    ? { paddingRight: "43px", ...props?.customInputStyles }
+                    : { paddingRight: "16px", ...props?.customInputStyles }
+              }
+              className={`${"form-control"} ${props.emptyFieldErr ? "error-border" : ""}  ${
+                  !edit && props.editable && props?.value?.length > 0 ? "disabled-input" : ""
+              } ${props?.inputClassName ? props.inputClassName : ""}`}
+              type={!cover && props.inputType === "password" ? "password" : props.inputType}
+              placeholder={props.placeholder}
+          />
+          <span>
+          {props.inputType === "password" ? (
+              <div onClick={coverHandler}>
+                {cover ? (
+                    <svg
+                        style={{
+                          top: props.label || props.subLabel ? "30.5px" : "8px",
+                        }}
+                        className={"input-group-icon"}
+                        width="18"
+                        height="16"
+                        viewBox="0 0 18 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          d="M9 11.6083C7.00833 11.6083 5.39166 9.99167 5.39166 8C5.39166 6.00833 7.00833 4.39167 9 4.39167C10.9917 4.39167 12.6083 6.00833 12.6083 8C12.6083 9.99167 10.9917 11.6083 9 11.6083ZM9 5.64167C7.7 5.64167 6.64166 6.7 6.64166 8C6.64166 9.3 7.7 10.3583 9 10.3583C10.3 10.3583 11.3583 9.3 11.3583 8C11.3583 6.7 10.3 5.64167 9 5.64167Z"
+                          fill="#CDCED1"
+                      />
+                      <path
+                          d="M8.99999 15.5167C5.86666 15.5167 2.90833 13.6833 0.874994 10.5C-0.00833942 9.125 -0.00833942 6.88333 0.874994 5.5C2.91666 2.31667 5.87499 0.483334 8.99999 0.483334C12.125 0.483334 15.0833 2.31667 17.1167 5.5C18 6.875 18 9.11667 17.1167 10.5C15.0833 13.6833 12.125 15.5167 8.99999 15.5167ZM8.99999 1.73333C6.30833 1.73333 3.73333 3.35 1.93333 6.175C1.30833 7.15 1.30833 8.85 1.93333 9.825C3.73333 12.65 6.30833 14.2667 8.99999 14.2667C11.6917 14.2667 14.2667 12.65 16.0667 9.825C16.6917 8.85 16.6917 7.15 16.0667 6.175C14.2667 3.35 11.6917 1.73333 8.99999 1.73333Z"
+                          fill="#CDCED1"
+                      />
+                    </svg>
+                ) : (
+                    <svg
+                        style={{
+                          top: props.label || props.subLabel ? "32.5px" : "8px",
+                        }}
+                        className={"input-group-icon"}
+                        width="18"
+                        height="16"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          d="M12.1087 7.8915L7.89199 12.1082M12.1087 7.8915C11.5495 7.33234 10.7911 7.0182 10.0003 7.0182C9.60877 7.0182 9.22105 7.09533 8.8593 7.24517C8.49755 7.39501 8.16886 7.61463 7.89199 7.8915C7.61512 8.16837 7.3955 8.49707 7.24566 8.85882C7.09581 9.22056 7.01869 9.60828 7.01869 9.99984C7.01869 10.7906 7.33283 11.549 7.89199 12.1082M12.1087 7.8915L18.3337 1.6665M7.89199 12.1082L1.66699 18.3332M14.8503 4.80817C13.392 3.70817 11.7253 3.10817 10.0003 3.10817C7.05866 3.10817 4.31699 4.8415 2.40866 7.8415C1.65866 9.0165 1.65866 10.9915 2.40866 12.1665C3.06699 13.1998 3.83366 14.0915 4.66699 14.8082M7.01699 16.2748C7.96699 16.6748 8.97533 16.8915 10.0003 16.8915C12.942 16.8915 15.6837 15.1582 17.592 12.1582C18.342 10.9832 18.342 9.00817 17.592 7.83317C17.317 7.39984 17.017 6.9915 16.7087 6.60817M12.9253 10.5832C12.8124 11.1645 12.5284 11.6988 12.1097 12.1175C11.6909 12.5362 11.1566 12.8203 10.5753 12.9332"
+                          stroke="#6A6D76"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                      />
+                    </svg>
+                )}
+              </div>
+          ) : (
+              ""
+          )}
+            {props.editable && !edit && props?.value?.length > 0 ? (
+                <svg
+                    onClick={editHandler}
+                    style={{
+                      top: props.label || props.subLabel ? "34.5px" : "8px",
+                    }}
+                    className={`input-group-icon-sc ${edit ? "opacity-0" : "opacity-1"}`}
+                    width="18"
+                    height="16"
+                    viewBox="0 0 512 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M497.9 74.16l-60.09-60.1c-18.75-18.75-49.19-18.75-67.93 0L313.4 70.61l127.1 128l56.56-56.55C516.7 123.3 516.7 92.91 497.9 74.16zM31.04 352.1c-2.234 2.234-3.756 5.078-4.377 8.176l-26.34 131.7C-1.703 502.1 6.156 512 15.95 512c1.049 0 2.117-.1035 3.199-.3203l131.7-26.34c3.098-.6191 5.941-2.141 8.176-4.373l259.7-259.7l-128-128L31.04 352.1zM131.9 440.2l-75.14 15.03l15.03-75.15L96 355.9V416h60.12L131.9 440.2z" />
+                </svg>
+            ) : (
+                ""
+            )}
+        </span>
+          {props.statusCard}
+        </div>
     );
   }
   if (props.type === "lable-input-type1") {
@@ -766,8 +871,15 @@ export const Input = (props) => {
           placeholder={props.placeholder}
         />
         <div className="range-ttls">
-          <div>{props.min} $</div>
-          <div>{props.max} $</div>
+          <div>{props.min.toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+          })
+          } $</div>
+          <div>{props.max.toLocaleString("en-US", {
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+          })} $</div>
         </div>
       </div>
     );

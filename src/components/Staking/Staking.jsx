@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 // hooks
 import { useMobileWidth } from "../../hooks/useMobileWidth";
@@ -10,7 +10,7 @@ import { Table } from "../Table";
 import { Visual } from "../Visual";
 
 // svgs
-import { AddSquareIcon } from "../../assets/svgs";
+import {AddSquareIcon, ReferralPattern, StickyNoteIcon} from "../../assets/svgs";
 
 // styles
 import "../../assets/css/main-theme.css";
@@ -34,6 +34,8 @@ export const Staking = ({
   currencyStakes = [],
   currencyStakesLoading,
   currencyStakesTableHead,
+  apyPercent,
+  translates
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const { width, mobile } = useMobileWidth();
@@ -41,10 +43,33 @@ export const Staking = ({
   const [selectedTab, setSelectedTab] = useState("staking");
 
   let tableData = null;
+  function convertDateFormat(inputDate) {
+    // Split the input date string into day, month, year, and time components
+    var components = inputDate.split(/[\s/]+/);
 
+    // Rearrange the components to the desired format "MM/DD/YYYY hh:mm A"
+    var outputDate = components[1] + '/' + components[0] + '/' + components[2] + ' ' + components[3] + ' ' + components[4];
+
+    return outputDate;
+  }
   if (selectedTab === "staking") {
-    tableData = stakersRecord.map((item, index) => {
+    tableData = stakersRecord.slice().reverse().map((item, index) => {
+
+
       if (item.unstaked) return false;
+      const createdAt = new Date(convertDateFormat(item?.staketime));
+      const createdUn = new Date(convertDateFormat(item?.unstaketime));
+      const createdTime = createdAt.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+      const createdUnTime = createdUn.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+
+        year: "numeric",
+      });
       return (
         <div
           className={`table-parent ${mobileExpand === index ? "active" : ""}`}
@@ -60,27 +85,31 @@ export const Staking = ({
               mobileExpandFunc(index);
             }}
           >
-            {tableHead?.slice(0, 4).map((i, index) => (
-              <div
-                key={index}
-                className={`td col ${i.mobileWidth ? true : false}`}
-                style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
-              >
-                <span>
-                  {
-                    [
-                      (item.amount / 10 ** 18)?.toLocaleString("en-US", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      }),
-                      item.staketime,
-                      item.unstaketime,
-                      parseFloat(item.realtimeRewardPerBlock).toFixed(10),
-                    ][index]
-                  }
-                </span>
-              </div>
-            ))}
+
+            {tableHead?.slice(0, 4).map((i, index) => {
+
+              return (
+                  <div
+                      key={index}
+                      className={`td col ${i.mobileWidth ? true : false}`}
+                      style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+                  >
+                  <span>
+                    {
+                      [
+                        (item.amount / 10 ** 18)?.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        } )+ ' A1',
+                        createdTime,
+                        createdUnTime,
+                        parseFloat(item.realtimeRewardPerBlock).toFixed(10) + ' A1',
+                      ][index]
+                    }
+                  </span>
+                  </div>
+              )
+            })}
           </div>
           <div className="table-more" />
           <div
@@ -111,12 +140,12 @@ export const Staking = ({
             <div className="table-mobile-content">
               {width <= 1300 && (
                 <>
-                  {[0, 1].map((index) => (
+                  {[1,2].map((index) => (
                     <div className="td" key={index}>
                       <div className="mobile-ttl">{tableHead[index].name}</div>
                       <span>
-                        {index === 1 && item.staketime}
-                        {index === 2 && item.unstaketime}
+                        {index === 1 && item?.staketime}
+                        {index === 2 && item?.unstaketime}
                       </span>
                     </div>
                   ))}
@@ -135,7 +164,7 @@ export const Staking = ({
               <>
                 {[3].map((index) => (
                   <div className="td" key={index}>
-                    <div className="mobile-ttl">Earn Reward</div>
+                    <div className="mobile-ttl">{translates?.earn_reward.en}</div>
                     <span>A1</span>
                   </div>
                 ))}
@@ -176,6 +205,19 @@ export const Staking = ({
   } else {
     tableData = currencyStakes.map((item, index) => {
       if (item.unstaked) return false;
+      const createdAt = new Date(convertDateFormat(item?.staketime));
+      const createdUn = new Date(convertDateFormat(item?.expires));
+      const createdTime = createdAt.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+      const createdUnTime = createdUn.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+
+        year: "numeric",
+      });
       return (
         <div
           className={`table-parent ${mobileExpand === index ? "active" : ""}`}
@@ -191,27 +233,30 @@ export const Staking = ({
               mobileExpandFunc(index);
             }}
           >
-            {currencyStakesTableHead?.slice(0, 4).map((i, index) => (
-              <div
-                key={index}
-                className={`td col ${i.mobileWidth ? true : false}`}
-                style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
-              >
-                <span>
-                  {
-                    [
-                      `${item.amount?.toLocaleString("en-US", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })} ${item.currency?.toUpperCase()}`,
-                      item.createdAt,
-                      item.expires,
-                      `${item.percentage.toFixed(2)} %`,
-                    ][index]
-                  }
-                </span>
-              </div>
-            ))}
+            {currencyStakesTableHead?.slice(0, 4).map((i, index) => {
+              return (
+                      <div
+                          key={index}
+                          className={`td col ${i.mobileWidth ? true : false}`}
+                          style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+                      >
+                        <span>
+                      {
+                        [
+                          `${item.amount?.toLocaleString("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })} ${item.currency?.toUpperCase()}`,
+                          createdTime,
+                          createdUnTime,
+                          `${item.percentage.toFixed(2)} %`,
+                        ][index]
+                      }
+                    </span>
+                      </div>
+              )
+            }
+            )}
           </div>
           <div className="table-more" />
         </div>
@@ -230,14 +275,13 @@ export const Staking = ({
   return (
     <div className="staking-main">
       <div className="staking-content">
-        <div>
-          <Visual
-            element={"table-header"}
-            label={"Stake"}
-            description={"You can stake and then earn A1 reward"}
-            fontSize={"font-20"}
-            customStyles={{ border: "none", padding: "0" }}
-          />
+        <div className="staking-content__left">
+          <div className={"stake-content-main"}>
+            <h1 className="main_ttl font-60 colorGold">{translates?.staking.en}</h1>
+            <p className="font-16">
+              {translates?.you_can_stake_and.en}
+            </p>
+          </div>
           <AccountSummary
             data={accountSummaryData}
             stackContractInfo={stackContractInfo}
@@ -251,13 +295,13 @@ export const Staking = ({
                 className={`${selectedTab === "staking" ? "selected" : ""}`}
                 onClick={() => setSelectedTab("staking")}
               >
-                Staking
+                {translates?.staking.en}
               </div>
               <div
                 className={selectedTab === "currency stakes" ? "selected" : ""}
                 onClick={() => setSelectedTab("currency stakes")}
               >
-                Currency Staking
+                {translates?.currency_staking.en}
               </div>
               <span
                 className={`highlight-selected ${
@@ -267,7 +311,7 @@ export const Staking = ({
             </div>
             <Button
               element={"referral-button"}
-              label={"Create Staking"}
+              label={translates?.create_staking.en}
               icon={<AddSquareIcon />}
               onClick={handlePopUpOpen}
             />
@@ -306,7 +350,7 @@ export const Staking = ({
               (selectedTab === "currency stakes" && currencyStakesLoading)
             }
             customTableMoreStyles={{
-              height: "80px",
+              height: "82px",
               display: "flex",
             }}
             customHeadStyles={{

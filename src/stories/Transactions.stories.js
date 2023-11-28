@@ -9,6 +9,7 @@ import { useMobileWidth } from "../hooks/useMobileWidth";
 import { DashboardSharedLayout } from "../components/DashboardSharedLayout/DashboardSharedLayout";
 import { Transactions } from "../components/Transactions";
 import { NoHistoryIcon } from "../assets/svgs";
+import translates from "../translates.json";
 
 const stories = storiesOf("Transactions", module);
 
@@ -425,6 +426,7 @@ stories.add("Transactions", () => {
               </span>
             </p>
           }
+          translates={translates}
           rightPanelData={rightPanelData}
           footer={footer}
           tableHead={transactionHeader}

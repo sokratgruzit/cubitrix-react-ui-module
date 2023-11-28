@@ -54,6 +54,8 @@ export const LandingSteps = ({
   rpcs,
   createChargeLoading,
   rates,
+  apyPercent,
+  translates
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
@@ -178,12 +180,12 @@ export const LandingSteps = ({
     }, 3000);
   };
 
-  function getClosestLesserMultiple(tokenBalance, multiple, limit) {
-    return Math.max(
-      multiple,
-      Math.min(limit, Math.floor(tokenBalance / multiple) * multiple),
-    );
-  }
+  // function getClosestLesserMultiple(tokenBalance, multiple, limit) {
+  //   return Math.max(
+  //     multiple,
+  //     Math.min(limit, Math.floor(tokenBalance / multiple) * multiple),
+  //   );
+  // }
 
   return (
     <div className="LandingSteps__container">
@@ -252,7 +254,7 @@ export const LandingSteps = ({
 
         {step === 1 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">Connect Wallet</div>
+            <div className="LandingSteps__step__title main_ttl">{translates?.connect_wallet.en}</div>
             <div className="LandingSteps__step__content LandingSteps__step__content--wallet">
               <div
                 className={`${
@@ -277,7 +279,7 @@ export const LandingSteps = ({
 
         {step === 2 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">Registration</div>
+            <div className="LandingSteps__step__title main_ttl">{translates?.registration.en}</div>
             <div className="LandingSteps__step__content LandingSteps__step__content--register">
               <div className={`email_sent ${emailResend ? "email_active" : ""}`}>
                 <HelpCard
@@ -296,8 +298,8 @@ export const LandingSteps = ({
                 type={"default"}
                 icon={false}
                 inputType={"text"}
-                placeholder={"Enter"}
-                label={"Full Name"}
+                placeholder={translates?.enter.en}
+                label={translates?.full_name.en}
                 value={formData.fullName}
                 onChange={handleInputChange}
                 customStyles={{ width: "100%" }}
@@ -314,8 +316,8 @@ export const LandingSteps = ({
                 type={"default"}
                 icon={false}
                 inputType={"Email"}
-                placeholder={"Enter"}
-                label={"Email"}
+                placeholder={translates?.enter.en}
+                label={translates?.email.en}
                 value={formData.email}
                 onChange={handleInputChange}
                 customStyles={{ width: "100%" }}
@@ -331,7 +333,7 @@ export const LandingSteps = ({
               {validEmailProviders?.length > 0 && (
                 <HelpText
                   status={"warning"}
-                  title={`Please use one of the following email providers: ${validEmailProviders.join(
+                  title={`${translates?.please_use_providers.en} ${validEmailProviders.join(
                     ", ",
                   )}`}
                   color={"#FFA726"}
@@ -377,7 +379,7 @@ export const LandingSteps = ({
 
         {step === 3 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">Top Up</div>
+            <div className="LandingSteps__step__title main_ttl">{translates?.purchase.en}</div>
             {exchangeDetails?.exchangeId ? (
               <div className="confirm_payment_popup_container">
                 <div className="confirm_payment_popup_body-steps">
@@ -444,8 +446,7 @@ export const LandingSteps = ({
             ) : (
               <div className="LandingSteps__topUp-box">
                 <p>
-                  Please choose the payment currency in which you intend to purchase A1
-                  tokens.
+                  {translates?.please_choose_the_payment_currency.en}
                 </p>
                 <div className="LandingSteps__topUpOptions">
                   {methods.map((method) => (
@@ -468,8 +469,7 @@ export const LandingSteps = ({
                   ))}
                 </div>
                 <p>
-                  Please choose a network chain through which you will transfer the
-                  selected currency.
+                  {translates?.please_choose_a_network.en}
                 </p>
                 <div className="LandingSteps__topUpOptions">
                   {rpcs.map((chain) => (
@@ -579,7 +579,7 @@ export const LandingSteps = ({
         {step === 4 && (
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title main_ttl">
-              Stake your investment
+              {translates?.stake_your_investment.en}
             </div>
             <div className="LandingSteps__topUp-box">
               <div className="deposit-container">
@@ -590,7 +590,7 @@ export const LandingSteps = ({
                     <>
                       <HelpText
                         status={"warning"}
-                        title={`Your currently possess ${tokenBalance} A1 worth ${
+                        title={`${translates?.your_currently_possess.en} ${tokenBalance} ${translates?.a_worth.en} ${
                           tokenBalance * exchangeRate
                         } USD.`}
                         color={"#6A6D76"}
@@ -612,7 +612,7 @@ export const LandingSteps = ({
                         min={5000}
                         max={500000}
                         step={5000}
-                        label={"Amount in USD"}
+                        label={translates?.amount_usd.en}
                         value={amountProgressValue}
                         onChange={amountProgressOnchange}
                         incriment={() =>
@@ -651,11 +651,12 @@ export const LandingSteps = ({
                             type={"range"}
                             customStyles={{ width: "100%" }}
                             min={5000}
-                            max={getClosestLesserMultiple(
-                              Number(tokenBalance),
-                              5000,
-                              tokenBalance,
-                            )}
+                            // max={getClosestLesserMultiple(
+                            //   Number(tokenBalance),
+                            //   5000,
+                            //   tokenBalance,
+                            // )}
+                            max={500000}
                             step={5000}
                             disabled={amountProgressValue < 5000}
                             value={amountProgressValue}
@@ -682,15 +683,19 @@ export const LandingSteps = ({
                       </div>
                       <HelpText
                         title={
-                          timeperiod === 0
-                            ? "15 % APY On 30 Days. Locked until " + timeperiodDate
+                            timeperiod === 0
+                            ? apyPercent + "% APY. Locked until " + timeperiodDate
                             : timeperiod === 1
-                            ? "22.5% APY On 60 Days. Locked until " + timeperiodDate
+                            ? apyPercent + "% APY. Locked until " + timeperiodDate
                             : timeperiod === 2
-                            ? "29% APY On 90 Days. Locked until " + timeperiodDate
+                            ? apyPercent + "% APY. Locked until " + timeperiodDate
                             : timeperiod === 3
-                            ? "36.3% APY On 180 Days. Locked until " + timeperiodDate
-                            : "50.0% APY On 360 Days. Locked until " + timeperiodDate
+                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            : timeperiod === 4
+                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            : timeperiod === 5
+                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            : apyPercent + "% APY. Locked until " + timeperiodDate
                         }
                         status="info"
                         color="#6A6D76"
@@ -701,7 +706,7 @@ export const LandingSteps = ({
                   {isAllowance && (
                     <HelpText
                       title={
-                        "Staking A1 is unapproved, please approve the A1 before staking"
+                        translates?.staking_atr_is_unapproved.en
                       }
                       status="error"
                       icon={true}
@@ -710,7 +715,7 @@ export const LandingSteps = ({
                   {tokenBalance < amountProgressValue && (
                     <HelpText
                       status={"error"}
-                      title={`You do not possess more than ${tokenBalance} A1 in your wallet.`}
+                      title={`${translates?.more_than.en} ${tokenBalance} ${translates?.in_wallet.en}`}
                       color={"#6A6D76"}
                       icon={true}
                       customStyles={{ marginBottom: "5px" }}
@@ -722,8 +727,8 @@ export const LandingSteps = ({
                         type={"default"}
                         icon={false}
                         inputType={"default"}
-                        placeholder={"Enter"}
-                        label={"Refferal Code"}
+                        placeholder={translates?.enter.en}
+                        label={translates?.refferal_code.en}
                         value={referralState.value}
                         onChange={(e) => handleReferralChange(e)}
                         customStyles={{ width: "100%", marginTop: "5px" }}
@@ -748,7 +753,7 @@ export const LandingSteps = ({
                       )}
                       <Input
                         type={"checkbox"}
-                        label={"I agree to the terms and conditions"}
+                        label={translates?.i_agree.en}
                         onChange={(e) =>
                           e.target.checked ? setShowTerms(true) : setAcceptedTerms(false)
                         }
@@ -809,13 +814,11 @@ export const LandingSteps = ({
         {step === 5 && (
           <div className="LandingSteps__step">
             <div className="LandingSteps__step__title main_ttl">
-              Successfully registered!
+              {translates?.successfully_registered.en}
             </div>
             <div className="LandingSteps__topUp-box">
               <p style={{ textAlign: "center" }}>
-                Congratulations on successfully purchasing and staking your tokens! You're
-                just one step away from completing your registration and gaining access to
-                our crypto banking services.
+                {translates?.congratulations_on_successfully.en}
               </p>
             </div>
             <div className="LandingSteps__topUp-box">
@@ -840,9 +843,9 @@ export const LandingSteps = ({
         <Popup
           popUpElement={
             <div className="change-network-body">
-              By using this website, you agree to the following terms and conditions.
+              {translates?.by_using_this_website.en}
               <br />
-              Binary referral position can not be changed once selected.
+              {translates?.binary_referral_position.en}
               <Button
                 label={"Accept"}
                 size={"btn-lg"}
@@ -857,7 +860,7 @@ export const LandingSteps = ({
               />
             </div>
           }
-          label={"Terms and Conditions"}
+          label={translates?.terms.en}
           handlePopUpClose={() => {
             setShowTerms(false);
           }}

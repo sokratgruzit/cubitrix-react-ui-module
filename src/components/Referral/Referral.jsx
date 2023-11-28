@@ -58,6 +58,7 @@ export const Referral = ({
   setTableFilterOutcomingData,
   tableSearchSelect,
   tableHeader,
+  translates
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [refItemsCount, setRefItemsCount] = useState(3);
@@ -98,12 +99,12 @@ export const Referral = ({
           },
           {
             title: "Total Staked",
-            amount: toLocaleStringForNumber(item?.total_staked),
+            amount: toLocaleStringForNumber(item?.total_staked) + ' A1',
             icon: false,
           },
           {
             title: "Expected Bonus",
-            amount: toLocaleStringForNumber(item?.all_amount_sum),
+            amount: toLocaleStringForNumber(item?.all_amount_sum) + ' A1',
             icon: false,
           },
           {
@@ -113,7 +114,7 @@ export const Referral = ({
           },
           {
             title: "Total Right",
-            amount: toLocaleStringForNumber(item?.total_right),
+            amount: toLocaleStringForNumber(item?.total_right) + ' A1',
             icon: false,
           },
           {
@@ -123,7 +124,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.total_left),
+            amount: toLocaleStringForNumber(item?.total_left) + ' A1',
             icon: false,
           },
         ];
@@ -149,12 +150,12 @@ export const Referral = ({
           },
           {
             title: "Total Staked",
-            amount: toLocaleStringForNumber(item?.total_staked_amount),
+            amount: toLocaleStringForNumber(item.joinedAccounts?.[0]?.stakedTotal) + ' A1',
             icon: false,
           },
           {
             title: "Expected Bonus",
-            amount: toLocaleStringForNumber(item?.all_amount_sum),
+            amount: toLocaleStringForNumber(item?.all_amount_sum) + ' A1',
             icon: false,
           },
           {
@@ -164,7 +165,7 @@ export const Referral = ({
           },
           {
             title: "Total Right",
-            amount: toLocaleStringForNumber(item?.total_right),
+            amount: toLocaleStringForNumber(item?.total_right) + ' A1',
             icon: false,
           },
           {
@@ -174,7 +175,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.left_total),
+            amount: toLocaleStringForNumber(item?.left_total) + ' A1',
             icon: false,
           },
         ];
@@ -234,12 +235,18 @@ export const Referral = ({
 
   if (referralTableType == "binary") {
     referralTreeTableDataBinaryBody = referralTreeTableData?.map((item, index) => {
+      const createdAt = new Date(item?.createdAt);
+      const createdTime = createdAt.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
       return (
         <div
           className={`table-parent ${
             mobileExpand == item._id ? "active" : ""
           } dashboard-table-parent`}
-          key={index}
+          key={index + item?.createdAt}
           onClick={() => {
             mobileExpandFunc(item._id);
           }}
@@ -296,7 +303,7 @@ export const Referral = ({
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })
-                  : 0}
+                  : 0} A1
               </span>
             </div>
             <div
@@ -311,7 +318,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>{item?.createdAt}</span>
+              <span>{createdTime}</span>
             </div>
           </div>
           <div className="table-more" />
@@ -336,28 +343,12 @@ export const Referral = ({
           <div className="table-mobile">
             <div className="table-mobile-content">
               <div className="td">
-                <div className="mobile-ttl">Member Name</div>
-                <span>
-                  {item.joinedAccountMetas.length > 0
-                    ? item.joinedAccountMetas[0].name
-                    : "No Name"}
-                </span>
-              </div>
-              <div className="td">
-                <div className="mobile-ttl">Total Staked</div>
-                <span>
-                  {item.joinedAccounts.length > 0 &&
-                  item.joinedAccounts[0].stakedTotal > 0
-                    ? item.joinedAccounts[0].stakedTotal?.toLocaleString("en-US", {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })
-                    : 0}
-                </span>
+                <div className="mobile-ttl">User Level / Position</div>
+                <span>{"Lvl " + item.lvl + "/" + item.side}</span>
               </div>
               <div className="td">
                 <div className="mobile-ttl">Date Joined</div>
-                <span>{item?.createdAt}</span>
+                <span>{createdTime}</span>
               </div>
             </div>
           </div>
@@ -367,12 +358,18 @@ export const Referral = ({
   }
   if (referralTableType == "uni") {
     referralTreeTableDataBinaryBody = referralTreeTableData?.map((item, index) => {
+      const createdAt = new Date(item?.createdAt);
+      const createdTime = createdAt.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
       return (
         <div
           className={`table-parent ${
             mobileExpand == item._id ? "active" : ""
           } dashboard-table-parent`}
-          key={index}
+          key={item?.createdAt + index}
           onClick={() => {
             mobileExpandFunc(item._id);
           }}
@@ -440,7 +437,7 @@ export const Referral = ({
               <span>
                 {item.joinedAccounts.length > 0 && item.joinedAccounts[0].stakedTotal > 0
                   ? item.joinedAccounts[0].stakedTotal
-                  : 0}
+                  : 0} A1
               </span>
             </div>
             <div
@@ -455,7 +452,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>{item?.joinedTransactions?.[0]?.totalAmount ?? 0}</span>
+              <span>{item?.joinedTransactions?.[0]?.totalAmount ?? 0} A1</span>
             </div>
             <div
               className={`td ${
@@ -469,7 +466,7 @@ export const Referral = ({
                 }%`,
               }}
             >
-              <span>{item?.createdAt}</span>
+              <span>{createdTime}</span>
             </div>
           </div>
           <div className="table-more" />
@@ -494,37 +491,16 @@ export const Referral = ({
           <div className="table-mobile">
             <div className="table-mobile-content">
               <div className="td">
-                <div className="mobile-ttl">Member Name</div>
-                <span>
-                  {item.joinedAccountMetas.length > 0
-                    ? item.joinedAccountMetas[0].name
-                    : "No Name"}
-                </span>
-              </div>
-              <div className="td">
-                <div className="mobile-ttl">Address</div>
-                <span>{item?.user_address}</span>
+                <div className="mobile-ttl">User Level</div>
+                <span>{"Lvl " + item.lvl}</span>
               </div>
               <div className="td">
                 <div className="mobile-ttl">Rate</div>
                 <span>{uniLVLData?.[item?.lvl - 1] ?? 0}%</span>
               </div>
               <div className="td">
-                <div className="mobile-ttl">Total Staked</div>
-                <span>
-                  {item.joinedAccounts.length > 0 &&
-                  item.joinedAccounts[0].stakedTotal > 0
-                    ? item.joinedAccounts[0].stakedTotal
-                    : 0}
-                </span>
-              </div>
-              <div className="td">
-                <div className="mobile-ttl">TotalEarned</div>
-                <span>{item?.joinedTransactions?.[0]?.totalAmount ?? 0}</span>
-              </div>
-              <div className="td">
                 <div className="mobile-ttl">Date Joined</div>
-                <span>{item?.createdAt}</span>
+                <span>{createdTime}</span>
               </div>
               {/*<div className='td'>*/}
               {/*  <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>*/}
@@ -540,8 +516,8 @@ export const Referral = ({
   const tables = [
     {
       type: referralHistoryTableType,
-      header: "Referral History",
-      description: `The airdrop history of your weekly referral rebates.`,
+      header: "Referral Records",
+      description: `History of your weekly referral rebates.`,
       tableHeader: referralHistoryTableHead,
       data: rebatesTableData,
       tableEmpty: referralHistoryTableEmpty,
@@ -604,14 +580,13 @@ export const Referral = ({
         <div className="referral-content">
           <div className="referral-content-container">
             <div className={"referral-content-main"}>
-              <h2 className="main_ttl">Referral</h2>
+              <h1 className="main_ttl font-60 colorGold">{translates?.referral.en}</h1>
               <div className="referral-content-info">
                 <span className="font-20">
-                  You can earn rebates by inviting traders to trade on A1
+                  {translates?.you_can_earn_rebates.en}
                 </span>
                 <p className="font-16">
-                  After creating your first code, you will receive a Casual status to
-                  start, granting you a 2.5% rebate on your referee’s trading fees.
+                  {translates?.after_creating_your_first_code.en}
                 </p>
               </div>
               <div className="referral-content-info_buttons">
@@ -647,7 +622,7 @@ export const Referral = ({
                     label={referralTableTitle}
                     // description={`Total Downline Members: ${totalBinaryMembers}`}
                     fontSize={"font-20"}
-                    customStyles={{ border: "none", padding: "0" }}
+                    customStyles={{ border: "none", padding: "0",width: "100%" }}
                     buttons={referralTreeBtnsRight}
                     labelCustomStyles={{ color: "#C38C5C" }}
                     centerButtons={true}
@@ -663,14 +638,18 @@ export const Referral = ({
               }
               tableFooter={tableFooterPagination}
               tableHead={referralTreeTableHead}
-              customHeadStyles={{
-                background: "none",
-                padding: "10px 20px",
-                borderBottom: "px solid rgba(255, 255, 255, 0.1)",
-                width: "100%",
+              customStyles={{
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                borderRadius: "20px",
+                background: "rgba(255, 255, 255, 0.01)",
+                backdropFilter: "blur(5px)",
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
               }}
-              customTableMoreStyles={{
-                display: "none",
+              customHeadStyles={{
+                height: "81px",
+                alignItems: 'center'
               }}
               tableEmptyData={referralBinaryTableEmpty}
               loading={false}
@@ -772,7 +751,7 @@ export const Referral = ({
                                       <>
                                         {index % 2 == 0 && (
                                           <svg
-                                            key={suItem + index}
+                                            key={suItem.type + (index / 0.1)}
                                             className={
                                               suItem.type == "nothing" ? "hide" : ""
                                             }
@@ -836,7 +815,7 @@ export const Referral = ({
                                         {suItem.type == "missing" && (
                                           <div
                                             className={`referral-tree-item`}
-                                            key={`${suItem.type}${index}`}
+                                            key={`${suItem.type} ${index}`}
                                             style={{
                                               width: 100 / item.documents.length + "%",
                                             }}
@@ -999,7 +978,7 @@ export const Referral = ({
         <div className="referral-tables-container">
           {tables?.map((item, index) => (
             <DashboardTable
-              key={index}
+              key={index + item?.description}
               type={item?.type}
               header={item?.header}
               description={item?.description}

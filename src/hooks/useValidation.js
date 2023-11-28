@@ -13,7 +13,7 @@ export const useValidation = (formData, helpTexts) => {
     multipleOf5000: (num) => !isNaN(num) && num > 0 && num % 5000 === 0,
     between100and500: (num) => !isNaN(num) && num >= 100 && num <= 500,
     max500: (num) => !isNaN(num) && num <= 500,
-    min5000: (num) => !isNaN(num) && num >= 5000,
+    min5000: (num) => !isNaN(num) && num >= 5000 && num <= 500000,
   };
 
   Object.keys(formData).map((key) => {

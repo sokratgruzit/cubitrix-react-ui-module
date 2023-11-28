@@ -15,19 +15,16 @@ import { ExtensionsPattern } from "../../assets/svgs";
 import { FreeMode, Mousewheel } from "swiper";
 import { DisabledPage } from "../DisabledPage";
 
-export const Extensions = ({ extensionsCardsData, disabledAccount }) => {
+export const Extensions = ({ extensionsCardsData, disabledAccount, translates }) => {
   const navigate = useNavigate();
 
   return (
     <div className={`extensions-main ${disabledAccount ? "disabled-page" : ""}`}>
       {disabledAccount && <DisabledPage />}
       <header>
-        <h1>Extensions</h1>
+        <h1>{translates?.extensions.en}</h1>
         <p>
-          Extensions are optional add-ons, built by community developers, that enhance the
-          Compound experience. Enabling extensions allows for new features to be added to
-          your account–such as automation, composability with other DeFi protocols, or
-          position management.
+            {translates?.extensions_are_optional_addons.en}
         </p>
       </header>
       <ExtensionsPattern className={"extensions-content-svg "} />

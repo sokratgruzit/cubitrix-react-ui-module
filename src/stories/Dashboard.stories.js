@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { BrowserRouter } from "react-router-dom";
 import { Dashboard } from "../components/Dashboard";
 import { Header } from "../components/Header";
+import translates from "../translates.json";
 
 import "../assets/css/main-theme.css";
 import { useEffect, useState } from "react";
@@ -133,28 +134,103 @@ stories.add("Dashboard", () => {
 
   const generateTransactionsData = async () => {
     setTransactionsTableLoading(true);
-    const response = await fetch(
-      `http://localhost:4000/api/transactions/get_transactions_of_user`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    // const response = await fetch(
+    //   `http://localhost:4000/api/transactions/get_transactions_of_user`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       address: "0x0a369a6064549FDA78F5793B231AFE9db648420A",
+    //       limit: 3,
+    //       page: 1,
+    //     }),
+    //   },
+    // );
+    //
+    // const data = await response.json();
+    const test = {
+      "transactions": [
+        {
+          "_id": "655b63be6a1eb624d87b207c",
+          "from": "0xe86484f846880b7149eae4c789685f89898b0bb8",
+          "to": "0x428acf8e35d5afe5d8a8d027690f48e17057dfc5",
+          "amount": 50,
+          "tx_type": "bonus",
+          "tx_hash": "0xoyqp8sb9bvswfgzu7gbi4zsmnp3rb2usksj4092tlpv1efgvhgutzzqawsaohl2xnn",
+          "tx_status": "approved",
+          "tx_currency": "ether",
+          "tx_options": {
+            "method": "referral",
+            "type": "uni",
+            "lvl": 4,
+            "percent": "1"
+          },
+          "__v": 0,
+          "createdAt": "2023-11-20T13:48:46.946Z",
+          "updatedAt": "2023-11-20T13:48:46.946Z"
         },
-        body: JSON.stringify({
-          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
-          limit: 3,
-          page: 1,
-        }),
-      },
-    );
+        {
+          "_id": "655b63be6a1eb624d87b207b",
+          "from": "0xe86484f846880b7149eae4c789685f89898b0bb8",
+          "to": "0x5df955ee1a7f0d8282f59bfdecd22f71598d9135",
+          "amount": 100,
+          "tx_type": "bonus",
+          "tx_hash": "0xkvm98dwtj3sypmnlomid8czydudpl1troylpexl1ktzfhwwtzlivdcjhqbdom7heum",
+          "tx_status": "approved",
+          "tx_currency": "ether",
+          "tx_options": {
+            "method": "referral",
+            "type": "uni",
+            "lvl": 3,
+            "percent": "2"
+          },
+          "__v": 0,
+          "createdAt": "2023-11-20T13:48:46.946Z",
+          "updatedAt": "2023-11-20T13:48:46.946Z"
+        },
+        {
+          "_id": "655b63be6a1eb624d87b207a",
+          "from": "0xe86484f846880b7149eae4c789685f89898b0bb8",
+          "to": "0x9ce1fea42d6b13a4ac169e3337de9fd2db6d0298",
+          "amount": 250,
+          "tx_type": "bonus",
+          "tx_hash": "0xl33fet6zvq6jf0ewmbpdocjgf5dwat68fi1gbtptxidmp7nbsk1wmv2ivvqrsfgehe",
+          "tx_status": "approved",
+          "tx_currency": "ether",
+          "tx_options": {
+            "method": "referral",
+            "type": "uni",
+            "lvl": 2,
+            "percent": "5"
+          },
+          "__v": 0,
+          "createdAt": "2023-11-20T13:48:46.946Z",
+          "updatedAt": "2023-11-20T13:48:46.946Z"
+        }
+      ],
+      "total_pages": 2,
+      "total_transaction": 5,
+      "amounts_to_from": [
+        {
+          "toCount": 1,
+          "toSum": 5000
+        }
+      ]
+    }
 
-    const data = await response.json();
-
-    setTransactionsData(data);
+    setTransactionsData(test);
+    // setTransactionsData(data);
+    // setTotalTransactions({
+    //   total_transaction: data.total_transaction,
+    //   received: data.amounts_to_from[0].toCount,
+    //   spent: data.amounts_to_from[0].fromSum,
+    // });
     setTotalTransactions({
-      total_transaction: data.total_transaction,
-      received: data.amounts_to_from[0].toCount,
-      spent: data.amounts_to_from[0].fromSum,
+      total_transaction: 11,
+      received: 11,
+      spent: 11,
     });
     setTransactionsTableLoading(false);
   };
@@ -218,22 +294,22 @@ stories.add("Dashboard", () => {
   const transactionHeader = [
     {
       name: "From",
-      mobileWidth: width >= 500 ? 45 : 100,
-      width: 20,
+      width: 35,
       id: 0,
       height: "40px",
     },
     {
-      name: "To",
-      width: 20,
-      // mobileWidth: 45,
-      id: 1,
+      name: "Type",
+      width: 15,
+      mobileWidth: 50,
+      id: 2,
       height: "40px",
     },
     {
-      name: "Type",
-      width: 20,
-      id: 2,
+      name: "Amount",
+      width: 15,
+      mobileWidth: 50,
+      id: 4,
       height: "40px",
     },
     {
@@ -241,51 +317,12 @@ stories.add("Dashboard", () => {
       width: 20,
       id: 3,
       height: "40px",
-      icon: (
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ marginLeft: "2px" }}
-        >
-          <path
-            d="M7.78064 2.4178L6.44314 1.0803L5.62647 0.259469C5.46007 0.0933205 5.23453 0 4.99939 0C4.76424 0 4.5387 0.0933205 4.3723 0.259469L2.21397 2.4178C1.93064 2.70114 2.1348 3.18447 2.53064 3.18447H7.46397C7.86397 3.18447 8.06397 2.70114 7.78064 2.4178Z"
-            fill="white"
-          />
-          <path
-            d="M7.78259 7.5822L6.44509 8.9197L5.62842 9.74053C5.46202 9.90668 5.23649 10 5.00134 10C4.76619 10 4.54066 9.90668 4.37426 9.74053L2.21592 7.5822C1.93259 7.29886 2.13676 6.81553 2.53259 6.81553H7.46592C7.86592 6.81553 8.06592 7.29886 7.78259 7.5822Z"
-            fill="white"
-          />
-        </svg>
-      ),
     },
     {
-      name: "Amount",
-      width: 20,
-      mobileWidth: width >= 500 ? 45 : false,
-      id: 4,
+      name: "Status",
+      width: 15,
+      id: 5,
       height: "40px",
-      icon: (
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 10 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ marginLeft: "2px" }}
-        >
-          <path
-            d="M7.78064 2.4178L6.44314 1.0803L5.62647 0.259469C5.46007 0.0933205 5.23453 0 4.99939 0C4.76424 0 4.5387 0.0933205 4.3723 0.259469L2.21397 2.4178C1.93064 2.70114 2.1348 3.18447 2.53064 3.18447H7.46397C7.86397 3.18447 8.06397 2.70114 7.78064 2.4178Z"
-            fill="white"
-          />
-          <path
-            d="M7.78259 7.5822L6.44509 8.9197L5.62842 9.74053C5.46202 9.90668 5.23649 10 5.00134 10C4.76619 10 4.54066 9.90668 4.37426 9.74053L2.21592 7.5822C1.93259 7.29886 2.13676 6.81553 2.53259 6.81553H7.46592C7.86592 6.81553 8.06592 7.29886 7.78259 7.5822Z"
-            fill="white"
-          />
-        </svg>
-      ),
     },
   ];
 
@@ -551,6 +588,7 @@ stories.add("Dashboard", () => {
       />
       <DashboardSharedLayout links={links} disabledAccount={false} eliteMemberBtnLabel={'Become Elite Member'}>
         <Dashboard
+          translates={translates}
           transactionsData={transactionsData}
           transactionHeader={transactionHeader}
           referralCodeHeader={referralCodeHeader}

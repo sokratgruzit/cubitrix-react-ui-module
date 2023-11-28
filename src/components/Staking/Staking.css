@@ -29,7 +29,10 @@
   height: 100%;
   border-radius: 20px;
 }
-
+.staking-content__left {
+  display: flex;
+  flex-direction: column;
+}
 .staking-content-main {
   display: flex;
   flex-direction: column;
@@ -67,7 +70,9 @@
   justify-content: space-between;
   max-height: 47px;
 }
+@media only screen and (max-width: 1400px) {
 
+}
 @media only screen and (max-width: 1025px) {
   .staking-content {
     display: flex;

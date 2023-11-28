@@ -96,32 +96,40 @@ export const Deposit = ({
                 }
 
                 return (
-                  <Input
-                    key={index}
-                    type={params?.type}
-                    label={params.title}
-                    name={params.name}
-                    value={
-                      params?.type === "lable-input-select"
-                        ? selectedOption?.name ||
-                          params?.defaultAny ||
-                          params?.options[0]?.value
-                        : currentObject[params?.name] || params?.defaultAny
-                    }
-                    customStyles={{ width: "100%" }}
-                    selectHandler={(opt) => {
-                      handleInputChange(opt, params);
-                    }}
-                    placeholder={params?.placeholder}
-                    onChange={(e) => handleInputChange(e, params)}
-                    defaultData={params?.options}
-                    customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
-                    svg={
-                      params?.type === "lable-input-select"
-                        ? selectedOption?.svg
-                        : params?.svg
-                    }
-                  />
+                    <div className="withdraw-to-acc-input-wrapper" key={index}>
+                      <Input
+                        key={index}
+                        type={params?.type}
+                        label={params.title}
+                        name={params.name}
+                        disabled={params.disabled}
+                        value={
+                          params?.type === "lable-input-select"
+                            ? selectedOption?.name ||
+                              params?.defaultAny ||
+                              params?.options[0]?.value
+                            : currentObject[params?.name] || params?.defaultAny
+                        }
+                        customStyles={{ width: "100%" }}
+                        selectHandler={(opt) => {
+                          handleInputChange(opt, params);
+                        }}
+                        placeholder={params?.placeholder}
+                        onChange={(e) => handleInputChange(e, params)}
+                        defaultData={params?.options}
+                        customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
+                        svg={
+                          params?.type === "lable-input-select"
+                            ? selectedOption?.svg
+                            : params?.svg
+                        }
+                      />
+                      {params?.rightText && (
+                          <span className="font-14 withdraw-to-acc-input-right">
+                            {params?.rightText}
+                          </span>
+                      )}
+                    </div>
                 );
               })}
             </div>

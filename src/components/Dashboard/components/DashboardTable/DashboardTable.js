@@ -52,7 +52,7 @@ export const DashboardTable = ({
             {item?.value?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            })}
+            })} A1
           </h3>
           <p className={`font-16`}>{item?.title}</p>
         </div>
@@ -113,110 +113,104 @@ export const DashboardTable = ({
         hour12: true,
       });
       return (
-        <div
-          className={`table-parent ${
-            mobileExpand == item._id ? "active" : ""
-          } dashboard-table-parent`}
-          key={index}
-          onClick={() => {
-            mobileExpandFunc(item._id);
-          }}
-        >
-          <div className="table">
-            <div
-              className={`td col ${
-                tableHeader[0].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${mobile ? tableHeader[0].mobileWidth : tableHeader[0].width}%`,
+          <div
+              className={`table-parent ${
+                  mobileExpand == item._id ? "active" : ""
+              } dashboard-table-parent`}
+              key={index}
+              onClick={() => {
+                mobileExpandFunc(item._id);
               }}
-            >
-              {/* <Account type={'spl'} /> */}
-              <span>{item?.from}</span>
-            </div>
-            <div
-              className={`td col ${
-                tableHeader[1].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${mobile ? tableHeader[1].mobileWidth : tableHeader[0].width}%`,
-              }}
-            >
-              {/* <Account type={'spl'} /> */}
-              <span>{item?.to}</span>
-            </div>
-            <div
-              className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
-              style={{
-                width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
-              }}
-            >
-              {/* <AccountType type={'top-up'} /> */}
-              <span>{item?.tx_type}</span>
-            </div>
-            <div
-              className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
-              style={{
-                width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
-              }}
-            >
-              <span>{createdTime}</span>
-            </div>
-            <div
-              className={`td ${tableHeader[4].mobileWidth ? true : false} dashboard-td`}
-              style={{
-                width: `${mobile ? tableHeader[4].mobileWidth : tableHeader[4].width}%`,
-              }}
-            >
-              <span>{item?.amount?.toFixed(2)}</span>
-            </div>
-          </div>
-          <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
-            <svg
-              width="12"
-              height="7"
-              viewBox="0 0 12 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="table-mobile">
-            <div className="table-mobile-content">
-              <div className="td">
-                <div className="mobile-ttl">{tableHeader[1].name}</div>
-                <span>{item?.to}</span>
+          >
+            <div className="table">
+              <div
+                  className={`td col ${tableHeader[0].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? tableHeader[0].mobileWidth : tableHeader[0].width}%`,
+                  }}
+              >
+                {/* <Account type={'spl'} /> */}
+                <span>{item?.from}</span>
               </div>
-              <div className="td">
-                <div className="mobile-ttl">{tableHeader[2].name}</div>
-                <span>{item?.tx_type}</span>
+              <div
+                  className={`td ${tableHeader[1].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? tableHeader[1].mobileWidth : tableHeader[1].width}%`,
+                  }}
+              >
+                {/* <AccountType type={'top-up'} /> */}
+                {item?.tx_type == 'bonus' ? (
+                    <span>{item?.tx_type} - {item?.tx_options?.type}</span>
+                ): (<span>{item?.tx_type}</span>)}
+
               </div>
-              <div className="td">
-                <div className="mobile-ttl">
-                  {tableHeader[3].name} {tableHeader[3]?.icon}
-                </div>
+              <div
+                  className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
+                  }}
+              >
+                <span>{item?.tx_options?.tokenCount ? item?.tx_options?.tokenCount + ' A1' : item?.amount?.toFixed(2) + ' A1'}</span>
+              </div>
+              <div
+                  className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
+                  }}
+              >
                 <span>{createdTime}</span>
               </div>
-              {width < 500 && (
+
+              <div
+                  className={`td ${tableHeader[4].mobileWidth ? true : false} dashboard-td`}
+                  style={{
+                    width: `${mobile ? tableHeader[4].mobileWidth : tableHeader[4].width}%`,
+                  }}
+              >
+                <span>{item?.tx_status}</span>
+              </div>
+            </div>
+            <div className="table-more" />
+            <div className="icon-place" style={{ height: "40px" }}>
+              <svg
+                  width="12"
+                  height="7"
+                  viewBox="0 0 12 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                    d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="table-mobile">
+              <div className="table-mobile-content">
+                <div className="td">
+                  <div className="mobile-ttl">{tableHeader[0].name}</div>
+                  <span>{item?.from}</span>
+                </div>
                 <div className="td">
                   <div className="mobile-ttl">
                     {tableHeader[4].name} {tableHeader[4]?.icon}
                   </div>
-                  <span>{item?.amount?.toFixed(2)}</span>
+                  <span>{item?.tx_status}</span>
                 </div>
-              )}
+                <div className="td">
+                  <div className="mobile-ttl">
+                    {tableHeader[3].name} {tableHeader[3]?.icon}
+                  </div>
+                  <span>{createdTime}</span>
+                </div>
+
+              </div>
             </div>
           </div>
-        </div>
       );
     });
     return (element = (
@@ -229,22 +223,28 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0" }}
+                customStyles={{ border: "none", padding: "0",width: "100%" }}
                 buttons={tableVisualMore}
                 labelCustomStyles={{ color: "#C38C5C" }}
               />
             </div>
           }
+          tableHead={tableHeader}
           tableData={data?.length ? tableData : false}
           tableFooter={tableFooter}
+          mobileProps={mobile}
           customStyles={{
             border: "1px solid rgba(255, 255, 255, 0.1)",
             borderRadius: "20px",
             background: "rgba(255, 255, 255, 0.01)",
             backdropFilter: "blur(5px)",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
           }}
-          customTableMoreStyles={{
-            display: "none",
+          customHeadStyles={{
+            height: "81px",
+            alignItems: 'center'
           }}
           tableEmptyData={tableEmpty}
           loading={loading}
@@ -317,7 +317,7 @@ export const DashboardTable = ({
                 width: `${mobile ? tableHeader[4].mobileWidth : tableHeader[3].width}%`,
               }}
             >
-              <span>{item?.amount?.toFixed(2)}</span>
+              <span>{item?.amount?.toFixed(2) + ' A1'}</span>
             </div>
           </div>
           <div className="table-more" />
@@ -356,7 +356,7 @@ export const DashboardTable = ({
               {width < 500 && (
                 <div className="td">
                   <div className="mobile-ttl">{tableHeader[4].name}</div>
-                  <span>{item?.amount?.toFixed()}</span>
+                  <span>{item?.amount?.toFixed() + ' A1'}</span>
                 </div>
               )}
             </div>
@@ -446,7 +446,7 @@ export const DashboardTable = ({
             background: "none",
           }}
           customTableMoreStyles={{
-            display: "none",
+            // display: "none",
           }}
           tableEmptyData={tableEmpty}
           loading={loading}
@@ -457,12 +457,18 @@ export const DashboardTable = ({
   }
   if (type === "referral-history") {
     tableData = data?.map((item, index) => {
+      const createdAt = new Date(item?.createdAt);
+      const createdTime = createdAt.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
       return (
         <div
           className={`table-parent ${
             mobileExpand == item._id ? "active" : ""
           } dashboard-table-parent`}
-          key={index}
+          key={index + item}
           onClick={() => {
             mobileExpandFunc(item._id);
           }}
@@ -494,15 +500,23 @@ export const DashboardTable = ({
                 width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
               }}
             >
-              <span>{item?.amount}</span>
+              <span>{item?.amount + ' A1'}</span>
             </div>
             <div
-              className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
+                className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
+                style={{
+                  width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
+                }}
+            >
+              <span>{item?.tx_status == 'approved' ? 'Confirmed' : 'Pending'}</span>
+            </div>
+            <div
+              className={`td ${tableHeader[4].mobileWidth ? true : false} dashboard-td`}
               style={{
-                width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
+                width: `${mobile ? tableHeader[4].mobileWidth : tableHeader[4].width}%`,
               }}
             >
-              <span>{item?.createdAt}</span>
+              <span>{createdTime}</span>
             </div>
           </div>
           <div className="table-more" />
@@ -533,8 +547,12 @@ export const DashboardTable = ({
                   : `LVL ${item?.tx_options?.lvl}`}
               </div>
               <div className="td">
-                <div className="mobile-ttl">{tableHeader[2].name}</div>
-                <span>{item?.amount?.toFixed(2)}</span>
+                <div className="mobile-ttl">{tableHeader[3].name}</div>
+                <span>{item?.tx_status == 'approved' ? 'Confirmed' : 'Pending'}</span>
+              </div>
+              <div className="td">
+                <div className="mobile-ttl">{tableHeader[4].name}</div>
+                <span>{createdTime}</span>
               </div>
             </div>
           </div>
@@ -551,7 +569,7 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0" }}
+                customStyles={{ border: "none", padding: "0",width: "100%" }}
                 labelCustomStyles={{ color: "#C38C5C" }}
                 buttons={tableButtons}
               />
@@ -565,15 +583,13 @@ export const DashboardTable = ({
             borderRadius: "20px",
             background: "rgba(255, 255, 255, 0.01)",
             backdropFilter: "blur(5px)",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
           }}
           customHeadStyles={{
-            padding: "10px 20px",
-            borderBottom: "px solid rgba(255, 255, 255, 0.1)",
-            width: "100%",
-            background: "none",
-          }}
-          customTableMoreStyles={{
-            display: "none",
+            height: "81px",
+            alignItems: 'center'
           }}
           tableEmptyData={tableEmpty}
           loading={loading}
@@ -583,12 +599,18 @@ export const DashboardTable = ({
   }
   if (type === "referral-history-binary") {
     tableData = data?.map((item, index) => {
+      const createdAt = new Date(item?.createdAt);
+      const createdTime = createdAt.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
       return (
         <div
           className={`table-parent ${
             mobileExpand == item._id ? "active" : ""
           } dashboard-table-parent`}
-          key={index}
+          key={index + item}
           onClick={() => {
             mobileExpandFunc(item._id);
           }}
@@ -602,7 +624,7 @@ export const DashboardTable = ({
                 width: `${mobile ? tableHeader[0].mobileWidth : tableHeader[0].width}%`,
               }}
             >
-              <span>{item?.amount}</span>
+              <span>{item?.amount + ' A1'}</span>
             </div>
             <div
               className={`td ${
@@ -615,12 +637,20 @@ export const DashboardTable = ({
               <span>{item?.from}</span>
             </div>
             <div
-              className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
+                className={`td ${tableHeader[2].mobileWidth ? true : false} dashboard-td`}
+                style={{
+                  width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
+                }}
+            >
+              <span>{item?.tx_status == 'approved' ? 'Confirmed' : 'Pending'}</span>
+            </div>
+            <div
+              className={`td ${tableHeader[3].mobileWidth ? true : false} dashboard-td`}
               style={{
-                width: `${mobile ? tableHeader[2].mobileWidth : tableHeader[2].width}%`,
+                width: `${mobile ? tableHeader[3].mobileWidth : tableHeader[3].width}%`,
               }}
             >
-              <span>{item?.createdAt}</span>
+              <span>{createdTime}</span>
             </div>
           </div>
           <div className="table-more" />
@@ -645,12 +675,12 @@ export const DashboardTable = ({
           <div className="table-mobile">
             <div className="table-mobile-content">
               <div className="td">
-                <div className="mobile-ttl">Position</div>
-                <span>{item?.from}</span>
+                <div className="mobile-ttl">Status</div>
+                <span>{item?.tx_status == 'approved' ? 'Confirmed' : 'Pending'}</span>
               </div>
               <div className="td">
                 <div className="mobile-ttl">Date</div>
-                <span>{item?.createdAt}</span>
+                <span>{createdTime}</span>
               </div>
             </div>
           </div>
@@ -667,7 +697,7 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0" }}
+                customStyles={{ border: "none", padding: "0",width: "100%" }}
                 labelCustomStyles={{ color: "#C38C5C" }}
                 buttons={tableButtons}
               />
@@ -681,15 +711,13 @@ export const DashboardTable = ({
             borderRadius: "20px",
             background: "rgba(255, 255, 255, 0.01)",
             backdropFilter: "blur(5px)",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
           }}
           customHeadStyles={{
-            padding: "10px 20px",
-            borderBottom: "px solid rgba(255, 255, 255, 0.1)",
-            width: "100%",
-            background: "none",
-          }}
-          customTableMoreStyles={{
-            display: "none",
+            height: "81px",
+            alignItems: 'center'
           }}
           tableEmptyData={tableEmpty}
           loading={loading}

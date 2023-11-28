@@ -40,8 +40,8 @@
 .fullWidth {
   width: 100% !important;
 }
-.selected {
-  color: #3d5afe;
+.tabsWrap .selected {
+  color: #c38c5c;
 }
 .body-wrapper {
   display: flex;
@@ -132,4 +132,19 @@
 .res-pass-wrap h3 {
   font-size: 14px;
   line-height: 140%;
+}
+@media only screen and (max-width: 1250px) {
+  .tabsWrap {
+    width: 250px;
+  }
+  .tabsWrap div {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .staking_table_top_wrapper {
+    flex-direction: column-reverse;
+    gap: 15px;
+    max-height: auto;
+  }
 }

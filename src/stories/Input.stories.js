@@ -513,6 +513,26 @@ stories.add("Input", (props) => {
             // value={amountProgressValue}
             // onChange={amountProgressOnchange}
         />
+        <Input
+            type={"number"}
+            // value={value}
+            icon={true}
+            emptyFieldErr={true}
+            inputType={"number"}
+            placeholder={"default input"}
+            label={"23123sads"}
+            subLabel={""}
+            onChange={changeHandler}
+            statusCard={
+                <HelpText
+                    status={"error"}
+                    title={"your text"}
+                    fontSize={"font-12"}
+                    icon={true}
+                />
+            }
+            customStyles={{ width: "500px" }}
+        />
     </div>
 
 
