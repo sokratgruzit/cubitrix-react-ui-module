@@ -333,7 +333,8 @@ export const CardSlider = ({
                     <div className="card-slider-card_footer card-slider-card_footer-currency">
                       {cardFooterData?.map((item, footerIndex) => {
                         return (
-                          <div
+                          <>
+                          {key !== "gold" || item.title !== "Withdraw" && <div
                             className="card-slider-card_footer-item card-slider-card_footer-item-currency"
                             key={footerIndex}
                             onClick={() => {
@@ -350,7 +351,8 @@ export const CardSlider = ({
                           >
                             {item.svg}
                             <p className="font-10">{item.title}</p>
-                          </div>
+                          </div>}
+                          </>
                         );
                       })}
                     </div>

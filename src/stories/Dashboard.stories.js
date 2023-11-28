@@ -265,6 +265,7 @@ stories.add("Dashboard", () => {
   };
 
   const generateAccountsData = async () => {
+    console.log('ras')
     const response = await fetch(
       `http://localhost:4000/api/accounts/get_account_balances`,
       {
@@ -279,7 +280,7 @@ stories.add("Dashboard", () => {
     );
 
     const data = await response.json();
-
+      console.log('rame', data)
     setAccountsData(data?.data);
   };
 
