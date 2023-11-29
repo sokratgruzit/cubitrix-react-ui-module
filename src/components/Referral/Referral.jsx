@@ -95,42 +95,42 @@ export const Referral = ({
           {
             title: "Name",
             amount: item?.name ?? "no name",
-            icon: false,
+            icon: "",
           },
           {
             title: "Wallet Address",
             amount: item.external_address ?? "no address",
-            icon: false,
+            icon: "",
           },
           {
             title: "Total Staked",
             amount: toLocaleStringForNumber(item?.total_staked) + " A1",
-            icon: false,
+            icon: "",
           },
           {
             title: "Expected Bonus",
             amount: toLocaleStringForNumber(item?.all_amount_sum) + " A1",
-            icon: false,
+            icon: "",
           },
           {
             title: "Users Right",
             amount: item?.users_sum_right ?? 0,
-            icon: false,
+            icon: "",
           },
           {
             title: "Total Right",
             amount: toLocaleStringForNumber(item?.total_right) + " A1",
-            icon: false,
+            icon: "",
           },
           {
             title: "Users Left",
             amount: item?.users_sum_left ?? 0,
-            icon: false,
+            icon: "",
           },
           {
             title: "Total Left",
             amount: toLocaleStringForNumber(item?.total_left) + " A1",
-            icon: false,
+            icon: "",
           },
         ];
       } else {
@@ -141,49 +141,49 @@ export const Referral = ({
               item?.joinedAccountMetas?.length > 0
                 ? item.joinedAccountMetas[0].name
                 : "no name",
-            icon: false,
+            icon: "",
           },
           {
             title: "Wallet Address",
             amount: item.joinedAccounts?.[0]?.account_owner ?? "no address",
-            icon: false,
+            icon: "",
           },
           {
             title: "Level",
             amount: "Lvl " + item.lvl + "/" + item.side,
-            icon: false,
+            icon: "",
           },
           {
             title: "Total Staked",
             amount:
               toLocaleStringForNumber(item.joinedAccounts?.[0]?.stakedTotal) +
               " A1",
-            icon: false,
+            icon: "",
           },
           {
             title: "Expected Bonus",
             amount: toLocaleStringForNumber(item?.all_amount_sum) + " A1",
-            icon: false,
+            icon: "",
           },
           {
             title: "Users Right",
             amount: item?.users_sum_right ?? 0,
-            icon: false,
+            icon: "",
           },
           {
             title: "Total Right",
             amount: toLocaleStringForNumber(item?.total_right) + " A1",
-            icon: false,
+            icon: "",
           },
           {
             title: "Users Left",
             amount: item?.users_sum_left ?? 0,
-            icon: false,
+            icon: "",
           },
           {
             title: "Total Left",
             amount: toLocaleStringForNumber(item?.left_total) + " A1",
-            icon: false,
+            icon: "",
           },
         ];
       }
@@ -779,7 +779,6 @@ export const Referral = ({
                                   {item.documents.map((suItem, index) => {
                                     return (
                                       <Fragment key={index}>
-                                      fff
                                         {index % 2 == 0 && (
                                           <svg
                                             key={suItem.type + index / 0.1}
