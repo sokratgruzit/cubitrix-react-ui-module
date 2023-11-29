@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 
 // components
 import { Visual } from "../Visual";
@@ -7,7 +7,12 @@ import { TableElement } from "../TableElement";
 import { DashboardTable } from "../Dashboard/components/DashboardTable/DashboardTable";
 
 // svgs
-import { StickyNoteIcon, AddSquareIcon, ReferralPattern, Root } from "../../assets/svgs";
+import {
+  StickyNoteIcon,
+  AddSquareIcon,
+  ReferralPattern,
+  Root,
+} from "../../assets/svgs";
 
 // hooks
 import { useMobileWidth } from "../../hooks/useMobileWidth";
@@ -58,7 +63,7 @@ export const Referral = ({
   setTableFilterOutcomingData,
   tableSearchSelect,
   tableHeader,
-  translates
+  translates,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [refItemsCount, setRefItemsCount] = useState(3);
@@ -99,12 +104,12 @@ export const Referral = ({
           },
           {
             title: "Total Staked",
-            amount: toLocaleStringForNumber(item?.total_staked) + ' A1',
+            amount: toLocaleStringForNumber(item?.total_staked) + " A1",
             icon: false,
           },
           {
             title: "Expected Bonus",
-            amount: toLocaleStringForNumber(item?.all_amount_sum) + ' A1',
+            amount: toLocaleStringForNumber(item?.all_amount_sum) + " A1",
             icon: false,
           },
           {
@@ -114,7 +119,7 @@ export const Referral = ({
           },
           {
             title: "Total Right",
-            amount: toLocaleStringForNumber(item?.total_right) + ' A1',
+            amount: toLocaleStringForNumber(item?.total_right) + " A1",
             icon: false,
           },
           {
@@ -124,7 +129,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.total_left) + ' A1',
+            amount: toLocaleStringForNumber(item?.total_left) + " A1",
             icon: false,
           },
         ];
@@ -150,12 +155,14 @@ export const Referral = ({
           },
           {
             title: "Total Staked",
-            amount: toLocaleStringForNumber(item.joinedAccounts?.[0]?.stakedTotal) + ' A1',
+            amount:
+              toLocaleStringForNumber(item.joinedAccounts?.[0]?.stakedTotal) +
+              " A1",
             icon: false,
           },
           {
             title: "Expected Bonus",
-            amount: toLocaleStringForNumber(item?.all_amount_sum) + ' A1',
+            amount: toLocaleStringForNumber(item?.all_amount_sum) + " A1",
             icon: false,
           },
           {
@@ -165,7 +172,7 @@ export const Referral = ({
           },
           {
             title: "Total Right",
-            amount: toLocaleStringForNumber(item?.total_right) + ' A1',
+            amount: toLocaleStringForNumber(item?.total_right) + " A1",
             icon: false,
           },
           {
@@ -175,7 +182,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.left_total) + ' A1',
+            amount: toLocaleStringForNumber(item?.left_total) + " A1",
             icon: false,
           },
         ];
@@ -234,283 +241,296 @@ export const Referral = ({
   );
 
   if (referralTableType == "binary") {
-    referralTreeTableDataBinaryBody = referralTreeTableData?.map((item, index) => {
-      const createdAt = new Date(item?.createdAt);
-      const createdTime = createdAt.toLocaleString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-      });
-      return (
-        <div
-          className={`table-parent ${
-            mobileExpand == item._id ? "active" : ""
-          } dashboard-table-parent`}
-          key={index + item?.createdAt}
-          onClick={() => {
-            mobileExpandFunc(item._id);
-          }}
-        >
-          <div className="table">
-            <div
-              className={`td col ${
-                referralTreeTableHead[0].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[0].mobileWidth
-                    : referralTreeTableHead[0].width
-                }%`,
-              }}
-            >
-              <span>
-                {item.joinedAccountMetas.length > 0
-                  ? item.joinedAccountMetas[0].name
-                  : "No Name"}
-              </span>
-              <span>{item?.user_address}</span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[1].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[1].mobileWidth
-                    : referralTreeTableHead[1].width
-                }%`,
-              }}
-            >
-              <span>{"Lvl " + item.lvl + "/" + item.side}</span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[2].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[2].mobileWidth
-                    : referralTreeTableHead[2].width
-                }%`,
-              }}
-            >
-              <span>
-                {item.joinedAccounts.length > 0 && item.joinedAccounts[0].stakedTotal > 0
-                  ? item.joinedAccounts[0].stakedTotal?.toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })
-                  : 0} A1
-              </span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[3].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[3].mobileWidth
-                    : referralTreeTableHead[3].width
-                }%`,
-              }}
-            >
-              <span>{createdTime}</span>
-            </div>
-          </div>
-          <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
-            <svg
-              width="12"
-              height="7"
-              viewBox="0 0 12 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="table-mobile">
-            <div className="table-mobile-content">
-              <div className="td">
-                <div className="mobile-ttl">User Level / Position</div>
+    referralTreeTableDataBinaryBody = referralTreeTableData?.map(
+      (item, index) => {
+        const createdAt = new Date(item?.createdAt);
+        const createdTime = createdAt.toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+        return (
+          <div
+            className={`table-parent ${
+              mobileExpand == item._id ? "active" : ""
+            } dashboard-table-parent`}
+            key={index + item?.createdAt}
+            onClick={() => {
+              mobileExpandFunc(item._id);
+            }}
+          >
+            <div className="table">
+              <div
+                className={`td col ${
+                  referralTreeTableHead[0].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[0].mobileWidth
+                      : referralTreeTableHead[0].width
+                  }%`,
+                }}
+              >
+                <span>
+                  {item.joinedAccountMetas.length > 0
+                    ? item.joinedAccountMetas[0].name
+                    : "No Name"}
+                </span>
+                <span>{item?.user_address}</span>
+              </div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[1].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[1].mobileWidth
+                      : referralTreeTableHead[1].width
+                  }%`,
+                }}
+              >
                 <span>{"Lvl " + item.lvl + "/" + item.side}</span>
               </div>
-              <div className="td">
-                <div className="mobile-ttl">Date Joined</div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[2].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[2].mobileWidth
+                      : referralTreeTableHead[2].width
+                  }%`,
+                }}
+              >
+                <span>
+                  {item.joinedAccounts.length > 0 &&
+                  item.joinedAccounts[0].stakedTotal > 0
+                    ? item.joinedAccounts[0].stakedTotal?.toLocaleString(
+                        "en-US",
+                        {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        }
+                      )
+                    : 0}{" "}
+                  A1
+                </span>
+              </div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[3].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[3].mobileWidth
+                      : referralTreeTableHead[3].width
+                  }%`,
+                }}
+              >
                 <span>{createdTime}</span>
               </div>
             </div>
+            <div className="table-more" />
+            <div className="icon-place" style={{ height: "40px" }}>
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="table-mobile">
+              <div className="table-mobile-content">
+                <div className="td">
+                  <div className="mobile-ttl">User Level / Position</div>
+                  <span>{"Lvl " + item.lvl + "/" + item.side}</span>
+                </div>
+                <div className="td">
+                  <div className="mobile-ttl">Date Joined</div>
+                  <span>{createdTime}</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      );
-    });
+        );
+      }
+    );
   }
   if (referralTableType == "uni") {
-    referralTreeTableDataBinaryBody = referralTreeTableData?.map((item, index) => {
-      const createdAt = new Date(item?.createdAt);
-      const createdTime = createdAt.toLocaleString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric"
-      });
-      return (
-        <div
-          className={`table-parent ${
-            mobileExpand == item._id ? "active" : ""
-          } dashboard-table-parent`}
-          key={item?.createdAt + index}
-          onClick={() => {
-            mobileExpandFunc(item._id);
-          }}
-        >
-          <div className="table">
-            <div
-              className={`td col ${
-                referralTreeTableHead[0].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[0].mobileWidth
-                    : referralTreeTableHead[0].width
-                }%`,
-              }}
-            >
-              <span>
-                {item.joinedAccountMetas.length > 0
-                  ? item.joinedAccountMetas[0].name
-                  : "No Name"}
-              </span>
-              <span>{item?.user_address}</span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[1].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[1].mobileWidth
-                    : referralTreeTableHead[1].width
-                }%`,
-              }}
-            >
-              <span>{"Lvl " + item.lvl}</span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[2].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[2].mobileWidth
-                    : referralTreeTableHead[2].width
-                }%`,
-              }}
-            >
-              <span>{uniLVLData?.[item?.lvl - 1] ?? 0}%</span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[3].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[3].mobileWidth
-                    : referralTreeTableHead[3].width
-                }%`,
-              }}
-            >
-              <span>
-                {item.joinedAccounts.length > 0 && item.joinedAccounts[0].stakedTotal > 0
-                  ? item.joinedAccounts[0].stakedTotal
-                  : 0} A1
-              </span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[4].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[4].mobileWidth
-                    : referralTreeTableHead[4].width
-                }%`,
-              }}
-            >
-              <span>{item?.joinedTransactions?.[0]?.totalAmount ?? 0} A1</span>
-            </div>
-            <div
-              className={`td ${
-                referralTreeTableHead[5].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile
-                    ? referralTreeTableHead[5].mobileWidth
-                    : referralTreeTableHead[5].width
-                }%`,
-              }}
-            >
-              <span>{createdTime}</span>
-            </div>
-          </div>
-          <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
-            <svg
-              width="12"
-              height="7"
-              viewBox="0 0 12 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="table-mobile">
-            <div className="table-mobile-content">
-              <div className="td">
-                <div className="mobile-ttl">User Level</div>
+    referralTreeTableDataBinaryBody = referralTreeTableData?.map(
+      (item, index) => {
+        const createdAt = new Date(item?.createdAt);
+        const createdTime = createdAt.toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+        return (
+          <div
+            className={`table-parent ${
+              mobileExpand == item._id ? "active" : ""
+            } dashboard-table-parent`}
+            key={item?.createdAt + index}
+            onClick={() => {
+              mobileExpandFunc(item._id);
+            }}
+          >
+            <div className="table">
+              <div
+                className={`td col ${
+                  referralTreeTableHead[0].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[0].mobileWidth
+                      : referralTreeTableHead[0].width
+                  }%`,
+                }}
+              >
+                <span>
+                  {item.joinedAccountMetas.length > 0
+                    ? item.joinedAccountMetas[0].name
+                    : "No Name"}
+                </span>
+                <span>{item?.user_address}</span>
+              </div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[1].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[1].mobileWidth
+                      : referralTreeTableHead[1].width
+                  }%`,
+                }}
+              >
                 <span>{"Lvl " + item.lvl}</span>
               </div>
-              <div className="td">
-                <div className="mobile-ttl">Rate</div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[2].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[2].mobileWidth
+                      : referralTreeTableHead[2].width
+                  }%`,
+                }}
+              >
                 <span>{uniLVLData?.[item?.lvl - 1] ?? 0}%</span>
               </div>
-              <div className="td">
-                <div className="mobile-ttl">Date Joined</div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[3].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[3].mobileWidth
+                      : referralTreeTableHead[3].width
+                  }%`,
+                }}
+              >
+                <span>
+                  {item.joinedAccounts.length > 0 &&
+                  item.joinedAccounts[0].stakedTotal > 0
+                    ? item.joinedAccounts[0].stakedTotal
+                    : 0}{" "}
+                  A1
+                </span>
+              </div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[4].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[4].mobileWidth
+                      : referralTreeTableHead[4].width
+                  }%`,
+                }}
+              >
+                <span>
+                  {item?.joinedTransactions?.[0]?.totalAmount ?? 0} A1
+                </span>
+              </div>
+              <div
+                className={`td ${
+                  referralTreeTableHead[5].mobileWidth ? true : false
+                } dashboard-td`}
+                style={{
+                  width: `${
+                    mobile
+                      ? referralTreeTableHead[5].mobileWidth
+                      : referralTreeTableHead[5].width
+                  }%`,
+                }}
+              >
                 <span>{createdTime}</span>
               </div>
-              {/*<div className='td'>*/}
-              {/*  <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>*/}
-              {/*  <span>{item._id.percent}</span>*/}
-              {/*</div>*/}
+            </div>
+            <div className="table-more" />
+            <div className="icon-place" style={{ height: "40px" }}>
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div className="table-mobile">
+              <div className="table-mobile-content">
+                <div className="td">
+                  <div className="mobile-ttl">User Level</div>
+                  <span>{"Lvl " + item.lvl}</span>
+                </div>
+                <div className="td">
+                  <div className="mobile-ttl">Rate</div>
+                  <span>{uniLVLData?.[item?.lvl - 1] ?? 0}%</span>
+                </div>
+                <div className="td">
+                  <div className="mobile-ttl">Date Joined</div>
+                  <span>{createdTime}</span>
+                </div>
+                {/*<div className='td'>*/}
+                {/*  <div className='mobile-ttl'>{referralCodeTableHead[3].name}</div>*/}
+                {/*  <span>{item._id.percent}</span>*/}
+                {/*</div>*/}
+              </div>
             </div>
           </div>
-        </div>
-      );
-    });
+        );
+      }
+    );
   }
 
   const tables = [
@@ -574,13 +594,17 @@ export const Referral = ({
   });
 
   return (
-    <div className={`referral-main-wrap ${disabledAccount ? "disabled-page" : ""}`}>
+    <div
+      className={`referral-main-wrap ${disabledAccount ? "disabled-page" : ""}`}
+    >
       {disabledAccount && <DisabledPage />}
       <div className={"referral-main"}>
         <div className="referral-content">
           <div className="referral-content-container">
             <div className={"referral-content-main"}>
-              <h1 className="main_ttl font-60 colorGold">{translates?.referral.en}</h1>
+              <h1 className="main_ttl font-60 colorGold">
+                {translates?.referral.en}
+              </h1>
               <div className="referral-content-info">
                 <span className="font-20">
                   {translates?.you_can_earn_rebates.en}
@@ -622,7 +646,11 @@ export const Referral = ({
                     label={referralTableTitle}
                     // description={`Total Downline Members: ${totalBinaryMembers}`}
                     fontSize={"font-20"}
-                    customStyles={{ border: "none", padding: "0",width: "100%" }}
+                    customStyles={{
+                      border: "none",
+                      padding: "0",
+                      width: "100%",
+                    }}
                     buttons={referralTreeBtnsRight}
                     labelCustomStyles={{ color: "#C38C5C" }}
                     centerButtons={true}
@@ -649,7 +677,7 @@ export const Referral = ({
               }}
               customHeadStyles={{
                 height: "81px",
-                alignItems: 'center'
+                alignItems: "center",
               }}
               tableEmptyData={referralBinaryTableEmpty}
               loading={false}
@@ -676,7 +704,7 @@ export const Referral = ({
                                 referralBackActive
                                   ? referralTreeActiveAddress
                                   : referralTreeMainAddressData,
-                                !referralBackActive,
+                                !referralBackActive
                               );
                             }}
                             onMouseLeave={() => {
@@ -731,7 +759,9 @@ export const Referral = ({
                             </div>
                             <div className={`referral-tree-btn-hash-out`}>
                               <div className="referral-tree-btn-hash">
-                                <span>{referralTreeActiveAddress.user_address}</span>
+                                <span>
+                                  {referralTreeActiveAddress.user_address}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -739,7 +769,7 @@ export const Referral = ({
                       </div>
                       {referralTreeData?.map((item, index) => {
                         return (
-                          <>
+                          <Fragment key={index}>
                             {index < refItemsCount && (
                               <div
                                 className="referral-tree-item-level"
@@ -748,12 +778,14 @@ export const Referral = ({
                                 <div className="referral-tree-lines">
                                   {item.documents.map((suItem, index) => {
                                     return (
-                                      <>
+                                      <Fragment key={index}>
                                         {index % 2 == 0 && (
                                           <svg
-                                            key={suItem.type + (index / 0.1)}
+                                            key={suItem.type + index / 0.1}
                                             className={
-                                              suItem.type == "nothing" ? "hide" : ""
+                                              suItem.type == "nothing"
+                                                ? "hide"
+                                                : ""
                                             }
                                             style={{
                                               width: `calc(${
@@ -804,20 +836,22 @@ export const Referral = ({
                                             />
                                           </svg>
                                         )}
-                                      </>
+                                      </Fragment>
                                     );
                                   })}
                                 </div>
                                 <div className="referral-tree-items">
                                   {item.documents.map((suItem, index) => {
                                     return (
-                                      <>
+                                      <Fragment key={index}>
                                         {suItem.type == "missing" && (
                                           <div
                                             className={`referral-tree-item`}
                                             key={`${suItem.type} ${index}`}
                                             style={{
-                                              width: 100 / item.documents.length + "%",
+                                              width:
+                                                100 / item.documents.length +
+                                                "%",
                                             }}
                                           >
                                             <div
@@ -832,7 +866,7 @@ export const Referral = ({
                                                 onClick={() => {
                                                   referralTreeAddClick(
                                                     suItem.lvl,
-                                                    suItem.position,
+                                                    suItem.position
                                                   ),
                                                     addCopy(suItem);
                                                 }}
@@ -847,7 +881,9 @@ export const Referral = ({
                                                   <div
                                                     className={`copied ${
                                                       activeAddCopy ==
-                                                      suItem.lvl + "_" + suItem.position
+                                                      suItem.lvl +
+                                                        "_" +
+                                                        suItem.position
                                                         ? // + suItem.position
                                                           "active"
                                                         : ""
@@ -884,7 +920,9 @@ export const Referral = ({
                                             key={suItem.type + index}
                                             className={`referral-tree-item`}
                                             style={{
-                                              width: 100 / item.documents.length + "%",
+                                              width:
+                                                100 / item.documents.length +
+                                                "%",
                                             }}
                                           >
                                             <div
@@ -904,9 +942,15 @@ export const Referral = ({
                                                   className="referral-tree-info"
                                                   style={
                                                     suItem.side == "left"
-                                                      ? { left: mobile ? "0px" : "120px" }
+                                                      ? {
+                                                          left: mobile
+                                                            ? "0px"
+                                                            : "120px",
+                                                        }
                                                       : {
-                                                          right: mobile ? "0px" : "120px",
+                                                          right: mobile
+                                                            ? "0px"
+                                                            : "120px",
                                                         }
                                                   }
                                                 >
@@ -914,12 +958,15 @@ export const Referral = ({
                                                     type="reward-box"
                                                     active={
                                                       activeTreeInfo ==
-                                                        suItem.user_address && animateTree
+                                                        suItem.user_address &&
+                                                      animateTree
                                                         ? true
                                                         : false
                                                     }
                                                     cardBody={treeInfo}
-                                                    customStyle={{ width: "100%" }}
+                                                    customStyle={{
+                                                      width: "100%",
+                                                    }}
                                                   />
                                                 </div>
                                               )}
@@ -942,7 +989,9 @@ export const Referral = ({
                                                 className={`referral-tree-btn-hash-out`}
                                               >
                                                 <div className="referral-tree-btn-hash">
-                                                  <span>{suItem.user_address}</span>
+                                                  <span>
+                                                    {suItem.user_address}
+                                                  </span>
                                                 </div>
                                               </div>
                                             </div>
@@ -953,17 +1002,19 @@ export const Referral = ({
                                             key={suItem.type + index}
                                             className={`referral-tree-item`}
                                             style={{
-                                              width: 100 / item.documents.length + "%",
+                                              width:
+                                                100 / item.documents.length +
+                                                "%",
                                             }}
                                           ></div>
                                         )}
-                                      </>
+                                      </Fragment>
                                     );
                                   })}
                                 </div>
                               </div>
                             )}
-                          </>
+                          </Fragment>
                         );
                       })}
                     </div>
