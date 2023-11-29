@@ -517,7 +517,7 @@ export const Referral = ({
     {
       type: referralHistoryTableType,
       header: "Referral Records",
-      description: `History of your weekly referral rebates.`,
+      description: `History of your referral rebates.`,
       tableHeader: referralHistoryTableHead,
       data: rebatesTableData,
       tableEmpty: referralHistoryTableEmpty,
