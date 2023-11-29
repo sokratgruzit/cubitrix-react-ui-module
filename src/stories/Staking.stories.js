@@ -18,7 +18,8 @@ stories.add("Staking", () => {
   const [depositAmount, setDepositAmount] = useState("10");
   const [timeperiod, setTimeperiod] = useState(4);
   const [timeperiodDate, setTimeperiodDate] = useState(0);
-  const [createStakingPopUpActive, setCreateStakingPopUpActive] = useState(false);
+  const [createStakingPopUpActive, setCreateStakingPopUpActive] =
+    useState(false);
 
   const handlePopUpOpen = () => {
     setCreateStakingPopUpActive(true);
@@ -156,7 +157,7 @@ stories.add("Staking", () => {
       // unstaketime: "06/11/2023 3:12 PM",
       CML: "CML",
       realtimeRewardPerBlock: "1,132,000.1",
-    }
+    },
   ];
 
   let account = false;
@@ -269,7 +270,7 @@ stories.add("Staking", () => {
           },
           () => {
             setUnstakeLoading(false);
-          },
+          }
         );
       },
     },
@@ -289,7 +290,7 @@ stories.add("Staking", () => {
           },
           () => {
             setHarvestLoading(false);
-          },
+          }
         );
       },
     },
@@ -466,10 +467,11 @@ stories.add("Staking", () => {
             _id: "64fb85b6f428ddf3b22f41f9",
             address: "0x928875073504464f466c5ec4cd81db991b80f175",
             amount: 0.1,
-            createdAt: "2023-09-08T20:36:06.196Z",
             currency: "btc",
             percentage: 0,
+            createdAt: "2023-11-29T06:56:01.898Z",
             updatedAt: "2023-09-08T20:36:06.196Z",
+            expires: "2024-11-29T06:56:01.898Z",
           },
         ]}
         currencyStakesLoading={false}

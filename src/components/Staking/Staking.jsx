@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 // hooks
 import { useMobileWidth } from "../../hooks/useMobileWidth";
+import useDateFormatting from "../../hooks/useDateFormatting";
 
 // components
 import { AccountSummary } from "../AccountSummary";
@@ -45,27 +46,10 @@ export const Staking = ({
   const { width, mobile } = useMobileWidth();
 
   const [selectedTab, setSelectedTab] = useState("staking");
+  const { convertDateFormat, convertReceivedDateFormat } = useDateFormatting();
 
   let tableData = null;
-  function convertDateFormat(inputDate) {
-    if (!inputDate || typeof inputDate !== "string") {
-      // Handle cases where inputDate is undefined or not a string
-      return ""; 
-    }
-    var components = inputDate.split(/[\s/]+/);
-    // Rearrange the components to the desired format "MM/DD/YYYY hh:mm A"
-    var outputDate =
-      components[1] +
-      "/" +
-      components[0] +
-      "/" +
-      components[2] +
-      " " +
-      components[3] +
-      " " +
-      components[4];
-    return outputDate;
-  }
+
   if (selectedTab === "staking") {
     tableData = stakersRecord
       .slice()
@@ -230,9 +214,11 @@ export const Staking = ({
       });
   } else {
     tableData = currencyStakes.map((item, index) => {
+      console.log(item?.createdAt, "ff");
+
       if (item.unstaked) return false;
-      const createdAt = new Date(convertDateFormat(item?.staketime));
-      const createdUn = new Date(convertDateFormat(item?.expires));
+      const createdAt = new Date(convertReceivedDateFormat(item?.createdAt));
+      const createdUn = new Date(convertReceivedDateFormat(item?.expires));
       const createdTime = createdAt.toLocaleString("en-US", {
         month: "short",
         day: "numeric",
