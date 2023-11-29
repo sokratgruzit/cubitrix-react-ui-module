@@ -6,9 +6,9 @@ function useDateFormatting() {
       // Handle cases where inputDate is undefined or not a string
       return "";
     }
-    var components = inputDate.split(/[\s/]+/);
+    let components = inputDate.split(/[\s/]+/);
     // Rearrange the components to the desired format "MM/DD/YYYY hh:mm A"
-    var outputDate =
+    let outputDate =
       components[1] +
       "/" +
       components[0] +

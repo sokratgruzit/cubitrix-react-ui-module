@@ -214,8 +214,6 @@ export const Staking = ({
       });
   } else {
     tableData = currencyStakes.map((item, index) => {
-      console.log(item?.createdAt, "ff");
-
       if (item.unstaked) return false;
       const createdAt = new Date(convertReceivedDateFormat(item?.createdAt));
       const createdUn = new Date(convertReceivedDateFormat(item?.expires));
