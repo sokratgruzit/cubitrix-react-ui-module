@@ -239,6 +239,7 @@
   padding: 10px 0;
   border: 1px solid transparent;
   align-items: center;
+  justify-content: space-around;
   gap: 5px;
 }
 .card-slider-card_footer-currency {

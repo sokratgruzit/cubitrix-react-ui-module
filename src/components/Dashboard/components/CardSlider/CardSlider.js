@@ -374,7 +374,7 @@ export const CardSlider = ({
                               (key === "gold" && item.title === "Withdraw") ||
                               (key === "platinum" && item.title === "Withdraw")
                                 ? { display: "none" }
-                                : { display: "block" }
+                                : { display: "flex" }
                             }
                             className={`card-slider-card_footer-item card-slider-card_footer-item-currency`}
                             key={footerIndex}
