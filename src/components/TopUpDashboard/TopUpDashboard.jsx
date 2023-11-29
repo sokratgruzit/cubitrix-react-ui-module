@@ -39,7 +39,7 @@ export const TopUpDashboard = ({
 
   const handleUSDAmountChange = (event) => {
     const value = event.target.value;
-    console.log(value)
+    
     if (!isNaN(value) && value >= 0) {
       if (value > 0) setTokenError(null);
       setAmountUSD(Number(value));
