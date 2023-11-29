@@ -238,7 +238,7 @@
   background: #0e2225;
   padding: 10px 0;
   border: 1px solid transparent;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-around;
   gap: 5px;
 }
