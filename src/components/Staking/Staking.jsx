@@ -10,7 +10,11 @@ import { Table } from "../Table";
 import { Visual } from "../Visual";
 
 // svgs
-import {AddSquareIcon, ReferralPattern, StickyNoteIcon} from "../../assets/svgs";
+import {
+  AddSquareIcon,
+  ReferralPattern,
+  StickyNoteIcon,
+} from "../../assets/svgs";
 
 // styles
 import "../../assets/css/main-theme.css";
@@ -35,7 +39,7 @@ export const Staking = ({
   currencyStakesLoading,
   currencyStakesTableHead,
   apyPercent,
-  translates
+  translates,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const { width, mobile } = useMobileWidth();
@@ -44,164 +48,186 @@ export const Staking = ({
 
   let tableData = null;
   function convertDateFormat(inputDate) {
-    // Split the input date string into day, month, year, and time components
+    if (!inputDate || typeof inputDate !== "string") {
+      // Handle cases where inputDate is undefined or not a string
+      return ""; 
+    }
     var components = inputDate.split(/[\s/]+/);
-
     // Rearrange the components to the desired format "MM/DD/YYYY hh:mm A"
-    var outputDate = components[1] + '/' + components[0] + '/' + components[2] + ' ' + components[3] + ' ' + components[4];
-
+    var outputDate =
+      components[1] +
+      "/" +
+      components[0] +
+      "/" +
+      components[2] +
+      " " +
+      components[3] +
+      " " +
+      components[4];
     return outputDate;
   }
   if (selectedTab === "staking") {
-    tableData = stakersRecord.slice().reverse().map((item, index) => {
+    tableData = stakersRecord
+      .slice()
+      .reverse()
+      .map((item, index) => {
+        if (item.unstaked) return false;
+        const createdAt = new Date(convertDateFormat(item?.staketime));
+        const createdUn = new Date(convertDateFormat(item?.unstaketime));
+        const createdTime = createdAt.toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+        const createdUnTime = createdUn.toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
 
-
-      if (item.unstaked) return false;
-      const createdAt = new Date(convertDateFormat(item?.staketime));
-      const createdUn = new Date(convertDateFormat(item?.unstaketime));
-      const createdTime = createdAt.toLocaleString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      });
-      const createdUnTime = createdUn.toLocaleString("en-US", {
-        month: "short",
-        day: "numeric",
-
-        year: "numeric",
-      });
-      return (
-        <div
-          className={`table-parent ${mobileExpand === index ? "active" : ""}`}
-          key={index}
-        >
+          year: "numeric",
+        });
+        return (
           <div
-            className={"table"}
-            style={{
-              width: "calc(100% - 50px)",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              mobileExpandFunc(index);
-            }}
+            className={`table-parent ${mobileExpand === index ? "active" : ""}`}
+            key={index}
           >
-
-            {tableHead?.slice(0, 4).map((i, index) => {
-
-              return (
-                  <div
-                      key={index}
-                      className={`td col ${i.mobileWidth ? true : false}`}
-                      style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
-                  >
-                  <span>
-                    {
-                      [
-                        (item.amount / 10 ** 18)?.toLocaleString("en-US", {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        } )+ ' A1',
-                        createdTime,
-                        createdUnTime,
-                        parseFloat(item.realtimeRewardPerBlock).toFixed(10) + ' A1',
-                      ][index]
-                    }
-                  </span>
-                  </div>
-              )
-            })}
-          </div>
-          <div className="table-more" />
-          <div
-            className="icon-place"
-            style={{ display: "flex", cursor: "pointer" }}
-            onClick={() => {
-              mobileExpandFunc(index);
-            }}
-          >
-            <svg
-              width="12"
-              height="7"
-              viewBox="0 0 12 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className={"table"}
+              style={{
+                width: "calc(100% - 50px)",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                mobileExpandFunc(index);
+              }}
             >
-              <path
-                d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-                stroke="white"
-                strokeWidth="1.5"
-                strokeMiterlimit="10"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <div className="table-mobile" style={{ display: "block", cursor: "initial" }}>
-            <div className="table-mobile-content">
-              {width <= 1300 && (
-                <>
-                  {[1,2].map((index) => (
-                    <div className="td" key={index}>
-                      <div className="mobile-ttl">{tableHead[index].name}</div>
-                      <span>
-                        {index === 1 && item?.staketime}
-                        {index === 2 && item?.unstaketime}
-                      </span>
-                    </div>
-                  ))}
-                </>
-              )}
-              {width <= 400 && (
-                <>
-                  {[2].map((index) => (
-                    <div className="td" key={index}>
-                      <div className="mobile-ttl">{tableHead[index].name}</div>
-                      <span>{parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}</span>
-                    </div>
-                  ))}
-                </>
-              )}
-              <>
-                {[3].map((index) => (
-                  <div className="td" key={index}>
-                    <div className="mobile-ttl">{translates?.earn_reward.en}</div>
-                    <span>A1</span>
+              {tableHead?.slice(0, 4).map((i, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`td col ${i.mobileWidth ? true : false}`}
+                    style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+                  >
+                    <span>
+                      {
+                        [
+                          (item.amount / 10 ** 18)?.toLocaleString("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          }) + " A1",
+                          createdTime,
+                          createdUnTime,
+                          parseFloat(item.realtimeRewardPerBlock).toFixed(10) +
+                            " A1",
+                        ][index]
+                      }
+                    </span>
                   </div>
-                ))}
-              </>
-              <div className="table-buttons">
-                {[4, 5].map((index1) => (
-                  <div className="td" key={index1}>
-                    <Button
-                      element="staking-button"
-                      label={
-                        index1 === 4
-                          ? unstakeLoading
+                );
+              })}
+            </div>
+            <div className="table-more" />
+            <div
+              className="icon-place"
+              style={{ display: "flex", cursor: "pointer" }}
+              onClick={() => {
+                mobileExpandFunc(index);
+              }}
+            >
+              <svg
+                width="12"
+                height="7"
+                viewBox="0 0 12 7"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeMiterlimit="10"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <div
+              className="table-mobile"
+              style={{ display: "block", cursor: "initial" }}
+            >
+              <div className="table-mobile-content">
+                {width <= 1300 && (
+                  <>
+                    {[1, 2].map((index) => (
+                      <div className="td" key={index}>
+                        <div className="mobile-ttl">
+                          {tableHead[index].name}
+                        </div>
+                        <span>
+                          {index === 1 && item?.staketime}
+                          {index === 2 && item?.unstaketime}
+                        </span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                {width <= 400 && (
+                  <>
+                    {[2].map((index) => (
+                      <div className="td" key={index}>
+                        <div className="mobile-ttl">
+                          {tableHead[index].name}
+                        </div>
+                        <span>
+                          {parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}
+                        </span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                <>
+                  {[3].map((index) => (
+                    <div className="td" key={index}>
+                      <div className="mobile-ttl">
+                        {translates?.earn_reward.en}
+                      </div>
+                      <span>A1</span>
+                    </div>
+                  ))}
+                </>
+                <div className="table-buttons">
+                  {[4, 5].map((index1) => (
+                    <div className="td" key={index1}>
+                      <Button
+                        element="staking-button"
+                        label={
+                          index1 === 4
+                            ? unstakeLoading
+                              ? "Loading..."
+                              : "Unstake"
+                            : harvestLoading
                             ? "Loading..."
-                            : "Unstake"
-                          : harvestLoading
-                          ? "Loading..."
-                          : "Harvest"
-                      }
-                      active={index1 === 4}
-                      customStyles={{ borderRadius: "32px" }}
-                      onClick={() => tableHead[index1].onClick(index)}
-                      disabled={
-                        !isActive || index1 === 4
-                          ? item.unstaked ||
-                            Number(item?.[0]) > Math.floor(new Date().getTime() / 1000) ||
-                            unstakeLoading
-                          : harvestLoading || item.realtimeRewardPerBlock == 0
-                      }
-                    />
-                  </div>
-                ))}
+                            : "Harvest"
+                        }
+                        active={index1 === 4}
+                        customStyles={{ borderRadius: "32px" }}
+                        onClick={() => tableHead[index1].onClick(index)}
+                        disabled={
+                          !isActive || index1 === 4
+                            ? item.unstaked ||
+                              Number(item?.[0]) >
+                                Math.floor(new Date().getTime() / 1000) ||
+                              unstakeLoading
+                            : harvestLoading || item.realtimeRewardPerBlock == 0
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
   } else {
     tableData = currencyStakes.map((item, index) => {
       if (item.unstaked) return false;
@@ -235,28 +261,27 @@ export const Staking = ({
           >
             {currencyStakesTableHead?.slice(0, 4).map((i, index) => {
               return (
-                      <div
-                          key={index}
-                          className={`td col ${i.mobileWidth ? true : false}`}
-                          style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
-                      >
-                        <span>
-                      {
-                        [
-                          `${item.amount?.toLocaleString("en-US", {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })} ${item.currency?.toUpperCase()}`,
-                          createdTime,
-                          createdUnTime,
-                          `${item.percentage.toFixed(2)} %`,
-                        ][index]
-                      }
-                    </span>
-                      </div>
-              )
-            }
-            )}
+                <div
+                  key={index}
+                  className={`td col ${i.mobileWidth ? true : false}`}
+                  style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+                >
+                  <span>
+                    {
+                      [
+                        `${item.amount?.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })} ${item.currency?.toUpperCase()}`,
+                        createdTime,
+                        createdUnTime,
+                        `${item.percentage.toFixed(2)} %`,
+                      ][index]
+                    }
+                  </span>
+                </div>
+              );
+            })}
           </div>
           <div className="table-more" />
         </div>
@@ -277,10 +302,10 @@ export const Staking = ({
       <div className="staking-content">
         <div className="staking-content__left">
           <div className={"stake-content-main"}>
-            <h1 className="main_ttl font-60 colorGold">{translates?.staking.en}</h1>
-            <p className="font-16">
-              {translates?.you_can_stake_and.en}
-            </p>
+            <h1 className="main_ttl font-60 colorGold">
+              {translates?.staking.en}
+            </h1>
+            <p className="font-16">{translates?.you_can_stake_and.en}</p>
           </div>
           <AccountSummary
             data={accountSummaryData}
@@ -305,7 +330,9 @@ export const Staking = ({
               </div>
               <span
                 className={`highlight-selected ${
-                  selectedTab === "staking" ? "selected-data" : "selected-security"
+                  selectedTab === "staking"
+                    ? "selected-data"
+                    : "selected-security"
                 }`}
               ></span>
             </div>
@@ -319,18 +346,24 @@ export const Staking = ({
 
           <Table
             type={"table-version"}
-            tableHead={selectedTab === "staking" ? tableHead : currencyStakesTableHead}
+            tableHead={
+              selectedTab === "staking" ? tableHead : currencyStakesTableHead
+            }
             mobile={true}
             tableData={
               selectedTab === "stakes" && stakersRecord.length < 1 ? (
                 false
-              ) : selectedTab === "currency stakes" && currencyStakes.length < 1 ? (
+              ) : selectedTab === "currency stakes" &&
+                currencyStakes.length < 1 ? (
                 false
               ) : (
                 <>
                   {tableData}
                   {isFetching && (
-                    <div className="table-loading-container" style={{ height: "50px" }}>
+                    <div
+                      className="table-loading-container"
+                      style={{ height: "50px" }}
+                    >
                       <div
                         className="table-loading"
                         style={{ height: "30px", width: "30px" }}
