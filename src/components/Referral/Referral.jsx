@@ -773,7 +773,7 @@ export const Referral = ({
                             {index < refItemsCount && (
                               <div
                                 className="referral-tree-item-level"
-                                key={item + index}
+                                key={index}
                               >
                                 <div className="referral-tree-lines">
                                   {item.documents.map((suItem, index) => {
