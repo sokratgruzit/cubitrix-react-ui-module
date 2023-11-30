@@ -41,7 +41,7 @@ const PaymentPopup = ({
         <h3>Select payment method:</h3>
         <div className="payment_methods_container">
           {paymentTypes.map((method) => {
-            if (selectedMethod === "USDC" && method.id === 2) return null;
+            if (selectedMethod === "TETHER" && method.id === 2) return null;
             return (
               <div
                 key={method.id}

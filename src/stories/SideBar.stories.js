@@ -146,7 +146,7 @@ stories.add("SideBar", () => {
       price: "$0.00",
     },
     {
-      svg: <Account type={"usdc"} />,
+      svg: <Account type={"tether"} />,
       title: "USDT",
       value: "0.000000 USDT",
       price: "$0.00",

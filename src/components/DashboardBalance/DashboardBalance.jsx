@@ -6,7 +6,7 @@ export const DashboardBalance = (props) => {
       <div className="dashboard-balance-border">
         <p>Earning</p>
         <p>{props.earning}</p>
-        <p>{props.usdc}</p>
+        <p>{props.tether}</p>
         {/* <img className='svg-image' src={require(`../../assets/img/dashbordBalance/gradien.png`)} alt="gradien" /> */}
       </div>
     </div>
