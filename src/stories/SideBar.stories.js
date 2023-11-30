@@ -43,7 +43,7 @@ stories.add("SideBar", () => {
 
   const getOptions = async () => {
     const response = await fetch(
-      `http://localhost:4000/api/referral/get_referral_options`,
+      `http://localhost:4000/api/referral/get_referral_options`
     );
 
     const data = await response.json();
@@ -236,64 +236,92 @@ stories.add("SideBar", () => {
     },
     {
       level: "VIP 1",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_1,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_1,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_1,
     },
     {
       level: "VIP 2",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_2,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_2,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_2,
     },
     {
       level: "VIP 3",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_3,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_3,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_3,
     },
     {
       level: "VIP 4",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_4,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_4,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_4,
     },
     {
       level: "VIP 5",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_5,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_5,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_5,
     },
     {
       level: "VIP 6",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_6,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_6,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_6,
     },
     {
       level: "VIP 7",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_7,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_7,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_7,
     },
     {
       level: "VIP 8",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_8,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_8,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_8,
     },
     {
       level: "VIP 9",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_9,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_9,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_9,
     },
     {
       level: "VIP 10",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_10,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_10,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_10,
     },
     {
       level: "VIP 11",
-      complandHolding: levelSystemTableOptions?.referral_binary_max_amount_lvl_11,
+      complandHolding:
+        levelSystemTableOptions?.referral_binary_max_amount_lvl_11,
       rebaseRate: levelSystemTableOptions?.referral_binary_percentage_lvl_11,
     },
   ];
 
-  const handleSignInData = data => {
+  const handleSignInData = (data) => {
     console.log(data);
   };
+
+  const depositInputs = [
+    {
+      title: "Amount",
+      name: "amount",
+      type: "default",
+      disabled: depositLoading,
+      placeholder: "0",
+      rightText: "A1",
+      onChange: (e) => {
+        setCurrentObject((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      },
+    },
+  ];
 
   return (
     <div>
@@ -429,7 +457,7 @@ stories.add("SideBar", () => {
           account={"ahaha"}
           mainAccount={"ahaha2"}
         /> */}
-        {/* <StakeCurrency /> */}
+        <StakeCurrency inputs={depositInputs} />
         <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
