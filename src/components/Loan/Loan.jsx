@@ -26,8 +26,8 @@ export const Loan = ({
   rescindOffer,
   acceptOffer,
   rejectOffer,
-  supplyUSDC,
-  borrowUSDC,
+  supplyTETHER,
+  borrowTETHER,
   account,
   handleConenctWallet,
 }) => {
@@ -132,7 +132,7 @@ export const Loan = ({
           {loanPlatform === "pool" && (
             <>
               <div className="loan-walletBalance">
-                <h3>USDC Wallet Balance</h3>
+                <h3>TETHER Wallet Balance</h3>
                 <div>
                   <span>img</span>
                   <p>0.00</p>
@@ -151,24 +151,24 @@ export const Loan = ({
                 </div>
               </div>
               <div className="loan-bar-body">
-                <DashboardBalance earning={"$8.193010001"} usdc={"2.22004 USDC"} />
+                <DashboardBalance earning={"$8.193010001"} tether={"2.22004 TETHER"} />
                 <div className="buttons-wrapper">
                   <Button
-                    label={"Supply USDC "}
+                    label={"Supply TETHER "}
                     size={"btn-sm"}
                     type={"btn-secondary"}
                     arrow={"arrow-none"}
                     element={"button"}
-                    onClick={() => supplyUSDC()}
+                    onClick={() => supplyTETHER()}
                     customStyles={{ margin: "0" }}
                   />
                   <Button
-                    label={"Borrow USDC"}
+                    label={"Borrow TETHER"}
                     size={"btn-sm"}
                     type={"btn-secondary"}
                     arrow={"arrow-none"}
                     element={"button"}
-                    onClick={() => borrowUSDC()}
+                    onClick={() => borrowTETHER()}
                     customStyles={{ margin: "0" }}
                   />
                 </div>

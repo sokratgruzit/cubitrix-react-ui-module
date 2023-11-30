@@ -92,7 +92,7 @@ export const ExtensionCard = ({
               <div className='component-body-section component-body-section'>
                 <h4>Supported Markets</h4>
                 <div className='component-body-section-body'>
-                  <p>USDC</p>
+                  <p>TETHER</p>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='4'
