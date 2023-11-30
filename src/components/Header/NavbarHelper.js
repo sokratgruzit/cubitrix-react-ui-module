@@ -30,6 +30,17 @@ export const NavbarHelper = ({
   loginWithEmail,
   loggedWithEmail,
 }) => {
+  function maskAddress(address) {
+    const lengthToShow = 6;
+    if (address?.length <= lengthToShow * 2) {
+      return address;
+    }
+    const start = address?.substring(0, lengthToShow);
+    const end = address?.substring(address?.length - lengthToShow);
+    return `${start}...${end}`;
+  }
+  const maskedAccount = maskAddress(account);
+
   let element = null;
 
   if (type === "navbar") {
@@ -116,7 +127,7 @@ export const NavbarHelper = ({
                 ) : (
                   <Warning className="Warning" />
                 )}
-                <p className="address">{account}</p>
+                <p className="address">{maskedAccount}</p>
               </span>
             }
             onClick={initialRegister ? () => setInitialRegister(true) : onClick}
