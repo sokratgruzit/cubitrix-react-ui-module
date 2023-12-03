@@ -364,6 +364,7 @@ stories.add("Landing", () => {
                 EthCard: require("../assets/img/dashboard/coinCards/EthCard.png"),
                 BitcoinCard: require("../assets/img/dashboard/coinCards/BitcoinCard.png"),
                 TetherCard: require("../assets/img/dashboard/coinCards/TetherCard.png"),
+                BnbCard: require("../assets/img/dashboard/coinCards/TetherCard.png"),
                 TopCoinsIcon: require("../assets/img/dashboard/TopCoinsIcon.png"),
                 ball: require("../assets/img/dashboard/ball.svg"),
                 silverCoin: require("../assets/img/dashboard/silverCoin.png"),
