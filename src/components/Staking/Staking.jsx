@@ -53,7 +53,6 @@ export const Staking = ({
   if (selectedTab === "staking") {
     tableData = stakersRecord
       .slice()
-      // .reverse()
       .map((item, index) => {
         if (item.unstaked) return false;
         const createdAt = new Date(convertDateFormat(item?.staketime));

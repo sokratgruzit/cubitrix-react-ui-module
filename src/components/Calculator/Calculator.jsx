@@ -36,7 +36,7 @@ export const Calculator = ({
   translates,
   tokenBalance,
   walletBalance,
-  exchangeRate
+  exchangeRate,
 }) => {
   const [emptyField, setEmptyField] = useState(false);
 
@@ -74,7 +74,7 @@ export const Calculator = ({
     {
       amount: depositAmount || "",
     },
-    helpTexts,
+    helpTexts
   );
 
   const handleSubmit = () => {
@@ -113,26 +113,31 @@ export const Calculator = ({
         ) : (
           <HelpText
             status="warning"
-            title={
-              translates?.tokens_will_be_deducted.en
-            }
+            title={translates?.tokens_will_be_deducted.en}
             fontSize={"font-12"}
             icon={true}
           />
         )}
       </div>
-        {isAllowance && depositAmount === "" ? (
-            <></>
-        ) : (
-            <>
-            <HelpText
-                status={"warning"}
-                title={`${translates?.your_currently_possess.en} ${stakeType === "Wallet" ? tokenBalance : walletBalance} ${translates?.a_worth.en} ${stakeType === "Wallet" ? tokenBalance * exchangeRate : walletBalance * exchangeRate} USD.`}
-                color={"#6A6D76"}
-                icon={true}
-                customStyles={{ marginBottom: "5px" }}
-            />
-            </>)}
+      {isAllowance && depositAmount === "" ? (
+        <></>
+      ) : (
+        <>
+          <HelpText
+            status={"warning"}
+            title={`${translates?.your_currently_possess.en} ${
+              stakeType === "Wallet" ? tokenBalance : walletBalance
+            } ${translates?.a_worth.en} ${
+              stakeType === "Wallet"
+                ? tokenBalance * exchangeRate
+                : walletBalance * exchangeRate
+            } USD.`}
+            color={"#6A6D76"}
+            icon={true}
+            customStyles={{ marginBottom: "5px" }}
+          />
+        </>
+      )}
       <div className={"calculator-input"}>
         <Input
           type={"default"}
@@ -147,7 +152,10 @@ export const Calculator = ({
             validationErrors?.amount && (
               <HelpText
                 status={validationErrors.amount.failure ? "error" : "success"}
-                title={validationErrors.amount.failure || validationErrors.amount.success}
+                title={
+                  validationErrors.amount.failure ||
+                  validationErrors.amount.success
+                }
                 fontSize={"font-12"}
                 icon={true}
               />
@@ -173,26 +181,26 @@ export const Calculator = ({
         ))}
       </div>
       <div className="exchange-rate-card">
-        <p className="font-14">{`${depositAmount ? depositAmount : 0} $ = ${countViaRate(
-          depositAmount,
-        )} A1`}</p>
+        <p className="font-14">{`${
+          depositAmount ? depositAmount : 0
+        } $ = ${countViaRate(depositAmount)} A1`}</p>
       </div>
       <HelpText
-          title={
-            timeperiod === 0
-                ? apyPercent + "% APY. Locked until " + timeperiodDate
-                : timeperiod === 1
-                    ? apyPercent + "% APY. Locked until " + timeperiodDate
-                    : timeperiod === 2
-                        ? apyPercent + "% APY. Locked until " + timeperiodDate
-                        : timeperiod === 3
-                            ? apyPercent + "% APY. Locked until " + timeperiodDate
-                            : timeperiod === 4
-                                ? apyPercent + "% APY. Locked until " + timeperiodDate
-                                : timeperiod === 5
-                                    ? apyPercent + "% APY. Locked until " + timeperiodDate
-                                    : apyPercent + "% APY. Locked until " + timeperiodDate
-          }
+        title={
+          timeperiod === 0
+            ? apyPercent + "% APY. Locked until " + timeperiodDate
+            : timeperiod === 1
+            ? apyPercent + "% APY. Locked until " + timeperiodDate
+            : timeperiod === 2
+            ? apyPercent + "% APY. Locked until " + timeperiodDate
+            : timeperiod === 3
+            ? apyPercent + "% APY. Locked until " + timeperiodDate
+            : timeperiod === 4
+            ? apyPercent + "% APY. Locked until " + timeperiodDate
+            : timeperiod === 5
+            ? apyPercent + "% APY. Locked until " + timeperiodDate
+            : apyPercent + "% APY. Locked until " + timeperiodDate
+        }
         status="info"
         color="#6A6D76"
         icon={true}
@@ -243,7 +251,9 @@ export const Calculator = ({
             : handleWalletSubmit
         }
         disabled={
-          (validationErrors?.amount?.failure && account) || stakingLoading || !isActive
+          (validationErrors?.amount?.failure && account) ||
+          stakingLoading ||
+          !isActive
         }
       />
     </div>
