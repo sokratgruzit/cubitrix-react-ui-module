@@ -20,7 +20,7 @@ export const TopUp = ({
   paymentTypes,
   handlePurchaseEvent,
 }) => {
-  const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BCH", "TETHER"]);
+  const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BNB", "BCH", "TETHER"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
