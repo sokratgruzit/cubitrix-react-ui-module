@@ -40,6 +40,7 @@ export const Exchange = ({
 
     onChange(e);
   };
+
   return (
     <>
       <Visual
@@ -74,7 +75,9 @@ export const Exchange = ({
               >
                 <div className="exchange-account-titles">
                   {card?.svg}
-                  <p className="font-14">{card?.title === "ATAR" ? "A1" : card?.title}</p>
+                  <p className="font-14">
+                    {card?.title === "ATAR" ? "A1" : card?.title}
+                  </p>
                 </div>
                 <div className="exchange-account-values-container">
                   <div className="exchange-account-values">
@@ -132,7 +135,7 @@ export const Exchange = ({
                   let selectedOption;
                   if (params.type === "lable-input-select") {
                     selectedOption = params?.options.find(
-                      (option) => option.value === currentObject[params?.name],
+                      (option) => option.value === currentObject[params?.name]
                     );
                   }
                   return (
@@ -181,10 +184,13 @@ export const Exchange = ({
                 <div className="exchange-rate-card">
                   <h4 className="font-14">Rate</h4>
                   <p className="font-14">
-                    1 {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} ={" "}
-                    {ratedExchange
+                    1{" "}
+                    {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
+                    ={" "}
+                    {ratedExchange || Number(ratedExchange) !== 0
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}
+                      
                     {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
@@ -192,10 +198,13 @@ export const Exchange = ({
                 <div className="exchange-rate-card">
                   <h4 className="font-14">Rate</h4>
                   <p className="font-14">
-                    1 {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} ={" "}
-                    {ratedExchange
+                    1{" "}
+                    {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
+                    ={" "}
+                    {ratedExchange || Number(ratedExchange) !== 0
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}
+
                     {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
