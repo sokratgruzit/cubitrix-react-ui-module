@@ -132,7 +132,7 @@ export const Loan = ({
           {loanPlatform === "pool" && (
             <>
               <div className="loan-walletBalance">
-                <h3>TETHER Wallet Balance</h3>
+                <h3>USDT Wallet Balance</h3>
                 <div>
                   <span>img</span>
                   <p>0.00</p>
@@ -151,10 +151,10 @@ export const Loan = ({
                 </div>
               </div>
               <div className="loan-bar-body">
-                <DashboardBalance earning={"$8.193010001"} tether={"2.22004 TETHER"} />
+                <DashboardBalance earning={"$8.193010001"} usdt={"2.22004 usdt"} />
                 <div className="buttons-wrapper">
                   <Button
-                    label={"Supply TETHER "}
+                    label={"Supply USDT "}
                     size={"btn-sm"}
                     type={"btn-secondary"}
                     arrow={"arrow-none"}
@@ -163,7 +163,7 @@ export const Loan = ({
                     customStyles={{ margin: "0" }}
                   />
                   <Button
-                    label={"Borrow TETHER"}
+                    label={"Borrow USDT"}
                     size={"btn-sm"}
                     type={"btn-secondary"}
                     arrow={"arrow-none"}
