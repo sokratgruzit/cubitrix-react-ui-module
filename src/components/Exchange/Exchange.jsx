@@ -187,12 +187,12 @@ export const Exchange = ({
                     1{" "}
                     {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
                     ={" "}
-                    {ratedExchange || Number(ratedExchange) !== 0
-                      ? Math.round((1 / ratedExchange) * 100000) / 100000
-                      : "... "}
-                    <span style={{ marginLeft: "5px" }}>
-                      {card?.title === "ATAR" ? "A1" : card?.title}
-                    </span>
+                    {ratedExchange && Number(ratedExchange) !== 0
+                      ? Number(
+                          Math.round((1 / ratedExchange) * 100000) / 100000
+                        )
+                      : "... "}{" "}
+                    {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
               ) : (
@@ -202,12 +202,12 @@ export const Exchange = ({
                     1{" "}
                     {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
                     ={" "}
-                    {ratedExchange || Number(ratedExchange) !== 0
-                      ? Math.round((1 / ratedExchange) * 100000) / 100000
-                      : "... "}
-                    <span style={{ marginLeft: "5px" }}>
-                      {card?.title === "ATAR" ? "A1" : card?.title}
-                    </span>
+                    {ratedExchange && Number(ratedExchange) !== 0
+                      ? Number(
+                          Math.round((1 / ratedExchange) * 100000) / 100000
+                        )
+                      : "... "}{" "}
+                    {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
               )}
