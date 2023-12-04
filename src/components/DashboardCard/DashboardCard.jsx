@@ -93,7 +93,7 @@ export const DashboardCard = ({
         <div>
           <p className={"font-14"}>{usdtNumber}</p>
           <p className={"amount-card__usdt font-12"}>
-            TETHER
+            USDT
             <svg
               width="16"
               height="17"

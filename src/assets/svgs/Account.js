@@ -60,7 +60,7 @@ const Account = ({ className, type, ...props }) => {
     ));
   }
 
-  if (type === "tether") {
+  if (type === "usdt") {
     return (element = (
       <svg
         className={className}

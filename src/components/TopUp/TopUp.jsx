@@ -20,7 +20,7 @@ export const TopUp = ({
   paymentTypes,
   handlePurchaseEvent,
 }) => {
-  const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BNB", "BCH", "TETHER"]);
+  const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BNB", "BCH", "USDT"]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
@@ -94,21 +94,21 @@ export const TopUp = ({
           <p className="topupDashboard_inputOverlay_text">A1</p>
         </div>
       </div>
-      <p className="topupDashboard_info-exchangeRate">1 A1 = {exchangeRate} TETHER</p>
+      <p className="topupDashboard_info-exchangeRate">1 A1 = {exchangeRate} USDT</p>
       {tokenError && <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />}
       <div className="topupDashboard_bottom-row topup_bottom-padding">
         <p>Token Amount:</p>
         <p>
-          {tokenAmount} A1 = {tokenAmount * exchangeRate} TETHER
+          {tokenAmount} A1 = {tokenAmount * exchangeRate} USDT
         </p>
       </div>
       <div className="topupDashboard_bottom-row">
         <p>Transaction Fee: </p>
-        <p> {tranasctionFee} TETHER</p>
+        <p> {tranasctionFee} USDT</p>
       </div>
       <h3 className="topupDashboard_bottom-result">
         TOTAL: {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
-        TETHER
+        USDT
       </h3>
       <Button
         element="button"
