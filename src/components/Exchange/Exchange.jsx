@@ -190,6 +190,7 @@ export const Exchange = ({
                     {ratedExchange || Number(ratedExchange) !== 0
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}
+                      
                     {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
@@ -203,6 +204,7 @@ export const Exchange = ({
                     {ratedExchange || Number(ratedExchange) !== 0
                       ? Math.round((1 / ratedExchange) * 100000) / 100000
                       : "... "}
+
                     {card?.title === "ATAR" ? "A1" : card?.title}
                   </p>
                 </div>
