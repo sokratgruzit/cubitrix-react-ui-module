@@ -143,6 +143,7 @@ export const Exchange = ({
                       <Input
                         key={index}
                         type={params?.type}
+                        inputType={params?.inputType}
                         label={params.title}
                         name={params.name}
                         disabled={params.disabled}
