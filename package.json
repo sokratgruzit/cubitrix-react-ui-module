@@ -1,6 +1,6 @@
 {
   "name": "@cubitrix/cubitrix-react-ui-module",
-  "version": "0.9.10",
+  "version": "0.9.11",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
     "react": ">=17.0.1",
     "react-dom": ">=17.0.1",
     "react-router-dom": "^6.7.0",
-    "rollup": "^2.38.4",
+    "rollup": "^2.79.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
