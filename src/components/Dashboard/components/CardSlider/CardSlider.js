@@ -167,7 +167,7 @@ export const CardSlider = ({
   return (
     <div className="card-slider-wrapper">
       <div className="card-slider-navigation-wrapper">
-        <div className="card-slider-navigation">eefr
+        <div className="card-slider-navigation">
           {accountsData?.map((item, index) => {
             const activeIndex = accountsData.findIndex(
               (acc) => accountType === acc.account_category
