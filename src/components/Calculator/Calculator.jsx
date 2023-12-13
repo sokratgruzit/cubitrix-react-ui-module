@@ -140,8 +140,8 @@ export const Calculator = ({
       )}
       <div className={"calculator-input"}>
         <Input
-          type={"default"}
-          inputType={"text"}
+          type={"number"}
+          inputType={"number"}
           placeholder={"0000"}
           label={"Amount (USD)"}
           disabled={stakingLoading}
@@ -164,7 +164,6 @@ export const Calculator = ({
         />
         <span className={"font-12"}>$</span>
       </div>
-
       <div className="calculator__buttons">
         {durationOptions.map((item, index) => (
           <Button
