@@ -55,7 +55,7 @@ export const LandingSteps = ({
   createChargeLoading,
   rates,
   apyPercent,
-  translates
+  translates,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
@@ -132,9 +132,10 @@ export const LandingSteps = ({
       selectedMethod,
       selectedChain,
       roundUpToTwoDecimals(
-        (+amountUSD + +tranasctionFee) / rates?.[selectedMethod?.toLowerCase()]?.usd,
+        (+amountUSD + +tranasctionFee) /
+          rates?.[selectedMethod?.toLowerCase()]?.usd
       ),
-      countViaRate(amountUSD),
+      countViaRate(amountUSD)
     );
   };
 
@@ -179,7 +180,6 @@ export const LandingSteps = ({
       setCopyButtonText("Copy");
     }, 3000);
   };
-
   // function getClosestLesserMultiple(tokenBalance, multiple, limit) {
   //   return Math.max(
   //     multiple,
@@ -254,11 +254,15 @@ export const LandingSteps = ({
 
         {step === 1 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">{translates?.connect_wallet.en}</div>
+            <div className="LandingSteps__step__title main_ttl">
+              {translates?.connect_wallet.en}
+            </div>
             <div className="LandingSteps__step__content LandingSteps__step__content--wallet">
               <div
                 className={`${
-                  connectionLoading ? "LandingSteps__wallet-option-disabled" : ""
+                  connectionLoading
+                    ? "LandingSteps__wallet-option-disabled"
+                    : ""
                 } LandingSteps__wallet-option`}
                 onClick={handleMetamaskConnect}
               >
@@ -269,7 +273,10 @@ export const LandingSteps = ({
                 )}
                 MetaMask
               </div>
-              <div className="LandingSteps__wallet-option" onClick={handleWalletConnect}>
+              <div
+                className="LandingSteps__wallet-option"
+                onClick={handleWalletConnect}
+              >
                 <WalletConnect />
                 Wallet Connect
               </div>
@@ -279,9 +286,13 @@ export const LandingSteps = ({
 
         {step === 2 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">{translates?.registration.en}</div>
+            <div className="LandingSteps__step__title main_ttl">
+              {translates?.registration.en}
+            </div>
             <div className="LandingSteps__step__content LandingSteps__step__content--register">
-              <div className={`email_sent ${emailResend ? "email_active" : ""}`}>
+              <div
+                className={`email_sent ${emailResend ? "email_active" : ""}`}
+              >
                 <HelpCard
                   status={"warning"}
                   color={"#FFA726"}
@@ -333,9 +344,9 @@ export const LandingSteps = ({
               {validEmailProviders?.length > 0 && (
                 <HelpText
                   status={"warning"}
-                  title={`${translates?.please_use_providers.en} ${validEmailProviders.join(
-                    ", ",
-                  )}`}
+                  title={`${
+                    translates?.please_use_providers.en
+                  } ${validEmailProviders.join(", ")}`}
                   color={"#FFA726"}
                   icon={true}
                   customStyles={{ marginTop: "2px" }}
@@ -358,6 +369,7 @@ export const LandingSteps = ({
                 element={"button"}
                 onClick={disconnect}
                 customStyles={{ margin: "0" }}
+                disabled={registrationState?.loading}
               />
               <Button
                 label={registrationState?.loading ? "Loading..." : "Continue"}
@@ -379,7 +391,9 @@ export const LandingSteps = ({
 
         {step === 3 && (
           <div className="LandingSteps__step">
-            <div className="LandingSteps__step__title main_ttl">{translates?.purchase.en}</div>
+            <div className="LandingSteps__step__title main_ttl">
+              {translates?.purchase.en}
+            </div>
             {exchangeDetails?.exchangeId ? (
               <div className="confirm_payment_popup_container">
                 <div className="confirm_payment_popup_body-steps">
@@ -388,8 +402,9 @@ export const LandingSteps = ({
                     Please send{" "}
                     {(+amountUSD * Number(tranasctionFee)) /
                       rates?.[selectedMethod?.toLowerCase()]?.usd}
-                    {selectedMethod} to the address below. The A1 balance will appear in
-                    your account after system approves it. This might take up to 1 minute.
+                    {selectedMethod} to the address below. The A1 balance will
+                    appear in your account after system approves it. This might
+                    take up to 1 minute.
                   </p>
                   <div className="confirm_payment_popup_content">
                     <div className="confirm_payment_popup_qr">
@@ -412,7 +427,10 @@ export const LandingSteps = ({
                       </p>
                       <div className="confirm_payment_popup_address">
                         <p>{exchangeDetails?.address}</p>
-                        <button onClick={handleCopy} className="confirm_payment_copy">
+                        <button
+                          onClick={handleCopy}
+                          className="confirm_payment_copy"
+                        >
                           {copyButtonText}
                         </button>
                       </div>
@@ -445,15 +463,15 @@ export const LandingSteps = ({
               </div>
             ) : (
               <div className="LandingSteps__topUp-box">
-                <p>
-                  {translates?.please_choose_the_payment_currency.en}
-                </p>
+                <p>{translates?.please_choose_the_payment_currency.en}</p>
                 <div className="LandingSteps__topUpOptions">
                   {methods.map((method) => (
                     <div
                       key={method.id}
                       className={`topup_steps_methodBox ${
-                        selectedMethod === method.id ? "topup_steps_selected" : ""
+                        selectedMethod === method.id
+                          ? "topup_steps_selected"
+                          : ""
                       }`}
                       onClick={() => {
                         if (method.id === "ETH" || method.id === "USDT") {
@@ -463,14 +481,16 @@ export const LandingSteps = ({
                       }}
                     >
                       {method.title}
-                      <img src={method.logo} className="topup_method_logo" alt="" />
+                      <img
+                        src={method.logo}
+                        className="topup_method_logo"
+                        alt=""
+                      />
                       {method.svg}
                     </div>
                   ))}
                 </div>
-                <p>
-                  {translates?.please_choose_a_network.en}
-                </p>
+                <p>{translates?.please_choose_a_network.en}</p>
                 <div className="LandingSteps__topUpOptions">
                   {rpcs.map((chain) => (
                     <div
@@ -489,14 +509,21 @@ export const LandingSteps = ({
                       }
                       `}
                       onClick={() => {
-                        if (selectedMethod === "ETH" || selectedMethod === "USDT") {
+                        if (
+                          selectedMethod === "ETH" ||
+                          selectedMethod === "USDT"
+                        ) {
                           return;
                         }
                         handleChainSelect(chain.id);
                       }}
                     >
                       {chain.title}
-                      <img src={chain.logo} className="topup_method_logo" alt="" />
+                      <img
+                        src={chain.logo}
+                        className="topup_method_logo"
+                        alt=""
+                      />
                       {chain.svg}
                     </div>
                   ))}
@@ -504,15 +531,15 @@ export const LandingSteps = ({
                 <HelpText
                   status={"error"}
                   title={`You currently hold ${tokenBalance} A1. To be eligible for staking, a minimum of 100 USD worth of A1 tokens is required, which amounts to ${countViaRate(
-                    100 / exchangeRate,
+                    100 / exchangeRate
                   )} A1. During the registration process, the maximum staking limit is set at 500,000 USD worth of A1 .`}
                   color={"#6A6D76"}
                   icon={true}
                   customStyles={{ marginBottom: "5px" }}
                 />
                 <p>
-                  Please enter the desired amount of USD you would like to purchase for
-                  A1.
+                  Please enter the desired amount of USD you would like to
+                  purchase for A1.
                 </p>
                 <p className="LandingSteps__topUpLabel">Payment Amount</p>
                 <div className="topupDashboard_inputContainer">
@@ -536,12 +563,17 @@ export const LandingSteps = ({
                 </p>
 
                 {tokenError && (
-                  <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
+                  <HelpText
+                    status={"error"}
+                    title={tokenError}
+                    color={"#FF0C46"}
+                  />
                 )}
                 <div className="topupDashboard_bottom-row topup_bottom-padding">
                   <p>Token Amount:</p>
                   <p>
-                    {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)} A1
+                    {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)}{" "}
+                    A1
                   </p>
                 </div>
                 <div className="topupDashboard_bottom-row">
@@ -569,8 +601,13 @@ export const LandingSteps = ({
                   type={"btn-secondary"}
                   arrow={"arrow-none"}
                   element={"button"}
+                  disabled={createChargeLoading || stakingLoading}
                   onClick={disconnect}
-                  customStyles={{ margin: "0", width: "100%", marginTop: "20px" }}
+                  customStyles={{
+                    margin: "0",
+                    width: "100%",
+                    marginTop: "20px",
+                  }}
                 />
               </div>
             )}
@@ -590,7 +627,9 @@ export const LandingSteps = ({
                     <>
                       <HelpText
                         status={"warning"}
-                        title={`${translates?.your_currently_possess.en} ${tokenBalance} ${translates?.a_worth.en} ${
+                        title={`${
+                          translates?.your_currently_possess.en
+                        } ${tokenBalance} ${translates?.a_worth.en} ${
                           tokenBalance * exchangeRate
                         } USD.`}
                         color={"#6A6D76"}
@@ -606,7 +645,8 @@ export const LandingSteps = ({
                           border: "1px solid rgba(255, 255, 255, 0.1)",
                           borderRadius: "6px",
                           color: "rgb(106, 109, 118)",
-                          transition: "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
+                          transition:
+                            "0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99)",
                           height: "44px",
                         }}
                         min={5000}
@@ -619,7 +659,7 @@ export const LandingSteps = ({
                           setAmountProgressValue(
                             +amountProgressValue > 5000
                               ? Math.max(0, +amountProgressValue - 5000)
-                              : amountProgressValue,
+                              : amountProgressValue
                           )
                         }
                         decriment={() =>
@@ -683,19 +723,33 @@ export const LandingSteps = ({
                       </div>
                       <HelpText
                         title={
-                            timeperiod === 0
-                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                          timeperiod === 0
+                            ? apyPercent +
+                              "% APY. Locked until " +
+                              timeperiodDate
                             : timeperiod === 1
-                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            ? apyPercent +
+                              "% APY. Locked until " +
+                              timeperiodDate
                             : timeperiod === 2
-                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            ? apyPercent +
+                              "% APY. Locked until " +
+                              timeperiodDate
                             : timeperiod === 3
-                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            ? apyPercent +
+                              "% APY. Locked until " +
+                              timeperiodDate
                             : timeperiod === 4
-                            ? apyPercent + "% APY. Locked until " + timeperiodDate
+                            ? apyPercent +
+                              "% APY. Locked until " +
+                              timeperiodDate
                             : timeperiod === 5
-                            ? apyPercent + "% APY. Locked until " + timeperiodDate
-                            : apyPercent + "% APY. Locked until " + timeperiodDate
+                            ? apyPercent +
+                              "% APY. Locked until " +
+                              timeperiodDate
+                            : apyPercent +
+                              "% APY. Locked until " +
+                              timeperiodDate
                         }
                         status="info"
                         color="#6A6D76"
@@ -705,9 +759,7 @@ export const LandingSteps = ({
                   )}
                   {isAllowance && (
                     <HelpText
-                      title={
-                        translates?.staking_atr_is_unapproved.en
-                      }
+                      title={translates?.staking_atr_is_unapproved.en}
                       status="error"
                       icon={true}
                     />
@@ -733,7 +785,9 @@ export const LandingSteps = ({
                         onChange={(e) => handleReferralChange(e)}
                         customStyles={{ width: "100%", marginTop: "5px" }}
                         name={"referral"}
-                        emptyFieldErr={referralState.message === "empty" ? true : false}
+                        emptyFieldErr={
+                          referralState.message === "empty" ? true : false
+                        }
                       />
                       {referralState?.status && (
                         <HelpText
@@ -755,7 +809,9 @@ export const LandingSteps = ({
                         type={"checkbox"}
                         label={translates?.i_agree.en}
                         onChange={(e) =>
-                          e.target.checked ? setShowTerms(true) : setAcceptedTerms(false)
+                          e.target.checked
+                            ? setShowTerms(true)
+                            : setAcceptedTerms(false)
                         }
                         value={accpetedTerms}
                         name={"checkbox"}
@@ -806,6 +862,7 @@ export const LandingSteps = ({
                   element={"button"}
                   onClick={disconnect}
                   customStyles={{ margin: "0", width: "100%" }}
+                  disabled={stakingLoading || createChargeLoading}
                 />
               </div>
             </div>

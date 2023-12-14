@@ -207,7 +207,6 @@ export const DashboardTable = ({
                   </div>
                   <span>{createdTime}</span>
                 </div>
-
               </div>
             </div>
           </div>
