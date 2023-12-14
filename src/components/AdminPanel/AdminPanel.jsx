@@ -14,7 +14,7 @@ export const AdminPanel = (props) => {
       <FilterBox
         tableFilterData={props.tableFilterData}
         setTableFilterOutcomingData={props.setTableFilterOutcomingData}
-        tableSearchSelect={true}
+        tableSearchSelect={props.tableSearchSelect}
         tableHeader={props.tableHeader}
         customStyles={{ marginBottom: "20px" }}
       />
@@ -23,12 +23,19 @@ export const AdminPanel = (props) => {
 
   return (
     <div
-      className={`admin-content  animate-translateX ${props.animate ? "animate" : ""}`}
+      className={`admin-content  animate-translateX ${
+        props.animate ? "animate" : ""
+      }`}
       style={{ transitionDelay: ".2s" }}
     >
       {props.adminPage === "dashboard" && (
         <div
-          style={{ display: "flex", gap: "20px", paddingTop: "40px", flexWrap: "wrap" }}
+          style={{
+            display: "flex",
+            gap: "20px",
+            paddingTop: "40px",
+            flexWrap: "wrap",
+          }}
         >
           {props.balanceCards &&
             props.balanceCards.map((item, index) => {
