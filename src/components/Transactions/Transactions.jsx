@@ -18,6 +18,7 @@ export const Transactions = ({
   header,
   description,
   rightPanelData,
+  accountAddress,
   footer,
   inputs,
   currentObject,
@@ -122,13 +123,25 @@ export const Transactions = ({
             }}
           >
             {/* <AccountType type={'top-up'} /> */}
-            {item?.tx_type == "bonus" ? (
+
+            {/* Render based on tx_type being "bonus" */}
+            {item?.tx_type === "bonus" ? (
               <span>
                 {item?.tx_type} - {item?.tx_options?.type}
               </span>
             ) : (
               <span>{item?.tx_type}</span>
             )}
+
+            {/* Render based on tx_type being "transfer" and accountAddress comparison */}
+            <span>
+              {item?.tx_type === "transfer" &&
+                (accountAddress === item?.from ? (
+                  <span>-from</span>
+                ) : (
+                  <span>-to</span>
+                ))}
+            </span>
           </div>
           <div
             className={`td ${
