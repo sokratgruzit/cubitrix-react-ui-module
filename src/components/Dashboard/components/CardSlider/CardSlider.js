@@ -256,11 +256,12 @@ export const CardSlider = ({
                     </span>
                     {tier && (
                       <span
-                        className={`tier-card ${
-                          tier === "Stellar Standard" ? "gold-tier" : ""
-                        } ${tier === "Expert Edge" ? "diamond-tier" : ""} ${
-                          tier === "Platinum Privilege" ? "vip-tier" : ""
-                        } ${tier === "Novice Navigator" ? "basic-tier" : ""}`}
+                        className={`tier-card
+                        ${tier === "Stellar Standard" ? "gold-tier" : ""}
+                        ${tier === "Diamond VIP" ? "diamond-vip-tierr" : ""}
+                        ${tier === "Expert Edge" ? "diamond-tier" : ""} 
+                        ${tier === "Platinum Privilege" ? "vip-tier" : ""}
+                        ${tier === "Novice Navigator" ? "basic-tier" : ""}`}
                       >
                         {tier?.toUpperCase()}
                       </span>
