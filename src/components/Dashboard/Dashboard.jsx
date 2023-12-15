@@ -6,6 +6,7 @@ import "./Dashboard.css";
 // import { Account, AccountType } from '../../assets/svgs'
 
 export const Dashboard = ({
+  accountAddress,
   transactionsData,
   transactionHeader,
   referralHistoryHeader,
@@ -30,7 +31,7 @@ export const Dashboard = ({
   stakedTotal,
   handleStake,
   referralTotal,
-  translates
+  translates,
 }) => {
   let referralItem = {};
 
@@ -119,7 +120,8 @@ export const Dashboard = ({
             {referralTotal?.all_amount_sum?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0} A1
+            }) ?? 0}{" "}
+            A1
           </p>
         </div>
         <div className="dashboard-total-referral-item">
@@ -128,7 +130,8 @@ export const Dashboard = ({
             {referralTotal?.left_total?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0} A1
+            }) ?? 0}{" "}
+            A1
           </p>
         </div>
         <div className="dashboard-total-referral-item">
@@ -137,7 +140,8 @@ export const Dashboard = ({
             {referralTotal?.total_right?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0} A1
+            }) ?? 0}{" "}
+            A1
           </p>
         </div>
         <div className="dashboard-total-referral-item">
@@ -146,12 +150,14 @@ export const Dashboard = ({
             {referralTotal?.uni?.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
-            }) ?? 0} A1
+            }) ?? 0}{" "}
+            A1
           </p>
         </div>
       </div>
       {tables?.map((item, index) => (
         <DashboardTable
+          accountAddress={accountAddress}
           key={index}
           type={item?.type}
           header={item?.header}

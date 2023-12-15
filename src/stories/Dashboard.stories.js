@@ -31,9 +31,12 @@ stories.add("Dashboard", () => {
     },
   });
   const [accountsData, setAccountsData] = useState([]);
-  const [referralCodeTableLoading, setReferralCodeTableLoading] = useState(false);
-  const [referralHistoryTableLoading, setReferralHistoryTableLoading] = useState(false);
-  const [transactionsTableLoading, setTransactionsTableLoading] = useState(false);
+  const [referralCodeTableLoading, setReferralCodeTableLoading] =
+    useState(false);
+  const [referralHistoryTableLoading, setReferralHistoryTableLoading] =
+    useState(false);
+  const [transactionsTableLoading, setTransactionsTableLoading] =
+    useState(false);
 
   const { width } = useMobileWidth();
 
@@ -118,7 +121,7 @@ stories.add("Dashboard", () => {
           limit: 3,
           page: 1,
         }),
-      },
+      }
     );
 
     const data = await response.json();
@@ -151,74 +154,77 @@ stories.add("Dashboard", () => {
     //
     // const data = await response.json();
     const test = {
-      "transactions": [
+      transactions: [
         {
-          "_id": "655b63be6a1eb624d87b207c",
-          "from": "0xe86484f846880b7149eae4c789685f89898b0bb8",
-          "to": "0x428acf8e35d5afe5d8a8d027690f48e17057dfc5",
-          "amount": 50,
-          "tx_type": "bonus",
-          "tx_hash": "0xoyqp8sb9bvswfgzu7gbi4zsmnp3rb2usksj4092tlpv1efgvhgutzzqawsaohl2xnn",
-          "tx_status": "approved",
-          "tx_currency": "ether",
-          "tx_options": {
-            "method": "referral",
-            "type": "uni",
-            "lvl": 4,
-            "percent": "1"
+          _id: "655b63be6a1eb624d87b207c",
+          from: "0xe86484f846880b7149eae4c789685f89898b0bb8",
+          to: "0x428acf8e35d5afe5d8a8d027690f48e17057dfc5",
+          amount: 50,
+          tx_type: "bonus",
+          tx_hash:
+            "0xoyqp8sb9bvswfgzu7gbi4zsmnp3rb2usksj4092tlpv1efgvhgutzzqawsaohl2xnn",
+          tx_status: "approved",
+          tx_currency: "ether",
+          tx_options: {
+            method: "referral",
+            type: "uni",
+            lvl: 4,
+            percent: "1",
           },
-          "__v": 0,
-          "createdAt": "2023-11-20T13:48:46.946Z",
-          "updatedAt": "2023-11-20T13:48:46.946Z"
+          __v: 0,
+          createdAt: "2023-11-20T13:48:46.946Z",
+          updatedAt: "2023-11-20T13:48:46.946Z",
         },
         {
-          "_id": "655b63be6a1eb624d87b207b",
-          "from": "0xe86484f846880b7149eae4c789685f89898b0bb8",
-          "to": "0x5df955ee1a7f0d8282f59bfdecd22f71598d9135",
-          "amount": 100,
-          "tx_type": "bonus",
-          "tx_hash": "0xkvm98dwtj3sypmnlomid8czydudpl1troylpexl1ktzfhwwtzlivdcjhqbdom7heum",
-          "tx_status": "approved",
-          "tx_currency": "ether",
-          "tx_options": {
-            "method": "referral",
-            "type": "uni",
-            "lvl": 3,
-            "percent": "2"
+          _id: "655b63be6a1eb624d87b207b",
+          from: "0xe86484f846880b7149eae4c789685f89898b0bb8",
+          to: "0x5df955ee1a7f0d8282f59bfdecd22f71598d9135",
+          amount: 100,
+          tx_type: "bonus",
+          tx_hash:
+            "0xkvm98dwtj3sypmnlomid8czydudpl1troylpexl1ktzfhwwtzlivdcjhqbdom7heum",
+          tx_status: "approved",
+          tx_currency: "ether",
+          tx_options: {
+            method: "referral",
+            type: "uni",
+            lvl: 3,
+            percent: "2",
           },
-          "__v": 0,
-          "createdAt": "2023-11-20T13:48:46.946Z",
-          "updatedAt": "2023-11-20T13:48:46.946Z"
+          __v: 0,
+          createdAt: "2023-11-20T13:48:46.946Z",
+          updatedAt: "2023-11-20T13:48:46.946Z",
         },
         {
-          "_id": "655b63be6a1eb624d87b207a",
-          "from": "0xe86484f846880b7149eae4c789685f89898b0bb8",
-          "to": "0x9ce1fea42d6b13a4ac169e3337de9fd2db6d0298",
-          "amount": 250,
-          "tx_type": "bonus",
-          "tx_hash": "0xl33fet6zvq6jf0ewmbpdocjgf5dwat68fi1gbtptxidmp7nbsk1wmv2ivvqrsfgehe",
-          "tx_status": "approved",
-          "tx_currency": "ether",
-          "tx_options": {
-            "method": "referral",
-            "type": "uni",
-            "lvl": 2,
-            "percent": "5"
+          _id: "655b63be6a1eb624d87b207a",
+          from: "0xe86484f846880b7149eae4c789685f89898b0bb8",
+          to: "0x9ce1fea42d6b13a4ac169e3337de9fd2db6d0298",
+          amount: 250,
+          tx_type: "bonus",
+          tx_hash:
+            "0xl33fet6zvq6jf0ewmbpdocjgf5dwat68fi1gbtptxidmp7nbsk1wmv2ivvqrsfgehe",
+          tx_status: "approved",
+          tx_currency: "ether",
+          tx_options: {
+            method: "referral",
+            type: "uni",
+            lvl: 2,
+            percent: "5",
           },
-          "__v": 0,
-          "createdAt": "2023-11-20T13:48:46.946Z",
-          "updatedAt": "2023-11-20T13:48:46.946Z"
-        }
+          __v: 0,
+          createdAt: "2023-11-20T13:48:46.946Z",
+          updatedAt: "2023-11-20T13:48:46.946Z",
+        },
       ],
-      "total_pages": 2,
-      "total_transaction": 5,
-      "amounts_to_from": [
+      total_pages: 2,
+      total_transaction: 5,
+      amounts_to_from: [
         {
-          "toCount": 1,
-          "toSum": 5000
-        }
-      ]
-    }
+          toCount: 1,
+          toSum: 5000,
+        },
+      ],
+    };
 
     setTransactionsData(test);
     // setTransactionsData(data);
@@ -246,7 +252,7 @@ stories.add("Dashboard", () => {
         body: JSON.stringify({
           address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
         }),
-      },
+      }
     );
 
     const data = await response.json();
@@ -265,7 +271,7 @@ stories.add("Dashboard", () => {
   };
 
   const generateAccountsData = async () => {
-    console.log('ras')
+    console.log("ras");
     const response = await fetch(
       `http://localhost:4000/api/accounts/get_account_balances`,
       {
@@ -276,11 +282,11 @@ stories.add("Dashboard", () => {
         body: JSON.stringify({
           address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
         }),
-      },
+      }
     );
 
     const data = await response.json();
-      console.log('rame', data)
+    console.log("rame", data);
     setAccountsData(data?.data);
   };
 
@@ -587,8 +593,13 @@ stories.add("Dashboard", () => {
         }
         verified={false}
       />
-      <DashboardSharedLayout links={links} disabledAccount={false} eliteMemberBtnLabel={'Become Elite Member'}>
+      <DashboardSharedLayout
+        links={links}
+        disabledAccount={false}
+        eliteMemberBtnLabel={"Become Elite Member"}
+      >
         <Dashboard
+          accountAddress={"address...."}
           translates={translates}
           transactionsData={transactionsData}
           transactionHeader={transactionHeader}

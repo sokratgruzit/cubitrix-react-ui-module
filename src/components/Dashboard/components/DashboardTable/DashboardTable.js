@@ -18,6 +18,7 @@ export const DashboardTable = ({
   tableHeader,
   referralCardsData,
   data,
+  accountAddress,
   tableEmpty,
   loading,
   tableButtons,
