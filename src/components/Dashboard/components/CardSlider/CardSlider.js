@@ -258,7 +258,7 @@ export const CardSlider = ({
                       <span
                         className={`tier-card
                         ${tier === "Stellar Standard" ? "gold-tier" : ""}
-                        ${tier === "Diamond VIP" ? "diamond-vip-tierr" : ""}
+                        ${tier === "Diamond VIP" ? "diamond-vip-tier" : ""}
                         ${tier === "Expert Edge" ? "diamond-tier" : ""} 
                         ${tier === "Platinum Privilege" ? "vip-tier" : ""}
                         ${tier === "Novice Navigator" ? "basic-tier" : ""}`}
