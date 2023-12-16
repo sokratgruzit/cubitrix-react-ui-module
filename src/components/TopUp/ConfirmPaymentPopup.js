@@ -86,7 +86,7 @@ const ConfirmPaymentPopup = ({
         <HelpText
           status={"warning"}
           title={
-            "Please send inputed amount to the address above. System will detect payment and add A1 balance to your wallet."
+            "Please send exact amount to the address above. System will detect payment and add A1 balance to your wallet."
           }
           icon={true}
           customStyles={{ marginTop: "15px" }}

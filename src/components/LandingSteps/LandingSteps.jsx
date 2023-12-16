@@ -364,7 +364,7 @@ export const LandingSteps = ({
               <Button
                 label={"Disconnect"}
                 size={"btn-lg"}
-                type={"btn-primary"}
+                type={"btn-secondary"}
                 arrow={"arrow-none"}
                 element={"button"}
                 onClick={disconnect}
@@ -374,7 +374,7 @@ export const LandingSteps = ({
               <Button
                 label={registrationState?.loading ? "Loading..." : "Continue"}
                 size={"btn-lg"}
-                type={"btn-secondary"}
+                type={"btn-primary"}
                 arrow={"arrow-none"}
                 element={"button"}
                 onClick={handleNextStep}
