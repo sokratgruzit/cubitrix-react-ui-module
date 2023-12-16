@@ -360,7 +360,7 @@ export const CardSlider = ({
                               color: "rgba(255,255,255,0.3)",
                             }}
                           >
-                            {/* {formatNumber(assets?.[`${key}Staked`])} */}
+                            {formatNumber(assets?.[`${key}Staked`])}
                           </span>
                         )}
                       </div>
