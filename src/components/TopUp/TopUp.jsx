@@ -139,7 +139,7 @@ export const TopUp = ({
           handlePopUpClose={() => setOpenPopup(false)}
         />
       )}
-      {openConfirmPaymentPopup && (
+      {!openConfirmPaymentPopup && (
         <Popup
           popUpElement={
             <ConfirmPaymentPopup

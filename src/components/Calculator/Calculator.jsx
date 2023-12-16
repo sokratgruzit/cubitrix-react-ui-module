@@ -86,7 +86,7 @@ export const Calculator = ({
     }
   };
 
-  const [stakeType, setStakeType] = useState("Wallet");
+  const [stakeType, setStakeType] = useState("My Wallet");
 
   return (
     <div className={`calculator-container`} style={customStyles}>
@@ -94,7 +94,7 @@ export const Calculator = ({
         <Input
           type={"lable-input-select"}
           defaultData={[
-            { name: "Wallet", value: "Wallet" },
+            { name: "My Wallet", value: "My Wallet" },
             { name: "A1 Balance", value: "ATR Balance" },
           ]}
           icon={false}
@@ -103,7 +103,7 @@ export const Calculator = ({
           label={translates?.choose_balance.en}
           selectHandler={(type) => setStakeType(type)}
         />
-        {stakeType === "Wallet" ? (
+        {stakeType === "My Wallet" ? (
           <HelpText
             status="info"
             title={translates?.stake_from_your_wallet.en}
@@ -126,9 +126,9 @@ export const Calculator = ({
           <HelpText
             status={"warning"}
             title={`${translates?.your_currently_possess.en} ${
-              stakeType === "Wallet" ? tokenBalance : walletBalance
+              stakeType === "My Wallet" ? tokenBalance : walletBalance
             } ${translates?.a_worth.en} ${
-              stakeType === "Wallet"
+              stakeType === "My Wallet"
                 ? tokenBalance * exchangeRate
                 : walletBalance * exchangeRate
             } USD.`}
@@ -142,7 +142,7 @@ export const Calculator = ({
         <Input
           type={"number"}
           inputType={"number"}
-          placeholder={"0000"}
+          placeholder={"0"}
           label={"Amount (USD)"}
           disabled={stakingLoading}
           onChange={handleChange}
@@ -226,7 +226,7 @@ export const Calculator = ({
           account
             ? loading
               ? "Please wait, Loading.."
-              : stakeType === "Wallet"
+              : stakeType === "My Wallet"
               ? stakingLoading
                 ? "Loading..."
                 : isAllowance
@@ -243,7 +243,7 @@ export const Calculator = ({
           margin: "10px 0 0 0",
         }}
         onClick={
-          stakeType === "Wallet"
+          stakeType === "My Wallet"
             ? !account || (account && isAllowance)
               ? handleCalculatorSubmit
               : handleSubmit
