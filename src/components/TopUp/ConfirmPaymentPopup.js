@@ -1,19 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "../Button";
-import { Input } from "../Input";
-import "./ConfirmPaymentPopup.css";
 import { HelpText } from "../HelpText";
+import translates from "../../translates.json";
+
+import "./ConfirmPaymentPopup.css";
 
 const ConfirmPaymentPopup = ({
-  hash,
-  amount,
-  fee,
-  receivePaymentAddress,
-  handlePaymentConfirm,
   qrcode,
   selectedMethod,
   tokenAmount,
-  exchangeRate,
   tranasctionFee,
   rates,
   exchangeDetails,
@@ -50,13 +45,12 @@ const ConfirmPaymentPopup = ({
   return (
     <div className="confirm_payment_popup_container">
       <div className="confirm_payment_popup_body">
-        <p>Your transaction has been placed successfully.</p>
+        <p>{translates.your_transaction_has_been_placed_successfully.en}</p>
         <p>
-          Please send{" "}
+          {translates.please_send.en}{" "}
           {(Number(tokenAmount) + Number(tranasctionFee)) /
             rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
-          {selectedMethod} to the address below. The A1 balance will appear in your
-          account after system approves it. This might take up to 1 minute.
+          {selectedMethod} {translates.to_the_address_below.en}
         </p>
         <div className="confirm_payment_popup_content">
           <div className="confirm_payment_popup_qr">
@@ -66,11 +60,13 @@ const ConfirmPaymentPopup = ({
           </div>
           <div className="confirm_payment_popup_info">
             <h3 className="confitm_payment_title">
-              Payment to the following Wallet Address
+              {translates.payment_to_the_following_wallet_address.en}
             </h3>
-            <p className="confirm_payment_popup_grayText">Transaction Fee: {Number(tranasctionFee)} USD</p>
             <p className="confirm_payment_popup_grayText">
-              Send Amount:{" "}
+              {translates.transaction_fee.en} {Number(tranasctionFee)} USD
+            </p>
+            <p className="confirm_payment_popup_grayText">
+              {translates.send_amount.en}{" "}
               {(Number(tokenAmount) + Number(tranasctionFee)) /
                 rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
               {selectedMethod}
@@ -85,9 +81,7 @@ const ConfirmPaymentPopup = ({
         </div>
         <HelpText
           status={"warning"}
-          title={
-            "Please send exact amount to the address above. System will detect payment and add A1 balance to your wallet."
-          }
+          title={translates.help_text_please_send.en}
           icon={true}
           customStyles={{ marginTop: "15px" }}
         />

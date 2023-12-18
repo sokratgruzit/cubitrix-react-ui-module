@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "./LandingSteps.css";
-import { MetaMask, WalletConnect } from "../../assets/svgs";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { Popup } from "../Popup";
 import { HelpText } from "../HelpText";
 import { HelpCard } from "../HelpCard";
+import translates from "../../translates.json";
+import { MetaMask, WalletConnect } from "../../assets/svgs";
+
+import "./LandingSteps.css";
 
 export const LandingSteps = ({
   handleMetamaskConnect,
@@ -55,7 +57,6 @@ export const LandingSteps = ({
   createChargeLoading,
   rates,
   apyPercent,
-  translates,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
@@ -397,14 +398,17 @@ export const LandingSteps = ({
             {exchangeDetails?.exchangeId ? (
               <div className="confirm_payment_popup_container">
                 <div className="confirm_payment_popup_body-steps">
-                  <p>Your transaction has been placed successfully.</p>
                   <p>
-                    Please send{" "}
+                    {
+                      translates.your_transaction_has_been_placed_successfully
+                        .en
+                    }
+                  </p>
+                  <p>
+                    {translates.please_send.en}{" "}
                     {(+amountUSD * Number(tranasctionFee)) /
                       rates?.[selectedMethod?.toLowerCase()]?.usd}
-                    {selectedMethod} to the address below. The A1 balance will
-                    appear in your account after system approves it. This might
-                    take up to 1 minute.
+                    {selectedMethod} {translates.to_the_address_below.en}
                   </p>
                   <div className="confirm_payment_popup_content">
                     <div className="confirm_payment_popup_qr">
@@ -414,13 +418,13 @@ export const LandingSteps = ({
                     </div>
                     <div className="confirm_payment_popup_info">
                       <h3 className="confitm_payment_title">
-                        Payment to the following Wallet Address
+                        {translates.payment_to_the_following_wallet_address.en}
                       </h3>
                       <p className="confirm_payment_popup_grayText">
-                        Transaction Fee: 1 USD
+                        {translates.transaction_fee.en} 1 USD
                       </p>
                       <p className="confirm_payment_popup_grayText">
-                        Send Amount:{" "}
+                        {translates.send_amount.en}{" "}
                         {(+amountUSD * Number(tranasctionFee)) /
                           rates?.[selectedMethod?.toLowerCase()]?.usd}
                         {selectedMethod}
@@ -441,9 +445,7 @@ export const LandingSteps = ({
                   </div>
                   <HelpText
                     status={"warning"}
-                    title={
-                      "Please send exact amount to the address above. Once system detects A1 in your wallet you will be on the next step."
-                    }
+                    title={translates.help_text_please_send.en}
                     icon={true}
                     customStyles={{ marginTop: "15px" }}
                   />
@@ -537,11 +539,10 @@ export const LandingSteps = ({
                   icon={true}
                   customStyles={{ marginBottom: "5px" }}
                 />
-                <p>
-                  Please enter the desired amount of USD you would like to
-                  purchase for A1.
+                <p>{translates.please_enter_desired_amount.en}</p>
+                <p className="LandingSteps__topUpLabel">
+                  {translates.payment_amount.en}
                 </p>
-                <p className="LandingSteps__topUpLabel">Payment Amount</p>
                 <div className="topupDashboard_inputContainer">
                   <Input
                     type={"default"}
@@ -570,14 +571,14 @@ export const LandingSteps = ({
                   />
                 )}
                 <div className="topupDashboard_bottom-row topup_bottom-padding">
-                  <p>Token Amount:</p>
+                  <p>{translates.token_amount.en}</p>
                   <p>
                     {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)}{" "}
                     A1
                   </p>
                 </div>
                 <div className="topupDashboard_bottom-row">
-                  <p>Transaction Fee: </p>
+                  <p>{translates.transaction_fee.en}</p>
                   <p> {tranasctionFee} USD</p>
                 </div>
                 <h3 className="topupDashboard_bottom-result">

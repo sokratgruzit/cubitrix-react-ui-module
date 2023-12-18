@@ -1,8 +1,10 @@
-import "./UserOptions.css";
 import React from "react";
 import { Visual } from "../../Visual";
 import { Button } from "../../Button";
 import { MetaMask } from "../../../assets/svgs";
+import translates from "../../../translates.json";
+
+import "./UserOptions.css";
 
 export const UserOptions = ({
   completeAccount,
@@ -26,7 +28,7 @@ export const UserOptions = ({
         {warning && (
           <>
             <div className="complete">
-              <p>Complete the onboarding flow to start trading on A1</p>
+              <p>{translates.complete_the_onboarding.en}</p>
               <Button
                 element="button"
                 label="Complete Account"
@@ -40,7 +42,7 @@ export const UserOptions = ({
           </>
         )}
         <div className="address-wrap">
-          <p>Your Address</p>
+          <p>{translates.your_address.en}</p>
           <p>
             {type === "Metamask" && <MetaMask width="24" />}
             {type}
@@ -58,7 +60,9 @@ export const UserOptions = ({
             label={mainAccount}
             element={"copy-address"}
             customStyles={{ width: "100%" }}
-            onClick={async () => await navigator.clipboard.writeText(mainAccount)}
+            onClick={async () =>
+              await navigator.clipboard.writeText(mainAccount)
+            }
           />
         </div>
 

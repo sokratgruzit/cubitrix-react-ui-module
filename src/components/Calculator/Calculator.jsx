@@ -7,6 +7,7 @@ import { HelpText } from "../HelpText";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import React, { useState, useMemo } from "react";
+import translates from "../../translates.json";
 
 // styles
 import "./Calculator.css";
@@ -33,7 +34,6 @@ export const Calculator = ({
   hasRerferralActive,
   rates,
   apyPercent,
-  translates,
   tokenBalance,
   walletBalance,
   exchangeRate,

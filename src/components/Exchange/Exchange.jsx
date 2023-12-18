@@ -1,10 +1,11 @@
-import "./Exchange.css";
-import React, { useState } from "react";
+import React from "react";
 import { Visual } from "../Visual";
 import { Account } from "../../assets/svgs";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { HelpText } from "../HelpText";
+import translates from "../../translates.json";
+
+import "./Exchange.css";
 
 export const Exchange = ({
   accountType,
@@ -103,7 +104,7 @@ export const Exchange = ({
 
           {!card && (
             <div className="exchange-accounts-container">
-              <h2>Choose the Account</h2>
+              <h2>{translates.choose_the_account.en}</h2>
               {accounts?.map((item, index) => (
                 <div
                   className="exchange-accounts-card"

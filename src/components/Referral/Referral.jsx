@@ -3,28 +3,23 @@ import React, { useState, useEffect, Fragment } from "react";
 // components
 import { Visual } from "../Visual";
 import { Table } from "../Table";
-import { TableElement } from "../TableElement";
-import { DashboardTable } from "../Dashboard/components/DashboardTable/DashboardTable";
-
-// svgs
-import {
-  StickyNoteIcon,
-  AddSquareIcon,
-  ReferralPattern,
-  Root,
-} from "../../assets/svgs";
-
-// hooks
-import { useMobileWidth } from "../../hooks/useMobileWidth";
-
-// styles
-import "./Referral.css";
 import { Button } from "../Button";
 import { ReferralCard } from "../ReferralCard";
 import { Footer } from "../Footer";
 import { InfoBox } from "../InfoBox";
 import { DisabledPage } from "../DisabledPage";
 import { FilterBox } from "../FilterBox";
+import { DashboardTable } from "../Dashboard/components/DashboardTable/DashboardTable";
+import translates from "../../translates.json";
+
+// svgs
+import { StickyNoteIcon, ReferralPattern } from "../../assets/svgs";
+
+// hooks
+import { useMobileWidth } from "../../hooks/useMobileWidth";
+
+// styles
+import "./Referral.css";
 
 export const Referral = ({
   referralHistoryTableHead,
@@ -63,7 +58,6 @@ export const Referral = ({
   setTableFilterOutcomingData,
   tableSearchSelect,
   tableHeader,
-  translates,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [refItemsCount, setRefItemsCount] = useState(3);
@@ -629,8 +623,8 @@ export const Referral = ({
                 type={"total-info"}
                 referral={referralAddress}
                 totalData={referralRebatesTotal}
-                label={"Your Referral Code"}
-                labelTwo={"Total Referral Rebates"}
+                label={translates.your_referral_code.en}
+                labelTwo={translates.total_referral_rebates.en}
               />
             </div>
           </div>

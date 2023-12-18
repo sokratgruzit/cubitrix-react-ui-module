@@ -1,13 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-
+import React, { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
-import "./CardSlider.css";
+import { Pagination, Navigation } from "swiper";
 import { Account, AccountType } from "../../../../assets/svgs";
 import { useMobileWidth } from "../../../../hooks/useMobileWidth";
-
-import { Pagination, Navigation } from "swiper";
-import { Button } from "../../../Button";
+import translates from "../../../../translates.json";
+import "swiper/swiper-bundle.css";
+import "./CardSlider.css";
 
 export const CardSlider = ({
   accounts,
@@ -22,7 +20,6 @@ export const CardSlider = ({
   extensions,
   stakedTotal,
   handleStake,
-  translates,
 }) => {
   const { width } = useMobileWidth();
 

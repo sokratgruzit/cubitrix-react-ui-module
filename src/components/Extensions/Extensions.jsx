@@ -1,31 +1,30 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FreeMode, Mousewheel } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // components
 import { ExtensionCard } from "../ExtensionCard";
 import { Footer } from "../Footer";
+import { ExtensionsPattern } from "../../assets/svgs";
+import { DisabledPage } from "../DisabledPage";
+import translates from "../../translates.json";
+// import { ReferralPattern } from "../../assets/svgs";
 
 // styles
 import "./Extensions.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
-import { ExtensionsPattern } from "../../assets/svgs";
-// import { ReferralPattern } from "../../assets/svgs";
-import { FreeMode, Mousewheel } from "swiper";
-import { DisabledPage } from "../DisabledPage";
-
-export const Extensions = ({ extensionsCardsData, disabledAccount, translates }) => {
+export const Extensions = ({ extensionsCardsData, disabledAccount }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={`extensions-main ${disabledAccount ? "disabled-page" : ""}`}>
+    <div
+      className={`extensions-main ${disabledAccount ? "disabled-page" : ""}`}
+    >
       {disabledAccount && <DisabledPage />}
       <header>
         <h1>{translates?.extensions.en}</h1>
-        <p>
-            {translates?.extensions_are_optional_addons.en}
-        </p>
+        <p>{translates?.extensions_are_optional_addons.en}</p>
       </header>
       <ExtensionsPattern className={"extensions-content-svg "} />
       <main>
@@ -45,10 +44,15 @@ export const Extensions = ({ extensionsCardsData, disabledAccount, translates })
                 item={item}
                 active={true}
                 setIsActive={() => {
-                  item.handleSwitch(item.value.toLocaleLowerCase(), !item.active);
+                  item.handleSwitch(
+                    item.value.toLocaleLowerCase(),
+                    !item.active
+                  );
                 }}
                 isActive={item.active}
-                onClick={() => navigate("/extensions/" + item.value.toLocaleLowerCase())}
+                onClick={() =>
+                  navigate("/extensions/" + item.value.toLocaleLowerCase())
+                }
                 customStyles={{ height: "fit-content" }}
                 disabled={item.disabled}
               />
