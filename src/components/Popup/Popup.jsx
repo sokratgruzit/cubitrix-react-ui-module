@@ -190,7 +190,7 @@ export const Popup = ({
     <div className={`popup-bg ${popupBGclass}`}>
       <div
         className="popup-wrapper-container"
-        onClick={label !== "Confirm Payment" ? handlePopUpClose : ""}
+        onClick={label !== "Confirm Payment" ? handlePopUpClose : () => {}}
       />
       <div className="popup-wrapper" style={customStyles}>
         {label && (
