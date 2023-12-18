@@ -122,7 +122,7 @@ export const Popup = ({
       to: popUpData?.to || "",
       amount: popUpData?.amount || "",
     },
-    helpTexts,
+    helpTexts
   );
 
   let notValidatedList = useMemo(() => {
@@ -188,7 +188,10 @@ export const Popup = ({
 
   return (
     <div className={`popup-bg ${popupBGclass}`}>
-      <div className="popup-wrapper-container" onClick={handlePopUpClose} />
+      <div
+        className="popup-wrapper-container"
+        onClick={label !== "Confirm Paymen" ? handlePopUpClose : ""}
+      />
       <div className="popup-wrapper" style={customStyles}>
         {label && (
           <Visual
@@ -226,7 +229,9 @@ export const Popup = ({
                           <div>{item.name}</div>
                           <div>
                             <div className="align-right">{item.user}</div>
-                            <div className="mt-8 font-12 align-right">{item.sub}</div>
+                            <div className="mt-8 font-12 align-right">
+                              {item.sub}
+                            </div>
                           </div>
                         </div>
                       );
@@ -239,7 +244,10 @@ export const Popup = ({
         )}
 
         {type === "addTransaction" && (
-          <div style={addTransactionCustomStyles} className="addTransaction-body">
+          <div
+            style={addTransactionCustomStyles}
+            className="addTransaction-body"
+          >
             {/* {addTransactionSelects?.slice(0, 1).map((item, index) => (
               <Input
                 key={index}
@@ -341,7 +349,9 @@ export const Popup = ({
                   defaultData={item.options}
                   emptyFieldErr={emptyFields[item.value]}
                   value={item.options[0].value.toUpperCase()}
-                  selectHandler={(opt) => handlePopUpSelectChange(opt, item.value)}
+                  selectHandler={(opt) =>
+                    handlePopUpSelectChange(opt, item.value)
+                  }
                   customStyles={{ marginBottom: "12px" }}
                 />
               ))}
@@ -351,7 +361,7 @@ export const Popup = ({
                 let selectedOption;
                 if (params.type === "lable-input-select") {
                   selectedOption = params?.options.find(
-                    (option) => option.value === popUpData[params?.name],
+                    (option) => option.value === popUpData[params?.name]
                   );
                 }
                 return (
@@ -402,7 +412,9 @@ export const Popup = ({
               element={"button"}
               customStyles={{ margin: "0", width: "100%" }}
               onClick={handleAddTransactionClick}
-              disabled={notValidatedList?.length > 0 || (addTransactionError && true)}
+              disabled={
+                notValidatedList?.length > 0 || (addTransactionError && true)
+              }
             />
             {addTransactionError && (
               <HelpText
@@ -526,7 +538,9 @@ export const Popup = ({
               defaultData={addAdminSelect.options}
               value={capitalizeWords(popUpData[addAdminSelect?.value])}
               emptyFieldErr={emptyFields[addAdminSelect?.value]}
-              selectHandler={(opt) => handlePopUpSelectChange(opt, addAdminSelect.value)}
+              selectHandler={(opt) =>
+                handlePopUpSelectChange(opt, addAdminSelect.value)
+              }
               selectLabel={`All ${addAdminSelect.name}`}
             />
             <Input
@@ -562,7 +576,9 @@ export const Popup = ({
                 formErrors?.password && (
                   <HelpText
                     status={formErrors.password.failure ? "error" : "success"}
-                    title={formErrors.password.failure || formErrors.password.success}
+                    title={
+                      formErrors.password.failure || formErrors.password.success
+                    }
                     fontSize={"font-12"}
                     icon={true}
                   />

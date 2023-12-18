@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "../Button";
+import { Input } from "../Input";
 import { HelpText } from "../HelpText";
+import Timer from "../timer/Timer";
 import translates from "../../translates.json";
 
 import "./ConfirmPaymentPopup.css";
@@ -12,7 +14,7 @@ const ConfirmPaymentPopup = ({
   tranasctionFee,
   rates,
   exchangeDetails,
-  setExchangeDetails,
+  cancel_exchange,
 }) => {
   // const [timeLeft, setTimeLeft] = useState(10 * 60);
   // const [startTime, setStartTime] = useState(null);
@@ -85,6 +87,7 @@ const ConfirmPaymentPopup = ({
           icon={true}
           customStyles={{ marginTop: "15px" }}
         />
+        {exchangeDetails && <Timer />}
         <Button
           element="button"
           label={`Cancel`}
@@ -95,7 +98,7 @@ const ConfirmPaymentPopup = ({
             margin: "0",
             marginTop: "15px",
           }}
-          onClick={() => setExchangeDetails({})}
+          onClick={cancel_exchange}
         />
       </div>
     </div>
