@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
-import "./ConfirmPaymentPopup.css";
 import { HelpText } from "../HelpText";
+import Timer from "../timer/Timer";
+
+import "./ConfirmPaymentPopup.css";
 
 const ConfirmPaymentPopup = ({
   hash,
@@ -17,7 +19,7 @@ const ConfirmPaymentPopup = ({
   tranasctionFee,
   rates,
   exchangeDetails,
-  setExchangeDetails,
+  cancel_exchange,
 }) => {
   // const [timeLeft, setTimeLeft] = useState(10 * 60);
   // const [startTime, setStartTime] = useState(null);
@@ -55,8 +57,8 @@ const ConfirmPaymentPopup = ({
           Please send{" "}
           {(Number(tokenAmount) + Number(tranasctionFee)) /
             rates?.[selectedMethod?.toLowerCase()]?.usd}{" "}
-          {selectedMethod} to the address below. The A1 balance will appear in your
-          account after system approves it. This might take up to 1 minute.
+          {selectedMethod} to the address below. The A1 balance will appear in
+          your account after system approves it. This might take up to 1 minute.
         </p>
         <div className="confirm_payment_popup_content">
           <div className="confirm_payment_popup_qr">
@@ -68,7 +70,9 @@ const ConfirmPaymentPopup = ({
             <h3 className="confitm_payment_title">
               Payment to the following Wallet Address
             </h3>
-            <p className="confirm_payment_popup_grayText">Transaction Fee: {Number(tranasctionFee)} USD</p>
+            <p className="confirm_payment_popup_grayText">
+              Transaction Fee: {Number(tranasctionFee)} USD
+            </p>
             <p className="confirm_payment_popup_grayText">
               Send Amount:{" "}
               {(Number(tokenAmount) + Number(tranasctionFee)) /
@@ -91,6 +95,7 @@ const ConfirmPaymentPopup = ({
           icon={true}
           customStyles={{ marginTop: "15px" }}
         />
+        {exchangeDetails && <Timer />}
         <Button
           element="button"
           label={`Cancel`}
@@ -101,7 +106,7 @@ const ConfirmPaymentPopup = ({
             margin: "0",
             marginTop: "15px",
           }}
-          onClick={() => setExchangeDetails({})}
+          onClick={cancel_exchange}
         />
       </div>
     </div>

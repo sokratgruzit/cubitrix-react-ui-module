@@ -19,14 +19,14 @@ export const TopUpDashboard = ({
   rates,
   exchangeDetails,
   createChargeLoading,
+  translates,
+  cancel_exchange,
   setExchangeDetails,
-  translates
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
   const [amountUSD, setAmountUSD] = useState(0);
 
-  const [tokenAmount, setTokenAmount] = useState(0);
   const [tokenError, setTokenError] = useState(null);
 
   const handleMethodSelect = (method) => {
@@ -39,7 +39,7 @@ export const TopUpDashboard = ({
 
   const handleUSDAmountChange = (event) => {
     const value = event.target.value;
-    
+
     if (!isNaN(value) && value >= 0) {
       if (value > 0) setTokenError(null);
       setAmountUSD(Number(value));
@@ -56,9 +56,10 @@ export const TopUpDashboard = ({
       selectedMethod,
       selectedChain,
       roundUpToTwoDecimals(
-        (+amountUSD + +tranasctionFee) / rates?.[selectedMethod?.toLowerCase()]?.usd,
+        (+amountUSD + +tranasctionFee) /
+          rates?.[selectedMethod?.toLowerCase()]?.usd
       ),
-      countViaRate(amountUSD),
+      countViaRate(amountUSD)
     );
   };
 
@@ -95,9 +96,7 @@ export const TopUpDashboard = ({
           </div>
         ))}
       </div>
-      <p>
-        {translates?.please_choose_a_network.en}
-      </p>
+      <p>{translates?.please_choose_a_network.en}</p>
       <div className="LandingSteps__topUpOptions">
         {rpcs.map((chain) => (
           <div
@@ -105,7 +104,9 @@ export const TopUpDashboard = ({
             className={`topup_steps_methodBox ${
               selectedChain === chain.id ? "topup_steps_selected" : ""
             } ${
-              selectedMethod === "ETH" && chain.id !== "ETH" ? "topup_steps_disabled" : ""
+              selectedMethod === "ETH" && chain.id !== "ETH"
+                ? "topup_steps_disabled"
+                : ""
             } ${
               selectedMethod === "USDT" && chain.id !== "ETH"
                 ? "topup_steps_disabled"
@@ -141,14 +142,18 @@ export const TopUpDashboard = ({
               onChange={handleUSDAmountChange}
               customStyles={{ width: "100%" }}
               editable={true}
-              customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
+              customInputStyles={{
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+              }}
             />
             <div className="topupDashboard_inputOverlay">
               <p className="topupDashboard_inputOverlay_text">$</p>
             </div>
           </div>
 
-          <p className="topupDashboard_info-exchangeRate">1 USD = {countViaRate(1)} A1</p>
+          <p className="topupDashboard_info-exchangeRate">
+            1 USD = {countViaRate(1)} A1
+          </p>
           {tokenError && (
             <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
           )}
@@ -194,8 +199,8 @@ export const TopUpDashboard = ({
                 qrcode={qrcode}
                 selectedMethod={selectedMethod}
                 tokenAmount={amountUSD}
-                setExchangeDetails={setExchangeDetails}
                 exchangeDetails={exchangeDetails}
+                cancel_exchange={cancel_exchange}
               />
             }
             label={"Confirm Payment"}

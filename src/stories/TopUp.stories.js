@@ -99,7 +99,11 @@ stories.add("ToolTip", () => {
         >
           <g>
             <path
-              style={{ fillRule: "evenodd", clipRule: "evenodd", fill: "#F0B90B" }}
+              style={{
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+                fill: "#F0B90B",
+              }}
               d="M1248,0c689.3,0,1248,558.7,1248,1248s-558.7,1248-1248,1248   S0,1937.3,0,1248S558.7,0,1248,0L1248,0z"
             />
             <path
@@ -134,7 +138,7 @@ stories.add("ToolTip", () => {
           shape-rendering="geometricPrecision"
           textRendering="geometricPrecision"
           imageRendering="optimizeQuality"
-           fillRule="evenodd"
+          fillRule="evenodd"
           clipRule="evenodd"
           viewBox="0 0 784.37 1277.39"
         >
@@ -144,32 +148,32 @@ stories.add("ToolTip", () => {
               <g>
                 <polygon
                   fill="#343434"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,0 383.5,29.11 383.5,873.74 392.07,882.29 784.13,650.54 "
                 />
                 <polygon
                   fill="#8C8C8C"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,0 -0,650.54 392.07,882.29 392.07,472.33 "
                 />
                 <polygon
                   fill="#3C3C3B"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,956.52 387.24,962.41 387.24,1263.28 392.07,1277.38 784.37,724.89 "
                 />
                 <polygon
                   fill="#8C8C8C"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,1277.38 392.07,956.52 -0,724.89 "
                 />
                 <polygon
                   fill="#141414"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,882.29 784.13,650.54 392.07,472.33 "
                 />
                 <polygon
                   fill="#393939"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="0,650.54 392.07,882.29 392.07,472.33 "
                 />
               </g>
@@ -197,7 +201,11 @@ stories.add("ToolTip", () => {
         >
           <g>
             <path
-              style={{ fillRule: "evenodd", clipRule: "evenodd", fill: "#F0B90B" }}
+              style={{
+                fillRule: "evenodd",
+                clipRule: "evenodd",
+                fill: "#F0B90B",
+              }}
               d="M1248,0c689.3,0,1248,558.7,1248,1248s-558.7,1248-1248,1248   S0,1937.3,0,1248S558.7,0,1248,0L1248,0z"
             />
             <path
@@ -233,7 +241,7 @@ stories.add("ToolTip", () => {
           shape-rendering="geometricPrecision"
           textRendering="geometricPrecision"
           imageRendering="optimizeQuality"
-           fillRule="evenodd"
+          fillRule="evenodd"
           clipRule="evenodd"
           viewBox="0 0 784.37 1277.39"
         >
@@ -243,32 +251,32 @@ stories.add("ToolTip", () => {
               <g>
                 <polygon
                   fill="#343434"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,0 383.5,29.11 383.5,873.74 392.07,882.29 784.13,650.54 "
                 />
                 <polygon
                   fill="#8C8C8C"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,0 -0,650.54 392.07,882.29 392.07,472.33 "
                 />
                 <polygon
                   fill="#3C3C3B"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,956.52 387.24,962.41 387.24,1263.28 392.07,1277.38 784.37,724.89 "
                 />
                 <polygon
                   fill="#8C8C8C"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,1277.38 392.07,956.52 -0,724.89 "
                 />
                 <polygon
                   fill="#141414"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="392.07,882.29 784.13,650.54 392.07,472.33 "
                 />
                 <polygon
                   fill="#393939"
-                   fillRule="nonzero"
+                  fillRule="nonzero"
                   points="0,650.54 392.07,882.29 392.07,472.33 "
                 />
               </g>
@@ -424,25 +432,41 @@ stories.add("ToolTip", () => {
         verified={false}
       />
       <DashboardSharedLayout links={links}>
-        {/* <TopUp
-          receivePaymentAddress={'0x420'}
+        <TopUp
+          receivePaymentAddress={"0x420"}
           handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
-            console.log('payment confirm', userAddress, selectedMethod, amount, date)
+            console.log(
+              "payment confirm",
+              userAddress,
+              selectedMethod,
+              amount,
+              date
+            )
           }
           methods={methods}
-          handleCoindbasePayment={e => console.log('coinbase payment send request', e)}
+          handleCoindbasePayment={(e) =>
+            console.log("coinbase payment send request", e)
+          }
           tranasctionFee={1}
           exchangeRate={2}
           handlePurchaseEvent={(e, sd) => console.log(e, sd)}
-        /> */}
+        />
 
         <TopUpDashboard
           translates={translates}
           receivePaymentAddress={"0x420"}
           handlePaymentConfirm={(userAddress, selectedMethod, amount, date) =>
-            console.log("payment confirm", userAddress, selectedMethod, amount, date)
+            console.log(
+              "payment confirm",
+              userAddress,
+              selectedMethod,
+              amount,
+              date
+            )
           }
-          handleCoindbasePayment={(e) => console.log("coinbase payment send request", e)}
+          handleCoindbasePayment={(e) =>
+            console.log("coinbase payment send request", e)
+          }
           tranasctionFee={1}
           paymentAmount={`2.192810859999999806 USDT`}
           exchangeRate={2}
