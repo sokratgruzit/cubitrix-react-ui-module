@@ -47,7 +47,7 @@ export const Calculator = ({
     handleDepositAmount(e.target.value);
   };
   function countViaRate(amount) {
-    return Number((amount / Number(rates?.["atr"]?.usd))?.toFixed(2));
+    return Number((amount / Number(rates?.["a1"]?.usd))?.toFixed(2));
   }
 
   let helpTexts = useMemo(() => {
@@ -95,7 +95,7 @@ export const Calculator = ({
           type={"lable-input-select"}
           defaultData={[
             { name: "My Wallet", value: "My Wallet" },
-            { name: "A1 Balance", value: "ATR Balance" },
+            { name: "A1 Balance", value: "A1 Balance" },
           ]}
           icon={false}
           emptyFieldErr={false}
