@@ -2,7 +2,6 @@ import { Popup } from "../Popup";
 import "./TopUpDashboard.css";
 import { useState } from "react";
 import { Button } from "../Button";
-import PaymentPopup from "../TopUp/PaymentPopup";
 import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
 import { Input } from "../Input";
 import { HelpText } from "../HelpText";
