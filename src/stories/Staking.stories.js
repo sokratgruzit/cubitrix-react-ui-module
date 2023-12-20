@@ -309,7 +309,7 @@ stories.add("Staking", () => {
         modules={[]}
         account={"0x0000000"}
         location={{ pathName: "" }}
-        title={"COMPLEND"}
+        title={"A1"}
         logoSvg={
           <svg
             width="40"
@@ -509,7 +509,7 @@ stories.add("Staking", () => {
           }
           label={"Staking Calculator"}
           handlePopUpClose={() => setCreateStakingPopUpActive(false)}
-          description={"Stake Complend to earn Complend reward"}
+          description={"Stake A1 to earn A1 reward"}
         />
       )}
     </BrowserRouter>

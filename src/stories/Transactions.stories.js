@@ -280,7 +280,7 @@ stories.add("Transactions", () => {
         modules={[]}
         account={"0x0000000"}
         location={{ pathName: "" }}
-        title={"COMPLEND"}
+        title={"A1"}
         amount={10}
         logoSvg={
           <svg

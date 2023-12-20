@@ -18,7 +18,7 @@ stories.add("TwoFactorAuthentication", (props) => {
         confirmAuth={(e) => console.log("next", e)}
         active={active}
         qrcode={"ahahahah new qr codess"}
-        accountName={"Complend"}
+        accountName={"A1"}
         accountKey={"2INU5M0UXZ"}
         twoFactorSetUpState={{ loading: false, error: "shit" }}
       />

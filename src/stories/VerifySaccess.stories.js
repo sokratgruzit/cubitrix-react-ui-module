@@ -225,7 +225,7 @@ stories.add("VerifySaccess", () => {
 
   const verifySaccess = {
     logo: verifyLogo,
-    title: "Complend",
+    title: "A1",
     email: emailSvg,
     h: "Verify Your Email",
     p: "Your email address has been verified. Now you can set up security",
@@ -234,7 +234,7 @@ stories.add("VerifySaccess", () => {
 
   const verifyFailed = {
     logo: verifyLogo,
-    title: "Complend",
+    title: "A1",
     email: resendSvg,
     h: "Email Not Verify",
     p: "Your email address hasn’t been verified. Please try again or click on the reset button to receive a new verification mail.",

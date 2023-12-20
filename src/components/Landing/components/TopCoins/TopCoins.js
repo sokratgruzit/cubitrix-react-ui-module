@@ -43,7 +43,7 @@ export const TopCoins = ({ startTrade, topCoinsImages }) => {
           Coins
         </h1>
         <p className="top-coins-info fade-up">
-          Trade, buy, staking and loan cryptocurrency at Complend
+          Trade, buy, staking and loan cryptocurrency at A1
         </p>
       </header>
       <div className="top-coins-main fade-up">
