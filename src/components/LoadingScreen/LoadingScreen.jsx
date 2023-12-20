@@ -75,7 +75,7 @@ export const LoadingScreen = () => {
             </clipPath>
           </defs>
         </svg>
-        <h1 className='complend_title'>Complend</h1>
+        <h1 className='complend_title'>A1</h1>
       </div>
       <div className='loading-screen-wrap'>
         <div className='loading-screen-container' />

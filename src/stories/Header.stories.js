@@ -28,7 +28,7 @@ stories.add("Header", () => {
         }}
         account={account}
         location={{ pathName: "" }}
-        title={"COMPLEND"}
+        title={"A1"}
         A1Price={2}
         logoSvg={<Logo />}
         verified={true}

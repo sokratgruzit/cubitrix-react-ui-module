@@ -66,7 +66,7 @@ const connectWallet = {
     btn: "Connect Wallet",
 }
 const complete = {
-    p: "Complete the onboarding flow to start trading on COMPLEND",
+    p: "Complete the onboarding flow to start trading on A1",
     btn: "Complete Account"
 }
 
