@@ -19,7 +19,10 @@ export const HelpText = (props) => {
   });
 
   return (
-    <div style={props.customStyles} className={`status-group ${props.className}`}>
+    <div
+      style={props.customStyles}
+      className={`status-group ${props.className}`}
+    >
       <div className={!props.icon ? "hidden" : "status-group-inner"}>
         {props.status === "success" ? (
           <svg
@@ -122,7 +125,7 @@ export const HelpText = (props) => {
           ""
         )}
       </div>
-      <p style={{ color: color }} className={props.fontSize}>
+      <p style={{ color: props.color }} className={props.fontSize}>
         {props.title}
       </p>
     </div>
