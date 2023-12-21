@@ -158,11 +158,11 @@ export const Transactions = ({
                 ? item?.tx_options?.tokenCount +
                   " " +
                   (item?.tx_options?.toAccType?.toUpperCase() || " A1")
-                : item?.amount?.toFixed(2) +
-                  " " +
-                  (item?.tx_options?.fromAccType == "ATAR"
-                    ? "A1"
-                    : item?.tx_options?.fromAccType?.toUpperCase())}
+                : item?.tx_options?.fromAccType !== "ATAR"
+                ? item?.amount?.toFixed(2) +
+                    " " +
+                    item?.tx_options?.fromAccType?.toUpperCase() || " A1"
+                : item?.amount?.toFixed(2) + " " + "A1"}
             </span>
           </div>
           <div
