@@ -47,7 +47,7 @@ export const Calculator = ({
     handleDepositAmount(e.target.value);
   };
   function countViaRate(amount) {
-    return Number((amount / Number(rates?.["a1"]?.usd))?.toFixed(2));
+    return Number((amount / Number(rates?.["atr"]?.usd))?.toFixed(2));
   }
 
   let helpTexts = useMemo(() => {
@@ -87,6 +87,8 @@ export const Calculator = ({
   };
 
   const [stakeType, setStakeType] = useState("My Wallet");
+
+  console.log(depositAmount, "depositAmount");
 
   return (
     <div className={`calculator-container`} style={customStyles}>
