@@ -6,6 +6,7 @@ import postcss from "rollup-plugin-postcss";
 import image from "rollup-plugin-image";
 import copy from "rollup-plugin-copy";
 import commonjs from "rollup-plugin-commonjs";
+import json from "@rollup/plugin-json";
 
 export default {
   input: "./src/index.js",
@@ -23,6 +24,7 @@ export default {
     },
   ],
   plugins: [
+    json(),
     postcss({
       plugins: [],
       minimize: true,
@@ -44,7 +46,9 @@ export default {
     terser(),
     image(),
     copy({
-      targets: [{ src: "src/assets/**/**/*", dest: "dist/assets", verbose: true }],
+      targets: [
+        { src: "src/assets/**/**/*", dest: "dist/assets", verbose: true },
+      ],
     }),
   ],
   external: ["react-router-dom"],
