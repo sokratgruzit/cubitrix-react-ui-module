@@ -83,6 +83,7 @@ export const Transactions = ({
     let toAccType = item?.tx_options?.toAccType?.toUpperCase();
     let fromAccType = item?.tx_options?.fromAccType?.toUpperCase();
     let fromAmount = item?.tx_options?.fromAmount;
+    let amountIn = item?.tx_options?.amount;
     let amount = item?.amount?.toFixed(2);
 
     const createdAt = new Date(item?.createdAt);
@@ -163,6 +164,18 @@ export const Transactions = ({
             <span>
               {txType === "exchange"
                 ? ` ${fromAmount} ${fromAccType == "ATAR" ? "A1" : fromAccType}`
+                : ""}
+                {txType === "currency stake"
+                ? ` ${amountIn} ${toAccType}`
+                : ""}
+                {txType === "deposit"
+                ? ` ${amount} A1`
+                : ""}
+                {txType === "payment"
+                ? ` ${tockenCount} A1`
+                : ""}
+                {txType === "transfer"
+                ? ` ${amount} ${currency}`
                 : ""}
             </span>
           </div>
