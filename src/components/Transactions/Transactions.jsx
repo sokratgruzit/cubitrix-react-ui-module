@@ -78,9 +78,11 @@ export const Transactions = ({
 
   let tableData;
   tableData = data?.map((item, index) => {
+    let txType = item?.tx_type;
     let tockenCount = item?.tx_options?.tokenCount;
     let toAccType = item?.tx_options?.toAccType?.toUpperCase();
     let fromAccType = item?.tx_options?.fromAccType?.toUpperCase();
+    let fromAmount = item?.tx_options?.fromAmount;
     let amount = item?.amount?.toFixed(2);
 
     const createdAt = new Date(item?.createdAt);
@@ -159,11 +161,9 @@ export const Transactions = ({
             }}
           >
             <span>
-              {tockenCount
-                ? tockenCount + " " + (toAccType || " A1")
-                : amount +
-                  " " +
-                  (fromAccType == "ATAR" || !fromAccType ? "A1" : fromAccType)}
+              {txType === "exchange"
+                ? ` ${fromAmount} ${fromAccType == "ATAR" ? "A1" : fromAccType}`
+                : ""}
             </span>
           </div>
           <div

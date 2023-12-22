@@ -36,7 +36,7 @@ stories.add("Transactions", () => {
   const data = [
     {
       A1_price: 1,
-      amount: 0.1,
+      amount: 3000.456,
       createdAt: "2023-12-22T10:04:28.867Z",
       from: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
       to: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
@@ -80,6 +80,28 @@ stories.add("Transactions", () => {
       updatedAt: "2023-12-22T10:04:28.867Z",
       __v: 0,
       _id: "65855f2c52403094f73cd9c0",
+    },
+    {
+      A1_price: 1,
+      amount: 1000,
+      createdAt: "2023-12-22T10:03:43.262Z",
+      from: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      to: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      tx_currency: "ether",
+      tx_hash:
+        "0xvdnhjk1wb5x1kefafpru1lstvr9t1kq4ytnyawj2uzk1emfipwiuzfdhjqtr7ppgxj",
+      tx_options: {
+        method: "exchange",
+        fromAccType: "ATAR",
+        toAccType: "ETH",
+        fromAmount: 1000,
+        toAmount: 0.431695,
+      },
+      tx_status: "approved",
+      tx_type: "exchange",
+      updatedAt: "2023-12-22T10:03:43.262Z",
+      __v: 0,
+      _id: "65855eff52403094f73cd984",
     },
   ];
 
