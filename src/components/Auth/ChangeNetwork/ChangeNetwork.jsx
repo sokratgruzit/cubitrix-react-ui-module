@@ -5,7 +5,7 @@ import "./ChangeNetwork.css";
 export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
   return (
     <div className="change-network-body">
-      <p>Currently this page only supported in BNB Smart Chain, Ethereum</p>
+      <p>Currently this page only supported in BNB Smart Chain</p>
       <span className="change-network-svg">
         <svg
           width="130"
@@ -129,7 +129,7 @@ export const ChangeNetwork = ({ disconnect, handleNetworkChange }) => {
       </div>
       <Button
         element="button"
-        label={`Switch Network To Wallet`}
+        label={`Switch Network`}
         type="btn-primary"
         size="btn-lg"
         customStyles={{

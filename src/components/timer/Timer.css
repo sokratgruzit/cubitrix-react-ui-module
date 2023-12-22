@@ -1,0 +1,15 @@
+.timer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding-left: 30px;
+}
+
+.timer h2 {
+  color: #ffa726;
+}
+
+.timer-display {
+  color: #ffa726;
+}

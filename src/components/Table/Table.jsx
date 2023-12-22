@@ -1,6 +1,7 @@
-import "./Table.css";
 import { useMobileWidth } from "../../hooks/useMobileWidth";
 import { NoApplicationsIcon } from "../../assets/svgs";
+import translates from "../../translates.json";
+import "./Table.css";
 
 export const Table = ({
   type,
@@ -30,7 +31,9 @@ export const Table = ({
                 return (
                   <div
                     key={index}
-                    className={`th ${item.mobileWidth ? true : false} ${item?.className}`}
+                    className={`th ${item.mobileWidth ? true : false} ${
+                      item?.className
+                    }`}
                     style={{
                       width: `${mobile ? item.mobileWidth : item.width}%`,
                       height: `${item.height}`,
@@ -59,13 +62,23 @@ export const Table = ({
       {!tableData && !tableEmulator && (
         <div className="table-empty">
           <>
-            {tableEmptyData?.icon ? tableEmptyData?.icon : <NoApplicationsIcon />}
-            <p className="font-14" style={{ color: "rgba(255, 255, 255, 0.6)" }}>
-              {tableEmptyData?.label || "No Data Available"}
+            {tableEmptyData?.icon ? (
+              tableEmptyData?.icon
+            ) : (
+              <NoApplicationsIcon />
+            )}
+            <p
+              className="font-14"
+              style={{ color: "rgba(255, 255, 255, 0.6)" }}
+            >
+              {tableEmptyData?.label || translates.no_data_available.en}
             </p>
             {handleViewAll && (
-              <p className="table-empty__view-all font-14" onClick={handleViewAll}>
-                View All Transactions
+              <p
+                className="table-empty__view-all font-14"
+                onClick={handleViewAll}
+              >
+                {translates.view_all_transactions.en}
               </p>
             )}
           </>

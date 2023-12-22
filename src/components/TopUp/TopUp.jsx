@@ -1,11 +1,13 @@
 import { Popup } from "../Popup";
-import "./TopUp.css";
 import { useState } from "react";
 import { Button } from "../Button";
 import PaymentPopup from "./PaymentPopup";
 import ConfirmPaymentPopup from "./ConfirmPaymentPopup";
 import { Input } from "../Input";
 import { HelpText } from "../HelpText";
+import translates from "../../translates.json";
+
+import "./TopUp.css";
 
 export const TopUp = ({
   address,
@@ -20,7 +22,14 @@ export const TopUp = ({
   paymentTypes,
   handlePurchaseEvent,
 }) => {
-  const [x, setCurrencies] = useState(["ETH", "BTC", "LTC", "BNB", "BCH", "USDT"]);
+  const [x, setCurrencies] = useState([
+    "ETH",
+    "BTC",
+    "LTC",
+    "BNB",
+    "BCH",
+    "USDT",
+  ]);
   const [purchaseLimit, setPurchaseLimit] = useState(500000);
   const [selectedMethod, setSelectedMethod] = useState("Coinbase");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState();
@@ -38,11 +47,11 @@ export const TopUp = ({
 
   const handleTokenAmountChange = (event) => {
     const value = event.target.value;
-    console.log(value)
+    console.log(value);
     if (!isNaN(value) && value >= 0) {
       if (value > 0) setTokenError(null);
       setTokenAmount(Number(value));
-      console.log(tokenAmount)
+      console.log(tokenAmount);
     }
   };
 
@@ -57,7 +66,9 @@ export const TopUp = ({
 
   return (
     <div className="topup_main">
-      <p className="topup_title">1. Select the payment method and calculate A1 price</p>
+      <p className="topup_title">
+        1. Select the payment method and calculate A1 price
+      </p>
       <div className="topup_methodContainer">
         {methods.map((method) => (
           <div
@@ -72,11 +83,13 @@ export const TopUp = ({
           </div>
         ))}
       </div>
-      <p className="topup_title">2. Set amount of A1 you would like to purchase</p>
+      <p className="topup_title">
+        2. Set amount of A1 you would like to purchase
+      </p>
       <p className="topup_info">
-        Enter the amount you would like to contribute in order to calculate the amount of
-        A1 you will receive. The calculator below helps to convert the required quantity
-        of A1 into the amount of your selected currency.
+        Enter the amount you would like to contribute in order to calculate the
+        amount of A1 you will receive. The calculator below helps to convert the
+        required quantity of A1 into the amount of your selected currency.
       </p>
       <p>A1 Amount</p>
       <div className="topupDashboard_inputContainer">
@@ -94,20 +107,25 @@ export const TopUp = ({
           <p className="topupDashboard_inputOverlay_text">A1</p>
         </div>
       </div>
-      <p className="topupDashboard_info-exchangeRate">1 A1 = {exchangeRate} USDT</p>
-      {tokenError && <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />}
+      <p className="topupDashboard_info-exchangeRate">
+        1 A1 = {exchangeRate} USDT
+      </p>
+      {tokenError && (
+        <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
+      )}
       <div className="topupDashboard_bottom-row topup_bottom-padding">
-        <p>Token Amount:</p>
+        <p>{translates.token_amount.en}</p>
         <p>
           {tokenAmount} A1 = {tokenAmount * exchangeRate} USDT
         </p>
       </div>
       <div className="topupDashboard_bottom-row">
-        <p>Transaction Fee: </p>
+        <p>{translates.transaction_fee.en}</p>
         <p> {tranasctionFee} USDT</p>
       </div>
       <h3 className="topupDashboard_bottom-result">
-        TOTAL: {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
+        TOTAL:{" "}
+        {Number(tokenAmount) * Number(exchangeRate) + Number(tranasctionFee)}
         USDT
       </h3>
       <Button
@@ -139,7 +157,7 @@ export const TopUp = ({
           handlePopUpClose={() => setOpenPopup(false)}
         />
       )}
-      {openConfirmPaymentPopup && (
+      {!openConfirmPaymentPopup && (
         <Popup
           popUpElement={
             <ConfirmPaymentPopup

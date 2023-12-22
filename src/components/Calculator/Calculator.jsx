@@ -7,6 +7,7 @@ import { HelpText } from "../HelpText";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import React, { useState, useMemo } from "react";
+import translates from "../../translates.json";
 
 // styles
 import "./Calculator.css";
@@ -33,7 +34,6 @@ export const Calculator = ({
   hasRerferralActive,
   rates,
   apyPercent,
-  translates,
   tokenBalance,
   walletBalance,
   exchangeRate,
@@ -47,7 +47,7 @@ export const Calculator = ({
     handleDepositAmount(e.target.value);
   };
   function countViaRate(amount) {
-    return Number((amount / Number(rates?.["atr"]?.usd))?.toFixed(2));
+    return Number((amount / Number(rates?.["a1"]?.usd))?.toFixed(2));
   }
 
   let helpTexts = useMemo(() => {
@@ -86,7 +86,7 @@ export const Calculator = ({
     }
   };
 
-  const [stakeType, setStakeType] = useState("Wallet");
+  const [stakeType, setStakeType] = useState("My Wallet");
 
   return (
     <div className={`calculator-container`} style={customStyles}>
@@ -94,8 +94,8 @@ export const Calculator = ({
         <Input
           type={"lable-input-select"}
           defaultData={[
-            { name: "Wallet", value: "Wallet" },
-            { name: "A1 Balance", value: "ATR Balance" },
+            { name: "My Wallet", value: "My Wallet" },
+            { name: "A1 Balance", value: "A1 Balance" },
           ]}
           icon={false}
           emptyFieldErr={false}
@@ -103,7 +103,7 @@ export const Calculator = ({
           label={translates?.choose_balance.en}
           selectHandler={(type) => setStakeType(type)}
         />
-        {stakeType === "Wallet" ? (
+        {stakeType === "My Wallet" ? (
           <HelpText
             status="info"
             title={translates?.stake_from_your_wallet.en}
@@ -126,9 +126,9 @@ export const Calculator = ({
           <HelpText
             status={"warning"}
             title={`${translates?.your_currently_possess.en} ${
-              stakeType === "Wallet" ? tokenBalance : walletBalance
+              stakeType === "My Wallet" ? tokenBalance : walletBalance
             } ${translates?.a_worth.en} ${
-              stakeType === "Wallet"
+              stakeType === "My Wallet"
                 ? tokenBalance * exchangeRate
                 : walletBalance * exchangeRate
             } USD.`}
@@ -140,9 +140,9 @@ export const Calculator = ({
       )}
       <div className={"calculator-input"}>
         <Input
-          type={"default"}
-          inputType={"text"}
-          placeholder={"0000"}
+          type={"number"}
+          inputType={"number"}
+          placeholder={"0"}
           label={"Amount (USD)"}
           disabled={stakingLoading}
           onChange={handleChange}
@@ -164,7 +164,6 @@ export const Calculator = ({
         />
         <span className={"font-12"}>$</span>
       </div>
-
       <div className="calculator__buttons">
         {durationOptions.map((item, index) => (
           <Button
@@ -227,7 +226,7 @@ export const Calculator = ({
           account
             ? loading
               ? "Please wait, Loading.."
-              : stakeType === "Wallet"
+              : stakeType === "My Wallet"
               ? stakingLoading
                 ? "Loading..."
                 : isAllowance
@@ -244,7 +243,7 @@ export const Calculator = ({
           margin: "10px 0 0 0",
         }}
         onClick={
-          stakeType === "Wallet"
+          stakeType === "My Wallet"
             ? !account || (account && isAllowance)
               ? handleCalculatorSubmit
               : handleSubmit

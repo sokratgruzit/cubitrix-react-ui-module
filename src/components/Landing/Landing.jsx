@@ -1,8 +1,15 @@
-import React, { useEffect } from 'react'
-import './Landing.css'
+import React from "react";
+import {
+  DashboardHeader,
+  Meditation,
+  Overview,
+  StartNow,
+  TopCoins,
+  WhyComplend,
+} from "./components";
+import { Footer } from "../Footer";
 
-import { Footer } from '../Footer'
-import { DashboardHeader, Meditation, Overview, StartNow, TopCoins, WhyComplend } from './components'
+import "./Landing.css";
 
 export const Landing = ({
   handleGetStarted,
@@ -14,12 +21,11 @@ export const Landing = ({
   whyComplendData,
   overviewProjectsData,
   animate,
-  translates
 }) => {
   return (
-    <div style={{ paddingTop: '70px' }}>
-      <div className='dashboard-overflow'>
-        <main className='dashboard-main'>
+    <div style={{ paddingTop: "70px" }}>
+      <div className="dashboard-overflow">
+        <main className="dashboard-main">
           <DashboardHeader
             animate={animate}
             handleGetStarted={handleGetStarted}
@@ -28,13 +34,20 @@ export const Landing = ({
             dashboardHeaderImages={allImages?.dashboardHeader}
           />
           <WhyComplend data={whyComplendData} images={allImages?.whyComplend} />
-          <TopCoins startTrade={startTrade} topCoinsImages={allImages?.topcoins} />
+          <TopCoins
+            startTrade={startTrade}
+            topCoinsImages={allImages?.topcoins}
+          />
           <Meditation meditationImages={allImages?.meditation} info={info} />
           <Overview data={overviewProjectsData} />
-          <StartNow handleConnect={handleConnect} account={account} startNowImages={allImages?.startNow} />
+          <StartNow
+            handleConnect={handleConnect}
+            account={account}
+            startNowImages={allImages?.startNow}
+          />
           <Footer />
         </main>
       </div>
     </div>
-  )
-}
+  );
+};

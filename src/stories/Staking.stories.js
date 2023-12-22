@@ -470,15 +470,18 @@ stories.add("Staking", () => {
         isFetching={isFetching}
         currencyStakes={[
           {
+            address: "0x30181562290698bb591c3bd58ed40e44eaa6d3d9",
+            amount: 3,
+            createdAt: "2023-12-19T05:19:45.397Z",
+            currency: "bnb",
+            expected_reward: 0.02958702126294188,
+            percentage: 1,
+            stake_time: 1702959912000,
+            status: "unpaid",
+            unstake_time: 1734067185393,
+            updatedAt: "2023-12-19T05:19:45.397Z",
             __v: 0,
-            _id: "64fb85b6f428ddf3b22f41f9",
-            address: "0x928875073504464f466c5ec4cd81db991b80f175",
-            amount: 0.1,
-            currency: "btc",
-            percentage: 0,
-            createdAt: "2023-11-29T06:56:01.898Z",
-            updatedAt: "2023-09-08T20:36:06.196Z",
-            expires: "2024-11-29T06:56:01.898Z",
+            _id: "658127f1c26f05a1024b149d",
           },
         ]}
         currencyStakesLoading={false}

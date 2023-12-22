@@ -23,7 +23,8 @@ stories.add("Transactions", () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const [transactionsPaginationTotal, setTransactionsPaginationTotal] = useState(1);
+  const [transactionsPaginationTotal, setTransactionsPaginationTotal] =
+    useState(1);
   const [transactionsCurrentPage, setTransactionsCurrentPage] = useState(1);
 
   const { width } = useMobileWidth();
@@ -102,7 +103,7 @@ stories.add("Transactions", () => {
           page: transactionsCurrentPage,
           ...filterObject,
         }),
-      },
+      }
     );
 
     const data = await response.json();
@@ -427,6 +428,7 @@ stories.add("Transactions", () => {
             </p>
           }
           translates={translates}
+          accountAddres={"address...."}
           rightPanelData={rightPanelData}
           footer={footer}
           tableHead={transactionHeader}

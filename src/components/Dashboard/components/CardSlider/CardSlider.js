@@ -1,13 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-
+import React, { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
-import "./CardSlider.css";
+import { Pagination, Navigation } from "swiper";
 import { Account, AccountType } from "../../../../assets/svgs";
 import { useMobileWidth } from "../../../../hooks/useMobileWidth";
-
-import { Pagination, Navigation } from "swiper";
-import { Button } from "../../../Button";
+import translates from "../../../../translates.json";
+import "swiper/swiper-bundle.css";
+import "./CardSlider.css";
 
 export const CardSlider = ({
   accounts,
@@ -22,7 +20,6 @@ export const CardSlider = ({
   extensions,
   stakedTotal,
   handleStake,
-  translates,
 }) => {
   const { width } = useMobileWidth();
 
@@ -167,7 +164,7 @@ export const CardSlider = ({
   return (
     <div className="card-slider-wrapper">
       <div className="card-slider-navigation-wrapper">
-        <div className="card-slider-navigation">eefr
+        <div className="card-slider-navigation">
           {accountsData?.map((item, index) => {
             const activeIndex = accountsData.findIndex(
               (acc) => accountType === acc.account_category
@@ -256,11 +253,12 @@ export const CardSlider = ({
                     </span>
                     {tier && (
                       <span
-                        className={`tier-card ${
-                          tier === "Stellar Standard" ? "gold-tier" : ""
-                        } ${tier === "Expert Edge" ? "diamond-tier" : ""} ${
-                          tier === "Platinum Privilege" ? "vip-tier" : ""
-                        } ${tier === "Novice Navigator" ? "basic-tier" : ""}`}
+                        className={`tier-card
+                        ${tier === "Stellar Standard" ? "gold-tier" : ""}
+                        ${tier === "Diamond VIP" ? "diamond-vip-tier" : ""}
+                        ${tier === "Expert Edge" ? "diamond-tier" : ""} 
+                        ${tier === "Platinum Privilege" ? "vip-tier" : ""}
+                        ${tier === "Novice Navigator" ? "basic-tier" : ""}`}
                       >
                         {tier?.toUpperCase()}
                       </span>

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "../Button";
-import "./PaymentPopup.css";
 import { HelpText } from "../HelpText";
-import { EthIcon } from "../../assets/svgs";
+import translates from "../../translates.json";
+
+import "./PaymentPopup.css";
 
 const PaymentPopup = ({
   setOpenConfirmPaymentPopup,
@@ -33,10 +34,13 @@ const PaymentPopup = ({
         <p>
           Please make payment of {payment} to receive {receiveTokens}A1.
         </p>
-        <p>Transaction Fee: {fee}</p>
         <p>
-          You can choose any of the following payment methods to make your payment. The A1
-          balance will appear in your account after successful payment.
+          {translates.transaction_fee.en} {fee}
+        </p>
+        <p>
+          You can choose any of the following payment methods to make your
+          payment. The A1 balance will appear in your account after successful
+          payment.
         </p>
         <h3>Select payment method:</h3>
         <div className="payment_methods_container">
@@ -57,10 +61,12 @@ const PaymentPopup = ({
           })}
         </div>
         <p className="payment_popup_grayText">
-          <span className="payment-starChar">*</span> Payment gateway may charge you a
-          processing fee.
+          <span className="payment-starChar">*</span> Payment gateway may charge
+          you a processing fee.
         </p>
-        <p className="payment_popup_grayText">You can use these currencies to pay —</p>
+        <p className="payment_popup_grayText">
+          You can use these currencies to pay —
+        </p>
 
         <label className="confirm_payment_popup_checkbox">
           <input
@@ -70,8 +76,8 @@ const PaymentPopup = ({
             value="agree"
             onChange={handleAgreement}
           />
-          <span className="confirm_payment_popup_checkmark"></span>I hereby agree to the
-          A1 purchase agreement and A1 sale term.
+          <span className="confirm_payment_popup_checkmark"></span>I hereby
+          agree to the A1 purchase agreement and A1 sale term.
         </label>
         <Button
           element="button"
