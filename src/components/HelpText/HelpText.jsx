@@ -125,7 +125,7 @@ export const HelpText = (props) => {
           ""
         )}
       </div>
-      <p style={{ color: props.color }} className={props.fontSize}>
+      <p style={{ color: color }} className={props.fontSize}>
         {props.title}
       </p>
     </div>

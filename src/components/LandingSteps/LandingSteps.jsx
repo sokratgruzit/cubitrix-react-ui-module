@@ -735,7 +735,9 @@ export const LandingSteps = ({
                       {isLoading ? (
                         <div className="loader-container">
                           <div className="loader"></div>
-                          <div style={{color: "rgb(106, 109, 118)"}}>Loading...</div>
+                          <div style={{ color: "rgb(106, 109, 118)" }}>
+                            Loading...
+                          </div>
                         </div>
                       ) : (
                         <HelpText
@@ -811,14 +813,12 @@ export const LandingSteps = ({
                         <HelpText
                           status={referralState?.status}
                           title={referralState?.message}
-                          color={"#FF0C46"}
                         />
                       )}
                       {checkReferralCodeState?.status && (
                         <HelpText
                           status={checkReferralCodeState?.status}
                           title={checkReferralCodeState?.message}
-                          color={"#FF0C46"}
                           icon={true}
                           customStyles={{ marginBottom: "5px" }}
                         />
