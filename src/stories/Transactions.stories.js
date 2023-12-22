@@ -33,6 +33,56 @@ stories.add("Transactions", () => {
     pathname: "/",
   };
 
+  const data = [
+    {
+      A1_price: 1,
+      amount: 0.1,
+      createdAt: "2023-12-22T10:04:28.867Z",
+      from: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      to: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      tx_currency: "currency",
+      tx_fee: 0,
+      tx_fee_currency: "atar",
+      tx_hash:
+        "0xqsnk5ec9zyqrqjvhptt4egygjuowaq6l0yzeepikyyanhiiuzk5mxuvnfngatye0l3",
+      tx_options: {
+        amount: 0.1,
+        toAccType: "eth",
+        percentage: 1,
+        unstake_time: 1734343468861,
+        fromAccType: "bts",
+      },
+      tx_status: "approved",
+      tx_type: "currency stake",
+      updatedAt: "2023-12-22T10:04:28.867Z",
+      __v: 0,
+      _id: "65855f2c52403094f73cd9c0",
+    },
+    {
+      A1_price: 1,
+      amount: 0.1,
+      createdAt: "2023-12-22T10:04:28.867Z",
+      from: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      to: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      tx_currency: "currency",
+      tx_fee: 0,
+      tx_fee_currency: "atar",
+      tx_hash:
+        "0xqsnk5ec9zyqrqjvhptt4egygjuowaq6l0yzeepikyyanhiiuzk5mxuvnfngatye0l3",
+      tx_options: {
+        amount: 0.1,
+        toAccType: "eth",
+        percentage: 1,
+        unstake_time: 1734343468861,
+      },
+      tx_status: "approved",
+      tx_type: "currency stake",
+      updatedAt: "2023-12-22T10:04:28.867Z",
+      __v: 0,
+      _id: "65855f2c52403094f73cd9c0",
+    },
+  ];
+
   const links = [
     {
       to: "/dashboard",
@@ -432,7 +482,7 @@ stories.add("Transactions", () => {
           rightPanelData={rightPanelData}
           footer={footer}
           tableHead={transactionHeader}
-          data={transactionsData?.transactions}
+          data={data}
           paginationCurrent={transactionsCurrentPage}
           paginationTotal={transactionsPaginationTotal}
           paginationEvent={(page) => setTransactionsCurrentPage(page)}
