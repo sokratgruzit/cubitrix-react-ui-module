@@ -33,6 +33,78 @@ stories.add("Transactions", () => {
     pathname: "/",
   };
 
+  const data = [
+    {
+      A1_price: 1,
+      amount: 3000.456,
+      createdAt: "2023-12-22T10:04:28.867Z",
+      from: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      to: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      tx_currency: "currency",
+      tx_fee: 0,
+      tx_fee_currency: "atar",
+      tx_hash:
+        "0xqsnk5ec9zyqrqjvhptt4egygjuowaq6l0yzeepikyyanhiiuzk5mxuvnfngatye0l3",
+      tx_options: {
+        amount: 0.1,
+        toAccType: "eth",
+        percentage: 1,
+        unstake_time: 1734343468861,
+        fromAccType: "bts",
+      },
+      tx_status: "approved",
+      tx_type: "currency stake",
+      updatedAt: "2023-12-22T10:04:28.867Z",
+      __v: 0,
+      _id: "65855f2c52403094f73cd9c0",
+    },
+    {
+      A1_price: 1,
+      amount: 0.1,
+      createdAt: "2023-12-22T10:04:28.867Z",
+      from: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      to: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      tx_currency: "currency",
+      tx_fee: 0,
+      tx_fee_currency: "atar",
+      tx_hash:
+        "0xqsnk5ec9zyqrqjvhptt4egygjuowaq6l0yzeepikyyanhiiuzk5mxuvnfngatye0l3",
+      tx_options: {
+        amount: 0.1,
+        toAccType: "eth",
+        percentage: 1,
+        unstake_time: 1734343468861,
+      },
+      tx_status: "approved",
+      tx_type: "currency stake",
+      updatedAt: "2023-12-22T10:04:28.867Z",
+      __v: 0,
+      _id: "65855f2c52403094f73cd9c0",
+    },
+    {
+      A1_price: 1,
+      amount: 1000,
+      createdAt: "2023-12-22T10:03:43.262Z",
+      from: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      to: "0xb01238ced1ffd3c92ea13e6c41ed2ed0a0b1c4df",
+      tx_currency: "ether",
+      tx_hash:
+        "0xvdnhjk1wb5x1kefafpru1lstvr9t1kq4ytnyawj2uzk1emfipwiuzfdhjqtr7ppgxj",
+      tx_options: {
+        method: "exchange",
+        fromAccType: "ATAR",
+        toAccType: "ETH",
+        fromAmount: 1000,
+        toAmount: 0.431695,
+      },
+      tx_status: "approved",
+      tx_type: "exchange",
+      updatedAt: "2023-12-22T10:03:43.262Z",
+      __v: 0,
+      _id: "65855eff52403094f73cd984",
+    },
+  ];
+
   const links = [
     {
       to: "/dashboard",
@@ -280,7 +352,7 @@ stories.add("Transactions", () => {
         modules={[]}
         account={"0x0000000"}
         location={{ pathName: "" }}
-        title={"COMPLEND"}
+        title={"A1"}
         amount={10}
         logoSvg={
           <svg
@@ -432,7 +504,7 @@ stories.add("Transactions", () => {
           rightPanelData={rightPanelData}
           footer={footer}
           tableHead={transactionHeader}
-          data={transactionsData?.transactions}
+          data={data}
           paginationCurrent={transactionsCurrentPage}
           paginationTotal={transactionsPaginationTotal}
           paginationEvent={(page) => setTransactionsCurrentPage(page)}

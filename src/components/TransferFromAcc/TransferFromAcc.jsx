@@ -52,23 +52,28 @@ export const TransferFromAcc = ({
             <div className="withdraw-to-acc-card_header">
               <Account type={accountType.toLowerCase()} />
               <h4 className="font-16">
-                {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} account
+                {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
+                account
               </h4>
             </div>
             <div className="withdraw-to-acc-card_content">
               <h4 className="font-14">
-                {accountType === "ATAR" ? "A1" : accountType.toUpperCase()} Balance
+                {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
+                Balance
               </h4>
               <p>{accountBalance}</p>
               <span className="font-14">{accountBalanceSecond}</span>
             </div>
           </div>
+          <p style={{ color: "#FFA726", fontSize: "14px" }}>
+            Network: BSC Smart Chain
+          </p>
           <div className="withdraw-to-acc-inputs">
             {inputs?.map((params, index) => {
               let selectedOption;
               if (params.type === "lable-input-select") {
                 selectedOption = params?.options.find(
-                  (option) => option.value === currentObject[params?.name],
+                  (option) => option.value === currentObject[params?.name]
                 );
               }
               return (
@@ -96,7 +101,9 @@ export const TransferFromAcc = ({
                     disabled={params?.disabled}
                     onChange={(e) => handleInputChange(e, params)}
                     defaultData={params?.options}
-                    customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
+                    customInputStyles={{
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                    }}
                     svg={
                       params?.type === "lable-input-select"
                         ? selectedOption?.svg

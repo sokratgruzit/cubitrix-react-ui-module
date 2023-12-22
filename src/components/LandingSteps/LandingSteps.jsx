@@ -188,6 +188,16 @@ export const LandingSteps = ({
   //   );
   // }
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isNaN(apyPercent) || apyPercent === undefined || apyPercent === null) {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, [apyPercent]);
+
   return (
     <div className="LandingSteps__container">
       <div className="LandingSteps_main-body">
@@ -722,40 +732,49 @@ export const LandingSteps = ({
                           />
                         ))}
                       </div>
-                      <HelpText
-                        title={
-                          timeperiod === 0
-                            ? apyPercent +
-                              "% APY. Locked until " +
-                              timeperiodDate
-                            : timeperiod === 1
-                            ? apyPercent +
-                              "% APY. Locked until " +
-                              timeperiodDate
-                            : timeperiod === 2
-                            ? apyPercent +
-                              "% APY. Locked until " +
-                              timeperiodDate
-                            : timeperiod === 3
-                            ? apyPercent +
-                              "% APY. Locked until " +
-                              timeperiodDate
-                            : timeperiod === 4
-                            ? apyPercent +
-                              "% APY. Locked until " +
-                              timeperiodDate
-                            : timeperiod === 5
-                            ? apyPercent +
-                              "% APY. Locked until " +
-                              timeperiodDate
-                            : apyPercent +
-                              "% APY. Locked until " +
-                              timeperiodDate
-                        }
-                        status="info"
-                        color="#6A6D76"
-                        icon={true}
-                      />
+                      {isLoading ? (
+                        <div className="loader-container">
+                          <div className="loader"></div>
+                          <div style={{ color: "rgb(106, 109, 118)" }}>
+                            Loading...
+                          </div>
+                        </div>
+                      ) : (
+                        <HelpText
+                          title={
+                            timeperiod === 0
+                              ? apyPercent +
+                                "% APY. Locked until " +
+                                timeperiodDate
+                              : timeperiod === 1
+                              ? apyPercent +
+                                "% APY. Locked until " +
+                                timeperiodDate
+                              : timeperiod === 2
+                              ? apyPercent +
+                                "% APY. Locked until " +
+                                timeperiodDate
+                              : timeperiod === 3
+                              ? apyPercent +
+                                "% APY. Locked until " +
+                                timeperiodDate
+                              : timeperiod === 4
+                              ? apyPercent +
+                                "% APY. Locked until " +
+                                timeperiodDate
+                              : timeperiod === 5
+                              ? apyPercent +
+                                "% APY. Locked until " +
+                                timeperiodDate
+                              : apyPercent +
+                                "% APY. Locked until " +
+                                timeperiodDate
+                          }
+                          status="info"
+                          color="#6A6D76"
+                          icon={true}
+                        />
+                      )}
                     </>
                   )}
                   {isAllowance && (
@@ -794,14 +813,12 @@ export const LandingSteps = ({
                         <HelpText
                           status={referralState?.status}
                           title={referralState?.message}
-                          color={"#FF0C46"}
                         />
                       )}
                       {checkReferralCodeState?.status && (
                         <HelpText
                           status={checkReferralCodeState?.status}
                           title={checkReferralCodeState?.message}
-                          color={"#FF0C46"}
                           icon={true}
                           customStyles={{ marginBottom: "5px" }}
                         />

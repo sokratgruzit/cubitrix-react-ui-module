@@ -358,7 +358,7 @@ export const TwoFactorAuthentication = ({
           className="margin-top"
           status={"info"}
           title={
-            "If you lost your phone or uninstall the Google Authenticator app, then you will lost access of your account"
+            "If you lose your phone or uninstall the Google Authenticator app, then you will lost access of your account"
           }
           color={"#6A6D76"}
           icon={true}

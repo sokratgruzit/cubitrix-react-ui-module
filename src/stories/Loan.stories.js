@@ -157,7 +157,7 @@ stories.add("Loan", (props) => {
         modules={[]}
         account={"0x000000"}
         location={{ pathName: "" }}
-        title={"COMPLEND"}
+        title={"A1"}
         logoSvg={
           <svg
             width="40"

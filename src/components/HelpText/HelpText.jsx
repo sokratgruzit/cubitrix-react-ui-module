@@ -19,7 +19,10 @@ export const HelpText = (props) => {
   });
 
   return (
-    <div style={props.customStyles} className={`status-group ${props.className}`}>
+    <div
+      style={props.customStyles}
+      className={`status-group ${props.className}`}
+    >
       <div className={!props.icon ? "hidden" : "status-group-inner"}>
         {props.status === "success" ? (
           <svg

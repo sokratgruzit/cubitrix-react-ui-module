@@ -8,7 +8,7 @@ export const WhyComplend = ({ data, images }) => {
   return (
     <div className="whyComplend__container">
       <div className={`whyComplend__cardContent`}>
-        <div className={`whyComplend__cardHeader fade-up`}>why complend?</div>
+        <div className={`whyComplend__cardHeader fade-up`}>why A1?</div>
         <div className={`whyComplend__cardsWrapper`}>
           {data.map((item) => (
             <div className={`whyComplend__card whyComplend__green fade-up`} key={item.id}>

@@ -33,6 +33,7 @@ stories.add("SideBar", () => {
     console.log(i);
   };
   const [twoFactorAuth, setTwoFactorAuth] = useState(true);
+  const [depositLoading, setDepositLoading] = useState(false);
   const [currentObject, setCurrentObject] = useState({
     amount: "",
     transfer: "",
