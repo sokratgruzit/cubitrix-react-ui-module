@@ -1,13 +1,13 @@
-import React, { Fragment, useState } from "react";
+import React, {Fragment, useState} from "react";
 
-import { Table } from "../../../Table";
+import {Table} from "../../../Table";
 
 import "./DashboardTable.css";
-import { Visual } from "../../../Visual/Visual";
-import { Link } from "react-router-dom";
-import { useMobileWidth } from "../../../../hooks/useMobileWidth";
-import { Account, AccountType } from "../../../../assets/svgs";
-import { TableElement } from "../../../TableElement";
+import {Visual} from "../../../Visual/Visual";
+import {Link} from "react-router-dom";
+import {useMobileWidth} from "../../../../hooks/useMobileWidth";
+import {Account, AccountType} from "../../../../assets/svgs";
+import {TableElement} from "../../../TableElement";
 
 export const DashboardTable = ({
   type,
@@ -31,7 +31,7 @@ export const DashboardTable = ({
   let element = null;
 
   const [mobileExpand, setMobileExpand] = useState(null);
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
 
   let mobileExpandFunc = (id) => {
     if (width <= 1300) {
@@ -110,7 +110,7 @@ export const DashboardTable = ({
       let fromAccType = item?.tx_options?.fromAccType?.toUpperCase();
       let fromAmount = item?.tx_options?.fromAmount;
       let amountIn = item?.tx_options?.amount;
-      let currency = item?.tx_options?.currency;
+      let currency = item?.tx_options?.currency.toUpperCase();
       let amount = item?.amount?.toFixed(2);
 
       const createdAt = new Date(item?.createdAt);
@@ -171,9 +171,9 @@ export const DashboardTable = ({
               <span>
                 {item?.tx_type === "transfer" &&
                   (accountAddress === item?.from ? (
-                    <span>{" "}- in</span>
+                    <span>{translates.transfer_out.en}</span>
                   ) : (
-                    <span>{" "}- out</span>
+                    <span>{translates.transfer_in.en}</span>
                   ))}
               </span>
             </div>
@@ -188,25 +188,19 @@ export const DashboardTable = ({
               }}
             >
               <span>
-              {txType === "exchange"
-                ? ` ${fromAmount} ${fromAccType == "ATAR" ? "A1" : fromAccType}`
-                : ""}
-                {txType === "currency stake"
-                ? ` ${amountIn} ${toAccType}`
-                : ""}
-                {txType === "deposit"
-                ? ` ${amount} A1`
-                : ""}
-                {txType === "payment"
-                ? ` ${tockenCount} A1`
-                : ""}
-                {txType === "transfer"
-                ? ` ${amount} A1`
-                : ""}
+                {txType === "exchange"
+                  ? ` ${fromAmount} ${
+                      fromAccType == "ATAR" ? "A1" : fromAccType
+                    }`
+                  : ""}
+                {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
+                {txType === "deposit" ? ` ${amount} A1` : ""}
+                {txType === "payment" ? ` ${tockenCount} A1` : ""}
+                {txType === "transfer" ? ` ${amount} ${currency}` : ""}
                 {txType === "withdraw"
-                ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
-                : ""}
-            </span>
+                  ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
+                  : ""}
+              </span>
             </div>
             <div
               className={`td ${
@@ -235,7 +229,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -286,9 +280,9 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0", width: "100%" }}
+                customStyles={{border: "none", padding: "0", width: "100%"}}
                 buttons={tableVisualMore}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                labelCustomStyles={{color: "#C38C5C"}}
               />
             </div>
           }
@@ -394,7 +388,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -502,8 +496,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0" }}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                customStyles={{border: "none", padding: "0"}}
+                labelCustomStyles={{color: "#C38C5C"}}
                 buttons={tableButtons}
                 centerButtons={true}
               />
@@ -619,7 +613,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -670,8 +664,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0", width: "100%" }}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                customStyles={{border: "none", padding: "0", width: "100%"}}
+                labelCustomStyles={{color: "#C38C5C"}}
                 buttons={tableButtons}
               />
             </div>
@@ -769,7 +763,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -814,8 +808,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0", width: "100%" }}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                customStyles={{border: "none", padding: "0", width: "100%"}}
+                labelCustomStyles={{color: "#C38C5C"}}
                 buttons={tableButtons}
               />
             </div>

@@ -1,4 +1,10 @@
 {
+  "transfer_in": {
+    "en": " - In"
+  },
+  "transfer_out": {
+    "en": " - Out"
+  },
   "landing_main": {
     "en": "Global Trading Simplified"
   },

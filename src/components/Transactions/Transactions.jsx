@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 
-import "./Transactions.css";
 import {Table} from "../Table";
 import {Visual} from "../Visual";
 import {TableElement} from "../TableElement";
 import {useMobileWidth} from "../../hooks/useMobileWidth";
-import {Link} from "react-router-dom";
-import {FilterBox} from "../FilterBox";
 import {Input} from "../Input";
+import translates from "../../translates.json";
+
+import "./Transactions.css";
 
 export const Transactions = ({
   tableHead,
@@ -24,7 +24,6 @@ export const Transactions = ({
   currentObject,
   loading,
   tableEmpty,
-  translates,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const {width} = useMobileWidth();
@@ -84,7 +83,7 @@ export const Transactions = ({
     let fromAccType = item?.tx_options?.fromAccType?.toUpperCase();
     let fromAmount = item?.tx_options?.fromAmount;
     let amountIn = item?.tx_options?.amount;
-    let currency = item?.tx_options?.currency;
+    let currency = item?.tx_options?.currency.toUpperCase();
     let amount = item?.amount?.toFixed(2);
 
     const createdAt = new Date(item?.createdAt);
@@ -145,12 +144,10 @@ export const Transactions = ({
             {/* Render based on tx_type being "transfer" and accountAddress comparison */}
             <span>
               {item?.tx_type === "transfer" &&
-                console.log(accountAddress, item?.from, "account types")}
-              {item?.tx_type === "transfer" &&
                 (accountAddress === item?.from ? (
-                  <span> - in</span>
+                  <span>{translates.transfer_out.en}</span>
                 ) : (
-                  <span> - out</span>
+                  <span>{translates.transfer_in.en}</span>
                 ))}
             </span>
           </div>
@@ -171,7 +168,7 @@ export const Transactions = ({
               {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
               {txType === "deposit" ? ` ${amount} A1` : ""}
               {txType === "payment" ? ` ${tockenCount} A1` : ""}
-              {txType === "transfer" ? ` ${amount} A1` : ""}
+              {txType === "transfer" ? ` ${amount} ${currency}` : ""}
               {txType === "withdraw"
                 ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
                 : ""}
