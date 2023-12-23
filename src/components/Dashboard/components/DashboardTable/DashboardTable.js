@@ -197,7 +197,7 @@ export const DashboardTable = ({
                 {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
                 {txType === "deposit" ? ` ${amount} A1` : ""}
                 {txType === "payment" ? ` ${tockenCount} A1` : ""}
-                {txType === "transfer" ? ` ${amount} ${currency}` : ""}
+                {txType === "transfer" ? ` ${amount} ${currency || "A1"}` : ""}
                 {txType === "withdraw"
                   ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
                   : ""}
