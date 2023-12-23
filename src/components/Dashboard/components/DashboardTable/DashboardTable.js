@@ -104,6 +104,15 @@ export const DashboardTable = ({
   if (type === "transactions") {
     let tableData;
     tableData = data?.map((item, index) => {
+      let txType = item?.tx_type;
+      let tockenCount = item?.tx_options?.tokenCount;
+      let toAccType = item?.tx_options?.toAccType?.toUpperCase();
+      let fromAccType = item?.tx_options?.fromAccType?.toUpperCase();
+      let fromAmount = item?.tx_options?.fromAmount;
+      let amountIn = item?.tx_options?.amount;
+      let currency = item?.tx_options?.currency;
+      let amount = item?.amount?.toFixed(2);
+
       const createdAt = new Date(item?.createdAt);
       const createdTime = createdAt.toLocaleString("en-US", {
         month: "short",
@@ -162,9 +171,9 @@ export const DashboardTable = ({
               <span>
                 {item?.tx_type === "transfer" &&
                   (accountAddress === item?.from ? (
-                    <span>-from</span>
+                    <span>{" "}- in</span>
                   ) : (
-                    <span>-to</span>
+                    <span>{" "}- out</span>
                   ))}
               </span>
             </div>
@@ -179,18 +188,25 @@ export const DashboardTable = ({
               }}
             >
               <span>
-                {item?.tx_options?.tokenCount
-                  ? item?.tx_options?.tokenCount +
-                    " " +
-                    (item?.tx_options?.fromAccType?.toUpperCase() === "ATAR"
-                      ? "A1"
-                      : item?.tx_options?.fromAccType?.toUpperCase() || " A1")
-                  : item?.amount?.toFixed(2) +
-                    " " +
-                    (item?.tx_options?.fromAccType?.toUpperCase() === "ATAR"
-                      ? "A1"
-                      : item?.tx_options?.fromAccType?.toUpperCase() || " A1")}
-              </span>
+              {txType === "exchange"
+                ? ` ${fromAmount} ${fromAccType == "ATAR" ? "A1" : fromAccType}`
+                : ""}
+                {txType === "currency stake"
+                ? ` ${amountIn} ${toAccType}`
+                : ""}
+                {txType === "deposit"
+                ? ` ${amount} A1`
+                : ""}
+                {txType === "payment"
+                ? ` ${tockenCount} A1`
+                : ""}
+                {txType === "transfer"
+                ? ` ${amount} A1`
+                : ""}
+                {txType === "withdraw"
+                ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
+                : ""}
+            </span>
             </div>
             <div
               className={`td ${
