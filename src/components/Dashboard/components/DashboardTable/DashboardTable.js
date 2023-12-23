@@ -111,7 +111,7 @@ export const DashboardTable = ({
       let fromAccType = item?.tx_options?.fromAccType?.toUpperCase();
       let fromAmount = item?.tx_options?.fromAmount;
       let amountIn = item?.tx_options?.amount;
-      let currency = item?.tx_options?.currency.toUpperCase();
+      let currency = item?.tx_options?.currency?.toUpperCase();
       let amount = item?.amount?.toFixed(2);
 
       const createdAt = new Date(item?.createdAt);
