@@ -1,13 +1,14 @@
 import React, {Fragment, useState} from "react";
 
 import {Table} from "../../../Table";
-
-import "./DashboardTable.css";
 import {Visual} from "../../../Visual/Visual";
 import {Link} from "react-router-dom";
 import {useMobileWidth} from "../../../../hooks/useMobileWidth";
 import {Account, AccountType} from "../../../../assets/svgs";
 import {TableElement} from "../../../TableElement";
+import translates from "../../../../translates.json";
+
+import "./DashboardTable.css";
 
 export const DashboardTable = ({
   type,
