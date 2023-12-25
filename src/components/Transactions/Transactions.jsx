@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+
+import {Table} from "../Table";
+import {Visual} from "../Visual";
+import {TableElement} from "../TableElement";
+import {useMobileWidth} from "../../hooks/useMobileWidth";
+import {Input} from "../Input";
+import translates from "../../translates.json";
 
 import "./Transactions.css";
-import { Table } from "../Table";
-import { Visual } from "../Visual";
-import { TableElement } from "../TableElement";
-import { useMobileWidth } from "../../hooks/useMobileWidth";
-import { Link } from "react-router-dom";
-import { FilterBox } from "../FilterBox";
-import { Input } from "../Input";
 
 export const Transactions = ({
   tableHead,
@@ -24,10 +24,9 @@ export const Transactions = ({
   currentObject,
   loading,
   tableEmpty,
-  translates,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
 
   let mobileExpandFunc = (id) => {
     if (width <= 1300) {
@@ -83,6 +82,8 @@ export const Transactions = ({
     let toAccType = item?.tx_options?.toAccType?.toUpperCase();
     let fromAccType = item?.tx_options?.fromAccType?.toUpperCase();
     let fromAmount = item?.tx_options?.fromAmount;
+    let amountIn = item?.tx_options?.amount;
+    let currency = item?.tx_options?.currency?.toUpperCase();
     let amount = item?.amount?.toFixed(2);
 
     const createdAt = new Date(item?.createdAt);
@@ -144,9 +145,9 @@ export const Transactions = ({
             <span>
               {item?.tx_type === "transfer" &&
                 (accountAddress === item?.from ? (
-                  <span>-from</span>
+                  <span>{translates.transfer_out.en}</span>
                 ) : (
-                  <span>-to</span>
+                  <span>{translates.transfer_in.en}</span>
                 ))}
             </span>
           </div>
@@ -163,6 +164,17 @@ export const Transactions = ({
             <span>
               {txType === "exchange"
                 ? ` ${fromAmount} ${fromAccType == "ATAR" ? "A1" : fromAccType}`
+                : ""}
+              {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
+              {txType === "deposit" ? ` ${amount} A1` : ""}
+              {txType === "payment" ? ` ${tockenCount} A1` : ""}
+              {txType === "transfer" ? ` ${amount} ${currency || "A1"}` : ""}
+              {txType === "Internal Transfer"
+                ? ` ${amount} ${currency || "A1"}`
+                : ""}
+              {txType === "bonus" ? ` ${amount}  A1` : ""}
+              {txType === "withdraw"
+                ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
                 : ""}
             </span>
           </div>
@@ -193,7 +205,7 @@ export const Transactions = ({
           </div>
         </div>
         <div className="table-more" />
-        <div className="icon-place" style={{ height: "40px" }}>
+        <div className="icon-place" style={{height: "40px"}}>
           <svg
             width="12"
             height="7"
@@ -236,7 +248,7 @@ export const Transactions = ({
   });
 
   const handleInputChange = (e, params) => {
-    const { name, onChange } = params;
+    const {name, onChange} = params;
     let data = {
       target: {
         value: e,
@@ -271,7 +283,7 @@ export const Transactions = ({
                     params?.options[0]?.value
                   : currentObject[params?.name] || params?.defaultAny
               }
-              customStyles={{ width: "100%" }}
+              customStyles={{width: "100%"}}
               selectHandler={(opt) => {
                 handleInputChange(opt, params);
               }}
@@ -297,9 +309,9 @@ export const Transactions = ({
               label={header}
               description={description}
               fontSize={"font-20"}
-              customStyles={{ border: "none", padding: "0", width: "100%" }}
+              customStyles={{border: "none", padding: "0", width: "100%"}}
               buttons={tableVisualMore}
-              labelCustomStyles={{ color: "#C38C5C" }}
+              labelCustomStyles={{color: "#C38C5C"}}
             />
           </div>
         }
