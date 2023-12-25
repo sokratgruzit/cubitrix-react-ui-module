@@ -198,6 +198,10 @@ export const DashboardTable = ({
                 {txType === "deposit" ? ` ${amount} A1` : ""}
                 {txType === "payment" ? ` ${tockenCount} A1` : ""}
                 {txType === "transfer" ? ` ${amount} ${currency || "A1"}` : ""}
+                {txType === "Internal Transfer"
+                  ? ` ${amount} ${currency || "A1"}`
+                  : ""}
+                {txType === "bonus" ? ` ${amount}  A1` : ""}
                 {txType === "withdraw"
                   ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
                   : ""}
