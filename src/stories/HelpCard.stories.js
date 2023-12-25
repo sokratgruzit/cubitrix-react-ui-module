@@ -15,6 +15,14 @@ stories.add("HelpCard", (props) => {
   return (
     <div>
       <HelpCard
+        result={"success"}
+        text={
+          "your text your text your text your "
+        }
+        body={"notification"}
+        active={active}
+      />
+      <HelpCard
         status={"info"}
         color={"#fff"}
         body={"normal"}

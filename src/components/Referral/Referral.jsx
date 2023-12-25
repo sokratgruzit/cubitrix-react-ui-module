@@ -67,6 +67,7 @@ export const Referral = ({
   const [activeAddCopy, setActiveAddCopy] = useState(null);
 
   const { width } = useMobileWidth();
+
   let openTreeInfo = (item, noBack) => {
     if (item == null) {
       setActiveTreeInfo(null);
@@ -938,12 +939,12 @@ export const Referral = ({
                                                     suItem.side == "left"
                                                       ? {
                                                           left: mobile
-                                                            ? "0px"
+                                                            ? "80px"
                                                             : "120px",
                                                         }
                                                       : {
                                                           right: mobile
-                                                            ? "0px"
+                                                            ? "80px"
                                                             : "120px",
                                                         }
                                                   }

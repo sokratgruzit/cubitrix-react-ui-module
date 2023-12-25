@@ -1,4 +1,6 @@
 import "./HelpCard.css";
+import ErrorSvg from "../../assets/svgs/ErrorSvg";
+import SuccessSvg from "../../assets/svgs/SuccessSvg";
 
 export const HelpCard = (props) => {
   let svg = (
@@ -201,7 +203,9 @@ export const HelpCard = (props) => {
       )}
       {props.body === "long" ? (
         <div className="toast-body">
-          <p className="font-12">Mail verification is necessary to set up security.</p>
+          <p className="font-12">
+            Mail verification is necessary to set up security.
+          </p>
           <p className="toast-text font-12">
             If you did not receive the verification code in the mail
           </p>
@@ -222,6 +226,28 @@ export const HelpCard = (props) => {
               />
             </svg>
           </span>
+        </div>
+      ) : (
+        ""
+      )}
+      {props.body === "notification" ? (
+        <div
+          className={`submit-notification-container ${
+            props.active ? "animate" : ""
+          }`}
+          role={"alert"}
+          style={props.customStyles}
+        >
+          {props.result === "success" ? <SuccessSvg /> : <ErrorSvg />}
+          <p
+            className="font-12"
+            style={{
+              color: props.result === "success" ? "#66BB6A" : "#FF6969",
+            }}
+          >
+            {props.result}
+          </p>
+          <p className="toast-text font-12">{props.text}</p>
         </div>
       ) : (
         ""
