@@ -249,11 +249,11 @@ export const Staking = ({
                       [
                         `${item.amount?.toLocaleString("en-US", {
                           minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
+                          maximumFractionDigits: 8,
                         })} ${item.currency?.toUpperCase()}`,
                         createdTime,
                         createdUnTime,
-                        `${item.percentage.toFixed(2)} %`,
+                        `${item.percentage.toFixed()} %`,
                       ][index]
                     }
                   </span>

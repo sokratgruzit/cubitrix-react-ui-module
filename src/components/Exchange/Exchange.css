@@ -75,6 +75,8 @@
   top: 33px;
   right: 10px;
   color: rgba(255, 255, 255, 0.6);
+  background-color: #10282b;
+  padding-left: 5px;
 }
 
 .exchange-accounts-container {
