@@ -471,7 +471,7 @@ stories.add("Staking", () => {
         currencyStakes={[
           {
             address: "0x30181562290698bb591c3bd58ed40e44eaa6d3d9",
-            amount: 3,
+            amount: 0.0999,
             createdAt: "2023-12-19T05:19:45.397Z",
             currency: "bnb",
             expected_reward: 0.02958702126294188,
