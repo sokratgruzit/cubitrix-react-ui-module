@@ -14,6 +14,7 @@ stories.add("HelpCard", (props) => {
 
   return (
     <div>
+    <button onClick={() => setActive(!active)}>success</button>
       <HelpCard
         result={"success"}
         text={
