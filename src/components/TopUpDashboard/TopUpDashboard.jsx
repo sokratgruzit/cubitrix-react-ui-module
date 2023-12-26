@@ -5,6 +5,7 @@ import { Button } from "../Button";
 import ConfirmPaymentPopup from "../TopUp/ConfirmPaymentPopup";
 import { Input } from "../Input";
 import { HelpText } from "../HelpText";
+import { HelpCard } from "../HelpCard";
 
 export const TopUpDashboard = ({
   handlePaymentConfirm,
@@ -21,6 +22,8 @@ export const TopUpDashboard = ({
   translates,
   cancel_exchange,
   setExchangeDetails,
+  active,
+  transactionStatus,
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("USDT");
   const [selectedChain, setSelectedChain] = useState("ETH");
@@ -186,7 +189,7 @@ export const TopUpDashboard = ({
           />
         </div>
 
-        {exchangeDetails?.exchangeId && (
+        {exchangeDetails?.exchangeId && !active && (
           <Popup
             popUpElement={
               <ConfirmPaymentPopup
@@ -206,6 +209,18 @@ export const TopUpDashboard = ({
             handlePopUpClose={() => setExchangeDetails({})}
           />
         )}
+        {
+          <HelpCard
+            result={transactionStatus === "approved" ? "success" : "canceled"}
+            text={
+              transactionStatus === "approved"
+                ? "Payment complited"
+                : "Payment canceled"
+            }
+            body={"notification"}
+            active={active}
+          />
+        }
       </div>
     </div>
   );
