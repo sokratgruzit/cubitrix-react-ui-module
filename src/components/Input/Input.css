@@ -1133,7 +1133,7 @@ input.input-range[type="range"]:focus::-ms-fill-upper {
   background: transparent;
 }
 .input-input__plus-minus-btns {
-  width: 25px;
+  /* width: 25px; */
   position: absolute;
   right: 6px;
   align-items: center;
@@ -1144,7 +1144,7 @@ input.input-range[type="range"]:focus::-ms-fill-upper {
   fill: #c38c5c;
 }
 .input-input__plus-minus-btns > div {
-  width: 25px;
+  /* width: 25px; */
   height: 25px;
   display: flex;
   align-items: center;

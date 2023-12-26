@@ -245,7 +245,7 @@ export const Tabs = (props) => {
 
   if (props.type === "trade") {
     tabs = (
-      <div style={props?.customStyles} className="card-slider-navigation">
+      <div style={props?.customStyles} className="tradeTab">
         {props.tabsData?.map((item, index) => {
           return (
             <div
@@ -258,12 +258,12 @@ export const Tabs = (props) => {
               }}
             >
               <div
-                className={`card-slider-navigation_item ${
-                  index == props.activeTab ? "active" : ""
+                className={`tradeTab_item ${
+                  index == props.activeTab ? "item_active" : ""
                 }`}
                 // onClick={() => setAccountType(item?.account_category)}
               >
-                <p>{item.title}</p>
+                <span>{item.title}</span>
               </div>
             </div>
           );
