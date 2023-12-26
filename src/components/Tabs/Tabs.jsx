@@ -245,23 +245,29 @@ export const Tabs = (props) => {
 
   if (props.type === "trade") {
     tabs = (
-      <div style={props.customStyles} className="tabsTrade">
-        {props.tabsData.map((item, index) => (
-          <div
-            key={index}
-            onClick={() => {
-              handleTabClick(index);
-              if (item.onClick) {
-                item.onClick();
-              }
-            }}
-            className={`tabTrade ${
-              index === props.activeTab ? "active-tabTrade" : ""
-            }`}
-          >
-            {item.title}
-          </div>
-        ))}
+      <div style={props?.customStyles} className="card-slider-navigation">
+        {props.tabsData?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              onClick={() => {
+                handleTabClick(index);
+                if (item.onClick) {
+                  item.onClick();
+                }
+              }}
+            >
+              <div
+                className={`card-slider-navigation_item ${
+                  index == props.activeTab ? "active" : ""
+                }`}
+                // onClick={() => setAccountType(item?.account_category)}
+              >
+                <p>{item.title}</p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   }

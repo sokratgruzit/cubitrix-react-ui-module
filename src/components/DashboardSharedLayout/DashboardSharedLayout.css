@@ -20,7 +20,8 @@
   gap: 20px;
   position: fixed;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  transition-delay: .4s;
+  transition-delay: 0.4s;
+  z-index: 10000;
 }
 .dashboard-sidebar-container.open {
   width: 245px;
@@ -41,7 +42,7 @@
   border-bottom: none;
   border-top: none;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  transition-delay: .4s;
+  transition-delay: 0.4s;
 }
 .dashboard-main-container.open {
   width: calc(100% - 245px);
@@ -208,7 +209,7 @@
   right: 0;
   z-index: 5;
 }
-.dashboard-sidebar__horisontal-link{
+.dashboard-sidebar__horisontal-link {
   overflow: hidden;
   white-space: nowrap;
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
