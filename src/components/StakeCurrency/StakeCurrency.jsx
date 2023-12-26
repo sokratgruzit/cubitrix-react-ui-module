@@ -1,10 +1,10 @@
 import "./StakeCurrency.css";
-import React, { useState, useEffect } from "react";
-import { Visual } from "../Visual";
-import { Account } from "../../assets/svgs";
-import { Button } from "../Button";
-import { Input } from "../Input";
-import { HelpText } from "../HelpText";
+import React, {useState, useEffect} from "react";
+import {Visual} from "../Visual";
+import {Account} from "../../assets/svgs";
+import {Button} from "../Button";
+import {Input} from "../Input";
+import {HelpText} from "../HelpText";
 
 export const StakeCurrency = ({
   accountType,
@@ -23,7 +23,7 @@ export const StakeCurrency = ({
 }) => {
   const [selectedDuration, setSelectedDuration] = useState("360 D");
   const handleInputChange = (e, params) => {
-    const { name, onChange } = params;
+    const {name, onChange} = params;
 
     let data;
     if (!e.target) {
@@ -44,7 +44,7 @@ export const StakeCurrency = ({
       <Visual
         label={label}
         element={"popup-header"}
-        customStyles={{ width: "100%", maxWidth: "100%" }}
+        customStyles={{width: "100%", maxWidth: "100%"}}
         onClick={sideBarClose}
       />
       <div className="sidebar-body">
@@ -52,11 +52,11 @@ export const StakeCurrency = ({
           <div className="deposit-card">
             <img src={cardImg} className="deposit-card-img" />
             <div className="deposit-card_header">
-              <Account type={accountType.toLowerCase()} />
-              <h4 className="font-16">{accountType.toUpperCase()} account</h4>
+              <Account type={accountType?.toLowerCase()} />
+              <h4 className="font-16">{accountType?.toUpperCase()} account</h4>
             </div>
             <div className="deposit-card_content">
-              <h4 className="font-14">{accountType.toUpperCase()} Balance</h4>
+              <h4 className="font-14">{accountType?.toUpperCase()} Balance</h4>
               <p>{accountBalance}</p>
               <span className="font-14">{accountBalanceSecond}</span>
             </div>
@@ -65,9 +65,9 @@ export const StakeCurrency = ({
             <div className="deposit-inputs">
               {inputs?.map((params, index) => {
                 let selectedOption;
-                if (params.type === "lable-input-select") {
-                  selectedOption = params?.options.find(
-                    (option) => option.value === currentObject[params?.name],
+                if (params?.type === "lable-input-select") {
+                  selectedOption = params?.options?.find(
+                    (option) => option?.value === currentObject[params?.name]
                   );
                 }
                 return (
@@ -75,8 +75,8 @@ export const StakeCurrency = ({
                     key={index}
                     type={params?.type}
                     inputType={params?.inputType}
-                    label={params.title}
-                    name={params.name}
+                    label={params?.title}
+                    name={params?.name}
                     value={
                       params?.type === "lable-input-select"
                         ? selectedOption?.name ||
@@ -84,14 +84,16 @@ export const StakeCurrency = ({
                           params?.options[0]?.value
                         : currentObject[params?.name] || params?.defaultAny
                     }
-                    customStyles={{ width: "100%" }}
+                    customStyles={{width: "100%"}}
                     selectHandler={(opt) => {
                       handleInputChange(opt, params);
                     }}
                     placeholder={params?.placeholder}
                     onChange={(e) => handleInputChange(e, params)}
                     defaultData={params?.options}
-                    customInputStyles={{ border: "1px solid rgba(255, 255, 255, 0.1)" }}
+                    customInputStyles={{
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                    }}
                     svg={
                       params?.type === "lable-input-select"
                         ? selectedOption?.svg
@@ -101,7 +103,7 @@ export const StakeCurrency = ({
                 );
               })}
               <div className="calculator__buttons">
-                {durationOptions.map((item, index) => (
+                {durationOptions?.map((item, index) => (
                   <Button
                     key={index}
                     label={item}
@@ -109,7 +111,7 @@ export const StakeCurrency = ({
                     onClick={() => {
                       setSelectedDuration(item);
                     }}
-                    customStyles={{ width: "100%" }}
+                    customStyles={{width: "100%"}}
                     active={item === selectedDuration}
                   />
                 ))}
@@ -119,7 +121,10 @@ export const StakeCurrency = ({
               <HelpText
                 title={`${
                   stakingAPY[parseInt(selectedDuration.split(" ")[0], 10)]
-                }% APY On ${parseInt(selectedDuration.split(" ")[0], 10)} days.`}
+                }% APY On ${parseInt(
+                  selectedDuration.split(" ")[0],
+                  10
+                )} days.`}
                 status="warning"
                 color="#6A6D76"
                 icon={true}
@@ -128,6 +133,7 @@ export const StakeCurrency = ({
               <HelpText title="No APY available" status="error" icon={true} />
             )}
           </div>
+
           <Button
             label={buttonLabel}
             size={"btn-lg"}
