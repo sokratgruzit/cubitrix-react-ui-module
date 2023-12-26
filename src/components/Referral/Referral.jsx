@@ -1,22 +1,22 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, {useState, useEffect, Fragment} from "react";
 
 // components
-import { Visual } from "../Visual";
-import { Table } from "../Table";
-import { Button } from "../Button";
-import { ReferralCard } from "../ReferralCard";
-import { Footer } from "../Footer";
-import { InfoBox } from "../InfoBox";
-import { DisabledPage } from "../DisabledPage";
-import { FilterBox } from "../FilterBox";
-import { DashboardTable } from "../Dashboard/components/DashboardTable/DashboardTable";
+import {Visual} from "../Visual";
+import {Table} from "../Table";
+import {Button} from "../Button";
+import {ReferralCard} from "../ReferralCard";
+import {Footer} from "../Footer";
+import {InfoBox} from "../InfoBox";
+import {DisabledPage} from "../DisabledPage";
+import {FilterBox} from "../FilterBox";
+import {DashboardTable} from "../Dashboard/components/DashboardTable/DashboardTable";
 import translates from "../../translates.json";
 
 // svgs
-import { StickyNoteIcon, ReferralPattern } from "../../assets/svgs";
+import {StickyNoteIcon, ReferralPattern} from "../../assets/svgs";
 
 // hooks
-import { useMobileWidth } from "../../hooks/useMobileWidth";
+import {useMobileWidth} from "../../hooks/useMobileWidth";
 
 // styles
 import "./Referral.css";
@@ -231,7 +231,7 @@ export const Referral = ({
       setTableFilterOutcomingData={setTableFilterOutcomingData}
       tableSearchSelect={tableSearchSelect}
       tableHeader={tableHeader}
-      customStyles={{ marginBottom: "20px", marginTop: "20px" }}
+      customStyles={{marginBottom: "20px", marginTop: "20px"}}
     />
   );
 
@@ -330,7 +330,7 @@ export const Referral = ({
               </div>
             </div>
             <div className="table-more" />
-            <div className="icon-place" style={{ height: "40px" }}>
+            <div className="icon-place" style={{height: "40px"}}>
               <svg
                 width="12"
                 height="7"
@@ -484,7 +484,7 @@ export const Referral = ({
               </div>
             </div>
             <div className="table-more" />
-            <div className="icon-place" style={{ height: "40px" }}>
+            <div className="icon-place" style={{height: "40px"}}>
               <svg
                 width="12"
                 height="7"
@@ -531,8 +531,8 @@ export const Referral = ({
   const tables = [
     {
       type: referralHistoryTableType,
-      header: "Referral Records",
-      description: `History of your referral rebates.`,
+      header: translates.referral_history.en,
+      description: translates.history_of.en,
       tableHeader: referralHistoryTableHead,
       data: rebatesTableData,
       tableEmpty: referralHistoryTableEmpty,
@@ -647,7 +647,7 @@ export const Referral = ({
                       width: "100%",
                     }}
                     buttons={referralTreeBtnsRight}
-                    labelCustomStyles={{ color: "#C38C5C" }}
+                    labelCustomStyles={{color: "#C38C5C"}}
                     centerButtons={true}
                     buttonsLeft={referralTreeBtnsLeft}
                   />
@@ -687,7 +687,7 @@ export const Referral = ({
                       <div className="referral-tree-item-level referral-tree-item-level-active">
                         <div
                           className={`referral-tree-item`}
-                          style={{ width: 100 + "%" }}
+                          style={{width: 100 + "%"}}
                         >
                           <div
                             className="referral-tree-btn"
@@ -709,7 +709,7 @@ export const Referral = ({
                             {treeInfo !== null && (
                               <div
                                 className="referral-tree-info referral-tree-info-main"
-                                style={{ right: mobile ? "0" : "120px" }}
+                                style={{right: mobile ? "0" : "120px"}}
                               >
                                 <InfoBox
                                   type="reward-box"
@@ -721,7 +721,7 @@ export const Referral = ({
                                       : false
                                   }
                                   cardBody={treeInfo}
-                                  customStyle={{ width: "100%" }}
+                                  customStyle={{width: "100%"}}
                                 />
                               </div>
                             )}
@@ -1021,29 +1021,31 @@ export const Referral = ({
             />
           </div>
         </div>
-        <div className="referral-tables-container">
-          {tables?.map((item, index) => (
-            <DashboardTable
-              key={index + item?.description}
-              type={item?.type}
-              header={item?.header}
-              description={item?.description}
-              footer={item?.footer}
-              rightPanelData={item?.rightPanelData}
-              tableHeader={item?.tableHeader}
-              referralCardsData={item?.referralCardsData}
-              data={item?.data}
-              tableEmpty={item?.tableEmpty}
-              loading={item?.loading}
-              tableButtons={item?.tableButtons}
-              tableEmptyValue={item?.tableEmptyValue}
-              tablePagination={item?.tablePagination}
-              paginationCurrent={item?.paginationCurrent}
-              paginationTotal={item?.paginationTotal}
-              paginationEvent={item?.paginationEvent}
-            />
-          ))}
-        </div>
+        {rebatesTableData.length > 0 && (
+          <div className="referral-tables-container">
+            {tables?.map((item, index) => (
+              <DashboardTable
+                key={index + item?.description}
+                type={item?.type}
+                header={item?.header}
+                description={item?.description}
+                footer={item?.footer}
+                rightPanelData={item?.rightPanelData}
+                tableHeader={item?.tableHeader}
+                referralCardsData={item?.referralCardsData}
+                data={item?.data}
+                tableEmpty={item?.tableEmpty}
+                loading={item?.loading}
+                tableButtons={item?.tableButtons}
+                tableEmptyValue={item?.tableEmptyValue}
+                tablePagination={item?.tablePagination}
+                paginationCurrent={item?.paginationCurrent}
+                paginationTotal={item?.paginationTotal}
+                paginationEvent={item?.paginationEvent}
+              />
+            ))}
+          </div>
+        )}
         <Footer />
       </div>
     </div>

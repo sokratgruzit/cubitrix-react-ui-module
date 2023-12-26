@@ -1,7 +1,7 @@
 import React from "react";
 
-import { CardSlider } from "./components/CardSlider/CardSlider";
-import { DashboardTable } from "./components/DashboardTable/DashboardTable";
+import {CardSlider} from "./components/CardSlider/CardSlider";
+import {DashboardTable} from "./components/DashboardTable/DashboardTable";
 import translates from "../../translates.json";
 import "./Dashboard.css";
 // import { Account, AccountType } from '../../assets/svgs'
@@ -68,7 +68,7 @@ export const Dashboard = ({
     },
   ];
 
-  if (tier && tier !== "Novice Navigator") {
+  if (tier && tier !== "Novice Navigator" && rebatesTableData.length > 0) {
     referralItem = {
       type: referralHistoryTableType,
       header: translates?.referral_history.en,
