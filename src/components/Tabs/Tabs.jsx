@@ -1,5 +1,5 @@
 import "./Tabs.css";
-import { useState } from "react";
+import {useState} from "react";
 
 export const Tabs = (props) => {
   const [toggle, setToggle] = useState(1);
@@ -102,16 +102,16 @@ export const Tabs = (props) => {
   if (props.type === "two-component-tabs") {
     tabs = (
       <div className={`${"two-component-tabs"}`} onClick={props.onClick}>
-          <div
-              onClick={() => {
-                  tabsHandler(2);
-              }}
-              className={`${"two-component-tab"}
+        <div
+          onClick={() => {
+            tabsHandler(2);
+          }}
+          className={`${"two-component-tab"}
               ${toggle === 2 ? "active" : ""}`}
-          >
-              <span>0.93801</span>
-              <span>Buy</span>
-          </div>
+        >
+          <span>0.93801</span>
+          <span>Buy</span>
+        </div>
         <div
           onClick={() => {
             tabsHandler(1);
@@ -119,62 +119,83 @@ export const Tabs = (props) => {
           className={`${"two-component-tab"}
               ${toggle === 1 ? "active" : ""}`}
         >
-            <span>0.93801</span>
-            <span>Sell</span>
+          <span>0.93801</span>
+          <span>Sell</span>
         </div>
-
       </div>
     );
   }
   if (props.type === "text-tabs") {
-      tabs = (
-          <div style={props.customStyles} className='text-tabs'>
-              {props.tabsData.map((item, index) => (
-                  <div
-                      key={index + item}
-                      onClick={() => {item.onClick && item.onClick(item.name)}}
-                      onMouseEnter={() => {!item.onClick && setSelect(item + index)}}
-                      onMouseLeave={() => {!item.onClick && setSelect(false)}}
-                      className={`text-tab ${((item.name === props.activeTab && !item.tabSelect) || (item?.tabSelect && item.tabSelect.some(obj => obj.name === props.activeTab))) ? 'active-text-tab' : ''} ${item + index == select ? 'active-select' : ''}`}
-                  >
-                      {item.tabSelect ? (item.tabSelect.some(obj => obj.name === props.activeTab) ? item.tabSelect.find(tab => tab.name === props.activeTab).title : item.tabSelect[0].title) : item.title}
-                      {item.tabSelect && (
-                          <>
-                              <svg
-                                  className={`${"expend-i"} ${toggle === 3 ? "expend" : ""}`}
-                                  width="12"
-                                  height="7"
-                                  viewBox="0 0 12 7"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                              >
-                                  <path
-                                      d="M10.299 1.33337L6.47141 5.16101C6.01937 5.61305 5.27968 5.61305 4.82764 5.16101L1 1.33337"
-                                      stroke="#9C9DA3"
-                                      strokeWidth="1.5"
-                                      strokeMiterlimit="10"
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                  />
-                              </svg>
-                              <div className="text-tab__tooltip">
-                                  {
-                                      item.tabSelect.map((option, index) => {
-                                          return (
-                                              <div className={`text-tab__tooltip-option ${option.name == props.activeTab ? 'active' : ''}`} key={index + option} onClick={() => {option.onClick(item.option)}}>
-                                                  {option.title}
-                                              </div>
-                                          )
-                                      })
-                                  }
-                              </div>
-                          </>
-                      )}
-
-                  </div>
-              ))}
+    tabs = (
+      <div style={props.customStyles} className="text-tabs">
+        {props.tabsData.map((item, index) => (
+          <div
+            key={index + item}
+            onClick={() => {
+              item.onClick && item.onClick(item.name);
+            }}
+            onMouseEnter={() => {
+              !item.onClick && setSelect(item + index);
+            }}
+            onMouseLeave={() => {
+              !item.onClick && setSelect(false);
+            }}
+            className={`text-tab ${
+              (item.name === props.activeTab && !item.tabSelect) ||
+              (item?.tabSelect &&
+                item.tabSelect.some((obj) => obj.name === props.activeTab))
+                ? "active-text-tab"
+                : ""
+            } ${item + index == select ? "active-select" : ""}`}
+          >
+            {item.tabSelect
+              ? item.tabSelect.some((obj) => obj.name === props.activeTab)
+                ? item.tabSelect.find((tab) => tab.name === props.activeTab)
+                    .title
+                : item.tabSelect[0].title
+              : item.title}
+            {item.tabSelect && (
+              <>
+                <svg
+                  className={`${"expend-i"} ${toggle === 3 ? "expend" : ""}`}
+                  width="12"
+                  height="7"
+                  viewBox="0 0 12 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10.299 1.33337L6.47141 5.16101C6.01937 5.61305 5.27968 5.61305 4.82764 5.16101L1 1.33337"
+                    stroke="#9C9DA3"
+                    strokeWidth="1.5"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <div className="text-tab__tooltip">
+                  {item.tabSelect.map((option, index) => {
+                    return (
+                      <div
+                        className={`text-tab__tooltip-option ${
+                          option.name == props.activeTab ? "active" : ""
+                        }`}
+                        key={index + option}
+                        onClick={() => {
+                          option.onClick(item.option);
+                        }}
+                      >
+                        {option.title}
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
           </div>
-      );
+        ))}
+      </div>
+    );
   }
   if (props.type === "button-variant") {
     tabs = (
@@ -201,9 +222,9 @@ export const Tabs = (props) => {
       </div>
     );
   }
-  if (props.type === 'simple') {
+  if (props.type === "simple") {
     tabs = (
-      <div style={props.customStyles} className='tabs'>
+      <div style={props.customStyles} className="tabs">
         {props.tabsData.map((item, index) => (
           <div
             key={index}
@@ -212,7 +233,31 @@ export const Tabs = (props) => {
               if (item.onClick) {
                 item.onClick();
               }
-            }} className={`tab ${index === props.activeTab ? 'active-tab' : ''}`}
+            }}
+            className={`tab ${index === props.activeTab ? "active-tab" : ""}`}
+          >
+            {item.title}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (props.type === "trade") {
+    tabs = (
+      <div style={props.customStyles} className="tabsTrade">
+        {props.tabsData.map((item, index) => (
+          <div
+            key={index}
+            onClick={() => {
+              handleTabClick(index);
+              if (item.onClick) {
+                item.onClick();
+              }
+            }}
+            className={`tabTrade ${
+              index === props.activeTab ? "active-tabTrade" : ""
+            }`}
           >
             {item.title}
           </div>

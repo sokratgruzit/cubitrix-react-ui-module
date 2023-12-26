@@ -32,11 +32,13 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.custom-arrow-up:hover, .custom-arrow-down:hover {
+.custom-arrow-up:hover,
+.custom-arrow-down:hover {
   opacity: 1;
 }
 
-.custom-arrow-up svg path, .custom-arrow-down svg path {
+.custom-arrow-up svg path,
+.custom-arrow-down svg path {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
 }
 
@@ -205,7 +207,7 @@ input[type="number"] {
   border-radius: 13px;
   text-transform: uppercase;
   font-size: 14px;
-  opacity: .6;
+  opacity: 0.6;
   padding-bottom: 1px;
 }
 
@@ -1101,13 +1103,13 @@ input.input-range[type="range"]:focus::-ms-fill-upper {
 }
 
 /* Style when the checkbox is checked */
-.input-checkbox:checked+.custom-checkbox {
+.input-checkbox:checked + .custom-checkbox {
   background: #c38c5c;
   /* Background color when selected */
 }
 
 /* Checkmark styling */
-.input-checkbox:checked+.custom-checkbox::after {
+.input-checkbox:checked + .custom-checkbox::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -1122,11 +1124,11 @@ input.input-range[type="range"]:focus::-ms-fill-upper {
 }
 
 /* Optional: Style for the disabled state */
-.disabled-checkbox+.custom-checkbox {
+.disabled-checkbox + .custom-checkbox {
   background: rgba(255, 255, 255, 0.5);
   cursor: not-allowed;
 }
-.input__plus-minus input{
+.input__plus-minus input {
   width: 100%;
   background: transparent;
 }
@@ -1137,11 +1139,11 @@ input.input-range[type="range"]:focus::-ms-fill-upper {
   bottom: 12px;
   display: flex;
 }
-.input-input__plus-minus-btns > div:hover path{
+.input-input__plus-minus-btns > div:hover path {
   fill: #c38c5c;
 }
 .input-input__plus-minus-btns > div {
-  width: 25px;
+  width: 15px;
   height: 25px;
   display: flex;
   align-items: center;
