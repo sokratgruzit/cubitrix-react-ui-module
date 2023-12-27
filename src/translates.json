@@ -615,7 +615,7 @@
     "en": "Please use one of the following email providers:"
   },
   "please_choose_the_payment_currency": {
-    "en": "Please choose the payment currency in which you intend to purchase A1 tokens."
+    "en": "Please input the amount in USD that you wish to exchange for A1."
   },
   "please_choose_a_network": {
     "en": "Please choose a network chain through which you will transfer the selected currency."
@@ -633,10 +633,10 @@
     "en": "Referral Code"
   },
   "your_currently_possess": {
-    "en": "You currently possess"
+    "en": "You currently hold"
   },
   "a_worth": {
-    "en": "A1 worth"
+    "en": "A1, valued at"
   },
   "i_agree": {
     "en": "I agree to the terms and conditions"
@@ -654,10 +654,10 @@
     "en": "Transactions History"
   },
   "please_enter_desired_amount": {
-    "en": "Please enter the desired amount of USD you would like to purchase for A1."
+    "en": "Enter your desired amount to determine how much A1 you will receive."
   },
   "enter_the_amount_you_would": {
-    "en": "Enter the amount you would like to contribute in order to calculate the amount of A1 you will receive. The calculator below helps to convert the required quantity of A1 into the amount of your selected currency."
+    "en": "Use the calculator provided below to easily convert your chosen quantity of A1 into its equivalent value in USD."
   },
   "currency_staking": {
     "en": "Currency Staking"
@@ -669,7 +669,7 @@
     "en": "Choose Balance"
   },
   "tokens_will_be_deducted": {
-    "en": "A1 tokens will be deducted from your A1 balance and a 2 A1 transaction fee will apply. If you reject the transaction, the A1 tokens will be available in your wallet where they are available for staking."
+    "en": "The required amount of A1, along with an additional transaction fee, will be deducted from your balance. If you decide to reject the transaction, the AI tokens will remain in your wallet and will be available for staking."
   },
   "withdraw_and_stake": {
     "en": "Withdraw and Stake"
@@ -690,13 +690,13 @@
     "en": "Token Amount:"
   },
   "help_text_please_send": {
-    "en": "Please send exact amount to the address above. Once system detects A1 in your wallet you will be on the next step."
+    "en": "Please transfer the exact specified amount to the above-mentioned address. As soon as the system detects the amount in your wallet, you will automatically proceed to the next step."
   },
   "please_send": {
-    "en": "Please send"
+    "en": "Please send the exact amount of"
   },
   "to_the_address_below": {
-    "en": "to the address below. The A1 balance will appear in your account after system approves it. This might take up to 1 minute."
+    "en": "to the address provided below. Once the system verifies the transaction, your A1 balance will be updated in your account. This verification process may take a few minutes."
   },
   "view_all_transactions": {
     "en": "View All Transactions"
@@ -708,6 +708,6 @@
     "en": "Become Elite Member"
   },
   "your_transaction_has_been_placed_successfully": {
-    "en": "Your transaction has been placed successfully."
+    "en": "Your request has been successfully placed."
   }
 }

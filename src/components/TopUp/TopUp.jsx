@@ -87,9 +87,8 @@ export const TopUp = ({
         2. Set amount of A1 you would like to purchase
       </p>
       <p className="topup_info">
-        Enter the amount you would like to contribute in order to calculate the
-        amount of A1 you will receive. The calculator below helps to convert the
-        required quantity of A1 into the amount of your selected currency.
+        Use the calculator provided below to easily convert your chosen quantity
+        of A1 into its equivalent value in USD.
       </p>
       <p>A1 Amount</p>
       <div className="topupDashboard_inputContainer">

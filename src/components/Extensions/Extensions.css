@@ -5,7 +5,7 @@
   background: #0e2225;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .extensions-main {
@@ -46,8 +46,8 @@
   border-bottom-right-radius: 100px;
   border-bottom-left-radius: 100px;
   background: #0d1e21;
-  padding: 55px 100px 0;
-  height: 50%;
+  padding: 55px 100px;
+  height: auto;
   min-height: 390px;
 }
 

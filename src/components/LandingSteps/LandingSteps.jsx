@@ -542,9 +542,9 @@ export const LandingSteps = ({
                 </div>
                 <HelpText
                   status={"error"}
-                  title={`You currently hold ${tokenBalance} A1. To be eligible for staking, a minimum of 100 USD worth of A1 tokens is required, which amounts to ${countViaRate(
+                  title={`You hold ${tokenBalance} A1. to participate in staking, you must have at least 100 A1, equivalent to ${countViaRate(
                     100 / exchangeRate
-                  )} A1. During the registration process, the maximum staking limit is set at 500,000 USD worth of A1 .`}
+                  )} USD. The maximum amount you can stake during the registration process is capped at the value of 500,000 USD in A1.`}
                   color={"#6A6D76"}
                   icon={true}
                   customStyles={{ marginBottom: "5px" }}

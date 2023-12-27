@@ -41,7 +41,7 @@ stories.add("Extensions", () => {
       value: "staking",
 
       description:
-        "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
+        "Explore the Referral Program, a rewarding way to share your enthusiasm for this platform! By inviting others to join using your unique referral code, you can earn bonuses for every successful referral. This program not only benefits your referrals with access to our services but also enhances your experience as a valued member. Start sharing and earning with ease today!",
       hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
       handleSwitch: (title, value) =>
         setIsActive((prev) => ({ ...prev, [title]: value })),
@@ -53,7 +53,7 @@ stories.add("Extensions", () => {
       title: "Loan",
       value: "loan",
       description:
-        "Crust pencil novel colours drift unfamed, oft line balls instructed sociis.",
+        "taking your tokens offers a rewarding opportunity to earn additional tokens as returns on your investment. By securing your tokens in our trusted staking platform, you're not just locking them away – you're actively participating in a system that rewards you. Our platform provides a straightforward and user-friendly interface, allowing you to easily stake your tokens and monitor your accruing rewards. We offer attractive staking rates to ensure that your investment experience is both profitable and hassle-free.",
       hash: "0x74a81F84268744a40FEBc48f8b812a1f188D80C3",
       handleSwitch: (title, value) =>
         setIsActive((prev) => ({ ...prev, [title]: value })),
