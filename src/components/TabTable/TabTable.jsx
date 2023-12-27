@@ -1,5 +1,6 @@
 import "./TabTable.css";
-import { Button } from "../Button";
+import {Button} from "../Button";
+import {HelpText} from "../HelpText";
 
 export const TabTable = (props) => {
   let component = null;
@@ -94,6 +95,43 @@ export const TabTable = (props) => {
               type={"btn-secondary"}
               onClick={() => setToggle((prevState) => !prevState)}
             />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (props.type === "tab-table-trade") {
+    component = (
+      <div className={`${props.type}`} style={{width: "100%"}}>
+        <div className="table-col" style={{width: "100%"}}>
+          <div className="table-row" style={{width: "100%"}}>
+            <div
+              className="d-flex font-12"
+              style={{width: "100%", alignItems: "flex-end", padding: "4px"}}
+            >
+              {props?.text1}
+              <HelpText
+                status={"info"}
+                title={""}
+                fontSize={"hidden"}
+                icon={true}
+              />
+            </div>
+            <div className="mt-5">{props?.value1}</div>
+            <div
+              className="d-flex font-12"
+              style={{width: "100%", alignItems: "flex-end"}}
+            >
+              {props?.text2}
+              <HelpText
+                status={"info"}
+                title={""}
+                fontSize={"hidden"}
+                icon={true}
+              />
+            </div>
+            <div className="mt-5">{props?.value2}</div>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { storiesOf } from "@storybook/react";
+import React, {useState} from "react";
+import {storiesOf} from "@storybook/react";
 import "../assets/css/main-theme.css";
-import { Button } from "../components/Button";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Button} from "../components/Button";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 const stories = storiesOf("Button", module);
 
@@ -151,7 +151,7 @@ stories.add("Button", () => {
     },
   ];
   return (
-    <div style={{ marginLeft: "100px" }}>
+    <div style={{marginLeft: "100px"}}>
       <BrowserRouter>
         <Routes>
           <Route
@@ -165,7 +165,7 @@ stories.add("Button", () => {
                   route={item.route}
                   element={"side-admin-button"}
                   svg={item.svg}
-                  customStyles={{ width: "350px" }}
+                  customStyles={{width: "350px"}}
                   subMenu={item.subMenu}
                   open={true}
                 />
@@ -177,14 +177,14 @@ stories.add("Button", () => {
       <Button
         label={"User Account"}
         element={"side-button"}
-        customStyles={{ width: "340px" }}
+        customStyles={{width: "340px"}}
         onClick={() => setToggle((prevState) => !prevState)}
       />
       <Button
         label={"Metamask"}
         element={"image-button"}
         image={image}
-        customStyles={{ width: "340px" }}
+        customStyles={{width: "340px"}}
         onClick={() => setToggle((prevState) => !prevState)}
       />
       <Button
@@ -222,11 +222,11 @@ stories.add("Button", () => {
         onClick={() => setToggle((prevState) => !prevState)}
       />
       <Button
-          label={"Become Elite Member"}
-          status={"warning"}
-          element={"help-button"}
-          icon={false}
-          onClick={() => setToggle((prevState) => !prevState)}
+        label={"Become Elite Member"}
+        status={"warning"}
+        element={"help-button"}
+        icon={false}
+        onClick={() => setToggle((prevState) => !prevState)}
       />
     </div>
   );

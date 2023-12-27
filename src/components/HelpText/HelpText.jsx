@@ -1,5 +1,5 @@
 import "./HelpText.css";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 export const HelpText = (props) => {
   const [color, setColor] = useState("");
@@ -96,6 +96,7 @@ export const HelpText = (props) => {
         )}
         {props.status === "info" ? (
           <svg
+            cursor="pointer"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -125,7 +126,7 @@ export const HelpText = (props) => {
           ""
         )}
       </div>
-      <p style={{ color: color }} className={props.fontSize}>
+      <p style={{color: color}} className={props.fontSize}>
         {props.title}
       </p>
     </div>
