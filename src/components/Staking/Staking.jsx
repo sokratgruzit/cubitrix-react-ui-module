@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 // hooks
-import { useMobileWidth } from "../../hooks/useMobileWidth";
+import {useMobileWidth} from "../../hooks/useMobileWidth";
 import useDateFormatting from "../../hooks/useDateFormatting";
 
 // components
-import { AccountSummary } from "../AccountSummary";
-import { Button } from "../Button";
-import { Table } from "../Table";
-import { Visual } from "../Visual";
+import {AccountSummary} from "../AccountSummary";
+import {Button} from "../Button";
+import {Table} from "../Table";
+import {Visual} from "../Visual";
 
 // svgs
 import {
@@ -20,7 +20,7 @@ import {
 // styles
 import "../../assets/css/main-theme.css";
 import "./Staking.css";
-import { Footer } from "../Footer";
+import {Footer} from "../Footer";
 
 export const Staking = ({
   accountSummaryData,
@@ -43,10 +43,10 @@ export const Staking = ({
   translates,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
-  const { width, mobile } = useMobileWidth();
+  const {width, mobile} = useMobileWidth();
 
   const [selectedTab, setSelectedTab] = useState("staking");
-  const { convertDateFormat, convertReceivedDateFormat } = useDateFormatting();
+  const {convertDateFormat, convertReceivedDateFormat} = useDateFormatting();
 
   let tableData = null;
 
@@ -86,12 +86,12 @@ export const Staking = ({
                 <div
                   key={index}
                   className={`td col ${i.mobileWidth ? true : false}`}
-                  style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+                  style={{width: `${mobile ? i.mobileWidth : i.width}%`}}
                 >
                   <span>
                     {
                       [
-                        (item.amount / 10 ** 18)?.toLocaleString("en-US", {
+                        (item?.amount / 10 ** 18)?.toLocaleString("en-US", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
                         }) + " A1",
@@ -109,7 +109,7 @@ export const Staking = ({
           <div className="table-more" />
           <div
             className="icon-place"
-            style={{ display: "flex", cursor: "pointer" }}
+            style={{display: "flex", cursor: "pointer"}}
             onClick={() => {
               mobileExpandFunc(index);
             }}
@@ -133,7 +133,7 @@ export const Staking = ({
           </div>
           <div
             className="table-mobile"
-            style={{ display: "block", cursor: "initial" }}
+            style={{display: "block", cursor: "initial"}}
           >
             <div className="table-mobile-content">
               {width <= 1300 && (
@@ -186,7 +186,7 @@ export const Staking = ({
                           : "Harvest"
                       }
                       active={index1 === 4}
-                      customStyles={{ borderRadius: "32px" }}
+                      customStyles={{borderRadius: "32px"}}
                       onClick={() => tableHead[index1].onClick(index)}
                       disabled={
                         !isActive || index1 === 4
@@ -242,18 +242,18 @@ export const Staking = ({
                 <div
                   key={index}
                   className={`td col ${i.mobileWidth ? true : false}`}
-                  style={{ width: `${mobile ? i.mobileWidth : i.width}%` }}
+                  style={{width: `${mobile ? i.mobileWidth : i.width}%`}}
                 >
                   <span>
                     {
                       [
-                        `${item.amount?.toLocaleString("en-US", {
+                        `${item?.amount?.toLocaleString("en-US", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 8,
-                        })} ${item.currency?.toUpperCase()}`,
+                        })} ${item?.currency?.toUpperCase()}`,
                         createdTime,
                         createdUnTime,
-                        `${item.percentage.toFixed()} %`,
+                        `${item?.percentage.toFixed()} %`,
                       ][index]
                     }
                   </span>
@@ -340,16 +340,16 @@ export const Staking = ({
                   {isFetching && (
                     <div
                       className="table-loading-container"
-                      style={{ height: "50px" }}
+                      style={{height: "50px"}}
                     >
                       <div
                         className="table-loading"
-                        style={{ height: "30px", width: "30px" }}
+                        style={{height: "30px", width: "30px"}}
                       />
                     </div>
                   )}
                   {!isFetching && hasMoreData && (
-                    <div style={{ minHeight: "1px" }} ref={infiniteScrollRef} />
+                    <div style={{minHeight: "1px"}} ref={infiniteScrollRef} />
                   )}
                 </>
               )

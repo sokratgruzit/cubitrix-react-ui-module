@@ -1,28 +1,30 @@
-import { storiesOf } from "@storybook/react";
-import { useState, useEffect } from "react";
+import {storiesOf} from "@storybook/react";
+import {useState, useEffect} from "react";
 import "../assets/css/main-theme.css";
-import { AdminPanel } from "../components/AdminPanel";
-import { AdminHeader } from "../components/AdminHeader";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Button } from "../components/Button";
-import { useMobileWidth } from "../hooks/useMobileWidth";
-import { Logo } from "../assets/svgs";
-import { MoreButton } from "../components/MoreButton";
+import {AdminPanel} from "../components/AdminPanel";
+import {AdminHeader} from "../components/AdminHeader";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Button} from "../components/Button";
+import {useMobileWidth} from "../hooks/useMobileWidth";
+import {Logo} from "../assets/svgs";
+import {MoreButton} from "../components/MoreButton";
 
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
-  const { mobile } = useMobileWidth();
+  const {mobile} = useMobileWidth();
 
   const [mobileExpand, setMobileExpand] = useState(null);
   const [tableExpand, setTableExpand] = useState(null);
   const [devAppObject, setDevAppObject] = useState({});
   const [animateDom, setAnimateDom] = useState(false);
-  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] = useState({});
+  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] =
+    useState({});
   const [developerApiLoading, setDeveloperApiLoading] = useState(false);
 
   const [developerApiActive, setDeveloperApiActive] = useState(false);
-  const [developerApiResponseActive, setDeveloperApiResponseActive] = useState(false);
+  const [developerApiResponseActive, setDeveloperApiResponseActive] =
+    useState(false);
   useEffect(() => {
     setTimeout(() => {
       setAnimateDom(true);
@@ -522,8 +524,8 @@ stories.add("AdminPanel", () => {
   ];
 
   let changeDevObject = (e) => {
-    const { name, value } = e.target;
-    setDevAppObject((prev) => ({ ...prev, [name]: value }));
+    const {name, value} = e.target;
+    setDevAppObject((prev) => ({...prev, [name]: value}));
   };
 
   let developerApiArray = [
@@ -686,11 +688,11 @@ stories.add("AdminPanel", () => {
     setDeveloperApiResponseActive(route);
     if (type === "GET") {
       return setTimeout(() => {
-        setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+        setDeveloperApiSuccessResponse([{hey: "yeah"}]);
         setDeveloperApiLoading(false);
       }, 2000);
     }
-    setDeveloperApiSuccessResponse([{ hey: "yeah" }]);
+    setDeveloperApiSuccessResponse([{hey: "yeah"}]);
     setDeveloperApiLoading(false);
   };
 
@@ -709,7 +711,7 @@ stories.add("AdminPanel", () => {
         <div className="table more">
           <div
             className={`td col ${th[0].mobileWidth ? true : false}`}
-            style={{ width: `${mobile ? th[0].mobileWidth : th[0].width}%` }}
+            style={{width: `${mobile ? th[0].mobileWidth : th[0].width}%`}}
           >
             <span>{item.id}</span>
             <span>{item.hash}</span>
@@ -721,7 +723,7 @@ stories.add("AdminPanel", () => {
             className={`td expand ${tableExpand == item.id ? "active" : ""} ${
               th[1].mobileWidth ? true : false
             }`}
-            style={{ width: `${mobile ? th[1].mobileWidth : th[1].width}%` }}
+            style={{width: `${mobile ? th[1].mobileWidth : th[1].width}%`}}
           >
             <div>
               <span>{item.from}</span>
@@ -752,32 +754,32 @@ stories.add("AdminPanel", () => {
           </div>
           <div
             className={`td ${th[2].mobileWidth ? true : false}`}
-            style={{ width: `${mobile ? th[2].mobileWidth : th[3].width}%` }}
+            style={{width: `${mobile ? th[2].mobileWidth : th[3].width}%`}}
           >
             <span>{item.to}</span>
           </div>
           <div
             className={`td ${th[3].mobileWidth ? true : false}`}
-            style={{ width: `${mobile ? th[3].mobileWidth : th[3].width}%` }}
+            style={{width: `${mobile ? th[3].mobileWidth : th[3].width}%`}}
           >
             <span>{item.amount}</span>
           </div>
           <div
             className={`td ${th[4].mobileWidth ? true : false}`}
-            style={{ width: `${mobile ? th[4].mobileWidth : th[4].width}%` }}
+            style={{width: `${mobile ? th[4].mobileWidth : th[4].width}%`}}
           >
             <span>{item.domination}</span>
           </div>
           <div
             className={`td col ${th[5].mobileWidth ? true : false}`}
-            style={{ width: `${mobile ? th[5].mobileWidth : th[5].width}%` }}
+            style={{width: `${mobile ? th[5].mobileWidth : th[5].width}%`}}
           >
             <span>{item.date}</span>
             <span>{item.time}</span>
           </div>
           <div
             className={`td ${th[6].mobileWidth ? true : false}`}
-            style={{ width: `${mobile ? th[6].mobileWidth : th[6].width}%` }}
+            style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}
           >
             <span
               className={`alert-status-box 
@@ -815,20 +817,20 @@ stories.add("AdminPanel", () => {
           <div className="table-mobile-content">
             <div className="td">
               <div className="mobile-ttl">{th[2].name}</div>
-              <span>{item.to}</span>
+              <span>{item?.to}</span>
             </div>
             <div className="td">
               <div className="mobile-ttl">{th[3].name}</div>
-              <span>{item.amount}</span>
+              <span>{item?.amount}</span>
             </div>
             <div className="td">
               <div className="mobile-ttl">{th[4].name}</div>
-              <span>{item.domination}</span>
+              <span>{item?.domination}</span>
             </div>
             <div className="td col">
               <div className="mobile-ttl">{th[5].name}</div>
-              <span>{item.date}</span>
-              <span>{item.time}</span>
+              <span>{item?.date}</span>
+              <span>{item?.time}</span>
             </div>
             <div className="td type">
               <div className="mobile-ttl">{th[6].name}</div>
@@ -858,8 +860,10 @@ stories.add("AdminPanel", () => {
       />
       <div className={`admin-container`}>
         <div
-          className={`admin-sidebar animate-translateX ${animateDom ? "animate" : ""}`}
-          style={{ transitionDelay: ".1s" }}
+          className={`admin-sidebar animate-translateX ${
+            animateDom ? "animate" : ""
+          }`}
+          style={{transitionDelay: ".1s"}}
         >
           <BrowserRouter>
             <Routes>
@@ -874,10 +878,12 @@ stories.add("AdminPanel", () => {
                       route={item.route}
                       element={"side-admin-button"}
                       svg={item.svg}
-                      customStyles={{ width: "100%" }}
+                      customStyles={{width: "100%"}}
                       subMenu={item.subMenu}
                       active={location.pathname === item.route}
-                      subMenuActive={location.pathname.includes(item.subMenu?.route)}
+                      subMenuActive={location.pathname.includes(
+                        item.subMenu?.route
+                      )}
                     />
                   );
                 })}
@@ -900,7 +906,7 @@ stories.add("AdminPanel", () => {
                         route={item.route}
                         element={"side-admin-button"}
                         svg={item.svg}
-                        customStyles={{ width: "100%" }}
+                        customStyles={{width: "100%"}}
                       />
                     );
                   })}
@@ -922,7 +928,7 @@ stories.add("AdminPanel", () => {
                 arrow={"arrow-none"}
                 element={"button"}
                 onClick={() => console.log("hi")}
-                customStyles={{ margin: "0" }}
+                customStyles={{margin: "0"}}
               />
             </>
           }
@@ -957,7 +963,7 @@ stories.add("AdminPanel", () => {
               arrow={"arrow-none"}
               element={"button"}
               onClick={() => console.log("hi")}
-              customStyles={{ margin: "0" }}
+              customStyles={{margin: "0"}}
             />
           }
           walletConnect={true}

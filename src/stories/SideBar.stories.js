@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { storiesOf } from "@storybook/react";
+import React, {useEffect, useState} from "react";
+import {storiesOf} from "@storybook/react";
 import "../assets/css/main-theme.css";
-import { SideBar } from "../components/SideBar";
-import { Visual } from "../components/Visual";
-import { Button } from "../components/Button";
+import {SideBar} from "../components/SideBar";
+import {Visual} from "../components/Visual";
+import {Button} from "../components/Button";
 
-import { Connect } from "../components/Auth/Connect";
-import { UserAccount } from "../components/Auth/UserAccount";
-import { UserOptions } from "../components/Auth/UserOptions/UserOptions";
-import { SignIn } from "../components/Auth/SignIn";
-import { ResetPasswordForm } from "../components/Auth/ResetPasswordForm";
+import {Connect} from "../components/Auth/Connect";
+import {UserAccount} from "../components/Auth/UserAccount";
+import {UserOptions} from "../components/Auth/UserOptions/UserOptions";
+import {SignIn} from "../components/Auth/SignIn";
+import {ResetPasswordForm} from "../components/Auth/ResetPasswordForm";
 import ResetPassword from "../components/Auth/ResetPassword/ResetPassword";
-import { Popup } from "../components/Popup/Popup";
-import { ChangeNetwork } from "../components/Auth/ChangeNetwork";
-import { NoMetaMask } from "../components/Auth/NoMetaMask";
-import { Account, MetaMask } from "../assets/svgs";
-import { TransferFromAcc } from "../components/TransferFromAcc";
-import { Exchange } from "../components/Exchange";
-import { Deposit } from "../components/Deposit";
-import { StakeCurrency } from "../components/StakeCurrency";
-import { LevelSystem } from "../components/LevelSystem";
-import { ReferralCode } from "../components/ReferralCode";
-import { useMobileWidth } from "../hooks/useMobileWidth";
-import { FeeWarning } from "../components/Auth/FeeWarning";
+import {Popup} from "../components/Popup/Popup";
+import {ChangeNetwork} from "../components/Auth/ChangeNetwork";
+import {NoMetaMask} from "../components/Auth/NoMetaMask";
+import {Account, MetaMask} from "../assets/svgs";
+import {TransferFromAcc} from "../components/TransferFromAcc";
+import {Exchange} from "../components/Exchange";
+import {Deposit} from "../components/Deposit";
+import {StakeCurrency} from "../components/StakeCurrency";
+import {LevelSystem} from "../components/LevelSystem";
+import {ReferralCode} from "../components/ReferralCode";
+import {useMobileWidth} from "../hooks/useMobileWidth";
+import {FeeWarning} from "../components/Auth/FeeWarning";
 
 const stories = storiesOf("SideBar", module);
 
@@ -40,7 +40,7 @@ stories.add("SideBar", () => {
   });
   const [levelSystemTableOptions, setLevelSystemTableOptions] = useState([]);
 
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
 
   const getOptions = async () => {
     const response = await fetch(
@@ -318,7 +318,7 @@ stories.add("SideBar", () => {
       onChange: (e) => {
         setCurrentObject((prev) => ({
           ...prev,
-          [e.target.name]: e.target.value,
+          [e.target?.name]: e.target?.value,
         }));
       },
     },
@@ -463,9 +463,9 @@ stories.add("SideBar", () => {
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}
-          signInState={{ loading: true, error: false }}
+          signInState={{loading: true, error: false}}
           otpEnabled={false}
-          otpState={{ loading: false, error: "" }}
+          otpState={{loading: false, error: ""}}
           handleTFA={(e) => console.log(e)}
           resetPasswordState={{
             loading: false,
