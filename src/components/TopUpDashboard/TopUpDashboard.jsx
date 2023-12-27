@@ -130,7 +130,7 @@ export const TopUpDashboard = ({
       <div className="topupDashboard_title-bottomContainer">
         <div className="topupDashboard_bottom-left">
           <p className="topupDashboard_title">
-            {translates?.please_enter_desired_amount.en}
+            {translates?.please_enter_desired_amount_topup.en}
           </p>
           <p className="topupDashboard_info">
             {translates?.enter_the_amount_you_would.en}
