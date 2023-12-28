@@ -51,3 +51,4 @@ export * from "./components/Tabs";
 export * from "./components/StakeCurrency";
 export * from "./components/TradeUi";
 export * from "./components/TabTable";
+export * from "./components/ToolTip";
