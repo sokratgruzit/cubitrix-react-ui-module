@@ -1,17 +1,14 @@
 import React, {useState, useEffect} from "react";
 
-// hooks
 import {useMobileWidth} from "../../hooks/useMobileWidth";
 
-// helpers
 import {NavbarHelper} from "./NavbarHelper";
+import {Button} from "../Button";
+import {TradeBar} from "./TradeBar"
 
-// svg
 import {Menu} from "../../assets/svgs";
 
-// styles
 import "./Header.css";
-import {Button} from "../Button";
 
 export const Header = ({
   modules,
@@ -31,6 +28,9 @@ export const Header = ({
   loggedWithEmail,
   showSignIn,
   A1Price,
+  tradePriceData,
+  handleShowBalance,
+  showBalance
 }) => {
   const [navbarActive, setNavbarActive] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -54,6 +54,8 @@ export const Header = ({
           <h3>{title}</h3>
         </div>
         {!mobile && <NavbarHelper type={"navbar"} modules={modules} />}
+        <TradeBar tradePriceData={tradePriceData} showBalance={showBalance} />
+        <div onClick={() => handleShowBalance()} className="tabBarIcon"></div>
         <div className="a1-price">
           <svg
             width="61"
