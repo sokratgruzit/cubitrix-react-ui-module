@@ -1,17 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-// hooks
-import {useMobileWidth} from "../../hooks/useMobileWidth";
+import { useMobileWidth } from "../../hooks/useMobileWidth";
 
-// helpers
-import {NavbarHelper} from "./NavbarHelper";
+import { NavbarHelper } from "./NavbarHelper";
+import { Button } from "../Button";
+import { TradeBar } from "./TradeBar";
 
-// svg
-import {Menu} from "../../assets/svgs";
+import { Menu } from "../../assets/svgs";
 
-// styles
 import "./Header.css";
-import {Button} from "../Button";
 
 export const Header = ({
   modules,
@@ -31,19 +28,39 @@ export const Header = ({
   loggedWithEmail,
   showSignIn,
   A1Price,
+  tradePriceData,
+  handleShowBalance,
+  showBalance,
+  setShowBalance,
+  location,
 }) => {
   const [navbarActive, setNavbarActive] = useState(false);
   const [animate, setAnimate] = useState(false);
-  const {width} = useMobileWidth();
+  const { width } = useMobileWidth();
+
+  const headerRef = useRef(null);
 
   useEffect(() => {
     setAnimate(true);
-  }, []);
+
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setShowBalance(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setShowBalance]);
 
   let mobile = width <= 970;
 
   return (
     <div
+      ref={headerRef}
       className={`header ${mobile && navbarActive ? "header-active" : ""} ${
         animate ? "animate" : ""
       }`}
@@ -54,6 +71,19 @@ export const Header = ({
           <h3>{title}</h3>
         </div>
         {!mobile && <NavbarHelper type={"navbar"} modules={modules} />}
+        {location.pathname === "/trade" && !mobile ? (
+          <>
+            <TradeBar
+              tradePriceData={tradePriceData}
+              showBalance={showBalance}
+              setShowBalance={setShowBalance}
+            />
+            <div
+              onClick={() => handleShowBalance()}
+              className="tabBarIcon"
+            ></div>
+          </>
+        ) : null}
         <div className="a1-price">
           <svg
             width="61"
@@ -69,7 +99,7 @@ export const Header = ({
           </svg>
           A1 Price - {A1Price} $
         </div>
-        <div style={{display: "flex", alignItems: "center"}}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           {mobile && (
             <NavbarHelper
               type={"notification"}
@@ -132,7 +162,7 @@ export const Header = ({
             element={"help-button"}
             icon={false}
             onClick={() => console.log()}
-            customStyles={{width: "100%"}}
+            customStyles={{ width: "100%" }}
           />
         )}
       </div>

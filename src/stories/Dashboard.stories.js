@@ -1,21 +1,21 @@
-import { storiesOf } from "@storybook/react";
-
-import { BrowserRouter } from "react-router-dom";
-import { Dashboard } from "../components/Dashboard";
-import { Header } from "../components/Header";
-import translates from "../translates.json";
-
-import "../assets/css/main-theme.css";
 import { useEffect, useState } from "react";
+import { storiesOf } from "@storybook/react";
+import { BrowserRouter } from "react-router-dom";
+
+import translates from "../translates.json";
 import { useMobileWidth } from "../hooks/useMobileWidth";
 import { DashboardSharedLayout } from "../components/DashboardSharedLayout";
-import { SideBar } from "../components/SideBar";
-import { AddSquareIcon, NoHistoryIcon } from "../assets/svgs";
-import { LoadingScreen } from "../components/LoadingScreen/LoadingScreen";
+import { NoHistoryIcon } from "../assets/svgs";
+
+import { Dashboard } from "../components/Dashboard";
+import { Header } from "../components/Header";
+
+import "../assets/css/main-theme.css";
 
 const stories = storiesOf("Dashboard", module);
 
 stories.add("Dashboard", () => {
+  const [showBalance, setShowBalance] = useState(false);
   const [codesTableData, setCodesTableData] = useState([]);
   const [rebatesTableData, setRebatesTableData] = useState([]);
   const [transactionsData, setTransactionsData] = useState({});
@@ -99,60 +99,25 @@ stories.add("Dashboard", () => {
     },
   ];
 
-  const generateTableData = async (table, page) => {
+  const generateTableData = async (table) => {
     if (table === "codes") {
       setReferralCodeTableLoading(true);
     } else {
       setReferralHistoryTableLoading(true);
     }
-    const response = await fetch(
-      `http://localhost:4000/api/referral/${
-        table === "codes"
-          ? "get_referral_code_of_user"
-          : "get_referral_rebates_history_of_user"
-      }`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
-          limit: 3,
-          page: 1,
-        }),
-      }
-    );
-
-    const data = await response.json();
 
     if (table === "codes") {
-      setCodesTableData(data.referral_code);
+      setCodesTableData(false);
       setReferralCodeTableLoading(false);
     } else {
-      setRebatesTableData(data.referral_rebates_history);
+      setRebatesTableData(false);
       setReferralHistoryTableLoading(false);
     }
   };
 
   const generateTransactionsData = async () => {
     setTransactionsTableLoading(true);
-    // const response = await fetch(
-    //   `http://localhost:4000/api/transactions/get_transactions_of_user`,
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       address: "0x0a369a6064549FDA78F5793B231AFE9db648420A",
-    //       limit: 3,
-    //       page: 1,
-    //     }),
-    //   },
-    // );
-    //
-    // const data = await response.json();
+    
     const test = {
       transactions: [
         {
@@ -227,12 +192,6 @@ stories.add("Dashboard", () => {
     };
 
     setTransactionsData(test);
-    // setTransactionsData(data);
-    // setTotalTransactions({
-    //   total_transaction: data.total_transaction,
-    //   received: data.amounts_to_from[0].toCount,
-    //   spent: data.amounts_to_from[0].fromSum,
-    // });
     setTotalTransactions({
       total_transaction: 11,
       received: 11,
@@ -241,59 +200,8 @@ stories.add("Dashboard", () => {
     setTransactionsTableLoading(false);
   };
 
-  const generateTotalReferralData = async () => {
-    const response = await fetch(
-      `http://localhost:4000/api/referral/get_referral_code_of_user_dashboard`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
-        }),
-      }
-    );
-
-    const data = await response.json();
-
-    setTotalReferralData((prev) => ({
-      ...prev,
-      uni: {
-        levelUser: data?.referral_count_binary || 0,
-        totalComission: data?.referral_sum_uni[0]?.amount || 0,
-      },
-      binary: {
-        levelUser: data?.referral_count_uni || 0,
-        totalComission: data?.referral_sum_binary[0]?.amount || 0,
-      },
-    }));
-  };
-
-  const generateAccountsData = async () => {
-    console.log("ras");
-    const response = await fetch(
-      `http://localhost:4000/api/accounts/get_account_balances`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          address: "0xb7a47766bb1d3026139403a8556a685fe762388e",
-        }),
-      }
-    );
-
-    const data = await response.json();
-    console.log("rame", data);
-    setAccountsData(data?.data);
-  };
-
   useEffect(() => {
-    generateAccountsData();
     generateTransactionsData();
-    generateTotalReferralData();
     generateTableData("codes");
     generateTableData("rebates");
   }, []);
@@ -451,12 +359,56 @@ stories.add("Dashboard", () => {
     platinum: "dsadsadsa",
   };
 
+  const tradePriceData = {
+    balance: {
+      value: 10000,
+      currency: "A1"
+    },
+    freeMargin: {
+      value: 5000,
+      currency: "A1"
+    },
+    usedMargin: {
+      value: 471,
+      currency: "A1"
+    },
+    profit: {
+      value: 2300,
+      currency: "A1"
+    },
+    equity: {
+      value: 2300,
+      currency: "A1"
+    },
+    marginLevel: {
+      value: 100,
+      dir: false,
+      measure: "%"
+    }
+  };
+
+  const handleShowBalance = () => {
+    setShowBalance(true);
+    console.log("gg");
+  };
+
   return (
     <BrowserRouter>
       <Header
-        modules={[]}
+         modules={{
+          staking: "true",
+          referral: "true",
+          trade: "true",
+          loan: "true",
+          extensions: "true",
+          notify: "true",
+        }}
+        showBalance={showBalance}
+        setShowBalance={setShowBalance}
+        handleShowBalance={handleShowBalance}
         account={"0x0000000"}
-        location={{ pathName: "" }}
+        tradePriceData={tradePriceData}
+        location={{ pathname: "/trade" }}
         title={"A1"}
         amount={10}
         logoSvg={

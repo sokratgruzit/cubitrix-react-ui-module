@@ -1,3 +1,67 @@
+/* Trade bar styles */
+.tradeBarContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  top: 70px;
+  background-color: #10282b;
+  transition: .6s;
+}
+
+.tradeBarItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 16.6%;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 0 1%;
+}
+
+.tradeBarBalanceTitle {
+  font-size: 12px;
+}
+
+.tradeBarBalance {
+  font-size: 11px;
+  position: relative;
+}
+
+.tradeBarArrow {
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid rgba(103, 190, 122, 1);
+  border-bottom: 1px solid rgba(103, 190, 122, 1);
+  position: absolute;
+  top: 8px;
+  left: -11px;
+  transform: rotate(-45deg);
+}
+
+.tabBarIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #c38c5c;
+}
+
+.closeTradeBar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+}
+/* End of trade bar styles */
+
 .sideOpen .header {
   border-right: 2px solid rgba(255, 255, 255, 0.05);
 }
@@ -79,7 +143,7 @@
 }
 
 .animate .link:nth-child(5) {
-  transition-delay: 5.7s;
+  transition-delay: .7s;
   transition-property: opacity, transform;
 }
 
@@ -322,7 +386,7 @@
   padding: 10px;
   border-radius: 41px;
   margin-left: auto;
-  transition: .6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
+  transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
   overflow: hidden;
   transform: scale(0.9);
   opacity: 0;
@@ -330,7 +394,7 @@
 .animate .a1-price {
   transform: scale(1);
   opacity: 1;
-  transition-delay: .9s;
+  transition-delay: 0.9s;
 }
 .a1-price svg {
   height: 25px;
@@ -361,7 +425,6 @@
   }
 }
 @media only screen and (max-width: 970px) {
-
   .logoWrapper {
     border: none;
   }
@@ -420,5 +483,4 @@
 }
 
 @media only screen and (max-width: 440px) {
-
 }
