@@ -1,6 +1,6 @@
 import "./AccountSummary.css";
 
-export const AccountSummary = ({ data, stackContractInfo, label }) => {
+export const AccountSummary = ({ data }) => {
   return (
     <div className={"account-summary-data"}>
       {data.map((item, index) => (

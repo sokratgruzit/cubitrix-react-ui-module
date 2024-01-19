@@ -91,13 +91,13 @@ export const Staking = ({
                   <span>
                     {
                       [
-                        (item?.amount / 10 ** 18)?.toLocaleString("en-US", {
+                        (item?.amount)?.toLocaleString("en-US", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
                         }) + " A1",
                         createdTime,
                         createdUnTime,
-                        parseFloat(item.realtimeRewardPerBlock).toFixed(10) +
+                        parseFloat(item.realtimeRewardPerBlock).toFixed(8) +
                           " A1",
                       ][index]
                     }
@@ -287,7 +287,6 @@ export const Staking = ({
           </div>
           <AccountSummary
             data={accountSummaryData}
-            stackContractInfo={stackContractInfo}
             label={"Total Stake"}
           />
         </div>

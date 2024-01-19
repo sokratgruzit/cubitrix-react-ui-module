@@ -151,7 +151,7 @@ stories.add("Staking", () => {
   let stakersRecord = [
     {
       id: 12123,
-      amount: "10,220,000.2",
+      amount: "500",
       staketime: "14/02/2022 10:00 AM",
       unstaketime: "01/11/2023 3:12 PM",
       CML: "CML",
