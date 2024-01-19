@@ -155,7 +155,7 @@ export const Staking = ({
                     <div className="td" key={index}>
                       <div className="mobile-ttl">{tableHead[index].name}</div>
                       <span>
-                        {parseFloat(item?.realtimeRewardPerBlock).toFixed(10)}
+                        {parseFloat(item?.realtimeRewardPerBlock).toFixed(8)}
                       </span>
                     </div>
                   ))}
