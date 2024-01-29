@@ -198,6 +198,8 @@ export const LandingSteps = ({
     }
   }, [apyPercent]);
 
+  step = 1;
+
   return (
     <div className="LandingSteps__container">
       <div className="LandingSteps_main-body">
@@ -288,7 +290,7 @@ export const LandingSteps = ({
                 className="LandingSteps__wallet-option"
                 onClick={handleWalletConnect}
               >
-                <WalletConnect />
+                {connectionLoading ? <p>Loading...</p> : <WalletConnect />}
                 Wallet Connect
               </div>
             </div>
