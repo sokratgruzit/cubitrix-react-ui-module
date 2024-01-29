@@ -198,8 +198,6 @@ export const LandingSteps = ({
     }
   }, [apyPercent]);
 
-  step = 1;
-
   return (
     <div className="LandingSteps__container">
       <div className="LandingSteps_main-body">
