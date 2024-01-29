@@ -273,13 +273,14 @@ export const LandingSteps = ({
             <div className="LandingSteps__step__content LandingSteps__step__content--wallet">
               <div
                 className={`${
-                  connectionLoading
+                  connectionLoading?.metaMaskConnectionLoading ||
+                  connectionLoading?.walletconnectLoading
                     ? "LandingSteps__wallet-option-disabled"
                     : ""
                 } LandingSteps__wallet-option`}
                 onClick={handleMetamaskConnect}
               >
-                {connectionLoading ? (
+                {connectionLoading?.metaMaskConnectionLoading ? (
                   <p>Loading...</p>
                 ) : (
                   <MetaMask className="LandingSteps__walletmetamaskIcon" />
@@ -290,7 +291,11 @@ export const LandingSteps = ({
                 className="LandingSteps__wallet-option"
                 onClick={handleWalletConnect}
               >
-                {connectionLoading ? <p>Loading...</p> : <WalletConnect />}
+                {connectionLoading?.walletconnectLoading ? (
+                  <p>Loading...</p>
+                ) : (
+                  <WalletConnect />
+                )}
                 Wallet Connect
               </div>
             </div>
