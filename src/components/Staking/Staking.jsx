@@ -94,11 +94,11 @@ export const Staking = ({
                         (item?.amount)?.toLocaleString("en-US", {
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 2,
-                        }) + " A1",
+                        }) + " AONE",
                         createdTime,
                         createdUnTime,
                         parseFloat(item.realtimeRewardPerBlock).toFixed(8) +
-                          " A1",
+                          " AONE",
                       ][index]
                     }
                   </span>
@@ -167,7 +167,7 @@ export const Staking = ({
                     <div className="mobile-ttl">
                       {translates?.earn_reward.en}
                     </div>
-                    <span>A1</span>
+                    <span>AONE</span>
                   </div>
                 ))}
               </>

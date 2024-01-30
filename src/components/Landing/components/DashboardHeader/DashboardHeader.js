@@ -26,7 +26,7 @@ export const DashboardHeader = ({
                   </div>
                   <div className={"dashboard-header-bottom"}>
                       <h1>Crypto</h1>
-                      <p>Trade, buy, staking and loan cryptocurrency at A1</p>
+                      <p>Trade, buy, staking and loan cryptocurrency at AONE</p>
                   </div>
                   <img src={dashboardHeaderImages?.man} className={"dashboard-header-man-img"} />
                   <img

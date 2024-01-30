@@ -106,9 +106,9 @@ export const Dashboard = ({
       />
       <div className="dashboard-total-referral-row">
         {/*<div className="dashboard-total-referral-item">*/}
-        {/*  <p>A1 Price</p>*/}
+        {/*  <p>AONE Price</p>*/}
         {/*  <p>*/}
-        {/*    {A1Price?.toLocaleString("en-US", {*/}
+        {/*    {AONEPrice?.toLocaleString("en-US", {*/}
         {/*      minimumFractionDigits: 2,*/}
         {/*      maximumFractionDigits: 2,*/}
         {/*    }) ?? 0}*/}
@@ -121,7 +121,7 @@ export const Dashboard = ({
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             }) ?? 0}{" "}
-            A1
+            AONE
           </p>
         </div>
         <div className="dashboard-total-referral-item">
@@ -131,7 +131,7 @@ export const Dashboard = ({
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             }) ?? 0}{" "}
-            A1
+            AONE
           </p>
         </div>
         <div className="dashboard-total-referral-item">
@@ -141,7 +141,7 @@ export const Dashboard = ({
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             }) ?? 0}{" "}
-            A1
+            AONE
           </p>
         </div>
         <div className="dashboard-total-referral-item">
@@ -151,7 +151,7 @@ export const Dashboard = ({
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             }) ?? 0}{" "}
-            A1
+            AONE
           </p>
         </div>
       </div>

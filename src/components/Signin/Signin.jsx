@@ -26,7 +26,7 @@ export const Signin = ({
     <div className={`signin-container`}>
       <div className={`signin-logo`}>
         {logo ?? <SigninLogo />}
-        <h2>{title ?? "A1"}</h2>
+        <h2>{title ?? "AONE"}</h2>
       </div>
       <div className="signin-form-container">
         <div className={`signin-header`}>

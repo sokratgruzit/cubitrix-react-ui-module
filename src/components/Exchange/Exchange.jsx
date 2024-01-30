@@ -77,7 +77,7 @@ export const Exchange = ({
                 <div className="exchange-account-titles">
                   {card?.svg}
                   <p className="font-14">
-                    {card?.title === "ATAR" ? "A1" : card?.title}
+                    {card?.title === "ATAR" ? "AONE" : card?.title}
                   </p>
                 </div>
                 <div className="exchange-account-values-container">
@@ -116,7 +116,7 @@ export const Exchange = ({
                   <div className="exchange-account-titles">
                     {item?.svg}
                     <p className="font-14">
-                      {item?.title === "ATAR" ? "A1" : item?.title}
+                      {item?.title === "ATAR" ? "AONE" : item?.title}
                     </p>
                   </div>
                   <div className="exchange-account-values">
@@ -187,14 +187,14 @@ export const Exchange = ({
                   <h4 className="font-14">Rate</h4>
                   <p className="font-14">
                     1{" "}
-                    {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
+                    {accountType === "ATAR" ? "AONE" : accountType.toUpperCase()}{" "}
                     ={" "}
                     {ratedExchange && Number(ratedExchange) !== 0
                       ? Number(
                           Math.round((1 / ratedExchange) * 100000) / 100000
                         )
                       : "... "}{" "}
-                    {card?.title === "ATAR" ? "A1" : card?.title}
+                    {card?.title === "ATAR" ? "AONE" : card?.title}
                   </p>
                 </div>
               ) : (
@@ -202,14 +202,14 @@ export const Exchange = ({
                   <h4 className="font-14">Rate</h4>
                   <p className="font-14">
                     1{" "}
-                    {accountType === "ATAR" ? "A1" : accountType.toUpperCase()}{" "}
+                    {accountType === "ATAR" ? "AONE" : accountType.toUpperCase()}{" "}
                     ={" "}
                     {ratedExchange && Number(ratedExchange) !== 0
                       ? Number(
                           Math.round((1 / ratedExchange) * 100000) / 100000
                         )
                       : "... "}{" "}
-                    {card?.title === "ATAR" ? "A1" : card?.title}
+                    {card?.title === "ATAR" ? "AONE" : card?.title}
                   </p>
                 </div>
               )}

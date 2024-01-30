@@ -154,7 +154,7 @@ export const TopUpDashboard = ({
           </div>
 
           <p className="topupDashboard_info-exchangeRate">
-            1 USD = {countViaRate(1)} A1
+            1 USD = {countViaRate(1)} AONE
           </p>
           {tokenError && (
             <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
@@ -165,7 +165,7 @@ export const TopUpDashboard = ({
           <div className="topupDashboard_bottom-row">
             <p>{translates?.amount.en}:</p>
             <p>
-              {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)} A1
+              {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)} AONE
             </p>
           </div>
           <div className="topupDashboard_bottom-row">

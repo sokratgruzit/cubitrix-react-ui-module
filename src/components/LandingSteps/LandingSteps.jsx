@@ -547,9 +547,9 @@ export const LandingSteps = ({
                 </div>
                 <HelpText
                   status={"error"}
-                  title={`You hold ${tokenBalance} A1. to participate in staking, you must have at least 100 A1, equivalent to ${countViaRate(
+                  title={`You hold ${tokenBalance} AONE. to participate in staking, you must have at least 100 AONE, equivalent to ${countViaRate(
                     100 / exchangeRate
-                  )} USD. The maximum amount you can stake during the registration process is capped at the value of 500,000 USD in A1.`}
+                  )} USD. The maximum amount you can stake during the registration process is capped at the value of 500,000 USD in AONE.`}
                   color={"#6A6D76"}
                   icon={true}
                   customStyles={{ marginBottom: "5px" }}
@@ -575,7 +575,7 @@ export const LandingSteps = ({
 
                 <div></div>
                 <p className="topupDashboard_info-exchangeRate">
-                  1 USD = {countViaRate(1)} A1
+                  1 USD = {countViaRate(1)} AONE
                 </p>
 
                 {tokenError && (
@@ -589,7 +589,7 @@ export const LandingSteps = ({
                   <p>{translates.token_amount.en}</p>
                   <p>
                     {amountUSD ? amountUSD : 0} USD = {countViaRate(amountUSD)}{" "}
-                    A1
+                    AONE
                   </p>
                 </div>
                 <div className="topupDashboard_bottom-row">
@@ -601,7 +601,7 @@ export const LandingSteps = ({
                 </h3>
                 <Button
                   element="button"
-                  label={createChargeLoading ? "Loading..." : `Purchase A1`}
+                  label={createChargeLoading ? "Loading..." : `Purchase AONE`}
                   type="btn-primary"
                   size="btn-lg"
                   customStyles={{
@@ -852,7 +852,7 @@ export const LandingSteps = ({
                   <div className="exchange-rate-card">
                     <p className="font-14">
                       {`${amountProgressValue ? amountProgressValue : 0} $`} ={" "}
-                      {`${countViaRate(amountProgressValue)} A1`}{" "}
+                      {`${countViaRate(amountProgressValue)} AONE`}{" "}
                     </p>
                   </div>
                 </div>

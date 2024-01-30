@@ -16,7 +16,7 @@ export const AccountSummary = ({ data }) => {
                   minimumFractionDigits: 5,
                   maximumFractionDigits: 5,
                 })}{" "}
-                A1
+                AONE
               </p>
             </div>
           ))}

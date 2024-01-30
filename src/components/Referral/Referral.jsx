@@ -99,12 +99,12 @@ export const Referral = ({
           },
           {
             title: "Total Staked",
-            amount: toLocaleStringForNumber(item?.total_staked) + " A1",
+            amount: toLocaleStringForNumber(item?.total_staked) + " AONE",
             icon: "",
           },
           {
             title: "Expected Bonus",
-            amount: toLocaleStringForNumber(item?.all_amount_sum) + " A1",
+            amount: toLocaleStringForNumber(item?.all_amount_sum) + " AONE",
             icon: "",
           },
           {
@@ -114,7 +114,7 @@ export const Referral = ({
           },
           {
             title: "Total Right",
-            amount: toLocaleStringForNumber(item?.total_right) + " A1",
+            amount: toLocaleStringForNumber(item?.total_right) + " AONE",
             icon: "",
           },
           {
@@ -124,7 +124,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.total_left) + " A1",
+            amount: toLocaleStringForNumber(item?.total_left) + " AONE",
             icon: "",
           },
         ];
@@ -152,12 +152,12 @@ export const Referral = ({
             title: "Total Staked",
             amount:
               toLocaleStringForNumber(item.joinedAccounts?.[0]?.stakedTotal) +
-              " A1",
+              " AONE",
             icon: "",
           },
           {
             title: "Expected Bonus",
-            amount: toLocaleStringForNumber(item?.all_amount_sum) + " A1",
+            amount: toLocaleStringForNumber(item?.all_amount_sum) + " AONE",
             icon: "",
           },
           {
@@ -167,7 +167,7 @@ export const Referral = ({
           },
           {
             title: "Total Right",
-            amount: toLocaleStringForNumber(item?.total_right) + " A1",
+            amount: toLocaleStringForNumber(item?.total_right) + " AONE",
             icon: "",
           },
           {
@@ -177,7 +177,7 @@ export const Referral = ({
           },
           {
             title: "Total Left",
-            amount: toLocaleStringForNumber(item?.left_total) + " A1",
+            amount: toLocaleStringForNumber(item?.left_total) + " AONE",
             icon: "",
           },
         ];
@@ -311,7 +311,7 @@ export const Referral = ({
                         }
                       )
                     : 0}{" "}
-                  A1
+                  AONE
                 </span>
               </div>
               <div
@@ -449,7 +449,7 @@ export const Referral = ({
                   item.joinedAccounts[0].stakedTotal > 0
                     ? item.joinedAccounts[0].stakedTotal
                     : 0}{" "}
-                  A1
+                  AONE
                 </span>
               </div>
               <div
@@ -465,7 +465,7 @@ export const Referral = ({
                 }}
               >
                 <span>
-                  {item?.joinedTransactions?.[0]?.totalAmount ?? 0} A1
+                  {item?.joinedTransactions?.[0]?.totalAmount ?? 0} AONE
                 </span>
               </div>
               <div

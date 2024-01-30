@@ -22,7 +22,7 @@ export const AdminHeader = (props) => {
           {props.headSvg}
         </div>
         <h1 className={`admin-logo animate-translateX ${props.animate ? "animate" : ""}`}>
-          {props?.title ?? "A1"}
+          {props?.title ?? "AONE"}
         </h1>
       </div>
       <div className={`user-input-container`}>

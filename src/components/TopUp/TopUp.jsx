@@ -67,7 +67,7 @@ export const TopUp = ({
   return (
     <div className="topup_main">
       <p className="topup_title">
-        1. Select the payment method and calculate A1 price
+        1. Select the payment method and calculate AONE price
       </p>
       <div className="topup_methodContainer">
         {methods.map((method) => (
@@ -84,13 +84,13 @@ export const TopUp = ({
         ))}
       </div>
       <p className="topup_title">
-        2. Set amount of A1 you would like to purchase
+        2. Set amount of AONE you would like to purchase
       </p>
       <p className="topup_info">
         Use the calculator provided below to easily convert your chosen quantity
-        of A1 into its equivalent value in USD.
+        of AONE into its equivalent value in USD.
       </p>
-      <p>A1 Amount</p>
+      <p>AONE Amount</p>
       <div className="topupDashboard_inputContainer">
         <Input
           type={"default"}
@@ -103,11 +103,11 @@ export const TopUp = ({
           editable={true}
         />
         <div className="topupDashboard_inputOverlay">
-          <p className="topupDashboard_inputOverlay_text">A1</p>
+          <p className="topupDashboard_inputOverlay_text">AONE</p>
         </div>
       </div>
       <p className="topupDashboard_info-exchangeRate">
-        1 A1 = {exchangeRate} USDT
+        1 AONE = {exchangeRate} USDT
       </p>
       {tokenError && (
         <HelpText status={"error"} title={tokenError} color={"#FF0C46"} />
@@ -115,7 +115,7 @@ export const TopUp = ({
       <div className="topupDashboard_bottom-row topup_bottom-padding">
         <p>{translates.token_amount.en}</p>
         <p>
-          {tokenAmount} A1 = {tokenAmount * exchangeRate} USDT
+          {tokenAmount} AONE = {tokenAmount * exchangeRate} USDT
         </p>
       </div>
       <div className="topupDashboard_bottom-row">
@@ -129,7 +129,7 @@ export const TopUp = ({
       </h3>
       <Button
         element="button"
-        label={`Purchase A1`}
+        label={`Purchase AONE`}
         type="btn-secondary"
         size="btn-lg"
         customStyles={{

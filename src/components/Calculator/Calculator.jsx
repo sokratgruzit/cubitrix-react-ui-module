@@ -64,7 +64,7 @@ export const Calculator = ({
         amount: {
           validationType: "max500",
           success: "amount is valid",
-          failure: "maximum amount you can stake is 500 $ worth of A1",
+          failure: "maximum amount you can stake is 500 $ worth of AONE",
         },
       };
     }
@@ -97,7 +97,7 @@ export const Calculator = ({
           type={"lable-input-select"}
           defaultData={[
             { name: "My Wallet", value: "My Wallet" },
-            { name: "A1 Balance", value: "A1 Balance" },
+            { name: "AONE Balance", value: "AONE Balance" },
           ]}
           icon={false}
           emptyFieldErr={false}
@@ -184,7 +184,7 @@ export const Calculator = ({
       <div className="exchange-rate-card">
         <p className="font-14">{`${
           depositAmount ? depositAmount : 0
-        } $ = ${countViaRate(depositAmount)} A1`}</p>
+        } $ = ${countViaRate(depositAmount)} AONE`}</p>
       </div>
       <HelpText
         title={
@@ -208,7 +208,7 @@ export const Calculator = ({
       />
       {isAllowance && (
         <HelpText
-          title={"Staking A1 is unapproved, please approve A1 before staking"}
+          title={"Staking AONE is unapproved, please approve AONE before staking"}
           status="info"
           color="#6A6D76"
           icon={true}

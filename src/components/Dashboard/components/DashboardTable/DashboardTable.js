@@ -55,7 +55,7 @@ export const DashboardTable = ({
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}{" "}
-            A1
+            AONE
           </h3>
           <p className={`font-16`}>{item?.title}</p>
         </div>
@@ -191,19 +191,19 @@ export const DashboardTable = ({
               <span>
                 {txType === "exchange"
                   ? ` ${fromAmount} ${
-                      fromAccType == "ATAR" ? "A1" : fromAccType
+                      fromAccType == "ATAR" ? "AONE" : fromAccType
                     }`
                   : ""}
                 {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
-                {txType === "deposit" ? ` ${amount} A1` : ""}
-                {txType === "payment" ? ` ${tockenCount} A1` : ""}
-                {txType === "transfer" ? ` ${amount} ${currency || "A1"}` : ""}
+                {txType === "deposit" ? ` ${amount} AONE` : ""}
+                {txType === "payment" ? ` ${tockenCount} AONE` : ""}
+                {txType === "transfer" ? ` ${amount} ${currency || "AONE"}` : ""}
                 {txType === "Internal Transfer"
-                  ? ` ${amount} ${currency || "A1"}`
+                  ? ` ${amount} ${currency || "AONE"}`
                   : ""}
-                {txType === "bonus" ? ` ${amount}  A1` : ""}
+                {txType === "bonus" ? ` ${amount}  AONE` : ""}
                 {txType === "withdraw"
-                  ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
+                  ? ` ${amount} ${currency == "ATR" ? "AONE" : currency}`
                   : ""}
               </span>
             </div>
@@ -389,7 +389,7 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              <span>{item?.amount?.toFixed(2) + " A1"}</span>
+              <span>{item?.amount?.toFixed(2) + " AONE"}</span>
             </div>
           </div>
           <div className="table-more" />
@@ -430,7 +430,7 @@ export const DashboardTable = ({
               {width < 500 && (
                 <div className="td">
                   <div className="mobile-ttl">{tableHeader[4].name}</div>
-                  <span>{item?.amount?.toFixed() + " A1"}</span>
+                  <span>{item?.amount?.toFixed() + " AONE"}</span>
                 </div>
               )}
             </div>
@@ -588,7 +588,7 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              <span>{item?.amount + " A1"}</span>
+              <span>{item?.amount + " AONE"}</span>
             </div>
             <div
               className={`td ${
@@ -726,7 +726,7 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              <span>{item?.amount + " A1"}</span>
+              <span>{item?.amount + " AONE"}</span>
             </div>
             <div
               className={`td ${

@@ -49,7 +49,7 @@ export const Transactions = ({
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}{" "}
-            A1
+            AONE
           </h3>
           <p className={`font-16`}>{item?.title}</p>
         </div>
@@ -163,18 +163,18 @@ export const Transactions = ({
           >
             <span>
               {txType === "exchange"
-                ? ` ${fromAmount} ${fromAccType == "ATAR" ? "A1" : fromAccType}`
+                ? ` ${fromAmount} ${fromAccType == "ATAR" ? "AONE" : fromAccType}`
                 : ""}
               {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
-              {txType === "deposit" ? ` ${amount} A1` : ""}
-              {txType === "payment" ? ` ${tockenCount} A1` : ""}
-              {txType === "transfer" ? ` ${amount} ${currency || "A1"}` : ""}
+              {txType === "deposit" ? ` ${amount} AONE` : ""}
+              {txType === "payment" ? ` ${tockenCount} AONE` : ""}
+              {txType === "transfer" ? ` ${amount} ${currency || "AONE"}` : ""}
               {txType === "Internal Transfer"
-                ? ` ${amount} ${currency || "A1"}`
+                ? ` ${amount} ${currency || "AONE"}`
                 : ""}
-              {txType === "bonus" ? ` ${amount}  A1` : ""}
+              {txType === "bonus" ? ` ${amount}  AONE` : ""}
               {txType === "withdraw"
-                ? ` ${amount} ${currency == "ATR" ? "A1" : currency}`
+                ? ` ${amount} ${currency == "ATR" ? "AONE" : currency}`
                 : ""}
             </span>
           </div>
