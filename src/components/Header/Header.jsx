@@ -98,7 +98,7 @@ export const Header = ({
                 fill="white"
               ></path>
             </svg>
-            AONE Price - {A1Price} $
+            AONE Price: {A1Price} $
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
