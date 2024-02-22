@@ -314,7 +314,7 @@ export const CardSlider = ({
                       className={`${
                         item?.title === "Deposit"
                           ? "card-slider-card_footer-item active"
-                          : item?.title !== "trade" 
+                          : item?.title !== "trade"
                           ? "card-slider-card_footer-item"
                           : "disabled-for-now"
                       }`}
@@ -380,6 +380,7 @@ export const CardSlider = ({
                       className={`card-slider-card_footer card-slider-card_footer-currency`}
                     >
                       {cardFooterData?.map((item, footerIndex) => {
+                        if (item.title === "trade") return;
                         return (
                           <div
                             style={
