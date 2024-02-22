@@ -114,6 +114,28 @@ const AccountType = ({ className, type, ...props }) => {
     ));
   }
 
+  if (type === "trade") {
+    return (element = (
+      <svg
+        className={className}
+        {...props}
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2.00005 11.3422C7.00005 16.5 18 16 21.9938 10.62M21.9938 10.62L19 10.5M21.9938 10.62L21.9938 13.5"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ));
+  }
+
   if (type === "stake") {
     return (element = (
       <svg

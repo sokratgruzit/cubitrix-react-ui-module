@@ -60,6 +60,16 @@ export const CardSlider = ({
         />
       ),
     },
+    {
+      title: "trade",
+      svg: (
+        <AccountType
+          type={"trade"}
+          // className="card-slider-card_footer-item-svg"
+          className={""}
+        />
+      ),
+    },
   ];
 
   const accountsData = useMemo(() => {
@@ -297,12 +307,16 @@ export const CardSlider = ({
                   )
                     return;
 
+                  if (accountType === "main" && item.title === "trade") return;
+
                   return (
                     <div
                       className={`${
                         item?.title === "Deposit"
                           ? "card-slider-card_footer-item active"
-                          : "card-slider-card_footer-item"
+                          : item?.title !== "trade" 
+                          ? "card-slider-card_footer-item"
+                          : "disabled-for-now"
                       }`}
                       key={index}
                       onClick={() => {
