@@ -1,6 +1,6 @@
 {
   "name": "@cubitrix/cubitrix-react-ui-module",
-  "version": "0.10.45",
+  "version": "0.10.46",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
