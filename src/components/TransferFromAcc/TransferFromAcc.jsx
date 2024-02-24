@@ -59,7 +59,7 @@ export const TransferFromAcc = ({
             </div>
             <div className="withdraw-to-acc-card_content">
               <h4 className="font-14">
-                {accountType === "ATAR" ? "AONE" : accountType.toUpperCase()}{" "}
+                {accountType === "ATAR" ? "AONE" : chosenAccount.toUpperCase()}{" "}
                 Balance
               </h4>
               <p>{accountBalance}</p>
