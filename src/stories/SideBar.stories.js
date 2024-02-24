@@ -363,7 +363,7 @@ stories.add("SideBar", () => {
       /> */}
 
       <SideBar open={toggle}>
-        {/* <TransferFromAcc
+        <TransferFromAcc
           sideBarClose={() => setToggle((prev) => !prev)}
           inputs={inputs}
           currentObject={currentObject}
@@ -373,12 +373,12 @@ stories.add("SideBar", () => {
           success={true}
           helpText={"hi"}
           showHelpText={true}
-          accountType={"CPL"}
+          accountType={"AONE"}
           accountBalance={"1,400.00"}
           accountBalanceSecond={"$2,034.04"}
           label={"hi"}
           info={"info"}
-        />{" "} */}
+        />{" "}
         {/* <Connect
           ConnectOptions={[
             {
@@ -458,7 +458,7 @@ stories.add("SideBar", () => {
           account={"ahaha"}
           mainAccount={"ahaha2"}
         /> */}
-        <StakeCurrency inputs={depositInputs} />
+        {/* <StakeCurrency inputs={depositInputs} />
         <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
@@ -474,7 +474,7 @@ stories.add("SideBar", () => {
           }}
           handleDataChange={handleSignInData}
           handleResetPassword={(e) => console.log(e)}
-        />
+        /> */}
       </SideBar>
     </div>
   );
