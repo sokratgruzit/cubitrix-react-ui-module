@@ -104,7 +104,7 @@ export const Dashboard = ({
         stakedTotal={stakedTotal}
         handleStake={handleStake}
       />
-      {extensions.referral === "true" && (
+      {extensions?.referral === "true" && (
         <div className="dashboard-total-referral-row">
           {/*<div className="dashboard-total-referral-item">*/}
           {/*  <p>AONE Price</p>*/}
