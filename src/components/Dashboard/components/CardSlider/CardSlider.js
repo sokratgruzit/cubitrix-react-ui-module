@@ -259,7 +259,7 @@ export const CardSlider = ({
                     <span className="font-16">
                       {accountType === "main"
                         ? "AONE"
-                        : accountType.toUpperCase()}
+                        : accountType?.toUpperCase()}
                     </span>
                     {tier && (
                       <span
