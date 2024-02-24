@@ -62,7 +62,7 @@ export const TransferFromAcc = ({
                 {accountType === "ATAR" ? "AONE" : chosenAccount.toUpperCase()}{" "}
                 Balance
               </h4>
-              <p>Available: {accountBalance}</p>
+              <p><span className="font-14">Available: </span>{accountBalance}</p>
               <span className="font-14">Total: {accountBalanceSecond}</span>
             </div>
           </div>
