@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper";
-import { Account, AccountType } from "../../../../assets/svgs";
-import { useMobileWidth } from "../../../../hooks/useMobileWidth";
+import React, {useMemo} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Pagination, Navigation} from "swiper";
+import {Account, AccountType} from "../../../../assets/svgs";
+import {useMobileWidth} from "../../../../hooks/useMobileWidth";
 import translates from "../../../../translates.json";
 import "swiper/swiper-bundle.css";
 import "./CardSlider.css";
@@ -21,7 +21,7 @@ export const CardSlider = ({
   stakedTotal,
   handleStake,
 }) => {
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
 
   const cardFooterData = [
     {
@@ -384,10 +384,9 @@ export const CardSlider = ({
                         return (
                           <div
                             style={
-                              (key === "gold" && item.title === "Withdraw") ||
-                              (key === "platinum" && item.title === "Withdraw")
-                                ? { display: "none" }
-                                : { display: "flex" }
+                              key === "gold" && item.title === "Withdraw"
+                                ? {display: "none"}
+                                : {display: "flex"}
                             }
                             className={`card-slider-card_footer-item card-slider-card_footer-item-currency`}
                             key={footerIndex}

@@ -165,8 +165,8 @@ stories.add("SideBar", () => {
       price: "$0.00",
     },
     {
-      svg: <Account type={"platinum"} />,
-      title: "PLATINUM",
+      svg: <Account type={"trx"} />,
+      title: "TRX",
       value: "0.000000 P",
       price: "$0.00",
     },

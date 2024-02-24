@@ -1,6 +1,6 @@
 import React from "react";
 
-const Account = ({ className, type, ...props }) => {
+const Account = ({className, type, ...props}) => {
   let element = null;
 
   if (type === "atar") {
@@ -142,7 +142,7 @@ const Account = ({ className, type, ...props }) => {
     ));
   }
 
-  if (type === "platinum") {
+  if (type === "trx") {
     return (element = (
       <svg
         className={className}

@@ -1,17 +1,17 @@
-import { storiesOf } from "@storybook/react";
+import {storiesOf} from "@storybook/react";
 import "../assets/css/main-theme.css";
-import { Referral } from "../components/Referral";
-import { Header } from "../components/Header";
-import { BrowserRouter } from "react-router-dom";
+import {Referral} from "../components/Referral";
+import {Header} from "../components/Header";
+import {BrowserRouter} from "react-router-dom";
 
-import { Button } from "../components/Button";
-import { StickyNoteIcon, AddSquareIcon, NoHistoryIcon } from "../assets/svgs";
-import { useMobileWidth } from "../hooks/useMobileWidth";
-import { useState, useEffect } from "react";
-import { Popup } from "../components/Popup";
-import { PopupElement } from "../components/PopupElement";
-import { LevelSystem } from "../components/LevelSystem";
-import { Footer } from "../components/Footer";
+import {Button} from "../components/Button";
+import {StickyNoteIcon, AddSquareIcon, NoHistoryIcon} from "../assets/svgs";
+import {useMobileWidth} from "../hooks/useMobileWidth";
+import {useState, useEffect} from "react";
+import {Popup} from "../components/Popup";
+import {PopupElement} from "../components/PopupElement";
+import {LevelSystem} from "../components/LevelSystem";
+import {Footer} from "../components/Footer";
 import translates from "../translates.json";
 import LogoSvg from "../assets/svgs/LogoSvg";
 
@@ -40,7 +40,7 @@ stories.add("Referral", () => {
     rebatesTotal: 0,
     weeklyTotal: 0,
   });
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
   const [tableFilterOutcomingData, setTableFilterOutcomingData] = useState({});
   const tableFilterData = {
     search: {
@@ -278,8 +278,8 @@ stories.add("Referral", () => {
     Array.isArray(data) &&
       data.forEach((item) => {
         item.referral_type === "binary"
-          ? (codesData = { ...codesData, binary: item.referral })
-          : (codesData = { ...codesData, referral: item.referral });
+          ? (codesData = {...codesData, binary: item.referral})
+          : (codesData = {...codesData, referral: item.referral});
       });
 
     if (data.length === 0) {
@@ -300,8 +300,8 @@ stories.add("Referral", () => {
 
       generateCodeData.forEach((item) => {
         item.referral_type === "binary"
-          ? (codesData = { ...codesData, binary: item.referral })
-          : (codesData = { ...codesData, referral: item.referral });
+          ? (codesData = {...codesData, binary: item.referral})
+          : (codesData = {...codesData, referral: item.referral});
       });
     }
 
@@ -506,8 +506,8 @@ stories.add("Referral", () => {
   ];
 
   let handleChange = (e) => {
-    const { name, value } = e.target;
-    setCreateCodeObject((prev) => ({ ...prev, [name]: value }));
+    const {name, value} = e.target;
+    setCreateCodeObject((prev) => ({...prev, [name]: value}));
   };
 
   const inputs = [
@@ -1064,7 +1064,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 16000,
@@ -1126,7 +1126,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 5000,
@@ -1180,7 +1180,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 5000,
@@ -1234,7 +1234,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 5100,
@@ -1290,7 +1290,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 16000,
@@ -1355,7 +1355,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 5100,
@@ -1414,7 +1414,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 5000,
@@ -1471,7 +1471,7 @@ stories.add("Referral", () => {
             eth: 0,
             usdt: 0,
             gold: 0,
-            platinum: 0,
+            trx: 0,
           },
           __v: 0,
           stakedThisMonth: 5000,
@@ -1502,7 +1502,7 @@ stories.add("Referral", () => {
       <Header
         modules={[]}
         account={"0x0000000"}
-        location={{ pathName: "" }}
+        location={{pathName: ""}}
         title={"A1"}
         logoSvg={<LogoSvg />}
         verified={false}
@@ -1578,14 +1578,14 @@ stories.add("Referral", () => {
               setCurrentObject={setCreateCodeObject}
               handleSubmit={handleCreateCodeSubmit}
               submitButtonLabel={"Enter a Code"}
-              customStyles={{ gridTemplateColumns: "100%" }}
+              customStyles={{gridTemplateColumns: "100%"}}
               // popUpElementError={"there is some error"}
             />
           }
           label={"Create Referral Code"}
           handlePopUpClose={() => setCreateCodePopupActive(false)}
-          customStyles={{ width: "423px" }}
-          headerCustomStyles={{ background: "#272C57" }}
+          customStyles={{width: "423px"}}
+          headerCustomStyles={{background: "#272C57"}}
         />
       )}
       {levelSystemPopupActive && (
@@ -1602,7 +1602,7 @@ stories.add("Referral", () => {
           description={
             "Everyone starts with the Casual tier, and you can level up the tier by increasing your Comland holding"
           }
-          headerCustomStyles={{ background: "#272C57" }}
+          headerCustomStyles={{background: "#272C57"}}
         />
       )}
     </BrowserRouter>
