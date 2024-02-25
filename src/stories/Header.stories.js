@@ -1,8 +1,9 @@
-import { storiesOf } from "@storybook/react";
-import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import { Header } from "../components/Header";
-import { Logo } from "../assets/svgs";
+import {storiesOf} from "@storybook/react";
+import {useState} from "react";
+import {BrowserRouter} from "react-router-dom";
+import {Header} from "../components/Header";
+import {Logo} from "../assets/svgs";
+import LogoSvg from "../assets/svgs/LogoSvg";
 
 const stories = storiesOf("Header", module);
 
@@ -13,7 +14,7 @@ stories.add("Header", () => {
     setShowSignIn(show);
   };
 
-  let account = "0x044e2fF75C6B759g3f86e21609DF770e02e8D3d8"
+  let account = "0x044e2fF75C6B759g3f86e21609DF770e02e8D3d8";
 
   return (
     <BrowserRouter>
@@ -27,10 +28,10 @@ stories.add("Header", () => {
           notify: "true",
         }}
         account={account}
-        location={{ pathName: "" }}
+        location={{pathName: ""}}
         title={"A1"}
         A1Price={2}
-        logoSvg={<Logo />}
+        logoSvg={<LogoSvg />}
         verified={true}
         loginWithEmail={loginWithEmail}
         showSignIn={showSignIn}
