@@ -10,6 +10,7 @@ import {DashboardSharedLayout} from "../components/DashboardSharedLayout/Dashboa
 import {Transactions} from "../components/Transactions";
 import {NoHistoryIcon} from "../assets/svgs";
 import translates from "../translates.json";
+import LogoSvg from "../assets/svgs/LogoSvg";
 
 const stories = storiesOf("Transactions", module);
 
@@ -330,7 +331,7 @@ stories.add("Transactions", () => {
         location={{pathName: ""}}
         title={"A1"}
         amount={10}
-        logoSvg={<>logo svg</>}
+        logoSvg={<LogoSvg />}
         verified={false}
       />
       <DashboardSharedLayout links={links}>

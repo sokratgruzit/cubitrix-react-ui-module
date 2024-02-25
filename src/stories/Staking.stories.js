@@ -13,6 +13,7 @@ import {Calculator} from "../components/Calculator";
 import {useMobileWidth} from "../hooks/useMobileWidth";
 import {useOnScreen} from "../hooks/useOnScreen";
 import translates from "../translates.json";
+import LogoSvg from "../assets/svgs/LogoSvg";
 
 stories.add("Staking", () => {
   const [depositAmount, setDepositAmount] = useState("10");
@@ -310,7 +311,7 @@ stories.add("Staking", () => {
         account={"0x0000000"}
         location={{pathName: ""}}
         title={"A1"}
-        logoSvg={<>logo svg</>}
+        logoSvg={<LogoSvg />}
         verified={false}
       />
       <button onClick={handleButtonClick}>Show Toasts</button>
