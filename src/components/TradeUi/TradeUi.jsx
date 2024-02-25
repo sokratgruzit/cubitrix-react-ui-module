@@ -40,7 +40,7 @@ export const TradeUi = ({
         eth: 0,
         usdt: 0,
         gold: 0,
-        platinum: 0,
+        trx: 0,
       },
     },
     {
@@ -52,7 +52,7 @@ export const TradeUi = ({
         eth: 0,
         usdt: 0,
         gold: 0,
-        platinum: 0,
+        trx: 0,
       },
     },
     {
@@ -64,7 +64,7 @@ export const TradeUi = ({
         eth: 0,
         usdt: 0,
         gold: 0,
-        platinum: 0,
+        trx: 0,
       },
     },
   ];

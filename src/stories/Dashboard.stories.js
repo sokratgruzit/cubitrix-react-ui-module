@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { storiesOf } from "@storybook/react";
-import { BrowserRouter } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {storiesOf} from "@storybook/react";
+import {BrowserRouter} from "react-router-dom";
 
 import translates from "../translates.json";
-import { useMobileWidth } from "../hooks/useMobileWidth";
-import { DashboardSharedLayout } from "../components/DashboardSharedLayout";
-import { NoHistoryIcon } from "../assets/svgs";
+import {useMobileWidth} from "../hooks/useMobileWidth";
+import {DashboardSharedLayout} from "../components/DashboardSharedLayout";
+import {NoHistoryIcon} from "../assets/svgs";
 
-import { Dashboard } from "../components/Dashboard";
-import { Header } from "../components/Header";
+import {Dashboard} from "../components/Dashboard";
+import {Header} from "../components/Header";
 
 import "../assets/css/main-theme.css";
 
@@ -38,7 +38,7 @@ stories.add("Dashboard", () => {
   const [transactionsTableLoading, setTransactionsTableLoading] =
     useState(false);
 
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
 
   const location = {
     pathname: "/",
@@ -117,7 +117,7 @@ stories.add("Dashboard", () => {
 
   const generateTransactionsData = async () => {
     setTransactionsTableLoading(true);
-    
+
     const test = {
       transactions: [
         {
@@ -356,35 +356,35 @@ stories.add("Dashboard", () => {
     eth: "dsadsadsa",
     usdt: "dsadsadsa",
     gold: "dsadsadsa",
-    platinum: "dsadsadsa",
+    trx: "dsadsadsa",
   };
 
   const tradePriceData = {
     balance: {
       value: 10000,
-      currency: "A1"
+      currency: "A1",
     },
     freeMargin: {
       value: 5000,
-      currency: "A1"
+      currency: "A1",
     },
     usedMargin: {
       value: 471,
-      currency: "A1"
+      currency: "A1",
     },
     profit: {
       value: 2300,
-      currency: "A1"
+      currency: "A1",
     },
     equity: {
       value: 2300,
-      currency: "A1"
+      currency: "A1",
     },
     marginLevel: {
       value: 100,
       dir: false,
-      measure: "%"
-    }
+      measure: "%",
+    },
   };
 
   const handleShowBalance = () => {
@@ -395,7 +395,7 @@ stories.add("Dashboard", () => {
   return (
     <BrowserRouter>
       <Header
-         modules={{
+        modules={{
           staking: "true",
           referral: "true",
           trade: "true",
@@ -408,7 +408,7 @@ stories.add("Dashboard", () => {
         handleShowBalance={handleShowBalance}
         account={"0x0000000"}
         tradePriceData={tradePriceData}
-        location={{ pathname: "/trade" }}
+        location={{pathname: "/trade"}}
         title={"A1"}
         amount={10}
         logoSvg={
@@ -575,7 +575,7 @@ stories.add("Dashboard", () => {
           handleTransfer={() => console.log("hi")}
           accountType={"main"}
           tier={"vip"}
-          referralTotal={{ all_amount_sum: 0, left_total: 0, total_right: 0 }}
+          referralTotal={{all_amount_sum: 0, left_total: 0, total_right: 0}}
         />
       </DashboardSharedLayout>
     </BrowserRouter>

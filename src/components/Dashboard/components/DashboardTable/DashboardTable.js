@@ -162,7 +162,7 @@ export const DashboardTable = ({
               {/* Render based on tx_type being "bonus" */}
               {item?.tx_type === "bonus" ? (
                 <span>
-                  {item?.tx_type} - {item?.tx_options?.type}
+                  {item?.tx_type}-{item?.tx_options?.type}
                 </span>
               ) : (
                 <span>{item?.tx_type}</span>
@@ -197,7 +197,9 @@ export const DashboardTable = ({
                 {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
                 {txType === "deposit" ? ` ${amount} AONE` : ""}
                 {txType === "payment" ? ` ${tockenCount} AONE` : ""}
-                {txType === "transfer" ? ` ${amount} ${currency || "AONE"}` : ""}
+                {txType === "transfer"
+                  ? ` ${amount} ${currency || "AONE"}`
+                  : ""}
                 {txType === "Internal Transfer"
                   ? ` ${amount} ${currency || "AONE"}`
                   : ""}
