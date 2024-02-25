@@ -211,6 +211,8 @@ export const Staking = ({
       let unstakeTime = new Date(item?.unstake_time);
       const createdAt = new Date(convertReceivedDateFormat(item?.createdAt));
       const createdUn = new Date(unstakeTime);
+      const periodUnformatted = createdUn - createdAt;
+      const period = `${parseInt(periodUnformatted / (1000 * 60 * 60 * 24))} D`;
       const createdTime = createdAt.toLocaleString("en-US", {
         month: "short",
         day: "numeric",
@@ -219,7 +221,6 @@ export const Staking = ({
       const createdUnTime = createdUn.toLocaleString("en-US", {
         month: "short",
         day: "numeric",
-
         year: "numeric",
       });
       return (
@@ -237,7 +238,7 @@ export const Staking = ({
               mobileExpandFunc(index);
             }}
           >
-            {currencyStakesTableHead?.slice(0, 4).map((i, index) => {
+            {currencyStakesTableHead?.slice(0, 5).map((i, index) => {
               return (
                 <div
                   key={index}
@@ -251,9 +252,13 @@ export const Staking = ({
                           minimumFractionDigits: 2,
                           maximumFractionDigits: 8,
                         })} ${item?.currency?.toUpperCase()}`,
-                        createdTime,
-                        createdUnTime,
+                        period,
                         `${item?.percentage.toFixed()} %`,
+                        `${item?.expected_reward?.toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 8,
+                        })} ${item?.currency?.toUpperCase()}`,
+                        createdUnTime,
                       ][index]
                     }
                   </span>

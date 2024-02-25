@@ -232,25 +232,32 @@ stories.add("Staking", () => {
   const currencyStakesTableHead = [
     {
       name: "Staked Amount",
-      width: 25,
-      mobileWidth: width > 400 ? 45 : 100,
+      width: 20,
+      mobileWidth: width > 400 ? 25 : 100,
       id: 0,
     },
     {
-      name: "Stake Date",
-      width: 25,
-      id: 1,
-    },
-    {
-      name: "Unstake Date",
-      width: 25,
-      id: 2,
+      name: "Period",
+      width: 20,
+      mobileWidth: width > 400 ? 25 : 100,
+      id: 0,
     },
     {
       name: "Percentage",
-      width: 25,
-      mobileWidth: width > 400 ? 45 : false,
+      width: 20,
+      mobileWidth: width > 400 ? 25 : false,
       id: 4,
+    },
+    {
+      name: "Reward",
+      width: 20,
+      mobileWidth: width > 400 ? 55 : false,
+      id: 4,
+    },
+    {
+      name: "Unstake Date",
+      width: 20,
+      id: 2,
     },
     {
       name: "",
