@@ -14,6 +14,7 @@ export const DashboardSharedLayout = ({
   loading,
   disabledAccount,
   becomeEliteOnClick,
+  helpSupportClick,
   eliteMemberBtnLabel,
   eliteMemberBtnDisabled,
 }) => {
@@ -90,7 +91,7 @@ export const DashboardSharedLayout = ({
                     fill="rgba(255, 255, 255)"
                   />
                 </svg>
-                <div className="dashboard-sidebar__horisontal-link">
+                <div className="dashboard-sidebar__horisontal-link" onClick={helpSupportClick}>
                   {translates.help_support.en}
                 </div>
               </div>
