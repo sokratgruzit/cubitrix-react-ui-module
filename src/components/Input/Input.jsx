@@ -894,7 +894,7 @@ export const Input = (props) => {
           className={`textarea-input ${
             props.emptyFieldErr ? "error-border" : ""
           }`}
-          styles={props.customStyles}
+          style={props.customStyles}
         />
         {props.statusCard}
       </div>

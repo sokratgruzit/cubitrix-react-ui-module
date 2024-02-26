@@ -6,6 +6,7 @@ import {BrowserRouter} from "react-router-dom";
 import {DashboardSharedLayout} from "../components/DashboardSharedLayout";
 import {Header} from "../components/Header";
 import translates from "../translates.json";
+import LogoSvg from "../assets/svgs/LogoSvg";
 
 const stories = storiesOf("TopUp", module);
 
@@ -297,7 +298,7 @@ stories.add("ToolTip", () => {
         location={{pathName: ""}}
         title={"A1"}
         amount={10}
-        logoSvg={<>logo svg</>}
+        logoSvg={<LogoSvg />}
         verified={false}
       />
       <DashboardSharedLayout links={links}>

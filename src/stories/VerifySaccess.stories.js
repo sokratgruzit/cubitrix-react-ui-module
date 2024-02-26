@@ -1,10 +1,11 @@
 import {storiesOf} from "@storybook/react";
 import {VerifySaccess} from "../components/verifySuccess/VerifySuccess";
+import LogoSvg from "../assets/svgs/LogoSvg";
 
 const stories = storiesOf("VerifySaccess", module);
 
 stories.add("VerifySaccess", () => {
-  const verifyLogo = <div>AONE LOGO</div>;
+  const verifyLogo = <LogoSvg />;
   const emailSvg = (
     <svg
       xmlns="http://www.w3.org/2000/svg"

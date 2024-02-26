@@ -8,6 +8,7 @@ import "../assets/css/main-theme.css";
 import {useMobileWidth} from "../hooks/useMobileWidth";
 import {TradeUi} from "../components/TradeUi/TradeUi";
 import {useState} from "react";
+import LogoSvg from "../assets/svgs/LogoSvg";
 
 const stories = storiesOf("TradeUi", module);
 
@@ -503,7 +504,7 @@ stories.add("TradeUi", () => {
         location={{pathName: ""}}
         title={"A1"}
         amount={10}
-        logoSvg={<>logo svg</>}
+        logoSvg={<LogoSvg />}
         verified={false}
       />
       <DashboardSharedLayout
