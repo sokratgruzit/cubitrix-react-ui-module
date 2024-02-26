@@ -361,9 +361,8 @@ stories.add("SideBar", () => {
         }
         label={"Opening account fee"}
       /> */}
-
       <SideBar open={toggle}>
-        <TransferFromAcc
+        {/* <TransferFromAcc
           sideBarClose={() => setToggle((prev) => !prev)}
           inputs={inputs}
           currentObject={currentObject}
@@ -379,7 +378,7 @@ stories.add("SideBar", () => {
           chosenAccount={"main"}
           label={"hi"}
           info={"info"}
-        />{" "}
+        />{" "}  */}
         {/* <Connect
           ConnectOptions={[
             {
@@ -459,8 +458,24 @@ stories.add("SideBar", () => {
           account={"ahaha"}
           mainAccount={"ahaha2"}
         /> */}
-        {/* <StakeCurrency inputs={depositInputs} />
-        <SignIn
+        <StakeCurrency 
+          inputs={depositInputs} 
+          sideBarClose={() => setToggle((prev) => !prev)}
+          currentObject={currentObject}
+          cardImg={"sada"}
+          handleSubmit={() => console.log("hi")}
+          buttonLabel={"Transfer"}
+          success={true}
+          helpText={"hi"}
+          showHelpText={true}
+          accountType={"BTC"}
+          accountBalance={"1,400.00"}
+          accountBalanceSecond={"2,034.04"}
+          chosenAccount={"main"}
+          label={"hi"}
+          info={"info"}
+        />
+        {/* <SignIn
           onClick={completeHandler}
           sideBarClose={() => setToggle((prev) => !prev)}
           goBack={() => console.log("go back")}

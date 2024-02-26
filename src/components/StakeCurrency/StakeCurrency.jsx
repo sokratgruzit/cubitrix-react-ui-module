@@ -57,8 +57,8 @@ export const StakeCurrency = ({
             </div>
             <div className="deposit-card_content">
               <h4 className="font-14">{accountType?.toUpperCase()} Balance</h4>
-              <p>{accountBalance}</p>
-              <span className="font-14">{accountBalanceSecond}</span>
+              <p><span className="font-14">Available: </span>{accountBalance}</p>
+              <span className="font-14">Total: {accountBalanceSecond}</span>
             </div>
           </div>
           <div className="deposit-inputs-wrapper">
