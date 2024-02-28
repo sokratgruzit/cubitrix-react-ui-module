@@ -696,8 +696,6 @@ stories.add("AdminPanel", () => {
     setDeveloperApiLoading(false);
   };
 
-  console.log(devAppObject);
-
   let tableData;
   tableData = td.map((item, index) => {
     return (
