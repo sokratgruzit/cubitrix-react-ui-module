@@ -1,14 +1,14 @@
-import {useState, useRef, useEffect} from "react";
-import {HelpText} from "../HelpText";
-import {Dropdown} from "../Dropdown";
-import {Switches} from "../Switches";
-import {countriesData} from "./helper";
+import { useState, useRef, useEffect } from "react";
+import { HelpText } from "../HelpText";
+import { Dropdown } from "../Dropdown";
+import { Switches } from "../Switches";
+import { countriesData } from "./helper";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Input.css";
 
 // hooks
-import {useOnOutsideClick} from "../../hooks/useOnOutsideClick";
+import { useOnOutsideClick } from "../../hooks/useOnOutsideClick";
 
 export const Input = (props) => {
   const [file, setFile] = useState(props?.value || "");
@@ -56,8 +56,8 @@ export const Input = (props) => {
 
   function handleMobileSelect(data) {
     setActive(false);
-    props.onChange({...mobileData, flag: data.flag, code: data.code});
-    setMobileData((prev) => ({...prev, flag: data.flag, code: data.code}));
+    props.onChange({ ...mobileData, flag: data.flag, code: data.code });
+    setMobileData((prev) => ({ ...prev, flag: data.flag, code: data.code }));
   }
 
   useEffect(() => {
@@ -96,8 +96,8 @@ export const Input = (props) => {
           name={props.name}
           style={
             props.icon
-              ? {paddingRight: "43px", ...props?.customInputStyles}
-              : {paddingRight: "16px", ...props?.customInputStyles}
+              ? { paddingRight: "43px", ...props?.customInputStyles }
+              : { paddingRight: "16px", ...props?.customInputStyles }
           }
           className={`${"form-control"} ${
             props.emptyFieldErr ? "error-border" : ""
@@ -209,8 +209,8 @@ export const Input = (props) => {
           name={props.name}
           style={
             props.icon
-              ? {paddingRight: "43px", ...props?.customInputStyles}
-              : {paddingRight: "16px", ...props?.customInputStyles}
+              ? { paddingRight: "43px", ...props?.customInputStyles }
+              : { paddingRight: "16px", ...props?.customInputStyles }
           }
           className={`${"form-control"} ${
             props.emptyFieldErr ? "error-border" : ""
@@ -326,7 +326,7 @@ export const Input = (props) => {
                 props.onChange(e);
               }}
               style={
-                props.icon ? {paddingRight: "55px"} : {paddingRight: "16px"}
+                props.icon ? { paddingRight: "55px" } : { paddingRight: "16px" }
               }
               className={`${"form-control"} ${
                 props.emptyFieldErr ? "error-border" : ""
@@ -372,7 +372,9 @@ export const Input = (props) => {
             setEdit(true);
             props.onChange(e);
           }}
-          style={props.icon ? {paddingRight: "43px"} : {paddingRight: "16px"}}
+          style={
+            props.icon ? { paddingRight: "43px" } : { paddingRight: "16px" }
+          }
           className={`${"form-control"} ${
             props.emptyFieldErr ? "error-border" : ""
           }`}
@@ -454,7 +456,7 @@ export const Input = (props) => {
                 countryData={countriesData}
                 dropdownCountry={"dropdown-country"}
                 active={props.active}
-                customStyles={{width: "inherit"}}
+                customStyles={{ width: "inherit" }}
               />
             ) : (
               <Dropdown
@@ -463,7 +465,7 @@ export const Input = (props) => {
                 active={props.active}
                 handlerClick={handlerClick}
                 selectHandler={props.selectHandler}
-                customStyles={{width: "inherit"}}
+                customStyles={{ width: "inherit" }}
                 defaultOption={props.selectLabel}
               />
             )}
@@ -471,7 +473,7 @@ export const Input = (props) => {
           {props.editable && !edit && props?.value?.length > 0 ? (
             <svg
               onClick={editHandler}
-              style={{top: "10px"}}
+              style={{ top: "10px" }}
               className={`input-group-icon-sc ${
                 edit ? "opacity-0" : "opacity-1"
               }`}
@@ -581,7 +583,7 @@ export const Input = (props) => {
               active={props.active}
               handlerClick={handlerClick}
               selectHandler={props.selectHandler}
-              customStyles={{width: "inherit"}}
+              customStyles={{ width: "inherit" }}
               defaultOption={props.selectLabel}
               onChangeDropdown={(e) => {
                 props.onChangeDropdown(e.target.value);
@@ -640,8 +642,8 @@ export const Input = (props) => {
             <input
               onChange={(e) => {
                 const onlyNumbers = e.target.value.replace(/[^\d\s]/g, "");
-                props.onChange({...mobileData, number: onlyNumbers});
-                setMobileData((prev) => ({...prev, number: onlyNumbers}));
+                props.onChange({ ...mobileData, number: onlyNumbers });
+                setMobileData((prev) => ({ ...prev, number: onlyNumbers }));
               }}
               value={mobileData.number}
               className={`${"number-control"} ${
@@ -654,7 +656,7 @@ export const Input = (props) => {
         {props.editable && !edit && props.value?.number?.length > 0 ? (
           <svg
             onClick={editHandler}
-            style={{top: "34px"}}
+            style={{ top: "34px" }}
             className={`input-group-icon-sc ${
               edit ? "opacity-0" : "opacity-1"
             }`}
@@ -675,7 +677,7 @@ export const Input = (props) => {
             countryData={countriesData}
             dropdownCountry={"dropdown-country"}
             active={props.active}
-            customStyles={{width: "inherit"}}
+            customStyles={{ width: "inherit" }}
             countryCode={true}
           />
         </div>
@@ -852,7 +854,7 @@ export const Input = (props) => {
         {props.editable ? (
           <svg
             onClick={editHandler}
-            style={{top: "30px"}}
+            style={{ top: "30px" }}
             className={`input-group-icon-sc ${
               edit ? "opacity-0" : "opacity-1"
             }`}
@@ -892,6 +894,7 @@ export const Input = (props) => {
           className={`textarea-input ${
             props.emptyFieldErr ? "error-border" : ""
           }`}
+          style={props.customStyles}
         />
         {props.statusCard}
       </div>
