@@ -1,11 +1,11 @@
-import React, {Fragment, useState} from "react";
+import React, { Fragment, useState } from "react";
 
-import {Table} from "../../../Table";
-import {Visual} from "../../../Visual/Visual";
-import {Link} from "react-router-dom";
-import {useMobileWidth} from "../../../../hooks/useMobileWidth";
-import {Account, AccountType} from "../../../../assets/svgs";
-import {TableElement} from "../../../TableElement";
+import { Table } from "../../../Table";
+import { Visual } from "../../../Visual/Visual";
+import { Link } from "react-router-dom";
+import { useMobileWidth } from "../../../../hooks/useMobileWidth";
+import { Account, AccountType } from "../../../../assets/svgs";
+import { TableElement } from "../../../TableElement";
 import translates from "../../../../translates.json";
 
 import "./DashboardTable.css";
@@ -32,7 +32,7 @@ export const DashboardTable = ({
   let element = null;
 
   const [mobileExpand, setMobileExpand] = useState(null);
-  const {width} = useMobileWidth();
+  const { width } = useMobileWidth();
 
   let mobileExpandFunc = (id) => {
     if (width <= 1300) {
@@ -41,6 +41,12 @@ export const DashboardTable = ({
       } else {
         setMobileExpand(null);
       }
+    }
+  };
+
+  const handleClick = (externalHash) => {
+    if (externalHash) {
+      window.location.href = `https://testnet.bscscan.com/tx/${externalHash}`;
     }
   };
 
@@ -113,6 +119,7 @@ export const DashboardTable = ({
       let amountIn = item?.tx_options?.amount;
       let currency = item?.tx_options?.currency?.toUpperCase();
       let amount = item?.amount?.toFixed(2);
+      let tx_external_hash = item?.tx_external_hash;
 
       const createdAt = new Date(item?.createdAt);
       const createdTime = createdAt.toLocaleString("en-US", {
@@ -134,7 +141,13 @@ export const DashboardTable = ({
             mobileExpandFunc(item._id);
           }}
         >
-          <div className="table">
+          <div
+            className="table"
+            onClick={() => {
+              handleClick(tx_external_hash);
+            }}
+            style={{ cursor: tx_external_hash ? "pointer" : "default" }}
+          >
             <div
               className={`td col ${
                 tableHeader[0].mobileWidth ? true : false
@@ -237,7 +250,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{height: "40px"}}>
+          <div className="icon-place" style={{ height: "40px" }}>
             <svg
               width="12"
               height="7"
@@ -288,9 +301,9 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{border: "none", padding: "0", width: "100%"}}
+                customStyles={{ border: "none", padding: "0", width: "100%" }}
                 buttons={tableVisualMore}
-                labelCustomStyles={{color: "#C38C5C"}}
+                labelCustomStyles={{ color: "#C38C5C" }}
               />
             </div>
           }
@@ -396,7 +409,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{height: "40px"}}>
+          <div className="icon-place" style={{ height: "40px" }}>
             <svg
               width="12"
               height="7"
@@ -504,8 +517,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{border: "none", padding: "0"}}
-                labelCustomStyles={{color: "#C38C5C"}}
+                customStyles={{ border: "none", padding: "0" }}
+                labelCustomStyles={{ color: "#C38C5C" }}
                 buttons={tableButtons}
                 centerButtons={true}
               />
@@ -621,7 +634,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{height: "40px"}}>
+          <div className="icon-place" style={{ height: "40px" }}>
             <svg
               width="12"
               height="7"
@@ -672,8 +685,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{border: "none", padding: "0", width: "100%"}}
-                labelCustomStyles={{color: "#C38C5C"}}
+                customStyles={{ border: "none", padding: "0", width: "100%" }}
+                labelCustomStyles={{ color: "#C38C5C" }}
                 buttons={tableButtons}
               />
             </div>
@@ -771,7 +784,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{height: "40px"}}>
+          <div className="icon-place" style={{ height: "40px" }}>
             <svg
               width="12"
               height="7"
@@ -816,8 +829,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{border: "none", padding: "0", width: "100%"}}
-                labelCustomStyles={{color: "#C38C5C"}}
+                customStyles={{ border: "none", padding: "0", width: "100%" }}
+                labelCustomStyles={{ color: "#C38C5C" }}
                 buttons={tableButtons}
               />
             </div>

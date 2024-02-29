@@ -112,9 +112,14 @@ export const Transactions = ({
         onClick={() => {
           mobileExpandFunc(item._id);
         }}
-        style={{ border: "2px solid red" }}
       >
-        <div className="table">
+        <div
+          className="table"
+          onClick={() => {
+            handleClick(tx_external_hash);
+          }}
+          style={{ cursor: tx_external_hash ? "pointer" : "default" }}
+        >
           <div
             className={`td col ${
               tableHead[0].mobileWidth ? true : false
@@ -212,14 +217,7 @@ export const Transactions = ({
               }%`,
             }}
           >
-            <span
-              onClick={() => {
-                handleClick(tx_external_hash);
-              }}
-              style={{ cursor: tx_external_hash ? "pointer" : "default" }}
-            >
-              {item?.tx_status}
-            </span>
+            <span>{item?.tx_status}</span>
           </div>
         </div>
         <div className="table-more" />
