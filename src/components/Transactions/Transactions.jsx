@@ -170,6 +170,7 @@ export const Transactions = ({
               {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
               {txType === "deposit" ? ` ${amount} AONE` : ""}
               {txType === "unstake" ? ` ${amount} AONE` : ""}
+              {txType === "harvest" ? ` ${amount} AONE` : ""}
               {txType === "payment" ? ` ${tockenCount} AONE` : ""}
               {txType === "transfer" ? ` ${amount} ${currency || "AONE"}` : ""}
               {txType === "Internal Transfer"
