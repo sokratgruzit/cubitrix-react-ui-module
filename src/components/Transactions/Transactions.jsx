@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-import {Table} from "../Table";
-import {Visual} from "../Visual";
-import {TableElement} from "../TableElement";
-import {useMobileWidth} from "../../hooks/useMobileWidth";
-import {Input} from "../Input";
+import { Table } from "../Table";
+import { Visual } from "../Visual";
+import { TableElement } from "../TableElement";
+import { useMobileWidth } from "../../hooks/useMobileWidth";
+import { Input } from "../Input";
 import translates from "../../translates.json";
 
 import "./Transactions.css";
@@ -26,7 +26,7 @@ export const Transactions = ({
   tableEmpty,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
-  const {width} = useMobileWidth();
+  const { width } = useMobileWidth();
 
   let mobileExpandFunc = (id) => {
     if (width <= 1300) {
@@ -35,6 +35,12 @@ export const Transactions = ({
       } else {
         setMobileExpand(null);
       }
+    }
+  };
+
+  const handleClick = (externalHash) => {
+    if (externalHash) {
+      window.location.href = `https://testnet.bscscan.com/tx/${externalHash}`;
     }
   };
 
@@ -85,6 +91,7 @@ export const Transactions = ({
     let amountIn = item?.tx_options?.amount;
     let currency = item?.tx_options?.currency?.toUpperCase();
     let amount = item?.amount?.toFixed(2);
+    let tx_external_hash = item?.tx_external_hash;
 
     const createdAt = new Date(item?.createdAt);
     const createdTime = createdAt.toLocaleString("en-US", {
@@ -106,7 +113,13 @@ export const Transactions = ({
           mobileExpandFunc(item._id);
         }}
       >
-        <div className="table">
+        <div
+          className="table"
+          onClick={() => {
+            handleClick(tx_external_hash);
+          }}
+          style={{ cursor: tx_external_hash ? "pointer" : "default" }}
+        >
           <div
             className={`td col ${
               tableHead[0].mobileWidth ? true : false
@@ -209,7 +222,7 @@ export const Transactions = ({
           </div>
         </div>
         <div className="table-more" />
-        <div className="icon-place" style={{height: "40px"}}>
+        <div className="icon-place" style={{ height: "40px" }}>
           <svg
             width="12"
             height="7"
@@ -252,7 +265,7 @@ export const Transactions = ({
   });
 
   const handleInputChange = (e, params) => {
-    const {name, onChange} = params;
+    const { name, onChange } = params;
     let data = {
       target: {
         value: e,
@@ -287,7 +300,7 @@ export const Transactions = ({
                     params?.options[0]?.value
                   : currentObject[params?.name] || params?.defaultAny
               }
-              customStyles={{width: "100%"}}
+              customStyles={{ width: "100%" }}
               selectHandler={(opt) => {
                 handleInputChange(opt, params);
               }}
@@ -313,9 +326,9 @@ export const Transactions = ({
               label={header}
               description={description}
               fontSize={"font-20"}
-              customStyles={{border: "none", padding: "0", width: "100%"}}
+              customStyles={{ border: "none", padding: "0", width: "100%" }}
               buttons={tableVisualMore}
-              labelCustomStyles={{color: "#C38C5C"}}
+              labelCustomStyles={{ color: "#C38C5C" }}
             />
           </div>
         }
