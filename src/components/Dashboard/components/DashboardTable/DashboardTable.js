@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
+import React, {Fragment, useState} from "react";
 
-import { Table } from "../../../Table";
-import { Visual } from "../../../Visual/Visual";
-import { Link } from "react-router-dom";
-import { useMobileWidth } from "../../../../hooks/useMobileWidth";
-import { Account, AccountType } from "../../../../assets/svgs";
-import { TableElement } from "../../../TableElement";
+import {Table} from "../../../Table";
+import {Visual} from "../../../Visual/Visual";
+import {Link} from "react-router-dom";
+import {useMobileWidth} from "../../../../hooks/useMobileWidth";
+import {Account, AccountType} from "../../../../assets/svgs";
+import {TableElement} from "../../../TableElement";
 import translates from "../../../../translates.json";
 
 import "./DashboardTable.css";
@@ -32,7 +32,7 @@ export const DashboardTable = ({
   let element = null;
 
   const [mobileExpand, setMobileExpand] = useState(null);
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
 
   let mobileExpandFunc = (id) => {
     if (width <= 1300) {
@@ -44,9 +44,21 @@ export const DashboardTable = ({
     }
   };
 
+  function replaceMiddleWithEllipsis(str) {
+    if (str.length <= 3) {
+      return str; // If the string length is 3 or less, return the string as is
+    }
+
+    const middleIndex = Math.floor(str.length / 2);
+    const prefix = str.substring(0, 13);
+    const suffix = str.substring(str.length - 4);
+
+    return prefix + "..." + suffix;
+  }
+
   const handleClick = (externalHash) => {
     if (externalHash) {
-      window.location.href = `https://testnet.bscscan.com/tx/${externalHash}`;
+      window.open(`https://testnet.bscscan.com/tx/${externalHash}`, "_blank");
     }
   };
 
@@ -146,7 +158,7 @@ export const DashboardTable = ({
             onClick={() => {
               handleClick(tx_external_hash);
             }}
-            style={{ cursor: tx_external_hash ? "pointer" : "default" }}
+            style={{cursor: tx_external_hash ? "pointer" : "default"}}
           >
             <div
               className={`td col ${
@@ -158,11 +170,10 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              {/* <Account type={'spl'} /> */}
-              <span>{item?.from}</span>
+              <span>{replaceMiddleWithEllipsis(item?.tx_hash)}</span>
             </div>
             <div
-              className={`td ${
+              className={`td col ${
                 tableHeader[1].mobileWidth ? true : false
               } dashboard-td`}
               style={{
@@ -171,8 +182,18 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              {/* <AccountType type={'top-up'} /> */}
-              {/* Render based on tx_type being "bonus" */}
+              <span>{item?.from}</span>
+            </div>
+            <div
+              className={`td ${
+                tableHeader[2].mobileWidth ? true : false
+              } dashboard-td`}
+              style={{
+                width: `${
+                  mobile ? tableHeader[2].mobileWidth : tableHeader[2].width
+                }%`,
+              }}
+            >
               {item?.tx_type === "bonus" ? (
                 <span>
                   {item?.tx_type}-{item?.tx_options?.type}
@@ -193,11 +214,11 @@ export const DashboardTable = ({
             </div>
             <div
               className={`td ${
-                tableHeader[2].mobileWidth ? true : false
+                tableHeader[3].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
-                  mobile ? tableHeader[2].mobileWidth : tableHeader[2].width
+                  mobile ? tableHeader[3].mobileWidth : tableHeader[3].width
                 }%`,
               }}
             >
@@ -226,19 +247,6 @@ export const DashboardTable = ({
             </div>
             <div
               className={`td ${
-                tableHeader[3].mobileWidth ? true : false
-              } dashboard-td`}
-              style={{
-                width: `${
-                  mobile ? tableHeader[3].mobileWidth : tableHeader[3].width
-                }%`,
-              }}
-            >
-              <span>{createdTime}</span>
-            </div>
-
-            <div
-              className={`td ${
                 tableHeader[4].mobileWidth ? true : false
               } dashboard-td`}
               style={{
@@ -247,11 +255,23 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
+              <span>{createdTime}</span>
+            </div>
+            <div
+              className={`td ${
+                tableHeader[5].mobileWidth ? true : false
+              } dashboard-td`}
+              style={{
+                width: `${
+                  mobile ? tableHeader[5].mobileWidth : tableHeader[5].width
+                }%`,
+              }}
+            >
               <span>{item?.tx_status}</span>
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -302,9 +322,9 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0", width: "100%" }}
+                customStyles={{border: "none", padding: "0", width: "100%"}}
                 buttons={tableVisualMore}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                labelCustomStyles={{color: "#C38C5C"}}
               />
             </div>
           }
@@ -410,7 +430,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -518,8 +538,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0" }}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                customStyles={{border: "none", padding: "0"}}
+                labelCustomStyles={{color: "#C38C5C"}}
                 buttons={tableButtons}
                 centerButtons={true}
               />
@@ -635,7 +655,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -686,8 +706,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0", width: "100%" }}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                customStyles={{border: "none", padding: "0", width: "100%"}}
+                labelCustomStyles={{color: "#C38C5C"}}
                 buttons={tableButtons}
               />
             </div>
@@ -785,7 +805,7 @@ export const DashboardTable = ({
             </div>
           </div>
           <div className="table-more" />
-          <div className="icon-place" style={{ height: "40px" }}>
+          <div className="icon-place" style={{height: "40px"}}>
             <svg
               width="12"
               height="7"
@@ -830,8 +850,8 @@ export const DashboardTable = ({
                 label={header}
                 description={description}
                 fontSize={"font-20"}
-                customStyles={{ border: "none", padding: "0", width: "100%" }}
-                labelCustomStyles={{ color: "#C38C5C" }}
+                customStyles={{border: "none", padding: "0", width: "100%"}}
+                labelCustomStyles={{color: "#C38C5C"}}
                 buttons={tableButtons}
               />
             </div>

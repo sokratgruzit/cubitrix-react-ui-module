@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-import { Table } from "../Table";
-import { Visual } from "../Visual";
-import { TableElement } from "../TableElement";
-import { useMobileWidth } from "../../hooks/useMobileWidth";
-import { Input } from "../Input";
+import {Table} from "../Table";
+import {Visual} from "../Visual";
+import {TableElement} from "../TableElement";
+import {useMobileWidth} from "../../hooks/useMobileWidth";
+import {Input} from "../Input";
 import translates from "../../translates.json";
 
 import "./Transactions.css";
@@ -26,7 +26,7 @@ export const Transactions = ({
   tableEmpty,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
-  const { width } = useMobileWidth();
+  const {width} = useMobileWidth();
 
   let mobileExpandFunc = (id) => {
     if (width <= 1300) {
@@ -38,9 +38,21 @@ export const Transactions = ({
     }
   };
 
+  function replaceMiddleWithEllipsis(str) {
+    if (str.length <= 3) {
+      return str; // If the string length is 3 or less, return the string as is
+    }
+
+    const middleIndex = Math.floor(str.length / 2);
+    const prefix = str.substring(0, 13);
+    const suffix = str.substring(str.length - 4);
+
+    return prefix + "..." + suffix;
+  }
+
   const handleClick = (externalHash) => {
     if (externalHash) {
-      window.location.href = `https://testnet.bscscan.com/tx/${externalHash}`;
+      window.open(`https://testnet.bscscan.com/tx/${externalHash}`, "_blank");
     }
   };
 
@@ -118,7 +130,7 @@ export const Transactions = ({
           onClick={() => {
             handleClick(tx_external_hash);
           }}
-          style={{ cursor: tx_external_hash ? "pointer" : "default" }}
+          style={{cursor: tx_external_hash ? "pointer" : "default"}}
         >
           <div
             className={`td col ${
@@ -130,11 +142,10 @@ export const Transactions = ({
               }%`,
             }}
           >
-            {/* <Account type={'spl'} /> */}
-            <span>{item?.from}</span>
+            <span>{replaceMiddleWithEllipsis(item?.tx_hash)}</span>
           </div>
           <div
-            className={`td ${
+            className={`td col ${
               tableHead[1].mobileWidth ? true : false
             } dashboard-td`}
             style={{
@@ -143,9 +154,18 @@ export const Transactions = ({
               }%`,
             }}
           >
-            {/* <AccountType type={'top-up'} /> */}
-
-            {/* Render based on tx_type being "bonus" */}
+            <span>{item?.from}</span>
+          </div>
+          <div
+            className={`td ${
+              tableHead[2].mobileWidth ? true : false
+            } dashboard-td`}
+            style={{
+              width: `${
+                mobile ? tableHead[2].mobileWidth : tableHead[2].width
+              }%`,
+            }}
+          >
             {item?.tx_type === "bonus" ? (
               <span>
                 {item?.tx_type} - {item?.tx_options?.type}
@@ -153,8 +173,6 @@ export const Transactions = ({
             ) : (
               <span>{item?.tx_type}</span>
             )}
-
-            {/* Render based on tx_type being "transfer" and accountAddress comparison */}
             <span>
               {item?.tx_type === "transfer" &&
                 (accountAddress === item?.from ? (
@@ -166,11 +184,11 @@ export const Transactions = ({
           </div>
           <div
             className={`td ${
-              tableHead[2].mobileWidth ? true : false
+              tableHead[3].mobileWidth ? true : false
             } dashboard-td`}
             style={{
               width: `${
-                mobile ? tableHead[2].mobileWidth : tableHead[2].width
+                mobile ? tableHead[3].mobileWidth : tableHead[3].width
               }%`,
             }}
           >
@@ -197,19 +215,6 @@ export const Transactions = ({
           </div>
           <div
             className={`td ${
-              tableHead[3].mobileWidth ? true : false
-            } dashboard-td`}
-            style={{
-              width: `${
-                mobile ? tableHead[3].mobileWidth : tableHead[3].width
-              }%`,
-            }}
-          >
-            <span>{createdTime}</span>
-          </div>
-
-          <div
-            className={`td ${
               tableHead[4].mobileWidth ? true : false
             } dashboard-td`}
             style={{
@@ -218,11 +223,24 @@ export const Transactions = ({
               }%`,
             }}
           >
+            <span>{createdTime}</span>
+          </div>
+
+          <div
+            className={`td ${
+              tableHead[5].mobileWidth ? true : false
+            } dashboard-td`}
+            style={{
+              width: `${
+                mobile ? tableHead[5].mobileWidth : tableHead[5].width
+              }%`,
+            }}
+          >
             <span>{item?.tx_status}</span>
           </div>
         </div>
         <div className="table-more" />
-        <div className="icon-place" style={{ height: "40px" }}>
+        <div className="icon-place" style={{height: "40px"}}>
           <svg
             width="12"
             height="7"
@@ -265,7 +283,7 @@ export const Transactions = ({
   });
 
   const handleInputChange = (e, params) => {
-    const { name, onChange } = params;
+    const {name, onChange} = params;
     let data = {
       target: {
         value: e,
@@ -300,7 +318,7 @@ export const Transactions = ({
                     params?.options[0]?.value
                   : currentObject[params?.name] || params?.defaultAny
               }
-              customStyles={{ width: "100%" }}
+              customStyles={{width: "100%"}}
               selectHandler={(opt) => {
                 handleInputChange(opt, params);
               }}
@@ -326,9 +344,9 @@ export const Transactions = ({
               label={header}
               description={description}
               fontSize={"font-20"}
-              customStyles={{ border: "none", padding: "0", width: "100%" }}
+              customStyles={{border: "none", padding: "0", width: "100%"}}
               buttons={tableVisualMore}
-              labelCustomStyles={{ color: "#C38C5C" }}
+              labelCustomStyles={{color: "#C38C5C"}}
             />
           </div>
         }

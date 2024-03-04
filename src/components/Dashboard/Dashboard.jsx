@@ -1,7 +1,7 @@
 import React from "react";
 
-import { CardSlider } from "./components/CardSlider/CardSlider";
-import { DashboardTable } from "./components/DashboardTable/DashboardTable";
+import {CardSlider} from "./components/CardSlider/CardSlider";
+import {DashboardTable} from "./components/DashboardTable/DashboardTable";
 import translates from "../../translates.json";
 import "./Dashboard.css";
 // import { Account, AccountType } from '../../assets/svgs'
@@ -106,15 +106,6 @@ export const Dashboard = ({
       />
       {extensions?.referral === "true" && (
         <div className="dashboard-total-referral-row">
-          {/*<div className="dashboard-total-referral-item">*/}
-          {/*  <p>AONE Price</p>*/}
-          {/*  <p>*/}
-          {/*    {AONEPrice?.toLocaleString("en-US", {*/}
-          {/*      minimumFractionDigits: 2,*/}
-          {/*      maximumFractionDigits: 2,*/}
-          {/*    }) ?? 0}*/}
-          {/*  </p>*/}
-          {/*</div>*/}
           <div className="dashboard-total-referral-item">
             <p>{translates?.expected_binary.en}</p>
             <p>
