@@ -52,7 +52,6 @@
 }
 .copy-address-text {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  max-width: calc(100% - 30px);
   overflow-wrap: anywhere;
   font-size: 12px;
   color: #9c9da3;
