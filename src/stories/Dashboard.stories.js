@@ -209,6 +209,12 @@ stories.add("Dashboard", () => {
 
   const transactionHeader = [
     {
+      name: "Hash",
+      width: 35,
+      id: 0,
+      height: "40px",
+    },
+    {
       name: "From",
       width: 35,
       id: 0,

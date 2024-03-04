@@ -278,7 +278,7 @@ export const CardSlider = ({
                 </div>
                 <div className="main-card-content-wrapper">
                   {!chosenAcc?.balance ? (
-                    <Loader />
+                    <Loader loading="Loading..." />
                   ) : (
                     <p
                       className={`card-slider-card_content  ${
@@ -362,7 +362,7 @@ export const CardSlider = ({
                       </div>
                       <div className="main-card-content-wrapper">
                         {!assets ? (
-                          <Loader />
+                          <Loader loading="Loading..." />
                         ) : (
                           <p
                             className={`card-slider-card_content ${
