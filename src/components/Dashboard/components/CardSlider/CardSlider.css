@@ -386,30 +386,6 @@
   opacity: 1;
 }
 
-.loader-container {
-  display: flex;
-  align-items: center;
-}
-
-.loader {
-  border: 3px solid rgb(106, 109, 118);
-  border-top: 3px solid #c38c5c;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 2s linear infinite;
-  margin-right: 10px; /* Adjust margin as needed */
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @media only screen and (max-width: 767px) {
   .card-slider-navigation_item-deposit p {
     font-size: 12px;

@@ -4,6 +4,7 @@ import { Pagination, Navigation } from "swiper";
 import { Account, AccountType } from "../../../../assets/svgs";
 import { useMobileWidth } from "../../../../hooks/useMobileWidth";
 import translates from "../../../../translates.json";
+import { Loader } from "../../../Loader/Loader";
 import "swiper/swiper-bundle.css";
 import "./CardSlider.css";
 
@@ -276,13 +277,19 @@ export const CardSlider = ({
                   </h4>
                 </div>
                 <div className="main-card-content-wrapper">
-                  <p
-                    className={`card-slider-card_content  ${
-                      accountType === "trade" ? "card-slider-trade_content" : ""
-                    }`}
-                  >
-                    {formatNumber(chosenAcc?.balance)}
-                  </p>
+                  {!chosenAcc?.balance ? (
+                    <Loader />
+                  ) : (
+                    <p
+                      className={`card-slider-card_content  ${
+                        accountType === "trade"
+                          ? "card-slider-trade_content"
+                          : ""
+                      }`}
+                    >
+                      {formatNumber(chosenAcc?.balance)}
+                    </p>
+                  )}
                   {accountType === "trade" && (
                     <span
                       style={{
@@ -355,12 +362,7 @@ export const CardSlider = ({
                       </div>
                       <div className="main-card-content-wrapper">
                         {!assets ? (
-                          <div className="loader-container">
-                            <div className="loader"></div>
-                            <div style={{ color: "rgb(106, 109, 118)" }}>
-                              Loading...
-                            </div>
-                          </div>
+                          <Loader />
                         ) : (
                           <p
                             className={`card-slider-card_content ${

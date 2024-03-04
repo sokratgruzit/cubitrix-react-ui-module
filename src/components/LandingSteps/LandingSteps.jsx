@@ -4,6 +4,7 @@ import { Input } from "../Input";
 import { Popup } from "../Popup";
 import { HelpText } from "../HelpText";
 import { HelpCard } from "../HelpCard";
+import { Loader } from "../Loader/Loader";
 import translates from "../../translates.json";
 import { MetaMask, WalletConnect } from "../../assets/svgs";
 
@@ -738,12 +739,7 @@ export const LandingSteps = ({
                         ))}
                       </div>
                       {isLoading ? (
-                        <div className="loader-container">
-                          <div className="loader"></div>
-                          <div style={{ color: "rgb(106, 109, 118)" }}>
-                            Loading...
-                          </div>
-                        </div>
+                        <Loader />
                       ) : (
                         <HelpText
                           title={
