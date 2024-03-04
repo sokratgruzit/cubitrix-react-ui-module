@@ -16,11 +16,12 @@ export const UserOptions = ({
   type,
   mainAccount,
   tokenBalance,
+  userMetaData,
 }) => {
   return (
     <>
       <Visual
-        label={"Welcome!"}
+        label={"Welcome" + " " + userMetaData?.name + "!"}
         element={"popup-header"}
         customStyles={{ width: "100%" }}
         onClick={sideBarClose}
