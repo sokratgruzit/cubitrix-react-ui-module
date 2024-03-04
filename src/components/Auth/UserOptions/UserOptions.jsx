@@ -15,6 +15,7 @@ export const UserOptions = ({
   account,
   type,
   mainAccount,
+  tokenBalance,
 }) => {
   return (
     <>
@@ -50,12 +51,14 @@ export const UserOptions = ({
         </div>
         <Visual
           label={account}
+          type="withBalance"
           element={"copy-address"}
           customStyles={{ width: "100%" }}
           onClick={async () => await navigator.clipboard.writeText(account)}
+          tokenBalance={tokenBalance}
         />
         <div className="user-options-main-wrap">
-          <h2>Main</h2>
+          <h2>Main Account</h2>
           <Visual
             label={mainAccount}
             element={"copy-address"}
