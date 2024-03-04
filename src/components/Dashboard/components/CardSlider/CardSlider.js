@@ -1,8 +1,8 @@
-import React, {useMemo} from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Pagination, Navigation} from "swiper";
-import {Account, AccountType} from "../../../../assets/svgs";
-import {useMobileWidth} from "../../../../hooks/useMobileWidth";
+import React, { useMemo } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
+import { Account, AccountType } from "../../../../assets/svgs";
+import { useMobileWidth } from "../../../../hooks/useMobileWidth";
 import translates from "../../../../translates.json";
 import "swiper/swiper-bundle.css";
 import "./CardSlider.css";
@@ -21,7 +21,7 @@ export const CardSlider = ({
   stakedTotal,
   handleStake,
 }) => {
-  const {width} = useMobileWidth();
+  const { width } = useMobileWidth();
 
   const cardFooterData = [
     {
@@ -354,15 +354,24 @@ export const CardSlider = ({
                         <h4 className="font-16">{key.toUpperCase()}</h4>
                       </div>
                       <div className="main-card-content-wrapper">
-                        <p
-                          className={`card-slider-card_content ${
-                            assets?.[`${key}Staked`] > 0
-                              ? "card-slider-trade_content"
-                              : ""
-                          }`}
-                        >
-                          {formatNumber(value)}
-                        </p>
+                        {!assets ? (
+                          <div className="loader-container">
+                            <div className="loader"></div>
+                            <div style={{ color: "rgb(106, 109, 118)" }}>
+                              Loading...
+                            </div>
+                          </div>
+                        ) : (
+                          <p
+                            className={`card-slider-card_content ${
+                              assets?.[`${key}Staked`] > 0
+                                ? "card-slider-trade_content"
+                                : ""
+                            }`}
+                          >
+                            {formatNumber(value)}
+                          </p>
+                        )}
                         {assets?.[`${key}Staked`] > 0 && (
                           <span
                             style={{
@@ -385,8 +394,8 @@ export const CardSlider = ({
                           <div
                             style={
                               key === "gold" && item.title === "Withdraw"
-                                ? {display: "none"}
-                                : {display: "flex"}
+                                ? { display: "none" }
+                                : { display: "flex" }
                             }
                             className={`card-slider-card_footer-item card-slider-card_footer-item-currency`}
                             key={footerIndex}

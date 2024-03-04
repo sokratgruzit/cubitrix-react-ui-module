@@ -84,7 +84,7 @@ export const DashboardSharedLayout = ({
                     height="16"
                     fill="#fff"
                     stroke="#000"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                   />
                   <line
                     x1="4"
@@ -92,7 +92,7 @@ export const DashboardSharedLayout = ({
                     x2="20"
                     y2="8"
                     stroke="#000"
-                    stroke-width="1"
+                    strokeWidth="1"
                   />
                   <line
                     x1="4"
@@ -100,7 +100,7 @@ export const DashboardSharedLayout = ({
                     x2="20"
                     y2="12"
                     stroke="#000"
-                    stroke-width="1"
+                    strokeWidth="1"
                   />
                   <line
                     x1="4"
@@ -108,7 +108,7 @@ export const DashboardSharedLayout = ({
                     x2="20"
                     y2="16"
                     stroke="#000"
-                    stroke-width="1"
+                    strokeWidth="1"
                   />
                 </svg>
                 <Link to="/term" className="dashboard-sidebar__horisontal-link">
@@ -123,9 +123,9 @@ export const DashboardSharedLayout = ({
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <rect
                     x="2"
