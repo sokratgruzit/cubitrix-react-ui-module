@@ -138,7 +138,7 @@ export const Transactions = ({
             } dashboard-td`}
             style={{
               width: `${
-                mobile ? tableHead[0].mobileWidth : tableHead[0].width
+                mobile ? tableHead[0]?.mobileWidth : tableHead[0].width
               }%`,
             }}
           >
@@ -154,15 +154,27 @@ export const Transactions = ({
               }%`,
             }}
           >
-            <span>{item?.from}</span>
+            <span>{replaceMiddleWithEllipsis(item?.from)}</span>
           </div>
           <div
-            className={`td ${
+            className={`td col ${
               tableHead[2].mobileWidth ? true : false
             } dashboard-td`}
             style={{
               width: `${
                 mobile ? tableHead[2].mobileWidth : tableHead[2].width
+              }%`,
+            }}
+          >
+            <span>{replaceMiddleWithEllipsis(item?.to)}</span>
+          </div>
+          <div
+            className={`td ${
+              tableHead[3].mobileWidth ? true : false
+            } dashboard-td`}
+            style={{
+              width: `${
+                mobile ? tableHead[3].mobileWidth : tableHead[3].width
               }%`,
             }}
           >
@@ -184,11 +196,11 @@ export const Transactions = ({
           </div>
           <div
             className={`td ${
-              tableHead[3].mobileWidth ? true : false
+              tableHead[4].mobileWidth ? true : false
             } dashboard-td`}
             style={{
               width: `${
-                mobile ? tableHead[3].mobileWidth : tableHead[3].width
+                mobile ? tableHead[4].mobileWidth : tableHead[4].width
               }%`,
             }}
           >
@@ -215,11 +227,11 @@ export const Transactions = ({
           </div>
           <div
             className={`td ${
-              tableHead[4].mobileWidth ? true : false
+              tableHead[5].mobileWidth ? true : false
             } dashboard-td`}
             style={{
               width: `${
-                mobile ? tableHead[4].mobileWidth : tableHead[4].width
+                mobile ? tableHead[5].mobileWidth : tableHead[5].width
               }%`,
             }}
           >
@@ -228,11 +240,11 @@ export const Transactions = ({
 
           <div
             className={`td ${
-              tableHead[5].mobileWidth ? true : false
+              tableHead[6].mobileWidth ? true : false
             } dashboard-td`}
             style={{
               width: `${
-                mobile ? tableHead[5].mobileWidth : tableHead[5].width
+                mobile ? tableHead[6].mobileWidth : tableHead[6].width
               }%`,
             }}
           >

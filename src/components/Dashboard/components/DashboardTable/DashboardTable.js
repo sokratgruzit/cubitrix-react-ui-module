@@ -182,15 +182,27 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              <span>{item?.from}</span>
+              <span>{replaceMiddleWithEllipsis(item?.from)}</span>
             </div>
             <div
-              className={`td ${
+              className={`td col ${
                 tableHeader[2].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
                   mobile ? tableHeader[2].mobileWidth : tableHeader[2].width
+                }%`,
+              }}
+            >
+              <span>{replaceMiddleWithEllipsis(item?.to)}</span>
+            </div>
+            <div
+              className={`td ${
+                tableHeader[3].mobileWidth ? true : false
+              } dashboard-td`}
+              style={{
+                width: `${
+                  mobile ? tableHeader[3].mobileWidth : tableHeader[3].width
                 }%`,
               }}
             >
@@ -214,11 +226,11 @@ export const DashboardTable = ({
             </div>
             <div
               className={`td ${
-                tableHeader[3].mobileWidth ? true : false
+                tableHeader[4].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
-                  mobile ? tableHeader[3].mobileWidth : tableHeader[3].width
+                  mobile ? tableHeader[4].mobileWidth : tableHeader[4].width
                 }%`,
               }}
             >
@@ -247,11 +259,11 @@ export const DashboardTable = ({
             </div>
             <div
               className={`td ${
-                tableHeader[4].mobileWidth ? true : false
+                tableHeader[5].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
-                  mobile ? tableHeader[4].mobileWidth : tableHeader[4].width
+                  mobile ? tableHeader[5].mobileWidth : tableHeader[5].width
                 }%`,
               }}
             >
@@ -259,11 +271,11 @@ export const DashboardTable = ({
             </div>
             <div
               className={`td ${
-                tableHeader[5].mobileWidth ? true : false
+                tableHeader[6].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
-                  mobile ? tableHeader[5].mobileWidth : tableHeader[5].width
+                  mobile ? tableHeader[6].mobileWidth : tableHeader[6].width
                 }%`,
               }}
             >
