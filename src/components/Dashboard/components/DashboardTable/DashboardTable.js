@@ -45,7 +45,7 @@ export const DashboardTable = ({
   };
 
   function replaceMiddleWithEllipsis(str) {
-    if (str.length <= 3) {
+    if (str.length <= 15) {
       return str; // If the string length is 3 or less, return the string as is
     }
 
