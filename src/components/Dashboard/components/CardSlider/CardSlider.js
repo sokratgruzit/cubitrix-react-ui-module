@@ -277,7 +277,8 @@ export const CardSlider = ({
                   </h4>
                 </div>
                 <div className="main-card-content-wrapper">
-                  {!chosenAcc?.balance ? (
+                  {chosenAcc?.balance === null ||
+                  chosenAcc?.balance === undefined ? (
                     <Loader loading="Loading..." />
                   ) : (
                     <p
@@ -361,7 +362,7 @@ export const CardSlider = ({
                         <h4 className="font-16">{key.toUpperCase()}</h4>
                       </div>
                       <div className="main-card-content-wrapper">
-                        {!assets ? (
+                        {assets === null || assets === undefined ? (
                           <Loader loading="Loading..." />
                         ) : (
                           <p
