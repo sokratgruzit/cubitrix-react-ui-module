@@ -1,35 +1,51 @@
 import {storiesOf} from "@storybook/react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {useState, useEffect} from "react";
-import "../assets/css/main-theme.css";
+import moment from "moment";
+
+import {useMobileWidth} from "../hooks/useMobileWidth";
+
 import {AdminPanel} from "../components/AdminPanel";
 import {AdminHeader} from "../components/AdminHeader";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Button} from "../components/Button";
-import {useMobileWidth} from "../hooks/useMobileWidth";
-import {Logo} from "../assets/svgs";
 import {MoreButton} from "../components/MoreButton";
+import {Button} from "../components/Button";
+
+import {Logo} from "../assets/svgs";
+
+import "../assets/css/main-theme.css";
 
 const stories = storiesOf("AdminPanel", module);
 
 stories.add("AdminPanel", () => {
   const {mobile} = useMobileWidth();
-
+  const [tableType] = useState("users");
   const [mobileExpand, setMobileExpand] = useState(null);
   const [tableExpand, setTableExpand] = useState(null);
   const [devAppObject, setDevAppObject] = useState({});
   const [animateDom, setAnimateDom] = useState(false);
-  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] =
-    useState({});
+  const [activeItem, setActiveItem] = useState(null);
+  const [developerApiSuccessResponse, setDeveloperApiSuccessResponse] = useState({});
   const [developerApiLoading, setDeveloperApiLoading] = useState(false);
-
   const [developerApiActive, setDeveloperApiActive] = useState(false);
-  const [developerApiResponseActive, setDeveloperApiResponseActive] =
-    useState(false);
+  const [developerApiResponseActive, setDeveloperApiResponseActive] = useState(false);
+  
   useEffect(() => {
     setTimeout(() => {
       setAnimateDom(true);
     }, 500);
   }, []);
+
+  useEffect(() => {
+    if (activeItem) {
+      setPopUpData({
+        address: activeItem.address,
+        name: activeItem.name,
+        email: activeItem.email,
+        newAddress: activeItem.newAddress,
+      });
+    }
+  }, [activeItem]);
+
   let mobileExpandFunc = (id) => {
     if (window.innerWidth <= 1300) {
       if (id !== mobileExpand) {
@@ -39,6 +55,7 @@ stories.add("AdminPanel", () => {
       }
     }
   };
+
   let tableExpandFunc = (id) => {
     if (id !== tableExpand) {
       setTableExpand(id);
@@ -46,6 +63,76 @@ stories.add("AdminPanel", () => {
       setTableExpand(null);
     }
   };
+
+  let dynamicDropDown = (item) => {
+    const id = item?._id;
+
+    let dropdownData = [
+      {
+        id: 0,
+        list: [
+          {
+            title: "Edit",
+            onClick: () => {
+              item.newAddress = item.address;
+              setActiveItem(item);
+            },
+            svg: (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18px"
+                height="18px"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff">
+                <g id="SVGRepo_bgCarrier" strokeWidth="0" />
+
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <path
+                    d="M4 5L15 5"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />{" "}
+                  <path
+                    d="M4 8H15"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />{" "}
+                  <path
+                    d="M4 11H11"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />{" "}
+                  <path
+                    d="M18.4563 13.5423L13.9268 18.0719C13.6476 18.3511 13.292 18.5414 12.9048 18.6188L10.8153 19.0367L11.2332 16.9472C11.3106 16.5601 11.5009 16.2045 11.7801 15.9253L16.3096 11.3957M18.4563 13.5423L19.585 12.4135C19.9755 12.023 19.9755 11.3898 19.585 10.9993L18.8526 10.2669C18.4621 9.8764 17.8289 9.8764 17.4384 10.2669L16.3096 11.3957M18.4563 13.5423L16.3096 11.3957"
+                    stroke="#ffffff"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />{" "}
+                </g>
+              </svg>
+            ),
+          },
+        ],
+      },
+    ];
+    return dropdownData;
+  };
+
   let dropdownData = [
     {
       id: 0,
@@ -123,6 +210,7 @@ stories.add("AdminPanel", () => {
       ],
     },
   ];
+
   const adminHeaderData = {
     username: "Michael",
     svg: <Logo />,
@@ -164,6 +252,7 @@ stories.add("AdminPanel", () => {
       },
     ],
   };
+
   const sideBar = [
     {
       id: 1,
@@ -441,87 +530,196 @@ stories.add("AdminPanel", () => {
     ],
   };
 
-  let th = [
-    {
-      name: "Tranx ID",
-      width: 15,
-      mobileWidth: 25,
-      id: 0,
-    },
-    {
-      name: "From",
-      width: 15,
-      mobileWidth: 25,
-      id: 1,
-    },
-    {
-      name: "To",
-      width: 15,
-      mobileWidth: 25,
-      id: 2,
-    },
-    {
-      name: "Amount",
-      width: 15,
-      mobileSlide: true,
-      id: 3,
-    },
-    {
-      name: "Domination",
-      width: 10,
-      mobileSlide: true,
-      id: 4,
-    },
-    {
-      name: "Time",
-      width: 10,
-      mobileSlide: true,
-      id: 5,
-    },
-    {
-      name: "Tranx Type",
-      width: 10,
-      position: "right",
-      mobileSlide: true,
-      id: 6,
-    },
-  ];
-
-  let td = [
-    {
-      id: 12123,
-      hash: "0xae0cf2498c23422340xae0cf2498c2342234",
-      from: "0xae0cf2498c0xae0cf2498c0xae0cf2498c2342234",
-      to: "0xae0cf2498c0xae0cf2498c0xae0cf2498c2342234",
-      amount: "$123, 241, 241, 423.8",
-      domination: "1,132,000.1",
-      date: "01.02.2023",
-      time: "08:15 PM",
-      type: "Transfer",
-    },
-    {
-      id: 121223323,
-      hash: "0xae0cf2498c2342234",
-      from: "0xae0cf2498c0xae0cf2498c",
-      to: "0xae0cf2498c0xae0cf2498c",
-      amount: "$123, 241, 241, 423.8",
-      domination: "1,132,000.1",
-      date: "01.02.2023",
-      time: "08:15 PM",
-      type: "All Deposit",
-    },
-    {
-      id: 1212323,
-      hash: "0xae0cf2498c2342234",
-      from: "0xae0cf2498c0xae0cf2498c",
-      to: "0xae0cf2498c0xae0cf2498c",
-      amount: "$123, 241, 241, 423.8",
-      domination: "1,132,000.1",
-      date: "01.02.2023",
-      time: "08:15 PM",
-      type: "Withdraw",
-    },
-  ];
+  const tableHead = {
+    transactions: [
+      {
+        name: "Tranx Hash",
+        width: 10,
+        mobileWidth: 25,
+        id: 0,
+      },
+      {
+        name: "From",
+        width: 12,
+        mobileWidth: 25,
+        id: 1,
+      },
+      {
+        name: "To",
+        width: 12,
+        mobileWidth: 25,
+        id: 2,
+      },
+      {
+        name: "Amount",
+        width: 11,
+        mobileWidth: 25,
+        id: 3,
+      },
+      {
+        name: "Created",
+        width: 11,
+        id: 4,
+      },
+      {
+        name: "Tranx Status",
+        width: 10,
+        id: 5,
+      },
+      {
+        name: "Tranx Type",
+        width: 10,
+        id: 6,
+      },
+    ],
+    rewards: [
+      {
+        name: "User Address",
+        width: 20,
+        mobileWidth: 25,
+        id: 0,
+      },
+      {
+        name: "Percentage",
+        width: 10,
+        mobileWidth: 25,
+        id: 1,
+      },
+      {
+        name: "Amount",
+        width: 15,
+        mobileWidth: 25,
+        id: 2,
+      },
+      {
+        name: "Reward",
+        width: 15,
+        mobileWidth: 25,
+        id: 3,
+      },
+      {
+        name: "Created",
+        width: 15,
+        id: 4,
+      },
+      {
+        name: "Expires",
+        width: 15,
+        id: 5,
+      },
+      {
+        name: "To Give Reward",
+        width: 15,
+        id: 6,
+      },
+    ],
+    accounts: [
+      {
+        name: "Type ID",
+        width: 7,
+        mobileWidth: 33,
+        id: 0,
+      },
+      {
+        name: "Address",
+        width: 10,
+        mobileWidth: 33,
+        id: 1,
+      },
+      {
+        name: "Balances",
+        width: 11,
+        mobileWidth: 33,
+        id: 2,
+      },
+      {
+        name: "",
+        width: 11,
+        mobileWidth: 33,
+        id: 3,
+      },
+      {
+        name: "",
+        width: 11,
+        mobileWidth: 33,
+        id: 4,
+      },
+      {
+        name: "",
+        width: 11,
+        mobileWidth: 33,
+        id: 5,
+      },
+      {
+        name: "",
+        width: 11,
+        mobileWidth: 33,
+        id: 6,
+      },
+      {
+        name: "",
+        width: 11,
+        mobileWidth: 33,
+        id: 7,
+      },
+      {
+        name: "Date",
+        width: 9,
+        id: 8,
+      },
+    ],
+    users: [
+      {
+        name: "ID",
+        width: 10,
+        mobileWidth: 23,
+        id: 0,
+      },
+      {
+        name: "Name",
+        width: 10,
+        mobileWidth: 23,
+        id: 0,
+      },
+      {
+        name: "Address",
+        width: 35,
+        mobileWidth: 43,
+        id: 1,
+      },
+      {
+        name: "Email",
+        width: 15,
+        mobileWidth: 33,
+        id: 2,
+      },
+      {
+        name: "Register Date",
+        width: 15,
+        id: 3,
+      },
+    ],
+    adminManagement: [
+      {
+        name: "Email",
+        width: 33,
+        mobileWidth: 33,
+        id: 1,
+      },
+      {
+        name: "Level",
+        width: 33,
+        mobileWidth: 33,
+        id: 2,
+      },
+      {
+        name: "Last Login",
+        width: 33,
+        mobileWidth: 33,
+        id: 3,
+      },
+    ],
+  };
 
   let changeDevObject = (e) => {
     const {name, value} = e.target;
@@ -644,35 +842,6 @@ stories.add("AdminPanel", () => {
     },
   ];
 
-  // const developerApiSuccessResponse = {
-  //   message: "OK",
-  //   result: [
-  //     {
-  //       blockHash:
-  //         "0x373d339e45a701447367d7b9c7cef84aab79c2b2714271b908cda0ab3ad0849b",
-  //       blockNumber: "65204",
-  //       confirmations: "",
-  //       contractAddress: "",
-  //       cumulativeGasUsed: "122207",
-  //       from: "0x3fb1cd2cd96c6d5c0b5eb3322d807b34482481d4",
-  //       gas: "122261",
-  //       gasPrice: "50000000000",
-  //       gasUsed: "122207",
-  //       hash: "0x98beb27135aa0a25650557005ad962919d6a278c4b3dde7f4f6a3a1e65aa746c",
-  //       input:
-  //         "0xf00d4b5d000000000000000000000000036c8cecce8d8bbf0831d840d7f29c9e3ddefa63000000000000000000000000c5a96db085dda36ffbe390f455315d30d6d3dc52",
-  //       isError: "0",
-  //       nonce: "0",
-  //       timeStamp: "1439232889",
-  //       to: "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae",
-  //       transactionIndex: "0",
-  //       txreceipt_status: "0",
-  //       value: "0",
-  //     },
-  //   ],
-  //   status: "1",
-  // };
-
   const developerApiFailResponse = {
     message: "No data was found",
     result: [],
@@ -696,157 +865,321 @@ stories.add("AdminPanel", () => {
     setDeveloperApiLoading(false);
   };
 
-  let tableData;
-  tableData = td.map((item, index) => {
-    return (
-      <div
-        className={`table-parent ${mobileExpand == item.id ? "active" : ""}`}
-        onClick={() => {
-          mobileExpandFunc(item.id);
-        }}
-        key={index}
-      >
-        <div className="table more">
-          <div
-            className={`td col ${th[0].mobileWidth ? true : false}`}
-            style={{width: `${mobile ? th[0].mobileWidth : th[0].width}%`}}
-          >
-            <span>{item.id}</span>
-            <span>{item.hash}</span>
-          </div>
-          <div
-            onClick={() => {
-              tableExpandFunc(item.id);
-            }}
-            className={`td expand ${tableExpand == item.id ? "active" : ""} ${
-              th[1].mobileWidth ? true : false
-            }`}
-            style={{width: `${mobile ? th[1].mobileWidth : th[1].width}%`}}
-          >
-            <div>
-              <span>{item.from}</span>
-              <svg
-                width="12"
-                height="7"
-                viewBox="0 0 12 7"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1.70095 5.6665L5.52859 1.83887C5.98063 1.38683 6.72032 1.38683 7.17236 1.83887L11 5.6665"
-                  stroke="#9C9DA3"
-                  strokeWidth="1.5"
-                  strokeMiterlimit="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+  let tableData = [];
+
+  if (tableType === "users") {
+    let th = tableHead.users;
+    let td = [
+      {
+        id: 1,
+        name: "John",
+        email: "john@example.com",
+        createdAt: "2023-12-14T09:49:37.189+00:00",
+        address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+        inner_accounts: [
+          {
+            account_category: "main",
+            userId: "#1",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          },
+          {
+            account_category: "trade",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          },
+          {
+            account_category: "loan",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: "Jackson",
+        email: "jack@gmail.com",
+        createdAt: "2023-12-14T09:49:37.189+00:00",
+        address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+        inner_accounts: [
+          {
+            account_category: "main",
+            userId: "#2",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          },
+          {
+            account_category: "trade",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          },
+          {
+            account_category: "loan",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          }
+        ]
+      },
+      {
+        id: 3,
+        name: "Peter",
+        email: "peter@gmail.com",
+        createdAt: "2023-12-14T09:49:37.189+00:00",
+        address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+        inner_accounts: [
+          {
+            account_category: "main",
+            userId: "#3",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          },
+          {
+            account_category: "trade",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          },
+          {
+            account_category: "loan",
+            address: "0xae0cf2498c0xae0cf2498c34535435435223sdfsdfsdfsf",
+          }
+        ]
+      },
+    ];
+
+    tableData = td.map((item, index) => {
+      let { userId } = item.inner_accounts.find(acc => acc.account_category === "main");
+      let accountType = null;
+
+      return (
+        <div
+          key={index + item.address}
+          className={`table-parent ${mobileExpand === index ? "active" : ""}`}
+          onClick={() => {
+            mobileExpandFunc(index);
+          }}>
+          <div className="table">
+            <div
+              className={`td ${th[0].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[0].mobileWidth : th[0].width}%` }}>
+              <span>{userId}</span>
             </div>
-            <div className={`td-expand`}>
+            <div
+              className={`td ${th[0].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[1].mobileWidth : th[1].width}%` }}>
+              <span>{item.name}</span>
+            </div>
+            <div
+              onClick={() => {
+                tableExpandFunc(item.address);
+              }}
+              className={`td expand ${accountType !== null ||
+                (tableExpand === item.address && item.inner_accounts.length !== 0)
+                ? "active"
+                : ""
+                } ${th[1].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[2].mobileWidth : th[2].width}%` }}>
               <div>
-                <i>Loan</i>Name <span>23 Eth</span>
+                <span>{item.address}</span>
+                {item.inner_accounts.length > 0 ? (
+                  <svg
+                    width="12"
+                    height="7"
+                    viewBox="0 0 12 7"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M1.70095 5.6665L5.52859 1.83887C5.98063 1.38683 6.72032 1.38683 7.17236 1.83887L11 5.6665"
+                      stroke="#9C9DA3"
+                      strokeWidth="1.5"
+                      strokeMiterlimit="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                ) : (
+                  ""
+                )}
               </div>
-              <div>Name 1</div>
-              <div>Name 3</div>
+              <div className={`td-expand`}>
+                {item.inner_accounts.map((subItem, index) => {
+                  return accountType !== subItem.account_category &&
+                    accountType !== null &&
+                    accountType !== "all" ? (
+                    ""
+                  ) : (
+                    <div key={index}>
+                      <i>{subItem.account_category}: </i>
+                      {subItem.address} <span>{subItem.balance}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-          <div
-            className={`td ${th[2].mobileWidth ? true : false}`}
-            style={{width: `${mobile ? th[2].mobileWidth : th[3].width}%`}}
-          >
-            <span>{item.to}</span>
-          </div>
-          <div
-            className={`td ${th[3].mobileWidth ? true : false}`}
-            style={{width: `${mobile ? th[3].mobileWidth : th[3].width}%`}}
-          >
-            <span>{item.amount}</span>
-          </div>
-          <div
-            className={`td ${th[4].mobileWidth ? true : false}`}
-            style={{width: `${mobile ? th[4].mobileWidth : th[4].width}%`}}
-          >
-            <span>{item.domination}</span>
-          </div>
-          <div
-            className={`td col ${th[5].mobileWidth ? true : false}`}
-            style={{width: `${mobile ? th[5].mobileWidth : th[5].width}%`}}
-          >
-            <span>{item.date}</span>
-            <span>{item.time}</span>
-          </div>
-          <div
-            className={`td ${th[6].mobileWidth ? true : false}`}
-            style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}
-          >
-            <span
-              className={`alert-status-box 
-                ${item.type === "All Deposit" && "alert-blue"} 
-                ${item.type === "Withdraw" && "alert-yellow"}
-                ${item.type === "Transfer" && "alert-green"} 
-                font-14`}
-            >
-              {item.type}
-            </span>
-          </div>
-        </div>
-        <div className="table-more">
-          <MoreButton dropdownData={dropdownData} />
-        </div>
-        <div className="icon-place">
-          <svg
-            width="12"
-            height="7"
-            viewBox="0 0 12 7"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeMiterlimit="10"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-        <div className={`table-mobile`}>
-          <div className="table-mobile-content">
-            <div className="td">
-              <div className="mobile-ttl">{th[2].name}</div>
-              <span>{item?.to}</span>
+            <div
+              className={`td ${th[2].mobileWidth ? true : false}`}
+              style={{ width: `${mobile ? th[3].mobileWidth : th[3].width}%` }}>
+              <span>{item.email}</span>
             </div>
-            <div className="td">
-              <div className="mobile-ttl">{th[3].name}</div>
-              <span>{item?.amount}</span>
-            </div>
-            <div className="td">
-              <div className="mobile-ttl">{th[4].name}</div>
-              <span>{item?.domination}</span>
-            </div>
-            <div className="td col">
-              <div className="mobile-ttl">{th[5].name}</div>
-              <span>{item?.date}</span>
-              <span>{item?.time}</span>
-            </div>
-            <div className="td type">
-              <div className="mobile-ttl">{th[6].name}</div>
-              <span
-                className={`alert-status-box 
-                  ${item.type === "All Deposit" && "alert-status-blue"} 
-                  ${item.type === "Withdraw" && "alert-status-yellow"}
-                  ${item.type === "Transfer" && "alert-status-green"} 
-                  font-14`}
-              >
-                {item.type}
-              </span>
+            <div
+              className={`td ${th[4].mobileWidth ? true : false}`}
+              style={{
+                width: `${mobile ? th[4].mobileWidth : th[4].width}%`,
+                display: "flex",
+                justifyContent: "space-between",
+              }}>
+              <span>{moment(item.createdAt).format("LL")}</span>
+              <div style={{ display: "flex" }} className="table-more">
+                <MoreButton dropdownData={dynamicDropDown(item)} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
-  });
+      );
+    });
+  }
+  // tableData = td.map((item, index) => {
+  //   return (
+  //     <div
+  //       className={`table-parent ${mobileExpand == item.id ? "active" : ""}`}
+  //       onClick={() => {
+  //         mobileExpandFunc(item.id);
+  //       }}
+  //       key={index}
+  //     >
+  //       <div className="table more">
+  //         <div
+  //           className={`td col ${th.users[0].mobileWidth ? true : false}`}
+  //           style={{width: `${mobile ? th.users[0].mobileWidth : th.users[0].width}%`}}
+  //         >
+  //           <span>{item.id}</span>
+  //           <span>{item.hash}</span>
+  //         </div>
+  //         <div
+  //           onClick={() => {
+  //             tableExpandFunc(item.id);
+  //           }}
+  //           className={`td expand ${tableExpand == item.id ? "active" : ""} ${
+  //             th.users[1].mobileWidth ? true : false
+  //           }`}
+  //           style={{width: `${mobile ? th.users[1].mobileWidth : th.users[1].width}%`}}
+  //         >
+  //           <div>
+  //             <span>{item.from}</span>
+  //             <svg
+  //               width="12"
+  //               height="7"
+  //               viewBox="0 0 12 7"
+  //               fill="none"
+  //               xmlns="http://www.w3.org/2000/svg"
+  //             >
+  //               <path
+  //                 d="M1.70095 5.6665L5.52859 1.83887C5.98063 1.38683 6.72032 1.38683 7.17236 1.83887L11 5.6665"
+  //                 stroke="#9C9DA3"
+  //                 strokeWidth="1.5"
+  //                 strokeMiterlimit="10"
+  //                 strokeLinecap="round"
+  //                 strokeLinejoin="round"
+  //               />
+  //             </svg>
+  //           </div>
+  //           <div className={`td-expand`}>
+  //             <div>
+  //               <i>Loan</i>Name <span>23 Eth</span>
+  //             </div>
+  //             <div>Name 1</div>
+  //             <div>Name 3</div>
+  //           </div>
+  //         </div>
+  //         <div
+  //           className={`td ${th.users[2].mobileWidth ? true : false}`}
+  //           style={{width: `${mobile ? th[2].mobileWidth : th[3].width}%`}}
+  //         >
+  //           <span>{item.to}</span>
+  //         </div>
+  //         <div
+  //           className={`td ${th.users[3].mobileWidth ? true : false}`}
+  //           style={{width: `${mobile ? th.users[3].mobileWidth : th.users[3].width}%`}}
+  //         >
+  //           <span>{item.amount}</span>
+  //         </div>
+  //         <div
+  //           className={`td ${th.users[4].mobileWidth ? true : false}`}
+  //           style={{width: `${mobile ? th.users[4].mobileWidth : th.users[4].width}%`}}
+  //         >
+  //           <span>{item.domination}</span>
+  //         </div>
+  //         {/* <div
+  //           className={`td col ${th[5].mobileWidth ? true : false}`}
+  //           style={{width: `${mobile ? th[5].mobileWidth : th[5].width}%`}}
+  //         >
+  //           <span>{item.date}</span>
+  //           <span>{item.time}</span>
+  //         </div>
+  //         <div
+  //           className={`td ${th[6].mobileWidth ? true : false}`}
+  //           style={{width: `${mobile ? th[6].mobileWidth : th[6].width}%`}}
+  //         >
+  //           <span
+  //             className={`alert-status-box 
+  //               ${item.type === "All Deposit" && "alert-blue"} 
+  //               ${item.type === "Withdraw" && "alert-yellow"}
+  //               ${item.type === "Transfer" && "alert-green"} 
+  //               font-14`}
+  //           >
+  //             {item.type}
+  //           </span>
+  //         </div> */}
+  //       </div>
+  //       <div className="table-more">
+  //         <MoreButton dropdownData={dropdownData} />
+  //       </div>
+  //       <div className="icon-place">
+  //         <svg
+  //           width="12"
+  //           height="7"
+  //           viewBox="0 0 12 7"
+  //           fill="none"
+  //           xmlns="http://www.w3.org/2000/svg"
+  //         >
+  //           <path
+  //             d="M10.299 1.33325L6.47141 5.16089C6.01937 5.61293 5.27968 5.61293 4.82764 5.16089L1 1.33325"
+  //             stroke="white"
+  //             strokeWidth="1.5"
+  //             strokeMiterlimit="10"
+  //             strokeLinecap="round"
+  //             strokeLinejoin="round"
+  //           />
+  //         </svg>
+  //       </div>
+  //       <div className={`table-mobile`}>
+  //         {/* <div className="table-mobile-content">
+  //           <div className="td">
+  //             <div className="mobile-ttl">{th[2].name}</div>
+  //             <span>{item?.to}</span>
+  //           </div>
+  //           <div className="td">
+  //             <div className="mobile-ttl">{th[3].name}</div>
+  //             <span>{item?.amount}</span>
+  //           </div>
+  //           <div className="td">
+  //             <div className="mobile-ttl">{th[4].name}</div>
+  //             <span>{item?.domination}</span>
+  //           </div>
+  //           <div className="td col">
+  //             <div className="mobile-ttl">{th[5].name}</div>
+  //             <span>{item?.date}</span>
+  //             <span>{item?.time}</span>
+  //           </div>
+  //           <div className="td type">
+  //             <div className="mobile-ttl">{th[6].name}</div>
+  //             <span
+  //               className={`alert-status-box 
+  //                 ${item.type === "All Deposit" && "alert-status-blue"} 
+  //                 ${item.type === "Withdraw" && "alert-status-yellow"}
+  //                 ${item.type === "Transfer" && "alert-status-green"} 
+  //                 font-14`}
+  //             >
+  //               {item.type}
+  //             </span>
+  //           </div>
+  //         </div> */}
+  //       </div>
+  //     </div>
+  //   );
+  // });
+
   return (
     <>
       <AdminHeader
@@ -915,7 +1248,7 @@ stories.add("AdminPanel", () => {
           tableData={tableData}
           handleViewAll={() => console.log("view all")}
           tableFilter={true}
-          tableHead={th}
+          tableHead={tableHead.users}
           adminPage={"table"}
           tableHeaderButtons={
             <>
