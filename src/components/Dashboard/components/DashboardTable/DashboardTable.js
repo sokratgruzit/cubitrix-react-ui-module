@@ -44,6 +44,24 @@ export const DashboardTable = ({
     }
   };
 
+  function replaceMiddleWithEllipsis(str) {
+    if (str.length <= 15) {
+      return str; // If the string length is 3 or less, return the string as is
+    }
+
+    const middleIndex = Math.floor(str.length / 2);
+    const prefix = str.substring(0, 13);
+    const suffix = str.substring(str.length - 4);
+
+    return prefix + "..." + suffix;
+  }
+
+  const handleClick = (externalHash) => {
+    if (externalHash) {
+      window.open(`https://testnet.bscscan.com/tx/${externalHash}`, "_blank");
+    }
+  };
+
   let mobile = width <= 1300;
 
   const tableVisualMore = (
@@ -113,6 +131,7 @@ export const DashboardTable = ({
       let amountIn = item?.tx_options?.amount;
       let currency = item?.tx_options?.currency?.toUpperCase();
       let amount = item?.amount?.toFixed(2);
+      let tx_external_hash = item?.tx_external_hash;
 
       const createdAt = new Date(item?.createdAt);
       const createdTime = createdAt.toLocaleString("en-US", {
@@ -134,7 +153,13 @@ export const DashboardTable = ({
             mobileExpandFunc(item._id);
           }}
         >
-          <div className="table">
+          <div
+            className="table"
+            onClick={() => {
+              handleClick(tx_external_hash);
+            }}
+            style={{cursor: tx_external_hash ? "pointer" : "default"}}
+          >
             <div
               className={`td col ${
                 tableHeader[0].mobileWidth ? true : false
@@ -145,11 +170,10 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              {/* <Account type={'spl'} /> */}
-              <span>{item?.from}</span>
+              <span>{replaceMiddleWithEllipsis(item?.tx_hash)}</span>
             </div>
             <div
-              className={`td ${
+              className={`td col ${
                 tableHeader[1].mobileWidth ? true : false
               } dashboard-td`}
               style={{
@@ -158,8 +182,30 @@ export const DashboardTable = ({
                 }%`,
               }}
             >
-              {/* <AccountType type={'top-up'} /> */}
-              {/* Render based on tx_type being "bonus" */}
+              <span>{replaceMiddleWithEllipsis(item?.from)}</span>
+            </div>
+            <div
+              className={`td col ${
+                tableHeader[2].mobileWidth ? true : false
+              } dashboard-td`}
+              style={{
+                width: `${
+                  mobile ? tableHeader[2].mobileWidth : tableHeader[2].width
+                }%`,
+              }}
+            >
+              <span>{replaceMiddleWithEllipsis(item?.to)}</span>
+            </div>
+            <div
+              className={`td ${
+                tableHeader[3].mobileWidth ? true : false
+              } dashboard-td`}
+              style={{
+                width: `${
+                  mobile ? tableHeader[3].mobileWidth : tableHeader[3].width
+                }%`,
+              }}
+            >
               {item?.tx_type === "bonus" ? (
                 <span>
                   {item?.tx_type}-{item?.tx_options?.type}
@@ -180,11 +226,11 @@ export const DashboardTable = ({
             </div>
             <div
               className={`td ${
-                tableHeader[2].mobileWidth ? true : false
+                tableHeader[4].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
-                  mobile ? tableHeader[2].mobileWidth : tableHeader[2].width
+                  mobile ? tableHeader[4].mobileWidth : tableHeader[4].width
                 }%`,
               }}
             >
@@ -196,6 +242,8 @@ export const DashboardTable = ({
                   : ""}
                 {txType === "currency stake" ? ` ${amountIn} ${toAccType}` : ""}
                 {txType === "deposit" ? ` ${amount} AONE` : ""}
+                {txType === "unstake" ? ` ${amount} AONE` : ""}
+                {txType === "harvest" ? ` ${amount} AONE` : ""}
                 {txType === "payment" ? ` ${tockenCount} AONE` : ""}
                 {txType === "transfer"
                   ? ` ${amount} ${currency || "AONE"}`
@@ -211,24 +259,23 @@ export const DashboardTable = ({
             </div>
             <div
               className={`td ${
-                tableHeader[3].mobileWidth ? true : false
+                tableHeader[5].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
-                  mobile ? tableHeader[3].mobileWidth : tableHeader[3].width
+                  mobile ? tableHeader[5].mobileWidth : tableHeader[5].width
                 }%`,
               }}
             >
               <span>{createdTime}</span>
             </div>
-
             <div
               className={`td ${
-                tableHeader[4].mobileWidth ? true : false
+                tableHeader[6].mobileWidth ? true : false
               } dashboard-td`}
               style={{
                 width: `${
-                  mobile ? tableHeader[4].mobileWidth : tableHeader[4].width
+                  mobile ? tableHeader[6].mobileWidth : tableHeader[6].width
                 }%`,
               }}
             >

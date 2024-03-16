@@ -40,16 +40,35 @@
 }
 .copy-address {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
+}
+
+.copy-address-content {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .copy-address-text {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);
-  max-width: calc(100% - 30px);
   overflow-wrap: anywhere;
-  font-size: 14px;
+  font-size: 12px;
   color: #9c9da3;
+}
+
+.address-balance-cont {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #9c9da3;
+  gap: 5px;
+}
+.address-balance {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: white;
 }
 .copy-address path {
   transition: 0.6s cubic-bezier(0.79, 0.01, 0.15, 0.99);

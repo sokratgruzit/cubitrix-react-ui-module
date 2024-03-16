@@ -605,6 +605,12 @@
   "please_enter_a_valid_email": {
     "en": "Please enter a valid email"
   },
+  "term_use": {
+    "en": "Terms Of Use"
+  },
+  "privacy_policy": {
+    "en": "Privacy Policy"
+  },
   "help_support": {
     "en": "Help & Support"
   },

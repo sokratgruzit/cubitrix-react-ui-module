@@ -209,35 +209,47 @@ stories.add("Dashboard", () => {
 
   const transactionHeader = [
     {
-      name: "From",
-      width: 35,
+      name: "Hash",
+      width: 20,
       id: 0,
       height: "40px",
     },
     {
-      name: "Type",
-      width: 15,
-      mobileWidth: 50,
+      name: "From",
+      width: 20,
+      id: 1,
+      height: "40px",
+    },
+    {
+      name: "to",
+      width: 20,
       id: 2,
       height: "40px",
     },
     {
+      name: "Type",
+      width: 10,
+      mobileWidth: 50,
+      id: 3,
+      height: "40px",
+    },
+    {
       name: "Amount",
-      width: 15,
+      width: 10,
       mobileWidth: 50,
       id: 4,
       height: "40px",
     },
     {
       name: "Time",
-      width: 20,
-      id: 3,
+      width: 10,
+      id: 5,
       height: "40px",
     },
     {
       name: "Status",
-      width: 15,
-      id: 5,
+      width: 10,
+      id: 6,
       height: "40px",
     },
   ];

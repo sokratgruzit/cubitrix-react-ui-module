@@ -4,6 +4,7 @@ import { CardSlider } from "./components/CardSlider/CardSlider";
 import { DashboardTable } from "./components/DashboardTable/DashboardTable";
 import translates from "../../translates.json";
 import "./Dashboard.css";
+import { Loader } from "../Loader/Loader";
 // import { Account, AccountType } from '../../assets/svgs'
 
 export const Dashboard = ({
@@ -87,6 +88,22 @@ export const Dashboard = ({
     tables.push(referralItem);
   }
 
+  const renderValue = (value) => {
+    if (value === null || value === undefined) {
+      return <Loader loading="Loading..."/>;
+    } else {
+      return (
+        <p>
+          {value?.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }) ?? 0}{" "}
+          AONE
+        </p>
+      );
+    }
+  };
+
   return (
     <>
       <CardSlider
@@ -106,54 +123,20 @@ export const Dashboard = ({
       />
       {extensions?.referral === "true" && (
         <div className="dashboard-total-referral-row">
-          {/*<div className="dashboard-total-referral-item">*/}
-          {/*  <p>AONE Price</p>*/}
-          {/*  <p>*/}
-          {/*    {AONEPrice?.toLocaleString("en-US", {*/}
-          {/*      minimumFractionDigits: 2,*/}
-          {/*      maximumFractionDigits: 2,*/}
-          {/*    }) ?? 0}*/}
-          {/*  </p>*/}
-          {/*</div>*/}
           <div className="dashboard-total-referral-item">
             <p>{translates?.expected_binary.en}</p>
-            <p>
-              {referralTotal?.all_amount_sum?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0}{" "}
-              AONE
-            </p>
+            {renderValue(referralTotal?.all_amount_sum)}
           </div>
           <div className="dashboard-total-referral-item">
             <p>{translates?.total_left.en}</p>
-            <p>
-              {referralTotal?.left_total?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0}{" "}
-              AONE
-            </p>
+            {renderValue(referralTotal?.left_total)}
           </div>
           <div className="dashboard-total-referral-item">
-            <p>{translates?.total_right.en}</p>
-            <p>
-              {referralTotal?.total_right?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0}{" "}
-              AONE
-            </p>
+            {renderValue(referralTotal?.total_right)}
           </div>
           <div className="dashboard-total-referral-item">
             <p>{translates?.expected_uni.en}</p>
-            <p>
-              {referralTotal?.uni?.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              }) ?? 0}{" "}
-              AONE
-            </p>
+            {renderValue(referralTotal?.uni)}
           </div>
         </div>
       )}

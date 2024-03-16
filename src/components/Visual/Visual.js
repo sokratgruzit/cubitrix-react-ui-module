@@ -1,5 +1,5 @@
-import "./Visual.css";
 import React from "react";
+import "./Visual.css";
 
 export const Visual = (props) => {
   let element = null;
@@ -35,10 +35,12 @@ export const Visual = (props) => {
               </svg>
             </span>
           )}
-          <p className={'popup-header-head'}>
-            <span className={'font-16 popup-header-label'}>{props.label}</span>
+          <p className={"popup-header-head"}>
+            <span className={"font-16 popup-header-label"}>{props.label}</span>
             {props?.description && (
-              <span className={'font-14 popup-header-description'}>{props?.description}</span>
+              <span className={"font-14 popup-header-description"}>
+                {props?.description}
+              </span>
             )}
           </p>
         </div>
@@ -86,50 +88,63 @@ export const Visual = (props) => {
   }
   if (props.element === "copy-address") {
     element = (
-      <div className={`copy-address`} style={props.customStyles} onClick={props.onClick}>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M13.3334 10.7498V14.2498C13.3334 17.1665 12.1667 18.3332 9.25008 18.3332H5.75008C2.83341 18.3332 1.66675 17.1665 1.66675 14.2498V10.7498C1.66675 7.83317 2.83341 6.6665 5.75008 6.6665H9.25008C12.1667 6.6665 13.3334 7.83317 13.3334 10.7498Z"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M18.3334 5.74984V9.24984C18.3334 12.1665 17.1667 13.3332 14.2501 13.3332H13.3334V10.7498C13.3334 7.83317 12.1667 6.6665 9.25008 6.6665H6.66675V5.74984C6.66675 2.83317 7.83341 1.6665 10.7501 1.6665H14.2501C17.1667 1.6665 18.3334 2.83317 18.3334 5.74984Z"
-            stroke="white"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <div className={`copy-address-text`}>{props.label}</div>
+      <div
+        className={`copy-address`}
+        style={props.customStyles}
+        onClick={props.onClick}
+      >
+        <div className="copy-address-content">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.3334 10.7498V14.2498C13.3334 17.1665 12.1667 18.3332 9.25008 18.3332H5.75008C2.83341 18.3332 1.66675 17.1665 1.66675 14.2498V10.7498C1.66675 7.83317 2.83341 6.6665 5.75008 6.6665H9.25008C12.1667 6.6665 13.3334 7.83317 13.3334 10.7498Z"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M18.3334 5.74984V9.24984C18.3334 12.1665 17.1667 13.3332 14.2501 13.3332H13.3334V10.7498C13.3334 7.83317 12.1667 6.6665 9.25008 6.6665H6.66675V5.74984C6.66675 2.83317 7.83341 1.6665 10.7501 1.6665H14.2501C17.1667 1.6665 18.3334 2.83317 18.3334 5.74984Z"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <p className={`copy-address-text`}>{props.label}</p>
+        </div>
+        {props.type === "withBalance" && (
+          <p className="address-balance-cont">
+            AONE Balance:{" "}
+            <span className="address-balance">{props.tokenBalance}</span>
+          </p>
+        )}
       </div>
     );
   }
-  if (props.element === 'table-header') {
+  if (props.element === "table-header") {
     element = (
-      <div style={props.customStyles} className={`tb-head ${props.centerButtons ? 'tb-head-center' : ''}`}>
-          {props.centerButtons == true && (
-              <div className="left-panel-btns">
-                  {props.buttonsLeft}
-              </div>
-          )}
+      <div
+        style={props.customStyles}
+        className={`tb-head ${props.centerButtons ? "tb-head-center" : ""}`}
+      >
+        {props.centerButtons == true && (
+          <div className="left-panel-btns">{props.buttonsLeft}</div>
+        )}
         <div className="left-panel">
-          <h1 className={props.fontSize} style={props?.labelCustomStyles}>{props.label}</h1>
+          <h1 className={props.fontSize} style={props?.labelCustomStyles}>
+            {props.label}
+          </h1>
           {props.description && <p className="font-14">{props.description}</p>}
         </div>
-        <div className="right-panel">
-          {props.buttons}
-        </div>
+        <div className="right-panel">{props.buttons}</div>
       </div>
-    )
+    );
   }
 
   return element;

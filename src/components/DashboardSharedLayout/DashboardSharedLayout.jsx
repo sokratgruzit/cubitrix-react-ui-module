@@ -72,6 +72,80 @@ export const DashboardSharedLayout = ({
             >
               <div className="sidebar-footer-support font-16">
                 <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                >
+                  <rect
+                    x="2"
+                    y="4"
+                    width="20"
+                    height="16"
+                    fill="#fff"
+                    stroke="#000"
+                    strokeWidth="1.5"
+                  />
+                  <line
+                    x1="4"
+                    y1="8"
+                    x2="20"
+                    y2="8"
+                    stroke="#000"
+                    strokeWidth="1"
+                  />
+                  <line
+                    x1="4"
+                    y1="12"
+                    x2="20"
+                    y2="12"
+                    stroke="#000"
+                    strokeWidth="1"
+                  />
+                  <line
+                    x1="4"
+                    y1="16"
+                    x2="20"
+                    y2="16"
+                    stroke="#000"
+                    strokeWidth="1"
+                  />
+                </svg>
+                <Link to="/term" className="dashboard-sidebar__horisontal-link">
+                  {translates.term_use.en}
+                </Link>
+              </div>
+              <div className="sidebar-footer-support font-16">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="2.18"
+                    ry="2.18"
+                  />
+                  <path d="M2 12h20M12 2v20" />
+                </svg>
+                <Link
+                  to="/privacy"
+                  className="dashboard-sidebar__horisontal-link"
+                >
+                  {translates.privacy_policy.en}
+                </Link>
+              </div>
+              <div className="sidebar-footer-support font-16">
+                <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -91,7 +165,10 @@ export const DashboardSharedLayout = ({
                     fill="rgba(255, 255, 255)"
                   />
                 </svg>
-                <div className="dashboard-sidebar__horisontal-link" onClick={helpSupportClick}>
+                <div
+                  className="dashboard-sidebar__horisontal-link"
+                  onClick={helpSupportClick}
+                >
                   {translates.help_support.en}
                 </div>
               </div>
