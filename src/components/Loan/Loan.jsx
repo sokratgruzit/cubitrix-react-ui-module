@@ -30,6 +30,7 @@ export const Loan = ({
   borrowTETHER,
   account,
   handleConenctWallet,
+  helpSupportClick,
 }) => {
   const { width } = useMobileWidth();
   const [loanPlatform, setLoanPlatform] = useState("p2p");
@@ -72,7 +73,10 @@ export const Loan = ({
       required: true,
       placeholder: "Enter amount",
       onChange: (e) =>
-        setMakeOfferData((prev) => ({ ...prev, collateral: Number(e.target.value) })),
+        setMakeOfferData((prev) => ({
+          ...prev,
+          collateral: Number(e.target.value),
+        })),
     },
     {
       title: "offer duration",
@@ -81,7 +85,10 @@ export const Loan = ({
       required: true,
       placeholder: "Enter duration",
       onChange: (e) =>
-        setMakeOfferData((prev) => ({ ...prev, offerDuration: Number(e.target.value) })),
+        setMakeOfferData((prev) => ({
+          ...prev,
+          offerDuration: Number(e.target.value),
+        })),
     },
   ];
 
@@ -124,7 +131,9 @@ export const Loan = ({
               </div>
               <span
                 className={`highlight-selected ${
-                  loanPlatform === "pool" ? "selected-data" : "selected-security"
+                  loanPlatform === "pool"
+                    ? "selected-data"
+                    : "selected-security"
                 } `}
               ></span>
             </div>
@@ -151,7 +160,10 @@ export const Loan = ({
                 </div>
               </div>
               <div className="loan-bar-body">
-                <DashboardBalance earning={"$8.193010001"} usdt={"2.22004 usdt"} />
+                <DashboardBalance
+                  earning={"$8.193010001"}
+                  usdt={"2.22004 usdt"}
+                />
                 <div className="buttons-wrapper">
                   <Button
                     label={"Supply USDT "}
@@ -286,8 +298,14 @@ export const Loan = ({
                               filterUnits="userSpaceOnUse"
                               colorInterpolationFilters="sRGB"
                             >
-                              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                              <feGaussianBlur in="BackgroundImageFix" stdDeviation="20" />
+                              <feFlood
+                                floodOpacity="0"
+                                result="BackgroundImageFix"
+                              />
+                              <feGaussianBlur
+                                in="BackgroundImageFix"
+                                stdDeviation="20"
+                              />
                               <feComposite
                                 in2="SourceAlpha"
                                 operator="in"
@@ -316,7 +334,9 @@ export const Loan = ({
                         <p>{item.shortName}</p>
                         <p>{item.amount} in wallet</p>
                       </div>
-                      <div className="protocol-balance">{item.protocolBalance}</div>
+                      <div className="protocol-balance">
+                        {item.protocolBalance}
+                      </div>
                       <div className="pool-loan-actions">
                         <div>
                           <svg
@@ -347,7 +367,7 @@ export const Loan = ({
                 })}
               />
             </div>
-            <Footer />
+            <Footer helpSupportClick={helpSupportClick} />
           </div>
         </>
       )}

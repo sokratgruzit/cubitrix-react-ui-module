@@ -396,7 +396,9 @@ export const CardSlider = ({
                         return (
                           <div
                             style={
-                              key === "gold" && item.title === "Withdraw"
+                              key === "gold" &&
+                              (item.title === "Withdraw" ||
+                                item.title === "Stake")
                                 ? { display: "none" }
                                 : { display: "flex" }
                             }

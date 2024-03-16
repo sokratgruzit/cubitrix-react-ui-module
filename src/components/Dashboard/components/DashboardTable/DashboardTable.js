@@ -28,6 +28,7 @@ export const DashboardTable = ({
   paginationCurrent,
   paginationTotal,
   paginationEvent,
+  transactionLink
 }) => {
   let element = null;
 
@@ -58,7 +59,7 @@ export const DashboardTable = ({
 
   const handleClick = (externalHash) => {
     if (externalHash) {
-      window.open(`https://testnet.bscscan.com/tx/${externalHash}`, "_blank");
+      window.open(`${transactionLink}${externalHash}`, "_blank");
     }
   };
 

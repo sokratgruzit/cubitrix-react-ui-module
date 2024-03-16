@@ -33,6 +33,7 @@ export const Dashboard = ({
   stakedTotal,
   handleStake,
   referralTotal,
+  transactionLink,
 }) => {
   let referralItem = {};
 
@@ -90,7 +91,7 @@ export const Dashboard = ({
 
   const renderValue = (value) => {
     if (value === null || value === undefined) {
-      return <Loader loading="Loading..."/>;
+      return <Loader loading="Loading..." />;
     } else {
       return (
         <p>
@@ -154,6 +155,7 @@ export const Dashboard = ({
           tableEmpty={item?.tableEmpty}
           loading={item?.loading}
           tableButtons={item?.tableButtons}
+          transactionLink={transactionLink}
         />
       ))}
     </>

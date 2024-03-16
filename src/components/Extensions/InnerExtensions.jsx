@@ -12,7 +12,7 @@ import "./Extensions.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
-export const InnerExtensions = ({ extensionsCardsData, id }) => {
+export const InnerExtensions = ({ extensionsCardsData, id, helpSupportClick }) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isEnd, setIsEnd] = useState(false);
   const [isStart, setIsBeginning] = useState(true);
@@ -189,7 +189,7 @@ export const InnerExtensions = ({ extensionsCardsData, id }) => {
           </Swiper>
         </div>
       </div>
-      <Footer />
+      <Footer helpSupportClick={helpSupportClick}/>
     </div>
   );
 };

@@ -1,22 +1,22 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, { useState, useEffect, Fragment } from "react";
 
 // components
-import {Visual} from "../Visual";
-import {Table} from "../Table";
-import {Button} from "../Button";
-import {ReferralCard} from "../ReferralCard";
-import {Footer} from "../Footer";
-import {InfoBox} from "../InfoBox";
-import {DisabledPage} from "../DisabledPage";
-import {FilterBox} from "../FilterBox";
-import {DashboardTable} from "../Dashboard/components/DashboardTable/DashboardTable";
+import { Visual } from "../Visual";
+import { Table } from "../Table";
+import { Button } from "../Button";
+import { ReferralCard } from "../ReferralCard";
+import { Footer } from "../Footer";
+import { InfoBox } from "../InfoBox";
+import { DisabledPage } from "../DisabledPage";
+import { FilterBox } from "../FilterBox";
+import { DashboardTable } from "../Dashboard/components/DashboardTable/DashboardTable";
 import translates from "../../translates.json";
 
 // svgs
-import {StickyNoteIcon, ReferralPattern} from "../../assets/svgs";
+import { StickyNoteIcon, ReferralPattern } from "../../assets/svgs";
 
 // hooks
-import {useMobileWidth} from "../../hooks/useMobileWidth";
+import { useMobileWidth } from "../../hooks/useMobileWidth";
 
 // styles
 import "./Referral.css";
@@ -58,6 +58,7 @@ export const Referral = ({
   setTableFilterOutcomingData,
   tableSearchSelect,
   tableHeader,
+  helpSupportClick,
 }) => {
   const [mobileExpand, setMobileExpand] = useState(null);
   const [refItemsCount, setRefItemsCount] = useState(3);
@@ -231,7 +232,7 @@ export const Referral = ({
       setTableFilterOutcomingData={setTableFilterOutcomingData}
       tableSearchSelect={tableSearchSelect}
       tableHeader={tableHeader}
-      customStyles={{marginBottom: "20px", marginTop: "20px"}}
+      customStyles={{ marginBottom: "20px", marginTop: "20px" }}
     />
   );
 
@@ -330,7 +331,7 @@ export const Referral = ({
               </div>
             </div>
             <div className="table-more" />
-            <div className="icon-place" style={{height: "40px"}}>
+            <div className="icon-place" style={{ height: "40px" }}>
               <svg
                 width="12"
                 height="7"
@@ -355,7 +356,7 @@ export const Referral = ({
                   <span>{"Lvl " + item.lvl + "/" + item.side}</span>
                 </div>
                 <div className="td">
-                  <div className="mobile-ttl">Date Joined</div>
+                  <div className="mobile-ttl">Joining Date</div>
                   <span>{createdTime}</span>
                 </div>
               </div>
@@ -484,7 +485,7 @@ export const Referral = ({
               </div>
             </div>
             <div className="table-more" />
-            <div className="icon-place" style={{height: "40px"}}>
+            <div className="icon-place" style={{ height: "40px" }}>
               <svg
                 width="12"
                 height="7"
@@ -513,7 +514,7 @@ export const Referral = ({
                   <span>{uniLVLData?.[item?.lvl - 1] ?? 0}%</span>
                 </div>
                 <div className="td">
-                  <div className="mobile-ttl">Date Joined</div>
+                  <div className="mobile-ttl">Joining Date</div>
                   <span>{createdTime}</span>
                 </div>
                 {/*<div className='td'>*/}
@@ -605,7 +606,7 @@ export const Referral = ({
                   {translates?.you_can_earn_rebates.en}
                 </span>
                 <p className="font-16">
-                  {translates?.after_creating_your_first_code.en}
+                  {/* {translates?.after_creating_your_first_code.en} need new text */}
                 </p>
               </div>
               <div className="referral-content-info_buttons">
@@ -647,7 +648,7 @@ export const Referral = ({
                       width: "100%",
                     }}
                     buttons={referralTreeBtnsRight}
-                    labelCustomStyles={{color: "#C38C5C"}}
+                    labelCustomStyles={{ color: "#C38C5C" }}
                     centerButtons={true}
                     buttonsLeft={referralTreeBtnsLeft}
                   />
@@ -687,7 +688,7 @@ export const Referral = ({
                       <div className="referral-tree-item-level referral-tree-item-level-active">
                         <div
                           className={`referral-tree-item`}
-                          style={{width: 100 + "%"}}
+                          style={{ width: 100 + "%" }}
                         >
                           <div
                             className="referral-tree-btn"
@@ -709,7 +710,7 @@ export const Referral = ({
                             {treeInfo !== null && (
                               <div
                                 className="referral-tree-info referral-tree-info-main"
-                                style={{right: mobile ? "0" : "120px"}}
+                                style={{ right: mobile ? "0" : "120px" }}
                               >
                                 <InfoBox
                                   type="reward-box"
@@ -721,7 +722,7 @@ export const Referral = ({
                                       : false
                                   }
                                   cardBody={treeInfo}
-                                  customStyle={{width: "100%"}}
+                                  customStyle={{ width: "100%" }}
                                 />
                               </div>
                             )}
@@ -1046,7 +1047,7 @@ export const Referral = ({
             ))}
           </div>
         )}
-        <Footer />
+        <Footer helpSupportClick={helpSupportClick} />
       </div>
     </div>
   );
