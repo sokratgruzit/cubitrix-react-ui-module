@@ -10,7 +10,7 @@ import { HelpCard } from "../HelpCard";
 export const TopUpDashboard = ({
   handlePaymentConfirm,
   receivePaymentAddress,
-  methods = [],
+  methods,
   qrcode,
   tranasctionFee,
   exchangeRate = 0,

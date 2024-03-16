@@ -21,6 +21,7 @@ export const Landing = ({
   whyComplendData,
   overviewProjectsData,
   animate,
+  helpSupportClick,
 }) => {
   return (
     <div style={{ paddingTop: "70px" }}>
@@ -45,7 +46,7 @@ export const Landing = ({
             account={account}
             startNowImages={allImages?.startNow}
           />
-          <Footer />
+          <Footer helpSupportClick={helpSupportClick} />
         </main>
       </div>
     </div>

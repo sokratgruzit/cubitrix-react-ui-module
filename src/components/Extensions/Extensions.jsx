@@ -14,7 +14,11 @@ import translates from "../../translates.json";
 import "./Extensions.css";
 import "swiper/swiper-bundle.css";
 
-export const Extensions = ({ extensionsCardsData, disabledAccount }) => {
+export const Extensions = ({
+  extensionsCardsData,
+  disabledAccount,
+  helpSupportClick,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -60,7 +64,7 @@ export const Extensions = ({ extensionsCardsData, disabledAccount }) => {
           ))}
         </Swiper>
       </main>
-      <Footer />
+      <Footer helpSupportClick={helpSupportClick} />
     </div>
   );
 };
