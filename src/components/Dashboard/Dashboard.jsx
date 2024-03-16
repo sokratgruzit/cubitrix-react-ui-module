@@ -133,6 +133,7 @@ export const Dashboard = ({
             {renderValue(referralTotal?.left_total)}
           </div>
           <div className="dashboard-total-referral-item">
+            <p>{translates?.total_right.en}</p>
             {renderValue(referralTotal?.total_right)}
           </div>
           <div className="dashboard-total-referral-item">
