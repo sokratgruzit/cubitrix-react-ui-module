@@ -53,6 +53,7 @@ export const AdminHeader = (props) => {
               dropdown={"dropdown"}
               active={active}
               customStyles={{ width: "100%" }}
+              handleListItemClick={() => console.log("Logout")}
             />
           </div>
         </div>
