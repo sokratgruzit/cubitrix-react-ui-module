@@ -62,12 +62,20 @@ export const TransferFromAcc = ({
                 {accountType === "ATAR" ? "AONE" : chosenAccount.toUpperCase()}{" "}
                 Balance
               </h4>
-              <p><span className="font-14">Available: </span>{accountBalance}</p>
+              <p>
+                <span className="font-14">Available: </span>
+                {accountBalance}
+              </p>
               <span className="font-14">Total: {accountBalanceSecond}</span>
             </div>
           </div>
           <p style={{ color: "#FFA726", fontSize: "14px" }}>
-            Network: BSC Smart Chain
+            {accountType === "bnb" && "Network: BSC Smart Chain"}
+            {accountType === "usdt" && "Network: BSC Smart Chain"}
+            {accountType === "ATAR" && "Network: BSC Smart Chain"}
+            {accountType === "btc" && "Network: Bitcoin"}
+            {accountType === "eth" && "Network: Ethereum"}
+            {accountType === "trx" && "Network: TRON "}
           </p>
           <div className="withdraw-to-acc-inputs">
             {inputs?.map((params, index) => {

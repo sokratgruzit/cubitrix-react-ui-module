@@ -1,10 +1,10 @@
 import "./StakeCurrency.css";
-import React, {useState, useEffect} from "react";
-import {Visual} from "../Visual";
-import {Account} from "../../assets/svgs";
-import {Button} from "../Button";
-import {Input} from "../Input";
-import {HelpText} from "../HelpText";
+import React, { useState, useEffect } from "react";
+import { Visual } from "../Visual";
+import { Account } from "../../assets/svgs";
+import { Button } from "../Button";
+import { Input } from "../Input";
+import { HelpText } from "../HelpText";
 
 export const StakeCurrency = ({
   accountType,
@@ -19,11 +19,10 @@ export const StakeCurrency = ({
   stakingAPY,
   label,
   stakeLoading,
-  durationOptions,
 }) => {
   const [selectedDuration, setSelectedDuration] = useState("360 D");
   const handleInputChange = (e, params) => {
-    const {name, onChange} = params;
+    const { name, onChange } = params;
 
     let data;
     if (!e.target) {
@@ -44,7 +43,7 @@ export const StakeCurrency = ({
       <Visual
         label={label}
         element={"popup-header"}
-        customStyles={{width: "100%", maxWidth: "100%"}}
+        customStyles={{ width: "100%", maxWidth: "100%" }}
         onClick={sideBarClose}
       />
       <div className="sidebar-body">
@@ -57,7 +56,10 @@ export const StakeCurrency = ({
             </div>
             <div className="deposit-card_content">
               <h4 className="font-14">{accountType?.toUpperCase()} Balance</h4>
-              <p><span className="font-14">Available: </span>{accountBalance}</p>
+              <p>
+                <span className="font-14">Available: </span>
+                {accountBalance}
+              </p>
               <span className="font-14">Total: {accountBalanceSecond}</span>
             </div>
           </div>
@@ -84,7 +86,7 @@ export const StakeCurrency = ({
                           params?.options[0]?.value
                         : currentObject[params?.name] || params?.defaultAny
                     }
-                    customStyles={{width: "100%"}}
+                    customStyles={{ width: "100%" }}
                     selectHandler={(opt) => {
                       handleInputChange(opt, params);
                     }}
@@ -103,18 +105,22 @@ export const StakeCurrency = ({
                 );
               })}
               <div className="calculator__buttons">
-                {durationOptions?.map((item, index) => (
-                  <Button
-                    key={index}
-                    label={item}
-                    element={"calculator-button"}
-                    onClick={() => {
-                      setSelectedDuration(item);
-                    }}
-                    customStyles={{width: "100%"}}
-                    active={item === selectedDuration}
-                  />
-                ))}
+                {Object.entries(stakingAPY).map(([key, value]) => {
+                  if (value) {
+                    return (
+                      <Button
+                        key={key}
+                        label={key}
+                        element={"calculator-button"}
+                        onClick={() => {
+                          setSelectedDuration(key);
+                        }}
+                        customStyles={{ width: "100%" }}
+                        active={key === selectedDuration}
+                      />
+                    );
+                  }
+                })}
               </div>
             </div>
             {stakingAPY ? (
