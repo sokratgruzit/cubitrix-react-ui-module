@@ -726,7 +726,7 @@ export const Referral = ({
                                 />
                               </div>
                             )}
-                            {/* {referralBackActive && (
+                            {referralBackActive && (
                               <div className="referral-tree-item-level-active-back">
                                 <span>
                                   <svg
@@ -744,7 +744,7 @@ export const Referral = ({
                                   Back
                                 </span>
                               </div>
-                            )} */}
+                            )}
                             <div className="referral-tree-btn-out">
                               <div className={`referral-tree-btn-img`}>
                                 <img
